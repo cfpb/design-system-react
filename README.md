@@ -7,7 +7,7 @@ A React/Storybook implementation of [CFPB's Design System](https://github.com/cf
 Install dependencies and start storybook:
 
 ```
-yarn && yarn storybook
+yarn && yarn start
 ```
 
 ---
