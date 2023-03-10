@@ -58,6 +58,7 @@ module.exports = {
     '@typescript-eslint/prefer-enum-initializers': 'off',
     '@typescript-eslint/prefer-readonly-parameter-types': 'off',
     '@typescript-eslint/prefer-regexp-exec': 'off',
+    '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/no-magic-numbers': [
       'error',
       {
@@ -83,6 +84,7 @@ module.exports = {
     '@typescript-eslint/no-restricted-imports': 'off',
     'import/no-deprecated': 'error',
     'import/order': 'off',
+    'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       {
@@ -111,18 +113,15 @@ module.exports = {
     'react/sort-comp': 'off',
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
+    'react/prop-types': 'off',
+    'react/require-default-props': 'off',
     'react/boolean-prop-naming': [
       'error',
       {
         validateNested: true
       }
     ],
-    'react/function-component-definition': [
-      'error',
-      {
-        namedComponents: 'function-declaration'
-      }
-    ],
+    'react/function-component-definition': 'off',
     'react/no-unstable-nested-components': 'error',
     'react/jsx-handler-names': [
       'error',
@@ -145,14 +144,10 @@ module.exports = {
       }
     ],
     'react/jsx-no-constructed-context-values': 'error',
-    'react/jsx-props-no-spreading': [
-      'error',
-      {
-        html: 'ignore'
-      }
-    ],
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-no-script-url': 'error',
     'react/jsx-no-useless-fragment': 'error',
+    'unicorn/no-keyword-prefix': 'off',
     'unicorn/filename-case': [
       'error',
       {
