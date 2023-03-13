@@ -1,4 +1,4 @@
-import 'tailwindcss/tailwind.css';
+import '@cfpb/cfpb-design-system/src/cfpb-design-system.less';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

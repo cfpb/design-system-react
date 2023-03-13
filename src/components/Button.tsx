@@ -21,21 +21,19 @@ interface ButtonProperties {
   onClick?: () => void;
 }
 
-const baseStyles = ['text-white', 'rounded', 'font-medium'];
+const baseStyles = ['a-btn'];
 
 const appearanceStyles = {
-  primary: ['bg-pacific', 'hover:bg-pacific-dark'],
-  secondary: ['bg-gray', 'hover:bg-gray-dark'],
-  warning: ['bg-red-mid-dark', 'hover:bg-red-dark']
+  primary: [],
+  secondary: ['a-btn__secondary'],
+  warning: ['a-btn__warning']
 };
 
 const sizeStyles = {
-  default: ['px-3.5', 'py-2'],
-  super: ['text-lg', 'px-7', 'py-3'],
-  full: ['px-3.5', 'py-2', 'w-full']
+  default: [],
+  super: ['a-btn__super'],
+  full: ['a-btn__full-on-xs']
 };
-
-const disabledStyles = ['bg-gray-20', 'text-gray', 'cursor-not-allowed'];
 
 /**
  * Primary UI component for user interaction
@@ -47,14 +45,11 @@ export function Button({
   label,
   ...properties
 }: ButtonProperties): JSX.Element {
-  let styles = [
+  const styles = [
     ...baseStyles,
     ...appearanceStyles[appearance],
     ...sizeStyles[size]
   ];
-  if (isDisabled) {
-    styles = [...styles, ...disabledStyles];
-  }
   return (
     <button
       type='button'
