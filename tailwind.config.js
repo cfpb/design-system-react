@@ -7,7 +7,7 @@ const config = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      black: colors.black,
+      black: '#101820',
       white: colors.white,
       green: {
         dark: '#1e9642',
@@ -68,6 +68,11 @@ const config = {
     },
     fontFamily: {
       sans: ['Avenir Next', 'Arial', 'sans-serif']
+    },
+    extend: {
+      boxShadow: {
+        glow: '0 0 0 1px #0072ce;'
+      }
     }
   },
   experimental: { optimizeUniversalDefaults: true },
