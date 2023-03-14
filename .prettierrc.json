@@ -1,13 +1,13 @@
 {
-	"arrowParens": "avoid",
-	"bracketSameLine": false,
-	"bracketSpacing": true,
-	"jsxSingleQuote": true,
-	"plugins": ["./node_modules/prettier-plugin-tailwindcss"],
-	"printWidth": 80,
-	"quoteProps": "as-needed",
-	"semi": true,
-	"singleQuote": true,
-	"tabWidth": 2,
-	"trailingComma": "none"
+  "arrowParens": "avoid",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "jsxSingleQuote": true,
+  "plugins": [],
+  "printWidth": 80,
+  "quoteProps": "as-needed",
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "none"
 }
