@@ -15,7 +15,9 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof TextInput> = arguments_ => (
-  <TextInput {...arguments_} />
+  <div className='m-form-field'>
+    <TextInput {...arguments_} />
+  </div>
 );
 
 export const Default = Template.bind({});

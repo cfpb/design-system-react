@@ -25,43 +25,12 @@ export type OptionalTextInputProperties = CustomTextInputProperties &
 export type TextInputProperties = OptionalTextInputProperties &
   RequiredTextInputProperties;
 
-const baseStyles = [
-  'text-black',
-  'placeholder-gray',
-  'py-1',
-  'px-2',
-  'border',
-  'border-gray-60'
-];
-
-const hoverStyles = [
-  'hover:border-pacific',
-  'hover:outline-1',
-  'hover:outline-pacific',
-  'hover:outline'
-];
-
-const focusStyles = [
-  'focus:border-pacific',
-  'focus:outline-1',
-  'focus:outline-pacific',
-  'focus:outline-dotted',
-  'focus:outline-offset-2',
-  'focus:shadow-glow'
-];
+const baseStyles = ['a-text-input'];
 
 const widthStyles = {
   default: [],
-  full: ['w-full']
+  full: ['a-text-input__full']
 };
-
-const disabledStyles = [
-  'disabled:bg-gray-20',
-  'disabled:text-gray',
-  'disabled:cursor-not-allowed',
-  'disabled:outline-0',
-  'disabled:border-gray-60'
-];
 
 export function TextInput({
   id,
@@ -73,13 +42,7 @@ export function TextInput({
   inputRef,
   ...inputProperties
 }: TextInputProperties): JSX.Element {
-  const styles = [
-    ...baseStyles,
-    ...hoverStyles,
-    ...focusStyles,
-    ...disabledStyles,
-    ...widthStyles[width]
-  ];
+  const styles = [...baseStyles, ...widthStyles[width]];
   const classes = [className, ...styles].join(' ');
 
   return (
