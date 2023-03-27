@@ -36,7 +36,7 @@ export const Notification = ({
   message,
   type = 'info',
   ...props
-}: NotificationProperties & React.HTMLAttributes<HTMLDivElement>) => {
+}: NotificationProperties & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
   const classes = classnames(
     'm-notification',
     'm-notification__visible',
