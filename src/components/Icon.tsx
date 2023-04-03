@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { useImportSvg } from '../hooks/useImportSvg';
+import { useIconSvg } from '../hooks/useIconSvg';
 
 interface IconProperties {
   name: string;
@@ -19,10 +19,10 @@ interface IconProperties {
  */
 export const Icon = ({ name, alt, withBg = false }: IconProperties) => {
   const shapeModifier = getShapeModifier(name, withBg);
-  const classes = ['cf-icon-svg', `cf-icon-svg__${name}${shapeModifier}`];
-  const iconPath = name && `../assets/icons/${name}${shapeModifier}.svg?raw`;
+  const fileName = `${name}${shapeModifier}`;
+  const classes = ['cf-icon-svg', `cf-icon-svg__${fileName}`];
 
-  const icon = useImportSvg(iconPath);
+  const icon = useIconSvg(fileName);
 
   if (!icon) return null;
 
