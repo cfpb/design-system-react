@@ -1,5 +1,6 @@
 import classnames from 'classnames';
-import { EventHandler, SyntheticEvent, useEffect, useState } from 'react';
+import type { EventHandler, SyntheticEvent} from 'react';
+import { useEffect, useState } from 'react';
 import { noOp } from '../utils/noOp';
 import { Icon } from './Icon';
 import Label from './Label';
