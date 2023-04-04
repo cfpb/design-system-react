@@ -6,21 +6,21 @@ import { useEffect, useState } from 'react';
  * @param path URL to SVG file
  * @returns string | null
  */
-export const useImportSvg = (path: string) => {
+export const useIconSvg = (fileName: string) => {
   let [icon, setIcon] = useState(null);
 
   useEffect(() => {
     const importSvg = async () => {
-      if (!path) return null;
+      if (!fileName) return null;
 
-      const importedIcon = await import(path);
+      const importedIcon = await import(`../assets/icons/${fileName}.svg?raw`);
       if (!importedIcon || !importedIcon.default) return;
 
       setIcon(importedIcon.default);
     };
 
     importSvg();
-  }, [path, setIcon]);
+  }, [fileName, setIcon]);
 
   if (!icon) return null;
   return icon;
