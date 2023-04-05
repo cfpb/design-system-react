@@ -1,5 +1,3 @@
-import './TextInput.css';
-
 type TextInputReference =
   | React.RefObject<HTMLInputElement>
   | string
