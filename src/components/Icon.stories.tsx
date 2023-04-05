@@ -66,3 +66,17 @@ export const webApplicationIcons = (): React.ReactElement => {
     </table>
   );
 };
+
+export const navigationIcons = (): React.ReactElement => {
+  const names = ['up', 'right', 'down', 'left'];
+  return (
+    <table>
+      <thead>
+        <th>icon</th>
+        <th>withBg</th>
+        <th>canonical name</th>
+      </thead>
+      <tbody>{makeRows(names)}</tbody>
+    </table>
+  );
+};
