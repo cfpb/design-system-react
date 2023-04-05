@@ -1,5 +1,4 @@
-import React from 'react';
-
+import { ComponentStory } from '@storybook/react';
 import { Dropdown } from './Dropdown';
 
 export default {
@@ -9,9 +8,9 @@ export default {
     docs: {
       description: {
         component: `
-### USWDS 2.0 Dropdown component
+### CFPB DS - Dropdown component
 
-Source: https://designsystem.digital.gov/components/dropdown
+Source: https://cfpb.github.io/design-system/components/dropdowns-and-multiselects
 `
       }
     }
@@ -19,47 +18,40 @@ Source: https://designsystem.digital.gov/components/dropdown
 };
 
 const options = [
-  <option key='placeholder'>- Select - </option>,
-  <option key='opt-1' value='value1'>
-    Option A
-  </option>,
-  <option key='opt-2' value='value2'>
-    Option B
-  </option>,
-  <option key='opt-3' value='value3'>
-    Option C
-  </option>
+  { value: 'value1', label: 'Option A' },
+  { value: 'value2', label: 'Option B' },
+  { value: 'value3', label: 'Option C' }
 ];
 
-export const defaultDropdown = (): React.ReactElement => (
-  <Dropdown id='default-dropdown' name='input-dropdown'>
-    {options}
-  </Dropdown>
+const Template: ComponentStory<typeof Dropdown> = arguments_ => (
+  <Dropdown {...arguments_} id='testDropdown' />
 );
 
-export const withDefaultValue = (): React.ReactElement => (
-  <Dropdown
-    id='with-value-dropdown'
-    name='input-dropdown'
-    defaultValue='value2'
-  >
-    {options}
-  </Dropdown>
-);
+export const defaultDropdown = Template.bind({});
+defaultDropdown.args = {
+  id: 'dropdown',
+  options
+};
 
-export const withLabel = (): React.ReactElement => (
-  <Dropdown id='labeled-dropdown' name='input-dropdown' label='Dropdown label'>
-    {options}
-  </Dropdown>
-);
+export const withDefaultValue = Template.bind({});
+withDefaultValue.args = {
+  ...defaultDropdown.args,
+  id: 'with-default',
+  defaultValue: options[options.length - 1]
+};
 
-export const disabled = (): React.ReactElement => (
-  <Dropdown
-    id='disabled-dropdown'
-    name='input-dropdown'
-    disabled
-    label='Disabled'
-  >
-    {options}
-  </Dropdown>
-);
+export const multiSelect = Template.bind({});
+multiSelect.args = {
+  ...defaultDropdown.args,
+  options: [
+    ...options,
+    {
+      value: 'long',
+      label:
+        'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
+    }
+  ],
+  id: 'multi',
+  isMulti: true,
+  label: 'Multi-select'
+};
