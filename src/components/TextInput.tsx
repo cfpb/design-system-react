@@ -1,3 +1,5 @@
+import { Icon } from './Icon';
+
 type TextInputReference =
   | React.RefObject<HTMLInputElement>
   | string
@@ -19,8 +21,23 @@ interface CustomTextInputProperties {
   inputProps?: JSX.IntrinsicElements['input'];
   inputBorderColor?: string;
   textNotification?: string;
-  svg?: SVGElement;
+  notificationType?: NotificationType;
 }
+
+type NotificationType = 'success' | 'warning' | 'error' | '';
+
+enum notificationClass {
+  'success' = '__success',
+  'warning' = '__warning',
+  'error' = '__error',
+  '' = ''
+}
+
+const iconType = {
+  success: 'approved',
+  warning: 'warning',
+  error: 'error'
+};
 
 export type OptionalTextInputProperties = CustomTextInputProperties &
   JSX.IntrinsicElements['input'];
@@ -44,15 +61,21 @@ export function TextInput({
   isDisabled = false,
   inputRef,
   inputBorderColor,
-  svg,
+  notificationType = '',
   textNotification,
   ...inputProperties
 }: TextInputProperties): JSX.Element {
   const styles = [...baseStyles, ...widthStyles[width]];
-  const classes = [className, ...styles].join(' ');
+  const classes = [
+    className,
+    `a-text-input${notificationClass[notificationType]}`,
+    ...styles
+  ].join(' ');
 
   return (
-    <div className='m-form-field m-form-field__success'>
+    <div
+      className={`m-form-field m-form-field${notificationClass[notificationType]}`}
+    >
       <input
         data-testid='textInput'
         className={classes}
@@ -65,23 +88,20 @@ export function TextInput({
         {...inputProperties}
       />
 
-      <div
-        className='.cf-icon-svg-wrapper+.m-notification_content'
-        id={id}
-        role='alert'
-      >
-        {svg}
-        {/* <svg
-          xmlns='http://www.w3.org/2000/svg'
-          fill='#20aa3f'
-          height='18'
-          viewBox='0 0 17 20.4'
+      {notificationType && (
+        <div
+          className={`a-form-alert a-form-alert${notificationClass[notificationType]}`}
+          id={id}
+          role='alert'
         >
-          <path d='M16.417 10.283A7.917 7.917 0 1 1 8.5 2.366a7.916 7.916 0 0 1 7.917 7.917zm-4.105-4.498a.791.791 0 0 0-1.082.29l-3.828 6.63-1.733-2.08a.791.791 0 1 0-1.216 1.014l2.459 2.952a.792.792 0 0 0 .608.285.83.83 0 0 0 .068-.003.791.791 0 0 0 .618-.393L12.6 6.866a.791.791 0 0 0-.29-1.081z'></path>
-        </svg> */}
-
-        <span className='a-form-alert_text'>{textNotification}</span>
-      </div>
+          <Icon
+            name={iconType[notificationType]}
+            alt={notificationType}
+            withBg={true}
+          />
+          <span className='a-form-alert_text'>{textNotification}</span>
+        </div>
+      )}
     </div>
   );
 }
