@@ -1,3 +1,5 @@
+import { Icon } from './Icon';
+
 type TextInputReference =
   | React.RefObject<HTMLInputElement>
   | string
@@ -17,7 +19,25 @@ interface CustomTextInputProperties {
   isDisabled?: boolean;
   inputRef?: TextInputReference;
   inputProps?: JSX.IntrinsicElements['input'];
+  inputBorderColor?: string;
+  textNotification?: string;
+  notificationType?: NotificationType;
 }
+
+type NotificationType = 'success' | 'warning' | 'error' | '';
+
+enum notificationClass {
+  'success' = '__success',
+  'warning' = '__warning',
+  'error' = '__error',
+  '' = ''
+}
+
+const iconType = {
+  success: 'approved',
+  warning: 'warning',
+  error: 'error'
+};
 
 export type OptionalTextInputProperties = CustomTextInputProperties &
   JSX.IntrinsicElements['input'];
@@ -40,22 +60,49 @@ export function TextInput({
   width = 'default',
   isDisabled = false,
   inputRef,
+  inputBorderColor,
+  notificationType = '',
+  textNotification,
   ...inputProperties
 }: TextInputProperties): JSX.Element {
   const styles = [...baseStyles, ...widthStyles[width]];
-  const classes = [className, ...styles].join(' ');
+  const classes = [
+    className,
+    `a-text-input${notificationClass[notificationType]}`,
+    ...styles
+  ].join(' ');
 
   return (
-    <input
-      data-testid='textInput'
-      className={classes}
-      disabled={isDisabled}
-      id={id}
-      name={name}
-      type={type}
-      ref={inputRef}
-      {...inputProperties}
-    />
+    <div
+      className={`m-form-field m-form-field${notificationClass[notificationType]}`}
+    >
+      <input
+        data-testid='textInput'
+        className={classes}
+        style={{ borderColor: `${inputBorderColor}` }}
+        disabled={isDisabled}
+        id={id}
+        name={name}
+        type={type}
+        ref={inputRef}
+        {...inputProperties}
+      />
+
+      {notificationType && (
+        <div
+          className={`a-form-alert a-form-alert${notificationClass[notificationType]}`}
+          id={id}
+          role='alert'
+        >
+          <Icon
+            name={iconType[notificationType]}
+            alt={notificationType}
+            withBg={true}
+          />
+          <span className='a-form-alert_text'>{textNotification}</span>
+        </div>
+      )}
+    </div>
   );
 }
 
