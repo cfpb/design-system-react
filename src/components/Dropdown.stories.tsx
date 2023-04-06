@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react';
+import type { ComponentStory } from '@storybook/react';
 import { Dropdown } from './Dropdown';
 
 export default {
@@ -29,6 +29,7 @@ const Template: ComponentStory<typeof Dropdown> = arguments_ => (
 
 export const defaultDropdown = Template.bind({});
 defaultDropdown.args = {
+  label: 'Default Dropdown',
   id: 'dropdown',
   options
 };
@@ -37,7 +38,8 @@ export const withDefaultValue = Template.bind({});
 withDefaultValue.args = {
   ...defaultDropdown.args,
   id: 'with-default',
-  defaultValue: options[options.length - 1]
+  defaultValue: options.at(-1),
+  label: 'With Default Value'
 };
 
 export const multiSelect = Template.bind({});

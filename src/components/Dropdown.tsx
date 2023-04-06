@@ -107,7 +107,7 @@ const Pills = ({
 interface DropdownProperties {
   isMulti: boolean;
   options: SelectOption[];
-  defaultValue?: SelectOption;
+  defaultValue?: PropsValue<SelectOption>;
   id: string;
   label?: string;
   onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
@@ -127,7 +127,7 @@ export function Dropdown({
   ...rest
 }: DropdownProperties): JSX.Element {
   const [selected, setSelected] = useState<PropsValue<SelectOption>>(
-    defaultValue ? [defaultValue] : []
+    defaultValue || []
   );
 
   // Store updated list of selected items
