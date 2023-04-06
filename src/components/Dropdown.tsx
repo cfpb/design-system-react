@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable unicorn/no-null */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { KeyboardEventHandler, MouseEventHandler } from 'react';
+
+import type { MouseEventHandler } from 'react';
 import { useState } from 'react';
 import type {
   GroupBase,
@@ -28,7 +31,7 @@ function onCloser(
   index: number,
   onChange: (result: PropsValue<SelectOption>) => void,
   selected?: PropsValue<SelectOption>
-): MouseEventHandler<HTMLDivElement> {
+): MouseEventHandler<HTMLLIElement> {
   return () => {
     if (!selected || !Array.isArray(selected)) return;
     const result = selected.filter((_, index_) => index_ !== index);
@@ -58,24 +61,17 @@ const filterOptions = (
 
 interface PillProperties {
   value: string;
-  onClose: MouseEventHandler<HTMLDivElement>;
-  onDelete?: KeyboardEventHandler<HTMLDivElement>;
+  onClose: MouseEventHandler<HTMLLIElement>;
 }
-const Pill = ({ value, onClose, onDelete }: PillProperties): JSX.Element => (
-  <div
-    tabIndex={0}
-    role='button'
-    className='pill'
-    onClick={onClose}
-    onKeyUp={onDelete}
-  >
+const Pill = ({ value, onClose }: PillProperties): JSX.Element => (
+  <li className='pill' onClick={onClose}>
     <Label htmlFor={value} inline>
       {value}
       <div>
         <Icon name='error' />
       </div>
     </Label>
-  </div>
+  </li>
 );
 
 interface PillsProperties {
