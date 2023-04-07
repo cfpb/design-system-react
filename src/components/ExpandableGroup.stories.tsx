@@ -1,17 +1,18 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import Expandable from './Expandable';
+// import Expandable from './Expandable';
+import ExpandableGroup from './ExpandableGroup';
 
 export default {
-  title: 'Components/Expandable',
-  component: Expandable,
+  title: 'Components/ExpandableGroup',
+  component: ExpandableGroup,
 
   argTypes: {
-    openOnLoad: { control: 'select' }
+    accordion: { accordion: 'select' }
   }
-} as ComponentMeta<typeof Expandable>;
+} as ComponentMeta<typeof ExpandableGroup>;
 
-const Template: ComponentStory<typeof Expandable> = arguments_ => (
-  <Expandable {...arguments_} />
+const Template: ComponentStory<typeof ExpandableGroup> = arguments_ => (
+  <ExpandableGroup {...arguments_} />
 );
 
 export const Default = Template.bind({});

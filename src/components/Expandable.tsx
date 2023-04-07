@@ -1,11 +1,10 @@
 import { Icon } from './Icon';
 import { useState } from 'react';
 
-interface ExpandableProps {
+export interface ExpandableProps {
   header: string;
   paragraphText: string;
   expandableLink: string;
-  openOnLoad?: boolean;
 }
 
 const Expandable: React.FC<ExpandableProps> = ({
@@ -25,13 +24,20 @@ const Expandable: React.FC<ExpandableProps> = ({
             o-expandable__border'
     >
       <button
-        className='o-expandable_header o-expandable_target'
+        className={`o-expandable_header o-expandable_target o-expandable_target__${
+          expanded ? 'expanded' : 'collapsed'
+        }`}
         title='Expand content'
         onClick={toggleExpanded}
       >
         <h3 className='h4 o-expandable_label'>{header}</h3>
         <span className='o-expandable_link'>
           <span
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
             className={`o-expandable_cue o-expandable_cue-${
               expanded ? 'close' : 'open'
             }`}
@@ -39,9 +45,9 @@ const Expandable: React.FC<ExpandableProps> = ({
             <span className=''>{expanded ? 'Hide' : 'Show'}</span>
 
             {expanded ? (
-              <Icon name='minus' alt={'minus'} withBg={true} />
+              <Icon name={'minus-round'} alt={'minus-round'} />
             ) : (
-              <Icon name='plus' alt={'plus'} withBg={true} />
+              <Icon name={'plus-round'} alt={'plus-round'} />
             )}
           </span>
         </span>
