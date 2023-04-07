@@ -1,20 +1,33 @@
 import { Icon } from './Icon';
-import { useState } from 'react';
+import { useState, useCallback, ReactNode } from 'react';
 
 export interface ExpandableProps {
   header: string;
-  paragraphText: string;
-  expandableLink: string;
+  activeIndex?: number;
+  index?: number;
+  setActiveIndex?: (i?: number) => void;
+  children: ReactNode;
 }
 
 const Expandable: React.FC<ExpandableProps> = ({
   header,
-  paragraphText,
-  expandableLink
+  activeIndex,
+  index,
+  setActiveIndex,
+  children
 }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const toggleExpanded = () => setExpanded(!expanded);
+  const toggleExpanded = useCallback(() => {
+    setExpanded(expanded => {
+      if (!expanded && activeIndex !== index && setActiveIndex)
+        setActiveIndex(index);
+      return !expanded;
+    });
+  }, [setActiveIndex, activeIndex, index]);
+
+  const isExpanded =
+    (expanded && index === undefined) || (expanded && index === activeIndex);
 
   return (
     <div
@@ -45,9 +58,11 @@ const Expandable: React.FC<ExpandableProps> = ({
             <div
               style={{ minWidth: '2.5em' }}
               className='u-visually-hidden-on-mobile'
-            >{expanded ? 'Hide' : 'Show'}</div>
+            >
+              {expanded ? 'Hide' : 'Show'}
+            </div>
 
-            {expanded ? (
+            {isExpanded ? (
               <Icon name={'minus-round'} alt={'minus-round'} />
             ) : (
               <Icon name={'plus-round'} alt={'plus-round'} />
@@ -55,16 +70,13 @@ const Expandable: React.FC<ExpandableProps> = ({
           </span>
         </span>
       </button>
-      {expanded && (
+      {isExpanded && (
         <div
           className={`o-expandable_content ${
             expanded ? 'o-expandable_content__onload-open' : ''
           }`}
         >
-          <p>
-            {paragraphText}
-            <a href='#'>{expandableLink}</a>.
-          </p>
+          {children}
         </div>
       )}
     </div>
