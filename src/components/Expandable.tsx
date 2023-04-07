@@ -42,7 +42,10 @@ const Expandable: React.FC<ExpandableProps> = ({
               expanded ? 'close' : 'open'
             }`}
           >
-            <span className=''>{expanded ? 'Hide' : 'Show'}</span>
+            <div
+              style={{ minWidth: '2.5em' }}
+              className='u-visually-hidden-on-mobile'
+            >{expanded ? 'Hide' : 'Show'}</div>
 
             {expanded ? (
               <Icon name={'minus-round'} alt={'minus-round'} />
