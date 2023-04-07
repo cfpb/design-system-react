@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { useIconSvg } from '../hooks/useIconSvg';
 
 interface IconProperties {
@@ -26,8 +26,8 @@ export const Icon = ({ name, alt, withBg = false }: IconProperties) => {
 
   if (!icon) return null;
 
-  const iconAttrs = `class="${classnames(classes)}" alt="${alt || name}"`;
-  const iconHtml = `${icon}`.replace('<svg', `<svg ${iconAttrs} `);
+  const iconAttributes = `class="${classNames(classes)}" alt="${alt || name}"`;
+  const iconHtml = `${icon}`.replace('<svg', `<svg ${iconAttributes} `);
 
   return (
     <span
@@ -39,11 +39,11 @@ export const Icon = ({ name, alt, withBg = false }: IconProperties) => {
 
 const getShapeModifier = (name: string, withBg: boolean) => {
   if (!withBg) return '';
-  if (isSquare.includes(name)) return '-square';
+  if (isSquare.has(name)) return '-square';
   return '-round';
 };
 
-const isSquare = [
+const isSquare = new Set([
   'email',
   'facebook',
   'flickr',
@@ -52,4 +52,4 @@ const isSquare = [
   'pinterest',
   'twitter',
   'youtube'
-];
+]);

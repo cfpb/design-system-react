@@ -1,18 +1,16 @@
-import classnames from 'classnames';
-import { HeadingLevel } from '../types/headingLevel';
+import classNames from 'classnames';
+import type { HeadingLevel } from '../types/headingLevel';
 import { Icon } from './Icon';
 import './Notification.css';
-import {
-  NotificationLink,
-  NotificationLinkProperties
-} from './NotificationLink';
+import type { NotificationLinkProperties } from './NotificationLink';
+import { NotificationLink } from './NotificationLink';
 
 interface NotificationProperties {
-  type: 'success' | 'warning' | 'error' | 'info' | 'loading';
+  type: 'error' | 'info' | 'loading' | 'success' | 'warning';
   message?: React.ReactNode;
   headingLevel?: HeadingLevel;
   children?: React.ReactNode;
-  links?: Array<NotificationLinkProperties>;
+  links?: NotificationLinkProperties[];
 }
 
 /**
@@ -35,9 +33,10 @@ export const Notification = ({
   links,
   message,
   type = 'info',
-  ...props
-}: NotificationProperties & React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
-  const classes = classnames(
+  ...properties
+}: NotificationProperties &
+  React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
+  const classes = classNames(
     'm-notification',
     'm-notification__visible',
     {
@@ -50,20 +49,22 @@ export const Notification = ({
   );
 
   return (
-    <div className={classes} data-testid='notification' {...props}>
+    <div className={classes} data-testid='notification' {...properties}>
       <Icon {...(iconByType[type] || {})} />
       <div className='m-notification_content'>
-        {message && (
+        {message ? (
           <p className={`${headingLevel} m-notification_message`}>{message}</p>
-        )}
-        {children && <p className='m-notification_explanation'>{children}</p>}
-        {links && links.length && (
+        ) : null}
+        {children ? (
+          <p className='m-notification_explanation'>{children}</p>
+        ) : null}
+        {links && links.length > 0 ? (
           <ul className='m-list m-list__links'>
             {links.map(link => (
               <NotificationLink {...link} key={link.href} />
             ))}
           </ul>
-        )}
+        ) : null}
       </div>
     </div>
   );
