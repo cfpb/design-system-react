@@ -1,12 +1,12 @@
-import classnames from 'classnames';
-import type { EventHandler, SyntheticEvent} from 'react';
+import classNames from 'classnames';
+import type { EventHandler, SyntheticEvent } from 'react';
 import { useEffect, useState } from 'react';
 import { noOp } from '../utils/noOp';
 import { Icon } from './Icon';
 import Label from './Label';
 import TextInput from './TextInput';
 
-export interface PaginationProps {
+export interface PaginationProperties {
   /** Currently displayed page number  */
   page: number;
   /** Total number of available pages */
@@ -16,7 +16,7 @@ export interface PaginationProps {
   /** Event handler for `Next` button */
   onClickNext?: () => void;
   /** Event handler for `Go` button */
-  onClickGo?: (arg?: any) => void;
+  onClickGo?: (argument?: any) => void;
   /** Text label for Previous button */
   prevLabel?: string;
   /** Text label for Next button */
@@ -26,21 +26,21 @@ export interface PaginationProps {
 export const Pagination = ({
   page,
   pageCount,
-  onClickPrev = noOp,
+  onClickPrev: onClickPrevious = noOp,
   onClickNext = noOp,
   onClickGo = noOp,
-  prevLabel = 'Previous',
+  prevLabel: previousLabel = 'Previous',
   nextLabel = 'Next'
-}: PaginationProps): React.ReactElement => {
-  const [pageNum, setPageNum] = useState(page);
-  useEffect(() => setPageNum(page), [page]);
+}: PaginationProperties): React.ReactElement => {
+  const [pageNumber, setPageNumber] = useState(page);
+  useEffect(() => setPageNumber(page), [page]);
 
   return (
     <nav className='m-pagination' role='navigation' aria-label='Pagination'>
       <PaginationBtn
         iconName='left'
-        onClick={onClickPrev}
-        label={prevLabel}
+        onClick={onClickPrevious}
+        label={previousLabel}
         isPrev
       />
       <PaginationBtn
@@ -55,14 +55,14 @@ export const Pagination = ({
         action='#pagination_content'
         onSubmit={e => {
           e.preventDefault();
-          if (pageNum == page) return;
-          onClickGo(pageNum - 1);
+          if (pageNumber == page) return;
+          onClickGo(pageNumber - 1);
         }}
       >
         <PaginationInput
-          page={pageNum}
+          page={pageNumber}
           pageCount={pageCount}
-          onChange={setPageNum}
+          onChange={setPageNumber}
         />
         <PaginationSubmitBtn />
       </form>
@@ -80,7 +80,7 @@ const PaginationSubmitBtn = () => (
   </button>
 );
 
-interface PaginationBtnProps {
+interface PaginationButtonProperties {
   iconName: string;
   onClick: EventHandler<SyntheticEvent>;
   label?: string;
@@ -91,13 +91,13 @@ const PaginationBtn = ({
   iconName,
   onClick,
   label,
-  isPrev = false,
+  isPrev: isPrevious = false,
   isNext = false
-}: PaginationBtnProps): React.ReactElement => {
+}: PaginationButtonProperties): React.ReactElement => {
   const buttonCnames = ['a-btn'];
   const iconCnames = ['a-btn_icon'];
 
-  if (isPrev) {
+  if (isPrevious) {
     buttonCnames.push('m-pagination_btn-prev');
     iconCnames.push('a-btn_icon__on-left');
   } else {
@@ -108,19 +108,19 @@ const PaginationBtn = ({
   return (
     <button
       type='button'
-      className={classnames(buttonCnames)}
+      className={classNames(buttonCnames)}
       onClick={onClick}
     >
-      {isNext && label}
-      <span className={classnames(iconCnames)}>
-        {iconName && <Icon name={iconName} />}
+      {isNext ? label : null}
+      <span className={classNames(iconCnames)}>
+        {iconName ? <Icon name={iconName} /> : null}
       </span>
-      {isPrev && label}
+      {isPrevious ? label : null}
     </button>
   );
 };
 
-interface PaginationInputProps {
+interface PaginationInputProperties {
   page: number;
   pageCount: number;
   onChange: Function;
@@ -129,7 +129,7 @@ const PaginationInput = ({
   page,
   pageCount,
   onChange
-}: PaginationInputProps): React.ReactElement => (
+}: PaginationInputProperties): React.ReactElement => (
   <Label
     className='m-pagination_label'
     htmlFor='m-pagination_current-page'
@@ -148,7 +148,7 @@ const PaginationInput = ({
       inputMode='numeric'
       defaultValue={page}
       value={page}
-      onChange={e => onChange(parseInt(e.target.value))}
+      onChange={e => onChange(Number.parseInt(e.target.value))}
     />
     of {pageCount}
   </Label>
