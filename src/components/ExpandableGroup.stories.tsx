@@ -50,10 +50,10 @@ const Template: ComponentStory<typeof ExpandableGroup> = arguments_ => (
   </ExpandableGroup>
 );
 
-const TemplateAccordian: ComponentStory<
+const Templateaccordion: ComponentStory<
   typeof ExpandableGroup
 > = arguments_ => (
-  <ExpandableGroup accordian={true}>
+  <ExpandableGroup accordion={true}>
     <Expandable header={'Expandable 1'} {...arguments_}>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
@@ -92,6 +92,6 @@ const TemplateAccordian: ComponentStory<
 );
 
 export const Default = Template.bind({});
-export const Accordian = TemplateAccordian.bind({});
+export const accordion = Templateaccordion.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {};
