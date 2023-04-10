@@ -39,6 +39,14 @@ function onCloser(
   };
 }
 
+const onKeyCloser = (
+  e: React.KeyboardEvent<HTMLLIElement>,
+  fnClose: Function
+) => {
+  const validKeys = ['Enter', 'Delete', 'Backspace'];
+  if (validKeys.includes(e.key)) fnClose();
+};
+
 const filterOptions = (
   options: PropsValue<SelectOption>,
   selected: PropsValue<SelectOption>,
@@ -64,7 +72,12 @@ interface PillProperties {
   onClose: MouseEventHandler<HTMLLIElement>;
 }
 const Pill = ({ value, onClose }: PillProperties): JSX.Element => (
-  <li className='pill' onClick={onClose}>
+  <li
+    className='pill'
+    onClick={onClose}
+    onKeyDown={e => onKeyCloser(e, onClose)}
+    tabIndex={0}
+  >
     <Label htmlFor={value} inline>
       {value}
       <div>
@@ -87,20 +100,21 @@ const Pills = ({
   if (
     !isMulti ||
     !selected ||
-    (Array.isArray(selected) && selected.length === 0)
+    !Array.isArray(selected) ||
+    selected.length === 0
   )
     return null;
+
   return (
-    <div className='o-multiselect_choices pills'>
-      {Array.isArray(selected) &&
-        selected.map(({ value, label }: SelectOption, index: number) => (
-          <Pill
-            key={value}
-            value={label}
-            onClose={onCloser(index, onChange, selected)}
-          />
-        ))}
-    </div>
+    <ul className='o-multiselect_choices pills'>
+      {selected.map(({ value, label }: SelectOption, index: number) => (
+        <Pill
+          key={value}
+          value={label}
+          onClose={onCloser(index, onChange, selected)}
+        />
+      ))}
+    </ul>
   );
 };
 
@@ -122,7 +136,7 @@ export function Dropdown({
   options,
   defaultValue,
   id = 'dropdown',
-  label = '',
+  label = 'Dropdown w/ Multi-select',
   onSelect,
   ...rest
 }: DropdownProperties): JSX.Element {
