@@ -1,14 +1,10 @@
 {
-	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
-		"composite": true,
-		"forceConsistentCasingInFileNames": true,
-		"isolatedModules": true,
-		"module": "ESNext",
-		"moduleResolution": "Node",
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "ESNext"
-	},
-	"include": ["vite.config.ts", "cypress.config.ts"]
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  },
+  "include": ["vite.config.ts", "package.json"]
 }
