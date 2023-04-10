@@ -1,5 +1,4 @@
 import React, { ReactElement, useState } from 'react';
-
 import type { ExpandableProps } from './Expandable';
 
 interface ExpandableGroupProps {
