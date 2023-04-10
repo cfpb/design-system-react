@@ -1,7 +1,4 @@
-import React from 'react';
-import { ReactNode, useState } from 'react';
-import Expandable from './Expandable';
-import ExtendableProps from './Expandable';
+import React, { ReactNode, useState } from 'react';
 
 interface ExpandableProps {
   accordion?: boolean;
@@ -14,7 +11,7 @@ const ExpandableGroup: React.FC<ExpandableProps> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const childrenWithProps = React.Children.map(children, (child, index) => {
-    if (React.isValidElement(child) && accordian) {
+    if (React.isValidElement(child) && accordion) {
       return React.cloneElement(child, { index, activeIndex, setActiveIndex });
     }
     return child;
