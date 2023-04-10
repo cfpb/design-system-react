@@ -9,7 +9,7 @@ interface ExpandableProps {
 }
 
 const ExpandableGroup: React.FC<ExpandableProps> = ({
-  accordian = false,
+  accordion = false,
   children
 }) => {
   const [activeIndex, setActiveIndex] = useState(null);
