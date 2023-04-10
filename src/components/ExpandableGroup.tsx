@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react';
 import type { ExpandableProps } from './Expandable';
 
-interface ExpandableGroupProps {
+export interface ExpandableGroupProps {
   accordion?: boolean;
   children: ReactElement<ExpandableProps>[];
 }
