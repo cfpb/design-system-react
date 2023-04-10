@@ -4,7 +4,7 @@ import Expandable from './Expandable';
 import ExtendableProps from './Expandable';
 
 interface ExpandableProps {
-  accordian?: boolean;
+  accordion?: boolean;
   children: ReactNode;
 }
 
