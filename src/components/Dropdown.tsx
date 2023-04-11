@@ -40,11 +40,11 @@ function onCloser(
 }
 
 const onKeyCloser = (
-  e: React.KeyboardEvent<HTMLLIElement>,
+  event: React.KeyboardEvent<HTMLLIElement>,
   functionClose: Function
-) => {
+): void => {
   const validKeys = ['Enter', 'Delete', 'Backspace'];
-  if (validKeys.includes(e.key)) functionClose();
+  if (validKeys.includes(event.key)) functionClose();
 };
 
 const filterOptions = (
@@ -75,7 +75,7 @@ const Pill = ({ value, onClose }: PillProperties): JSX.Element => (
   <li
     className='pill'
     onClick={onClose}
-    onKeyDown={e => onKeyCloser(e, onClose)}
+    onKeyDown={(event): void => onKeyCloser(event, onClose)}
     tabIndex={0}
   >
     <Label htmlFor={value} inline>
@@ -125,6 +125,7 @@ interface DropdownProperties {
   id: string;
   label?: string;
   onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
+  isDisabled?: boolean;
 }
 
 /**
@@ -141,7 +142,7 @@ export function Dropdown({
   ...rest
 }: DropdownProperties): JSX.Element {
   const [selected, setSelected] = useState<PropsValue<SelectOption>>(
-    defaultValue || []
+    defaultValue ?? []
   );
 
   // Store updated list of selected items
