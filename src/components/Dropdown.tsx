@@ -41,10 +41,10 @@ function onCloser(
 
 const onKeyCloser = (
   e: React.KeyboardEvent<HTMLLIElement>,
-  fnClose: Function
+  functionClose: Function
 ) => {
   const validKeys = ['Enter', 'Delete', 'Backspace'];
-  if (validKeys.includes(e.key)) fnClose();
+  if (validKeys.includes(e.key)) functionClose();
 };
 
 const filterOptions = (
@@ -162,6 +162,7 @@ export function Dropdown({
         onChange={onChange}
         filterOption={createFilter({ ignoreAccents: false })}
         controlShouldRenderValue={!isMulti}
+        closeMenuOnSelect={!isMulti}
         {...rest}
       />
     </div>
