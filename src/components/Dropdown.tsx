@@ -1,9 +1,5 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable unicorn/no-null */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable react/no-unused-prop-types */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 import type { MouseEventHandler } from 'react';
 import { useState } from 'react';
