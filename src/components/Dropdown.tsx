@@ -31,7 +31,7 @@ function onCloser(
   index: number,
   onChange: (result: PropsValue<SelectOption>) => void,
   selected?: PropsValue<SelectOption>
-): MouseEventHandler<HTMLLIElement> {
+): MouseEventHandler<HTMLButtonElement> {
   return () => {
     if (!selected || !Array.isArray(selected)) return;
     const result = selected.filter((_, index_) => index_ !== index);
@@ -40,8 +40,8 @@ function onCloser(
 }
 
 const onKeyCloser = (
-  event: React.KeyboardEvent<HTMLLIElement>,
-  functionClose: Function
+  event: React.KeyboardEvent<HTMLButtonElement>,
+  functionClose: MouseEventHandler<HTMLButtonElement>
 ): void => {
   const validKeys = ['Enter', 'Delete', 'Backspace'];
   if (validKeys.includes(event.key)) functionClose();
@@ -69,21 +69,22 @@ const filterOptions = (
 
 interface PillProperties {
   value: string;
-  onClose: MouseEventHandler<HTMLLIElement>;
+  onClose: MouseEventHandler<HTMLButtonElement>;
 }
 const Pill = ({ value, onClose }: PillProperties): JSX.Element => (
-  <li
-    className='pill'
-    onClick={onClose}
-    onKeyDown={(event): void => onKeyCloser(event, onClose)}
-    tabIndex={0}
-  >
-    <Label htmlFor={value} inline>
-      {value}
-      <div>
-        <Icon name='error' />
-      </div>
-    </Label>
+  <li className='pill'>
+    <button
+      type='button'
+      onClick={onClose}
+      onKeyDown={(event): void => onKeyCloser(event, onClose)}
+    >
+      <Label htmlFor={value} inline>
+        {value}
+        <div>
+          <Icon name='error' />
+        </div>
+      </Label>
+    </button>
   </li>
 );
 
