@@ -148,6 +148,7 @@ module.exports = {
     'react/jsx-no-script-url': 'error',
     'react/jsx-no-useless-fragment': 'error',
     'unicorn/no-keyword-prefix': 'off',
+    'unicorn/no-null': 'off',
     'unicorn/filename-case': [
       'error',
       {
