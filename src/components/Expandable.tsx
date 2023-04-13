@@ -1,15 +1,16 @@
-import { ReactNode, useCallback, useState } from 'react';
+import type { ReactNode } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Icon } from './Icon';
 
-export interface ExpandableProps {
+export interface ExpandableProperties {
   header: string;
   activeIndex?: number;
   index?: number;
-  setActiveIndex?: (i?: number) => void;
+  setActiveIndex?: (index?: number) => void;
   children: ReactNode;
 }
 
-export const Expandable: React.FC<ExpandableProps> = ({
+const Expandable: React.FC<ExpandableProperties> = ({
   header,
   activeIndex,
   index,
@@ -18,11 +19,11 @@ export const Expandable: React.FC<ExpandableProps> = ({
 }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const toggleExpanded = useCallback(() => {
-    setExpanded(expanded => {
-      if (!expanded && activeIndex !== index && setActiveIndex)
+  const onToggleExpanded = useCallback(() => {
+    setExpanded(currentlyExpanded => {
+      if (!currentlyExpanded && activeIndex !== index && setActiveIndex)
         setActiveIndex(index);
-      return !expanded;
+      return !currentlyExpanded;
     });
   }, [setActiveIndex, activeIndex, index]);
 
@@ -37,11 +38,12 @@ export const Expandable: React.FC<ExpandableProps> = ({
             o-expandable__border'
     >
       <button
+        type='button'
         className={`o-expandable_header o-expandable_target o-expandable_target__${
           expanded ? 'expanded' : 'collapsed'
         }`}
         title='Expand content'
-        onClick={toggleExpanded}
+        onClick={onToggleExpanded}
       >
         <h3 className='h4 o-expandable_label'>{header}</h3>
         <span className='o-expandable_link'>
@@ -63,14 +65,14 @@ export const Expandable: React.FC<ExpandableProps> = ({
             </div>
 
             {isExpanded ? (
-              <Icon name={'minus-round'} alt={'minus-round'} />
+              <Icon name='minus-round' alt='minus-round' />
             ) : (
-              <Icon name={'plus-round'} alt={'plus-round'} />
+              <Icon name='plus-round' alt='plus-round' />
             )}
           </span>
         </span>
       </button>
-      {isExpanded && (
+      {isExpanded ? (
         <div
           className={`o-expandable_content ${
             expanded ? 'o-expandable_content__onload-open' : ''
@@ -78,7 +80,7 @@ export const Expandable: React.FC<ExpandableProps> = ({
         >
           {children}
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

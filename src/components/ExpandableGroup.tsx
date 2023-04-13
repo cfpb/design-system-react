@@ -1,9 +1,9 @@
 import React, { ReactElement, useState } from 'react';
-import type { ExpandableProps } from './Expandable';
+import type { ExpandableProperties } from './Expandable';
 
 export interface ExpandableGroupProps {
   accordion?: boolean;
-  children: ReactElement<ExpandableProps>[];
+  children: ReactElement<ExpandableProperties>[];
 }
 
 export const ExpandableGroup: React.FC<ExpandableGroupProps> = ({
@@ -17,7 +17,7 @@ export const ExpandableGroup: React.FC<ExpandableGroupProps> = ({
         index,
         activeIndex,
         setActiveIndex
-      } as Pick<ExpandableProps, 'index' | 'activeIndex' | 'setActiveIndex'>);
+      } as Pick<ExpandableProperties, 'index' | 'activeIndex' | 'setActiveIndex'>);
     }
     return child;
   });

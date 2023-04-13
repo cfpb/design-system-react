@@ -1,4 +1,5 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
 import Expandable from './Expandable';
 import ExpandableGroup from './ExpandableGroup';
 
