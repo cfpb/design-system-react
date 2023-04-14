@@ -7,17 +7,15 @@
     "source.organizeImports"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.foldingImportsByDefault": true,
+  "editor.foldingImportsByDefault": false,
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "files.exclude": {
     "**/.stylelintcache": true,
     "**/.eslintcache": true,
-    "**/.gitignore": true,
     "**/.nyc_output": true,
     "**/.vscode": true,
     "**/dist": true,
-    "**/node_modules": true,
     "**/yarn.lock": true,
     "**/coverage": true
   },
@@ -31,5 +29,8 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "files.associations": {
     "*.yaml": "home-assistant"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
   }
 }
