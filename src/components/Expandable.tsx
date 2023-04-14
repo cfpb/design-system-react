@@ -1,5 +1,5 @@
+import { ReactNode, useCallback, useState } from 'react';
 import { Icon } from './Icon';
-import { useState, useCallback, ReactNode } from 'react';
 
 export interface ExpandableProps {
   header: string;
@@ -9,7 +9,7 @@ export interface ExpandableProps {
   children: ReactNode;
 }
 
-const Expandable: React.FC<ExpandableProps> = ({
+export const Expandable: React.FC<ExpandableProps> = ({
   header,
   activeIndex,
   index,
