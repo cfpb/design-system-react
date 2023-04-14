@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-null */
 /* eslint-disable react/no-unused-prop-types */
 
-import type { MouseEventHandler } from 'react';
+import type { ReactEventHandler } from 'react';
 import { useState } from 'react';
 import type {
   CSSObjectWithLabel,
@@ -48,7 +48,7 @@ function onCloser(
   index: number,
   onChange: (result: PropsValue<SelectOption>) => void,
   selected?: PropsValue<SelectOption>
-): MouseEventHandler<HTMLButtonElement> {
+): ReactEventHandler<HTMLButtonElement> {
   return () => {
     if (!selected || !Array.isArray(selected)) return;
     const result = selected.filter((_, index_) => index_ !== index);
@@ -58,10 +58,10 @@ function onCloser(
 
 const onKeyCloser = (
   event: React.KeyboardEvent<HTMLButtonElement>,
-  functionClose: MouseEventHandler<HTMLButtonElement>
+  functionClose: ReactEventHandler<HTMLButtonElement>
 ): void => {
   const validKeys = ['Enter', 'Delete', 'Backspace'];
-  if (validKeys.includes(event.key)) functionClose();
+  if (validKeys.includes(event.key)) functionClose(event);
 };
 
 const filterOptions = (
@@ -86,7 +86,7 @@ const filterOptions = (
 
 interface PillProperties {
   value: string;
-  onClose: MouseEventHandler<HTMLButtonElement>;
+  onClose: ReactEventHandler<HTMLButtonElement>;
 }
 const Pill = ({ value, onClose }: PillProperties): JSX.Element => (
   <li className='pill'>
