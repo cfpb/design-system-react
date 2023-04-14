@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Icon } from './Icon';
 
 export interface ExpandableProperties {
@@ -19,6 +19,9 @@ const Expandable: React.FC<ExpandableProperties> = ({
 }) => {
   const [expanded, setExpanded] = useState(false);
 
+  const isExpanded =
+    (expanded && index === undefined) || (expanded && index === activeIndex);
+
   const onToggleExpanded = useCallback(() => {
     setExpanded(currentlyExpanded => {
       if (!currentlyExpanded && activeIndex !== index && setActiveIndex)
@@ -27,8 +30,9 @@ const Expandable: React.FC<ExpandableProperties> = ({
     });
   }, [setActiveIndex, activeIndex, index]);
 
-  const isExpanded =
-    (expanded && index === undefined) || (expanded && index === activeIndex);
+  useEffect(() => {
+    if (activeIndex !== undefined && activeIndex !== index) setExpanded(false);
+  }, [activeIndex, index, expanded, setExpanded]);
 
   return (
     <div
@@ -47,40 +51,24 @@ const Expandable: React.FC<ExpandableProperties> = ({
       >
         <h3 className='h4 o-expandable_label'>{header}</h3>
         <span className='o-expandable_link'>
-          <span
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center'
-            }}
-            className={`o-expandable_cue o-expandable_cue-${
-              expanded ? 'close' : 'open'
-            }`}
-          >
-            <div
-              style={{ minWidth: '2.5em' }}
-              className='u-visually-hidden-on-mobile'
-            >
-              {expanded ? 'Hide' : 'Show'}
-            </div>
-
-            {isExpanded ? (
-              <Icon name='minus-round' alt='minus-round' />
-            ) : (
-              <Icon name='plus-round' alt='plus-round' />
-            )}
+          <span className='o-expandable_cue o-expandable_cue-open'>
+            <span className='u-visually-hidden-on-mobile'>Show</span>
+            <Icon name='plus-round' alt='plus-round' />
+          </span>
+          <span className='o-expandable_cue o-expandable_cue-close'>
+            <span className='u-visually-hidden-on-mobile'>Hide</span>
+            <Icon name='minus-round' alt='minus-round' />
           </span>
         </span>
       </button>
-      {isExpanded ? (
-        <div
-          className={`o-expandable_content ${
-            expanded ? 'o-expandable_content__onload-open' : ''
-          }`}
-        >
-          {children}
-        </div>
-      ) : null}
+      <div
+        className={`o-expandable_content o-expandable_content__transition o-expandable_content__${
+          isExpanded ? 'expanded' : 'collapsed'
+        }`}
+        style={{ maxHeight: isExpanded ? '1500px' : '0px', overflow: 'hidden' }}
+      >
+        {children}
+      </div>
     </div>
   );
 };
