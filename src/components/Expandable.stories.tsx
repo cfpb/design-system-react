@@ -26,3 +26,10 @@ export const Default = Template.bind({});
 Default.args = {
   header: 'Expandable Header'
 };
+
+export const OpenOnLoad = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+OpenOnLoad.args = {
+  header: 'Expandable Header',
+  openOnLoad: true
+};

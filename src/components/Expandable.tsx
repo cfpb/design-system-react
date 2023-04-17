@@ -8,6 +8,7 @@ export interface ExpandableProperties {
   index?: number;
   setActiveIndex?: (index?: number) => void;
   children: ReactNode;
+  openOnLoad: boolean;
 }
 
 const Expandable: React.FC<ExpandableProperties> = ({
@@ -15,9 +16,10 @@ const Expandable: React.FC<ExpandableProperties> = ({
   activeIndex,
   index,
   setActiveIndex,
-  children
+  children,
+  openOnLoad = false
 }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(openOnLoad);
   const isAccordion = !!setActiveIndex;
   const isSelected = activeIndex === index;
   const isExpanded = isAccordion ? isSelected : expanded;
