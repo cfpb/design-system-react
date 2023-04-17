@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Icon } from './Icon';
 
 export interface ExpandableProperties {
@@ -18,21 +18,19 @@ const Expandable: React.FC<ExpandableProperties> = ({
   children
 }) => {
   const [expanded, setExpanded] = useState(false);
-
-  const isExpanded =
-    (expanded && index === undefined) || (expanded && index === activeIndex);
+  const isAccordion = !!setActiveIndex;
+  const isSelected = activeIndex === index;
+  const isExpanded = isAccordion ? isSelected : expanded;
 
   const onToggleExpanded = useCallback(() => {
-    setExpanded(currentlyExpanded => {
-      if (!currentlyExpanded && activeIndex !== index && setActiveIndex)
-        setActiveIndex(index);
-      return !currentlyExpanded;
+    setExpanded(() => {
+      if (isAccordion) {
+        if (isSelected) setActiveIndex();
+        else setActiveIndex(index);
+      }
+      return !expanded;
     });
-  }, [setActiveIndex, activeIndex, index]);
-
-  useEffect(() => {
-    if (activeIndex !== undefined && activeIndex !== index) setExpanded(false);
-  }, [activeIndex, index, expanded, setExpanded]);
+  }, [isAccordion, expanded, isSelected, setActiveIndex, index]);
 
   return (
     <div
@@ -44,7 +42,7 @@ const Expandable: React.FC<ExpandableProperties> = ({
       <button
         type='button'
         className={`o-expandable_header o-expandable_target o-expandable_target__${
-          expanded ? 'expanded' : 'collapsed'
+          isExpanded ? 'expanded' : 'collapsed'
         }`}
         title='Expand content'
         onClick={onToggleExpanded}
@@ -62,15 +60,14 @@ const Expandable: React.FC<ExpandableProperties> = ({
         </span>
       </button>
       <div
-        className={`o-expandable_content o-expandable_content__transition o-expandable_content__${
+        className={`u-is-animating o-expandable_content o-expandable_content__transition o-expandable_content__${
           isExpanded ? 'expanded' : 'collapsed'
         }`}
-        style={{ maxHeight: isExpanded ? '1500px' : '0px', overflow: 'hidden' }}
       >
         {children}
       </div>
     </div>
   );
-};
+};;;
 
 export default Expandable;

@@ -71,10 +71,30 @@ const TemplateAccordion: ComponentStory<
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
         voluptatibus soluta nobis unde quisquam temporibus magnam debitis
         quidem. Ducimus ratione corporis nesciunt earum vel est quaerat
-        blanditiis dolore ipsa?&nbsp;
+        blanditiis dolore ipsa?{' '}
         <a href='/?path=/story/components-expandablegroup--accordion'>
           Lorem link
         </a>
+        . Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
+        voluptatibus soluta nobis unde quisquam temporibus magnam debitis
+        quidem. Ducimus ratione corporis nesciunt earum vel est quaerat
+        blanditiis dolore ipsa? Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Neque ipsa voluptatibus soluta nobis unde quisquam
+        temporibus magnam debitis quidem. Ducimus ratione corporis nesciunt
+        earum vel est quaerat blanditiis dolore ipsa? Lorem ipsum dolor sit
+        amet, consectetur adipisicing elit. Neque ipsa voluptatibus soluta nobis
+        unde quisquam temporibus magnam debitis quidem. Ducimus ratione corporis
+        nesciunt earum vel est quaerat blanditiis dolore ipsa? Lorem ipsum dolor
+        sit amet, consectetur adipisicing elit. Neque ipsa voluptatibus soluta
+        nobis unde quisquam temporibus magnam debitis quidem. Ducimus ratione
+        corporis nesciunt earum vel est quaerat blanditiis dolore ipsa? Lorem
+        ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
+        voluptatibus soluta nobis unde quisquam temporibus magnam debitis
+        quidem. Ducimus ratione corporis nesciunt earum vel est quaerat
+        blanditiis dolore ipsa? Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Neque ipsa voluptatibus soluta nobis unde quisquam
+        temporibus magnam debitis quidem. Ducimus ratione corporis nesciunt
+        earum vel est quaerat blanditiis dolore ipsa?
       </div>
     </Expandable>
 
