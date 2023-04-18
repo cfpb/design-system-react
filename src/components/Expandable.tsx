@@ -1,53 +1,34 @@
+import CFPB_Expandable from '@cfpb/cfpb-expandables/src/Expandable';
 import type { ReactNode } from 'react';
-import React, { useCallback, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Icon } from './Icon';
 
 export interface ExpandableProperties {
   header: string;
-  activeIndex?: number;
-  index?: number;
-  setActiveIndex?: (index?: number) => void;
   children: ReactNode;
-  openOnLoad: boolean;
+  inAccordion?: boolean;
+  openOnLoad?: boolean;
 }
 
 const Expandable: React.FC<ExpandableProperties> = ({
   header,
-  activeIndex,
-  index,
-  setActiveIndex,
   children,
+  inAccordion = false,
   openOnLoad = false
 }) => {
-  const [expanded, setExpanded] = useState(openOnLoad);
-  const isAccordion = !!setActiveIndex;
-  const isSelected = activeIndex === index;
-  const isExpanded = isAccordion ? isSelected : expanded;
+  useEffect(() => {
+    if (inAccordion) return; // Initialization happens in parent component
 
-  const onToggleExpanded = useCallback(() => {
-    setExpanded(() => {
-      if (isAccordion) {
-        if (isSelected) setActiveIndex();
-        else setActiveIndex(index);
-      }
-      return !expanded;
-    });
-  }, [isAccordion, expanded, isSelected, setActiveIndex, index]);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    CFPB_Expandable.init();
+  }, [inAccordion]);
 
   return (
-    <div
-      className='o-expandable
-            o-expandable__padded
-            o-expandable__background
-            o-expandable__border'
-    >
+    <div className='o-expandable o-expandable__padded o-expandable__background o-expandable__border'>
       <button
         type='button'
-        className={`o-expandable_header o-expandable_target o-expandable_target__${
-          isExpanded ? 'expanded' : 'collapsed'
-        }`}
+        className='o-expandable_header o-expandable_target'
         title='Expand content'
-        onClick={onToggleExpanded}
       >
         <h3 className='h4 o-expandable_label'>{header}</h3>
         <span className='o-expandable_link'>
@@ -62,14 +43,14 @@ const Expandable: React.FC<ExpandableProperties> = ({
         </span>
       </button>
       <div
-        className={`u-is-animating o-expandable_content o-expandable_content__transition o-expandable_content__${
-          isExpanded ? 'expanded' : 'collapsed'
+        className={`o-expandable_content ${
+          openOnLoad ? 'o-expandable_content__onload-open' : ''
         }`}
       >
         {children}
       </div>
     </div>
   );
-};;;
+};
 
 export default Expandable;
