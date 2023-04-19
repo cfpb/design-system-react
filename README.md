@@ -54,6 +54,10 @@ yarn && yarn start
 
 Edit the files in `src/components/` and your browser should hot reload your changes.
 
+Add tests to files called `<component-name>.test.tsx`. See [`Buttons.test.tsx`](/src/components/Button.test.tsx) for an example.
+
+Run `yarn test` to watch for changes and run tests automatically.
+
 ## Open source licensing info
 
 1. [TERMS](TERMS.md)

@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  Test:
+  React:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,5 +20,5 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Validate
+      - name: Run React tests
         run: yarn test:ci
