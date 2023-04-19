@@ -6,7 +6,7 @@ export interface ExpandableGroupProps {
   children: ReactElement<ExpandableProps>[];
 }
 
-const ExpandableGroup: React.FC<ExpandableGroupProps> = ({
+export const ExpandableGroup: React.FC<ExpandableGroupProps> = ({
   accordion = false,
   children
 }) => {

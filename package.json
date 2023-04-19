@@ -3,11 +3,27 @@
   "license": "MIT",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/design-stories.cjs",
+      "import": "./dist/design-stories.es.js"
+    },
+    "./style.css": {
+      "require": "./dist/style.css",
+      "default": "./dist/style.css"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=16.0.0 <17.0.0"
   },
   "scripts": {
     "build": "vite build",
+    "prepack": "vite build",
     "commit": "cz",
     "dev": "vite --open",
     "preview": "vite preview",
@@ -25,8 +41,8 @@
     "validate": "run-p lint test:ci test:e2e:headless",
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o dist/storybook && yarn copy-storybook-assets",
-    "copy-storybook-assets": "cp -r src/assets/ dist/storybook/assets/"
+    "build-storybook": "build-storybook -o dist-storybook && yarn copy-storybook-assets",
+    "copy-storybook-assets": "cp -r src/assets/ dist-storybook/assets/"
   },
   "dependencies": {
     "@cfpb/cfpb-design-system": "^0.21.13",
@@ -97,7 +113,7 @@
     "stylelint-config-standard": "29.0.0",
     "typescript": "4.8.4",
     "vite": "3.2.4",
-    "vite-plugin-pwa": "0.13.1",
+    "vite-plugin-dts": "^2.2.0",
     "vite-tsconfig-paths": "3.5.2",
     "vitest": "0.25.2",
     "whatwg-fetch": "3.6.2",

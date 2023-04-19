@@ -6,7 +6,7 @@ import { Icon } from './Icon';
 import Label from './Label';
 import TextInput from './TextInput';
 
-export interface PaginationProperties {
+export interface PaginationProps {
   /** Currently displayed page number  */
   page: number;
   /** Total number of available pages */
@@ -31,7 +31,7 @@ export const Pagination = ({
   onClickGo = noOp,
   prevLabel: previousLabel = 'Previous',
   nextLabel = 'Next'
-}: PaginationProperties): React.ReactElement => {
+}: PaginationProps): React.ReactElement => {
   const [pageNumber, setPageNumber] = useState(page);
   useEffect(() => setPageNumber(page), [page]);
 
