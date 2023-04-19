@@ -1,4 +1,6 @@
-interface ButtonProperties {
+import { ButtonHTMLAttributes } from 'react';
+
+interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Button contents
    */
