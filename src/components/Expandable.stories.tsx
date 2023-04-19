@@ -1,4 +1,5 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
 import Expandable from './Expandable';
 
 export default {
@@ -12,18 +13,11 @@ export default {
 
 const Template: ComponentStory<typeof Expandable> = arguments_ => (
   <Expandable {...arguments_}>
-    <div>
-      Lorem ipsum{' '}
-      <a href='#' onClick={e => e.preventDefault()}>
-        Lorem link
-      </a>
-      dolor sit amet, consectetur adipisicing elit. Neque ipsa voluptatibus
-      soluta nobis unde quisquam temporibus magnam debitis quidem. Ducimus
-      ratione corporis nesciunt earum vel est quaerat blanditiis dolore ipsa?
-      <a href='#' onClick={e => e.preventDefault()}>
-        Lorem link
-      </a>
-    </div>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
+    voluptatibus soluta nobis unde quisquam temporibus magnam debitis quidem.
+    Ducimus ratione corporis nesciunt earum vel est quaerat blanditiis dolore
+    ipsa?&nbsp;
+    <a href='/?path=/story/components-expandable--default'>Lorem link</a>
   </Expandable>
 );
 
@@ -31,4 +25,11 @@ export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
   header: 'Expandable Header'
+};
+
+export const OpenOnLoad = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+OpenOnLoad.args = {
+  header: 'Expandable Header',
+  openOnLoad: true
 };

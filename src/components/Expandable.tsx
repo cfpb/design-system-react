@@ -1,84 +1,54 @@
-import { ReactNode, useCallback, useState } from 'react';
+import CFPB_Expandable from '@cfpb/cfpb-expandables/src/Expandable';
+import type { ReactNode } from 'react';
+import React, { useEffect } from 'react';
 import { Icon } from './Icon';
 
-export interface ExpandableProps {
+export interface ExpandableProperties {
   header: string;
-  activeIndex?: number;
-  index?: number;
-  setActiveIndex?: (i?: number) => void;
   children: ReactNode;
+  inAccordion?: boolean;
+  openOnLoad?: boolean;
 }
 
-export const Expandable: React.FC<ExpandableProps> = ({
+const Expandable: React.FC<ExpandableProperties> = ({
   header,
-  activeIndex,
-  index,
-  setActiveIndex,
-  children
+  children,
+  inAccordion = false,
+  openOnLoad = false
 }) => {
-  const [expanded, setExpanded] = useState(false);
+  useEffect(() => {
+    if (inAccordion) return; // Initialization happens in parent component
 
-  const toggleExpanded = useCallback(() => {
-    setExpanded(expanded => {
-      if (!expanded && activeIndex !== index && setActiveIndex)
-        setActiveIndex(index);
-      return !expanded;
-    });
-  }, [setActiveIndex, activeIndex, index]);
-
-  const isExpanded =
-    (expanded && index === undefined) || (expanded && index === activeIndex);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    CFPB_Expandable.init();
+  }, [inAccordion]);
 
   return (
-    <div
-      className='o-expandable
-            o-expandable__padded
-            o-expandable__background
-            o-expandable__border'
-    >
+    <div className='o-expandable o-expandable__padded o-expandable__background o-expandable__border'>
       <button
-        className={`o-expandable_header o-expandable_target o-expandable_target__${
-          expanded ? 'expanded' : 'collapsed'
-        }`}
+        type='button'
+        className='o-expandable_header o-expandable_target'
         title='Expand content'
-        onClick={toggleExpanded}
       >
         <h3 className='h4 o-expandable_label'>{header}</h3>
         <span className='o-expandable_link'>
-          <span
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center'
-            }}
-            className={`o-expandable_cue o-expandable_cue-${
-              expanded ? 'close' : 'open'
-            }`}
-          >
-            <div
-              style={{ minWidth: '2.5em' }}
-              className='u-visually-hidden-on-mobile'
-            >
-              {expanded ? 'Hide' : 'Show'}
-            </div>
-
-            {isExpanded ? (
-              <Icon name={'minus-round'} alt={'minus-round'} />
-            ) : (
-              <Icon name={'plus-round'} alt={'plus-round'} />
-            )}
+          <span className='o-expandable_cue o-expandable_cue-open'>
+            <span className='u-visually-hidden-on-mobile'>Show</span>
+            <Icon name='plus-round' alt='plus-round' />
+          </span>
+          <span className='o-expandable_cue o-expandable_cue-close'>
+            <span className='u-visually-hidden-on-mobile'>Hide</span>
+            <Icon name='minus-round' alt='minus-round' />
           </span>
         </span>
       </button>
-      {isExpanded && (
-        <div
-          className={`o-expandable_content ${
-            expanded ? 'o-expandable_content__onload-open' : ''
-          }`}
-        >
-          {children}
-        </div>
-      )}
+      <div
+        className={`o-expandable_content ${
+          openOnLoad ? 'o-expandable_content__onload-open' : ''
+        }`}
+      >
+        {children}
+      </div>
     </div>
   );
 };
