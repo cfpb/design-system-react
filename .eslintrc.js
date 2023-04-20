@@ -94,7 +94,7 @@ module.exports = {
           'src/setupTests.ts',
           'src/testUtils.tsx',
           'src/mocks/**',
-          '**/__tests__/*.{ts,tsx}'
+          '**/*.test.{ts,tsx}'
         ]
       }
     ],
@@ -179,10 +179,11 @@ module.exports = {
       }
     },
     {
-      files: ['**/__tests__/**/*.ts?(x)'],
+      files: ['**/*.test.ts?(x)'],
       extends: ['plugin:testing-library/react'],
       rules: {
         '@typescript-eslint/no-magic-numbers': ['off'],
+        '@typescript-eslint/consistent-type-imports': ['off'],
         'testing-library/no-await-sync-events': [
           'error',
           {

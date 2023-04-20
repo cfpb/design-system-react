@@ -15,6 +15,18 @@ export default defineConfig(() => ({
       insertTypesEntry: true
     })
   ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    clearMocks: true,
+    coverage: {
+      provider: 'istanbul',
+      enabled: true,
+      '100': true,
+      reporter: ['text', 'lcov'],
+      reportsDirectory: 'coverage'
+    }
+  },
   build: {
     lib: {
       entry: resolve('src', 'index.ts'),
