@@ -1,8 +1,7 @@
-import type { ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Dropdown } from './Dropdown';
 
-export default {
-  title: 'Components/Dropdown',
+const meta = {
   component: Dropdown,
   parameters: {
     docs: {
@@ -15,7 +14,11 @@ Source: https://cfpb.github.io/design-system/components/dropdowns-and-multiselec
       }
     }
   }
-};
+} satisfies Meta<typeof Dropdown>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const LAST_ELEMENT = -1;
 
@@ -25,34 +28,34 @@ const options = [
   { value: 'value3', label: 'Option C' }
 ];
 
-const Template: ComponentStory<typeof Dropdown> = arguments_ => (
-  <Dropdown {...arguments_} id='testDropdown' />
-);
 
-export const DefaultDropdown = Template.bind({});
-DefaultDropdown.args = {
-  label: 'Default Dropdown',
-  id: 'dropdown',
-  options
+export const DefaultDropdown: Story = {
+  args: {
+    label: 'Default Dropdown',
+    id: 'dropdown',
+    options
+  }
 };
 
-export const WithDefaultValue = Template.bind({});
-WithDefaultValue.args = {
+export const WithDefaultValue: Story = {
+  args:{
   ...DefaultDropdown.args,
   id: 'with-default',
   defaultValue: options.at(LAST_ELEMENT),
   label: 'With Default Value'
+  }
 };
-export const Disabled = Template.bind({});
-Disabled.args = {
+
+export const Disabled: Story = {
+  args:{
   ...DefaultDropdown.args,
   id: 'disabled',
   label: 'Disabled',
   isDisabled: true
-};
+}};
 
-export const MultiSelect = Template.bind({});
-MultiSelect.args = {
+export const MultiSelect: Story = {
+  args:{
   ...DefaultDropdown.args,
   options: [
     ...options,
@@ -65,4 +68,4 @@ MultiSelect.args = {
   id: 'multi',
   isMulti: true,
   label: 'Multi-select'
-};
+}};
