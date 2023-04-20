@@ -21,7 +21,8 @@ h1 {
   vertical-align: top;
 }
 
-button + button {
+header button+button,
+header .a-btn+.a-btn {
   margin-left: 10px;
 }
 
