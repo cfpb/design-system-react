@@ -1,42 +1,54 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-
+import type { Meta, StoryObj } from '@storybook/react';
 import { Radio } from './Radio';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
-  title: 'Components/Radio',
+const meta = {
   component: Radio,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     isDisabled: { control: 'boolean' },
     isLarge: { control: 'boolean' }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### CFPB DS - Radio component
+
+Source: https://cfpb.github.io/design-system/components/expandables
+`
+      }
+    }
   }
-} as ComponentMeta<typeof Radio>;
+} satisfies Meta<typeof Radio>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Radio> = arguments_ => (
-  <Radio {...arguments_} id='testRadio' />
-);
+export default meta;
 
-export const DefaultRadio = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-DefaultRadio.args = { label: 'Default Radio' };
+type Story = StoryObj<typeof meta>;
 
-export const RadioWithHelper = Template.bind({});
-RadioWithHelper.args = {
-  ...DefaultRadio.args,
-  helperText: 'This is optional helper text for the radio'
-};
+export const DefaultRadio: Story = {
+  args: { id:'testRadio', label: 'Default Radio', name: 'Radio select' }
+}
 
-export const LargeRadio = Template.bind({});
-LargeRadio.args = {
-  ...DefaultRadio.args,
-  isLarge: true
-};
+export const RadioWithHelper: Story = {
+  args: {
+    ...DefaultRadio.args,
+    id: 'RadioWithHelper',
+    helperText: 'This is optional helper text for the radio'
+  }
+}
 
-export const LargeRadioWithHelper = Template.bind({});
-LargeRadioWithHelper.args = {
-  ...DefaultRadio.args,
-  isLarge: true,
-  helperText: 'This is optional helper text for the large radio'
-};
+export const LargeRadio: Story = {
+  args: {
+    ...DefaultRadio.args,
+    id: 'LargeRadio',
+    isLarge: true
+  }
+}
+
+export const LargeRadioWithHelper: Story = {
+  args: {
+    ...DefaultRadio.args,
+    id: 'LargeRadioWithHelper',
+    isLarge: true,
+    helperText: 'This is optional helper text for the large radio'
+  }
+}
