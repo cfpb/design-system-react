@@ -1,8 +1,7 @@
-import { ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Notification } from './Notification';
 
-export default {
-  title: 'Components/Notification',
+const meta = {
   component: Notification,
   argTypes: {
     message: { control: 'text' }
@@ -18,46 +17,63 @@ Source: https://cfpb.github.io/design-system/components/notifications
       }
     }
   }
-};
+} satisfies Meta<typeof Notification>;
 
-const Template: ComponentStory<typeof Notification> = args => (
-  <Notification {...args} />
-);
+export default meta;
 
-export const information = Template.bind({});
-information.args = { type: 'info', message: 'A Notification' };
+type Story = StoryObj<typeof meta>;
 
-export const informationWithExplaination = Template.bind({});
-informationWithExplaination.args = {
-  ...information.args,
-  children: 'You can also add an explanation to the notification.'
-};
+export const Information: Story = {
+  render: args => (
+    <Notification {...args} />
+  ),
+  args: { type: 'info', message: 'A Notification' }
+}
 
-export const informationWithLinks = Template.bind({});
-informationWithLinks.args = {
-  ...information.args,
-  children: 'This is the explanation of the notification.',
-  links: [
-    {
-      href: '/',
-      label: 'This is a link below the explaination'
-    },
-    {
-      href: '/',
-      label: 'This is an external link',
-      isExternal: true
-    }
-  ]
-};
 
-export const success = Template.bind({});
-success.args = { type: 'success', message: '11 results' };
+export const InformationWithExplaination: Story = {
+  ...Information,
+  args: {
+    ...Information.args,
+    children: 'You can also add an explanation to the notification.'
+  }
+}
 
-export const warning = Template.bind({});
-warning.args = { type: 'warning', message: 'No results found.' };
+export const InformationWithLinks: Story = {
+  ...Information,
+  args: {
+    ...Information.args,
+    children: 'This is the explanation of the notification.',
+    links: [
+      {
+        href: '/',
+        label: 'This is a link below the explaination'
+      },
+      {
+        href: '/',
+        label: 'This is an external link',
+        isExternal: true
+      }
+    ]
+  }
+}
 
-export const error = Template.bind({});
-error.args = { type: 'error', message: 'Page not found.' };
+export const Success: Story = {
+  ...Information,
+  args: {...Information.args, type: 'success', message: '11 results' }
+}
 
-export const loading = Template.bind({});
-loading.args = { type: 'loading', message: 'The page is loading….' };
+export const Warning: Story = {
+  ...Information,
+  args: {...Information.args, type: 'warning', message: 'No results found.' }
+}
+
+export const Error: Story = {
+  ...Information,
+  args: {...Information.args, type: 'error', message: 'Page not found.' }
+}
+
+export const Loading: Story = {
+  ...Information,
+  args: {...Information.args, type: 'loading', message: 'The page is loading….' }
+}
