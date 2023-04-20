@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
