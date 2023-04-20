@@ -4,11 +4,13 @@ import React, { useEffect } from 'react';
 import type { ExpandableProperties } from './Expandable';
 
 export interface ExpandableGroupProperties {
+  groupId: string;
   accordion?: boolean;
-  children: ReactElement<ExpandableProperties>[];
+  children?: ReactElement<ExpandableProperties>[];
 }
 
-const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
+export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
+  groupId,
   accordion = false,
   children
 }) => {
@@ -19,7 +21,7 @@ const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
     if (!accordion) return;
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    CFPB_Expandable.init(document.querySelector('.o-expandable-group'));
+    CFPB_Expandable.init(document.querySelector(`#${groupId}`));
   }, [accordion]);
 
   const childrenWithProperties = React.Children.map(children, child => {
@@ -31,7 +33,11 @@ const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
     }
     return child;
   });
-  return <div className={cname}>{childrenWithProperties}</div>;
+  return (
+    <div id={groupId} className={cname}>
+      {childrenWithProperties}
+    </div>
+  );
 };
 
 export default ExpandableGroup;
