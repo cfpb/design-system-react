@@ -1,7 +1,7 @@
+import type { Meta } from '@storybook/react';
 import { Icon } from './Icon';
 
-export default {
-  title: 'Components/Icon',
+const meta = {
   component: Icon,
   parameters: {
     docs: {
@@ -14,7 +14,9 @@ Source: https://cfpb.github.io/design-system/foundation/iconography
       }
     }
   }
-};
+} satisfies Meta<typeof Icon>;
+
+export default meta;
 
 const makeRows = (names: Array<string>) => {
   return names.map((name, idx) => (
@@ -32,14 +34,19 @@ const makeRows = (names: Array<string>) => {
   ));
 };
 
-export const icon = (): React.ReactElement => (
+export const IconDefault = (): React.ReactElement => (
   <>
     <Icon name='approved' />
+  </>
+);
+
+export const IconWithBackground = (): React.ReactElement => (
+  <>
     <Icon name='approved' withBg />
   </>
 );
 
-export const statusIcons = (): React.ReactElement => {
+export const StatusIcons = (): React.ReactElement => {
   const names = ['approved', 'error', 'warning', 'update', 'updating'];
   return (
     <table>
@@ -53,7 +60,7 @@ export const statusIcons = (): React.ReactElement => {
   );
 };
 
-export const webApplicationIcons = (): React.ReactElement => {
+export const WebApplicationIcons = (): React.ReactElement => {
   const names = ['information', 'external-link'];
   return (
     <table>
@@ -67,7 +74,7 @@ export const webApplicationIcons = (): React.ReactElement => {
   );
 };
 
-export const navigationIcons = (): React.ReactElement => {
+export const NavigationIcons = (): React.ReactElement => {
   const names = ['up', 'right', 'down', 'left'];
   return (
     <table>
