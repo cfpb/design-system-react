@@ -1,35 +1,45 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
-import Expandable from './Expandable';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Expandable } from './Expandable';
 
-export default {
-  title: 'Components/Expandable',
+const meta = {
   component: Expandable,
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### CFPB DS - Expandable component
 
-  argTypes: {
-    openOnLoad: { control: 'select' }
+Source: https://cfpb.github.io/design-system/components/expandables
+`
+      }
+    }
   }
-} as ComponentMeta<typeof Expandable>;
+} satisfies Meta<typeof Expandable>;
 
-const Template: ComponentStory<typeof Expandable> = arguments_ => (
-  <Expandable {...arguments_}>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
-    voluptatibus soluta nobis unde quisquam temporibus magnam debitis quidem.
-    Ducimus ratione corporis nesciunt earum vel est quaerat blanditiis dolore
-    ipsa?&nbsp;
-    <a href='/?path=/story/components-expandable--default'>Lorem link</a>
-  </Expandable>
-);
+export default meta;
 
-export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-  header: 'Expandable Header'
-};
+type Story = StoryObj<typeof meta>;
 
-export const OpenOnLoad = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-OpenOnLoad.args = {
-  header: 'Expandable Header',
-  openOnLoad: true
-};
+const Content = <>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
+voluptatibus soluta nobis unde quisquam temporibus magnam debitis quidem.
+Ducimus ratione corporis nesciunt earum vel est quaerat blanditiis dolore
+ipsa?&nbsp;
+<a href='/?path=/story/components-expandable--default'>Lorem link</a>
+</>
+
+export const Default: Story = {
+  args: {
+    header: 'Expandable Header',
+    children: Content
+  }
+}
+
+export const OpenOnLoad: Story = {
+  args: {
+    ...Default.args,
+    header: 'Expandable Header',
+    openOnLoad: true
+  }
+}
+
