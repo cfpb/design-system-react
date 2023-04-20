@@ -8,7 +8,7 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import classnames from 'classnames';
-import { Pagination, PaginationProps } from './Pagination';
+import { Pagination, PaginationProperties } from './Pagination';
 import './Table.less';
 import { TableFilter as Filter } from './TableFilter';
 
@@ -82,7 +82,7 @@ export const TableComplex = ({
   );
 };
 
-const getPaginationProps = (table: Table<any>): PaginationProps => {
+const getPaginationProps = (table: Table<any>): PaginationProperties => {
   const page = table.getState().pagination.pageIndex + 1;
   const pageCount = table.getPageCount();
 
