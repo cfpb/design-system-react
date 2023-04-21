@@ -1842,6 +1842,14 @@
     "@rollup/pluginutils" "^3.1.0"
     magic-string "^0.25.7"
 
+"@rollup/plugin-replace@^5.0.1":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-replace/-/plugin-replace-5.0.2.tgz#45f53501b16311feded2485e98419acb8448c61d"
+  integrity sha512-M9YXNekv/C/iHHK+cvORzfRYfPbq0RDD8r0G+bMiTXjNGKulPnCT9O3Ss46WfhI6ZOCgApOP7xAdmCQJ+U2LAA==
+  dependencies:
+    "@rollup/pluginutils" "^5.0.1"
+    magic-string "^0.27.0"
+
 "@rollup/pluginutils@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-3.1.0.tgz#706b4524ee6dc8b103b3c995533e5ad680c02b9b"
@@ -1859,7 +1867,7 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@rollup/pluginutils@^5.0.2":
+"@rollup/pluginutils@^5.0.1", "@rollup/pluginutils@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.0.2.tgz#012b8f53c71e4f6f9cb317e311df1404f56e7a33"
   integrity sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==
@@ -8947,6 +8955,11 @@ pretty-bytes@^5.3.0, pretty-bytes@^5.6.0:
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
   integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
 
+pretty-bytes@^6.0.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-6.1.0.tgz#1d1cc9aae1939012c74180b679da6684616bf804"
+  integrity sha512-Rk753HI8f4uivXi4ZCIYdhmG1V+WKzvRMg/X+M42a6t7D07RcmopXJMDNk6N++7Bl75URRGsb40ruvg7Hcp2wQ==
+
 pretty-format@^27.0.2:
   version "27.5.1"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-27.5.1.tgz#2181879fdea51a7a5851fb39d920faa63f01d88e"
@@ -9597,6 +9610,13 @@ rollup@^2.43.1, rollup@^2.79.1:
   version "2.79.1"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.79.1.tgz#bedee8faef7c9f93a2647ac0108748f497f081c7"
   integrity sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==
+  optionalDependencies:
+    fsevents "~2.3.2"
+
+rollup@^3.7.2:
+  version "3.20.7"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.20.7.tgz#4f045dfb388abe08dd159f8cd286dcaca1e80b28"
+  integrity sha512-P7E2zezKSLhWnTz46XxjSmInrbOCiul1yf+kJccMxT56vxjHwCbDfoLbiqFgu+WQoo9ij2PkraYaBstgB2prBA==
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -10968,6 +10988,19 @@ vite-plugin-dts@^2.2.0:
     magic-string "^0.29.0"
     ts-morph "18.0.0"
 
+vite-plugin-pwa@^0.14.7:
+  version "0.14.7"
+  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.14.7.tgz#56844ff767d54256f45f49f91bfdff9dd1ea7685"
+  integrity sha512-dNJaf0fYOWncmjxv9HiSa2xrSjipjff7IkYE5oIUJ2x5HKu3cXgA8LRgzOwTc5MhwyFYRSU0xyN0Phbx3NsQYw==
+  dependencies:
+    "@rollup/plugin-replace" "^5.0.1"
+    debug "^4.3.4"
+    fast-glob "^3.2.12"
+    pretty-bytes "^6.0.0"
+    rollup "^3.7.2"
+    workbox-build "^6.5.4"
+    workbox-window "^6.5.4"
+
 vite-tsconfig-paths@3.5.2:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/vite-tsconfig-paths/-/vite-tsconfig-paths-3.5.2.tgz#fd3232f93c426311d7e0d581187d8b63fff55fbc"
@@ -11224,7 +11257,7 @@ workbox-broadcast-update@6.5.4:
   dependencies:
     workbox-core "6.5.4"
 
-workbox-build@6.5.4:
+workbox-build@6.5.4, workbox-build@^6.5.4:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/workbox-build/-/workbox-build-6.5.4.tgz#7d06d31eb28a878817e1c991c05c5b93409f0389"
   integrity sha512-kgRevLXEYvUW9WS4XoziYqZ8Q9j/2ziJYEtTrjdz5/L/cTUa2XfyMP2i7c3p34lgqJ03+mTiz13SdFef2POwbA==
@@ -11359,7 +11392,7 @@ workbox-sw@6.5.4:
   resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-6.5.4.tgz#d93e9c67924dd153a61367a4656ff4d2ae2ed736"
   integrity sha512-vo2RQo7DILVRoH5LjGqw3nphavEjK4Qk+FenXeUsknKn14eCNedHOXWbmnvP4ipKhlE35pvJ4yl4YYf6YsJArA==
 
-workbox-window@6.5.4:
+workbox-window@6.5.4, workbox-window@^6.5.4:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/workbox-window/-/workbox-window-6.5.4.tgz#d991bc0a94dff3c2dbb6b84558cff155ca878e91"
   integrity sha512-HnLZJDwYBE+hpG25AQBO8RUWBJRaCsI9ksQJEp3aCOFCaG5kqaToAYXFRAHxzRluM2cQbGzdQF5rjKPWPA1fug==
