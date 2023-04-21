@@ -1,55 +1,74 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-
+import type { Meta, StoryObj } from '@storybook/react';
 import { TextInput } from './TextInput';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
-  title: 'Components/TextInput',
+const meta = {
   component: TextInput,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     width: { control: 'select' },
     isDisabled: { control: 'boolean' }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### CFPB DS - TextInput component
+
+Source: https://cfpb.github.io/design-system/components/text-inputs
+`
+      }
+    }
   }
-} as ComponentMeta<typeof TextInput>;
+} satisfies Meta<typeof TextInput>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof TextInput> = arguments_ => (
-  <div className='m-form-field'>
-    <TextInput {...arguments_} />
-  </div>
-);
+export default meta;
 
-export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-  placeholder: 'Placeholder text',
-  width: 'default'
-};
+type Story = StoryObj<typeof meta>;
 
-export const FullWidth = Template.bind({});
-FullWidth.args = {
-  ...Default.args,
-  width: 'full'
-};
+export const Default: Story = {
+  args: {
+    id: 'Default',
+    name: 'Default',
+    placeholder: 'Placeholder text',
+    width: 'default',
+    type: 'text'
+  }
+}
 
-export const SuccessType = Template.bind({});
-SuccessType.args = {
-  ...Default.args,
-  notificationType: 'success',
-  textNotification: 'This is a success message'
-};
+export const FullWidth: Story = {
+  args: {
+    ...Default.args,
+    id: 'FullWidth',
+    name: 'FullWidth',
+    width: 'full'
+  }
+}
 
-export const WarningType = Template.bind({});
-WarningType.args = {
-  ...Default.args,
-  notificationType: 'warning',
-  textNotification: 'This is a warning message'
-};
+export const SuccessType: Story = {
+  args: {
+    ...Default.args,
+    id: 'SuccessType',
+    name: 'SuccessType',
+    notificationType: 'success',
+    textNotification: 'This is a success message'
+  }
+}
 
-export const ErrorType = Template.bind({});
-ErrorType.args = {
-  ...Default.args,
-  notificationType: 'error',
-  textNotification: 'This is an error message'
-};
+export const WarningType: Story = {
+  args: {
+    ...Default.args,
+    id: 'WarningType',
+    name: 'WarningType',
+    notificationType: 'warning',
+    textNotification: 'This is a warning message'
+  }
+}
+
+export const ErrorType: Story = {
+  args: {
+    ...Default.args,
+    id: 'ErrorType',
+    name: 'ErrorType',
+    notificationType: 'error',
+    textNotification: 'This is an error message'
+  }
+}
