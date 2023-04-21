@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Label } from './Label';
 import { TextInput } from './TextInput';
 
-const meta = {
+const meta: Meta<typeof Label> = {
   component: Label,
   argTypes: {
     inline: { control: 'boolean' }
@@ -18,7 +18,7 @@ Source: https://cfpb.github.io/design-system/components/expandables
       }
     }
   }
-} satisfies Meta<typeof Label>;
+};
 
 export default meta;
 

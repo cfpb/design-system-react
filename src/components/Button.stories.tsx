@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 
-const meta = {
+const meta: Meta<typeof Button> = {
   component: Button,
   argTypes: {
     appearance: { control: 'select' },
     size: { control: 'select' },
     isDisabled: { control: 'boolean' }
   }
-} satisfies Meta<typeof Button>;
+};
 
 export default meta;
 

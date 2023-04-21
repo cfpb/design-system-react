@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TableSimple } from './TableSimple';
+import TableSimple from './TableSimple';
 
-const meta = {
+const meta: Meta<typeof TableSimple> = {
   component: TableSimple,
   parameters: {
     docs: {
@@ -14,7 +14,7 @@ Source: https://cfpb.github.io/design-system/components/tables
       }
     }
   }
-} satisfies Meta<typeof TableSimple>;
+};
 
 export default meta;
 

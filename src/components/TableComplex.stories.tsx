@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import type { ColumnDef } from '@tanstack/react-table';
 import { TableComplex, TableComplexOptions } from './TableComplex';
 
-const meta = {
+const meta: Meta<typeof TableComplex> = {
   component: TableComplex,
   argTypes: {
     caption: { control: 'text' }
@@ -20,7 +20,7 @@ Source: https://cfpb.github.io/design-system/components/tables
       }
     }
   }
-} satisfies Meta<typeof TableComplex>;
+};
 
 export default meta;
 
@@ -90,7 +90,7 @@ export const Paginated: Story = {
       </>
     ),
     options: {
-      ...Default.args.options,
+      ...Default.args?.options,
       isPaginated: true,
       pageSize: 5
     },
@@ -103,15 +103,15 @@ export const Paginated: Story = {
       col5: `Row ${idx + 1}, Col 5`
     }))
   }
-}
+};
 
 export const Filterable: Story = {
   args: {
     caption: (
       <>
-        Setting `options.isFilterable = true` will enable the display of a search
-        box for each column that displays a filtration-compatible data type.{' '}
-        <br />
+        Setting `options.isFilterable = true` will enable the display of a
+        search box for each column that displays a filtration-compatible data
+        type. <br />
         <br />
         To disable the filter capability for individual fields, set
         `enableColumnFilter: false` in the column's configuration, as we see for
@@ -120,9 +120,9 @@ export const Filterable: Story = {
     ),
     columns,
     options: {
-      ...Default.args.options,
+      ...Default.args?.options,
       isFilterable: true
     },
     data
   }
-}
+};

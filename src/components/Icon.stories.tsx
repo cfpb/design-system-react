@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react';
 import { Icon } from './Icon';
 
-const meta = {
+const meta: Meta<typeof Icon> = {
   component: Icon,
   parameters: {
     docs: {
@@ -14,7 +14,7 @@ Source: https://cfpb.github.io/design-system/foundation/iconography
       }
     }
   }
-} satisfies Meta<typeof Icon>;
+};
 
 export default meta;
 

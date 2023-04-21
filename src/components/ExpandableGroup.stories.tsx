@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Expandable from './Expandable';
 import { ExpandableGroup } from './ExpandableGroup';
 
-const meta = {
+const meta: Meta<typeof ExpandableGroup> = {
   component: ExpandableGroup,
   argTypes: {
     accordion: { control: 'boolean' }
@@ -18,7 +18,7 @@ Source: https://cfpb.github.io/design-system/components/expandables
       }
     }
   }
-} satisfies Meta<typeof ExpandableGroup>;
+};
 
 export default meta;
 

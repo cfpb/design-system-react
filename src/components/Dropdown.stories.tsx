@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Dropdown } from './Dropdown';
 
-const meta = {
+const meta: Meta<typeof Dropdown> = {
   component: Dropdown,
   parameters: {
     docs: {
@@ -14,7 +14,7 @@ Source: https://cfpb.github.io/design-system/components/dropdowns-and-multiselec
       }
     }
   }
-} satisfies Meta<typeof Dropdown>;
+};
 
 export default meta;
 

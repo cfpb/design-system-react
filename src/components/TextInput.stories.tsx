@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextInput } from './TextInput';
+import TextInput from './TextInput';
 
-const meta = {
+const meta: Meta<typeof TextInput> = {
   component: TextInput,
   argTypes: {
     width: { control: 'select' },
@@ -18,7 +18,7 @@ Source: https://cfpb.github.io/design-system/components/text-inputs
       }
     }
   }
-} satisfies Meta<typeof TextInput>;
+};
 
 export default meta;
 

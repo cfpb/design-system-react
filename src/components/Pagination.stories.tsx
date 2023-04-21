@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Pagination } from './Pagination';
 
-const meta = {
+const meta: Meta<typeof Pagination> = {
   component: Pagination,
   parameters: {
     docs: {
@@ -14,7 +14,7 @@ Source: https://cfpb.github.io/design-system/patterns/pagination
       }
     }
   }
-} satisfies Meta<typeof Pagination>;
+};
 
 export default meta;
 

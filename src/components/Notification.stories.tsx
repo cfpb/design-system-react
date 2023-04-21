@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Notification } from './Notification';
 
-const meta = {
+const meta: Meta<typeof Notification> = {
   component: Notification,
   argTypes: {
     message: { control: 'text' }
@@ -17,7 +17,7 @@ Source: https://cfpb.github.io/design-system/components/notifications
       }
     }
   }
-} satisfies Meta<typeof Notification>;
+};
 
 export default meta;
 

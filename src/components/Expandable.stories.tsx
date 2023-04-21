@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Expandable } from './Expandable';
 
-const meta = {
+const meta: Meta<typeof Expandable> = {
   component: Expandable,
   parameters: {
     docs: {
@@ -14,7 +14,7 @@ Source: https://cfpb.github.io/design-system/components/expandables
       }
     }
   }
-} satisfies Meta<typeof Expandable>;
+};
 
 export default meta;
 

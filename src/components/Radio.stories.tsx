@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Radio } from './Radio';
+import Radio from './Radio';
 
-const meta = {
+const meta: Meta<typeof Radio> = {
   component: Radio,
   argTypes: {
     isDisabled: { control: 'boolean' },
@@ -18,7 +18,7 @@ Source: https://cfpb.github.io/design-system/components/expandables
       }
     }
   }
-} satisfies Meta<typeof Radio>;
+};
 
 export default meta;
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Header } from './Header';
 
-const meta = {
+const meta: Meta<typeof Header> = {
   component: Header,
   parameters: {
     // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
@@ -12,7 +12,7 @@ const meta = {
       }
     }
   }
-} satisfies Meta<typeof Header>;
+};
 
 export default meta;
 

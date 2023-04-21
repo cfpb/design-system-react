@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './Checkbox';
 
-const meta = {
+const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
   argTypes: {
     isDisabled: { control: 'boolean' },
     isLarge: { control: 'boolean' }
   }
-} satisfies Meta<typeof Checkbox>;
+};
 
 export default meta;
 
