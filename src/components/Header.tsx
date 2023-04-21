@@ -6,7 +6,7 @@ interface User {
 }
 
 interface HeaderProperties {
-  user?: User;
+  user?: User | null | undefined;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
