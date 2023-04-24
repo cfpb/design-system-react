@@ -16,6 +16,11 @@ module.exports = {
   async viteFinal(config, { configType }) {
     config.base = process.env.BASE_PATH || config.base;
 
+    // Skip type declaration generation for non-dist builds
+    config.plugins = config.plugins.filter(
+      plugin => plugin.name !== 'vite:dts'
+    );
+
     // return the customized config
     return config;
   },
