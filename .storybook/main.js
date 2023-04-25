@@ -6,9 +6,9 @@ module.exports = {
     '@storybook/addon-interactions',
     '@storybook/addon-a11y'
   ],
-  framework: '@storybook/react',
-  core: {
-    builder: '@storybook/builder-vite'
+  framework: {
+    name: '@storybook/react-vite',
+    options: {}
   },
   features: {
     storyStoreV7: true
@@ -16,7 +16,15 @@ module.exports = {
   async viteFinal(config, { configType }) {
     config.base = process.env.BASE_PATH || config.base;
 
+    // Skip type declaration generation for non-dist builds
+    config.plugins = config.plugins.filter(
+      plugin => plugin.name !== 'vite:dts'
+    );
+
     // return the customized config
     return config;
+  },
+  docs: {
+    autodocs: true
   }
 };

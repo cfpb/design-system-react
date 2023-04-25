@@ -10,7 +10,7 @@ export interface ExpandableProperties {
   openOnLoad?: boolean;
 }
 
-const Expandable: React.FC<ExpandableProperties> = ({
+export const Expandable: React.FC<ExpandableProperties> = ({
   header,
   children,
   inAccordion = false,

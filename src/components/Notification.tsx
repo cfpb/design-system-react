@@ -6,7 +6,7 @@ import type { NotificationLinkProperties } from './NotificationLink';
 import { NotificationLink } from './NotificationLink';
 
 interface NotificationProperties {
-  type: 'error' | 'info' | 'loading' | 'success' | 'warning';
+  type?: 'error' | 'info' | 'loading' | 'success' | 'warning';
   message?: React.ReactNode;
   headingLevel?: HeadingLevel;
   children?: React.ReactNode;

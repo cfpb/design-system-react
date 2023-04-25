@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import { noOp } from '../utils/noOp';
 import { Icon } from './Icon';
 import Label from './Label';
-import TextInput from './TextInput';
 
-export interface PaginationProps {
+export interface PaginationProperties {
   /** Currently displayed page number  */
   page: number;
   /** Total number of available pages */
@@ -22,53 +21,6 @@ export interface PaginationProps {
   /** Text label for Next button */
   nextLabel?: string;
 }
-
-export const Pagination = ({
-  page,
-  pageCount,
-  onClickPrev: onClickPrevious = noOp,
-  onClickNext = noOp,
-  onClickGo = noOp,
-  prevLabel: previousLabel = 'Previous',
-  nextLabel = 'Next'
-}: PaginationProps): React.ReactElement => {
-  const [pageNumber, setPageNumber] = useState(page);
-  useEffect(() => setPageNumber(page), [page]);
-
-  return (
-    <nav className='m-pagination' role='navigation' aria-label='Pagination'>
-      <PaginationBtn
-        iconName='left'
-        onClick={onClickPrevious}
-        label={previousLabel}
-        isPrev
-      />
-      <PaginationBtn
-        iconName='right'
-        onClick={onClickNext}
-        label={nextLabel}
-        isNext
-      />
-
-      <form
-        className='m-pagination_form'
-        action='#pagination_content'
-        onSubmit={e => {
-          e.preventDefault();
-          if (pageNumber == page) return;
-          onClickGo(pageNumber - 1);
-        }}
-      >
-        <PaginationInput
-          page={pageNumber}
-          pageCount={pageCount}
-          onChange={setPageNumber}
-        />
-        <PaginationSubmitBtn />
-      </form>
-    </nav>
-  );
-};
 
 const PaginationSubmitBtn = () => (
   <button
@@ -86,13 +38,15 @@ interface PaginationButtonProperties {
   label?: string;
   isPrev?: boolean;
   isNext?: boolean;
+  isDisabled?: boolean;
 }
 const PaginationBtn = ({
   iconName,
   onClick,
   label,
   isPrev: isPrevious = false,
-  isNext = false
+  isNext = false,
+  isDisabled = false
 }: PaginationButtonProperties): React.ReactElement => {
   const buttonCnames = ['a-btn'];
   const iconCnames = ['a-btn_icon'];
@@ -104,6 +58,8 @@ const PaginationBtn = ({
     buttonCnames.push('m-pagination_btn-next');
     iconCnames.push('a-btn_icon__on-right');
   }
+
+  if (isDisabled) buttonCnames.push('a-btn__disabled');
 
   return (
     <button
@@ -137,7 +93,7 @@ const PaginationInput = ({
   >
     Page
     <span className='u-visually-hidden'>number {page} out</span>
-    <TextInput
+    <input
       className='m-pagination_current-page'
       id='m-pagination_current-page-default'
       name='page'
@@ -153,3 +109,52 @@ const PaginationInput = ({
     of {pageCount}
   </Label>
 );
+
+export const Pagination = ({
+  page,
+  pageCount,
+  onClickPrev: onClickPrevious = noOp,
+  onClickNext = noOp,
+  onClickGo = noOp,
+  prevLabel: previousLabel = 'Previous',
+  nextLabel = 'Next'
+}: PaginationProperties): React.ReactElement => {
+  const [pageNumber, setPageNumber] = useState(page);
+  useEffect(() => setPageNumber(page), [page]);
+
+  return (
+    <nav className='m-pagination' role='navigation' aria-label='Pagination'>
+      <PaginationBtn
+        iconName='left'
+        onClick={onClickPrevious}
+        label={previousLabel}
+        isDisabled={pageNumber === 1}
+        isPrev
+      />
+      <PaginationBtn
+        iconName='right'
+        onClick={onClickNext}
+        label={nextLabel}
+        isDisabled={pageNumber == pageCount}
+        isNext
+      />
+
+      <form
+        className='m-pagination_form'
+        action='#pagination_content'
+        onSubmit={e => {
+          e.preventDefault();
+          if (pageNumber == page) return;
+          onClickGo(pageNumber - 1);
+        }}
+      >
+        <PaginationInput
+          page={pageNumber}
+          pageCount={pageCount}
+          onChange={setPageNumber}
+        />
+        <PaginationSubmitBtn />
+      </form>
+    </nav>
+  );
+};

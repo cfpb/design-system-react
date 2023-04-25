@@ -1,19 +1,32 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+import type { ColumnDef } from '@tanstack/react-table';
 import { TableComplex, TableComplexOptions } from './TableComplex';
 
-export default {
-  title: 'Components/TableComplex',
+const meta: Meta<typeof TableComplex> = {
   component: TableComplex,
   argTypes: {
     caption: { control: 'text' }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### CFPB DS - TableComplex component
+ 
+Provides more advanced table functionality such as pagination and filtration.
+
+Source: https://cfpb.github.io/design-system/components/tables
+`
+      }
+    }
   }
-} as ComponentMeta<typeof TableComplex>;
+};
 
-const Template: ComponentStory<typeof TableComplex> = arguments_ => (
-  <TableComplex {...arguments_} />
-);
+export default meta;
 
-import { ColumnDef } from '@tanstack/react-table';
+type Story = StoryObj<typeof meta>;
+
+
 interface TestData {
   [key: string]: string | number;
 }
@@ -56,57 +69,60 @@ const options: TableComplexOptions = {
 };
 
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default = Template.bind({});
-Default.args = {
-  caption:
-    'TableComplex offers extended functionality such as pagination and data filtration. By default these are disabled but can be enabled and configured via the `options` prop.',
-  options,
-  columns,
-  data
+export const Default: Story = {
+  args: {
+    caption:
+      'TableComplex offers extended functionality such as pagination and data filtration. By default these are disabled but can be enabled and configured via the `options` prop.',
+    options,
+    columns,
+    data
+  }
+}
+
+export const Paginated: Story = {
+  args: {
+    caption: (
+      <>
+        Setting `options.isPaginated = true` will enable the pagination of table
+        content, with navigation controls displayed beneath the table. <br />
+        <br />
+        Use `options.pageSize` to adjust the number of items displayed per page.
+      </>
+    ),
+    options: {
+      ...Default.args?.options,
+      isPaginated: true,
+      pageSize: 5
+    },
+    columns,
+    data: Array.from('x'.repeat(25)).map((_val, idx) => ({
+      col1: `Row ${idx + 1}, Col 1`,
+      col2: `Row ${idx + 1}, Col 2`,
+      col3: `Row ${idx + 1}, Col 3`,
+      col4: `Row ${idx + 1}, Col 4`,
+      col5: `Row ${idx + 1}, Col 5`
+    }))
+  }
 };
 
-export const Paginated = Template.bind({});
-Paginated.args = {
-  caption: (
-    <>
-      Setting `options.isPaginated = true` will enable the pagination of table
-      content, with navigation controls displayed beneath the table. <br />
-      <br />
-      Use `options.pageSize` to adjust the number of items displayed per page.
-    </>
-  ),
-  options: {
-    ...Default.args.options,
-    isPaginated: true,
-    pageSize: 5
-  },
-  columns,
-  data: Array.from('x'.repeat(25)).map((_val, idx) => ({
-    col1: `Row ${idx + 1}, Col 1`,
-    col2: `Row ${idx + 1}, Col 2`,
-    col3: `Row ${idx + 1}, Col 3`,
-    col4: `Row ${idx + 1}, Col 4`,
-    col5: `Row ${idx + 1}, Col 5`
-  }))
-};
-
-export const Filterable = Template.bind({});
-Filterable.args = {
-  caption: (
-    <>
-      Setting `options.isFilterable = true` will enable the display of a search
-      box for each column that displays a filtration-compatible data type.{' '}
-      <br />
-      <br />
-      To disable the filter capability for individual fields, set
-      `enableColumnFilter: false` in the column's configuration, as we see for
-      Column 4 below.
-    </>
-  ),
-  columns,
-  options: {
-    ...Default.args.options,
-    isFilterable: true
-  },
-  data
+export const Filterable: Story = {
+  args: {
+    caption: (
+      <>
+        Setting `options.isFilterable = true` will enable the display of a
+        search box for each column that displays a filtration-compatible data
+        type. <br />
+        <br />
+        To disable the filter capability for individual fields, set
+        `enableColumnFilter: false` in the column's configuration, as we see for
+        Column 4 below.
+      </>
+    ),
+    columns,
+    options: {
+      ...Default.args?.options,
+      isFilterable: true
+    },
+    data
+  }
 };

@@ -137,10 +137,10 @@ const Pills = ({
 };
 
 interface DropdownProperties {
-  isMulti: boolean;
-  options: SelectOption[];
-  defaultValue?: PropsValue<SelectOption>;
   id: string;
+  options: SelectOption[];
+  isMulti?: boolean;
+  defaultValue?: PropsValue<SelectOption>;
   label?: string;
   onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
   isDisabled?: boolean;
