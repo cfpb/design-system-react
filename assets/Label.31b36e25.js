@@ -1,0 +1,2 @@
+import{j as i}from"./jsx-runtime.556016cd.js";const c=["a-label"],a=({children:e,inline:l=!1,htmlFor:s,className:n,...o})=>{const t=[...c,l?"":"a-label__heading"],r=[n,...t].join(" ");return i("label",{...o,className:r,htmlFor:s,children:e})};try{a.displayName="Label",a.__docgenInfo={description:"",displayName:"Label",props:{inline:{defaultValue:{value:"false"},description:"",name:"inline",required:!1,type:{name:"boolean"}}}}}catch{}export{a as L};
+//# sourceMappingURL=Label.31b36e25.js.map
