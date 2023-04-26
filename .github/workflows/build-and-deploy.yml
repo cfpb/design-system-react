@@ -23,6 +23,10 @@ jobs:
           yarn
           yarn build-storybook
 
+      - name: Disable Jekyll # Tell GitHub Pages to not use Jekyll
+        run: |
+          touch dist-storybook/.nojekyll
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:

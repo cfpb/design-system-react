@@ -58,6 +58,8 @@ Add tests to files called `<component-name>.test.tsx`. See [`Buttons.test.tsx`](
 
 Run `yarn test` to watch for changes and run tests automatically.
 
+[Netlify](https://www.netlify.com/) will build and deploy a preview of any pull requests you open.
+
 ## Open source licensing info
 
 1. [TERMS](TERMS.md)
