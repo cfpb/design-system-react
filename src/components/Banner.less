@@ -1,0 +1,117 @@
+@gray-40: #b4b5b6;
+@gray-5: #f7f8f9;
+
+.m-global-eyebrow {
+  font-size: 0.75em;
+
+  .a-tagline {
+    align-items: center;
+  }
+
+  &_actions {
+    text-align: right;
+  }
+
+  &_languages {
+    display: inline;
+
+    .m-list_item:not(:last-child) {
+      margin-right: 0.6em;
+      margin-bottom: 0;
+
+      @media only all and (min-width: 992px) {
+        margin-right: 0.83em;
+      }
+    }
+
+    a {
+      border: none;
+    }
+  }
+
+  &_phone {
+    padding-left: 0.93em;
+  }
+
+  &__horizontal {
+    width: 100%;
+    display: inline-block;
+    padding-top: 0.625em;
+    padding-bottom: 0.625em;
+    background: @gray-5;
+    border-bottom: 1px solid @gray-40;
+
+    /* This is to allow vertical overlap with the languages */
+    .a-tagline {
+      float: left;
+    }
+
+    .m-global-eyebrow_languages {
+      text-align: right;
+    }
+
+    // Tablet/mobile sizes.
+    @media only all and (max-width: 56.25em) {
+      .m-global-eyebrow_actions {
+        display: none;
+      }
+
+      /* Prevent spacing issues since the languages aren't displayed */
+      .a-tagline {
+        float: none;
+      }
+    }
+  }
+
+  &__list {
+    padding-top: 0.9375em;
+    padding-left: 1.875em;
+    padding-right: 0.9375em;
+    padding-bottom: 1.875em;
+
+    .a-tagline {
+      display: none;
+    }
+
+    .m-global-eyebrow_actions {
+      padding: 0;
+      border: 0;
+      margin: 0;
+
+      text-align: left;
+    }
+
+    .m-global-eyebrow_phone,
+    .m-global-eyebrow_languages {
+      display: block;
+      padding-left: 0;
+    }
+
+    .m-global-eyebrow_phone {
+      border-top: 1px solid @gray-40;
+      padding-top: 0.9375em;
+
+      // Apply padding to the phone number to increase the touch area.
+      a {
+        padding-top: 0.9375em;
+        padding-bottom: 0.9375em;
+      }
+    }
+
+    .m-global-eyebrow_languages {
+      margin-bottom: 0.9375em;
+
+      .m-list_item {
+
+        // Apply padding to the language links to increase their touch area.
+        a {
+          display: block;
+          text-align: center;
+          min-width: 48px;
+          padding-top: 0.9375em;
+          padding-bottom: 0.9375em;
+        }
+      }
+    }
+  }
+}
