@@ -22,12 +22,11 @@ type Story = StoryObj<typeof meta>;
 
 const LAST_ELEMENT = -1;
 
-const options = [
+export const options = [
   { value: 'value1', label: 'Option A' },
   { value: 'value2', label: 'Option B' },
   { value: 'value3', label: 'Option C' }
 ];
-
 
 export const DefaultDropdown: Story = {
   args: {

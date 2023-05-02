@@ -1,8 +1,5 @@
-/* eslint-disable unicorn/no-null */
-/* eslint-disable react/no-unused-prop-types */
-
-import type { ReactEventHandler } from 'react';
-import { useState } from 'react';
+import type { KeyboardEvent } from 'react';
+import { useRef, useState } from 'react';
 import type {
   CSSObjectWithLabel,
   ControlProps,
@@ -12,16 +9,15 @@ import type {
   PropsValue
 } from 'react-select';
 import Select, { createFilter } from 'react-select';
-import type { JSXElement } from '../types/jsxElement';
-import { Icon } from './Icon';
+import { DropdownPills } from './DropdownPills';
 import { Label } from './Label';
 
-interface SelectOption {
-  value: number | string;
+export interface SelectOption {
+  value: string;
   label: string;
-  onSelect?: () => void;
 }
 
+// Better align Select wih CFPB styles
 const extendedSelectStyles = {
   control: (
     base: CSSObjectWithLabel,
@@ -42,29 +38,13 @@ const extendedSelectStyles = {
 };
 
 /**
- * Utility Functions
+ * For multi-select, hides already selected options.
+ *
+ * @param options Available options
+ * @param selected Selected options
+ * @param isMulti Is a multi-select component?
+ * @returns A list of selectable options
  */
-
-function onCloser(
-  index: number,
-  onChange: (result: PropsValue<SelectOption>) => void,
-  selected?: PropsValue<SelectOption>
-): ReactEventHandler<HTMLButtonElement> {
-  return () => {
-    if (!selected || !Array.isArray(selected)) return;
-    const result = selected.filter((_, index_) => index_ !== index);
-    onChange(result);
-  };
-}
-
-const onKeyCloser = (
-  event: React.KeyboardEvent<HTMLButtonElement>,
-  functionClose: ReactEventHandler<HTMLButtonElement>
-): void => {
-  const validKeys = ['Enter', 'Delete', 'Backspace'];
-  if (validKeys.includes(event.key)) functionClose(event);
-};
-
 const filterOptions = (
   options: PropsValue<SelectOption>,
   selected: PropsValue<SelectOption>,
@@ -79,62 +59,6 @@ const filterOptions = (
     );
 
   return options as OptionsOrGroups<SelectOption, GroupBase<SelectOption>>;
-};
-
-/**
- * Supporting Components
- */
-
-interface PillProperties {
-  value: string;
-  onClose: ReactEventHandler<HTMLButtonElement>;
-}
-const Pill = ({ value, onClose }: PillProperties): JSX.Element => (
-  <li className='pill'>
-    <button
-      type='button'
-      onClick={onClose}
-      onKeyDown={(event): void => onKeyCloser(event, onClose)}
-    >
-      <Label htmlFor={value} inline>
-        {value}
-        <div>
-          <Icon name='error' />
-        </div>
-      </Label>
-    </button>
-  </li>
-);
-
-interface PillsProperties {
-  selected: PropsValue<SelectOption>;
-  isMulti: boolean;
-  onChange: (event: PropsValue<SelectOption>) => void;
-}
-const Pills = ({
-  selected,
-  isMulti,
-  onChange
-}: PillsProperties): JSXElement => {
-  if (
-    !isMulti ||
-    !selected ||
-    !Array.isArray(selected) ||
-    selected.length === 0
-  )
-    return null;
-
-  return (
-    <ul className='o-multiselect_choices pills'>
-      {selected.map(({ value, label }: SelectOption, index: number) => (
-        <Pill
-          key={value}
-          value={label}
-          onClose={onCloser(index, onChange, selected)}
-        />
-      ))}
-    </ul>
-  );
 };
 
 interface DropdownProperties {
@@ -164,17 +88,46 @@ export function Dropdown({
     defaultValue ?? []
   );
 
+  const selectReference = useRef(null);
+
   // Store updated list of selected items
-  const onChange = (option: PropsValue<SelectOption>): void => {
+  function onChange(option: PropsValue<SelectOption>): void {
     onSelect(option);
     setSelected(option);
-  };
+  }
+
+  function onKeyDown(event: KeyboardEvent<HTMLDivElement>): void {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    if (event.key === 'Tab' && selectReference.current?.state?.focusedOption) {
+      event.preventDefault();
+      const direction = event.shiftKey ? 'up' : 'down';
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+      selectReference.current.focusOption(direction);
+    }
+  }
+
+  function onLabelClick(): void {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+    selectReference.current?.focus();
+  }
 
   return (
     <div className='m-form-field m-form-field__select'>
-      {!!label && <Label htmlFor={id}>{label}</Label>}
-      <Pills selected={selected} isMulti={isMulti} onChange={onChange} />
+      {!!label && (
+        <Label htmlFor={id} onClick={onLabelClick}>
+          {label}
+        </Label>
+      )}
+      <DropdownPills
+        selected={selected}
+        isMulti={isMulti}
+        onChange={onChange}
+      />
       <Select
+        openMenuOnFocus
+        ref={selectReference}
+        tabSelectsValue={false}
+        onKeyDown={onKeyDown}
         isMulti={isMulti}
         className='o-multiselect'
         value={selected}
