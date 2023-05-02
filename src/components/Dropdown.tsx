@@ -53,10 +53,12 @@ const filterOptions = (
   if (!selected || !isMulti)
     return options as OptionsOrGroups<SelectOption, GroupBase<SelectOption>>;
 
-  return (options as SelectOption[]).filter(
-    o => !(selected as SelectOption[]).map(s => s.value).includes(o.value)
-  );
+  if (isMulti)
+    return (options as SelectOption[]).filter(
+      o => !(selected as SelectOption[]).map(s => s.value).includes(o.value)
+    );
 
+  return options as OptionsOrGroups<SelectOption, GroupBase<SelectOption>>;
 };
 
 interface DropdownProperties {
