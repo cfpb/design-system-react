@@ -62,10 +62,10 @@ const filterOptions = (
 interface DropdownProperties {
   id: string;
   options: SelectOption[];
+  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
   isMulti?: boolean;
   defaultValue?: PropsValue<SelectOption>;
   label?: string;
-  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
   isDisabled?: boolean;
 }
 
@@ -77,7 +77,7 @@ export function Dropdown({
   isMulti = false,
   options,
   defaultValue,
-  id = 'dropdown',
+  id,
   label = 'Dropdown w/ Multi-select',
   onSelect,
   ...rest
