@@ -1,12 +1,13 @@
-import type { KeyboardEvent } from 'react';
-import { useRef, useState } from 'react';
+import type { KeyboardEvent, Ref } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import type {
   CSSObjectWithLabel,
   ControlProps,
   GroupBase,
   OnChangeValue,
   OptionsOrGroups,
-  PropsValue
+  PropsValue,
+  SelectInstance
 } from 'react-select';
 import Select, { createFilter } from 'react-select';
 import { DropdownPills } from './DropdownPills';
@@ -56,7 +57,6 @@ const filterOptions = (
   return (options as SelectOption[]).filter(
     o => !(selected as SelectOption[]).map(s => s.value).includes(o.value)
   );
-
 };
 
 interface DropdownProperties {
@@ -86,15 +86,15 @@ export function Dropdown({
     defaultValue ?? []
   );
 
-  const selectReference = useRef(null);
+  const selectReference = useRef<SelectInstance>(null);
 
   // Store updated list of selected items
-  function onChange(option: PropsValue<SelectOption>): void {
+  const onChange = useCallback((option: PropsValue<SelectOption>) => {
     onSelect(option);
     setSelected(option);
-  }
+  }, []);
 
-  function onKeyDown(event: KeyboardEvent<HTMLDivElement>): void {
+  const onKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (event.key === 'Tab' && selectReference.current?.state?.focusedOption) {
       event.preventDefault();
@@ -102,12 +102,12 @@ export function Dropdown({
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
       selectReference.current.focusOption(direction);
     }
-  }
+  }, []);
 
-  function onLabelClick(): void {
+  const onLabelClick = useCallback(() => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     selectReference.current?.focus();
-  }
+  }, []);
 
   return (
     <div className='m-form-field m-form-field__select'>
@@ -123,7 +123,7 @@ export function Dropdown({
       />
       <Select
         openMenuOnFocus
-        ref={selectReference}
+        ref={selectReference as Ref<any>}
         tabSelectsValue={false}
         onKeyDown={onKeyDown}
         isMulti={isMulti}
