@@ -89,23 +89,23 @@ export function Dropdown({
   const selectReference = useRef<SelectInstance>(null);
 
   // Store updated list of selected items
-  const onChange = useCallback((option: PropsValue<SelectOption>) => {
-    onSelect(option);
-    setSelected(option);
-  }, []);
+  const onChange = useCallback(
+    (option: PropsValue<SelectOption>) => {
+      onSelect(option);
+      setSelected(option);
+    },
+    [onSelect]
+  );
 
   const onKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    if (event.key === 'Tab' && selectReference.current?.state?.focusedOption) {
+    if (event.key === 'Tab' && selectReference.current?.state.focusedOption) {
       event.preventDefault();
       const direction = event.shiftKey ? 'up' : 'down';
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
       selectReference.current.focusOption(direction);
     }
   }, []);
 
   const onLabelClick = useCallback(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     selectReference.current?.focus();
   }, []);
 
