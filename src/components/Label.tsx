@@ -1,3 +1,5 @@
+import classnames from 'classnames';
+
 interface LabelProperties {
   children: React.ReactNode;
   inline?: boolean;
@@ -15,10 +17,14 @@ export const Label = ({
   ...LabelProperties
 }: JSX.IntrinsicElements['label'] & LabelProperties): React.ReactElement => {
   const styles = [...baseStyles, inline ? '' : 'a-label__heading'];
-  const classes = [className, ...styles].join(' ');
+  const classes = [className, ...styles];
 
   return (
-    <label {...LabelProperties} className={classes} htmlFor={htmlFor}>
+    <label
+      {...LabelProperties}
+      className={classnames(classes)}
+      htmlFor={htmlFor}
+    >
       {children}
     </label>
   );
