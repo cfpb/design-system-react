@@ -47,6 +47,7 @@ export const Expandable: React.FC<ExpandableProperties> = ({
         className={`o-expandable_content ${
           openOnLoad ? 'o-expandable_content__onload-open' : ''
         }`}
+        data-testid='expandable-content'
       >
         {children}
       </div>
