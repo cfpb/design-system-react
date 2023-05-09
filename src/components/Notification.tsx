@@ -5,8 +5,24 @@ import './Notification.css';
 import type { NotificationLinkProperties } from './NotificationLink';
 import { NotificationLink } from './NotificationLink';
 
+export const iconByType: Record<string, { name: string; withBg: boolean }> = {
+  error: { name: 'error', withBg: true },
+  info: { name: 'information', withBg: true },
+  loading: { name: 'updating', withBg: false },
+  success: { name: 'approved', withBg: true },
+  warning: { name: 'warning', withBg: true }
+};
+
+export type NotificationType =
+  | 'error'
+  | 'info'
+  | 'loading'
+  | 'success'
+  | 'warning';
+
 interface NotificationProperties {
-  type?: 'error' | 'info' | 'loading' | 'success' | 'warning';
+  type?: string;
+  // type?: NotificationType;
   message?: React.ReactNode;
   headingLevel?: HeadingLevel;
   children?: React.ReactNode;
@@ -50,13 +66,20 @@ export const Notification = ({
 
   return (
     <div className={classes} data-testid='notification' {...properties}>
-      <Icon {...(iconByType[type] || {})} />
+      <Icon {...iconByType[type]} />
       <div className='m-notification_content'>
         {message ? (
-          <p className={`${headingLevel} m-notification_message`}>{message}</p>
+          <p
+            className={`${headingLevel} m-notification_message`}
+            data-testid='message'
+          >
+            {message}
+          </p>
         ) : null}
         {children ? (
-          <p className='m-notification_explanation'>{children}</p>
+          <p className='m-notification_explanation' data-testid='explaination'>
+            {children}
+          </p>
         ) : null}
         {links && links.length > 0 ? (
           <ul className='m-list m-list__links'>
@@ -68,14 +91,6 @@ export const Notification = ({
       </div>
     </div>
   );
-};
-
-const iconByType = {
-  error: { name: 'error', withBg: true },
-  info: { name: 'information', withBg: true },
-  loading: { name: 'updating', withBg: false },
-  success: { name: 'approved', withBg: true },
-  warning: { name: 'warning', withBg: true }
 };
 
 export default Notification;
