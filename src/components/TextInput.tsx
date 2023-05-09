@@ -7,10 +7,19 @@ type TextInputReference =
   | null
   | undefined;
 
+export type InputType =
+  | 'email'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'url';
+
 interface RequiredTextInputProperties {
   id: string;
   name: string;
-  type: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+  type: InputType;
 }
 
 interface CustomTextInputProperties {
@@ -24,9 +33,9 @@ interface CustomTextInputProperties {
   notificationType?: NotificationType;
 }
 
-type NotificationType = 'success' | 'warning' | 'error' | '';
+type NotificationType = '' | 'error' | 'success' | 'warning';
 
-enum notificationClass {
+enum NotificationClass {
   'success' = '__success',
   'warning' = '__warning',
   'error' = '__error',
@@ -68,18 +77,18 @@ export function TextInput({
   const styles = [...baseStyles, ...widthStyles[width]];
   const classes = [
     className,
-    `a-text-input${notificationClass[notificationType]}`,
+    `a-text-input${NotificationClass[notificationType]}`,
     ...styles
   ].join(' ');
 
   return (
     <div
-      className={`m-form-field m-form-field${notificationClass[notificationType]}`}
+      className={`m-form-field m-form-field${NotificationClass[notificationType]}`}
     >
       <input
         data-testid='textInput'
         className={classes}
-        style={{ borderColor: `${inputBorderColor}` }}
+        style={{ borderColor: inputBorderColor }}
         disabled={isDisabled}
         id={id}
         name={name}
@@ -88,20 +97,20 @@ export function TextInput({
         {...inputProperties}
       />
 
-      {notificationType && (
+      {notificationType ? (
         <div
-          className={`a-form-alert a-form-alert${notificationClass[notificationType]}`}
+          className={`a-form-alert a-form-alert${NotificationClass[notificationType]}`}
           id={id}
           role='alert'
         >
           <Icon
             name={iconType[notificationType]}
             alt={notificationType}
-            withBg={true}
+            withBg
           />
           <span className='a-form-alert_text'>{textNotification}</span>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
