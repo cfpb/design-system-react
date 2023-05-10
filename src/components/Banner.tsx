@@ -60,13 +60,13 @@ export const Banner = ({
 
         <div className='m-global-eyebrow_actions'>
           {links.length > 0 && (
-            <div className={classnames(linkListClasses)}>
+            <ul className={classnames(linkListClasses)}>
               {links.map(link => (
                 <li className='m-list_item' key={link.key}>
                   {link}
                 </li>
               ))}
-            </div>
+            </ul>
           )}
           {phoneNumber ? (
             <span className='m-global-eyebrow_phone'>
