@@ -109,10 +109,12 @@ export function Dropdown({
     selectReference.current?.focus();
   }, []);
 
+  const labelID = `${id}-label`;
+
   return (
     <div className='m-form-field m-form-field__select'>
       {!!label && (
-        <Label htmlFor={id} onClick={onLabelClick}>
+        <Label id={labelID} htmlFor={id} onClick={onLabelClick}>
           {label}
         </Label>
       )}
@@ -122,6 +124,8 @@ export function Dropdown({
         onChange={onChange}
       />
       <Select
+        inputId={id}
+        aria-labelledby={labelID}
         openMenuOnFocus
         ref={selectReference as Ref<any>}
         tabSelectsValue={false}
