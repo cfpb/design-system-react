@@ -13,7 +13,10 @@ export const useIconSvg = (fileName: string) => {
     const importSvg = async () => {
       if (!fileName) return null;
 
-      const importedIcon = await import(`../assets/icons/${fileName}.svg?raw`);
+      const importedIcon = await import(
+        `../../node_modules/@cfpb/cfpb-icons/src/icons/${fileName}.svg?raw`
+      );
+
       if (!importedIcon || !importedIcon.default) return;
 
       setIcon(importedIcon.default);
