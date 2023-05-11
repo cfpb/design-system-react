@@ -12,6 +12,7 @@ import type {
   PropsValue
 } from 'react-select';
 import Select, { createFilter } from 'react-select';
+import type { JSXElement } from '../types/jsxElement';
 import { Icon } from './Icon';
 import { Label } from './Label';
 
@@ -114,7 +115,7 @@ const Pills = ({
   selected,
   isMulti,
   onChange
-}: PillsProperties): JSX.Element | null => {
+}: PillsProperties): JSXElement => {
   if (
     !isMulti ||
     !selected ||
