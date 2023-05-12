@@ -1,5 +1,15 @@
 import type { Meta } from '@storybook/react';
 import { Icon } from './Icon';
+import {
+  communicationIcons,
+  documentIcons,
+  expenseIcons,
+  financialIcons,
+  navigationIcons,
+  socialIcons,
+  statusIcons,
+  webIcons
+} from './iconLists';
 
 const meta: Meta<typeof Icon> = {
   component: Icon,
@@ -18,14 +28,16 @@ Source: https://cfpb.github.io/design-system/foundation/iconography
 
 export default meta;
 
+const biggerIcon = { fontSize: '2em' };
+
 const makeRows = (names: string[]): JSX.Element[] =>
   names.map(
     (name): JSX.Element => (
       <tr key={`${name}`}>
-        <td>
+        <td style={biggerIcon}>
           <Icon name={name} />
         </td>
-        <td>
+        <td style={biggerIcon}>
           <Icon name={name} withBg />
         </td>
         <td>{name}</td>
@@ -46,28 +58,45 @@ const IconTable = ({ children }: { children: JSX.Element[] }): JSX.Element => (
   </table>
 );
 
-export const IconPlain = (): React.ReactElement => <Icon name='approved' />;
-
-export const IconWithBackground = (): React.ReactElement => (
-  <Icon name='approved' withBg />
+export const IconPlain = (): React.ReactElement => (
+  <span style={biggerIcon}>
+    <Icon name='approved' />
+  </span>
 );
 
-export const NavigationIcons = (): React.ReactElement => {
-  const names = ['up', 'right', 'down', 'left'];
-  return <IconTable>{makeRows(names)}</IconTable>;
-};
+export const IconWithBackground = (): React.ReactElement => (
+  <span style={biggerIcon}>
+    <Icon name='approved' withBg />
+  </span>
+);
 
-export const SocialSharingIcons = (): React.ReactElement => {
-  const names = ['youtube'];
-  return <IconTable>{makeRows(names)}</IconTable>;
-};
+export const NavigationIcons = (): React.ReactElement => (
+  <IconTable>{makeRows(navigationIcons)}</IconTable>
+);
 
-export const StatusIcons = (): React.ReactElement => {
-  const names = ['approved', 'error', 'warning', 'update', 'updating'];
-  return <IconTable>{makeRows(names)}</IconTable>;
-};
+export const StatusIcons = (): React.ReactElement => (
+  <IconTable>{makeRows(statusIcons)}</IconTable>
+);
 
-export const WebApplicationIcons = (): React.ReactElement => {
-  const names = ['information', 'external-link'];
-  return <IconTable>{makeRows(names)}</IconTable>;
-};
+export const SocialSharingIcons = (): React.ReactElement => (
+  <IconTable>{makeRows(socialIcons)}</IconTable>
+);
+
+export const CommunicationIcons = (): React.ReactElement => (
+  <IconTable>{makeRows(communicationIcons)}</IconTable>
+);
+
+export const DocumentIcons = (): React.ReactElement => (
+  <IconTable>{makeRows(documentIcons)}</IconTable>
+);
+
+export const FinancialProductsServicesAndConceptIcons =
+  (): React.ReactElement => <IconTable>{makeRows(financialIcons)}</IconTable>;
+
+export const ExpenseIcons = (): React.ReactElement => (
+  <IconTable>{makeRows(expenseIcons)}</IconTable>
+);
+
+export const WebApplicationIcons = (): React.ReactElement => (
+  <IconTable>{makeRows(webIcons)}</IconTable>
+);
