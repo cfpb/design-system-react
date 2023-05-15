@@ -2,18 +2,18 @@ import type React from 'react';
 
 interface RadioProperties {
   id: string;
-  name: string;
-  helperText?: string;
-  className?: string;
-  isDisabled?: boolean;
-  isLarge?: boolean;
   label: string;
+  className?: string;
+  helperText?: string;
   inputRef?:
     | React.RefObject<HTMLInputElement>
     | string
     | ((instance: HTMLInputElement | null) => void)
     | null
     | undefined;
+  isDisabled?: boolean;
+  isLarge?: boolean;
+  name?: string;
 }
 const baseStyles = ['a-radio'];
 const containerBaseStyles = ['m-form-field m-form-field__radio'];
@@ -35,11 +35,11 @@ export const Radio = ({
   ].join(' ');
 
   return (
-    <div className={containerClasses}>
+    <div className={containerClasses} data-testid='radio-container'>
       <input
         id={id}
         type='radio'
-        name={name}
+        name={name ?? id}
         className={classes}
         ref={inputRef}
         disabled={isDisabled}

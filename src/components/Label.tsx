@@ -14,17 +14,13 @@ export const Label = ({
   inline = false,
   htmlFor,
   className,
-  ...LabelProperties
+  ...other
 }: JSX.IntrinsicElements['label'] & LabelProperties): React.ReactElement => {
   const styles = [...baseStyles, inline ? '' : 'a-label__heading'];
   const classes = [className, ...styles];
 
   return (
-    <label
-      {...LabelProperties}
-      className={classnames(classes)}
-      htmlFor={htmlFor}
-    >
+    <label {...other} className={classnames(classes)} htmlFor={htmlFor}>
       {children}
     </label>
   );
