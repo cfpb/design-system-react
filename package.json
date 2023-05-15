@@ -40,7 +40,7 @@
     "validate": "run-p lint test:ci test:e2e:headless",
     "start": "yarn storybook",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o dist-storybook && yarn copy-storybook-assets"
+    "build-storybook": "storybook build -o dist-storybook"
   },
   "dependencies": {
     "@cfpb/cfpb-design-system": "^0.21.13",

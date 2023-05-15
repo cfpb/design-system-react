@@ -11,7 +11,9 @@ import { name } from './package.json';
 export default defineConfig(() => ({
   plugins: [
     eslintPlugin(),
-    svgLoader(),
+    svgLoader({
+      defaultImport: 'url'
+    }),
     react(),
     tsConfigPaths(),
     dts({
