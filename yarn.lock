@@ -1061,6 +1061,11 @@
   resolved "https://registry.yarnpkg.com/@cfpb/cfpb-atomic-component/-/cfpb-atomic-component-0.25.0.tgz#a56b782b166d19ceb805f10c4535a7c4c577ced2"
   integrity sha512-C1ogJX4wa7PBcoy+uyQ5UibYKthC8rTk8XQv7BLvwvq5td+qqgJWtAzu7hjisnejH7tqSWyKJ8QzmBhSG78mhg==
 
+"@cfpb/cfpb-atomic-component@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@cfpb/cfpb-atomic-component/-/cfpb-atomic-component-0.26.0.tgz#14a038c7c10122183cde07c19d79afaac0c8e0ad"
+  integrity sha512-l0P/BWXJFcHuZRPLKLSMM40BPIMi/b7BfkPT5ZXcStK1/BzZJW6qF19963DMTO0a7DwjMU2cThXhNwo57JWadg==
+
 "@cfpb/cfpb-buttons@^0.25.0":
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/@cfpb/cfpb-buttons/-/cfpb-buttons-0.25.0.tgz#5c67094ce26a26ed6fb2dfc400f51924c1b8c98c"
@@ -1073,6 +1078,13 @@
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/@cfpb/cfpb-core/-/cfpb-core-0.25.0.tgz#4b746ead12d6eabf15d8cc78d0e665895e95832e"
   integrity sha512-KkMzm+xQWXJY6pt2XmavDvOL6rENPzT/xIENMTsZN4UIj0NzgD7mmUjc3Al6OpFUc6Ii6DxoodsusdgxgB+ZMA==
+  dependencies:
+    normalize-css "^2.0.0"
+
+"@cfpb/cfpb-core@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@cfpb/cfpb-core/-/cfpb-core-0.26.0.tgz#90b341231b040165df5a14dc30ba994578a14ef1"
+  integrity sha512-DlbsII5EzO81TZQnOWYOIrtiw4/Re7EcB6dSnsaQp8WBERozXELnpaaj64WhJ5L49Eglnt2huYuz7Z4qPymg+g==
   dependencies:
     normalize-css "^2.0.0"
 
@@ -1103,6 +1115,15 @@
     "@cfpb/cfpb-core" "^0.25.0"
     "@cfpb/cfpb-icons" "^0.25.0"
 
+"@cfpb/cfpb-expandables@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@cfpb/cfpb-expandables/-/cfpb-expandables-0.26.0.tgz#232c07dd5d29bc17d893cbf8fd86ed4b6ba683c5"
+  integrity sha512-uD96kO3MwtACxoUhu1kSdnv3y/tFpe4wY7cCyLKAo2fIk2dOrLHKUCGxpABHUj+cj50mVImIFMqYxuYKLomgkg==
+  dependencies:
+    "@cfpb/cfpb-atomic-component" "^0.26.0"
+    "@cfpb/cfpb-core" "^0.26.0"
+    "@cfpb/cfpb-icons" "^0.26.0"
+
 "@cfpb/cfpb-forms@^0.25.0":
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/@cfpb/cfpb-forms/-/cfpb-forms-0.25.0.tgz#7496425c4e9147b617615265b64e9b0574d3eac8"
@@ -1124,6 +1145,11 @@
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/@cfpb/cfpb-icons/-/cfpb-icons-0.25.0.tgz#2e3deaa198fb72a455ae34c23cd364415698956d"
   integrity sha512-H5UH0a7lCcZRAt0y4Jm+N3JaqnpCwiLKPhGC71hdxmRp85IJ3qn/5HZMeflTAf/fnog/6hnGtdDM7GPtsodNBw==
+
+"@cfpb/cfpb-icons@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@cfpb/cfpb-icons/-/cfpb-icons-0.26.0.tgz#7739d7789e107557ba5e4fdb6e7a0b5a6e21cc82"
+  integrity sha512-ZlB2CTjVFW1vmHQEi1VA86HTK53MroWAJr2fA9Dkcfpi73guKTCQd59aIaBVNZ8z954Zxk1CBmRvUL5Ex+lzSg==
 
 "@cfpb/cfpb-layout@^0.25.0":
   version "0.25.0"
