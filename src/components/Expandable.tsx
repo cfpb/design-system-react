@@ -1,4 +1,4 @@
-import CFPB_Expandable from '@cfpb/cfpb-expandables/src/Expandable';
+import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-expandables/src/Expandable';
 import type { ReactNode } from 'react';
 import React, { useEffect } from 'react';
 import { Icon } from './Icon';
