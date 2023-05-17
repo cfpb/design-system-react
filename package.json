@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@cfpb/cfpb-design-system": "^0.25.0",
+    "@cfpb/cfpb-expandables": "^0.26.0",
     "@cfpb/cfpb-forms": "^0.25.0",
     "@tanstack/react-query": "4.13.5",
     "@tanstack/react-table": "^8.8.0",
