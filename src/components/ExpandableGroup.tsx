@@ -1,4 +1,4 @@
-import CFPB_Expandable from '@cfpb/cfpb-expandables/src/Expandable';
+import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-expandables/src/Expandable';
 import type { ReactElement } from 'react';
 import React, { useEffect } from 'react';
 import type { ExpandableProperties } from './Expandable';
@@ -22,7 +22,7 @@ export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     CFPB_Expandable.init(document.querySelector(`#${groupId}`));
-  }, [accordion]);
+  }, [accordion, groupId]);
 
   const childrenWithProperties = React.Children.map(children, child => {
     if (React.isValidElement(child) && accordion) {
