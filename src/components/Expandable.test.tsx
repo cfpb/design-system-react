@@ -6,11 +6,20 @@ import { Expandable } from './Expandable';
 const header = 'Tuesday Rememberance';
 const children = 'It was a warm Spring morning in the midwest...';
 
-const sleep = async (): void => {
-  await new Promise(r => setTimeout(r, 500));
-};
-
 describe('<Expandable />', () => {
+  it('Default', async () => {
+    render(<Expandable header={header}>{children}</Expandable>);
+
+    const heading = screen.getByText(header);
+    expect(heading).toBeInTheDocument();
+
+    const expandable = screen.getByTestId('expandable');
+    expect(expandable).not.toHaveClass('o-expandable__onload-open');
+
+    const content = screen.getByText(children);
+    expect(content).toBeInTheDocument();
+  });
+
   it('Supports openOnLoad', async () => {
     render(
       <Expandable header={header} openOnLoad>
