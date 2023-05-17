@@ -3,25 +3,22 @@ import { useEffect, useState } from 'react';
 /**
  * Dynamically import an SVG as a string
  *
- * @param path URL to SVG file
+ * @param fileName Canonical name of icon
  * @returns string | null
  */
-export const useIconSvg = (fileName: string) => {
-  let [icon, setIcon] = useState(null);
+export const useIconSvg = (fileName: string): string | null => {
+  const [icon, setIcon] = useState<string | null>(null);
 
   useEffect(() => {
-    const importSvg = async () => {
-      if (!fileName) return null;
+    const importSvg = async (): Promise<void> => {
+      const path = `../../node_modules/@cfpb/cfpb-icons/src/icons/${fileName}.svg?raw`;
 
-      const importedIcon = await import(`../assets/icons/${fileName}.svg?raw`);
-      if (!importedIcon || !importedIcon.default) return;
-
+      const importedIcon = await import(path);
       setIcon(importedIcon.default);
     };
 
-    importSvg();
+    importSvg().catch(() => setIcon(`Icon not found: ${fileName}.svg`));
   }, [fileName, setIcon]);
 
-  if (!icon) return null;
   return icon;
 };
