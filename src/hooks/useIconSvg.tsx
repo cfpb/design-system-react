@@ -10,10 +10,14 @@ export const useIconSvg = (fileName: string): string | null => {
   const [icon, setIcon] = useState<string | null>(null);
 
   useEffect(() => {
-    const importSvg = async (): Promise<void> => {
-      const path = `../../node_modules/@cfpb/cfpb-icons/src/icons/${fileName}.svg?raw`;
+    const importSvg = async () => {
+      if (!fileName) return null;
 
-      const importedIcon = await import(path);
+      const importedIcon = await import(
+        `../../node_modules/@cfpb/cfpb-icons/src/icons/${fileName}.svg?raw`
+      );
+
+      if (!importedIcon || !importedIcon.default) return;
       setIcon(importedIcon.default);
     };
 

@@ -4,12 +4,16 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import VitePluginReactRemoveAttributes from 'vite-plugin-react-remove-attributes';
+import svgLoader from 'vite-svg-loader';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
 
 export default defineConfig(() => ({
   plugins: [
     eslintPlugin(),
+    svgLoader({
+      defaultImport: 'url'
+    }),
     react(),
     tsConfigPaths(),
     dts({
