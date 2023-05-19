@@ -22,12 +22,11 @@ type Story = StoryObj<typeof meta>;
 
 const LAST_ELEMENT = -1;
 
-const options = [
+export const options = [
   { value: 'value1', label: 'Option A' },
   { value: 'value2', label: 'Option B' },
   { value: 'value3', label: 'Option C' }
 ];
-
 
 export const DefaultDropdown: Story = {
   args: {
@@ -55,17 +54,36 @@ export const Disabled: Story = {
 }};
 
 export const MultiSelect: Story = {
-  args:{
-  ...DefaultDropdown.args,
-  options: [
-    ...options,
-    {
-      value: 'long',
-      label:
-        'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
-    }
-  ],
-  id: 'multi',
-  isMulti: true,
-  label: 'Multi-select'
-}};
+  args: {
+    ...DefaultDropdown.args,
+    options: [
+      ...options,
+      {
+        value: 'long',
+        label:
+          'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
+      }
+    ],
+    id: 'multi',
+    isMulti: true,
+    label: 'Multi-select'
+  }
+};
+
+export const MultiSelectWithDefaultValue: Story = {
+  args: {
+    ...DefaultDropdown.args,
+    options: [
+      ...options,
+      {
+        value: 'long',
+        label:
+          'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
+      }
+    ],
+    defaultValue: [options[0]],
+    id: 'multi',
+    isMulti: true,
+    label: 'Multi-select'
+  }
+};

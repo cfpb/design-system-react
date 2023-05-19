@@ -1,26 +1,24 @@
-/* eslint-disable unicorn/no-null */
-/* eslint-disable react/no-unused-prop-types */
-
-import type { ReactEventHandler } from 'react';
-import { useState } from 'react';
+import type { KeyboardEvent, Ref } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import type {
   CSSObjectWithLabel,
   ControlProps,
   GroupBase,
   OnChangeValue,
   OptionsOrGroups,
-  PropsValue
+  PropsValue,
+  SelectInstance
 } from 'react-select';
 import Select, { createFilter } from 'react-select';
-import { Icon } from './Icon';
+import { DropdownPills } from './DropdownPills';
 import { Label } from './Label';
 
-interface SelectOption {
-  value: number | string;
+export interface SelectOption {
+  value: string;
   label: string;
-  onSelect?: () => void;
 }
 
+// Better align Select wih CFPB styles
 const extendedSelectStyles = {
   control: (
     base: CSSObjectWithLabel,
@@ -41,108 +39,33 @@ const extendedSelectStyles = {
 };
 
 /**
- * Utility Functions
+ * For multi-select, hides already selected options.
+ *
+ * @param options Available options
+ * @param selected Selected options
+ * @param isMulti Is a multi-select component?
+ * @returns A list of selectable options
  */
-
-function onCloser(
-  index: number,
-  onChange: (result: PropsValue<SelectOption>) => void,
-  selected?: PropsValue<SelectOption>
-): ReactEventHandler<HTMLButtonElement> {
-  return () => {
-    if (!selected || !Array.isArray(selected)) return;
-    const result = selected.filter((_, index_) => index_ !== index);
-    onChange(result);
-  };
-}
-
-const onKeyCloser = (
-  event: React.KeyboardEvent<HTMLButtonElement>,
-  functionClose: ReactEventHandler<HTMLButtonElement>
-): void => {
-  const validKeys = ['Enter', 'Delete', 'Backspace'];
-  if (validKeys.includes(event.key)) functionClose(event);
-};
-
 const filterOptions = (
   options: PropsValue<SelectOption>,
   selected: PropsValue<SelectOption>,
   isMulti: boolean
 ): OptionsOrGroups<SelectOption, GroupBase<SelectOption>> => {
-  if (!selected || !options)
+  if (!selected || !isMulti)
     return options as OptionsOrGroups<SelectOption, GroupBase<SelectOption>>;
 
-  if (isMulti)
-    return (options as SelectOption[]).filter(
-      o => !(selected as SelectOption[]).map(s => s.value).includes(o.value)
-    );
-
-  return options as OptionsOrGroups<SelectOption, GroupBase<SelectOption>>;
-};
-
-/**
- * Supporting Components
- */
-
-interface PillProperties {
-  value: string;
-  onClose: ReactEventHandler<HTMLButtonElement>;
-}
-const Pill = ({ value, onClose }: PillProperties): JSX.Element => (
-  <li className='pill'>
-    <button
-      type='button'
-      onClick={onClose}
-      onKeyDown={(event): void => onKeyCloser(event, onClose)}
-    >
-      <Label htmlFor={value} inline>
-        {value}
-        <div>
-          <Icon name='error' />
-        </div>
-      </Label>
-    </button>
-  </li>
-);
-
-interface PillsProperties {
-  selected: PropsValue<SelectOption>;
-  isMulti: boolean;
-  onChange: (event: PropsValue<SelectOption>) => void;
-}
-const Pills = ({
-  selected,
-  isMulti,
-  onChange
-}: PillsProperties): JSX.Element | null => {
-  if (
-    !isMulti ||
-    !selected ||
-    !Array.isArray(selected) ||
-    selected.length === 0
-  )
-    return null;
-
-  return (
-    <ul className='o-multiselect_choices pills'>
-      {selected.map(({ value, label }: SelectOption, index: number) => (
-        <Pill
-          key={value}
-          value={label}
-          onClose={onCloser(index, onChange, selected)}
-        />
-      ))}
-    </ul>
+  return (options as SelectOption[]).filter(
+    o => !(selected as SelectOption[]).map(s => s.value).includes(o.value)
   );
 };
 
 interface DropdownProperties {
   id: string;
   options: SelectOption[];
+  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
   isMulti?: boolean;
   defaultValue?: PropsValue<SelectOption>;
   label?: string;
-  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
   isDisabled?: boolean;
 }
 
@@ -154,7 +77,7 @@ export function Dropdown({
   isMulti = false,
   options,
   defaultValue,
-  id = 'dropdown',
+  id,
   label = 'Dropdown w/ Multi-select',
   onSelect,
   ...rest
@@ -163,17 +86,50 @@ export function Dropdown({
     defaultValue ?? []
   );
 
+  const selectReference = useRef<SelectInstance>(null);
+
   // Store updated list of selected items
-  const onChange = (option: PropsValue<SelectOption>): void => {
-    onSelect(option);
-    setSelected(option);
-  };
+  const onChange = useCallback(
+    (option: PropsValue<SelectOption>) => {
+      onSelect(option);
+      setSelected(option);
+    },
+    [onSelect]
+  );
+
+  const onKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Tab' && selectReference.current?.state.focusedOption) {
+      event.preventDefault();
+      const direction = event.shiftKey ? 'up' : 'down';
+      selectReference.current.focusOption(direction);
+    }
+  }, []);
+
+  const onLabelClick = useCallback(() => {
+    selectReference.current?.focus();
+  }, []);
+
+  const labelID = `${id}-label`;
 
   return (
     <div className='m-form-field m-form-field__select'>
-      {!!label && <Label htmlFor={id}>{label}</Label>}
-      <Pills selected={selected} isMulti={isMulti} onChange={onChange} />
+      {!!label && (
+        <Label id={labelID} htmlFor={id} onClick={onLabelClick}>
+          {label}
+        </Label>
+      )}
+      <DropdownPills
+        selected={selected}
+        isMulti={isMulti}
+        onChange={onChange}
+      />
       <Select
+        inputId={id}
+        aria-labelledby={labelID}
+        openMenuOnFocus
+        ref={selectReference as Ref<any>}
+        tabSelectsValue={false}
+        onKeyDown={onKeyDown}
         isMulti={isMulti}
         className='o-multiselect'
         value={selected}
