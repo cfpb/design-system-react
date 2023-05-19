@@ -1,12 +1,13 @@
-import type { KeyboardEvent } from 'react';
-import { useRef, useState } from 'react';
+import type { KeyboardEvent, Ref } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import type {
   CSSObjectWithLabel,
   ControlProps,
   GroupBase,
   OnChangeValue,
   OptionsOrGroups,
-  PropsValue
+  PropsValue,
+  SelectInstance
 } from 'react-select';
 import Select, { createFilter } from 'react-select';
 import { DropdownPills } from './DropdownPills';
@@ -56,16 +57,15 @@ const filterOptions = (
   return (options as SelectOption[]).filter(
     o => !(selected as SelectOption[]).map(s => s.value).includes(o.value)
   );
-
 };
 
 interface DropdownProperties {
   id: string;
   options: SelectOption[];
+  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
   isMulti?: boolean;
   defaultValue?: PropsValue<SelectOption>;
   label?: string;
-  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
   isDisabled?: boolean;
 }
 
@@ -77,7 +77,7 @@ export function Dropdown({
   isMulti = false,
   options,
   defaultValue,
-  id = 'dropdown',
+  id,
   label = 'Dropdown w/ Multi-select',
   onSelect,
   ...rest
@@ -86,33 +86,35 @@ export function Dropdown({
     defaultValue ?? []
   );
 
-  const selectReference = useRef(null);
+  const selectReference = useRef<SelectInstance>(null);
 
   // Store updated list of selected items
-  function onChange(option: PropsValue<SelectOption>): void {
-    onSelect(option);
-    setSelected(option);
-  }
+  const onChange = useCallback(
+    (option: PropsValue<SelectOption>) => {
+      onSelect(option);
+      setSelected(option);
+    },
+    [onSelect]
+  );
 
-  function onKeyDown(event: KeyboardEvent<HTMLDivElement>): void {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    if (event.key === 'Tab' && selectReference.current?.state?.focusedOption) {
+  const onKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Tab' && selectReference.current?.state.focusedOption) {
       event.preventDefault();
       const direction = event.shiftKey ? 'up' : 'down';
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
       selectReference.current.focusOption(direction);
     }
-  }
+  }, []);
 
-  function onLabelClick(): void {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+  const onLabelClick = useCallback(() => {
     selectReference.current?.focus();
-  }
+  }, []);
+
+  const labelID = `${id}-label`;
 
   return (
     <div className='m-form-field m-form-field__select'>
       {!!label && (
-        <Label htmlFor={id} onClick={onLabelClick}>
+        <Label id={labelID} htmlFor={id} onClick={onLabelClick}>
           {label}
         </Label>
       )}
@@ -122,8 +124,10 @@ export function Dropdown({
         onChange={onChange}
       />
       <Select
+        inputId={id}
+        aria-labelledby={labelID}
         openMenuOnFocus
-        ref={selectReference}
+        ref={selectReference as Ref<any>}
         tabSelectsValue={false}
         onKeyDown={onKeyDown}
         isMulti={isMulti}

@@ -8,7 +8,7 @@ import { Label } from './Label';
  * Event Handlers
  */
 
-function onCloser(
+export function onCloser(
   index: number,
   onChange: (result: PropsValue<SelectOption>) => void,
   selected?: PropsValue<SelectOption>
@@ -57,9 +57,9 @@ export const DropdownPill = ({
 );
 
 interface DropdownPillsProperties {
-  selected: PropsValue<SelectOption>;
-  isMulti: boolean;
   onChange: (event: PropsValue<SelectOption>) => void;
+  selected: PropsValue<SelectOption>;
+  isMulti?: boolean;
 }
 
 export const DropdownPills = ({

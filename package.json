@@ -28,6 +28,7 @@
     "preview": "vite preview",
     "preview:test": "start-server-and-test preview http://localhost:4173",
     "test": "vitest",
+    "test-report": "open coverage/lcov-report/index.html",
     "test:ci": "vitest run",
     "test:e2e": "yarn preview:test 'cypress open'",
     "test:e2e:headless": "yarn preview:test 'cypress run'",
