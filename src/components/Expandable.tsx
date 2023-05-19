@@ -1,4 +1,5 @@
 import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-expandables/src/Expandable';
+import classnames from 'classnames';
 import type React from 'react';
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
@@ -24,8 +25,17 @@ export const Expandable: React.FC<ExpandableProperties> = ({
     CFPB_Expandable.init();
   }, [inAccordion]);
 
+  const expandableClasses = [
+    'o-expandable',
+    'o-expandable__padded',
+    'o-expandable__background',
+    'o-expandable__border'
+  ];
+
+  if (openOnLoad) expandableClasses.push('o-expandable__onload-open');
+
   return (
-    <div className='o-expandable o-expandable__padded o-expandable__background o-expandable__border'>
+    <div className={classnames(expandableClasses)} data-testid='expandable'>
       <button
         type='button'
         className='o-expandable_header o-expandable_target'
@@ -41,11 +51,7 @@ export const Expandable: React.FC<ExpandableProperties> = ({
           </span>
         </span>
       </button>
-      <div
-        className={`o-expandable_content ${
-          openOnLoad ? 'o-expandable_content__onload-open' : ''
-        }`}
-      >
+      <div className='o-expandable_content' data-testid='expandable-content'>
         {children}
       </div>
     </div>

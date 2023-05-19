@@ -1,1 +1,1 @@
-export const noOp = () => null;
+export const noOp = (): null => null;
