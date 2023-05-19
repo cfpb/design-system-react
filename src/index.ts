@@ -1,8 +1,11 @@
 import '@cfpb/cfpb-design-system/src/cfpb-design-system.less';
 
+export { Banner } from './components/Banner';
+export { LanguageLink } from './components/BannerLanguageLink';
 export { Button } from './components/Button';
 export { Checkbox } from './components/Checkbox';
 export { Dropdown } from './components/Dropdown';
+export { DropdownPill, DropdownPills } from './components/DropdownPills';
 export { Expandable } from './components/Expandable';
 export { ExpandableGroup } from './components/ExpandableGroup';
 export { Icon } from './components/Icon';
@@ -13,4 +16,5 @@ export { Radio } from './components/Radio';
 export { TableComplex } from './components/TableComplex';
 export { TableFilter } from './components/TableFilter';
 export { TableSimple } from './components/TableSimple';
+export { Tagline } from './components/Tagline';
 export { TextInput } from './components/TextInput';
