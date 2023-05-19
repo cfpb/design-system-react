@@ -39,7 +39,7 @@ export const Expandable: React.FC<ExpandableProperties> = ({
       <button
         type='button'
         className='o-expandable_header o-expandable_target'
-        title='Expand content'
+        title={header}
       >
         <h3 className='h4 o-expandable_label'>{header}</h3>
         <span className='o-expandable_link'>
