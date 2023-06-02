@@ -132,3 +132,15 @@
 .nested {
   .grid_nested-col-group();
 }
+
+.grid.center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.grid.center > *:not(.col) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

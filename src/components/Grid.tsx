@@ -13,6 +13,7 @@ interface GridProperties {
   width?: number | undefined;
   children?: JSX.Element | JSX.Element[] | string;
   demo?: boolean;
+  center?: boolean;
 }
 
 interface GridColumnProperties {
@@ -27,10 +28,12 @@ interface SubgridProperties {
 export function Grid({
   children,
   width = FULL_WIDTH,
-  demo
+  demo,
+  center
 }: GridProperties): JSX.Element {
-  const cnames = [`cols-${width}`];
+  const cnames = [`grid cols-${width}`];
   if (demo) cnames.push('demo');
+  if (center) cnames.push('center');
 
   return (
     <div className={classnames(cnames)} role='grid'>
@@ -43,8 +46,10 @@ export function GridColumn({
   width = ONE_COLUMN,
   children
 }: GridColumnProperties): JSX.Element {
+  const cnames = ['col', `col-${width}`];
+
   return (
-    <div className={`col col-${width}`} role='gridcell'>
+    <div className={classnames(cnames)} role='gridcell'>
       {children}
     </div>
   );
