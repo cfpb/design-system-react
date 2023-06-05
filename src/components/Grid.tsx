@@ -27,7 +27,7 @@ interface SubgridProperties {
 
 export function Grid({
   children,
-  width = FULL_WIDTH,
+  width = FULL_WIDTH, // TODO: Do we need to support non-12-column grids?
   demo,
   center
 }: GridProperties): JSX.Element {

@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Grid, GridColumn, GridNested } from './Grid';
 
 const meta: Meta<typeof Grid> = {
@@ -18,136 +18,103 @@ Source: https://cfpb.github.io/design-system/foundation/grid
 
 export default meta;
 
-export const StandardGrid = (): React.ReactElement => (
-  <Grid demo>
-    <section>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-      <GridColumn width={1}>
-        <p>one</p>
-      </GridColumn>
-    </section>
+type Story = StoryObj<typeof meta>;
 
-    <section>
-      <GridColumn width={2}>
-        <p>two</p>
-      </GridColumn>
-      <GridColumn width={2}>
-        <p>two</p>
-      </GridColumn>
-      <GridColumn width={2}>
-        <p>two</p>
-      </GridColumn>
-      <GridColumn width={2}>
-        <p>two</p>
-      </GridColumn>
-      <GridColumn width={2}>
-        <p>two</p>
-      </GridColumn>
-      <GridColumn width={2}>
-        <p>two</p>
-      </GridColumn>
-    </section>
-
-    <section>
-      <GridColumn width={2}>
-        <p>two</p>
-      </GridColumn>
-      <GridColumn width={3}>
-        <p>three</p>
-      </GridColumn>
-      <GridColumn width={2}>
-        <p>two</p>
-      </GridColumn>
-      <GridColumn width={3}>
-        <p>three</p>
-      </GridColumn>
-      <GridColumn width={2}>
-        <p>two</p>
-      </GridColumn>
-    </section>
-
-    <section>
-      <GridColumn width={3}>
-        <p>three</p>
-      </GridColumn>
-      <GridColumn width={3}>
-        <p>three</p>
-      </GridColumn>
-      <GridColumn width={3}>
-        <p>three</p>
-      </GridColumn>
-      <GridColumn width={3}>
-        <p>three</p>
-      </GridColumn>
-    </section>
-
-    <section>
-      <GridColumn width={4}>
-        <p>four</p>
-      </GridColumn>
-      <GridColumn width={4}>
-        <p>four</p>
-      </GridColumn>
-      <GridColumn width={4}>
-        <p>four</p>
-      </GridColumn>
-    </section>
-
-    <section>
-      <GridColumn width={6}>
-        <p>six</p>
-      </GridColumn>
-      <GridColumn width={6}>
-        <p>six</p>
-      </GridColumn>
-    </section>
-
-    <section>
-      <GridColumn width={12}>
-        <p>twelve</p>
-      </GridColumn>
-    </section>
-  </Grid>
-);
-
-export const NestedGrid = (): React.ReactElement => (
-  <Grid demo>
-    <section>
-      <GridColumn width={6}>
-        <p>six</p>
-        <GridNested>
+export const StandardGrid: Story = {
+  args: {
+    demo: true,
+    children: (
+      <>
+        <section>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+          <GridColumn width={1}>
+            <p>one</p>
+          </GridColumn>
+        </section>
+        <section>
+          <GridColumn width={2}>
+            <p>two</p>
+          </GridColumn>
+          <GridColumn width={2}>
+            <p>two</p>
+          </GridColumn>
+          <GridColumn width={2}>
+            <p>two</p>
+          </GridColumn>
+          <GridColumn width={2}>
+            <p>two</p>
+          </GridColumn>
+          <GridColumn width={2}>
+            <p>two</p>
+          </GridColumn>
+          <GridColumn width={2}>
+            <p>two</p>
+          </GridColumn>
+        </section>
+        <section>
+          <GridColumn width={2}>
+            <p>two</p>
+          </GridColumn>
+          <GridColumn width={3}>
+            <p>three</p>
+          </GridColumn>
+          <GridColumn width={2}>
+            <p>two</p>
+          </GridColumn>
+          <GridColumn width={3}>
+            <p>three</p>
+          </GridColumn>
+          <GridColumn width={2}>
+            <p>two</p>
+          </GridColumn>
+        </section>
+        <section>
+          <GridColumn width={3}>
+            <p>three</p>
+          </GridColumn>
+          <GridColumn width={3}>
+            <p>three</p>
+          </GridColumn>
+          <GridColumn width={3}>
+            <p>three</p>
+          </GridColumn>
+          <GridColumn width={3}>
+            <p>three</p>
+          </GridColumn>
+        </section>
+        <section>
           <GridColumn width={4}>
             <p>four</p>
           </GridColumn>
@@ -157,94 +124,141 @@ export const NestedGrid = (): React.ReactElement => (
           <GridColumn width={4}>
             <p>four</p>
           </GridColumn>
-        </GridNested>
-      </GridColumn>
-      <GridColumn width={6}>
-        <p>six</p>
-        <GridNested>
-          <GridColumn width={4}>
-            <p>four</p>
-          </GridColumn>
-          <GridColumn width={4}>
-            <p>four</p>
-          </GridColumn>
-          <GridColumn width={4}>
-            <p>four</p>
-          </GridColumn>
-        </GridNested>
-      </GridColumn>
-    </section>
-    <section>
-      <GridColumn width={3}>
-        <p>three</p>
-        <GridNested>
+        </section>
+        <section>
           <GridColumn width={6}>
             <p>six</p>
           </GridColumn>
           <GridColumn width={6}>
             <p>six</p>
           </GridColumn>
-        </GridNested>
-      </GridColumn>
-      <GridColumn width={6}>
-        <p>six</p>
-        <GridNested>
-          <GridColumn width={4}>
-            <p>four</p>
+        </section>
+        <section>
+          <GridColumn width={12}>
+            <p>twelve</p>
           </GridColumn>
-          <GridColumn width={4}>
-            <p>four</p>
-          </GridColumn>
-          <GridColumn width={4}>
-            <p>four</p>
-          </GridColumn>
-        </GridNested>
-      </GridColumn>
-      <GridColumn width={3}>
-        <p>three</p>
-        <GridNested>
-          <GridColumn width={3}>
-            <p>three</p>
-          </GridColumn>
-          <GridColumn width={3}>
-            <p>three</p>
-          </GridColumn>
-          <GridColumn width={3}>
-            <p>three</p>
-          </GridColumn>
-          <GridColumn width={3}>
-            <p>three</p>
-          </GridColumn>
-        </GridNested>
-      </GridColumn>
-    </section>
-  </Grid>
-);
+        </section>
+      </>
+    )
+  }
+};
 
-export const CenteredGrid = (): React.ReactElement => (
-  <Grid demo center>
-    <section>
-      <GridColumn width={12}>
-        <p>twelve</p>
-      </GridColumn>
-    </section>
-    <section>
-      <GridColumn width={8}>
-        <p>eight</p>
-      </GridColumn>
-    </section>
-    <section>
-      <GridColumn width={4}>
-        <p>four</p>
-      </GridColumn>
-      <GridColumn width={4}>
-        <p>four</p>
-      </GridColumn>
-    </section>
-    <section>
-      <GridColumn width={4}>
-        <p>four</p>
-      </GridColumn>
-    </section>
-  </Grid>
-);
+export const NestedGrid: Story = {
+  args: {
+    demo: true,
+    children: (
+      <>
+        {' '}
+        <section>
+          <GridColumn width={6}>
+            <p>six</p>
+            <GridNested>
+              <GridColumn width={4}>
+                <p>four</p>
+              </GridColumn>
+              <GridColumn width={4}>
+                <p>four</p>
+              </GridColumn>
+              <GridColumn width={4}>
+                <p>four</p>
+              </GridColumn>
+            </GridNested>
+          </GridColumn>
+          <GridColumn width={6}>
+            <p>six</p>
+            <GridNested>
+              <GridColumn width={4}>
+                <p>four</p>
+              </GridColumn>
+              <GridColumn width={4}>
+                <p>four</p>
+              </GridColumn>
+              <GridColumn width={4}>
+                <p>four</p>
+              </GridColumn>
+            </GridNested>
+          </GridColumn>
+        </section>
+        <section>
+          <GridColumn width={3}>
+            <p>three</p>
+            <GridNested>
+              <GridColumn width={6}>
+                <p>six</p>
+              </GridColumn>
+              <GridColumn width={6}>
+                <p>six</p>
+              </GridColumn>
+            </GridNested>
+          </GridColumn>
+          <GridColumn width={6}>
+            <p>six</p>
+            <GridNested>
+              <GridColumn width={4}>
+                <p>four</p>
+              </GridColumn>
+              <GridColumn width={4}>
+                <p>four</p>
+              </GridColumn>
+              <GridColumn width={4}>
+                <p>four</p>
+              </GridColumn>
+            </GridNested>
+          </GridColumn>
+          <GridColumn width={3}>
+            <p>three</p>
+            <GridNested>
+              <GridColumn width={3}>
+                <p>three</p>
+              </GridColumn>
+              <GridColumn width={3}>
+                <p>three</p>
+              </GridColumn>
+              <GridColumn width={3}>
+                <p>three</p>
+              </GridColumn>
+              <GridColumn width={3}>
+                <p>three</p>
+              </GridColumn>
+            </GridNested>
+          </GridColumn>
+        </section>
+      </>
+    )
+  }
+};
+
+export const CenteredGrid: Story = {
+  args: {
+    demo: true,
+    center: true,
+    children: (
+      <>
+        {' '}
+        <section>
+          <GridColumn width={12}>
+            <p>twelve</p>
+          </GridColumn>
+        </section>
+        <section>
+          <GridColumn width={8}>
+            <p>eight</p>
+          </GridColumn>
+        </section>
+        <section>
+          <GridColumn width={4}>
+            <p>four</p>
+          </GridColumn>
+          <GridColumn width={4}>
+            <p>four</p>
+          </GridColumn>
+        </section>
+        <section>
+          <GridColumn width={4}>
+            <p>four</p>
+          </GridColumn>
+        </section>
+      </>
+    )
+  }
+};
