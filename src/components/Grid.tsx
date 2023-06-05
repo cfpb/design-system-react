@@ -33,7 +33,7 @@ export function Grid({
 }: GridProperties): JSX.Element {
   const cnames = [`grid cols-${width}`];
   if (demo) cnames.push('demo');
-  if (center) cnames.push('center');
+  if (center) cnames.push('centered');
 
   return (
     <div className={classnames(cnames)} role='grid'>

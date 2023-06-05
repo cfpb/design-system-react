@@ -16,6 +16,24 @@ describe('Grid', () => {
   });
 });
 
+describe('Grid Centered', () => {
+  it('Renders a wrapper with 12 columns', async () => {
+    render(<Grid center />);
+
+    expect(screen.getByRole('grid').getAttribute('class')).toMatch(
+      `cols-12 centered`
+    );
+  });
+
+  it('Renders a wrapper with 10 columns', async () => {
+    render(<Grid width={10} center />);
+
+    expect(screen.getByRole('grid').getAttribute('class')).toMatch(
+      `cols-10 centered`
+    );
+  });
+});
+
 describe('GridColumn', () => {
   it('Renders a column with width 12', async () => {
     render(<GridColumn width={12} />);

@@ -225,25 +225,25 @@ export const CenteredGrid = (): React.ReactElement => (
   <Grid demo center>
     <section>
       <GridColumn width={12}>
-        <p>12</p>
+        <p>twelve</p>
       </GridColumn>
     </section>
     <section>
       <GridColumn width={8}>
-        <p>8</p>
+        <p>eight</p>
       </GridColumn>
     </section>
     <section>
       <GridColumn width={4}>
-        <p>4</p>
+        <p>four</p>
       </GridColumn>
       <GridColumn width={4}>
-        <p>4</p>
+        <p>four</p>
       </GridColumn>
     </section>
     <section>
       <GridColumn width={4}>
-        <p>4</p>
+        <p>four</p>
       </GridColumn>
     </section>
   </Grid>

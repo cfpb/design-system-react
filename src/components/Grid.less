@@ -1,10 +1,8 @@
 @import (reference) '@cfpb/cfpb-design-system';
 
-.col {
-  // Design System's calculated margin-right leaves odd spacing in our implementation
-  margin-right: 0 !important;
-}
+@oneColumnWidth: 100% / 12;
 
+// Storybook styles to better visualize grid
 .demo .col {
   background-color: @gray-5;
 
@@ -15,132 +13,84 @@
   }
 }
 
-@media (min-width: 720px) {
+.grid .nested {
+  padding-bottom: 15px;
+}
 
-  .col-1,
-  .col-2,
-  .col-3,
-  .col-4,
-  .col-5,
-  .col-6,
-  .col-7,
-  .col-8,
-  .col-9,
-  .col-10,
-  .col-11,
-  .col-12 {
+@media (min-width: 720px) {
+  .grid .col {
+    display: inline-block;
+    box-sizing: border-box;
+    border: solid transparent;
+    border-width: 0 15px;
+    vertical-align: top;
     margin-bottom: 15px;
   }
 
   .col-1 {
-    .grid_column(1);
-
-    &.suffix-11 {
-      .grid_column(1, 12, 0, 11);
-    }
-
-    &.prefix-1.suffix-10 {
-      .grid_column(1, 12, 1, 10);
-    }
-
-    &.prefix-2.suffix-9 {
-      .grid_column(1, 12, 2, 9);
-    }
-
-    &.prefix-3.suffix-8 {
-      .grid_column(1, 12, 3, 8);
-    }
-
-    &.prefix-4.suffix-7 {
-      .grid_column(1, 12, 4, 7);
-    }
-
-    &.prefix-5.suffix-6 {
-      .grid_column(1, 12, 5, 6);
-    }
-
-    &.prefix-6.suffix-5 {
-      .grid_column(1, 12, 6, 5);
-    }
-
-    &.prefix-7.suffix-4 {
-      .grid_column(1, 12, 7, 4);
-    }
-
-    &.prefix-8.suffix-3 {
-      .grid_column(1, 12, 8, 3);
-    }
-
-    &.prefix-9.suffix-2 {
-      .grid_column(1, 12, 9, 2);
-    }
-
-    &.prefix-10.suffix-1 {
-      .grid_column(1, 12, 10, 1);
-    }
-
-    &.prefix-11 {
-      .grid_column(1, 12, 11, 0);
-    }
+    width: calc(1 * @oneColumnWidth);
   }
 
   .col-2 {
-    .grid_column(2);
+    width: calc(2 * @oneColumnWidth);
   }
 
   .col-3 {
-    .grid_column(3);
+    width: calc(3 * @oneColumnWidth);
   }
 
   .col-4 {
-    .grid_column(4);
+    width: calc(4 * @oneColumnWidth);
   }
 
   .col-5 {
-    .grid_column(5);
+    width: calc(5 * @oneColumnWidth);
   }
 
   .col-6 {
-    .grid_column(6);
+    width: calc(6 * @oneColumnWidth);
   }
 
   .col-7 {
-    .grid_column(7);
+    width: calc(7 * @oneColumnWidth);
   }
 
   .col-8 {
-    .grid_column(8);
+    width: calc(8 * @oneColumnWidth);
   }
 
   .col-9 {
-    .grid_column(9);
+    width: calc(9 * @oneColumnWidth);
   }
 
   .col-10 {
-    .grid_column(10);
+    width: calc(10 * @oneColumnWidth);
   }
 
   .col-11 {
-    .grid_column(11);
+    width: calc(11 * @oneColumnWidth);
   }
 
   .col-12 {
-    .grid_column(12);
+    width: calc(12 * @oneColumnWidth);
   }
-}
 
-.nested {
-  .grid_nested-col-group();
-}
+  // Centered Grid
+  .grid.centered {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-.grid.center {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+  .grid.centered > *:not(.col) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 
-.grid.center > *:not(.col) {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  // Nested Subgrid
+  .grid .nested {
+    .grid_nested-col-group();
+    padding-bottom: 0;
+  }
 }
