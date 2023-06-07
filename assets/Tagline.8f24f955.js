@@ -1,2 +1,0 @@
-import{c as i}from"./index.cfa9e344.js";import{a as n,j as s}from"./jsx-runtime.35eca381.js";const l=({isLarge:a=!1,children:r})=>{const e=["a-tagline"];return a&&e.push("a-tagline__large"),n("div",{className:i(e),children:[s("span",{className:"u-usa-flag"}),s("div",{className:"a-tagline_text",children:r})]})};try{l.displayName="Tagline",l.__docgenInfo={description:"",displayName:"Tagline",props:{isLarge:{defaultValue:{value:"false"},description:"",name:"isLarge",required:!1,type:{name:"boolean"}}}}}catch{}export{l as T};
-//# sourceMappingURL=Tagline.8f24f955.js.map
