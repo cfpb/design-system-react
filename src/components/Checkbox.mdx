@@ -1,0 +1,197 @@
+import { Meta, Canvas, Source } from '@storybook/blocks';
+
+import * as CheckboxStories from './Checkbox.stories';
+import { Checkbox } from './Checkbox';
+import LinkTo from '@storybook/addon-links/react';
+
+<Meta of={CheckboxStories} name='Overview' />
+
+# Checkbox
+
+Use checkboxes when the user can select more than one option from a list. Make clear with helper text that this is the case. Use [radio buttons](?path=/story/components-radio--default-radio) when the user can choose only one option out of a list.
+
+<br />
+
+## Standard checkboxes
+
+<Canvas
+  of={CheckboxStories.DefaultCheckbox}
+  withToolbar
+  additionalActions={[
+    {
+      title: (
+        <LinkTo
+          kind='Components/checkbox'
+          story='Default checkbox'
+          style={{ color: '#2E3438' }}
+        >
+          View details
+        </LinkTo>
+      )
+    }
+  ]}
+/>
+
+<Canvas
+  of={CheckboxStories.CheckboxWithHelper}
+  withToolbar
+  additionalActions={[
+    {
+      title: (
+        <LinkTo
+          kind='Components/checkbox'
+          story='Checkbox With Helper'
+          style={{ color: '#2E3438' }}
+        >
+          View details
+        </LinkTo>
+      )
+    }
+  ]}
+/>
+
+### Standard checkbox states
+
+<div className='u-mt20'>
+  <Checkbox id='checkbox' label='Label' name='checkbox' />
+  <br />
+  <Checkbox
+    id='checkbox-hover'
+    label='Hover'
+    name='checkbox-hover'
+    className='hover'
+  />
+  <br />
+  <Checkbox
+    id='checkbox-focus'
+    label='Focus'
+    name='checkbox-focus'
+    className='focus'
+  />
+  <br />
+  <Checkbox
+    id='checkbox-selected'
+    label='Selected'
+    name='checkbox-selected'
+    defaultChecked='true'
+  />
+  <br />
+  <Checkbox
+    id='checkbox-disabled'
+    label='Disabled'
+    name='checkbox-disabled'
+    isDisabled='true'
+  />
+</div>
+
+<br />
+
+## Large target area checkboxes
+
+For better usability, consider using checkboxes with large target areas. These are easier to interact with (especially on smaller screens) and harder to miss. They are especially desirable when the form will have heavy mobile usage. Given the amount of real estate they occupy, they're probably not suited for all use cases; for example, they may not work well for terms of service agreement checkboxes.
+
+<Canvas
+  of={CheckboxStories.LargeCheckbox}
+  withToolbar
+  additionalActions={[
+    {
+      title: (
+        <LinkTo
+          kind='Components/checkbox'
+          story='Large Checkbox'
+          style={{ color: '#2E3438' }}
+        >
+          View details
+        </LinkTo>
+      )
+    }
+  ]}
+/>
+<Canvas
+  of={CheckboxStories.LargeCheckboxWithHelper}
+  withToolbar
+  additionalActions={[
+    {
+      title: (
+        <LinkTo
+          kind='Components/checkbox'
+          story='Large Checkbox With Helper'
+          style={{ color: '#2E3438' }}
+        >
+          View details
+        </LinkTo>
+      )
+    }
+  ]}
+/>
+
+### Large checkbox states
+
+<div className='u-mt20'>
+  <Checkbox
+    id='large-checkbox'
+    label='Label'
+    name='large-checkbox'
+    isLarge='true'
+  />
+  <br />
+  <Checkbox
+    id='large-checkbox-hover'
+    label='Hover'
+    name='large-checkbox-hover'
+    className='hover'
+    isLarge='true'
+  />
+  <br />
+  <Checkbox
+    id='large-checkbox-focus'
+    label='Focus'
+    name='large-checkbox-focus'
+    className='focus'
+    isLarge='true'
+  />
+  <br />
+  <Checkbox
+    id='large-checkbox-selected'
+    label='Selected'
+    name='large-checkbox-selected'
+    defaultChecked='true'
+    isLarge='true'
+  />
+  <br />
+  <Checkbox
+    id='large-checkbox-disabled'
+    label='Disabled'
+    name='large-checkbox-disabled'
+    isDisabled='true'
+    isLarge='true'
+  />
+</div>
+
+<br />
+
+## Guidelines
+
+<br />
+
+### Content guidelines
+
+- Label text should be concise
+
+### Stylistic guidelines
+
+- Text spacing should inform spacing of checkboxes and checkbox should be vertically centered with the first line of text in an option.
+
+<br />
+
+## Behavior
+
+Selecting the checkbox or touching the label text next to it should toggle the state of the checkbox on and off.
+
+To optimize usability, consider using checkboxes with large target areas. If these won't fit into the design and the default style shown below is used, make sure the target area is at least 45 x 45px and that it includes the text label.
+
+<br />
+
+## Accessibility
+
+To optimize screen reader accessibility, lay out checkboxes vertically rather than horizontally.
