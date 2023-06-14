@@ -14,7 +14,12 @@
   }
 }
 
-.grid .nested {
+.grid {
+  max-width: 1230px;
+  margin: 0 auto;
+}
+
+.grid .grid {
   padding-bottom: 15px;
 }
 
@@ -83,15 +88,14 @@
     flex-direction: column;
   }
 
-  .grid.centered > *:not(.col) {
+  .grid.centered .row {
     display: flex;
     justify-content: center;
     width: 100%;
   }
 
   // Nested Subgrid
-  .grid .nested {
-    .grid_nested-col-group();
+  .grid .grid {
     padding-bottom: 0;
   }
 }

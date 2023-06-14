@@ -1,16 +1,17 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { Grid, GridColumn, GridNested } from './Grid';
+import { GridColumn } from './GridColumn';
+import { GridWrapper } from './GridWrapper';
 
 describe('Grid', () => {
   it('Renders a wrapper with 12 columns', async () => {
-    render(<Grid />);
+    render(<GridWrapper />);
 
     expect(screen.getByRole('grid').getAttribute('class')).toMatch(`cols-12`);
   });
 
   it('Renders a wrapper with 10 columns', async () => {
-    render(<Grid width={10} />);
+    render(<GridWrapper width={10} />);
 
     expect(screen.getByRole('grid').getAttribute('class')).toMatch(`cols-10`);
   });
@@ -18,7 +19,7 @@ describe('Grid', () => {
 
 describe('Grid Centered', () => {
   it('Renders a wrapper with 12 columns', async () => {
-    render(<Grid center />);
+    render(<GridWrapper center />);
 
     expect(screen.getByRole('grid').getAttribute('class')).toMatch(
       `cols-12 centered`
@@ -26,7 +27,7 @@ describe('Grid Centered', () => {
   });
 
   it('Renders a wrapper with 10 columns', async () => {
-    render(<Grid width={10} center />);
+    render(<GridWrapper width={10} center />);
 
     expect(screen.getByRole('grid').getAttribute('class')).toMatch(
       `cols-10 centered`
@@ -49,27 +50,5 @@ describe('GridColumn', () => {
     expect(screen.getByRole('gridcell').getAttribute('class')).toMatch(
       `col col-1`
     );
-  });
-});
-
-describe('GridNested', () => {
-  it('Renders a column with width 12 in a nested wrapper', async () => {
-    render(
-      <GridNested>
-        <GridColumn width={12} />
-      </GridNested>
-    );
-
-    const grid = screen.getByRole('grid');
-    expect(grid.getAttribute('class')).toMatch(`nested`);
-    expect(screen.getByRole('gridcell').getAttribute('class')).toMatch(
-      `col col-12`
-    );
-  });
-
-  it('Renders a column with width 1', async () => {
-    render(<GridNested>Content</GridNested>);
-
-    expect(screen.getByRole('grid').getAttribute('class')).toMatch(`nested`);
   });
 });
