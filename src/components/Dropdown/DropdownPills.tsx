@@ -1,8 +1,8 @@
 import type { ReactEventHandler } from 'react';
 import type { PropsValue } from 'react-select';
-import type { SelectOption } from '.';
-import { Icon } from '../Icon';
-import { Label } from '../Label';
+import { Icon } from '../Icon/Icon';
+import { Label } from '../Label/Label';
+import type { SelectOption } from './Dropdown';
 
 /**
  * Event Handlers

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
-import { Notification } from '.';
+import { Notification } from './Notification';
 
 const testType = (type: string) => async (): Promise<void> => {
   render(<Notification type={type} />);

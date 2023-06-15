@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import type { EventHandler, SyntheticEvent } from 'react';
 import { useEffect, useState } from 'react';
 import { noOp } from '../../utils/noOp';
-import { Icon } from '../Icon';
-import { Label } from '../Label';
+import { Icon } from '../Icon/Icon';
+import { Label } from '../Label/Label';
 import { FIRST_PAGE } from '../Table/TableComplexUtils';
 
 export interface PaginationProperties {

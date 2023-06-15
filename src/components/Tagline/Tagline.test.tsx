@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { Tagline } from '.';
+import { Tagline } from './Tagline';
 
 describe('<Tagline />', () => {
   it('renders tagline text correctly', () => {

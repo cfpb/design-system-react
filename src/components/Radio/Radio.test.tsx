@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Radio } from '.';
+import { Radio } from './Radio';
 
 const buildProperties = (
   additive: number | string

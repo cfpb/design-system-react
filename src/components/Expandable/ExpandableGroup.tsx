@@ -1,7 +1,7 @@
 import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-expandables/src/Expandable';
 import type { ReactElement } from 'react';
 import React, { useEffect } from 'react';
-import type { ExpandableProperties } from '.';
+import type { ExpandableProperties } from './Expandable';
 
 export interface ExpandableGroupProperties {
   groupId: string;

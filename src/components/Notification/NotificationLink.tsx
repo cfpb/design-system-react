@@ -1,4 +1,4 @@
-import { Icon } from '../Icon';
+import { Icon } from '../Icon/Icon';
 
 export interface NotificationLinkProperties {
   href: string;

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Expandable } from '.';
+import { Expandable } from './Expandable';
 
 const header = 'Tuesday Rememberance';
 const children = 'It was a warm Spring morning in the midwest...';

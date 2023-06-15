@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { HeadingLevel } from '../../types/headingLevel';
-import { Icon } from '../Icon';
+import { Icon } from '../Icon/Icon';
 import './Notification.css';
 import type { NotificationLinkProperties } from './NotificationLink';
 import { NotificationLink } from './NotificationLink';

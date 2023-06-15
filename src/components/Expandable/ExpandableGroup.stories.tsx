@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Expandable } from '.';
+import { Expandable } from './Expandable';
 import { ExpandableGroup } from './ExpandableGroup';
 
 const meta: Meta<typeof ExpandableGroup> = {

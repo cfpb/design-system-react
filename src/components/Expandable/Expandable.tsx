@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import type React from 'react';
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
-import { Icon } from '../Icon';
+import { Icon } from '../Icon/Icon';
 
 export interface ExpandableProperties {
   header: string;

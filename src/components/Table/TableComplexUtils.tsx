@@ -1,6 +1,6 @@
 import type { Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import type { PaginationProperties } from '../Pagination';
+import type { PaginationProperties } from '../Pagination/Pagination';
 import { TableFilter as Filter } from './TableFilter';
 
 export const FIRST_PAGE = 1;

@@ -6,7 +6,7 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import classnames from 'classnames';
-import { Pagination } from '../Pagination';
+import { Pagination } from '../Pagination/Pagination';
 import './Table.less';
 import {
   buildHeaders,

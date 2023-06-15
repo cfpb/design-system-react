@@ -10,7 +10,7 @@ import type {
   SelectInstance
 } from 'react-select';
 import Select, { createFilter } from 'react-select';
-import { Label } from '../Label';
+import { Label } from '../Label/Label';
 import { DropdownPills } from './DropdownPills';
 
 export interface SelectOption {

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import type { JSXElement } from '../../types/jsxElement';
-import { Tagline } from '../Tagline';
+import { Tagline } from '../Tagline/Tagline';
 import './Banner.less';
 
 interface BannerProperties {

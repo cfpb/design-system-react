@@ -1,4 +1,4 @@
-import { Icon } from '../Icon';
+import { Icon } from '../Icon/Icon';
 
 type TextInputReference =
   | React.RefObject<HTMLInputElement>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ColumnDef } from '@tanstack/react-table';
-import { TableComplex } from '.';
+import { TableComplex } from './Table';
 import type { TableComplexOptions } from './TableComplex';
 
 const ROW_COUNT_25 = 25;

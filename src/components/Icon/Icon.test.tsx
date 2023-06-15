@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { Icon } from '.';
+import { Icon } from './Icon';
 
 describe('Icon', () => {
   it('Renders a plain icon', async () => {
