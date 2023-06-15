@@ -1,5 +1,5 @@
 import CFPBLogo from '../../assets/images/cfpb-logo.png';
-import { Link } from '../Link/Link';
+import Link from '../Link/Link';
 import './navbar.less';
 
 export function CfpbLogo(): JSX.Element {
