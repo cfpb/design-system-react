@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import { Header } from '../components/Header'
-import './page.css'
+import { Header } from '../components/Header/Header';
+import './page.css';
 
 interface User {
-	name: string
+  name: string;
 }
 
 export const Page: React.VFC = () => {
-	const [user, setUser] = React.useState<User | undefined | null>();
+  const [user, setUser] = React.useState<User | undefined | null>();
 
-	return (
+  return (
     <article>
       <Header
         user={user}
@@ -88,4 +88,4 @@ export const Page: React.VFC = () => {
       </section>
     </article>
   );
-}
+};

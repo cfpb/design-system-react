@@ -1,0 +1,23 @@
+/* stylelint-disable selector-class-pattern */
+
+/* Adjustments for the workaround (wrapper) to get SVG icons working */
+.m-notification .cf-icon-svg-wrapper {
+  position: absolute;
+}
+
+.m-notification:not(.m-notification__error, .m-notification__success, .m-notification__warning) .cf-icon-svg {
+  fill: #5a5d61;
+}
+
+.cf-icon-svg-wrapper+.m-notification_content {
+  padding-left: 1.5625em;
+}
+
+/* Icons in a Notification's list */
+.m-notification .m-list .cf-icon-svg-wrapper {
+  position: relative;
+}
+
+.m-notification .m-list .cf-icon-svg-wrapper .cf-icon-svg {
+  fill: currentcolor;
+}
