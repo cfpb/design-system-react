@@ -1,4 +1,4 @@
-import { Banner } from '../Banner';
+import { Banner } from '../Banner/Banner';
 import type { User } from '../Navbar/Navbar';
 import Navbar from '../Navbar/Navbar';
 import './header.less';
