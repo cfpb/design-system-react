@@ -50,7 +50,10 @@ export const TableSimple = ({
 
   if (isScrollableHorizontal) {
     return (
-      <div className='o-table-wrapper__scrolling'>
+      <div
+        data-testid='table-simple-scrollable'
+        className='o-table-wrapper__scrolling'
+      >
         <table className={classNames(tableCnames)}>
           {caption ? <caption>{caption}</caption> : null}
           {buildColumnHeaders(columns)}
@@ -61,7 +64,7 @@ export const TableSimple = ({
   }
 
   return (
-    <table className={classNames(tableCnames)}>
+    <table data-testid='table-simple' className={classNames(tableCnames)}>
       {caption ? <caption>{caption}</caption> : null}
       {buildColumnHeaders(columns)}
       {buildRows(rows, columns)}
