@@ -88,3 +88,22 @@ export const MultiSelectWithDefaultValue: Story = {
     label: 'Multi-select'
   }
 };
+
+export const MultiSelectWithPillsAlignedBottom: Story = {
+  args: {
+    ...DefaultDropdown.args,
+    options: [
+      ...MockOptions,
+      {
+        value: 'long',
+        label:
+          'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
+      }
+    ],
+    defaultValue: [MockOptions[0]],
+    id: 'multi',
+    isMulti: true,
+    label: 'Multi-select',
+    pillAlign: 'bottom'
+  }
+};
