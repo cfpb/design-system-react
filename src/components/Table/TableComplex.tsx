@@ -77,7 +77,7 @@ export const TableComplex = ({
   if (isStriped) tableCnames.push('o-table__striped');
 
   return (
-    <div className='o-table-wrapper__scrolling'>
+    <div data-testId='table-complex' className='o-table-wrapper__scrolling'>
       <table className={classnames(tableCnames)}>
         {!!caption && <caption>{caption}</caption>}
         {buildHeaders(table, isFilterable)}
