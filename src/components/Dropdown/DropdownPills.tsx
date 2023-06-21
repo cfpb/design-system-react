@@ -81,8 +81,8 @@ export const DropdownPills = ({
 
   return (
     <ul
-      className={`o-multiselect_choices pills${
-        pillAlign === 'bottom' ? ' bottom' : ''
+      className={`o-multiselect_choices${
+        pillAlign === 'bottom' ? ' o-multiselect_choices__bottom' : ''
       }`}
     >
       {selected.map(({ value, label }: SelectOption, index: number) => (
