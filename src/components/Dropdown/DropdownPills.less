@@ -1,11 +1,12 @@
-.o-multiselect_choices.pills.bottom {
-  li:first-child {
-    margin-top: 0.625rem;
-    margin-bottom: 0;
-  }
+@import (reference) '@cfpb/cfpb-design-system';
 
+.o-multiselect_choices__bottom {
   li {
-    margin-top: 0.5rem;
+    margin-top: unit((8px / @base-font-size-px), em);
     margin-bottom: 0;
+
+    &:first-child {
+      margin-top: unit((10px / @base-font-size-px), em);
+    }
   }
 }
