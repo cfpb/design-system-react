@@ -1,7 +1,6 @@
 import type { HeadingLevel } from '../../types/headingLevel';
 import List from '../List/List';
 import ListItem from '../List/ListItem';
-import './Well.less';
 
 interface WellProperties {
   heading: string;
