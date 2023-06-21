@@ -67,6 +67,7 @@ interface DropdownProperties {
   defaultValue?: PropsValue<SelectOption>;
   label?: string;
   isDisabled?: boolean;
+  pillAlign?: 'top' | 'bottom';
 }
 
 /**
@@ -80,6 +81,7 @@ export function Dropdown({
   id,
   label = 'Dropdown w/ Multi-select',
   onSelect,
+  pillAlign = 'top',
   ...rest
 }: DropdownProperties): JSX.Element {
   const [selected, setSelected] = useState<PropsValue<SelectOption>>(
@@ -118,11 +120,13 @@ export function Dropdown({
           {label}
         </Label>
       )}
-      <DropdownPills
-        selected={selected}
-        isMulti={isMulti}
-        onChange={onChange}
-      />
+      {pillAlign === 'top' && (
+        <DropdownPills
+          selected={selected}
+          isMulti={isMulti}
+          onChange={onChange}
+        />
+      )}
       <Select
         inputId={id}
         aria-labelledby={labelID}
@@ -141,6 +145,14 @@ export function Dropdown({
         styles={extendedSelectStyles}
         {...rest}
       />
+      {pillAlign === 'bottom' && (
+        <DropdownPills
+          selected={selected}
+          isMulti={isMulti}
+          onChange={onChange}
+          pillAlign='bottom'
+        />
+      )}
     </div>
   );
 }

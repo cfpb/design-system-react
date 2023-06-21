@@ -4,6 +4,8 @@ import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
 import type { SelectOption } from './Dropdown';
 
+import './DropdownPills.less';
+
 /**
  * Event Handlers
  */
@@ -60,12 +62,14 @@ interface DropdownPillsProperties {
   onChange: (event: PropsValue<SelectOption>) => void;
   selected: PropsValue<SelectOption>;
   isMulti?: boolean;
+  pillAlign?: 'top' | 'bottom';
 }
 
 export const DropdownPills = ({
   selected,
   isMulti,
-  onChange
+  onChange,
+  pillAlign = 'top'
 }: DropdownPillsProperties): JSX.Element | null => {
   if (
     !isMulti ||
@@ -76,7 +80,11 @@ export const DropdownPills = ({
     return null;
 
   return (
-    <ul className='o-multiselect_choices pills'>
+    <ul
+      className={`o-multiselect_choices${
+        pillAlign === 'bottom' ? ' o-multiselect_choices__bottom' : ''
+      }`}
+    >
       {selected.map(({ value, label }: SelectOption, index: number) => (
         <DropdownPill
           key={value}
