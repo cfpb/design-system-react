@@ -1,23 +1,25 @@
 import classnames from 'classnames';
 
 interface ListProperties {
+  children: JSX.Element | JSX.Element[];
+  className?: string;
   isHorizontal?: boolean;
   isLinks?: boolean;
   isOrdered?: boolean;
-  isUnstyled?: boolean;
   isSpaced?: boolean;
-  children: JSX.Element | JSX.Element[];
+  isUnstyled?: boolean;
 }
 
 export default function List({
   children,
+  className,
   isHorizontal,
   isLinks = false,
   isOrdered,
   isSpaced,
   isUnstyled
 }: ListProperties): JSX.Element {
-  const cnames = ['m-list'];
+  const cnames = [className, 'm-list'];
   if (isHorizontal) cnames.push('m-list__horizontal');
   if (isLinks) cnames.push('m-list__links');
   if (isSpaced) cnames.push('m-list__spaced');
