@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MockOptions } from './Dropdown.stories';
 import { DropdownPill, DropdownPills, onCloser } from './DropdownPills';
+import { MockOptions } from './utils';
 
 describe('DropdownPill', () => {
   // Never happens due to checks in DropdownPills but this is for full test coverage

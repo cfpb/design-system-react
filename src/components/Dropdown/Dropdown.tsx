@@ -1,5 +1,5 @@
 import type { KeyboardEvent, Ref } from 'react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type {
   CSSObjectWithLabel,
   ControlProps,
@@ -60,33 +60,42 @@ const filterOptions = (
 };
 
 interface DropdownProperties {
-  id: string;
-  options: SelectOption[];
-  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
-  isMulti?: boolean;
   defaultValue?: PropsValue<SelectOption>;
-  label?: string;
+  id: string;
   isDisabled?: boolean;
-  pillAlign?: 'top' | 'bottom';
+  isMulti?: boolean;
+  label?: string;
+  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
+  options: SelectOption[];
+  pillAlign?: 'bottom' | 'top';
+  value?: PropsValue<SelectOption>;
 }
 
 /**
- * A dropdown input component that supports multi-select
+ * A dropdown input component that supports multi-select.
+ *
+ * Passing the `value` prop makes the dropdown a controlled component.
  * @returns JSX.Element
  */
 export function Dropdown({
-  isMulti = false,
-  options,
   defaultValue,
   id,
+  isMulti = false,
   label = 'Dropdown w/ Multi-select',
   onSelect,
+  options,
   pillAlign = 'top',
+  value,
   ...rest
 }: DropdownProperties): JSX.Element {
   const [selected, setSelected] = useState<PropsValue<SelectOption>>(
     defaultValue ?? []
   );
+
+  useEffect(() => {
+    // Support acting as controlled component
+    if (value) setSelected(value);
+  }, [value]);
 
   const selectReference = useRef<SelectInstance>(null);
 
@@ -136,7 +145,7 @@ export function Dropdown({
         onKeyDown={onKeyDown}
         isMulti={isMulti}
         className='o-multiselect'
-        value={selected}
+        value={value ?? selected}
         options={filterOptions(options, selected, isMulti)}
         onChange={onChange}
         filterOption={createFilter({ ignoreAccents: false })}

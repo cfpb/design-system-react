@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-handler-names */
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
+import { Button } from '../Button/Button';
 import { Dropdown } from './Dropdown';
+import { MockOptions } from './utils';
 
 const meta: Meta<typeof Dropdown> = {
   component: Dropdown,
@@ -21,12 +25,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const LAST_ELEMENT = -1;
-
-export const MockOptions = [
-  { value: 'value1', label: 'Option A' },
-  { value: 'value2', label: 'Option B' },
-  { value: 'value3', label: 'Option C' }
-];
 
 export const DefaultDropdown: Story = {
   args: {
@@ -90,6 +88,50 @@ export const MultiSelectWithDefaultValue: Story = {
 };
 
 export const MultiSelectWithPillsAlignedBottom: Story = {
+  args: {
+    ...DefaultDropdown.args,
+    options: [
+      ...MockOptions,
+      {
+        value: 'long',
+        label:
+          'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
+      }
+    ],
+    defaultValue: [MockOptions[0]],
+    id: 'multi',
+    isMulti: true,
+    label: 'Multi-select',
+    pillAlign: 'bottom'
+  }
+};
+
+const ControlledDropdown = arguments_ => {
+  const [selected, setSelected] = useState([arguments_.options[0]]);
+  return (
+    <>
+      <div className='m-btn-group u-mb30'>
+        <Button
+          label='Add all options'
+          onClick={(): void => setSelected([...arguments_.options])}
+        />
+        <Button
+          label='Clear all options'
+          appearance='warning'
+          onClick={(): void => setSelected([])}
+        />
+      </div>
+      <Dropdown
+        {...arguments_}
+        onSelect={(newValue): void => setSelected(newValue)}
+        value={selected}
+      />
+    </>
+  );
+};
+
+export const AsAControlledComponent: Story = {
+  render: arguments_ => <ControlledDropdown {...arguments_} />,
   args: {
     ...DefaultDropdown.args,
     options: [
