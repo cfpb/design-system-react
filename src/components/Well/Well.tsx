@@ -4,9 +4,9 @@ import ListItem from '../List/ListItem';
 
 interface WellProperties {
   heading: string;
-  text: JSX.Element | string;
-  links?: JSX.Element[];
   headingLevel?: HeadingLevel;
+  links?: JSX.Element[];
+  text: JSX.Element | string;
 }
 
 export default function Well({
