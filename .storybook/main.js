@@ -7,6 +7,10 @@ module.exports = {
     '@storybook/addon-interactions',
     '@storybook/addon-a11y'
   ],
+  docs: {
+    autodocs: true,
+    defaultName: 'Overview'
+  },
   framework: {
     name: '@storybook/react-vite',
     options: {}
