@@ -1,0 +1,37 @@
+@import (reference) url('@cfpb/cfpb-core/src/brand-colors.less');
+
+.m-hero {
+  --m-hero-background-color: @gray-30;
+  background-color: @gray-30;
+}
+
+/*
+  👇 Workarounds for responsiveness 👇 
+
+  It's really hard to tell from the DS site how these images *should be* behaving because that page uses some ID based adjustments to show/hide alternate images in certain cases. I've assumed that the image should always be visible and adjusted the styles below accordingly.
+
+  https://cfpb.github.io/design-system/patterns/heroes
+*/
+.m-hero__jumbo,
+.m-hero__50-50 {
+  .m-hero_wrapper {
+    background-size: 0px 0px;
+  }
+}
+
+@media screen and (min-width: 37.5625em) {
+  .m-hero__jumbo {
+    .m-hero_image {
+      display: none;
+    }
+    .m-hero_wrapper {
+      background-size: cover;
+    }
+  }
+  
+  .m-hero__50-50 {
+    .m-hero_image {
+      display: block;
+    }
+  }
+}
