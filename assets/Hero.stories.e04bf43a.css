@@ -1,0 +1,1 @@
+.m-hero{--m-hero-background-color: #c3c4c4;background-color:#c3c4c4}.m-hero__jumbo .m-hero_wrapper,.m-hero__50-50 .m-hero_wrapper{background-size:0px 0px}@media screen and (min-width: 37.5625em){.m-hero__jumbo .m-hero_image{display:none}.m-hero__jumbo .m-hero_wrapper{background-size:cover}.m-hero__50-50 .m-hero_image{display:block}}
