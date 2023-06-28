@@ -21,6 +21,10 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
    * Optional click handler
    */
   onClick?: () => void;
+  /**
+   * Button should be styled as a link?
+   */
+  asLink?: boolean;
 }
 
 const baseStyles = ['a-btn'];
@@ -42,6 +46,7 @@ const sizeStyles = {
  */
 export function Button({
   appearance = 'primary',
+  asLink = false,
   size = 'default',
   isDisabled = false,
   label,
@@ -52,6 +57,8 @@ export function Button({
     ...appearanceStyles[appearance],
     ...sizeStyles[size]
   ];
+  if (asLink) styles.push('a-btn__link');
+
   return (
     <button
       type='button'
