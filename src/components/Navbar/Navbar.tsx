@@ -26,7 +26,7 @@ interface NavbarProperties {
 }
 
 export interface User {
-  name: string;
+  name?: string;
   loginHref?: string;
   logoutHref?: string;
 }

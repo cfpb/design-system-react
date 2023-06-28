@@ -12,7 +12,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const LoggedInUser = {
-  name: 'John Sample'
+  name: 'John Sample',
+  logoutHref: '#'
 };
 
 export const LoggedIn: Story = {
@@ -24,6 +25,7 @@ export const LoggedIn: Story = {
 
 export const LoggedOut: Story = {
   args: {
-    links: ExampleLinks
+    links: ExampleLinks,
+    user: { loginHref: '#' }
   }
 };
