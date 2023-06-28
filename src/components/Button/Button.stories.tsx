@@ -49,3 +49,11 @@ export const FullWidthOnMobile: Story = {
     size: 'full'
   }
 };
+
+export const ButtonAsLink: Story = {
+  args: {
+    ...Primary.args,
+    size: 'full',
+    asLink: true
+  }
+};
