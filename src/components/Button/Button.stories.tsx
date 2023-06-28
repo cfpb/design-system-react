@@ -57,3 +57,13 @@ export const ButtonAsLink: Story = {
     asLink: true
   }
 };
+
+export const ButtonAsDestructiveLink: Story = {
+  args: {
+    ...Primary.args,
+    label: 'Destructive button',
+    appearance: 'warning',
+    size: 'full',
+    asLink: true
+  }
+};
