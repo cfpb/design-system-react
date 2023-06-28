@@ -19,18 +19,18 @@ export type InputType =
 interface RequiredTextInputProperties {
   id: string;
   name: string;
-  type: InputType;
 }
 
 interface CustomTextInputProperties {
   className?: string;
-  width?: 'default' | 'full';
-  isDisabled?: boolean;
-  inputRef?: TextInputReference;
-  inputProps?: JSX.IntrinsicElements['input'];
   inputBorderColor?: string;
-  textNotification?: string;
+  inputProps?: JSX.IntrinsicElements['input'];
+  inputRef?: TextInputReference;
+  isDisabled?: boolean;
   notificationType?: NotificationType;
+  textNotification?: string;
+  type?: InputType;
+  width?: 'default' | 'full';
 }
 
 type NotificationType = '' | 'error' | 'success' | 'warning';
@@ -62,16 +62,16 @@ const widthStyles = {
 };
 
 export function TextInput({
-  id,
-  name,
-  type,
   className,
-  width = 'default',
-  isDisabled = false,
-  inputRef,
+  id,
   inputBorderColor,
+  inputRef,
+  isDisabled = false,
+  name,
   notificationType = '',
   textNotification,
+  type = 'text',
+  width = 'default',
   ...inputProperties
 }: TextInputProperties): JSX.Element {
   const styles = [...baseStyles, ...widthStyles[width]];
