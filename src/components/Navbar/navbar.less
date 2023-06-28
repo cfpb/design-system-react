@@ -1,0 +1,47 @@
+@import (reference) url('@cfpb/cfpb-core/src/brand-colors.less');
+@import (reference) '../../assets/styles/variables.less';
+
+.navbar {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: @space-sm;
+
+  .nav-items {
+    display: flex;
+    flex-flow: row;
+  }
+
+  .nav-item {
+    margin-right: @space-xl;
+  }
+
+  .user-actions :last-child {
+    margin-right: 0;
+  }
+
+  .a-link {
+    color: @gray-dark;
+    font-weight: 600;
+  }
+
+  .a-link:not(.o-header_logo):hover {
+    color: @pacific-90;
+    border-bottom: 1px dashed;
+  }
+
+  .a-link:focus {
+    color: @pacific-90;
+  }
+
+  .a-link.selected {
+    border-bottom: 3px solid @gray-dark;
+  }
+
+  .username {
+    margin-right: @space-xl;
+    font-weight: 400;
+  }
+}
