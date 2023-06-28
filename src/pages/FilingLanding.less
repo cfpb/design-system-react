@@ -1,0 +1,26 @@
+@import (reference) url('@cfpb/cfpb-design-system/src/cfpb-design-system.less');
+@import '../assets/styles/variables.less';
+
+#FilingLanding {
+  .navbar {
+    .a-link:not(.o-header_logo):hover {
+      color: @pacific-dark;
+      border-bottom: 2px solid @pacific-dark;
+    }
+  }
+
+  // TODO - build this into the MailingList component in SBL
+  .sidebar {
+    .actions {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .actions,
+    .a-label {
+      margin-top: @space-sm;
+    }
+  }
+}
