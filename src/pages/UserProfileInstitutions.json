@@ -1,0 +1,76 @@
+[
+  {
+    "name": "Test 1",
+    "lei": "TEST1LEI",
+    "domains": [
+      {
+        "domain": "test1.local",
+        "lei": "TEST1LEI"
+      },
+      {
+        "domain": "foo.bar",
+        "lei": "TEST1LEI"
+      },
+      {
+        "domain": "baz.qux",
+        "lei": "TEST1LEI"
+      }
+    ]
+  },
+  {
+    "name": "Test 2",
+    "lei": "TEST2LEI",
+    "domains": [
+      {
+        "domain": "test2.local",
+        "lei": "TEST2LEI"
+      },
+      {
+        "domain": "baz.qux",
+        "lei": "TEST2LEI"
+      },
+      {
+        "domain": "foo.bar",
+        "lei": "TEST2LEI"
+      }
+    ]
+  },
+  {
+    "name": "Test 3",
+    "lei": "TEST3LEI",
+    "domains": [
+      {
+        "domain": "test3.local",
+        "lei": "TEST3LEI"
+      }
+    ]
+  },
+  {
+    "name": "Test Bank 230626",
+    "lei": "TESTBANK230626",
+    "domains": [
+      {
+        "domain": "baz.qux",
+        "lei": "TESTBANK230626"
+      },
+      {
+        "domain": "foo.bar",
+        "lei": "TESTBANK230626"
+      }
+    ]
+  },
+  {
+    "name": "Bank 0",
+    "lei": "B90YWS6AFX2LGWOXJ1LD",
+    "domains": [
+      {
+        "domain": "bank0.com",
+        "lei": "B90YWS6AFX2LGWOXJ1LD"
+      },
+      {
+        "domain": "foo.bar",
+        "lei": "B90YWS6AFX2LGWOXJ1LD"
+      }
+    ]
+  }
+]
