@@ -80,7 +80,7 @@ export const JumpLink: Story = {
   render: arguments_ => (
     <Link {...arguments_}>
       <LinkText>Jump link</LinkText>
-      <Icon name='arrow-right' />
+      <Icon name='right' />
     </Link>
   )
 };
