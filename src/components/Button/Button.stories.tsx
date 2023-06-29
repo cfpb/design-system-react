@@ -49,3 +49,21 @@ export const FullWidthOnMobile: Story = {
     size: 'full'
   }
 };
+
+export const ButtonAsLink: Story = {
+  args: {
+    ...Primary.args,
+    size: 'full',
+    asLink: true
+  }
+};
+
+export const ButtonAsDestructiveLink: Story = {
+  args: {
+    ...Primary.args,
+    label: 'Destructive button',
+    appearance: 'warning',
+    size: 'full',
+    asLink: true
+  }
+};

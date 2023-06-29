@@ -6,7 +6,7 @@ interface WellProperties {
   heading: string;
   text: JSX.Element | string;
   links?: JSX.Element[];
-  headingLevel: HeadingLevel;
+  headingLevel?: HeadingLevel;
 }
 
 export default function Well({
