@@ -92,7 +92,7 @@ export const JumpLinkIconLeft: Story = {
   },
   render: arguments_ => (
     <Link {...arguments_}>
-      <Icon name='arrow-left' />
+      <Icon name='left' />
       <LinkText>Jump link</LinkText>
     </Link>
   )
