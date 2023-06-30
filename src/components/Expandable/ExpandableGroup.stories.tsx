@@ -1,4 +1,7 @@
+import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, waitFor, within } from '@storybook/testing-library';
+import { sleep } from '../../utils/sleep';
 import { Expandable } from './Expandable';
 import { ExpandableGroup } from './ExpandableGroup';
 
@@ -58,6 +61,33 @@ export const Default: Story = {
       ))}
     </ExpandableGroup>
   ),
+  play: async ({ canvasElement, step }) => {
+    // Setup
+    const timeout = 1000;
+    const options = { timeout };
+    const canvas = within(canvasElement);
+    const element = await canvas.findByTitle('Expandable A');
+
+    // Helpers
+    const expectAriaExpanded = (isExpanded: string): void =>
+      expect(element.ariaExpanded).toBe(isExpanded);
+
+    // Test
+    await step('Starts out collapsed', async () => {
+      await waitFor(async () => expectAriaExpanded('false'), options);
+    });
+
+    await step('Click to expanded', async () => {
+      userEvent.click(element);
+      await waitFor(async () => expectAriaExpanded('true'), options);
+      await sleep(timeout);
+    });
+
+    await step('Click to collapse', async () => {
+      userEvent.click(element);
+      await waitFor(async () => expectAriaExpanded('false'), options);
+    });
+  },
   args: {
     groupId: 'DefaultGroup'
   }
