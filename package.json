@@ -44,9 +44,9 @@
     "build-storybook": "storybook build -o dist-storybook"
   },
   "dependencies": {
-    "@cfpb/cfpb-design-system": "^0.25.0",
-    "@cfpb/cfpb-expandables": "^0.26.0",
-    "@cfpb/cfpb-forms": "^0.25.0",
+    "@cfpb/cfpb-design-system": "^0.27.2",
+    "@cfpb/cfpb-expandables": "^0.27.2",
+    "@cfpb/cfpb-forms": "^0.27.2",
     "@storybook/jest": "^0.1.0",
     "@storybook/testing-library": "^0.1.0",
     "@tanstack/react-query": "4.13.5",
