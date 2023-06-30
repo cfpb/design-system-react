@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { TableComplex } from './TableComplex';
+import { TableComplex } from '~/src/index';
 
 type TestData = Record<string, number | string>;
 
@@ -146,10 +146,10 @@ describe('<TableComplex />', () => {
     const hidden = screen.queryByText('Row 5, Col 1');
     expect(hidden).not.toBeInTheDocument();
 
-    const prev = screen.getByText('Previous');
-    fireEvent.click(prev);
+    const previous = screen.getByText('Previous');
+    fireEvent.click(previous);
 
-    const prevCell = screen.getByText('Row 5, Col 1');
-    expect(prevCell).toBeInTheDocument();
+    const previousCell = screen.getByText('Row 5, Col 1');
+    expect(previousCell).toBeInTheDocument();
   });
 });

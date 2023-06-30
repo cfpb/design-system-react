@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TableSimple } from './Table';
+import { TableSimple } from '~/src/index';
 
 const meta: Meta<typeof TableSimple> = {
   component: TableSimple,

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Tagline } from './Tagline';
+import { Tagline } from '~/src/index';
 
 const meta: Meta<typeof Tagline> = {
   component: Tagline,

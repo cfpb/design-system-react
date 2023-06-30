@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Label } from '~/src/index';
 import { TextInput } from '../TextInput/TextInput';
-import { Label } from './Label';
 
 const meta: Meta<typeof Label> = {
   component: Label,

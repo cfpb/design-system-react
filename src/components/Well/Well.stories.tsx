@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Well from './Well';
+import { Well } from '~/src/index';
 
 const meta: Meta<typeof Well> = {
   component: Well,
