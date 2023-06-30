@@ -82,6 +82,7 @@ module.exports = {
     '@typescript-eslint/member-ordering': 'off',
     '@typescript-eslint/prefer-includes': 'off',
     '@typescript-eslint/no-restricted-imports': 'off',
+    'import/extensions': 'off',
     'import/no-deprecated': 'error',
     'import/order': 'off',
     'import/prefer-default-export': 'off',
@@ -149,6 +150,7 @@ module.exports = {
     'react/jsx-no-useless-fragment': 'error',
     'unicorn/no-keyword-prefix': 'off',
     'unicorn/no-null': 'off',
+    'unicorn/prefer-module': 'off',
     'unicorn/filename-case': [
       'error',
       {

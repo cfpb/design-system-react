@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Navbar } from '../../index';
+import { Navbar } from '~/src/index';
 import '../PageHeader/header.less';
 import { ExampleLinks } from './Navbar';
 

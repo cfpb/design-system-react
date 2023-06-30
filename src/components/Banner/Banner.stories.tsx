@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { SyntheticEvent } from 'react';
-import { Banner } from '../../index';
+import { Banner } from '~/src/index';
 import { AllLanguageCodes, LanguageLink } from './BannerLanguageLink';
 
 const meta: Meta<typeof Banner> = {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Hero } from '../../index';
+import { Hero } from '~/src/index';
 
 const meta: Meta<typeof Hero> = {
   component: Hero,

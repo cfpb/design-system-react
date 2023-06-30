@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import { Icon } from '../../index';
+import { Icon } from '~/src/index';
 import {
   communicationIcons,
   documentIcons,

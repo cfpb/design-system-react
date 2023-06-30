@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { TableComplex } from '../../index';
+import { TableComplex } from '~/src/index';
 
 type TestData = Record<string, number | string>;
 

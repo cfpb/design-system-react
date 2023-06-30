@@ -9,6 +9,11 @@ import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
 
 export default defineConfig(() => ({
+  resolve: {
+    alias: {
+      '~': resolve(__dirname)
+    }
+  },
   plugins: [
     eslintPlugin(),
     svgLoader({
