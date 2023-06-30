@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { TableSimple } from './TableSimple';
+import { TableSimple } from '../../index';
 
 const defaultCaption = (
   <>
@@ -51,7 +51,7 @@ describe('<TableSimple />', () => {
         caption={defaultCaption}
         columns={defaultColumns}
         rows={defaultRows}
-        isScrollableHorizontal={true}
+        isScrollableHorizontal
       />
     );
 
@@ -68,9 +68,9 @@ describe('<TableSimple />', () => {
         caption={defaultCaption}
         columns={defaultColumns}
         rows={defaultRows}
-        isResponsive={true}
-        isDirectory={true}
-        isStriped={true}
+        isResponsive
+        isDirectory
+        isStriped
       />
     );
 

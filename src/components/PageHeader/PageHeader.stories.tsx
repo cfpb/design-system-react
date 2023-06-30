@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { PageHeader } from '../../index';
 import type { User } from '../Navbar/Navbar';
 import { ExampleLinks } from '../Navbar/Navbar';
-import PageHeader from './PageHeader';
 
 const meta: Meta<typeof PageHeader> = {
   component: PageHeader,
