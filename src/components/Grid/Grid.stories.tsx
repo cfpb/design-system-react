@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Grid from '.';
+import { Grid } from '~/src/index';
 
 const meta: Meta<typeof Grid.Wrapper> = {
   component: Grid.Wrapper,
