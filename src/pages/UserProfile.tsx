@@ -16,7 +16,8 @@ import Institutions from './UserProfileInstitutions.json';
 
 const emailOptions = [
   '',
-  'test.user@financial_institution_email_domain-not-in-system.com',
+  'test.user@no-associated-financial_institutions.com',
+  'personal-email@gmail.com',
   'has-multiple-institutions@foo.bar',
   'test.user@bank0.com'
 ];
@@ -66,6 +67,10 @@ export default function UserProfile({
   const [institutions, setInstitutions] = useState([]);
 
   const isValidEmailDomain = email.length > 0;
+
+  // There will be a list of email domains to check against for this error
+  const isPersonalEmailDomain =
+    isValidEmailDomain && email.includes('personal');
 
   useEffect(() => {
     setInstitutions([]);
@@ -130,7 +135,9 @@ export default function UserProfile({
             <select
               onChange={onEmailChange}
               value={email}
-              className={isValidEmailDomain ? '' : 'error'}
+              className={
+                isValidEmailDomain && !isPersonalEmailDomain ? '' : 'error'
+              }
             >
               {emailOptions.map(opt => (
                 <option key={opt} value={opt}>
@@ -150,6 +157,20 @@ export default function UserProfile({
                 our help desk.
               </Notification>
             </ConditionalNotification>
+            <ConditionalNotification visible={isPersonalEmailDomain}>
+              <Notification
+                message='Personal email domains are not permitted'
+                type='error'
+                className='inline'
+              >
+                Please check that you are logged in to Login.gov{' '}
+                <em>
+                  <b>with your financial institution email address.</b>
+                </em>{' '}
+                If you need further assistance please{' '}
+                <a href='#'>submit a technical question</a> to our help desk.
+              </Notification>
+            </ConditionalNotification>
           </div>
           <div className='field'>
             <h3>Associated financial institution(s)</h3>
@@ -166,11 +187,19 @@ export default function UserProfile({
               onSelect={option => setInstitutions(option)}
               isDisabled={!hasMatchingInstitutions}
               className={
-                hasMatchingInstitutions || !isValidEmailDomain ? '' : 'warning'
+                hasMatchingInstitutions ||
+                !isValidEmailDomain ||
+                isPersonalEmailDomain
+                  ? ''
+                  : 'warning'
               }
             />
             <ConditionalNotification
-              visible={!hasMatchingInstitutions && isValidEmailDomain}
+              visible={
+                !hasMatchingInstitutions && isValidEmailDomain
+                  ? !isPersonalEmailDomain
+                  : null
+              }
             >
               <Notification
                 type='warning'
