@@ -3,6 +3,7 @@ node_modules
 dist
 dist-storybook
 *.local
+*.log
 .eslintcache
 coverage
 .nyc_output
