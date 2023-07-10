@@ -41,7 +41,8 @@
     "validate": "run-p lint test:ci test:e2e:headless",
     "start": "yarn storybook",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o dist-storybook"
+    "build-storybook": "storybook build -o dist-storybook",
+    "chromatic": "chromatic --storybook-build-dir dist-storybook --only-changed"
   },
   "dependencies": {
     "@cfpb/cfpb-design-system": "^0.27.2",
@@ -83,6 +84,7 @@
     "@vitest/coverage-istanbul": "0.25.2",
     "autoprefixer": "10.4.13",
     "babel-loader": "^8.3.0",
+    "chromatic": "^6.19.9",
     "commitizen": "4.2.5",
     "css-mediaquery": "0.1.2",
     "cypress": "10.11.0",
