@@ -60,8 +60,36 @@
     ]
   },
   {
-    "name": "Bank 0",
-    "lei": "B90YWS6AFX2LGWOXJ1LD",
+    "name": "Suntrust Banks, Inc",
+    "lei": "7E1PDLW1JLaTSoBS1Go3",
+    "domains": [
+      {
+        "domain": "bank0.com",
+        "lei": "B90YWS6AFX2LGWOXJ1LD"
+      },
+      {
+        "domain": "foo.bar",
+        "lei": "B90YWS6AFX2LGWOXJ1LD"
+      }
+    ]
+  },
+  {
+    "name": "Suntrust Banks, Inc",
+    "lei": "IYDOJBGHWU9TXDSJAl098",
+    "domains": [
+      {
+        "domain": "bank0.com",
+        "lei": "B90YWS6AFX2LGWOXJ1LD"
+      },
+      {
+        "domain": "foo.bar",
+        "lei": "B90YWS6AFX2LGWOXJ1LD"
+      }
+    ]
+  },
+  {
+    "name": "Suntrust Banks, Inc",
+    "lei": "MQ445ND48612ADV2WNe65",
     "domains": [
       {
         "domain": "bank0.com",

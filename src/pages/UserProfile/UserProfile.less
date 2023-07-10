@@ -14,7 +14,7 @@ main {
       margin-top: 30px;
     }
 
-    select {
+    #user-email {
       width: 100%;
     }
 
@@ -36,5 +36,26 @@ main {
       border: none;
       padding-left: 0;
     }
+  }
+
+  .matched-institutions {
+    margin-bottom: 15px;
+
+    .institution {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      flex-basis: auto;
+      align-items: baseline;
+      margin-top: 15px;
+
+      input {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  #institutions-select * {
+    color: black;
   }
 }

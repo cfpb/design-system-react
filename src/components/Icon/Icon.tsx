@@ -37,7 +37,8 @@ interface IconProperties {
 export const Icon = ({
   name,
   alt,
-  withBg = false
+  withBg = false,
+  ...others
 }: IconProperties): JSX.Element | null => {
   const shapeModifier = getShapeModifier(name, withBg);
   const fileName = `${name}${shapeModifier}`;
@@ -59,6 +60,7 @@ export const Icon = ({
     <span
       className='cf-icon-svg-wrapper'
       dangerouslySetInnerHTML={{ __html: iconHtml }}
+      {...others}
     />
   );
 };

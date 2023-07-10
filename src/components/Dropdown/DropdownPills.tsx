@@ -1,9 +1,9 @@
-import type { ReactEventHandler } from 'react';
+import type { ReactEventHandler, Ref } from 'react';
 import type { PropsValue } from 'react-select';
+import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
 import type { SelectOption } from './Dropdown';
-
 import './DropdownPills.less';
 
 /**
@@ -62,10 +62,12 @@ interface DropdownPillsProperties {
   onChange: (event: PropsValue<SelectOption>) => void;
   selected: PropsValue<SelectOption>;
   isMulti?: boolean;
-  pillAlign?: 'top' | 'bottom';
+  pillAlign?: 'bottom' | 'top';
+  selectRef: Ref<any>;
 }
 
 export const DropdownPills = ({
+  selectRef,
   selected,
   isMulti,
   onChange,
@@ -92,6 +94,26 @@ export const DropdownPills = ({
           onClose={onCloser(index, onChange, selected)}
         />
       ))}
+      <li
+        className='pill'
+        style={{
+          display: 'block',
+          marginTop: '15px'
+        }}
+      >
+        <Button
+          style={{
+            display: 'block',
+            backgroundColor: 'darkred',
+            color: 'white',
+            borderRadius: '4px',
+            padding: '2px 4px',
+            marginTop: 'inherit'
+          }}
+          label='Clear All Selected Institutions'
+          onClick={() => selectRef?.current?.clearValue()}
+        />
+      </li>
     </ul>
   );
 };

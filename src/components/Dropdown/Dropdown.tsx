@@ -9,8 +9,10 @@ import type {
   PropsValue,
   SelectInstance
 } from 'react-select';
-import Select, { createFilter } from 'react-select';
+import Select, { components, createFilter } from 'react-select';
+import type { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
 import { Label } from '../Label/Label';
+import CheckboxInputOption from './DropdownInputWithCheckbox';
 import { DropdownPills } from './DropdownPills';
 
 export interface SelectOption {
@@ -44,14 +46,16 @@ const extendedSelectStyles = {
  * @param options Available options
  * @param selected Selected options
  * @param isMulti Is a multi-select component?
+ * @param showAllOptions Force all options to be displayed for selection
  * @returns A list of selectable options
  */
 const filterOptions = (
   options: PropsValue<SelectOption>,
   selected: PropsValue<SelectOption>,
-  isMulti: boolean
+  isMulti: boolean,
+  showAllOptions: boolean
 ): OptionsOrGroups<SelectOption, GroupBase<SelectOption>> => {
-  if (!selected || !isMulti)
+  if (showAllOptions || !selected || !isMulti)
     return options as OptionsOrGroups<SelectOption, GroupBase<SelectOption>>;
 
   return (options as SelectOption[]).filter(
@@ -69,6 +73,7 @@ interface DropdownProperties {
   options: SelectOption[];
   pillAlign?: 'bottom' | 'top';
   value?: PropsValue<SelectOption>;
+  withCheckbox: boolean;
 }
 
 /**
@@ -86,11 +91,20 @@ export function Dropdown({
   options,
   pillAlign = 'top',
   value,
+  withCheckbox = false,
+  isClearable = true,
   ...rest
-}: DropdownProperties): JSX.Element {
+}: DropdownProperties & StateManagerProps): JSX.Element {
   const [selected, setSelected] = useState<PropsValue<SelectOption>>(
     defaultValue ?? []
   );
+  const [searchString, setSearchString] = useState<string>('');
+
+  // Retain user search input between interactions
+  const handleInputChange = (value, event) => {
+    if (event.action !== 'input-change') return;
+    setSearchString(value);
+  };
 
   useEffect(() => {
     // Support acting as controlled component
@@ -125,18 +139,29 @@ export function Dropdown({
   return (
     <div className='m-form-field m-form-field__select'>
       {!!label && (
-        <Label id={labelID} htmlFor={id} onClick={onLabelClick}>
+        <Label
+          id={labelID}
+          htmlFor={id}
+          onClick={onLabelClick}
+          className='u-mt60'
+        >
           {label}
         </Label>
       )}
       {pillAlign === 'top' && (
         <DropdownPills
+          selectRef={selectReference}
           selected={selected}
           isMulti={isMulti}
           onChange={onChange}
         />
       )}
       <Select
+        id={`${id}-select`}
+        onFocus={e => e.target.select()} // Easier for user to delete/edit search text so hopefully they don't feel the  need to click the `X` and accidentally wipe out their selected institutions.
+        inputValue={searchString}
+        onInputChange={handleInputChange}
+        isClearable={isClearable} // Hide X so users don't inadvertantly clear all selections?
         inputId={id}
         aria-labelledby={labelID}
         openMenuOnFocus
@@ -146,16 +171,21 @@ export function Dropdown({
         isMulti={isMulti}
         className='o-multiselect'
         value={value ?? selected}
-        options={filterOptions(options, selected, isMulti)}
+        options={filterOptions(options, selected, isMulti, withCheckbox)}
         onChange={onChange}
         filterOption={createFilter({ ignoreAccents: false })}
         controlShouldRenderValue={!isMulti}
         closeMenuOnSelect={!isMulti}
         styles={extendedSelectStyles}
+        components={{
+          Option: withCheckbox ? CheckboxInputOption : components.Option
+        }}
         {...rest}
+        hideSelectedOptions={false}
       />
       {pillAlign === 'bottom' && (
         <DropdownPills
+          selectRef={selectReference}
           selected={selected}
           isMulti={isMulti}
           onChange={onChange}
