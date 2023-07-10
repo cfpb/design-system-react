@@ -1,0 +1,26 @@
+# .github/workflows/chromatic.yml
+
+name: 'Visual Regression - Chromatic'
+
+on: pull_request
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install compatible node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true # Enables https://www.chromatic.com/docs/turbosnap
+          exitZeroOnChanges: true # Visual changes SHOULD NOT block merging of PRs
