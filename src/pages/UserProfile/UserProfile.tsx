@@ -151,6 +151,7 @@ export default function UserProfile({
               className={isValidEmailDomain ? '' : 'error'}
               noOptionsMessage={MessageNoSearchMatches}
               isClearable={false}
+              backspaceRemovesValue={false}
             />
           </div>
           <Button label='Submit' onClick={onFormSubmit} />

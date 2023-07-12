@@ -82,38 +82,27 @@ export const DropdownPills = ({
     return null;
 
   return (
-    <ul
+    <figure
       className={`o-multiselect_choices${
         pillAlign === 'bottom' ? ' o-multiselect_choices__bottom' : ''
       }`}
     >
-      {selected.map(({ value, label }: SelectOption, index: number) => (
-        <DropdownPill
-          key={value}
-          value={label}
-          onClose={onCloser(index, onChange, selected)}
-        />
-      ))}
-      <li
-        className='pill'
-        style={{
-          display: 'block',
-          marginTop: '15px'
-        }}
-      >
-        <Button
-          style={{
-            display: 'block',
-            backgroundColor: 'darkred',
-            color: 'white',
-            borderRadius: '4px',
-            padding: '2px 4px',
-            marginTop: 'inherit'
-          }}
-          label='Clear All Selected Institutions'
-          onClick={() => selectRef?.current?.clearValue()}
-        />
-      </li>
-    </ul>
+      <figcaption>Selected:</figcaption>
+      <ul>
+        {selected.map(({ value, label }: SelectOption, index: number) => (
+          <DropdownPill
+            key={value}
+            value={label}
+            onClose={onCloser(index, onChange, selected)}
+          />
+        ))}
+        <li className='pill clear-selected'>
+          <Button
+            label='Clear All Selected Institutions'
+            onClick={() => selectRef?.current?.clearValue()}
+          />
+        </li>
+      </ul>
+    </figure>
   );
 };

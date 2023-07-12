@@ -23,7 +23,6 @@ export const LabelInstitutionDropdown = ({
 export const MessageNoSearchMatches = (): JSX.Element => (
   <Notification
     type='error'
-    // className='inline'
     message={
       <>
         <Icon name='error' withBg style={{ position: 'relative' }} /> No results
@@ -35,7 +34,6 @@ export const MessageNoSearchMatches = (): JSX.Element => (
     Your financial institution/LEI was not found in our database. If you
     recently registered for an LEI with GLEIF, your request may still be in
     process. If you need further assistance please{' '}
-    <a href='#'>submit a technical question</a>
-    to our help desk.
+    <a href='#'>submit a technical question </a> to our help desk.
   </Notification>
 );
