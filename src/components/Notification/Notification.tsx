@@ -27,6 +27,8 @@ interface NotificationProperties {
   headingLevel?: HeadingLevel;
   children?: React.ReactNode;
   links?: NotificationLinkProperties[];
+  isVisible?: boolean;
+  showIcon?: boolean;
 }
 
 /**
@@ -40,6 +42,8 @@ interface NotificationProperties {
  * @param links Links
  * @param message Notification reason
  * @param type Type of notification
+ * @param isVisible Display/hide notification
+ * @param showIcon Display/hide notification icon
  * @returns ReactElement
  */
 export const Notification = ({
@@ -49,9 +53,13 @@ export const Notification = ({
   links,
   message,
   type = 'info',
+  isVisible = true,
+  showIcon = true,
   ...properties
 }: NotificationProperties &
-  React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
+  React.HTMLAttributes<HTMLDivElement>): React.ReactElement | null => {
+  if (!isVisible) return null;
+
   const classes = classNames(
     'm-notification',
     'm-notification__visible',
@@ -66,7 +74,7 @@ export const Notification = ({
 
   return (
     <div className={classes} data-testid='notification' {...properties}>
-      <Icon {...iconByType[type]} />
+      {showIcon ? <Icon {...iconByType[type]} /> : null}
       <div className='m-notification_content'>
         {message ? (
           <p
