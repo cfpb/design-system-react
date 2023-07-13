@@ -1,9 +1,9 @@
-import type { ReactEventHandler } from 'react';
+import type { ReactEventHandler, Ref } from 'react';
 import type { PropsValue } from 'react-select';
+import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
 import type { SelectOption } from './Dropdown';
-
 import './DropdownPills.less';
 
 /**
@@ -59,17 +59,23 @@ export const DropdownPill = ({
 );
 
 interface DropdownPillsProperties {
-  onChange: (event: PropsValue<SelectOption>) => void;
-  selected: PropsValue<SelectOption>;
   isMulti?: boolean;
-  pillAlign?: 'top' | 'bottom';
+  labelClearAll?: string;
+  onChange: (event: PropsValue<SelectOption>) => void;
+  pillAlign?: 'bottom' | 'top';
+  selected: PropsValue<SelectOption>;
+  selectRef: Ref<any>;
+  showClearAllSelectedButton?: boolean;
 }
 
 export const DropdownPills = ({
-  selected,
   isMulti,
+  labelClearAll = 'Clear All Selected Institutions',
   onChange,
-  pillAlign = 'top'
+  pillAlign = 'top',
+  selected,
+  selectRef,
+  showClearAllSelectedButton
 }: DropdownPillsProperties): JSX.Element | null => {
   if (
     !isMulti ||
@@ -79,19 +85,31 @@ export const DropdownPills = ({
   )
     return null;
 
+  const onClearAllSelected = (): void => {
+    selectRef?.current?.clearValue();
+  };
+
   return (
-    <ul
+    <figure
       className={`o-multiselect_choices${
         pillAlign === 'bottom' ? ' o-multiselect_choices__bottom' : ''
       }`}
     >
-      {selected.map(({ value, label }: SelectOption, index: number) => (
-        <DropdownPill
-          key={value}
-          value={label}
-          onClose={onCloser(index, onChange, selected)}
-        />
-      ))}
-    </ul>
+      <figcaption>Selected:</figcaption>
+      <ul>
+        {selected.map(({ value, label }: SelectOption, index: number) => (
+          <DropdownPill
+            key={value}
+            value={label}
+            onClose={onCloser(index, onChange, selected)}
+          />
+        ))}
+        {showClearAllSelectedButton ? (
+          <li className='pill clear-selected'>
+            <Button label={labelClearAll} onClick={onClearAllSelected} />
+          </li>
+        ) : null}
+      </ul>
+    </figure>
   );
 };

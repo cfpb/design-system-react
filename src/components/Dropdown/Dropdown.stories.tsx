@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Button } from '../Button/Button';
+import type { SelectOption } from './Dropdown';
 import { Dropdown } from './Dropdown';
 import { MockOptions } from './utils';
 
@@ -55,14 +56,7 @@ export const Disabled: Story = {
 export const MultiSelect: Story = {
   args: {
     ...DefaultDropdown.args,
-    options: [
-      ...MockOptions,
-      {
-        value: 'long',
-        label:
-          'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
-      }
-    ],
+    options: [...MockOptions],
     id: 'multi',
     isMulti: true,
     label: 'Multi-select'
@@ -72,14 +66,7 @@ export const MultiSelect: Story = {
 export const MultiSelectWithDefaultValue: Story = {
   args: {
     ...DefaultDropdown.args,
-    options: [
-      ...MockOptions,
-      {
-        value: 'long',
-        label:
-          'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
-      }
-    ],
+    options: [...MockOptions],
     defaultValue: [MockOptions[0]],
     id: 'multi',
     isMulti: true,
@@ -87,17 +74,23 @@ export const MultiSelectWithDefaultValue: Story = {
   }
 };
 
+export const MultiSelectWithCheckboxes: Story = {
+  args: {
+    ...DefaultDropdown.args,
+    options: [...MockOptions],
+    defaultValue: [MockOptions[0]],
+    id: 'multi',
+    isMulti: true,
+    label: 'Multi-select',
+    pillAlign: 'bottom',
+    withCheckbox: true
+  }
+};
+
 export const MultiSelectWithPillsAlignedBottom: Story = {
   args: {
     ...DefaultDropdown.args,
-    options: [
-      ...MockOptions,
-      {
-        value: 'long',
-        label:
-          'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
-      }
-    ],
+    options: [...MockOptions],
     defaultValue: [MockOptions[0]],
     id: 'multi',
     isMulti: true,
@@ -106,14 +99,48 @@ export const MultiSelectWithPillsAlignedBottom: Story = {
   }
 };
 
-const ControlledDropdown = arguments_ => {
-  const [selected, setSelected] = useState([arguments_.options[0]]);
+export const MultiSelectWithoutPills: Story = {
+  args: {
+    ...DefaultDropdown.args,
+    options: [...MockOptions],
+    defaultValue: [MockOptions[0]],
+    id: 'multi',
+    isMulti: true,
+    label: 'Multi-select',
+    pillAlign: 'hide',
+    withCheckbox: true
+  }
+};
+
+export const MultiSelectWithoutClearAllButton: Story = {
+  args: {
+    ...DefaultDropdown.args,
+    options: [...MockOptions],
+    defaultValue: [MockOptions[0]],
+    id: 'multi',
+    isMulti: true,
+    label: 'Multi-select',
+    pillAlign: 'bottom',
+    withCheckbox: true,
+    showClearAllSelectedButton: false
+  }
+};
+
+interface ControlledArguments {
+  options: SelectOption[];
+}
+const ControlledDropdown = ({
+  options,
+  ...arguments_
+}: ControlledArguments): JSX.Element => {
+  const [selected, setSelected] = useState([options[0]]);
+
   return (
     <>
       <div className='m-btn-group u-mb30'>
         <Button
           label='Add all options'
-          onClick={(): void => setSelected([...arguments_.options])}
+          onClick={(): void => setSelected([...options])}
         />
         <Button
           label='Clear all options'
@@ -122,9 +149,12 @@ const ControlledDropdown = arguments_ => {
         />
       </div>
       <Dropdown
-        {...arguments_}
+        id='controlled-dropdown'
+        options={options}
+        showClearAllSelectedButton={false}
         onSelect={(newValue): void => setSelected(newValue)}
         value={selected}
+        {...arguments_}
       />
     </>
   );
@@ -134,14 +164,7 @@ export const AsAControlledComponent: Story = {
   render: arguments_ => <ControlledDropdown {...arguments_} />,
   args: {
     ...DefaultDropdown.args,
-    options: [
-      ...MockOptions,
-      {
-        value: 'long',
-        label:
-          'Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious'
-      }
-    ],
+    options: [...MockOptions],
     defaultValue: [MockOptions[0]],
     id: 'multi',
     isMulti: true,
