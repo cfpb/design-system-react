@@ -5,6 +5,6 @@ interface DividerProperties {
 export default function Divider({
   className = '',
   ...properties
-}: DividerProperties): JSX.Element {
+}: DividerProperties & React.HTMLProps<HTMLDivElement>): JSX.Element {
   return <div className={`content_line ${className}`} {...properties} />;
 }

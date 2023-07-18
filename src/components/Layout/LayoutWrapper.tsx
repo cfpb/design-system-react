@@ -16,8 +16,13 @@
 interface LayoutWrapperProperties {
   children: JSX.Element | JSX.Element[] | string;
 }
+
 export const LayoutWrapper = ({
-  children
-}: LayoutWrapperProperties): JSX.Element => (
-  <div className='content_wrapper'>{children}</div>
+  children,
+  ...properties
+}: LayoutWrapperProperties &
+  React.HTMLAttributes<HTMLDivElement>): JSX.Element => (
+  <div className='content_wrapper' {...properties}>
+    {children}
+  </div>
 );
