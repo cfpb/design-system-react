@@ -6,6 +6,7 @@ import {
   expenseIcons,
   financialIcons,
   navigationIcons,
+  numberIcons,
   socialIcons,
   statusIcons,
   webIcons
@@ -84,6 +85,10 @@ export const SocialSharingIcons = (): React.ReactElement => (
 
 export const CommunicationIcons = (): React.ReactElement => (
   <IconTable>{makeRows(communicationIcons)}</IconTable>
+);
+
+export const NumberIcons = (): React.ReactElement => (
+  <IconTable>{makeRows(numberIcons)}</IconTable>
 );
 
 export const DocumentIcons = (): React.ReactElement => (

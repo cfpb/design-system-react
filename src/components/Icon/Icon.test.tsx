@@ -33,6 +33,26 @@ describe('Icon', () => {
     expect(icon.getAttribute('class')).toMatch(`cf-icon-svg__${name}`);
   });
 
+  it('Renders an open number icon', async () => {
+    const name = 'four';
+
+    render(<Icon name={name} />);
+
+    // Need to wait for icon to load
+    const icon = await screen.findByRole(/img/i);
+    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg__${name}-open`);
+  });
+
+  it('Renders a closed number icon', async () => {
+    const name = 'four';
+
+    render(<Icon name={name} withBg />);
+
+    // Need to wait for icon to load
+    const icon = await screen.findByRole(/img/i);
+    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg__${name}-closed`);
+  });
+
   it('Provides message for unknown icons', async () => {
     const name = 'unknown';
 
