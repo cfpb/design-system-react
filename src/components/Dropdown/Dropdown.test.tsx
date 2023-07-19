@@ -92,7 +92,7 @@ describe('Default Dropdown', () => {
           options: MockOptions,
           onSelect,
           placeholder,
-          defaultValue: MockOptions.at(-1)
+          defaultValue: MockOptions.at(2)
         }}
       />
     );
@@ -136,7 +136,7 @@ describe('Multi-select Dropdown', () => {
     });
 
     const pills = screen.queryAllByRole('listitem');
-    expect(pills.length).toBe(1);
+    expect(pills.length).toBe(2);
 
     const selectedOption = pills[0];
     expect(selectedOption).toHaveClass('pill');
@@ -167,7 +167,7 @@ describe('Multi-select Dropdown', () => {
     // Verify pill displayed
     expect(screen.getByText(optionLabel)).toBeInTheDocument();
     const afterSelection = screen.queryAllByRole('listitem');
-    expect(afterSelection.length).toBe(1);
+    expect(afterSelection.length).toBe(2);
     expect(afterSelection[0]).toHaveClass('pill');
     expect(afterSelection[0]).toHaveTextContent(optionLabel);
 
@@ -190,7 +190,8 @@ describe('Multi-select Dropdown', () => {
 
     // Verify pills displayed
     const afterSelection = screen.queryAllByRole('listitem');
-    expect(afterSelection.length).toBe(3);
+    // All options + Clear All button
+    expect(afterSelection.length).toBe(5);
     expect(afterSelection[2]).toHaveClass('pill');
     expect(afterSelection[2]).toHaveTextContent(optionLabel);
 
@@ -202,7 +203,7 @@ describe('Multi-select Dropdown', () => {
 
     // Verify correct option's pill was removed, while others remain
     const afterDelete = screen.queryAllByRole('listitem');
-    expect(afterDelete.length).toBe(2);
+    expect(afterDelete.length).toBe(4);
     expect(afterDelete[0]).toHaveTextContent('Option B');
     expect(afterDelete[1]).toHaveTextContent('Option C');
   });
