@@ -50,6 +50,19 @@ export const communicationIcons: string[] = [
   'web'
 ];
 
+export const numberIcons: string[] = [
+  'zero',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine'
+];
+
 export const documentIcons: string[] = [
   'appendix',
   'book',

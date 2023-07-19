@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useIconSvg } from '../../hooks/useIconSvg';
+import { numberIcons } from './iconLists';
 
 const isSquare = new Set([
   'email',
@@ -12,7 +13,24 @@ const isSquare = new Set([
   'youtube'
 ]);
 
+const isNumber = new Set(numberIcons);
+
+/**
+ * Get the name of the icon with the correct shape modifier
+ *
+ * Most icons use a -round suffix.
+ * A few use a -square suffix.
+ * Number icons are either -open or -closed.
+ *
+ * @param name Canonical icon name
+ * @param withBg With background?
+ * @returns string
+ */
 const getShapeModifier = (name: string, withBg: boolean): string => {
+  if (isNumber.has(name)) {
+    if (withBg) return '-closed';
+    return '-open';
+  }
   if (!withBg) return '';
   if (isSquare.has(name)) return '-square';
   return '-round';
