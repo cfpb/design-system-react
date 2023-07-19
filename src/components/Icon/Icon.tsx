@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useIconSvg } from '../../hooks/useIconSvg';
+import { numberIcons } from './iconLists';
 
 const isSquare = new Set([
   'email',
@@ -12,18 +13,7 @@ const isSquare = new Set([
   'youtube'
 ]);
 
-const isNumber = new Set([
-  'zero',
-  'one',
-  'two',
-  'three',
-  'four',
-  'five',
-  'six',
-  'seven',
-  'eight',
-  'nine'
-]);
+const isNumber = new Set(numberIcons);
 
 /**
  * Get the name of the icon with the correct shape modifier
