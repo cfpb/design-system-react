@@ -7,13 +7,16 @@ interface WellProperties {
   headingLevel?: HeadingLevel;
   links?: JSX.Element[];
   text: JSX.Element | string;
+  className?: string | undefined;
 }
 
 export default function Well({
   heading,
   headingLevel = 'h4',
   links,
-  text
+  text,
+  className = '',
+  ...properties
 }: WellProperties): JSX.Element {
   const callsToAction = [];
   if (links)
@@ -22,7 +25,7 @@ export default function Well({
     }
 
   return (
-    <div className='o-well'>
+    <div className={`o-well ${className}`} {...properties}>
       <p className={headingLevel}>{heading}</p>
       <p className='text'>{text}</p>
       {callsToAction.length > 0 ? <List isLinks>{callsToAction}</List> : null}
