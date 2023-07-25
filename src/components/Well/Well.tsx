@@ -21,7 +21,7 @@ export default function Well({
   const callsToAction = [];
   if (links)
     for (const link of links) {
-      callsToAction.push(<ListItem>{link}</ListItem>);
+      callsToAction.push(<ListItem key={link.key}>{link}</ListItem>);
     }
 
   return (
