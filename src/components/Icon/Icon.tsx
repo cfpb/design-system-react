@@ -2,6 +2,18 @@ import classNames from 'classnames';
 import { useIconSvg } from '../../hooks/useIconSvg';
 import { numberIcons } from './iconLists';
 
+// Design System font sizes for HTML elements
+const sizeMap: Record<string, string> = {
+  h1: '34px',
+  h2: '26px',
+  h3: '22px',
+  h4: '18px',
+  h5: '14px',
+  p: '16px',
+  sub: '12px'
+};
+
+// Icons who's background is square as opposed to round
 const isSquare = new Set([
   'email',
   'facebook',
@@ -13,6 +25,7 @@ const isSquare = new Set([
   'youtube'
 ]);
 
+// Is this an number icon, based on the icon name?
 const isNumber = new Set(numberIcons);
 
 /**
@@ -40,6 +53,7 @@ interface IconProperties {
   name: string;
   alt?: string;
   withBg?: boolean;
+  size?: string;
 }
 
 /**
@@ -50,12 +64,15 @@ interface IconProperties {
  * @param name Canonical icon name
  * @param alt Alt text for image
  * @param withBg With background?
+ * @param size Match the icon size to a specified HTML element or provide a custom size. By default the icon size is determined by it's parent element's font-size.
  * @returns ReactElement | null
  */
 export const Icon = ({
   name,
   alt,
-  withBg = false
+  withBg = false,
+  size = 'inherit',
+  ...others
 }: IconProperties): JSX.Element | null => {
   const shapeModifier = getShapeModifier(name, withBg);
   const fileName = `${name}${shapeModifier}`;
@@ -68,7 +85,8 @@ export const Icon = ({
   const iconAttributes = [
     `class="${classNames(classes)}"`,
     'role="img"',
-    `alt="${alt ?? name}"`
+    `alt="${alt ?? name}"`,
+    `style="font-size: ${sizeMap[size] || size}"`
   ].join(' ');
 
   const iconHtml = `${icon}`.replace('<svg', `<svg ${iconAttributes} `);
@@ -77,6 +95,7 @@ export const Icon = ({
     <span
       className='cf-icon-svg-wrapper'
       dangerouslySetInnerHTML={{ __html: iconHtml }}
+      {...others}
     />
   );
 };

@@ -4,13 +4,16 @@ import type {
   CSSObjectWithLabel,
   ControlProps,
   GroupBase,
+  InputActionMeta,
   OnChangeValue,
   OptionsOrGroups,
   PropsValue,
   SelectInstance
 } from 'react-select';
-import Select, { createFilter } from 'react-select';
+import Select, { components, createFilter } from 'react-select';
+import type { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
 import { Label } from '../Label/Label';
+import CheckboxInputOption from './DropdownInputWithCheckbox';
 import { DropdownPills } from './DropdownPills';
 
 export interface SelectOption {
@@ -44,14 +47,16 @@ const extendedSelectStyles = {
  * @param options Available options
  * @param selected Selected options
  * @param isMulti Is a multi-select component?
+ * @param showAllOptions Force all options to be displayed for selection
  * @returns A list of selectable options
  */
 const filterOptions = (
   options: PropsValue<SelectOption>,
   selected: PropsValue<SelectOption>,
-  isMulti: boolean
+  isMulti: boolean,
+  showAllOptions: boolean
 ): OptionsOrGroups<SelectOption, GroupBase<SelectOption>> => {
-  if (!selected || !isMulti)
+  if (showAllOptions || !selected || !isMulti)
     return options as OptionsOrGroups<SelectOption, GroupBase<SelectOption>>;
 
   return (options as SelectOption[]).filter(
@@ -67,9 +72,18 @@ interface DropdownProperties {
   label?: string;
   onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
   options: SelectOption[];
-  pillAlign?: 'bottom' | 'top';
+  pillAlign?: 'bottom' | 'hide' | 'top'; // Display pills below/above the select input or hide them
+  showClearAllSelectedButton?: boolean; // Show/Hide our custom 'Clear All...' button
   value?: PropsValue<SelectOption>;
+  withCheckbox?: boolean; // Show/Hide checkbox next to optios
 }
+
+// Make it easier for the user to delete/edit search text by highlighting all input text onFocus
+const onSelectInputFocus = (
+  event: React.ChangeEvent<HTMLInputElement>
+): void => {
+  event.target.select();
+};
 
 /**
  * A dropdown input component that supports multi-select.
@@ -86,21 +100,31 @@ export function Dropdown({
   options,
   pillAlign = 'top',
   value,
-  ...rest
-}: DropdownProperties): JSX.Element {
+  withCheckbox = false,
+  isClearable = true, // Show/Hide react-select X in select input that clears all selections
+  showClearAllSelectedButton = true,
+  ...properties
+}: DropdownProperties & StateManagerProps): JSX.Element {
+  const [searchString, setSearchString] = useState<string>('');
   const [selected, setSelected] = useState<PropsValue<SelectOption>>(
     defaultValue ?? []
   );
 
+  // Retain user search input between interactions
+  const onInputChange = (inputValue: string, event: InputActionMeta): void => {
+    if (event.action !== 'input-change') return;
+    setSearchString(inputValue);
+  };
+
+  // Support acting as controlled component
   useEffect(() => {
-    // Support acting as controlled component
     if (value) setSelected(value);
   }, [value]);
 
   const selectReference = useRef<SelectInstance>(null);
 
   // Store updated list of selected items
-  const onChange = useCallback(
+  const onSelectionChange = useCallback(
     (option: PropsValue<SelectOption>) => {
       onSelect(option);
       setSelected(option);
@@ -124,42 +148,58 @@ export function Dropdown({
 
   return (
     <div className='m-form-field m-form-field__select'>
-      {!!label && (
-        <Label id={labelID} htmlFor={id} onClick={onLabelClick}>
-          {label}
-        </Label>
-      )}
+      <Label
+        id={labelID}
+        htmlFor={id}
+        onClick={onLabelClick}
+        className='u-mt60'
+      >
+        {label}
+      </Label>
       {pillAlign === 'top' && (
         <DropdownPills
+          selectRef={selectReference}
           selected={selected}
           isMulti={isMulti}
-          onChange={onChange}
+          onChange={onSelectionChange}
+          showClearAllSelectedButton={showClearAllSelectedButton}
         />
       )}
       <Select
-        inputId={id}
+        id={`${id}-select`}
         aria-labelledby={labelID}
-        openMenuOnFocus
-        ref={selectReference as Ref<any>}
-        tabSelectsValue={false}
-        onKeyDown={onKeyDown}
-        isMulti={isMulti}
         className='o-multiselect'
-        value={value ?? selected}
-        options={filterOptions(options, selected, isMulti)}
-        onChange={onChange}
-        filterOption={createFilter({ ignoreAccents: false })}
-        controlShouldRenderValue={!isMulti}
         closeMenuOnSelect={!isMulti}
+        controlShouldRenderValue={!isMulti}
+        components={{
+          Option: withCheckbox ? CheckboxInputOption : components.Option
+        }}
+        filterOption={createFilter({ ignoreAccents: false })}
+        hideSelectedOptions={false}
+        inputId={id}
+        inputValue={searchString}
+        isClearable={isClearable}
+        isMulti={isMulti}
+        onChange={onSelectionChange}
+        onFocus={onSelectInputFocus}
+        onInputChange={onInputChange}
+        onKeyDown={onKeyDown}
+        openMenuOnFocus
+        options={filterOptions(options, selected, isMulti, withCheckbox)}
+        ref={selectReference as Ref<any>}
         styles={extendedSelectStyles}
-        {...rest}
+        tabSelectsValue={false}
+        value={value ?? selected}
+        {...properties}
       />
       {pillAlign === 'bottom' && (
         <DropdownPills
-          selected={selected}
           isMulti={isMulti}
-          onChange={onChange}
+          onChange={onSelectionChange}
           pillAlign='bottom'
+          selected={selected}
+          selectRef={selectReference}
+          showClearAllSelectedButton={showClearAllSelectedButton}
         />
       )}
     </div>

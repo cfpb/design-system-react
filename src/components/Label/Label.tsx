@@ -15,9 +15,12 @@ export const Label = ({
   htmlFor,
   className,
   ...other
-}: JSX.IntrinsicElements['label'] & LabelProperties): React.ReactElement => {
+}: JSX.IntrinsicElements['label'] &
+  LabelProperties): React.ReactElement | null => {
   const styles = [...baseStyles, inline ? '' : 'a-label__heading'];
   const classes = [className, ...styles];
+
+  if (!children) return null;
 
   return (
     <label {...other} className={classnames(classes)} htmlFor={htmlFor}>
