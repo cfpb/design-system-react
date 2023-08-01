@@ -30,3 +30,9 @@ export const LoggedOut: Story = {
     user: { loginHref: '#' }
   }
 };
+
+export const NoUser: Story = {
+  args: {
+    links: ExampleLinks
+  }
+};

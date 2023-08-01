@@ -1,3 +1,4 @@
+import type { JSXElement } from '~/src/types/jsxElement';
 import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import Link from '../Link/Link';
 import './navbar.less';
@@ -35,11 +36,13 @@ interface UserActionsProperties {
   user?: User;
 }
 
-const UserActions = ({ user }: UserActionsProperties): JSX.Element => {
-  if (!user?.name)
+const UserActions = ({ user }: UserActionsProperties): JSXElement => {
+  if (!user) return null;
+
+  if (!user.name)
     return (
       <div className='user-actions'>
-        <Link href={user?.loginHref} className='nav-item login'>
+        <Link href={user.loginHref} className='nav-item login'>
           LOGIN
         </Link>
       </div>
