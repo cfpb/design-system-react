@@ -4,13 +4,36 @@ import userEvent from '@testing-library/user-event';
 import { Button } from './Button';
 
 describe('<Button />', () => {
-  it('renders labels correctly', () => {
-    render(<Button label='button' />);
-    expect(screen.getByText('button')).toBeInTheDocument();
+  it('Propagates additional HTML properties to main component element', () => {
+    const testClass = 'this-is-a-test-classname';
+    const testTitle = 'test-title';
+    const testLabel = 'button';
 
-    render(<Button label='wowzers' />);
-    expect(screen.getByText('wowzers')).toBeInTheDocument();
+    render(
+      <Button label={testLabel} className={testClass} title={testTitle} />
+    );
+    expect(screen.getByText(testLabel)).toBeInTheDocument();
+    expect(screen.getByText(testLabel)).toHaveClass(testClass);
+    expect(screen.getByText(testLabel)).toHaveAttribute('title', testTitle);
   });
+
+  it('renders as a link', () => {
+    render(<Button label='button' asLink />);
+    expect(screen.getByText('button')).toHaveClass('a-btn__link');
+  });
+
+  it('renders labels correctly', () => {
+    const label1 = 'button';
+    render(<Button label={label1} />);
+    expect(screen.getByText(label1)).toBeInTheDocument();
+    expect(screen.getByText(label1).textContent).toEqual(label1);
+
+    const label2 = 'wowzers';
+    render(<Button label={label2} />);
+    expect(screen.getByText(label2)).toBeInTheDocument();
+    expect(screen.getByText(label2).textContent).toEqual(label2);
+  });
+
   it('renders multiple appearances', () => {
     render(<Button label='button' />);
     expect(screen.getByText('button')).toHaveClass('a-btn');
@@ -20,6 +43,7 @@ describe('<Button />', () => {
       'a-btn__secondary'
     );
   });
+
   it('renders multiple sizes', () => {
     render(<Button label='Button' size='default' />);
     expect(screen.getByText('Button')).toHaveClass('a-btn');
@@ -32,29 +56,15 @@ describe('<Button />', () => {
       'a-btn__full-on-xs'
     );
   });
+
   it('can be disabled', () => {
     render(<Button label='normal button' />);
     expect(screen.getByText('normal button')).toBeEnabled();
 
-    render(<Button label='disabled button' isDisabled />);
+    render(<Button label='disabled button' disabled />);
     expect(screen.getByText('disabled button')).toBeDisabled();
   });
-  it('supports arbitrary properties', async () => {
-    render(<Button label='random property' data-something='hi' />);
-    expect(screen.getByText('random property')).toHaveAttribute(
-      'data-something',
-      'hi'
-    );
 
-    render(<Button label='custom type' type='reset' />);
-    expect(screen.getByText('custom type')).toHaveAttribute('type', 'reset');
-
-    render(<Button label='custom form' form='some-form' />);
-    expect(screen.getByText('custom form')).toHaveAttribute(
-      'form',
-      'some-form'
-    );
-  });
   it('tracks clicks', async () => {
     const onClick = vi.fn();
     render(<Button label='button' onClick={onClick} />);
