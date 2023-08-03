@@ -3,11 +3,18 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Button } from './Button';
 
+const testLabel = 'button';
+
+const buttonBaseClass = 'a-btn';
+const buttonSuperClass = 'a-btn__super';
+const buttonLinkClass = 'a-btn__link';
+const buttonFullXSClass = 'a-btn__full-on-xs';
+const buttonSecondaryClass = 'a-btn__secondary';
+
 describe('<Button />', () => {
   it('Propagates additional HTML properties to main component element', () => {
     const testClass = 'this-is-a-test-classname';
     const testTitle = 'test-title';
-    const testLabel = 'button';
 
     render(
       <Button label={testLabel} className={testClass} title={testTitle} />
@@ -17,58 +24,57 @@ describe('<Button />', () => {
     expect(screen.getByText(testLabel)).toHaveAttribute('title', testTitle);
   });
 
-  it('renders as a link', () => {
-    render(<Button label='button' asLink />);
-    expect(screen.getByText('button')).toHaveClass('a-btn__link');
+  it('Renders as a link', () => {
+    render(<Button label={testLabel} asLink />);
+    expect(screen.getByText(testLabel)).toHaveClass(buttonLinkClass);
   });
 
-  it('renders labels correctly', () => {
-    const label1 = 'button';
-    render(<Button label={label1} />);
-    expect(screen.getByText(label1)).toBeInTheDocument();
-    expect(screen.getByText(label1).textContent).toEqual(label1);
+  it('Renders labels correctly', () => {
+    render(<Button label={testLabel} />);
+    expect(screen.getByText(testLabel)).toBeInTheDocument();
+    expect(screen.getByText(testLabel).textContent).toEqual(testLabel);
 
-    const label2 = 'wowzers';
-    render(<Button label={label2} />);
-    expect(screen.getByText(label2)).toBeInTheDocument();
-    expect(screen.getByText(label2).textContent).toEqual(label2);
+    const wowLabel = 'wowzers';
+    render(<Button label={wowLabel} />);
+    expect(screen.getByText(wowLabel)).toBeInTheDocument();
+    expect(screen.getByText(wowLabel).textContent).toEqual(wowLabel);
   });
 
-  it('renders multiple appearances', () => {
-    render(<Button label='button' />);
-    expect(screen.getByText('button')).toHaveClass('a-btn');
+  it('Renders alternative appearances', () => {
+    render(<Button label={testLabel} />);
+    expect(screen.getByText(testLabel)).toHaveClass(buttonBaseClass);
 
-    render(<Button label='secondary button' appearance='secondary' />);
-    expect(screen.getByText('secondary button')).toHaveClass(
-      'a-btn__secondary'
-    );
+    const secondaryLabel = 'secondary button';
+    render(<Button label={secondaryLabel} appearance='secondary' />);
+    expect(screen.getByText(secondaryLabel)).toHaveClass(buttonSecondaryClass);
   });
 
-  it('renders multiple sizes', () => {
-    render(<Button label='Button' size='default' />);
-    expect(screen.getByText('Button')).toHaveClass('a-btn');
+  it('Renders alternative sizes', () => {
+    render(<Button label={testLabel} size='default' />);
+    expect(screen.getByText(testLabel)).toHaveClass(buttonBaseClass);
 
-    render(<Button label='super button' size='super' />);
-    expect(screen.getByText('super button')).toHaveClass('a-btn__super');
+    const labelSuper = 'super button';
+    render(<Button label={labelSuper} size='super' />);
+    expect(screen.getByText(labelSuper)).toHaveClass(buttonSuperClass);
 
-    render(<Button label='full width button' size='full' />);
-    expect(screen.getByText('full width button')).toHaveClass(
-      'a-btn__full-on-xs'
-    );
+    const labelFull = 'full width';
+    render(<Button label={labelFull} size='full' />);
+    expect(screen.getByText(labelFull)).toHaveClass(buttonFullXSClass);
   });
 
-  it('can be disabled', () => {
-    render(<Button label='normal button' />);
-    expect(screen.getByText('normal button')).toBeEnabled();
+  it('Can be disabled', () => {
+    render(<Button label={testLabel} />);
+    expect(screen.getByText(testLabel)).toBeEnabled();
 
-    render(<Button label='disabled button' disabled />);
-    expect(screen.getByText('disabled button')).toBeDisabled();
+    const labelDisabled = 'disabled button';
+    render(<Button label={labelDisabled} disabled />);
+    expect(screen.getByText(labelDisabled)).toBeDisabled();
   });
 
-  it('tracks clicks', async () => {
+  it('Tracks clicks', async () => {
     const onClick = vi.fn();
-    render(<Button label='button' onClick={onClick} />);
-    const button = screen.getByText('button');
+    render(<Button label={testLabel} onClick={onClick} />);
+    const button = screen.getByText(testLabel);
     expect(button).toBeInTheDocument();
 
     await userEvent.click(button);
