@@ -4,6 +4,18 @@ import { Banner } from './Banner';
 import { LanguageLink } from './BannerLanguageLink';
 
 describe('<Banner />', () => {
+  it('Propagates additional HTML properties to main component element', () => {
+    const testClass = 'this-is-a-test-classname';
+    const testTitle = 'test-title';
+
+    const testId = 'eyebrow';
+
+    render(<Banner className={testClass} title={testTitle} />);
+    expect(screen.getByTestId(testId)).toBeInTheDocument();
+    expect(screen.getByTestId(testId)).toHaveClass(testClass);
+    expect(screen.getByTestId(testId)).toHaveAttribute('title', testTitle);
+  });
+
   it('renders tagline correctly', () => {
     render(
       <Banner tagline='An official website of the United States government' />
