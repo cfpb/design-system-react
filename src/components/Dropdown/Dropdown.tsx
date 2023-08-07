@@ -1,89 +1,13 @@
 import type { KeyboardEvent, Ref } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type {
-  CSSObjectWithLabel,
-  ControlProps,
-  GroupBase,
-  InputActionMeta,
-  OnChangeValue,
-  OptionsOrGroups,
-  PropsValue,
-  SelectInstance
-} from 'react-select';
+import type { InputActionMeta, PropsValue, SelectInstance } from 'react-select';
 import Select, { components, createFilter } from 'react-select';
-import type { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
 import { Label } from '../Label/Label';
+import type { DropdownProperties, SelectOption } from './Dropdown.types';
 import CheckboxInputOption from './DropdownInputWithCheckbox';
 import { DropdownPills } from './DropdownPills';
-
-export interface SelectOption {
-  value: string;
-  label: string;
-}
-
-// Better align Select wih CFPB styles
-const extendedSelectStyles = {
-  control: (
-    base: CSSObjectWithLabel,
-    state: ControlProps<SelectOption, boolean, GroupBase<SelectOption>>
-  ): CSSObjectWithLabel => ({
-    ...base,
-    borderColor: state.isFocused ? '#0072ce' : base.borderColor,
-    outline: state.isFocused ? '1px dotted #0072ce !important' : base.outline,
-    outlineOffset: state.isFocused ? '3px' : base.outlineOffset,
-    '&:hover': {
-      borderColor: '#0072ce',
-      outline: state.isFocused
-        ? '1px dotted #0072ce !important'
-        : '1px solid #0072ce !important',
-      outlineOffset: state.isFocused ? '3px' : '0'
-    }
-  })
-};
-
-/**
- * For multi-select, hides already selected options.
- *
- * @param options Available options
- * @param selected Selected options
- * @param isMulti Is a multi-select component?
- * @param showAllOptions Force all options to be displayed for selection
- * @returns A list of selectable options
- */
-const filterOptions = (
-  options: PropsValue<SelectOption>,
-  selected: PropsValue<SelectOption>,
-  isMulti: boolean,
-  showAllOptions: boolean
-): OptionsOrGroups<SelectOption, GroupBase<SelectOption>> => {
-  if (showAllOptions || !selected || !isMulti)
-    return options as OptionsOrGroups<SelectOption, GroupBase<SelectOption>>;
-
-  return (options as SelectOption[]).filter(
-    o => !(selected as SelectOption[]).map(s => s.value).includes(o.value)
-  );
-};
-
-interface DropdownProperties {
-  defaultValue?: PropsValue<SelectOption>;
-  id: string;
-  isDisabled?: boolean;
-  isMulti?: boolean;
-  label?: string;
-  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
-  options: SelectOption[];
-  pillAlign?: 'bottom' | 'hide' | 'top'; // Display pills below/above the select input or hide them
-  showClearAllSelectedButton?: boolean; // Show/Hide our custom 'Clear All...' button
-  value?: PropsValue<SelectOption>;
-  withCheckbox?: boolean; // Show/Hide checkbox next to optios
-}
-
-// Make it easier for the user to delete/edit search text by highlighting all input text onFocus
-const onSelectInputFocus = (
-  event: React.ChangeEvent<HTMLInputElement>
-): void => {
-  event.target.select();
-};
+import { extendedSelectStyles } from './styles';
+import { filterOptions, onSelectInputFocus } from './utils';
 
 /**
  * A dropdown input component that supports multi-select.
@@ -103,8 +27,9 @@ export function Dropdown({
   withCheckbox = false,
   isClearable = true, // Show/Hide react-select X in select input that clears all selections
   showClearAllSelectedButton = true,
+  className = '',
   ...properties
-}: DropdownProperties & StateManagerProps): JSX.Element {
+}: DropdownProperties): JSX.Element {
   const [searchString, setSearchString] = useState<string>('');
   const [selected, setSelected] = useState<PropsValue<SelectOption>>(
     defaultValue ?? []
@@ -147,7 +72,7 @@ export function Dropdown({
   const labelID = `${id}-label`;
 
   return (
-    <div className='m-form-field m-form-field__select'>
+    <div className={`m-form-field m-form-field__select ${className}`}>
       <Label
         id={labelID}
         htmlFor={id}
