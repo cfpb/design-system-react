@@ -115,7 +115,8 @@ describe('Multi-select Dropdown', () => {
     options: MockOptions,
     onSelect,
     placeholder,
-    isMulti: true
+    isMulti: true,
+    withCheckbox: true
   };
 
   it('(Mouse) Selects an option and displays pill', async () => {
@@ -221,5 +222,64 @@ describe('Multi-select Dropdown', () => {
     expect(screen.queryByText('Option A')).not.toBeInTheDocument();
     expect(screen.getByText('Option B')).toBeInTheDocument();
     expect(screen.getByText('Option C')).toBeInTheDocument();
+  });
+
+  it('Allows search for option', async () => {
+    const targetOption = MockOptions[1].label;
+    const user = userEvent.setup();
+
+    render(
+      <Dropdown
+        {...{
+          ...multiProperties,
+          defaultValue: [MockOptions[0]]
+        }}
+      />
+    );
+
+    // Verify option is initially not selected
+    expect(screen.getByText('Option A')).toBeInTheDocument();
+    expect(screen.queryByText(targetOption)).not.toBeInTheDocument();
+
+    // Simulate text input
+    const input = screen.getByLabelText(label);
+    input.focus();
+    await user.keyboard('B{Enter}{Esc}');
+
+    // Option found and selected
+    expect(screen.getByText(targetOption)).toBeInTheDocument();
+
+    // Remove option by clicking pill
+    const pill = screen.getByRole('button', {
+      name: `${targetOption}`
+    });
+
+    await user.click(pill);
+    expect(screen.queryByText(targetOption)).not.toBeInTheDocument();
+  });
+
+  it('Remove all options via clear button', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <Dropdown
+        {...{
+          ...multiProperties,
+          defaultValue: [MockOptions[0], MockOptions[1]]
+        }}
+      />
+    );
+
+    // Verify option is initially not selected
+    expect(screen.getByText(MockOptions[0].label)).toBeInTheDocument();
+    expect(screen.getByText(MockOptions[1].label)).toBeInTheDocument();
+
+    // Clear all
+    const button = screen.getByText('Clear All Selected Institutions');
+    await user.click(button);
+
+    // Verify all clear
+    expect(screen.queryByText(MockOptions[0].label)).not.toBeInTheDocument();
+    expect(screen.queryByText(MockOptions[1].label)).not.toBeInTheDocument();
   });
 });
