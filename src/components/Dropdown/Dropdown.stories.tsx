@@ -2,8 +2,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Button } from '../Button/Button';
-import type { SelectOption } from './Dropdown';
 import { Dropdown } from './Dropdown';
+import type { SelectOption } from './Dropdown.types';
 import { MockOptions } from './utils';
 
 const meta: Meta<typeof Dropdown> = {
