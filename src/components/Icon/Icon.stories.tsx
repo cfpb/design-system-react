@@ -75,15 +75,15 @@ export const IconWithText = (): React.ReactElement => {
   const elements = ['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'a'];
 
   return (
-    <table>
+    <table className='t-icon-with-text'>
       <thead>
         <tr>
           <th>Element</th>
           <th>Plain Icon</th>
-          <th>Plain Icon Left</th>
           <th>Round Icon</th>
-          <th>Round Icon Left</th>
           <th>Square Icon</th>
+          <th>Plain Icon Left</th>
+          <th>Round Icon Left</th>
           <th>Square Icon Left</th>
         </tr>
       </thead>
@@ -95,44 +95,49 @@ export const IconWithText = (): React.ReactElement => {
             <tr key={element}>
               <td>{element}</td>
               <td>
-                <DynamicTag>
+                <DynamicTag className='u-icon-after-text'>
                   {element} text
                   <Icon name='email' />
                 </DynamicTag>
               </td>
+
               <td>
-                <DynamicTag>
+                <DynamicTag className='u-icon-after-text'>
+                  {element} text
+                  <Icon name='zero' withBg />
+                </DynamicTag>
+              </td>
+
+              <td>
+                <DynamicTag className='u-icon-after-text'>
+                  {element} text
+                  <Icon name='facebook' withBg />
+                </DynamicTag>
+              </td>
+              <td>
+                <DynamicTag className='u-icon-before-text'>
                   <Icon name='email' />
                   {element} text
                 </DynamicTag>
               </td>
               <td>
-                <DynamicTag>
-                  {element} text
-                  <Icon name='zero' withBg />
-                </DynamicTag>
-              </td>
-              <td>
-                <DynamicTag>
+                <DynamicTag className='u-icon-before-text'>
                   <Icon name='zero' withBg />
                   {element} text
                 </DynamicTag>
               </td>
               <td>
-                <DynamicTag>
+                <DynamicTag className='u-icon-before-text'>
                   <Icon name='facebook' withBg />
                   {element} text
-                </DynamicTag>
-              </td>
-              <td>
-                <DynamicTag>
-                  {element} text
-                  <Icon name='facebook' withBg />
                 </DynamicTag>
               </td>
             </tr>
           );
         })}
+        <tr>
+          <td>test space</td>
+        </tr>
       </tbody>
     </table>
   );

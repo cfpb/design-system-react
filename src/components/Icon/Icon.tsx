@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import { useIconSvg } from '../../hooks/useIconSvg';
 import { numberIcons } from './iconLists';
 
+import './Icon.less';
+
 // Design System font sizes for HTML elements
 const sizeMap: Record<string, string> = {
   h1: '34px',
