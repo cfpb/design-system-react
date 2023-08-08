@@ -5,7 +5,8 @@ import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import { Icon } from '../Icon/Icon';
 
-export interface ExpandableProperties {
+export interface ExpandableProperties
+  extends React.HTMLAttributes<HTMLDivElement> {
   header: string;
   children: ReactNode;
   inAccordion?: boolean;
@@ -16,7 +17,9 @@ export const Expandable: React.FC<ExpandableProperties> = ({
   header,
   children,
   inAccordion = false,
-  openOnLoad = false
+  openOnLoad = false,
+  className = '',
+  ...properties
 }) => {
   useEffect(() => {
     if (inAccordion) return; // Initialization happens in parent component
@@ -29,13 +32,18 @@ export const Expandable: React.FC<ExpandableProperties> = ({
     'o-expandable',
     'o-expandable__padded',
     'o-expandable__background',
-    'o-expandable__border'
+    'o-expandable__border',
+    className
   ];
 
   if (openOnLoad) expandableClasses.push('o-expandable__onload-open');
 
   return (
-    <div className={classnames(expandableClasses)} data-testid='expandable'>
+    <div
+      className={classnames(expandableClasses)}
+      data-testid='expandable'
+      {...properties}
+    >
       <button
         type='button'
         className='o-expandable_header o-expandable_target'
