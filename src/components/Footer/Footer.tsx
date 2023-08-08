@@ -1,17 +1,16 @@
-import List from '../List/List';
-import { ListItemBuilder } from '../List/ListItem';
+import classnames from 'classnames';
 import { BackToTop } from './BackToTop';
 import './Footer.less';
 import { FooterBanner } from './FooterBanner';
 import { FooterLinksColumn, NavLinks, SocialLinks } from './FooterLinks';
 import './SocialMedia.less';
 
-interface FooterProperties {
-  navLinks: JSX.Element[];
-  socialLinks: JSX.Element[];
-  linksCol1: JSX.Element[];
-  linksCol2: JSX.Element[];
-  linksCol3: JSX.Element[];
+interface FooterProperties extends React.HTMLProps<HTMLElement> {
+  navLinks?: JSX.Element[];
+  socialLinks?: JSX.Element[];
+  linksCol1?: JSX.Element[];
+  linksCol2?: JSX.Element[];
+  linksCol3?: JSX.Element[];
 }
 
 /**
@@ -22,10 +21,18 @@ export default function Footer({
   socialLinks = [],
   linksCol1 = [],
   linksCol2 = [],
-  linksCol3 = []
+  linksCol3 = [],
+  className,
+  ...properties
 }: FooterProperties): JSX.Element {
+  const classes = ['o-footer', className];
+
   return (
-    <footer className='o-footer' data-js-hook='state_atomic_init'>
+    <footer
+      className={classnames(classes)}
+      data-js-hook='state_atomic_init'
+      {...properties}
+    >
       <div className='wrapper wrapper__match-content'>
         <div className='o-footer_pre'>
           <BackToTop />
@@ -39,11 +46,7 @@ export default function Footer({
         </div>
 
         <div className='o-footer-middle-right'>
-          <List className='o-footer_list'>
-            <ListItemBuilder className='m-list_link'>
-              {linksCol3}
-            </ListItemBuilder>
-          </List>
+          <FooterLinksColumn>{linksCol3}</FooterLinksColumn>
         </div>
 
         <FooterBanner />
