@@ -1,9 +1,11 @@
 import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-expandables/src/Expandable';
+import classnames from 'classnames';
 import type { ReactElement } from 'react';
 import React, { useEffect } from 'react';
 import type { ExpandableProperties } from './Expandable';
 
-export interface ExpandableGroupProperties {
+export interface ExpandableGroupProperties
+  extends React.HTMLAttributes<HTMLDivElement> {
   groupId: string;
   accordion?: boolean;
   children?: ReactElement<ExpandableProperties>[];
@@ -12,10 +14,12 @@ export interface ExpandableGroupProperties {
 export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
   groupId,
   accordion = false,
-  children
+  children,
+  className = '',
+  ...properties
 }) => {
-  let cname = 'o-expandable-group';
-  if (accordion) cname += ' o-expandable-group__accordion';
+  const cname = ['o-expandable-group', className];
+  if (accordion) cname.push('o-expandable-group__accordion');
 
   useEffect(() => {
     if (!accordion) return;
@@ -34,7 +38,7 @@ export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
     return child;
   });
   return (
-    <div id={groupId} className={cname}>
+    <div id={groupId} className={classnames(cname)} {...properties}>
       {childrenWithProperties}
     </div>
   );
