@@ -14,10 +14,6 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
    */
   size?: 'default' | 'full' | 'super';
   /**
-   * Disable the button?
-   */
-  isDisabled?: boolean;
-  /**
    * Optional click handler
    */
   onClick?: () => void;
@@ -48,7 +44,6 @@ export function Button({
   appearance = 'primary',
   asLink = false,
   size = 'default',
-  isDisabled = false,
   label,
   ...properties
 }: ButtonProperties): JSX.Element {
@@ -58,14 +53,10 @@ export function Button({
     ...sizeStyles[size]
   ];
   if (asLink) styles.push('a-btn__link');
+  if (properties.className) styles.push(properties.className);
 
   return (
-    <button
-      type='button'
-      className={[...styles].join(' ')}
-      disabled={isDisabled}
-      {...properties}
-    >
+    <button type='button' className={[...styles].join(' ')} {...properties}>
       {label}
     </button>
   );
