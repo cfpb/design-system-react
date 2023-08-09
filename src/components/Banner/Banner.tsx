@@ -3,7 +3,7 @@ import type { JSXElement } from '../../types/jsxElement';
 import { Tagline } from '../Tagline/Tagline';
 import './Banner.less';
 
-interface BannerProperties {
+interface BannerProperties extends React.HTMLProps<HTMLDivElement> {
   isHorizontal?: boolean;
   links?: JSX.Element[];
   phoneNumber?: string;
@@ -37,7 +37,9 @@ export const Banner = ({
   isHorizontal = true,
   tagline = 'This is a tagline',
   phoneNumber,
-  links = []
+  links = [],
+  className,
+  ...properties
 }: BannerProperties): JSX.Element => {
   const eyebrowClasses = ['m-global-eyebrow'];
   const wrapperClasses = ['wrapper'];
@@ -53,8 +55,14 @@ export const Banner = ({
     eyebrowClasses.push('m-global-eyebrow__list');
   }
 
+  if (className) eyebrowClasses.push(className);
+
   return (
-    <div className={classnames(eyebrowClasses)} data-testid='eyebrow'>
+    <div
+      className={classnames(eyebrowClasses)}
+      data-testid='eyebrow'
+      {...properties}
+    >
       <div className={classnames(wrapperClasses)}>
         {taglineContent}
 
