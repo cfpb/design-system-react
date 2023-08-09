@@ -1,7 +1,8 @@
+import classnames from 'classnames';
 import type React from 'react';
 import { useMemo, useState } from 'react';
 
-interface CheckboxProperties {
+interface CheckboxProperties extends React.HTMLProps<HTMLInputElement> {
   id: string;
   label: string;
   className?: string;
@@ -13,12 +14,9 @@ interface CheckboxProperties {
     | ((instance: HTMLInputElement | null) => void)
     | null
     | undefined;
-  isDisabled?: boolean;
   isLarge?: boolean;
   name?: string;
-  onChange?: (value: boolean) => void;
 }
-const baseStyles = ['a-checkbox'];
 const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
 
 export const Checkbox = ({
@@ -28,10 +26,11 @@ export const Checkbox = ({
   defaultChecked = false,
   helperText,
   inputRef,
-  isDisabled = false,
+  disabled = false,
   isLarge = false,
   name,
-  onChange
+  onChange,
+  ...properties
 }: CheckboxProperties & JSX.IntrinsicElements['input']): React.ReactElement => {
   const [checked, setChecked] = useState(defaultChecked);
 
@@ -39,20 +38,23 @@ export const Checkbox = ({
     () =>
       (event: React.ChangeEvent<HTMLInputElement>): void => {
         setChecked(event.target.checked);
-        onChange?.(event.target.checked);
+        onChange?.(event);
       },
     [onChange, setChecked]
   );
 
-  const classes = [...baseStyles, className].join(' ');
-
   const containerClasses = [
     ...containerBaseStyles,
-    isLarge ? 'm-form-field__lg-target' : ''
-  ].join(' ');
+    isLarge ? 'm-form-field__lg-target' : '',
+    className
+  ];
 
   return (
-    <div className={containerClasses} data-testid={`${id}-container`}>
+    <div
+      className={classnames(containerClasses)}
+      data-testid={`${id}-container`}
+      {...properties}
+    >
       <input
         id={id}
         type='checkbox'
@@ -60,9 +62,9 @@ export const Checkbox = ({
         aria-checked={checked}
         aria-labelledby={`${id}-label`}
         name={name ?? id}
-        className={classes}
+        className='a-checkbox'
         ref={inputRef}
-        disabled={isDisabled}
+        disabled={disabled}
         onChange={onChangeHandler}
       />
       <label id={`${id}-label`} className='a-label' htmlFor={id}>

@@ -4,69 +4,82 @@ import { Checkbox } from './Checkbox';
 
 const id = 'default';
 const label = 'this is a label';
-const defaultProps = { id, label };
+const testId = `${id}-container`;
+
+const attributeAria = 'aria-checked';
+const attributeClass = 'class';
+const attributeTitle = 'title';
+
+const defaultProps = { id, label, 'data-testid': testId };
 
 describe('Checkbox', () => {
-  it('Default w/ onChange', async () => {
-    const name = 'named checkbox';
+  it('Propagates additional HTML properties to main component element', () => {
+    const testTitle = 'test-title';
+
+    render(<Checkbox {...defaultProps} title={testTitle} />);
+    const checkbox = screen.getByTestId(testId);
+
+    expect(checkbox).toBeInTheDocument();
+    expect(checkbox).toHaveAttribute(attributeTitle, testTitle);
+  });
+
+  it('Calls the provided onChange handler', async () => {
     const onChange = vi.fn();
 
-    render(<Checkbox {...defaultProps} name={name} onChange={onChange} />);
+    render(<Checkbox {...defaultProps} onChange={onChange} />);
 
     const checkbox = await screen.findByRole(/checkbox/i);
-    expect(checkbox.getAttribute('class')).toMatch(`a-checkbox`);
-    expect(checkbox.getAttribute('aria-checked')).toMatch(`false`);
+
+    expect(checkbox.getAttribute(attributeClass)).toMatch('a-checkbox');
+    expect(checkbox.getAttribute(attributeAria)).toMatch('false');
     expect(checkbox).not.toBeDisabled();
     expect(onChange).not.toHaveBeenCalled();
 
-    act(() => {
-      checkbox.click();
-    });
+    act(() => checkbox.click());
 
-    // Change handler updated with new value
-    expect(onChange).toHaveBeenCalledWith(true);
+    // Change handler is called with updated input value
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    expect(onChange.calls[0][0].target.checked).toEqual(true);
 
     // Accessbility attributes updated
-    expect(checkbox.getAttribute('aria-checked')).toMatch(`true`);
+    expect(checkbox.getAttribute(attributeAria)).toMatch('true');
   });
 
-  it('With helper text', async () => {
+  it('Renders helper text that toggles checkbox when clicked', async () => {
     const helperText = 'This is optional helper text for the checkbox';
 
     render(<Checkbox {...defaultProps} helperText={helperText} />);
 
     const checkbox = await screen.findByRole(/checkbox/i);
-    expect(checkbox.getAttribute('aria-checked')).toMatch(`false`);
+    expect(checkbox.getAttribute(attributeAria)).toMatch('false');
 
     // Clicking helper text correctly updates checkbox
     const helper = await screen.findByText(helperText);
-    act(() => {
-      helper.click();
-    });
-
-    expect(checkbox.getAttribute('aria-checked')).toMatch(`true`);
+    act(() => helper.click());
+    expect(checkbox.getAttribute(attributeAria)).toMatch('true');
   });
 
-  it('Large', async () => {
+  it('Renders the "Large" variant', async () => {
     render(<Checkbox {...defaultProps} isLarge />);
 
-    const checkbox = screen.getByTestId(`${id}-container`);
-    expect(checkbox.getAttribute('class')).toMatch(`m-form-field__lg-target`);
+    const largeClass = 'm-form-field__lg-target';
+    const checkbox = screen.getByTestId(testId);
+    expect(checkbox.getAttribute(attributeClass)).toMatch(largeClass);
   });
 
-  it('Disabled', async () => {
-    render(<Checkbox {...defaultProps} isDisabled />);
+  it('Is disabled when passing the "disabled" prop', async () => {
+    render(<Checkbox {...defaultProps} disabled />);
 
     const checkbox = await screen.findByRole(/checkbox/i);
     expect(checkbox).toBeDisabled();
   });
 
-  it('With className', async () => {
+  it('Integrates a provided className', async () => {
     const cname = 'extraCname';
 
     render(<Checkbox {...defaultProps} className={cname} />);
 
-    const checkbox = await screen.findByRole(/checkbox/i);
-    expect(checkbox.getAttribute('class')).toMatch(cname);
+    const checkbox = screen.getByTestId(testId);
+    expect(checkbox).toHaveClass(cname);
   });
 });
