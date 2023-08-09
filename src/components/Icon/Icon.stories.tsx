@@ -79,12 +79,9 @@ export const IconWithText = (): React.ReactElement => {
       <thead>
         <tr>
           <th>Element</th>
-          <th>Plain Icon</th>
-          <th>Round Icon</th>
-          <th>Square Icon</th>
-          <th>Plain Icon Left</th>
-          <th>Round Icon Left</th>
-          <th>Square Icon Left</th>
+          <th>Text + Icon</th>
+          <th>Icon + Text</th>
+          <th>Round Icon + Text</th>
         </tr>
       </thead>
       <tbody>
@@ -102,19 +99,6 @@ export const IconWithText = (): React.ReactElement => {
               </td>
 
               <td>
-                <DynamicTag className='u-icon-after-text'>
-                  {element} text
-                  <Icon name='zero' withBg />
-                </DynamicTag>
-              </td>
-
-              <td>
-                <DynamicTag className='u-icon-after-text'>
-                  {element} text
-                  <Icon name='facebook' withBg />
-                </DynamicTag>
-              </td>
-              <td>
                 <DynamicTag className='u-icon-before-text'>
                   <Icon name='email' />
                   {element} text
@@ -123,12 +107,6 @@ export const IconWithText = (): React.ReactElement => {
               <td>
                 <DynamicTag className='u-icon-before-text'>
                   <Icon name='zero' withBg />
-                  {element} text
-                </DynamicTag>
-              </td>
-              <td>
-                <DynamicTag className='u-icon-before-text'>
-                  <Icon name='facebook' withBg />
                   {element} text
                 </DynamicTag>
               </td>
