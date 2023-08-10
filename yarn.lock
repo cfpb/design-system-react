@@ -7389,6 +7389,7 @@ __metadata:
     css-mediaquery: 0.1.2
     cypress: 10.11.0
     cz-conventional-changelog: 3.3.0
+    display-element-css: cfpb/storybook-addon-display-element-css
     eslint: 8.27.0
     eslint-config-airbnb: 19.0.4
     eslint-config-airbnb-base: 15.0.0
@@ -7497,6 +7498,28 @@ __metadata:
   dependencies:
     path-type: ^4.0.0
   checksum: fa05e18324510d7283f55862f3161c6759a3f2f8dbce491a2fc14c8324c498286c54282c1f0e933cb930da8419b30679389499b919122952a4f8592362ef4615
+  languageName: node
+  linkType: hard
+
+display-element-css@cfpb/storybook-addon-display-element-css:
+  version: 0.0.7
+  resolution: "display-element-css@https://github.com/cfpb/storybook-addon-display-element-css.git#commit=d9e9d6b1449137934f173053be0cb3cd0457caee"
+  dependencies:
+    react-highlight: ^0.15.0
+  peerDependencies:
+    "@storybook/addons": ^6.5.8
+    "@storybook/api": ^6.5.8
+    "@storybook/components": ^6.5.8
+    "@storybook/core-events": ^6.5.8
+    "@storybook/theming": ^6.5.8
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 82fa14c3c7f9e5b63dee6ce67dd64e5a207ec2e30df7e1f63acfe034675df6dffb27b58e51b65bb63b99d865c9ddcb4ce521ed0d05d0ff5d07f8be3093908590
   languageName: node
   linkType: hard
 
@@ -9865,6 +9888,13 @@ __metadata:
   version: 3.1.2
   resolution: "headers-polyfill@npm:3.1.2"
   checksum: 510ca9637ef652404dbd432e680418f8d418ba18094ef2f64c3d8de955ebf6e68d553c7f0aeaa5fc937d130b139c1e2d7c2066cd4cf0f740a4627924eaaee9db
+  languageName: node
+  linkType: hard
+
+"highlight.js@npm:^10.5.0":
+  version: 10.7.3
+  resolution: "highlight.js@npm:10.7.3"
+  checksum: defeafcd546b535d710d8efb8e650af9e3b369ef53e28c3dc7893eacfe263200bba4c5fcf43524ae66d5c0c296b1af0870523ceae3e3104d24b7abf6374a4fea
   languageName: node
   linkType: hard
 
@@ -13515,6 +13545,15 @@ __metadata:
     react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
     react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
   checksum: c3907cc4c1d3e9ecc8ca7727058ebcba6ec89848d9e07bfd2c77ee8f28f1ad99bf55e38359dec8a1125de83d41ac09a2874f53c41415edc86ffa9840fa1b7856
+  languageName: node
+  linkType: hard
+
+"react-highlight@npm:^0.15.0":
+  version: 0.15.0
+  resolution: "react-highlight@npm:0.15.0"
+  dependencies:
+    highlight.js: ^10.5.0
+  checksum: 8a0e3f2d9db0a5332b8b33eef8d6c58eb4c6f0a9426b0cedc5331fb4a777cff1895138b54368261d4e2a22338b11aa6b93adb1e3db496524072613255540a911
   languageName: node
   linkType: hard
 
