@@ -47,6 +47,7 @@ export const DropdownPill = ({
       type='button'
       onClick={onClose}
       onKeyDown={(event): void => onKeyCloser(event, onClose)}
+      name={value}
     >
       <Label htmlFor={value} inline>
         {value}
