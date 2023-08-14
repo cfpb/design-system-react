@@ -45,9 +45,9 @@
     "chromatic": "chromatic --storybook-build-dir dist-storybook --only-changed"
   },
   "dependencies": {
-    "@cfpb/cfpb-design-system": "^0.27.2",
-    "@cfpb/cfpb-expandables": "^0.27.2",
-    "@cfpb/cfpb-forms": "^0.27.2",
+    "@cfpb/cfpb-design-system": "^0.29.0",
+    "@cfpb/cfpb-expandables": "^0.29.0",
+    "@cfpb/cfpb-forms": "^0.29.0",
     "@storybook/jest": "^0.1.0",
     "@storybook/testing-library": "^0.1.0",
     "@tanstack/react-query": "4.13.5",
