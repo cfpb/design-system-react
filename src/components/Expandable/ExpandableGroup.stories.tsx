@@ -37,13 +37,13 @@ const Content = ({
   }`;
 
   return (
-    <div>
+    <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
       voluptatibus soluta nobis unde quisquam temporibus magnam debitis quidem.
       Ducimus ratione corporis nesciunt earum vel est quaerat blanditiis dolore
       ipsa?&nbsp;
       <a href={linkPath}>Lorem link</a>
-    </div>
+    </p>
   );
 };
 

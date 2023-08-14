@@ -24,13 +24,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const Content = (
-  <>
+  <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
     voluptatibus soluta nobis unde quisquam temporibus magnam debitis quidem.
     Ducimus ratione corporis nesciunt earum vel est quaerat blanditiis dolore
     ipsa?&nbsp;
     <a href='/?path=/story/components-expandable--default'>Lorem link</a>
-  </>
+  </p>
 );
 
 export const Default: Story = {
