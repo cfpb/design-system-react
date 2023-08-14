@@ -20,6 +20,7 @@ describe('<Button />', () => {
       <Button label={testLabel} className={testClass} title={testTitle} />
     );
     expect(screen.getByText(testLabel)).toBeInTheDocument();
+    expect(screen.getByText(testLabel)).toHaveClass(buttonBaseClass);
     expect(screen.getByText(testLabel)).toHaveClass(testClass);
     expect(screen.getByText(testLabel)).toHaveAttribute('title', testTitle);
   });

@@ -45,6 +45,7 @@ export function Button({
   asLink = false,
   size = 'default',
   label,
+  className,
   ...properties
 }: ButtonProperties): JSX.Element {
   const styles = [
@@ -53,7 +54,7 @@ export function Button({
     ...sizeStyles[size]
   ];
   if (asLink) styles.push('a-btn__link');
-  if (properties.className) styles.push(properties.className);
+  if (className) styles.push(className);
 
   return (
     <button type='button' className={[...styles].join(' ')} {...properties}>
