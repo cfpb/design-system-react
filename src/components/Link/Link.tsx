@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import type { JSXElement } from '../../types/jsxElement';
+import ListItem from '../List/ListItem';
 import './Link.less';
 
 interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
@@ -44,4 +45,14 @@ export const LinkText = ({
   <span className='a-link_text' {...others}>
     {children}
   </span>
+);
+
+export const ListLink = (properties: LinkProperties): JSXElement => (
+  <ListItem>
+    <Link {...properties} type='list' />
+  </ListItem>
+);
+
+export const DestructiveLink = (properties: LinkProperties): JSXElement => (
+  <Link {...properties} type='destructive' />
 );

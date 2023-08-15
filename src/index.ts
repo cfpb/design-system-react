@@ -19,7 +19,12 @@ export { default as Hero } from './components/Hero/Hero';
 export { Icon } from './components/Icon/Icon';
 export { Label } from './components/Label/Label';
 export { default as Layout } from './components/Layout/Layout';
-export { default as Link, LinkText } from './components/Link/Link';
+export {
+  DestructiveLink,
+  default as Link,
+  LinkText,
+  ListLink
+} from './components/Link/Link';
 export { default as List } from './components/List/List';
 export {
   default as ListItem,
@@ -38,3 +43,4 @@ export {
 export { Tagline } from './components/Tagline/Tagline';
 export { TextInput } from './components/TextInput/TextInput';
 export { default as Well } from './components/Well/Well';
+

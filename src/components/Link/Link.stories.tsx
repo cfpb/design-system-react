@@ -1,5 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Icon, Link, LinkText } from '~/src/index';
+import {
+  DestructiveLink,
+  Icon,
+  Link,
+  LinkText,
+  List,
+  ListLink as ListLinkComponent
+} from '~/src/index';
 
 const meta: Meta<typeof Link> = {
   component: Link,
@@ -29,16 +36,20 @@ export const Default: Story = {
 
 export const ListLink: Story = {
   args: {
-    ...Default.args,
-    type: 'list'
-  }
+    ...Default.args
+  },
+  render: arguments_ => (
+    <List isLinks>
+      <ListLinkComponent {...arguments_} />
+    </List>
+  )
 };
 
 export const Destructive: Story = {
   args: {
-    ...Default.args,
-    type: 'destructive'
-  }
+    ...Default.args
+  },
+  render: arguments_ => <DestructiveLink {...arguments_} />
 };
 
 export const WithIcon: Story = {
