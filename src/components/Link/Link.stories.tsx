@@ -45,11 +45,11 @@ export const WithIcon: Story = {
   args: {
     ...Default.args,
     hasIcon: true,
-    type: 'list'
+    type: 'default'
   },
   render: arguments_ => (
     <Link {...arguments_}>
-      <LinkText>Document link</LinkText> <Icon name='document' />
+      <LinkText>Download file</LinkText> <Icon name='download' />
     </Link>
   )
 };

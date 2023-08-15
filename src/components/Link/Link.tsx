@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import type { JSXElement } from '../../types/jsxElement';
 import './Link.less';
 
-interface LinkProperties {
+interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   type?: 'default' | 'destructive' | 'list';
   hasIcon?: boolean;
   noWrap?: boolean;
@@ -18,9 +18,12 @@ export default function Link({
   isJump = false,
   isJumpLeft = false,
   ...others
-}: LinkProperties & React.HTMLProps<HTMLAnchorElement>): JSXElement {
-  const cname = ['a-link', others.className];
-  if (type === 'list') cname.push('list-link');
+}: LinkProperties): JSXElement {
+  const cname = [others.className];
+
+  if (type === 'list') cname.push('m-list_link');
+  else cname.push('a-link');
+
   if (type === 'destructive') cname.push('a-btn a-btn__link a-btn__warning');
   if (hasIcon) cname.push('a-link__icon');
   if (noWrap) cname.push('a-link__no-wrap');
