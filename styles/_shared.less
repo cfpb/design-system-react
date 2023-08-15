@@ -3,3 +3,27 @@
 */
 @import '@cfpb/cfpb-design-system';
 @import './variables.less';
+
+/**
+/* Storybook components are not rendered within a CFPB layout so
+/* the DS' max-width restriction for text content is not applied. 
+/*
+/* https://github.com/cfpb/design-system/blob/main/packages/cfpb-layout/src/cfpb-layout.less#L210-L223
+/*
+/* A similar adjustment was made for the DS docs pages
+/* https://github.com/cfpb/design-system/pull/1220
+**/
+#storybook-root,
+#storybook-docs {
+  dd,
+  dt,
+  h3,
+  h4,
+  h5,
+  h6,
+  label,
+  li,
+  p {
+    max-width: 41.875rem;
+  }
+}
