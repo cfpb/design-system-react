@@ -107,7 +107,12 @@ export const DropdownPills = ({
         ))}
         {showClearAllSelectedButton ? (
           <li className='pill clear-selected'>
-            <Button label={labelClearAll} onClick={onClearAllSelected} />
+            <Button
+              label={labelClearAll}
+              onClick={onClearAllSelected}
+              appearance='warning'
+              asLink
+            />
           </li>
         ) : null}
       </ul>
