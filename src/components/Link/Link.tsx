@@ -22,8 +22,11 @@ export default function Link({
 }: LinkProperties): JSXElement {
   const cname = [others.className];
 
-  if (type === 'list') cname.push('m-list_link');
-  else cname.push('a-link');
+  if (type === 'list') {
+    cname.push('m-list_link');
+  } else {
+    cname.push('a-link');
+  }
 
   if (type === 'destructive') cname.push('a-btn a-btn__link a-btn__warning');
   if (hasIcon) cname.push('a-link__icon');
