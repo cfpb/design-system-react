@@ -6,7 +6,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     appearance: { control: 'select' },
     size: { control: 'select' },
-    isDisabled: { control: 'boolean' }
+    disabled: { control: 'boolean' }
   }
 };
 
@@ -33,6 +33,13 @@ export const Warning: Story = {
   args: {
     ...Primary.args,
     appearance: 'warning'
+  }
+};
+
+export const Disabled: Story = {
+  args: {
+    ...Primary.args,
+    disabled: true
   }
 };
 

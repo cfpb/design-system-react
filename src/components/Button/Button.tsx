@@ -55,6 +55,7 @@ export function Button({
   ];
   if (asLink) styles.push('a-btn__link');
   if (className) styles.push(className);
+  if (properties.disabled) styles.push('a-btn__disabled');
 
   return (
     <button type='button' className={[...styles].join(' ')} {...properties}>
