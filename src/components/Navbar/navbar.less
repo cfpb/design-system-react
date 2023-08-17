@@ -15,6 +15,7 @@
 
   .nav-item {
     margin-right: @space-xl;
+    letter-spacing: unit((1px / @base-font-size-px), em);
   }
 
   .user-actions :last-child {
@@ -40,7 +41,9 @@
   }
 
   .username {
+    font-size: unit((16px / @base-font-size-px), em);
     margin-right: @space-xl;
     font-weight: 400;
+    line-height: unit((22px / @base-font-size-px), em);
   }
 }
