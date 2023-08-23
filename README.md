@@ -46,11 +46,14 @@ export default function SomePage(): ReactElement {
 
 ## Development
 
-To edit components or add new ones, install dependencies and start storybook:
+To edit components or add new ones, make sure you have Yarn v3 set up locally and then run `yarn dev`:
 
-```
-yarn && yarn start
-```
+1. Install Node v16.9+.
+1. Enable [corepack](https://yarnpkg.com/getting-started/install): `corepack enable`.
+1. `yarn`
+1. `yarn start`
+
+Note: This project uses yarn v3.5 in "plug n play" mode. There is no `node_modules/` directory. Packages are stored in `.yarn/cache/`.
 
 Edit the files in `src/components/` and your browser should hot reload your changes.
 

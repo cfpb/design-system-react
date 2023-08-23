@@ -145,5 +145,6 @@
       "eslint --cache --fix",
       "vitest related --run --coverage=false"
     ]
-  }
+  },
+  "packageManager": "yarn@3.6.2"
 }
