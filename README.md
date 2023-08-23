@@ -1,4 +1,4 @@
-# CFPB Design Stories
+# CFPB Design System React
 
 A React/Storybook implementation of [CFPB's Design System](https://github.com/cfpb/design-system).
 
@@ -6,14 +6,14 @@ A React/Storybook implementation of [CFPB's Design System](https://github.com/cf
 
 ✨ Pre-release. Interfaces will change. Things will break.
 
-Current components: https://cfpb.github.io/design-stories/
+Current components: https://cfpb.github.io/design-system-react
 
 ## Installation
 
 Until we start publishing to npm, install this github repo:
 
 ```
-yarn add cfpb/design-stories
+yarn add cfpb/design-system-react
 ```
 
 If you're using yarn v2 or greater, [`yarn pack`](https://yarnpkg.com/advanced/lifecycle-scripts) will automatically build the package for you after it's installed.
@@ -21,7 +21,7 @@ If you're using yarn v2 or greater, [`yarn pack`](https://yarnpkg.com/advanced/l
 ## Usage
 
 ```ts
-import { Button, Notification } from 'design-stories';
+import { Button, Notification } from 'design-system-react';
 import type { ReactElement } from 'react';
 
 export default function SomePage(): ReactElement {

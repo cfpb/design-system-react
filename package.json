@@ -1,13 +1,13 @@
 {
-  "name": "design-stories",
+  "name": "design-system-react",
   "license": "MIT",
   "private": true,
   "version": "0.0.0",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/design-stories.cjs",
-      "import": "./dist/design-stories.es.js"
+      "require": "./dist/design-system-react.cjs",
+      "import": "./dist/design-system-react.es.js"
     },
     "./style.css": {
       "require": "./dist/style.css",
