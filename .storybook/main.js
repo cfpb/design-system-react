@@ -6,7 +6,8 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-a11y',
-    'display-element-css'
+    'display-element-css',
+    'storybook-dark-mode'
   ],
   docs: {
     autodocs: true,
