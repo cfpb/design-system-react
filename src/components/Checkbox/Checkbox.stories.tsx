@@ -4,7 +4,7 @@ import { Checkbox } from '~/src/index';
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
   argTypes: {
-    isDisabled: { control: 'boolean' },
+    disabled: { control: 'boolean' },
     isLarge: { control: 'boolean' }
   }
 };

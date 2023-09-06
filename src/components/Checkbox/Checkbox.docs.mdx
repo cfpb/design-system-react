@@ -53,20 +53,20 @@ Use checkboxes when the user can select more than one option from a list. Make c
 ### Standard checkbox states
 
 <div className='u-mt20'>
-  <Checkbox id='checkbox' label='Label' name='checkbox' />
+  <Checkbox id='checkbox-default' label='Default' name='checkbox' />
   <br />
   <Checkbox
     id='checkbox-hover'
     label='Hover'
     name='checkbox-hover'
-    className='hover'
+    inputClassName='hover'
   />
   <br />
   <Checkbox
     id='checkbox-focus'
     label='Focus'
     name='checkbox-focus'
-    className='focus'
+    inputClassName='focus'
   />
   <br />
   <Checkbox
@@ -80,7 +80,15 @@ Use checkboxes when the user can select more than one option from a list. Make c
     id='checkbox-disabled'
     label='Disabled'
     name='checkbox-disabled'
-    isDisabled='true'
+    disabled
+  />
+  <br />
+  <Checkbox
+    id='checkbox-disabled-selected'
+    label='Disabled selected'
+    name='checkbox-disabled-selected'
+    disabled
+    defaultChecked
   />
 </div>
 
@@ -130,7 +138,7 @@ For better usability, consider using checkboxes with large target areas. These a
 <div className='u-mt20'>
   <Checkbox
     id='large-checkbox'
-    label='Label'
+    label='Default'
     name='large-checkbox'
     isLarge='true'
   />
@@ -139,7 +147,7 @@ For better usability, consider using checkboxes with large target areas. These a
     id='large-checkbox-hover'
     label='Hover'
     name='large-checkbox-hover'
-    className='hover'
+    inputClassName='hover'
     isLarge='true'
   />
   <br />
@@ -147,7 +155,7 @@ For better usability, consider using checkboxes with large target areas. These a
     id='large-checkbox-focus'
     label='Focus'
     name='large-checkbox-focus'
-    className='focus'
+    inputClassName='focus'
     isLarge='true'
   />
   <br />
@@ -163,8 +171,17 @@ For better usability, consider using checkboxes with large target areas. These a
     id='large-checkbox-disabled'
     label='Disabled'
     name='large-checkbox-disabled'
-    isDisabled='true'
+    disabled='true'
     isLarge='true'
+  />
+  <br />
+  <Checkbox
+    id='large-checkbox-disabled-selected'
+    label='Disabled selected'
+    name='large-checkbox-disabled'
+    disabled='true'
+    isLarge='true'
+    defaultChecked
   />
 </div>
 
