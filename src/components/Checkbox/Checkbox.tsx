@@ -8,6 +8,7 @@ interface CheckboxProperties extends React.HTMLProps<HTMLInputElement> {
   className?: string;
   defaultChecked?: boolean;
   helperText?: string;
+  inputClassName?: string;
   inputRef?:
     | React.RefObject<HTMLInputElement>
     | string
@@ -23,6 +24,7 @@ export const Checkbox = ({
   id,
   label,
   className,
+  inputClassName,
   defaultChecked = false,
   helperText,
   inputRef,
@@ -62,7 +64,7 @@ export const Checkbox = ({
         aria-checked={checked}
         aria-labelledby={`${id}-label`}
         name={name ?? id}
-        className='a-checkbox'
+        className={classnames(['a-checkbox', inputClassName])}
         ref={inputRef}
         disabled={disabled}
         onChange={onChangeHandler}
