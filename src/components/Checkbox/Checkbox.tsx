@@ -63,6 +63,7 @@ export const Checkbox = ({
         checked={checked}
         aria-checked={checked}
         aria-labelledby={`${id}-label`}
+        data-testid={`${id}-input`}
         name={name ?? id}
         className={classnames(['a-checkbox', inputClassName])}
         ref={inputRef}

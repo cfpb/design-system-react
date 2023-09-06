@@ -82,4 +82,13 @@ describe('Checkbox', () => {
     const checkbox = screen.getByTestId(testId);
     expect(checkbox).toHaveClass(cname);
   });
+
+  it('Integrates a provided inputClassName', async () => {
+    const cname = 'extraInputCname';
+
+    render(<Checkbox {...defaultProps} inputClassName={cname} />);
+
+    const input = screen.getByTestId(`${id}-input`);
+    expect(input).toHaveClass(cname);
+  });
 });
