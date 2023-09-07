@@ -3656,6 +3656,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addons@npm:^7.0.0":
+  version: 7.4.0
+  resolution: "@storybook/addons@npm:7.4.0"
+  dependencies:
+    "@storybook/manager-api": 7.4.0
+    "@storybook/preview-api": 7.4.0
+    "@storybook/types": 7.4.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 963aae9398d38fdbcc126c6dfbc629c0171a1adce666a1a50222acf45fbef007b3a7f1220b83824d6e38b2b1b4f5f7dbb65817b7f9e3f42be2415ac5222467d6
+  languageName: node
+  linkType: hard
+
+"@storybook/api@npm:^7.0.0":
+  version: 7.4.0
+  resolution: "@storybook/api@npm:7.4.0"
+  dependencies:
+    "@storybook/client-logger": 7.4.0
+    "@storybook/manager-api": 7.4.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: da4a5474025c54220eda382575d7a93a1ba9991975507d6d1bbfad6463e22a5c0aaf077c87fbbbf7b5f10e603d5264ba25fe6efd9c5ad8adc9490b3450152ac3
+  languageName: node
+  linkType: hard
+
 "@storybook/blocks@npm:7.4.0":
   version: 7.4.0
   resolution: "@storybook/blocks@npm:7.4.0"
@@ -3849,7 +3881,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/components@npm:7.4.0":
+"@storybook/components@npm:7.4.0, @storybook/components@npm:^7.0.0":
   version: 7.4.0
   resolution: "@storybook/components@npm:7.4.0"
   dependencies:
@@ -3910,7 +3942,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/core-events@npm:7.4.0":
+"@storybook/core-events@npm:7.4.0, @storybook/core-events@npm:^7.0.0":
   version: 7.4.0
   resolution: "@storybook/core-events@npm:7.4.0"
   dependencies:
@@ -4076,7 +4108,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/manager-api@npm:7.4.0":
+"@storybook/manager-api@npm:7.4.0, @storybook/manager-api@npm:^7.3.2":
   version: 7.4.0
   resolution: "@storybook/manager-api@npm:7.4.0"
   dependencies:
@@ -4268,7 +4300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/theming@npm:7.4.0":
+"@storybook/theming@npm:7.4.0, @storybook/theming@npm:^7.0.0, @storybook/theming@npm:^7.3.2":
   version: 7.4.0
   resolution: "@storybook/theming@npm:7.4.0"
   dependencies:
@@ -15106,6 +15138,30 @@ display-element-css@cfpb/storybook-addon-display-element-css:
   languageName: node
   linkType: hard
 
+"storybook-dark-mode@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "storybook-dark-mode@npm:3.0.1"
+  dependencies:
+    "@storybook/addons": ^7.0.0
+    "@storybook/api": ^7.0.0
+    "@storybook/components": ^7.0.0
+    "@storybook/core-events": ^7.0.0
+    "@storybook/global": ^5.0.0
+    "@storybook/theming": ^7.0.0
+    fast-deep-equal: ^3.1.3
+    memoizerific: ^1.11.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: d04213c92e8a4af0035e80eb02b75b8da725ba7b1ecbfe050eb04cb4018d91394f08c8fe7c1b106c971b2047ef5a1ba776e78050ae1f6d7563cdfdba5e701a29
+  languageName: node
+  linkType: hard
+
 "storybook@npm:^7.0.6":
   version: 7.4.0
   resolution: "storybook@npm:7.4.0"
@@ -16132,11 +16188,11 @@ display-element-css@cfpb/storybook-addon-display-element-css:
 
 "typescript@patch:typescript@^4.6.4 || ^5.0.0#~builtin<compat/typescript>":
   version: 5.2.2
-  resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=77c9e2"
+  resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 07106822b4305de3f22835cbba949a2b35451cad50888759b6818421290ff95d522b38ef7919e70fb381c5fe9c1c643d7dea22c8b31652a717ddbd57b7f4d554
+  checksum: 0f4da2f15e6f1245e49db15801dbee52f2bbfb267e1c39225afdab5afee1a72839cd86000e65ee9d7e4dfaff12239d28beaf5ee431357fcced15fb08583d72ca
   languageName: node
   linkType: hard
 
