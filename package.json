@@ -1,13 +1,13 @@
 {
-  "name": "design-stories",
+  "name": "design-system-react",
   "license": "MIT",
   "private": true,
   "version": "0.0.0",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/design-stories.cjs",
-      "import": "./dist/design-stories.es.js"
+      "require": "./dist/design-system-react.cjs",
+      "import": "./dist/design-system-react.es.js"
     },
     "./style.css": {
       "require": "./dist/style.css",
@@ -67,8 +67,10 @@
     "@storybook/addon-essentials": "^7.0.6",
     "@storybook/addon-interactions": "^7.0.6",
     "@storybook/addon-links": "^7.0.6",
+    "@storybook/manager-api": "^7.3.2",
     "@storybook/react": "^7.0.6",
     "@storybook/react-vite": "^7.0.6",
+    "@storybook/theming": "^7.3.2",
     "@testing-library/cypress": "8.0.7",
     "@testing-library/dom": "8.19.0",
     "@testing-library/jest-dom": "5.16.5",
@@ -114,6 +116,7 @@
     "prettier": "2.7.1",
     "start-server-and-test": "1.14.0",
     "storybook": "^7.0.6",
+    "storybook-dark-mode": "^3.0.1",
     "stylelint": "14.15.0",
     "stylelint-config-prettier": "9.0.4",
     "stylelint-config-standard": "29.0.0",
@@ -143,5 +146,6 @@
       "eslint --cache --fix",
       "vitest related --run --coverage=false"
     ]
-  }
+  },
+  "packageManager": "yarn@3.6.2"
 }

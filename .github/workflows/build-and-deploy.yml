@@ -4,7 +4,7 @@ on:
     branches:
       - main
 env:
-  BASE_PATH: /design-stories # GH pages lives at a subdir
+  BASE_PATH: /design-system-react # GH pages lives at a subdir
 permissions:
   contents: write
 jobs:
