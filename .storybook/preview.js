@@ -1,9 +1,10 @@
 import '@cfpb/cfpb-design-system/src/cfpb-design-system.less';
 import { themes } from '@storybook/theming';
+import CfpbLogo from '../src/assets/images/cfpb-logo-vertical.png';
 
 const sharedThemeElements = {
   brandTitle: 'CFPB Design System React',
-  brandImage: '../src/assets/images/cfpb-logo-vertical.png',
+  brandImage: CfpbLogo,
   brandUrl: 'https://cfpb.github.io/design-system/',
   brandTarget: '_blank',
   fontBase: '"Avenir Next", Arial ,sans-serif'
