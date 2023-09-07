@@ -1,0 +1,2 @@
+import{t as e}from"./chunk-6P7RB4HF.cdc79ccb.js";import"./index.e850844b.js";const a={brandTitle:"CFPB Design System React",brandImage:"../src/assets/images/cfpb-logo-vertical.png",brandUrl:"https://cfpb.github.io/design-system/",brandTarget:"_blank",fontBase:'"Avenir Next", Arial ,sans-serif'},s={actions:{argTypesRegex:"^on[A-Z].*"},controls:{matchers:{color:/(background|color)$/i,date:/Date$/}},darkMode:{current:"dark",dark:{...e.dark,...a,appBg:"black"},light:{...e.normal,...a}}};export{s as parameters};
+//# sourceMappingURL=preview.2e00aae5.js.map

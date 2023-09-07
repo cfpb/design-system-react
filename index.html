@@ -49,7 +49,21 @@
     <link href="./sb-addons/a11y-9/manager-bundle.js" rel="modulepreload" />
     
     <link href="./sb-addons/display-element-css-esm-preset-10/manager-bundle.js" rel="modulepreload" />
-       
+    
+    <link href="./sb-addons/storybook-dark-mode-esm-preset-11/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/storybook-12/manager-bundle.js" rel="modulepreload" />
+      <style type="text/css">
+  .sidebar-container * {
+    font-size: 15px !important;
+  }
+
+  div.sidebar-item[data-selected="false"]:hover,
+  button.sidebar-item:hover {
+    background-color: #5a5d61 !important;
+    color: white !important;
+  }
+</style> 
 
     <style>
       #storybook-root[hidden] {
@@ -126,6 +140,10 @@
       import './sb-addons/a11y-9/manager-bundle.js';
       
       import './sb-addons/display-element-css-esm-preset-10/manager-bundle.js';
+      
+      import './sb-addons/storybook-dark-mode-esm-preset-11/manager-bundle.js';
+      
+      import './sb-addons/storybook-12/manager-bundle.js';
       
     </script>
 
