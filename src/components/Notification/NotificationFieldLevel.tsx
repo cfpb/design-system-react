@@ -34,7 +34,9 @@ export const NotificationFieldLevel = ({
 
   if (!['error', 'success', 'warning'].includes(type))
     return (
-      <>[Error] Unsupported field-level notification type provided: {type}</>
+      <p data-testid='message'>
+        [Error] Unsupported field-level notification type provided: {type}
+      </p>
     );
 
   return (
@@ -44,7 +46,9 @@ export const NotificationFieldLevel = ({
       {...properties}
     >
       <Icon name={MapTypeToIconName[type]} alt={type} withBg />
-      <span className='a-form-alert_text'>{message}</span>
+      <span className='a-form-alert_text' data-testid='message'>
+        {message}
+      </span>
     </div>
   );
 };
