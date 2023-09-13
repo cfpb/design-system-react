@@ -1,4 +1,6 @@
-import { Icon } from '../Icon/Icon';
+import { Notification } from '../Notification/Notification';
+import type { NotificationFieldLevelType } from '../Notification/NotificationFieldLevel';
+import { NotificationFieldLevelClass } from '../Notification/NotificationFieldLevel';
 
 type TextInputReference =
   | React.RefObject<HTMLInputElement>
@@ -27,26 +29,11 @@ interface CustomTextInputProperties {
   inputProps?: JSX.IntrinsicElements['input'];
   inputRef?: TextInputReference;
   isDisabled?: boolean;
-  notificationType?: NotificationType;
+  notificationType?: NotificationFieldLevelType;
   textNotification?: string;
   type?: InputType;
   width?: 'default' | 'full';
 }
-
-type NotificationType = '' | 'error' | 'success' | 'warning';
-
-enum NotificationClass {
-  'success' = '__success',
-  'warning' = '__warning',
-  'error' = '__error',
-  '' = ''
-}
-
-const iconType = {
-  success: 'approved',
-  warning: 'warning',
-  error: 'error'
-};
 
 export type OptionalTextInputProperties = CustomTextInputProperties &
   JSX.IntrinsicElements['input'];
@@ -77,13 +64,13 @@ export function TextInput({
   const styles = [...baseStyles, ...widthStyles[width]];
   const classes = [
     className,
-    `a-text-input${NotificationClass[notificationType]}`,
+    `a-text-input${NotificationFieldLevelClass[notificationType]}`,
     ...styles
   ].join(' ');
 
   return (
     <div
-      className={`m-form-field m-form-field${NotificationClass[notificationType]}`}
+      className={`m-form-field m-form-field${NotificationFieldLevelClass[notificationType]}`}
     >
       <input
         data-testid='textInput'
@@ -96,21 +83,12 @@ export function TextInput({
         ref={inputRef}
         {...inputProperties}
       />
-
-      {notificationType ? (
-        <div
-          className={`a-form-alert a-form-alert${NotificationClass[notificationType]}`}
-          id={id}
-          role='alert'
-        >
-          <Icon
-            name={iconType[notificationType]}
-            alt={notificationType}
-            withBg
-          />
-          <span className='a-form-alert_text'>{textNotification}</span>
-        </div>
-      ) : null}
+      <Notification
+        id={`${id}-notification`}
+        type={notificationType}
+        message={textNotification}
+        isFieldLevel
+      />
     </div>
   );
 }
