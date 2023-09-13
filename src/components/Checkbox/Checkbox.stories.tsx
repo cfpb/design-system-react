@@ -5,7 +5,7 @@ import { Checkbox } from './Checkbox';
 import { useArgs } from '@storybook/client-api';
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'Components/Checkbox',
+  title: 'Components/Checkboxes',
   component: Checkbox,
   parameters: {
     docs: {
@@ -46,46 +46,46 @@ function CheckboxWrapper({
   );
 }
 
-export const DefaultCheckbox: Story = {
+export const StandardCheckbox: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Default checkbox',
+  name: 'Standard checkbox',
   args: {
-    id: 'default',
-    name: 'default',
-    label: 'Default checkbox',
+    id: 'standard',
+    name: 'standard',
+    label: 'Standard checkbox',
     checked: false
   }
 };
 
-export const CheckboxWithHelper: Story = {
+export const StandardCheckboxWithHelperText: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
   args: {
-    ...DefaultCheckbox.args,
-    id: 'CheckboxWithHelper',
-    name: 'CheckboxWithHelper',
-    label: 'Checkbox With Helper',
+    ...StandardCheckbox.args,
+    id: 'StandardCheckboxWithHelper',
+    name: 'StandardCheckboxWithHelper',
+    label: 'Standard checkbox with helper',
     helperText: 'This is optional helper text for the checkbox'
   }
 };
 
-export const LargeCheckbox: Story = {
+export const LargeTargetAreaCheckbox: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
   args: {
-    ...DefaultCheckbox.args,
-    id: 'LargeCheckbox',
-    name: 'LargeCheckbox',
-    label: 'Large Checkbox',
+    ...StandardCheckbox.args,
+    id: 'LargeTargetAreaCheckbox',
+    name: 'LargeTargetAreaCheckbox',
+    label: 'Large target area checkbox',
     isLarge: true
   }
 };
 
-export const LargeCheckboxWithHelper: Story = {
+export const LargeTargetAreaCheckboxWithHelperText: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
   args: {
-    ...DefaultCheckbox.args,
-    id: 'LargeCheckboxWithHelper',
-    name: 'LargeCheckboxWithHelper',
-    label: 'Large Checkbox With Helper',
+    ...StandardCheckbox.args,
+    id: 'LargeCheckboxWithHelperText',
+    name: 'LargeCheckboxWithHelperText',
+    label: 'Large target area checkbox helper text',
     isLarge: true,
     helperText: 'This is optional helper text for the large checkbox'
   }
