@@ -1,12 +1,13 @@
 import classnames from 'classnames';
 import type React from 'react';
-import type { ReactNode } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
 import { useCallback } from 'react';
 
-interface CheckboxProperties extends React.HTMLProps<HTMLInputElement> {
+interface CheckboxProperties {
   id: string;
   label: ReactNode;
   className?: string;
+  checked?: boolean;
   helperText?: string;
   inputClassName?: string;
   inputRef?:
@@ -17,6 +18,8 @@ interface CheckboxProperties extends React.HTMLProps<HTMLInputElement> {
     | undefined;
   isLarge?: boolean;
   name?: string;
+  disabled?: boolean;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
