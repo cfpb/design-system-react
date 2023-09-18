@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
+import { ButtonIcon } from './ButtonIcon';
 
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -21,6 +22,14 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
    * Button should be styled as a link?
    */
   asLink?: boolean;
+  /**
+   * Name of icon to display left of button text
+   */
+  iconLeft?: string;
+  /**
+   * Name of icon to display right of button text
+   */
+  iconRight?: string;
 }
 
 const baseStyles = ['a-btn'];
@@ -46,6 +55,8 @@ export function Button({
   size = 'default',
   label,
   className,
+  iconLeft,
+  iconRight,
   ...properties
 }: ButtonProperties): JSX.Element {
   const styles = [
@@ -59,7 +70,9 @@ export function Button({
 
   return (
     <button type='button' className={[...styles].join(' ')} {...properties}>
+      <ButtonIcon name={iconLeft} isLeft />
       {label}
+      <ButtonIcon name={iconRight} isRight />
     </button>
   );
 }

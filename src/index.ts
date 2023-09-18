@@ -2,7 +2,8 @@ import './assets/styles/_shared.less';
 
 export { Banner } from './components/Banner/Banner';
 export { LanguageLink } from './components/Banner/BannerLanguageLink';
-export { Button } from './components/Button/Button';
+export { Button } from './components/Buttons/Button';
+export { ButtonGroup } from './components/Buttons/ButtonGroup';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { default as Divider } from './components/Divider/Divider';
 export { Dropdown } from './components/Dropdown/Dropdown';

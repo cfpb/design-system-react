@@ -1,6 +1,6 @@
 import type { ReactEventHandler, Ref } from 'react';
 import type { PropsValue } from 'react-select';
-import { Button } from '../Button/Button';
+import { Button } from '../Buttons/Button';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
 import type { SelectOption } from './Dropdown.types';
