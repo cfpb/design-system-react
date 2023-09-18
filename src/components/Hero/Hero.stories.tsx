@@ -2,12 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Hero } from '~/src/index';
 
 const meta: Meta<typeof Hero> = {
+  title: 'Components/Heroes',
   component: Hero,
   parameters: {
     docs: {
       description: {
         component: `
-### CFPB DS Hero component
+Heroes are a primary focal point on landing and sublanding pages. They introduce a collection of pages by combining a brief description of the goals of that section along with a visually impactful graphic. To introduce lower-level pages, use the [text introduction](https://cfpb.github.io/design-system/patterns/text-introductions) instead.
 
 Source: https://cfpb.github.io/design-system/patterns/heroes
 `
@@ -31,7 +32,7 @@ export const WithIllustration: Story = {
   }
 };
 
-export const WithPhoto: Story = {
+export const WithPhotograph: Story = {
   args: {
     ...WithIllustration.args,
     imageIsPhoto: true,
@@ -54,6 +55,7 @@ export const Jumbo: Story = {
 };
 
 export const FiftyFifty: Story = {
+  name: '50/50',
   args: {
     ...WithIllustration.args,
     heading: '50 chars max for a two-line heading',
@@ -66,7 +68,8 @@ export const FiftyFifty: Story = {
   }
 };
 
-export const Knockout: Story = {
+export const WithKnockoutText: Story = {
+  name: 'With knockout text',
   args: {
     ...WithIllustration.args,
     heading: 'Max of 41 chars for a one-line heading',
