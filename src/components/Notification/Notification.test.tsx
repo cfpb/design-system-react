@@ -65,4 +65,41 @@ describe('<Notification />', () => {
     expect(externalIcon).toBeInTheDocument();
     expect(externalIcon).toHaveClass('cf-icon-svg__external-link');
   });
+
+  it('renders field-level notifications', async () => {
+    const testId = 'field-level-warning';
+    render(
+      <Notification
+        data-testid={testId}
+        type='warning'
+        isFieldLevel
+        message='squish'
+      />
+    );
+    const element = screen.getByTestId(testId);
+
+    // Renders Icon
+    const icon = await within(element).findByRole('img');
+    expect(icon).toBeInTheDocument();
+
+    // Render message
+    const message = screen.queryByTestId('message');
+    expect(message).toBeInTheDocument();
+  });
+
+  it('provides feedback for unsupported field-level notification type', async () => {
+    const testId = 'field-level-warning';
+    render(
+      <Notification
+        data-testid={testId}
+        type='info'
+        isFieldLevel
+        message='squish'
+      />
+    );
+    // Renders error message
+    const message =
+      '[Error] Unsupported field-level notification type provided: info';
+    expect(await screen.findByText(message)).toBeVisible();
+  });
 });
