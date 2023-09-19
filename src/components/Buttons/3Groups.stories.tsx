@@ -5,6 +5,7 @@ import { Button, ButtonGroup } from '~/src/index';
  *
  */
 const meta: Meta<typeof ButtonGroup> = {
+  title: 'Components/Buttons/Groups',
   component: ButtonGroup
 };
 

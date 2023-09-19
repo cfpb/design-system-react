@@ -5,6 +5,7 @@ import { Button } from '~/src/index';
  * Button size variants
  */
 const meta: Meta<typeof Button> = {
+  title: 'Components/Buttons/Sizes',
   component: Button,
   argTypes: {
     appearance: { control: 'select' },

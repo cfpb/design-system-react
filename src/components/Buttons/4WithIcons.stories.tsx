@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button, ButtonGroup } from '~/src/index';
-import { Primary } from './Types.stories';
+import { Primary } from './1Types.stories';
 
 /**
  * Display an icon within a button
  */
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button/With icons',
+  title: 'Components/Buttons/With icons',
   component: Button,
   argTypes: {
     appearance: { control: 'select' },

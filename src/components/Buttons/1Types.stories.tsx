@@ -6,6 +6,7 @@ import { ButtonGroup } from './ButtonGroup';
  * Button type variants
  */
 const meta: Meta<typeof Button> = {
+  title: 'Components/Buttons/Types',
   component: Button,
   argTypes: {
     appearance: { control: 'select' },
