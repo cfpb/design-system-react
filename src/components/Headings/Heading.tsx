@@ -8,12 +8,12 @@ export type HeadingType =
   | '4'
   | '5'
   | '6'
+  | 'display'
   | 'eyebrow'
-  | 'slug'
-  | 'super';
+  | 'slug';
 
 interface HeadingProperties extends React.HTMLProps<HTMLHeadingElement> {
-  /** Heading type (1-6, super, eyebrow, slug) */
+  /** Heading type (1-6, display, eyebrow, slug) */
   type?: HeadingType;
   /** Heading content */
   children: JSXElement | string;
@@ -38,7 +38,7 @@ export const Heading = ({
     );
   }
 
-  if (type === 'super') {
+  if (type === 'display') {
     DynamicHeading = 'h1';
     classes.push('superheading');
   } else if (type === 'eyebrow') {

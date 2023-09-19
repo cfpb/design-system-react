@@ -24,8 +24,8 @@ describe('<Heading />', () => {
     }
   });
 
-  it('Renders Super heading', () => {
-    const headingType = `super`;
+  it('Renders Display heading', () => {
+    const headingType = `display`;
     const testid = `h${headingType}`;
     const text = `Heading level ${headingType}`;
 
@@ -39,7 +39,7 @@ describe('<Heading />', () => {
 
     expect(current).toBeInTheDocument();
     expect(current.tagName.toLowerCase()).toBe('h1');
-    expect(current.classList.contains('super'));
+    expect(current.className === 'superheading').toBeTruthy();
   });
 
   it('Renders Eyebrow heading', () => {
@@ -57,7 +57,7 @@ describe('<Heading />', () => {
 
     expect(current).toBeInTheDocument();
     expect(current.tagName.toLowerCase()).toBe('h5');
-    expect(current.classList.contains('eyebrow'));
+    expect(current.className.includes('eyebrow')).toBeTruthy();
   });
 
   it('Renders Slug heading', () => {

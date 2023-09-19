@@ -23,10 +23,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Superheading: Story = {
-  name: 'Super heading',
+export const Display: Story = {
+  name: 'Display heading',
   args: {
-    type: 'super',
+    type: 'display',
     children: 'Display heading'
   }
 };
