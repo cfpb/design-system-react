@@ -13,6 +13,9 @@ Source: https://cfpb.github.io/design-system/foundation/headings
 `
       }
     }
+  },
+  argTypes: {
+    type: { control: { type: 'select' } }
   }
 };
 
@@ -24,14 +27,14 @@ export const Superheading: Story = {
   name: 'Super heading',
   args: {
     type: 'super',
-    children: <>Display heading</>
+    children: 'Display heading'
   }
 };
 
 export const H1: Story = {
   name: 'H1',
   args: {
-    children: <>Heading level 1</>
+    children: 'Heading level 1'
   }
 };
 
@@ -39,7 +42,7 @@ export const H2: Story = {
   name: 'H2',
   args: {
     type: '2',
-    children: <>Heading level 2</>
+    children: 'Heading level 2'
   }
 };
 
@@ -47,7 +50,7 @@ export const H3: Story = {
   name: 'H3',
   args: {
     type: '3',
-    children: <>Heading level 3</>
+    children: 'Heading level 3'
   }
 };
 
@@ -55,7 +58,7 @@ export const H4: Story = {
   name: 'H4',
   args: {
     type: '4',
-    children: <>Heading level 4</>
+    children: 'Heading level 4'
   }
 };
 
@@ -63,7 +66,7 @@ export const H5: Story = {
   name: 'H5',
   args: {
     type: '5',
-    children: <>Heading level 5</>
+    children: 'Heading level 5'
   }
 };
 
@@ -71,7 +74,7 @@ export const H6: Story = {
   name: 'H6',
   args: {
     type: '6',
-    children: <>Heading level 6</>
+    children: 'Heading level 6'
   }
 };
 
@@ -79,7 +82,7 @@ export const Eyebrow: Story = {
   name: 'Eyebrow heading',
   args: {
     type: 'eyebrow',
-    children: <>Eyebrow Heading</>
+    children: 'Eyebrow Heading'
   },
   render: arguments_ => (
     <>
@@ -93,6 +96,6 @@ export const Slug: Story = {
   name: 'Slug heading',
   args: {
     type: 'slug',
-    children: <>Slug heading</>
+    children: 'Slug heading'
   }
 };
