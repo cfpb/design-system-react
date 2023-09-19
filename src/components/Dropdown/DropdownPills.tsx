@@ -3,7 +3,7 @@ import type { PropsValue } from 'react-select';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
-import type { SelectOption } from './Dropdown';
+import type { SelectOption } from './Dropdown.types';
 import './DropdownPills.less';
 
 /**

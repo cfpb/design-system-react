@@ -1,13 +1,35 @@
 import type { KeyboardEvent, Ref } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { InputActionMeta, PropsValue, SelectInstance } from 'react-select';
+import type {
+  GroupBase,
+  InputActionMeta,
+  Props,
+  PropsValue,
+  SelectInstance
+} from 'react-select';
 import Select, { components, createFilter } from 'react-select';
 import { Label } from '../Label/Label';
+import './Dropdown.less';
 import type { DropdownProperties, SelectOption } from './Dropdown.types';
 import CheckboxInputOption from './DropdownInputWithCheckbox';
 import { DropdownPills } from './DropdownPills';
 import { extendedSelectStyles } from './styles';
 import { filterOptions, onSelectInputFocus } from './utils';
+
+import { Icon } from '../Icon/Icon';
+
+const customDropdownIndicator = (properties): JSX.Element => (
+  <components.DropdownIndicator {...properties}>
+    <Icon name='down' />
+  </components.DropdownIndicator>
+);
+const customClearIndicator = (properties): JSX.Element => (
+  <components.ClearIndicator {...properties}>
+    <div className='dropdown-clear-indicator-container'>
+      <Icon name='error' />
+    </div>
+  </components.ClearIndicator>
+);
 
 /**
  * A dropdown input component that supports multi-select.
@@ -15,10 +37,15 @@ import { filterOptions, onSelectInputFocus } from './utils';
  * Passing the `value` prop makes the dropdown a controlled component.
  * @returns JSX.Element
  */
-export function Dropdown({
+export function Dropdown<
+  OptionType,
+  IsMulti extends boolean = false,
+  GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
+>({
+  error,
   defaultValue,
   id,
-  isMulti = false,
+  isMulti,
   label = 'Dropdown w/ Multi-select',
   onSelect,
   options,
@@ -29,7 +56,7 @@ export function Dropdown({
   showClearAllSelectedButton = true,
   className = '',
   ...properties
-}: DropdownProperties): JSX.Element {
+}: DropdownProperties & Props<OptionType, IsMulti, GroupType>): JSX.Element {
   const [searchString, setSearchString] = useState<string>('');
   const [selected, setSelected] = useState<PropsValue<SelectOption>>(
     defaultValue ?? []
@@ -94,10 +121,29 @@ export function Dropdown({
         id={`${id}-select`}
         aria-labelledby={labelID}
         className='o-multiselect'
+        classNames={{
+          control: () => `dropdown-control`,
+          indicatorSeparator: state =>
+            `dropdown-indicator-separator ${
+              state.selectProps.isClearable && !state.hasValue
+                ? 'dropdown-indicator-separator__none'
+                : ''
+            }`,
+          indicatorsContainer: () => 'dropdown-indicators-container',
+          dropdownIndicator: () => 'dropdown-dropdown-indicator',
+          valueContainer: () =>
+            `dropdown-value-container ${
+              error
+                ? 'dropdown-value-container--error'
+                : 'dropdown-value-container--success'
+            }`
+        }}
         closeMenuOnSelect={!isMulti}
         controlShouldRenderValue={!isMulti}
         components={{
-          Option: withCheckbox ? CheckboxInputOption : components.Option
+          Option: withCheckbox ? CheckboxInputOption : components.Option,
+          ClearIndicator: customClearIndicator,
+          DropdownIndicator: customDropdownIndicator
         }}
         filterOption={createFilter({ ignoreAccents: false })}
         hideSelectedOptions={false}
@@ -110,7 +156,12 @@ export function Dropdown({
         onInputChange={onInputChange}
         onKeyDown={onKeyDown}
         openMenuOnFocus
-        options={filterOptions(options, selected, isMulti, withCheckbox)}
+        options={filterOptions(
+          options,
+          selected,
+          Boolean(isMulti),
+          withCheckbox
+        )}
         ref={selectReference as Ref<any>}
         styles={extendedSelectStyles}
         tabSelectsValue={false}

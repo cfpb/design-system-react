@@ -17,5 +17,6 @@ export interface DropdownProperties extends StateManagerProps {
   pillAlign?: 'bottom' | 'hide' | 'top'; // Display pills below/above the select input or hide them
   showClearAllSelectedButton?: boolean; // Show/Hide our custom 'Clear All...' button
   value?: PropsValue<SelectOption>;
-  withCheckbox?: boolean; // Show/Hide checkbox next to optios
+  withCheckbox?: boolean; // Show/Hide checkbox next to options
+  error?: boolean | string;
 }

@@ -35,6 +35,15 @@ export const DefaultDropdown: Story = {
   }
 };
 
+export const WithError: Story = {
+  args: {
+    ...DefaultDropdown.args,
+    id: 'with-default',
+    error: true,
+    label: 'With Error'
+  }
+};
+
 export const WithDefaultValue: Story = {
   args: {
     ...DefaultDropdown.args,
