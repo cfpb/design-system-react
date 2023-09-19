@@ -7,12 +7,13 @@ import type { SelectOption } from './Dropdown.types';
 import { MockOptions } from './utils';
 
 const meta: Meta<typeof Dropdown> = {
+  title: 'Components/Dropdowns',
   component: Dropdown,
   parameters: {
     docs: {
       description: {
         component: `
-### CFPB DS - Dropdown component
+Dropdowns allow the user to choose from a finite list of options. They are not always the best choice from a usability perspective; see the [use cases documentation](https://cfpb.github.io/design-system/components/dropdowns-and-multiselects#use-cases) for more details.
 
 Source: https://cfpb.github.io/design-system/components/dropdowns-and-multiselects
 `
@@ -28,6 +29,7 @@ type Story = StoryObj<typeof meta>;
 const LAST_ELEMENT = -1;
 
 export const DefaultDropdown: Story = {
+  name: 'Default dropdown',
   args: {
     label: 'Default Dropdown',
     id: 'dropdown',
@@ -36,6 +38,7 @@ export const DefaultDropdown: Story = {
 };
 
 export const WithError: Story = {
+  name: 'With error',
   args: {
     ...DefaultDropdown.args,
     id: 'with-default',
@@ -45,6 +48,7 @@ export const WithError: Story = {
 };
 
 export const WithDefaultValue: Story = {
+  name: 'With default value',
   args: {
     ...DefaultDropdown.args,
     id: 'with-default',
@@ -63,6 +67,7 @@ export const Disabled: Story = {
 };
 
 export const MultiSelect: Story = {
+  name: 'Multi-select',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
@@ -73,6 +78,7 @@ export const MultiSelect: Story = {
 };
 
 export const MultiSelectWithDefaultValue: Story = {
+  name: 'Multi-select with default value',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
@@ -84,6 +90,7 @@ export const MultiSelectWithDefaultValue: Story = {
 };
 
 export const MultiSelectWithCheckboxes: Story = {
+  name: 'Multi-select with checkboxes',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
@@ -97,6 +104,7 @@ export const MultiSelectWithCheckboxes: Story = {
 };
 
 export const MultiSelectWithPillsAlignedBottom: Story = {
+  name: 'Multi-select with pills bottom-aligned',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
@@ -109,6 +117,7 @@ export const MultiSelectWithPillsAlignedBottom: Story = {
 };
 
 export const MultiSelectWithoutPills: Story = {
+  name: 'Multi-select without pills',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
@@ -122,6 +131,7 @@ export const MultiSelectWithoutPills: Story = {
 };
 
 export const MultiSelectWithoutClearAllButton: Story = {
+  name: 'Multi-select without clear all button',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
@@ -170,6 +180,7 @@ const ControlledDropdown = ({
 };
 
 export const AsAControlledComponent: Story = {
+  name: 'As a controlled component',
   render: arguments_ => <ControlledDropdown {...arguments_} />,
   args: {
     ...DefaultDropdown.args,
