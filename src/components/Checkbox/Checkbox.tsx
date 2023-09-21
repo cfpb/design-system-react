@@ -1,12 +1,12 @@
 import classnames from 'classnames';
 import type React from 'react';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 interface CheckboxProperties extends React.HTMLProps<HTMLInputElement> {
   id: string;
   label: string;
   className?: string;
-  defaultChecked?: boolean;
+  // defaultChecked?: boolean;
   helperText?: string;
   inputClassName?: string;
   inputRef?:
@@ -25,7 +25,8 @@ export const Checkbox = ({
   label,
   className,
   inputClassName,
-  defaultChecked = false,
+  checked = false,
+  // defaultChecked = false,
   helperText,
   inputRef,
   disabled = false,
@@ -34,15 +35,15 @@ export const Checkbox = ({
   onChange,
   ...properties
 }: CheckboxProperties & JSX.IntrinsicElements['input']): React.ReactElement => {
-  const [checked, setChecked] = useState(defaultChecked);
+  // const [sChecked, setChecked] = useState(checked || defaultChecked);
 
   const onChangeHandler = useMemo(
     () =>
       (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setChecked(event.target.checked);
+        // setChecked(event.target.checked);
         onChange?.(event);
       },
-    [onChange, setChecked]
+    [onChange]
   );
 
   const containerClasses = [
