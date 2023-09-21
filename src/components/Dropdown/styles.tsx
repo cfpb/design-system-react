@@ -1,12 +1,8 @@
-import type { CSSObjectWithLabel, ControlProps, GroupBase } from 'react-select';
-import type { SelectOption } from './Dropdown.types';
+import type { StylesConfig } from 'react-select';
 
 // Better align Select wih CFPB styles
-export const extendedSelectStyles = {
-  control: (
-    base: CSSObjectWithLabel,
-    state: ControlProps<SelectOption, boolean, GroupBase<SelectOption>>
-  ): CSSObjectWithLabel => ({
+export const extendedSelectStyles: StylesConfig = {
+  control: (base, state) => ({
     ...base,
     borderColor: state.isFocused ? '#0072ce' : base.borderColor,
     outline: state.isFocused ? '1px dotted #0072ce !important' : base.outline,
@@ -18,5 +14,12 @@ export const extendedSelectStyles = {
         : '1px solid #0072ce !important',
       outlineOffset: state.isFocused ? '3px' : '0'
     }
+  }),
+  menu: provided => ({
+    ...provided,
+    // backgroundColor: '#f0f0f0', // Background color of the entire menu
+    margin: 0,
+    borderRadius: 0,
+    border: '1px solid #0072ce' // Border around the menu
   })
 };

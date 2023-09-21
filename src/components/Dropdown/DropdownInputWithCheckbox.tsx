@@ -1,11 +1,11 @@
 import type { ReactElement, ReactNode } from 'react';
 import { useState } from 'react';
 import { components } from 'react-select';
-import './DropdownInputWithCheckbox.css';
+
+import Checkbox from '../Checkbox/Checkbox';
 
 interface TypeCheckboxInput {
   children: ReactNode;
-  getStyles: any; // TODO: figure out type - GetStyles<Option, IsMulti, Group>?
   innerProps: JSX.IntrinsicElements['div'];
   isDisabled: boolean;
   isFocused: boolean;
@@ -13,7 +13,6 @@ interface TypeCheckboxInput {
 }
 const CheckboxInputOption = ({
   children,
-  getStyles,
   innerProps,
   isDisabled,
   isFocused,
@@ -26,15 +25,23 @@ const CheckboxInputOption = ({
   const onMouseLeave = (): void => setIsActive(false);
 
   // styles
-  let bg = 'transparent';
-  if (isFocused) bg = '#eee';
-  if (isActive) bg = '#B2D4FF';
+  const isFocusedStyles = {
+    // backgroundColor: '#eee',
+    outline: '1px dotted #0072ce',
+    outlineOffset: '3px'
+  };
+
+  const isActiveStyle = {
+    // backgroundColor: '#B2D4FF'
+  };
 
   const style = {
     alignItems: 'center',
-    backgroundColor: bg,
+    backgroundColor: 'transparent',
     color: 'inherit',
-    display: 'flex '
+    display: 'flex ',
+    ...(isFocused ? isFocusedStyles : null),
+    ...(isActive ? isActiveStyle : null)
   };
 
   // prop assignment
@@ -46,23 +53,33 @@ const CheckboxInputOption = ({
     style
   };
 
+  console.log('rest:', rest);
+
   return (
     <components.Option
-      className='OptionWithCheckbox'
-      getStyles={getStyles}
+      className='option-with-checkbox'
+      // getStyles={getStyles}
       innerProps={properties}
       isDisabled={isDisabled}
       isFocused={isFocused}
       isSelected={isSelected}
       {...rest}
     >
-      <input
-        className='checkbox'
+      {/* <input
+        className={`checkbox a-checkbox o-multiselect_checkbox ${
+          isFocused ? '' : ''
+        }`}
         type='checkbox'
         checked={isSelected}
         readOnly
+      /> */}
+      <Checkbox
+        id={rest.data?.value}
+        disabled={isDisabled}
+        checked={isSelected}
+        label={<div className=''>{children}</div>}
+        // isFocused={isFocused} TODO:
       />
-      {children}
     </components.Option>
   );
 };

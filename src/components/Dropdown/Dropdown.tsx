@@ -166,6 +166,7 @@ export function Dropdown<
         styles={extendedSelectStyles}
         tabSelectsValue={false}
         value={value ?? selected}
+        // menuIsOpen
         {...properties}
       />
       {pillAlign === 'bottom' && (
