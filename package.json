@@ -41,7 +41,7 @@
     "validate": "run-p lint test:ci test:e2e:headless",
     "start": "yarn storybook",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o dist-storybook",
+    "build-storybook": "storybook build -o dist-storybook --webpack-stats-json",
     "chromatic": "chromatic --storybook-build-dir dist-storybook --only-changed"
   },
   "dependencies": {
