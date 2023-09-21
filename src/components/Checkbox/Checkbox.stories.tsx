@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { Checkbox } from '~/src/index';
 
 const meta: Meta<typeof Checkbox> = {
@@ -13,37 +15,60 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const defaultArguments = {
+  id: 'default',
+  name: 'default',
+  label: 'Default checkbox'
+};
+
+const SampleCheckbox = ({ ...arguments_ }): JSX.Element => {
+  const [checked, setChecked] = useState<boolean>(false);
+  const onHandleClick = (): void =>
+    setChecked((previous: boolean): boolean => !previous);
+
+  return (
+    <Checkbox
+      checked={checked}
+      onChange={onHandleClick}
+      {...defaultArguments}
+      {...arguments_}
+    />
+  );
+};
+
 export const DefaultCheckbox: Story = {
-  args: { id: 'default', name: 'default', label: 'Default checkbox' }
+  render: () => <SampleCheckbox />
+};
+
+const CheckboxWithHelperArguments = {
+  id: 'CheckboxWithHelper',
+  name: 'CheckboxWithHelper',
+  label: 'Checkbox With Helper',
+  helperText: 'This is optional helper text for the checkbox'
 };
 
 export const CheckboxWithHelper: Story = {
-  args: {
-    ...DefaultCheckbox.args,
-    id: 'CheckboxWithHelper',
-    name: 'CheckboxWithHelper',
-    label: 'Checkbox With Helper',
-    helperText: 'This is optional helper text for the checkbox'
-  }
+  render: () => <SampleCheckbox {...CheckboxWithHelperArguments} />
+};
+
+const LargeCheckboxArguments = {
+  id: 'LargeCheckbox',
+  name: 'LargeCheckbox',
+  label: 'Large Checkbox',
+  isLarge: true
 };
 
 export const LargeCheckbox: Story = {
-  args: {
-    ...DefaultCheckbox.args,
-    id: 'LargeCheckbox',
-    name: 'LargeCheckbox',
-    label: 'Large Checkbox',
-    isLarge: true
-  }
+  render: () => <SampleCheckbox {...LargeCheckboxArguments} />
 };
 
-export const LargeCheckboxWithHelper: Story = {
-  args: {
-    ...DefaultCheckbox.args,
-    id: 'LargeCheckboxWithHelper',
-    name: 'LargeCheckboxWithHelper',
-    label: 'Large Checkbox With Helper',
-    isLarge: true,
-    helperText: 'This is optional helper text for the large checkbox'
-  }
+const LargeCheckboxHelperArguments = {
+  id: 'LargeCheckbox',
+  name: 'LargeCheckbox',
+  label: 'Large Checkbox',
+  isLarge: true
+};
+
+export const LargeCheckboxHelper: Story = {
+  render: () => <SampleCheckbox {...LargeCheckboxHelperArguments} />
 };
