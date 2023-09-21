@@ -24,3 +24,6 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true # Enables https://www.chromatic.com/docs/turbosnap
           exitZeroOnChanges: true # Visual changes SHOULD NOT block merging of PRs
+          exitOnceUploaded: true # Exit with status 0 (OK) once the build has been sent to Chromatic.
+          externals: |
+            - 'src/assets/**'
