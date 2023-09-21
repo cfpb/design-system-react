@@ -2,6 +2,8 @@ import type { ReactElement, ReactNode } from 'react';
 import { useState } from 'react';
 import { components } from 'react-select';
 
+import './DropdownInputWithCheckbox.css';
+
 import Checkbox from '../Checkbox/Checkbox';
 
 interface TypeCheckboxInput {
@@ -26,9 +28,10 @@ const CheckboxInputOption = ({
 
   // styles
   const isFocusedStyles = {
+    backgroundColor: '#B2D4FF'
     // backgroundColor: '#eee',
-    outline: '1px dotted #0072ce',
-    outlineOffset: '3px'
+    // outline: '1px dotted #0072ce'
+    // outlineOffset: '3px'
   };
 
   const isActiveStyle = {
@@ -65,20 +68,12 @@ const CheckboxInputOption = ({
       isSelected={isSelected}
       {...rest}
     >
-      {/* <input
-        className={`checkbox a-checkbox o-multiselect_checkbox ${
-          isFocused ? '' : ''
-        }`}
-        type='checkbox'
-        checked={isSelected}
-        readOnly
-      /> */}
       <Checkbox
         id={rest.data?.value}
         disabled={isDisabled}
         checked={isSelected}
+        inputClassName={`${isFocused ? 'dropdown-option--active' : ''}`} // controls highlighting the checkbox if the entire line is focused
         label={<div className=''>{children}</div>}
-        // isFocused={isFocused} TODO:
       />
     </components.Option>
   );
