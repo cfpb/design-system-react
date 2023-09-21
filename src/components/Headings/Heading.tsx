@@ -15,8 +15,6 @@ export type HeadingType =
 interface HeadingProperties extends React.HTMLProps<HTMLHeadingElement> {
   /** Heading type (1-6, display, eyebrow, slug) */
   type?: HeadingType;
-  /** Heading content */
-  children: JSXElement | string;
 }
 
 export const Heading = ({
