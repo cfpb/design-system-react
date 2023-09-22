@@ -20,18 +20,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Super: Story = {
-  args: {
-    label: 'Button',
-    appearance: 'primary',
-    size: 'super'
-  }
-};
-
 export const FullWidthOnSmallScreens: Story = {
   name: 'Full width on x-small screens',
   args: {
-    ...Super.args,
+    label: 'Button',
+    appearance: 'primary',
     size: 'full'
   }
 };

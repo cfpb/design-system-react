@@ -13,7 +13,7 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * How large should the button be?
    */
-  size?: 'default' | 'full' | 'super';
+  size?: 'default' | 'full';
   /**
    * Optional click handler
    */
@@ -42,7 +42,6 @@ const appearanceStyles = {
 
 const sizeStyles = {
   default: [],
-  super: ['a-btn__super'],
   full: ['a-btn__full-on-xs']
 };
 
