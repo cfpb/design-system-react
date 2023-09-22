@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import type { HeadingLevel } from '../../types/headingLevel';
 import { Icon } from '../Icon/Icon';
 import './Notification.css';
+import type { NotificationFieldLevelType } from './NotificationFieldLevel';
+import { NotificationFieldLevel } from './NotificationFieldLevel';
 import type { NotificationLinkProperties } from './NotificationLink';
 import { NotificationLink } from './NotificationLink';
 
@@ -21,13 +23,13 @@ export type NotificationType =
   | 'warning';
 
 interface NotificationProperties {
-  type?: string;
-  // type?: NotificationType;
+  type?: NotificationFieldLevelType | NotificationType;
   message?: React.ReactNode;
   headingLevel?: HeadingLevel;
   children?: React.ReactNode;
   links?: NotificationLinkProperties[];
   isVisible?: boolean;
+  isFieldLevel?: boolean;
   showIcon?: boolean;
 }
 
@@ -43,6 +45,7 @@ interface NotificationProperties {
  * @param message Notification reason
  * @param type Type of notification
  * @param isVisible Display/hide notification
+ * @param isFieldLevel Render a field-level notification
  * @param showIcon Display/hide notification icon
  * @returns ReactElement
  */
@@ -54,11 +57,21 @@ export const Notification = ({
   message,
   type = 'info',
   isVisible = true,
+  isFieldLevel = false,
   showIcon = true,
   ...properties
 }: NotificationProperties &
   React.HTMLAttributes<HTMLDivElement>): React.ReactElement | null => {
   if (!isVisible) return null;
+
+  if (isFieldLevel) {
+    return (
+      // @ts-expect-error NotificationFieldLevel provides feedback for incompatible `type` values
+      <NotificationFieldLevel
+        {...{ type, message, isVisible, ...properties }}
+      />
+    );
+  }
 
   const classes = classNames(
     'm-notification',
