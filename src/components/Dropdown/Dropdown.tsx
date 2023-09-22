@@ -43,7 +43,6 @@ export function Dropdown<
   GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
 >({
   error,
-  // defaultValue,
   id,
   isMulti,
   label = 'Dropdown w/ Multi-select',
@@ -58,9 +57,6 @@ export function Dropdown<
   ...properties
 }: DropdownProperties & Props<OptionType, IsMulti, GroupType>): JSX.Element {
   const [searchString, setSearchString] = useState<string>('');
-  // const [selected, setSelected] = useState<PropsValue<SelectOption>>(
-  //   defaultValue ?? []
-  // );
 
   // Retain user search input between interactions
   const onInputChange = (inputValue: string, event: InputActionMeta): void => {
@@ -68,18 +64,12 @@ export function Dropdown<
     setSearchString(inputValue);
   };
 
-  // Support acting as controlled component
-  // useEffect(() => {
-  //   if (value) setSelected(value);
-  // }, [value]);
-
   const selectReference = useRef<SelectInstance>(null);
 
   // Store updated list of selected items
   const onSelectionChange = useCallback(
     (option: PropsValue<SelectOption>) => {
       onSelect(option);
-      // setSelected(option);
     },
     [onSelect]
   );
