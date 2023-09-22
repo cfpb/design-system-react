@@ -113,12 +113,14 @@ export function Dropdown<
         className='o-multiselect'
         classNames={{
           control: () => `dropdown-control`,
-          indicatorSeparator: state =>
-            `dropdown-indicator-separator ${
-              state.selectProps.isClearable && !state.hasValue
-                ? 'dropdown-indicator-separator__none'
-                : ''
-            }`,
+          indicatorSeparator: state => {
+            console.log(state);
+            return `dropdown-indicator-separator ${
+              state.selectProps.isClearable
+                ? ''
+                : 'dropdown-indicator-separator__none'
+            }`;
+          },
           indicatorsContainer: () => 'dropdown-indicators-container',
           dropdownIndicator: () => 'dropdown-dropdown-indicator',
           valueContainer: () =>
