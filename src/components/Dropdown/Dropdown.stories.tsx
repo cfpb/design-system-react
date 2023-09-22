@@ -36,12 +36,12 @@ function DropdownWrapper({ options, ...arguments_ }): JSX.Element {
       {...arguments_}
       id='controlled-dropdown'
       options={options}
-      showClearAllSelectedButton={false}
-      onSelect={(newValue): void =>
+      onSelect={(newValue): void => {
+        console.log(newValue);
         updateArgs({
           value: newValue
-        })
-      }
+        });
+      }}
     />
   );
 }
@@ -61,7 +61,7 @@ export const WithError: Story = {
   name: 'With error',
   args: {
     ...DefaultDropdown.args,
-    id: 'with-default',
+    id: 'WithError',
     error: true,
     label: 'With Error'
   }
@@ -72,7 +72,7 @@ export const WithDefaultValue: Story = {
   name: 'With default value',
   args: {
     ...DefaultDropdown.args,
-    id: 'with-default',
+    id: 'WithDefaultValue',
     value: MockOptions.at(LAST_ELEMENT),
     label: 'With Default Value'
   }
@@ -82,7 +82,7 @@ export const Disabled: Story = {
   render: _args => DropdownWrapper(_args),
   args: {
     ...DefaultDropdown.args,
-    id: 'disabled',
+    id: 'Disabled',
     label: 'Disabled',
     isDisabled: true
   }
@@ -94,7 +94,7 @@ export const MultiSelect: Story = {
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
-    id: 'multi',
+    id: 'MultiSelect',
     isMulti: true,
     label: 'Multi-select'
   }
@@ -102,14 +102,14 @@ export const MultiSelect: Story = {
 
 export const MultiSelectWithDefaultValue: Story = {
   render: _args => DropdownWrapper(_args),
-  name: 'Multi-select with default value',
+  name: 'Multi-select with default value (and pills above)',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'multi',
+    id: 'MultiSelectWithDefaultValue',
     isMulti: true,
-    label: 'Multi-select'
+    label: 'Multi-select with default value (and pills above)'
   }
 };
 
@@ -120,9 +120,9 @@ export const MultiSelectWithCheckboxes: Story = {
     ...DefaultDropdown.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'multi',
+    id: 'MultiSelectWithCheckboxes',
     isMulti: true,
-    label: 'Multi-select',
+    label: 'Multi-select with checkboxes',
     pillAlign: 'bottom',
     withCheckbox: true
   }
@@ -135,9 +135,9 @@ export const MultiSelectWithPillsAlignedBottom: Story = {
     ...DefaultDropdown.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'multi',
+    id: 'MultiSelectWithPillsAlignedBottom',
     isMulti: true,
-    label: 'Multi-select',
+    label: 'Multi-select with pills bottom-aligned',
     pillAlign: 'bottom'
   }
 };
@@ -149,9 +149,9 @@ export const MultiSelectWithoutPills: Story = {
     ...DefaultDropdown.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'multi',
+    id: 'MultiSelectWithoutPills',
     isMulti: true,
-    label: 'Multi-select',
+    label: 'Multi-select without pills',
     pillAlign: 'hide',
     withCheckbox: true
   }
@@ -164,9 +164,9 @@ export const MultiSelectWithoutClearAllButton: Story = {
     ...DefaultDropdown.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'multi',
+    id: 'MultiSelectWithoutClearAllButton',
     isMulti: true,
-    label: 'Multi-select',
+    label: 'Multi-select without clear all button',
     pillAlign: 'bottom',
     withCheckbox: true,
     showClearAllSelectedButton: false
@@ -210,9 +210,9 @@ export const AsAControlledComponent: Story = {
     ...DefaultDropdown.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'multi',
+    id: 'AsAControlledComponent',
     isMulti: true,
-    label: 'Multi-select',
+    label: 'As a controlled component',
     pillAlign: 'bottom'
   }
 };
