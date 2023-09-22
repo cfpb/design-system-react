@@ -1,5 +1,5 @@
 import type { KeyboardEvent, Ref } from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import type {
   GroupBase,
   InputActionMeta,
@@ -43,7 +43,7 @@ export function Dropdown<
   GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
 >({
   error,
-  defaultValue,
+  // defaultValue,
   id,
   isMulti,
   label = 'Dropdown w/ Multi-select',
@@ -58,9 +58,9 @@ export function Dropdown<
   ...properties
 }: DropdownProperties & Props<OptionType, IsMulti, GroupType>): JSX.Element {
   const [searchString, setSearchString] = useState<string>('');
-  const [selected, setSelected] = useState<PropsValue<SelectOption>>(
-    defaultValue ?? []
-  );
+  // const [selected, setSelected] = useState<PropsValue<SelectOption>>(
+  //   defaultValue ?? []
+  // );
 
   // Retain user search input between interactions
   const onInputChange = (inputValue: string, event: InputActionMeta): void => {
@@ -69,9 +69,9 @@ export function Dropdown<
   };
 
   // Support acting as controlled component
-  useEffect(() => {
-    if (value) setSelected(value);
-  }, [value]);
+  // useEffect(() => {
+  //   if (value) setSelected(value);
+  // }, [value]);
 
   const selectReference = useRef<SelectInstance>(null);
 
@@ -79,7 +79,7 @@ export function Dropdown<
   const onSelectionChange = useCallback(
     (option: PropsValue<SelectOption>) => {
       onSelect(option);
-      setSelected(option);
+      // setSelected(option);
     },
     [onSelect]
   );
@@ -111,7 +111,7 @@ export function Dropdown<
       {pillAlign === 'top' && (
         <DropdownPills
           selectRef={selectReference}
-          selected={selected}
+          selected={value}
           isMulti={isMulti}
           onChange={onSelectionChange}
           showClearAllSelectedButton={showClearAllSelectedButton}
@@ -156,16 +156,11 @@ export function Dropdown<
         onInputChange={onInputChange}
         onKeyDown={onKeyDown}
         openMenuOnFocus
-        options={filterOptions(
-          options,
-          selected,
-          Boolean(isMulti),
-          withCheckbox
-        )}
+        options={filterOptions(options, value, Boolean(isMulti), withCheckbox)}
         ref={selectReference as Ref<any>}
         styles={extendedSelectStyles}
         tabSelectsValue={false}
-        value={value ?? selected}
+        value={value}
         // menuIsOpen
         {...properties}
       />
@@ -174,7 +169,7 @@ export function Dropdown<
           isMulti={isMulti}
           onChange={onSelectionChange}
           pillAlign='bottom'
-          selected={selected}
+          selected={value}
           selectRef={selectReference}
           showClearAllSelectedButton={showClearAllSelectedButton}
         />

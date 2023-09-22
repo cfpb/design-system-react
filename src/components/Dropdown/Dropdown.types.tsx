@@ -7,7 +7,7 @@ export interface SelectOption {
 }
 
 export interface DropdownProperties extends StateManagerProps {
-  defaultValue?: PropsValue<SelectOption>;
+  // defaultValue?: PropsValue<SelectOption>;
   id: string;
   isDisabled?: boolean;
   isMulti?: boolean;
