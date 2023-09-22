@@ -1,10 +1,11 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 /* eslint-disable react/jsx-handler-names */
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 import { Button } from '../Button/Button';
 import { Dropdown } from './Dropdown';
-import type { SelectOption } from './Dropdown.types';
 import { MockOptions } from './utils';
+
+import { useArgs } from '@storybook/client-api';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdowns',
@@ -28,7 +29,25 @@ type Story = StoryObj<typeof meta>;
 
 const LAST_ELEMENT = -1;
 
+function DropdownWrapper({ options, ...arguments_ }): JSX.Element {
+  const [, updateArgs] = useArgs();
+  return (
+    <Dropdown
+      {...arguments_}
+      id='controlled-dropdown'
+      options={options}
+      showClearAllSelectedButton={false}
+      onSelect={(newValue): void =>
+        updateArgs({
+          value: newValue
+        })
+      }
+    />
+  );
+}
+
 export const DefaultDropdown: Story = {
+  render: _args => DropdownWrapper(_args),
   name: 'Default dropdown',
   args: {
     label: 'Default Dropdown',
@@ -38,6 +57,7 @@ export const DefaultDropdown: Story = {
 };
 
 export const WithError: Story = {
+  render: _args => DropdownWrapper(_args),
   name: 'With error',
   args: {
     ...DefaultDropdown.args,
@@ -48,6 +68,7 @@ export const WithError: Story = {
 };
 
 export const WithDefaultValue: Story = {
+  render: _args => DropdownWrapper(_args),
   name: 'With default value',
   args: {
     ...DefaultDropdown.args,
@@ -58,6 +79,7 @@ export const WithDefaultValue: Story = {
 };
 
 export const Disabled: Story = {
+  render: _args => DropdownWrapper(_args),
   args: {
     ...DefaultDropdown.args,
     id: 'disabled',
@@ -67,6 +89,7 @@ export const Disabled: Story = {
 };
 
 export const MultiSelect: Story = {
+  render: _args => DropdownWrapper(_args),
   name: 'Multi-select',
   args: {
     ...DefaultDropdown.args,
@@ -78,6 +101,7 @@ export const MultiSelect: Story = {
 };
 
 export const MultiSelectWithDefaultValue: Story = {
+  render: _args => DropdownWrapper(_args),
   name: 'Multi-select with default value',
   args: {
     ...DefaultDropdown.args,
@@ -90,6 +114,7 @@ export const MultiSelectWithDefaultValue: Story = {
 };
 
 export const MultiSelectWithCheckboxes: Story = {
+  render: _args => DropdownWrapper(_args),
   name: 'Multi-select with checkboxes',
   args: {
     ...DefaultDropdown.args,
@@ -104,6 +129,7 @@ export const MultiSelectWithCheckboxes: Story = {
 };
 
 export const MultiSelectWithPillsAlignedBottom: Story = {
+  render: _args => DropdownWrapper(_args),
   name: 'Multi-select with pills bottom-aligned',
   args: {
     ...DefaultDropdown.args,
@@ -117,6 +143,7 @@ export const MultiSelectWithPillsAlignedBottom: Story = {
 };
 
 export const MultiSelectWithoutPills: Story = {
+  render: _args => DropdownWrapper(_args),
   name: 'Multi-select without pills',
   args: {
     ...DefaultDropdown.args,
@@ -131,6 +158,7 @@ export const MultiSelectWithoutPills: Story = {
 };
 
 export const MultiSelectWithoutClearAllButton: Story = {
+  render: _args => DropdownWrapper(_args),
   name: 'Multi-select without clear all button',
   args: {
     ...DefaultDropdown.args,
@@ -145,43 +173,39 @@ export const MultiSelectWithoutClearAllButton: Story = {
   }
 };
 
-interface ControlledArguments {
-  options: SelectOption[];
-}
-const ControlledDropdown = ({
-  options,
-  ...arguments_
-}: ControlledArguments): JSX.Element => {
-  const [selected, setSelected] = useState([options[0]]);
-
+function AsAControlled({ options, ...arguments_ }): JSX.Element {
+  const [, updateArgs] = useArgs();
   return (
     <>
       <div className='m-btn-group u-mb30'>
         <Button
           label='Add all options'
-          onClick={(): void => setSelected([...options])}
+          onClick={(): void => updateArgs({ value: [...MockOptions] })}
         />
         <Button
           label='Clear all options'
           appearance='warning'
-          onClick={(): void => setSelected([])}
+          onClick={(): void => updateArgs({ value: [] })}
         />
       </div>
       <Dropdown
+        {...arguments_}
         id='controlled-dropdown'
         options={options}
         showClearAllSelectedButton={false}
-        onSelect={(newValue): void => setSelected(newValue)}
-        value={selected}
-        {...arguments_}
+        onSelect={(newValue): void =>
+          updateArgs({
+            value: newValue
+          })
+        }
       />
     </>
   );
-};
+}
 
 export const AsAControlledComponent: Story = {
   name: 'As a controlled component',
-  render: arguments_ => <ControlledDropdown {...arguments_} />,
+  render: _args => AsAControlled(_args),
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
