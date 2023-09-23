@@ -52,7 +52,20 @@ export const DefaultDropdown: Story = {
   args: {
     label: 'Default Dropdown',
     id: 'dropdown',
-    options: MockOptions
+    isClearable: true,
+    options: MockOptions,
+    value: [MockOptions[0]]
+  }
+};
+
+export const WithoutInlineClearAll: Story = {
+  render: _args => DropdownWrapper(_args),
+  args: {
+    ...DefaultDropdown.args,
+    label: 'Without Inline Clear All',
+    id: 'WithoutInlineClearAll',
+    options: MockOptions,
+    isClearable: false
   }
 };
 
@@ -142,6 +155,21 @@ export const MultiSelectWithPillsAlignedBottom: Story = {
   }
 };
 
+export const MultiSelectWithPillsAlignedBottomInlineClearAllOff: Story = {
+  render: _args => DropdownWrapper(_args),
+  name: "Multi-select with pills bottom-aligned, inline 'Clear All' Off",
+  args: {
+    ...DefaultDropdown.args,
+    options: [...MockOptions],
+    value: [MockOptions[0]],
+    id: 'MultiSelectWithPillsAlignedBottom',
+    isMulti: true,
+    label: 'Multi-select with pills bottom-aligned',
+    pillAlign: 'bottom',
+    isClearable: false
+  }
+};
+
 export const MultiSelectWithoutPills: Story = {
   render: _args => DropdownWrapper(_args),
   name: 'Multi-select without pills',
@@ -159,7 +187,7 @@ export const MultiSelectWithoutPills: Story = {
 
 export const MultiSelectWithoutClearAllButton: Story = {
   render: _args => DropdownWrapper(_args),
-  name: 'Multi-select without clear all button',
+  name: 'Multi-select without bottom clear all button',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
