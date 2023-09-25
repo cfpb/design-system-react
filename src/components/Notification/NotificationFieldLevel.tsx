@@ -11,7 +11,7 @@ export enum NotificationFieldLevelClass {
 }
 
 export const MapTypeToIconName = {
-  '': '',
+  '': 'information',
   error: 'error',
   success: 'approved',
   warning: 'warning'
@@ -19,20 +19,20 @@ export const MapTypeToIconName = {
 
 interface NotificationFieldLevelProperties
   extends React.HTMLAttributes<HTMLDivElement> {
-  type: NotificationFieldLevelType;
+  type?: NotificationFieldLevelType;
   message: React.ReactNode;
   isVisible: boolean;
 }
 
 export const NotificationFieldLevel = ({
-  type,
+  type = '',
   message,
   isVisible,
   ...properties
 }: NotificationFieldLevelProperties): JSXElement => {
-  if (!isVisible) return null;
+  if (!isVisible || !message) return null;
 
-  if (!['error', 'success', 'warning'].includes(type))
+  if (!['error', 'success', 'warning', ''].includes(type))
     return (
       <p data-testid='message'>
         [Error] Unsupported field-level notification type provided: {type}
