@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prevent-abbreviations */
 /* eslint-disable react/jsx-handler-names */
 import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './Checkbox';
@@ -31,6 +30,7 @@ function CheckboxWrapper({
   label,
   ...arguments_
 }: CheckboxWrapperProperties): JSX.Element {
+  // eslint-disable-next-line unicorn/prevent-abbreviations
   const [{ checked }, updateArgs] = useArgs();
   return (
     <Checkbox
@@ -38,6 +38,7 @@ function CheckboxWrapper({
       id={id}
       label={label}
       onChange={(): void =>
+        // eslint-disable-next-line unicorn/prevent-abbreviations
         updateArgs({
           checked: !checked
         })
@@ -47,8 +48,8 @@ function CheckboxWrapper({
 }
 
 export const DefaultCheckbox: Story = {
-  render: _args => CheckboxWrapper(_args),
-  name: 'Default dropdown',
+  render: _arguments => CheckboxWrapper(_arguments),
+  name: 'Default checkbox',
   args: {
     id: 'default',
     name: 'default',
@@ -58,7 +59,7 @@ export const DefaultCheckbox: Story = {
 };
 
 export const CheckboxWithHelper: Story = {
-  render: _args => CheckboxWrapper(_args),
+  render: _arguments => CheckboxWrapper(_arguments),
   args: {
     ...DefaultCheckbox.args,
     id: 'CheckboxWithHelper',
@@ -69,7 +70,7 @@ export const CheckboxWithHelper: Story = {
 };
 
 export const LargeCheckbox: Story = {
-  render: _args => CheckboxWrapper(_args),
+  render: _arguments => CheckboxWrapper(_arguments),
   args: {
     ...DefaultCheckbox.args,
     id: 'LargeCheckbox',
@@ -80,7 +81,7 @@ export const LargeCheckbox: Story = {
 };
 
 export const LargeCheckboxWithHelper: Story = {
-  render: _args => CheckboxWrapper(_args),
+  render: _arguments => CheckboxWrapper(_arguments),
   args: {
     ...DefaultCheckbox.args,
     id: 'LargeCheckboxWithHelper',
