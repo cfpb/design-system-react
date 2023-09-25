@@ -46,6 +46,7 @@ export function Dropdown<
   id,
   isMulti,
   label = 'Dropdown w/ Multi-select',
+  labelClearAll = 'Clear All Selected Institutions',
   onSelect,
   options,
   pillAlign = 'top',
@@ -115,6 +116,7 @@ export function Dropdown<
           isMulti={isMulti}
           onChange={onSelectionChange}
           showClearAllSelectedButton={showClearAllSelectedButton}
+          labelClearAll={labelClearAll}
         />
       )}
       <Select
@@ -162,7 +164,6 @@ export function Dropdown<
         styles={extendedSelectStyles}
         tabSelectsValue={false}
         value={value}
-        // menuIsOpen
         {...properties}
       />
       {pillAlign === 'bottom' && (
@@ -173,6 +174,7 @@ export function Dropdown<
           selected={value}
           selectRef={selectReference}
           showClearAllSelectedButton={showClearAllSelectedButton}
+          labelClearAll={labelClearAll}
         />
       )}
     </div>

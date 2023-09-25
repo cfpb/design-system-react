@@ -55,8 +55,6 @@ const CheckboxInputOption = ({
     style
   };
 
-  console.log('rest:', rest.selectProps.customProps);
-
   const withCheckbox = Boolean(rest.selectProps.customProps.withCheckbox);
 
   return (
@@ -76,7 +74,6 @@ const CheckboxInputOption = ({
       >
         {withCheckbox ? (
           <Checkbox
-            id={rest.data?.value}
             disabled={isDisabled}
             checked={isSelected}
             inputClassName={`${isFocused ? 'dropdown-option--active' : ''}`} // controls highlighting the checkbox if the entire line is focused

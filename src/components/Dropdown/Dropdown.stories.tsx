@@ -37,7 +37,6 @@ function DropdownWrapper({ options, ...arguments_ }): JSX.Element {
       id='controlled-dropdown'
       options={options}
       onSelect={(newValue): void => {
-        console.log(newValue);
         updateArgs({
           value: newValue
         });
