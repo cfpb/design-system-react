@@ -2,9 +2,8 @@ import type { ReactElement, ReactNode } from 'react';
 import { useState } from 'react';
 import { components } from 'react-select';
 
-import './DropdownInputWithCheckbox.css';
-
 import Checkbox from '../Checkbox/Checkbox';
+import './DropdownInputWithCheckbox.css';
 
 interface TypeCheckboxInput {
   children: ReactNode;
@@ -28,7 +27,7 @@ const CheckboxInputOption = ({
 
   // styles
   const isFocusedStyles = {
-    backgroundColor: '#B2D4FF'
+    // backgroundColor: '#B2D4FF'
     // backgroundColor: '#eee',
     // outline: '1px dotted #0072ce'
     // outlineOffset: '3px'
@@ -56,7 +55,9 @@ const CheckboxInputOption = ({
     style
   };
 
-  console.log('rest:', rest);
+  console.log('rest:', rest.selectProps.customProps);
+
+  const withCheckbox = Boolean(rest.selectProps.customProps.withCheckbox);
 
   return (
     <components.Option
@@ -68,13 +69,23 @@ const CheckboxInputOption = ({
       isSelected={isSelected}
       {...rest}
     >
-      <Checkbox
-        id={rest.data?.value}
-        disabled={isDisabled}
-        checked={isSelected}
-        inputClassName={`${isFocused ? 'dropdown-option--active' : ''}`} // controls highlighting the checkbox if the entire line is focused
-        label={<div className=''>{children}</div>}
-      />
+      <div
+        className={`dropdown-option-container ${
+          isFocused ? 'dropdown-option-container--active' : ''
+        }`}
+      >
+        {withCheckbox ? (
+          <Checkbox
+            id={rest.data?.value}
+            disabled={isDisabled}
+            checked={isSelected}
+            inputClassName={`${isFocused ? 'dropdown-option--active' : ''}`} // controls highlighting the checkbox if the entire line is focused
+            label={<div>{children}</div>}
+          />
+        ) : (
+          <div>{children}</div>
+        )}
+      </div>
     </components.Option>
   );
 };

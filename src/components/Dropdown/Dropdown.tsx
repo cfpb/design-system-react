@@ -1,5 +1,5 @@
 import type { KeyboardEvent, Ref } from 'react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import type {
   GroupBase,
   InputActionMeta,
@@ -88,6 +88,16 @@ export function Dropdown<
 
   const labelID = `${id}-label`;
 
+  // eslint-disable-next-line unicorn/prevent-abbreviations
+  const customProps = useMemo(
+    () => ({
+      withCheckbox,
+      showClearAllSelectedButton,
+      pillAlign
+    }),
+    [withCheckbox, showClearAllSelectedButton, pillAlign]
+  );
+
   return (
     <div className={`m-form-field m-form-field__select ${className}`}>
       <Label
@@ -108,6 +118,7 @@ export function Dropdown<
         />
       )}
       <Select
+        customProps={customProps} // can be passed down to custom components
         id={`${id}-select`}
         aria-labelledby={labelID}
         className='o-multiselect'
@@ -131,7 +142,7 @@ export function Dropdown<
         closeMenuOnSelect={!isMulti}
         controlShouldRenderValue={!isMulti}
         components={{
-          Option: withCheckbox ? CheckboxInputOption : components.Option,
+          Option: CheckboxInputOption,
           ClearIndicator: customClearIndicator,
           DropdownIndicator: customDropdownIndicator
         }}
