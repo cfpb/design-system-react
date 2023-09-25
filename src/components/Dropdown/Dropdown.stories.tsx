@@ -170,31 +170,31 @@ export const MultiSelectWithPillsAlignedBottomInlineClearAllOff: Story = {
   }
 };
 
-export const MultiSelectWithoutPills: Story = {
+export const MultiSelectWithCheckboxesWithoutPills: Story = {
   render: _args => DropdownWrapper(_args),
-  name: 'Multi-select without pills',
+  name: 'Multi-select with checkboxes, without pills',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'MultiSelectWithoutPills',
+    id: 'MultiSelectWithCheckboxesWithoutPills',
     isMulti: true,
-    label: 'Multi-select without pills',
+    label: 'Multi-select with checkboxes, without pills',
     pillAlign: 'hide',
     withCheckbox: true
   }
 };
 
-export const MultiSelectWithoutClearAllButton: Story = {
+export const MultiSelectWithCheckboxesWithoutClearAllButton: Story = {
   render: _args => DropdownWrapper(_args),
-  name: 'Multi-select without bottom clear all button',
+  name: 'Multi-select with checkboxes, without bottom clear all button',
   args: {
     ...DefaultDropdown.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'MultiSelectWithoutClearAllButton',
+    id: 'MultiSelectWithCheckboxesWithoutClearAllButton',
     isMulti: true,
-    label: 'Multi-select without clear all button',
+    label: 'Multi-select with checkboxes, without clear all button',
     pillAlign: 'bottom',
     withCheckbox: true,
     showClearAllSelectedButton: false
