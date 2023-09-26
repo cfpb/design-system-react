@@ -51,20 +51,9 @@ export const DefaultDropdown: Story = {
   args: {
     label: 'Default Dropdown',
     id: 'dropdown',
-    isClearable: true,
+    isClearable: false,
     options: MockOptions,
     value: [MockOptions[0]]
-  }
-};
-
-export const WithoutInlineClearAll: Story = {
-  render: _args => DropdownWrapper(_args),
-  args: {
-    ...DefaultDropdown.args,
-    label: 'Without Inline Clear All',
-    id: 'WithoutInlineClearAll',
-    options: MockOptions,
-    isClearable: false
   }
 };
 
