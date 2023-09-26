@@ -34,7 +34,6 @@ function DropdownWrapper({ options, ...arguments_ }): JSX.Element {
   return (
     <Dropdown
       {...arguments_}
-      id='controlled-dropdown'
       options={options}
       onSelect={(newValue): void => {
         updateArgs({
@@ -190,7 +189,6 @@ function AsAControlled({ options, ...arguments_ }): JSX.Element {
       </div>
       <Dropdown
         {...arguments_}
-        id='controlled-dropdown'
         options={options}
         showClearAllSelectedButton={false}
         onSelect={(newValue): void =>
