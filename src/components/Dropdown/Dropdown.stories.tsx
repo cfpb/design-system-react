@@ -142,20 +142,6 @@ export const MultiSelectWithPillsAlignedBottom: Story = {
   }
 };
 
-export const MultiSelectWithPillsAlignedBottomInlineClearAllOff: Story = {
-  render: _args => DropdownWrapper(_args),
-  name: "Multi-select with pills bottom-aligned, inline 'Clear All' Off",
-  args: {
-    ...DefaultDropdown.args,
-    options: [...MockOptions],
-    value: [MockOptions[0]],
-    id: 'MultiSelectWithPillsAlignedBottom',
-    isMulti: true,
-    label: 'Multi-select with pills bottom-aligned',
-    pillAlign: 'bottom'
-  }
-};
-
 export const MultiSelectWithCheckboxesWithoutPills: Story = {
   render: _args => DropdownWrapper(_args),
   name: 'Multi-select with checkboxes, without pills',
