@@ -1,19 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Heading } from '~/src/index';
 
+/**
+ * A successful type hierarchy establishes the order of importance of elements on a page. Consistent scaling, weights, and capitalization are used to create distinction between heading levels and provide users with familiar focus points when scanning text.
+ *
+ * Source: <a href='https://cfpb.github.io/design-system/foundation/headings' target='_blank'> https://cfpb.github.io/design-system/foundation/headings</a>
+ */
 const meta: Meta<typeof Heading> = {
   component: Heading,
-  parameters: {
-    docs: {
-      description: {
-        component: `
-A successful type hierarchy establishes the order of importance of elements on a page. Consistent scaling, weights, and capitalization are used to create distinction between heading levels and provide users with familiar focus points when scanning text.
-
-Source: https://cfpb.github.io/design-system/foundation/headings
-`
-      }
-    }
-  },
   argTypes: {
     type: { control: { type: 'select' } }
   }
