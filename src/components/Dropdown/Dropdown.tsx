@@ -52,7 +52,7 @@ export function Dropdown<
   pillAlign = 'top',
   value,
   withCheckbox = false,
-  isClearable = true, // Show/Hide react-select X in select input that clears all selections
+  isClearable = false, // Show/Hide react-select X in select input that clears all selections
   showClearAllSelectedButton = true,
   className = '',
   ...properties

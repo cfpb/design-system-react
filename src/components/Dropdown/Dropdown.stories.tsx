@@ -51,7 +51,6 @@ export const DefaultDropdown: Story = {
   args: {
     label: 'Default Dropdown',
     id: 'dropdown',
-    isClearable: false,
     options: MockOptions,
     value: [MockOptions[0]]
   }
@@ -153,8 +152,7 @@ export const MultiSelectWithPillsAlignedBottomInlineClearAllOff: Story = {
     id: 'MultiSelectWithPillsAlignedBottom',
     isMulti: true,
     label: 'Multi-select with pills bottom-aligned',
-    pillAlign: 'bottom',
-    isClearable: false
+    pillAlign: 'bottom'
   }
 };
 
