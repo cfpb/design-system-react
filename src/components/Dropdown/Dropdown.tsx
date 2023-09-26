@@ -23,13 +23,6 @@ const customDropdownIndicator = (properties): JSX.Element => (
     <Icon name='down' />
   </components.DropdownIndicator>
 );
-const customClearIndicator = (properties): JSX.Element => (
-  <components.ClearIndicator {...properties}>
-    <div className='dropdown-clear-indicator-container'>
-      <Icon name='error' />
-    </div>
-  </components.ClearIndicator>
-);
 
 /**
  * A dropdown input component that supports multi-select.
@@ -126,12 +119,7 @@ export function Dropdown<
         className='o-multiselect'
         classNames={{
           control: () => `dropdown-control`,
-          indicatorSeparator: state =>
-            `dropdown-indicator-separator ${
-              state.selectProps.isClearable && state.hasValue
-                ? ''
-                : 'dropdown-indicator-separator__none'
-            }`,
+          indicatorSeparator: () => `dropdown-indicator-separator`,
           indicatorsContainer: () => 'dropdown-indicators-container',
           dropdownIndicator: () => 'dropdown-dropdown-indicator',
           valueContainer: () =>
@@ -145,7 +133,6 @@ export function Dropdown<
         controlShouldRenderValue={!isMulti}
         components={{
           Option: CheckboxInputOption,
-          ClearIndicator: customClearIndicator,
           DropdownIndicator: customDropdownIndicator
         }}
         filterOption={createFilter({ ignoreAccents: false })}
