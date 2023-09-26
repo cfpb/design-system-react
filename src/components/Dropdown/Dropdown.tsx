@@ -125,7 +125,8 @@ export function Dropdown<
         aria-labelledby={labelID}
         className='o-multiselect'
         classNames={{
-          control: () => `dropdown-control`,
+          control: () =>
+            error ? `dropdown-control--error` : `dropdown-control`,
           indicatorSeparator: state =>
             `dropdown-indicator-separator ${
               state.selectProps.isClearable && state.hasValue
