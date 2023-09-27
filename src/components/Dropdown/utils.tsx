@@ -23,15 +23,15 @@ export const MockOptions = [
  */
 export const filterOptions = (
   options: PropsValue<SelectOption>,
-  selected: PropsValue<SelectOption>,
+  value: PropsValue<SelectOption>,
   isMulti: boolean,
   showAllOptions: boolean
 ): OptionsOrGroups<SelectOption, GroupBase<SelectOption>> => {
-  if (showAllOptions || !selected || !isMulti)
+  if (showAllOptions || !value || !isMulti)
     return options as OptionsOrGroups<SelectOption, GroupBase<SelectOption>>;
 
   return (options as SelectOption[]).filter(
-    o => !(selected as SelectOption[]).map(s => s.value).includes(o.value)
+    o => !(value as SelectOption[]).map(s => s.value).includes(o.value)
   );
 };
 

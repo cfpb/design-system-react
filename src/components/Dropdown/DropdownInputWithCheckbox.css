@@ -1,3 +1,21 @@
-.OptionWithCheckbox .checkbox {
-  margin-right: 5px;
+.dropdown-option-container {
+  width: 100%;
+}
+
+/* controls highlighting the checkbox if the entire line is focused */
+.dropdown-option-container--active {
+  outline: 1px dotted #0072ce;
+  outline-offset: 3px;
+}
+
+.dropdown-option--active + .a-label::before {
+  border-color: #0072ce !important;
+  outline-color: none !important;
+  box-shadow: 0 0 0 1px #0072ce;
+}
+
+/* Disable the default outline and border -- to be able to controlled from Dropdown props */
+.dropdown-option-container .a-label {
+  outline: none !important;
+  border: none !important;
 }

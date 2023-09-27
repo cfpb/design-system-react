@@ -1,12 +1,12 @@
 import classnames from 'classnames';
 import type React from 'react';
-import { useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
+import { useCallback } from 'react';
 
 interface CheckboxProperties extends React.HTMLProps<HTMLInputElement> {
   id: string;
-  label: string;
+  label: ReactNode;
   className?: string;
-  defaultChecked?: boolean;
   helperText?: string;
   inputClassName?: string;
   inputRef?:
@@ -18,6 +18,7 @@ interface CheckboxProperties extends React.HTMLProps<HTMLInputElement> {
   isLarge?: boolean;
   name?: string;
 }
+
 const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
 
 export const Checkbox = ({
@@ -25,7 +26,7 @@ export const Checkbox = ({
   label,
   className,
   inputClassName,
-  defaultChecked = false,
+  checked = false,
   helperText,
   inputRef,
   disabled = false,
@@ -34,15 +35,11 @@ export const Checkbox = ({
   onChange,
   ...properties
 }: CheckboxProperties & JSX.IntrinsicElements['input']): React.ReactElement => {
-  const [checked, setChecked] = useState(defaultChecked);
-
-  const onChangeHandler = useMemo(
-    () =>
-      (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setChecked(event.target.checked);
-        onChange?.(event);
-      },
-    [onChange, setChecked]
+  const onChangeHandler = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>): void => {
+      onChange?.(event);
+    },
+    [onChange]
   );
 
   const containerClasses = [
