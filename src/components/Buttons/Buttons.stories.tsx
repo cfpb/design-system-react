@@ -5,7 +5,7 @@ import { ButtonGroup } from './ButtonGroup';
 /**
  Buttons signal actions. They should be used sparingly; each additional button on a page reduces the visual prominence of a call to action. In contrast, <a href="https://cfpb.github.io/design-system/components/links" target="_blank">links</a> should lead users to another page or further information.
 
-Source: <a href="https://cfpb.github.io/design-system/components/buttons" target="_blank">https://cfpb.github.io/design-system/components/buttons</a>
+ Source: <a href="https://cfpb.github.io/design-system/components/buttons" target="_blank">https://cfpb.github.io/design-system/components/buttons</a>
  */
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -24,7 +24,11 @@ export const Primary: Story = {
   args: {
     label: 'Button',
     appearance: 'primary',
-    size: 'default'
+    size: 'default',
+    disabled: false,
+    asLink: false,
+    iconLeft: undefined,
+    iconRight: undefined
   }
 };
 
@@ -68,8 +72,9 @@ export const DestructiveAction: Story = {
 };
 
 export const FullWidthOnSmallScreens: Story = {
-  name: 'Full width on x-small screens',
+  name: 'Full width (on x-small screens)',
   args: {
+    ...Primary.args,
     label: 'Button',
     appearance: 'primary',
     size: 'full'
@@ -88,11 +93,9 @@ export const ButtonsGroup: Story = {
 };
 
 export const StaticIconButtons: Story = {
-  name: 'With static icon',
+  name: 'With icon',
   args: {
-    label: 'Button',
-    appearance: 'primary',
-    size: 'default'
+    ...Primary.args
   },
   render: arguments_ => (
     <ButtonGroup>
