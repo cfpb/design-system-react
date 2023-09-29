@@ -7,7 +7,7 @@ import type {
 } from 'react';
 import { useCallback } from 'react';
 
-interface CheckboxProperties {
+export interface CheckboxProperties {
   /** Unique identifier for this checkbox */
   id: string;
   /** Text that appears next to the checkbox for clarification of purpose */

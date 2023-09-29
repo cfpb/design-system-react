@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-handler-names */
 import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './Checkbox';
-
-import { useArgs } from '@storybook/client-api';
+import { CheckboxTestWrapper } from './Checkbox.utils';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkboxes',
@@ -28,34 +27,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-interface CheckboxWrapperProperties {
-  id: string;
-  label: string;
-}
-
-function CheckboxWrapper({
-  id,
-  label,
-  ...arguments_
-}: CheckboxWrapperProperties): JSX.Element {
-  // eslint-disable-next-line unicorn/prevent-abbreviations
-  const [{ checked }, updateArgs] = useArgs();
-  return (
-    <Checkbox
-      {...arguments_}
-      id={id}
-      label={label}
-      onChange={(): void =>
-        updateArgs({
-          checked: !checked
-        })
-      }
-    />
-  );
-}
-
 export const StandardCheckbox: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
+  render: _arguments => CheckboxTestWrapper(_arguments),
   name: 'Standard checkbox',
   args: {
     id: 'standard',
@@ -66,7 +39,7 @@ export const StandardCheckbox: Story = {
 };
 
 export const StandardCheckboxWithHelperText: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
+  render: _arguments => CheckboxTestWrapper(_arguments),
   name: 'Standard checkbox with helper text',
   args: {
     ...StandardCheckbox.args,
@@ -78,7 +51,7 @@ export const StandardCheckboxWithHelperText: Story = {
 };
 
 export const LargeTargetAreaCheckbox: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
+  render: _arguments => CheckboxTestWrapper(_arguments),
   name: 'Large target area checkbox',
   args: {
     ...StandardCheckbox.args,
@@ -90,7 +63,7 @@ export const LargeTargetAreaCheckbox: Story = {
 };
 
 export const LargeTargetAreaCheckboxWithHelperText: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
+  render: _arguments => CheckboxTestWrapper(_arguments),
   name: 'Large target area checkbox helper text',
   args: {
     ...StandardCheckbox.args,
