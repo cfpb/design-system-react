@@ -67,17 +67,19 @@ export const StandardCheckbox: Story = {
 
 export const StandardCheckboxWithHelperText: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
+  name: 'Standard checkbox with helper text',
   args: {
     ...StandardCheckbox.args,
     id: 'StandardCheckboxWithHelper',
     name: 'StandardCheckboxWithHelper',
-    label: 'Standard checkbox with helper',
-    helperText: 'This is optional helper text for the checkbox'
+    label: 'Standard checkbox with helper text',
+    helperText: 'This is optional helper text for the standard checkbox'
   }
 };
 
 export const LargeTargetAreaCheckbox: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
+  name: 'Large target area checkbox',
   args: {
     ...StandardCheckbox.args,
     id: 'LargeTargetAreaCheckbox',
@@ -89,12 +91,14 @@ export const LargeTargetAreaCheckbox: Story = {
 
 export const LargeTargetAreaCheckboxWithHelperText: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
+  name: 'Large target area checkbox helper text',
   args: {
     ...StandardCheckbox.args,
     id: 'LargeCheckboxWithHelperText',
     name: 'LargeCheckboxWithHelperText',
     label: 'Large target area checkbox helper text',
     isLarge: true,
-    helperText: 'This is optional helper text for the large checkbox'
+    helperText:
+      'This is optional helper text for the large target area checkbox'
   }
 };
