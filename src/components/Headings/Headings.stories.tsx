@@ -17,13 +17,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Display: Story = {
-  args: {
-    type: 'display',
-    children: 'Display'
-  }
-};
-
 export const H1: Story = {
   name: 'H1',
   args: {
@@ -60,6 +53,13 @@ export const H5: Story = {
   args: {
     type: '5',
     children: 'Heading 5'
+  }
+};
+
+export const Display: Story = {
+  args: {
+    type: 'display',
+    children: 'Display'
   }
 };
 
