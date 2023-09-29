@@ -3,23 +3,17 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './Checkbox';
 import { CheckboxTestWrapper } from './Checkbox.utils';
 
+/**
+Use checkboxes when the user can select more than one option from a list. Make clear with helper text that this is the case. Use [radio buttons](https://cfpb.github.io/design-system/components/radio-buttons) when the user can choose only one option from a list.
+
+Source: https://cfpb.github.io/design-system/components/checkboxes
+*/
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkboxes',
   component: Checkbox,
   argTypes: {
     disabled: { control: 'boolean' },
     isLarge: { control: 'boolean' }
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-Use checkboxes when the user can select more than one option from a list. Make clear with helper text that this is the case. Use [radio buttons](https://cfpb.github.io/design-system/components/radio-buttons) when the user can choose only one option from a list.
-
-Source: https://cfpb.github.io/design-system/components/checkboxes
-`
-      }
-    }
   }
 };
 
