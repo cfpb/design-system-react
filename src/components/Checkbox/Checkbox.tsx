@@ -88,7 +88,7 @@ export const Checkbox = ({
       <label id={`${id}-label`} className='a-label' htmlFor={id}>
         {label}
         {helperText ? (
-          <small className='a-label_helper'>{helperText}</small>
+          <small className='a-label_helper'>({helperText})</small>
         ) : undefined}
       </label>
     </div>
