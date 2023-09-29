@@ -38,7 +38,6 @@ function CheckboxWrapper({
       id={id}
       label={label}
       onChange={(): void =>
-        // eslint-disable-next-line unicorn/prevent-abbreviations
         updateArgs({
           checked: !checked
         })

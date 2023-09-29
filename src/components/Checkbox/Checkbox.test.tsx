@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { act, render, screen } from '@testing-library/react';
+import { useState } from 'react';
 import { Checkbox } from './Checkbox';
 
 const id = 'default';
@@ -11,6 +12,34 @@ const attributeClass = 'class';
 const attributeTitle = 'title';
 
 const defaultProps = { id, label, 'data-testid': testId };
+
+/*
+ * Helper for controlled component state.
+ * ARIA attributes won't updated without the updated onClick state being fed back into the component.
+ */
+const CheckboxWrapper = ({
+  onChange,
+  ...others
+}: typeof Checkbox): JSX.Element => {
+  const [checked, setChecked] = useState(false);
+
+  const onWrapperChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    onChange?.(event);
+    setChecked(event.target.checked);
+  };
+
+  return (
+    <Checkbox
+      {...defaultProps}
+      {...others}
+      checked={checked}
+      onChange={onWrapperChange}
+    />
+  );
+};
 
 describe('Checkbox', () => {
   it('Propagates additional HTML properties to main component element', () => {
@@ -26,7 +55,7 @@ describe('Checkbox', () => {
   it('Calls the provided onChange handler', async () => {
     const onChange = vi.fn();
 
-    render(<Checkbox {...defaultProps} onChange={onChange} />);
+    render(<CheckboxWrapper {...defaultProps} onChange={onChange} />);
 
     const checkbox = await screen.findByRole(/checkbox/i);
 
@@ -48,7 +77,7 @@ describe('Checkbox', () => {
   it('Renders helper text that toggles checkbox when clicked', async () => {
     const helperText = 'This is optional helper text for the checkbox';
 
-    render(<Checkbox {...defaultProps} helperText={helperText} />);
+    render(<CheckboxWrapper {...defaultProps} helperText={helperText} />);
 
     const checkbox = await screen.findByRole(/checkbox/i);
     expect(checkbox.getAttribute(attributeAria)).toMatch('false');

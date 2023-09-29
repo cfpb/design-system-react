@@ -34,7 +34,7 @@ export const Checkbox = ({
   name,
   onChange,
   ...properties
-}: CheckboxProperties & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: CheckboxProperties): React.ReactElement => {
   const onChangeHandler = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>): void => {
       onChange?.(event);
