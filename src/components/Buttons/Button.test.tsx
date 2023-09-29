@@ -6,7 +6,6 @@ import { Button } from './Button';
 const testLabel = 'button';
 
 const buttonBaseClass = 'a-btn';
-const buttonSuperClass = 'a-btn__super';
 const buttonLinkClass = 'a-btn__link';
 const buttonFullXSClass = 'a-btn__full-on-xs';
 const buttonSecondaryClass = 'a-btn__secondary';
@@ -53,10 +52,6 @@ describe('<Button />', () => {
   it('Renders alternative sizes', () => {
     render(<Button label={testLabel} size='default' />);
     expect(screen.getByText(testLabel)).toHaveClass(buttonBaseClass);
-
-    const labelSuper = 'super button';
-    render(<Button label={labelSuper} size='super' />);
-    expect(screen.getByText(labelSuper)).toHaveClass(buttonSuperClass);
 
     const labelFull = 'full width';
     render(<Button label={labelFull} size='full' />);

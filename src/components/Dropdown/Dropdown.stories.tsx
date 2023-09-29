@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-handler-names */
 import { useArgs, useState } from '@storybook/client-api';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../Button/Button';
+import { Button } from '../Buttons/Button';
 import { Dropdown } from './Dropdown';
 import { MockOptions } from './utils';
 
