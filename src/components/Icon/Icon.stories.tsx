@@ -1,5 +1,6 @@
-import type { Meta } from '@storybook/react';
-import { Icon } from '~/src/index';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Heading, Icon } from '~/src/index';
+import type { HeadingType } from '../Headings/Heading';
 import {
   communicationIcons,
   documentIcons,
@@ -28,6 +29,8 @@ Source: https://cfpb.github.io/design-system/foundation/iconography
 };
 
 export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const biggerIcon = { fontSize: '2em' };
 
@@ -105,3 +108,60 @@ export const ExpenseIcons = (): React.ReactElement => (
 export const WebApplicationIcons = (): React.ReactElement => (
   <IconTable>{makeRows(webIcons)}</IconTable>
 );
+
+export const IconWithText: Story = {
+  name: 'Icon with text',
+  render: () => {
+    interface LevelExample {
+      type: HeadingType;
+      text: string;
+    }
+
+    const acceptableLevels: LevelExample[] = [
+      { type: '2', text: 'Auto loans' },
+      { type: '3', text: 'Bank accounts' },
+      { type: '4', text: 'Credit cards' },
+      { type: '5', text: 'Submit a complaint' }
+    ];
+
+    return (
+      <table>
+        <thead>
+          <th>Text element</th>
+          <th>Icon with background</th>
+          <th>Icon without background</th>
+        </thead>
+        <tbody>
+          {acceptableLevels.map(({ type, text }) => (
+            <tr key={type}>
+              <td>h{type}</td>
+              <td>
+                <Heading type={type}>
+                  <Icon name='credit-card' withBg /> {text}
+                </Heading>
+              </td>
+              <td>
+                <Heading type={type}>
+                  <Icon name='credit-card' /> {text}
+                </Heading>
+              </td>
+            </tr>
+          ))}
+          <tr>
+            <td>p</td>
+            <td>
+              <p>
+                <Icon name='college' withBg /> Student loans
+              </p>
+            </td>
+            <td>
+              <p>
+                <Icon name='college' /> Student loans
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
+};

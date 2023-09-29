@@ -16,6 +16,7 @@ export { ExpandableGroup } from './components/Expandable/ExpandableGroup';
 export { default as Footer } from './components/Footer/Footer';
 export { FooterCfGov } from './components/Footer/FooterCfGov';
 export { default as Grid } from './components/Grid';
+export { Heading } from './components/Headings/Heading';
 export { default as Hero } from './components/Hero/Hero';
 export { Icon } from './components/Icon/Icon';
 export { Label } from './components/Label/Label';
