@@ -63,14 +63,6 @@ export const H5: Story = {
   }
 };
 
-export const H6: Story = {
-  name: 'H6',
-  args: {
-    type: '6',
-    children: 'Heading 6'
-  }
-};
-
 export const Eyebrow: Story = {
   args: {
     type: 'eyebrow',

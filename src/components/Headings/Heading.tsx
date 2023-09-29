@@ -7,13 +7,12 @@ export type HeadingType =
   | '3'
   | '4'
   | '5'
-  | '6'
   | 'display'
   | 'eyebrow'
   | 'slug';
 
 interface HeadingProperties extends React.HTMLProps<HTMLHeadingElement> {
-  /** Heading type (1-6, display, eyebrow, slug) */
+  /** Heading type (1-5, display, eyebrow, slug) */
   type?: HeadingType;
 }
 

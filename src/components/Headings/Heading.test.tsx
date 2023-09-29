@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import { Heading, HeadingType } from './Heading';
 
 describe('<Heading />', () => {
-  it('Renders standard heading levels (1-6)', () => {
-    const headers: HeadingType[] = ['1', '2', '3', '4', '5', '6'];
+  it('Renders standard heading levels (1-5)', () => {
+    const headers: HeadingType[] = ['1', '2', '3', '4', '5'];
 
     for (const level of headers) {
       const headingType: HeadingType = `${level}`;
