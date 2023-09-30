@@ -40,7 +40,7 @@ export const StandardCheckboxWithHelperText: Story = {
     id: 'StandardCheckboxWithHelper',
     name: 'StandardCheckboxWithHelper',
     label: 'Standard checkbox with helper text',
-    helperText: 'This is optional helper text for the standard checkbox'
+    helperText: 'This is optional helper text'
   }
 };
 
@@ -65,7 +65,6 @@ export const LargeTargetAreaCheckboxWithHelperText: Story = {
     name: 'LargeCheckboxWithHelperText',
     label: 'Large target area checkbox helper text',
     isLarge: true,
-    helperText:
-      'This is optional helper text for the large target area checkbox'
+    helperText: 'This is optional helper text'
   }
 };
