@@ -1,18 +1,19 @@
 /* eslint-disable react/jsx-handler-names */
 import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './Checkbox';
+import { CheckboxTestWrapper } from './Checkbox.utils';
 
-import { useArgs } from '@storybook/client-api';
+/**
+Use checkboxes when the user can select more than one option from a list. Make clear with helper text that this is the case. Use [radio buttons](https://cfpb.github.io/design-system/components/radio-buttons) when the user can choose only one option from a list.
 
+Source: https://cfpb.github.io/design-system/components/checkboxes
+*/
 const meta: Meta<typeof Checkbox> = {
-  title: 'Components/Checkbox',
+  title: 'Components/Checkboxes',
   component: Checkbox,
-  parameters: {
-    docs: {
-      description: {
-        component: `Checkbox Component`
-      }
-    }
+  argTypes: {
+    disabled: { control: 'boolean' },
+    isLarge: { control: 'boolean' }
   }
 };
 
@@ -20,74 +21,51 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-interface CheckboxWrapperProperties {
-  id: string;
-  label: string;
-}
-
-function CheckboxWrapper({
-  id,
-  label,
-  ...arguments_
-}: CheckboxWrapperProperties): JSX.Element {
-  // eslint-disable-next-line unicorn/prevent-abbreviations
-  const [{ checked }, updateArgs] = useArgs();
-  return (
-    <Checkbox
-      {...arguments_}
-      id={id}
-      label={label}
-      onChange={(): void =>
-        // eslint-disable-next-line unicorn/prevent-abbreviations
-        updateArgs({
-          checked: !checked
-        })
-      }
-    />
-  );
-}
-
-export const DefaultCheckbox: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Default checkbox',
+export const StandardCheckbox: Story = {
+  render: _arguments => CheckboxTestWrapper(_arguments),
+  name: 'Standard checkbox',
   args: {
-    id: 'default',
-    name: 'default',
-    label: 'Default checkbox',
+    id: 'standard',
+    name: 'standard',
+    label: 'Standard checkbox',
     checked: false
   }
 };
 
-export const CheckboxWithHelper: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
+export const StandardCheckboxWithHelperText: Story = {
+  render: _arguments => CheckboxTestWrapper(_arguments),
+  name: 'Standard checkbox with helper text',
   args: {
-    ...DefaultCheckbox.args,
-    id: 'CheckboxWithHelper',
-    name: 'CheckboxWithHelper',
-    label: 'Checkbox With Helper',
-    helperText: 'This is optional helper text for the checkbox'
+    ...StandardCheckbox.args,
+    id: 'StandardCheckboxWithHelper',
+    name: 'StandardCheckboxWithHelper',
+    label: 'Standard checkbox with helper text',
+    helperText: 'This is optional helper text for the standard checkbox'
   }
 };
 
-export const LargeCheckbox: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
+export const LargeTargetAreaCheckbox: Story = {
+  render: _arguments => CheckboxTestWrapper(_arguments),
+  name: 'Large target area checkbox',
   args: {
-    ...DefaultCheckbox.args,
-    id: 'LargeCheckbox',
-    name: 'LargeCheckbox',
-    label: 'Large Checkbox',
+    ...StandardCheckbox.args,
+    id: 'LargeTargetAreaCheckbox',
+    name: 'LargeTargetAreaCheckbox',
+    label: 'Large target area checkbox',
     isLarge: true
   }
 };
 
-export const LargeCheckboxWithHelper: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
+export const LargeTargetAreaCheckboxWithHelperText: Story = {
+  render: _arguments => CheckboxTestWrapper(_arguments),
+  name: 'Large target area checkbox helper text',
   args: {
-    ...DefaultCheckbox.args,
-    id: 'LargeCheckboxWithHelper',
-    name: 'LargeCheckboxWithHelper',
-    label: 'Large Checkbox With Helper',
+    ...StandardCheckbox.args,
+    id: 'LargeCheckboxWithHelperText',
+    name: 'LargeCheckboxWithHelperText',
+    label: 'Large target area checkbox helper text',
     isLarge: true,
-    helperText: 'This is optional helper text for the large checkbox'
+    helperText:
+      'This is optional helper text for the large target area checkbox'
   }
 };

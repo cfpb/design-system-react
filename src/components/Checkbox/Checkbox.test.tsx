@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, render, screen } from '@testing-library/react';
 import { Checkbox } from './Checkbox';
+import { CheckboxTestWrapper } from './Checkbox.utils';
 
 const id = 'default';
 const label = 'this is a label';
@@ -26,7 +27,7 @@ describe('Checkbox', () => {
   it('Calls the provided onChange handler', async () => {
     const onChange = vi.fn();
 
-    render(<Checkbox {...defaultProps} onChange={onChange} />);
+    render(<CheckboxTestWrapper {...defaultProps} onChange={onChange} />);
 
     const checkbox = await screen.findByRole(/checkbox/i);
 
@@ -48,7 +49,7 @@ describe('Checkbox', () => {
   it('Renders helper text that toggles checkbox when clicked', async () => {
     const helperText = 'This is optional helper text for the checkbox';
 
-    render(<Checkbox {...defaultProps} helperText={helperText} />);
+    render(<CheckboxTestWrapper {...defaultProps} helperText={helperText} />);
 
     const checkbox = await screen.findByRole(/checkbox/i);
     expect(checkbox.getAttribute(attributeAria)).toMatch('false');

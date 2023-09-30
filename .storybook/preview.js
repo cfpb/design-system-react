@@ -1,6 +1,7 @@
 import '@cfpb/cfpb-design-system/src/cfpb-design-system.less';
 import { themes } from '@storybook/theming';
 import CfpbLogo from '../src/assets/images/cfpb-logo-vertical.png';
+import '../src/assets/styles/_shared.less';
 
 const sharedThemeElements = {
   brandTitle: 'CFPB Design System React',

@@ -1,22 +1,40 @@
 import classnames from 'classnames';
-import type React from 'react';
-import type { ReactNode } from 'react';
+import type {
+  ChangeEvent,
+  ReactElement,
+  ReactNode,
+  RefObject
+} from 'react';
 import { useCallback } from 'react';
 
-interface CheckboxProperties extends React.HTMLProps<HTMLInputElement> {
+export interface CheckboxProperties {
+  /** Unique identifier for this checkbox */
   id: string;
+  /** Text that appears next to the checkbox for clarification of purpose */
   label: ReactNode;
+  /** Additional CSS classes applied to the checkbox's wrapper element */
   className?: string;
-  helperText?: string;
+  /** Is checkboxed checked? */
+  checked?: boolean;
+  /** Additional text to further clarify purpose of checkbox */
+  helperText?: ReactNode;
+  /** Additional CSS classes that will be applied to checkbox input element */
   inputClassName?: string;
+  /** React Ref to be enable direct access and control of the input element */
   inputRef?:
-    | React.RefObject<HTMLInputElement>
+    | RefObject<HTMLInputElement>
     | string
     | ((instance: HTMLInputElement | null) => void)
     | null
     | undefined;
+  /** Apply the "Large" styles for this element? */
   isLarge?: boolean;
+  /** A name for this checkbox's value that can be referenced in javascript */
   name?: string;
+  /** Is this checkbox disabled? */
+  disabled?: boolean;
+  /** An event handler function that will be called when the checkbox's value is changed  */
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
@@ -34,9 +52,9 @@ export const Checkbox = ({
   name,
   onChange,
   ...properties
-}: CheckboxProperties & JSX.IntrinsicElements['input']): React.ReactElement => {
+}: CheckboxProperties): ReactElement => {
   const onChangeHandler = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>): void => {
+    (event: ChangeEvent<HTMLInputElement>): void => {
       onChange?.(event);
     },
     [onChange]
@@ -70,7 +88,7 @@ export const Checkbox = ({
       <label id={`${id}-label`} className='a-label' htmlFor={id}>
         {label}
         {helperText ? (
-          <small className='a-label_helper'>{helperText}</small>
+          <small className='a-label_helper'>({helperText})</small>
         ) : undefined}
       </label>
     </div>
