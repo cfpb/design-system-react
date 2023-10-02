@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { RadioButton } from '~/src/index';
 
 /**
- * Use radio buttons when the user can choose only one option out of a list. Use these for a small number of discrete elements—avoid long lists of radio buttons (usually no more than 6-8 options). When there are more than two options, stack radio buttons vertically.
+ * Use radio buttons when the user can select exactly one option from a group. Avoid long lists of radio buttons (usually no more than 6-8 options). When there are more than two options, stack radio buttons vertically. Use [checkboxes](https://cfpb.github.io/design-system/components/checkboxes) when the user can select more than one option from a group.
  *
  * Source: https://cfpb.github.io/design-system/components/radio-buttons
  */
