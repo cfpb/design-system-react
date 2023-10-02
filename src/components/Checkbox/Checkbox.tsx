@@ -6,6 +6,7 @@ import type {
   RefObject
 } from 'react';
 import { useCallback } from 'react';
+import { HelperText } from '../HelperText/HelperText';
 
 export interface CheckboxProperties {
   /** Unique identifier for this checkbox */
@@ -87,9 +88,7 @@ export const Checkbox = ({
       />
       <label id={`${id}-label`} className='a-label' htmlFor={id}>
         {label}
-        {helperText ? (
-          <small className='a-label_helper'>({helperText})</small>
-        ) : undefined}
+        <HelperText>{helperText}</HelperText>
       </label>
     </div>
   );
