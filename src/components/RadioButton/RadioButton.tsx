@@ -12,7 +12,7 @@ interface RadioProperties {
     | ((instance: HTMLInputElement | null) => void)
     | null
     | undefined;
-  isDisabled?: boolean;
+  disabled?: boolean;
   isLarge?: boolean;
   name?: string;
 }
@@ -24,7 +24,7 @@ export const RadioButton = ({
   name,
   helperText,
   className,
-  isDisabled = false,
+  disabled = false,
   isLarge = false,
   label,
   inputRef
@@ -43,7 +43,7 @@ export const RadioButton = ({
         name={name ?? id}
         className={classes}
         ref={inputRef}
-        disabled={isDisabled}
+        disabled={disabled}
       />
       <label className='a-label' htmlFor={id}>
         {label}

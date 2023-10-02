@@ -10,7 +10,7 @@ const meta: Meta<typeof RadioButton> = {
   component: RadioButton,
   title: 'Components/Radio buttons',
   argTypes: {
-    isDisabled: { control: 'boolean' },
+    disabled: { control: 'boolean' },
     isLarge: { control: 'boolean' }
   }
 };

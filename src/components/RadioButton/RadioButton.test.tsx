@@ -40,7 +40,7 @@ describe('<RadioButton />', () => {
 
   it('isDisabled', () => {
     const properties = buildProperties('disabled');
-    render(<RadioButton {...properties} isDisabled />);
+    render(<RadioButton {...properties} disabled />);
 
     const element = screen.getByRole(role);
 
