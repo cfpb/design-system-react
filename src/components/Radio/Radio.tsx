@@ -1,4 +1,5 @@
 import type React from 'react';
+import { HelperText } from '../HelperText/HelperText';
 
 interface RadioProperties {
   id: string;
@@ -46,9 +47,7 @@ export const Radio = ({
       />
       <label className='a-label' htmlFor={id}>
         {label}
-        {helperText ? (
-          <small className='a-label_helper'>{helperText}</small>
-        ) : undefined}
+        <HelperText>{helperText}</HelperText>
       </label>
     </div>
   );
