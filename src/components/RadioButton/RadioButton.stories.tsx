@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Radio } from '~/src/index';
+import { RadioButton } from '~/src/index';
 
 /**
  * Use radio buttons when the user can choose only one option out of a list. Use these for a small number of discrete elements—avoid long lists of radio buttons (usually no more than 6-8 options). When there are more than two options, stack radio buttons vertically.
- * 
+ *
  * Source: https://cfpb.github.io/design-system/components/radio-buttons
  */
-const meta: Meta<typeof Radio> = {
-  component: Radio,
+const meta: Meta<typeof RadioButton> = {
+  component: RadioButton,
+  title: 'Components/Radio buttons',
   argTypes: {
     isDisabled: { control: 'boolean' },
     isLarge: { control: 'boolean' }

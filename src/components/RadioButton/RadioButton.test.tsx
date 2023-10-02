@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Radio } from './Radio';
+import { RadioButton } from './RadioButton';
 
 const buildProperties = (
   additive: number | string
@@ -10,27 +10,29 @@ const buildProperties = (
   label: `label-${additive}`
 });
 
-describe('<Radio />', () => {
+describe('<RadioButton />', () => {
   const helperText = 'helperText goes here';
+  const helperTextOutput = '(helperText goes here)';
+
   const role = 'radio';
 
   it('renders labels correctly', () => {
     const properties = buildProperties('first');
-    render(<Radio {...properties} />);
+    render(<RadioButton {...properties} />);
     expect(screen.getByText(properties.label)).toBeInTheDocument();
   });
 
   it('renders helperText', () => {
     const properties = buildProperties('helper');
-    render(<Radio {...properties} helperText={helperText} />);
-    expect(screen.getByText(helperText)).toBeInTheDocument();
+    render(<RadioButton {...properties} helperText={helperText} />);
+    expect(screen.getByText(helperTextOutput)).toBeInTheDocument();
   });
 
   it('isLarge', () => {
     const properties = buildProperties('large');
-    render(<Radio {...properties} helperText={helperText} isLarge />);
+    render(<RadioButton {...properties} helperText={helperText} isLarge />);
 
-    expect(screen.getByText(helperText)).toBeInTheDocument();
+    expect(screen.getByText(helperTextOutput)).toBeInTheDocument();
     expect(screen.getByTestId('radio-container').getAttribute('class')).toMatch(
       'm-form-field__lg-target'
     );
@@ -38,7 +40,7 @@ describe('<Radio />', () => {
 
   it('isDisabled', () => {
     const properties = buildProperties('disabled');
-    render(<Radio {...properties} isDisabled />);
+    render(<RadioButton {...properties} isDisabled />);
 
     const element = screen.getByRole(role);
 
@@ -49,7 +51,7 @@ describe('<Radio />', () => {
 
   it('Select via click', () => {
     const properties = buildProperties('click');
-    render(<Radio {...properties} />);
+    render(<RadioButton {...properties} />);
 
     const element = screen.getByRole(role);
     expect(element).not.toBeChecked();
@@ -62,7 +64,7 @@ describe('<Radio />', () => {
   it('Select via keyboard', async () => {
     const user = userEvent.setup();
     const properties = buildProperties('keyboard');
-    render(<Radio {...properties} />);
+    render(<RadioButton {...properties} />);
 
     const element = screen.getByRole(role);
     expect(element).not.toBeChecked();

@@ -36,7 +36,7 @@ export { default as Navbar } from './components/Navbar/Navbar';
 export { Notification } from './components/Notification/Notification';
 export { default as PageHeader } from './components/PageHeader/PageHeader';
 export { Pagination } from './components/Pagination/Pagination';
-export { Radio } from './components/Radio/Radio';
+export { RadioButton } from './components/RadioButton/RadioButton';
 export {
   TableComplex,
   TableFilter,

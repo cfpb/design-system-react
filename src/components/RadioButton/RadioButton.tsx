@@ -19,7 +19,7 @@ interface RadioProperties {
 const baseStyles = ['a-radio'];
 const containerBaseStyles = ['m-form-field m-form-field__radio'];
 
-export const Radio = ({
+export const RadioButton = ({
   id,
   name,
   helperText,
@@ -53,4 +53,4 @@ export const Radio = ({
   );
 };
 
-export default Radio;
+export default RadioButton;
