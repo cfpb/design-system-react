@@ -1,22 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Radio } from '~/src/index';
 
+/**
+ * Use radio buttons when the user can choose only one option out of a list. Use these for a small number of discrete elements—avoid long lists of radio buttons (usually no more than 6-8 options). When there are more than two options, stack radio buttons vertically.
+ * 
+ * Source: https://cfpb.github.io/design-system/components/radio-buttons
+ */
 const meta: Meta<typeof Radio> = {
   component: Radio,
   argTypes: {
     isDisabled: { control: 'boolean' },
     isLarge: { control: 'boolean' }
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-### CFPB DS - Radio component
-
-Source: https://cfpb.github.io/design-system/components/expandables
-`
-      }
-    }
   }
 };
 
@@ -24,31 +18,42 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const DefaultRadio: Story = {
-  args: { id: 'testRadio', label: 'Default Radio', name: 'Radio select' }
+const helperText = 'This is optional helper text';
+
+export const StandardRadio: Story = {
+  name: 'Standard radio button',
+  args: {
+    id: 'testRadio',
+    label: 'Standard radio button',
+    name: 'Radio select'
+  }
 };
 
-export const RadioWithHelper: Story = {
+export const StandardRadioWithHelper: Story = {
+  name: 'Standard radio button with helper text',
   args: {
-    ...DefaultRadio.args,
-    id: 'RadioWithHelper',
-    helperText: 'This is optional helper text for the radio'
+    ...StandardRadio.args,
+    id: 'StandardRadioWithHelper',
+    helperText
   }
 };
 
 export const LargeRadio: Story = {
+  name: 'Large target area radio button',
   args: {
-    ...DefaultRadio.args,
+    ...StandardRadio.args,
     id: 'LargeRadio',
-    isLarge: true
+    isLarge: true,
+    label: 'Large target area radio button'
   }
 };
 
 export const LargeRadioWithHelper: Story = {
+  name: 'Large target area radio button with helper text',
   args: {
-    ...DefaultRadio.args,
+    ...LargeRadio.args,
     id: 'LargeRadioWithHelper',
     isLarge: true,
-    helperText: 'This is optional helper text for the large radio'
+    helperText
   }
 };
