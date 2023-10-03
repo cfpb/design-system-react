@@ -9,6 +9,7 @@ import {
 } from '~/src/index';
 
 const meta: Meta<typeof Link> = {
+  title: 'Components (Draft)/Links',
   component: Link,
   parameters: {
     docs: {

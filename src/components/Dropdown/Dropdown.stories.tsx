@@ -11,7 +11,7 @@ import { MockOptions } from './utils';
  * Source: <a href='https://cfpb.github.io/design-system/components/dropdowns-and-multiselects' target='_blank'>https://cfpb.github.io/design-system/components/dropdowns-and-multiselects</a>
  */
 const meta: Meta<typeof Dropdown> = {
-  title: 'Components/Dropdowns',
+  title: 'Components (Draft)/Dropdowns',
   component: Dropdown
 };
 

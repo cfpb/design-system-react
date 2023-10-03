@@ -4,6 +4,7 @@ import type { User } from '../Navbar/Navbar';
 import { ExampleLinks } from '../Navbar/Navbar';
 
 const meta: Meta<typeof PageHeader> = {
+  title: 'Components (Draft)/Page header',
   component: PageHeader,
   argTypes: {}
 };

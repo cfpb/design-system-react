@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Layout } from '~/src/index';
 
 const meta: Meta<typeof Layout.Wrapper> = {
+  title: 'Components (Draft)/Layout/Wrapper',
   component: Layout.Wrapper,
   parameters: {
     docs: {

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Layout } from '~/src/index';
 
 const meta: Meta<typeof Layout.Content> = {
+  title: 'Components (Draft)/Layout/Content',
   component: Layout.Content,
   parameters: {
     docs: {

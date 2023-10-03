@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TableSimple } from '~/src/index';
 
 const meta: Meta<typeof TableSimple> = {
+  title: 'Components (Draft)/Tables/Simple',
   component: TableSimple,
   parameters: {
     docs: {

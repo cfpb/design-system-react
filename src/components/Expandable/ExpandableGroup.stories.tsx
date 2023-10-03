@@ -6,6 +6,7 @@ import { Expandable } from './Expandable';
 import { ExpandableGroup } from './ExpandableGroup';
 
 const meta: Meta<typeof ExpandableGroup> = {
+  title: 'Components (Draft)/Expandable/Groups',
   component: ExpandableGroup,
   argTypes: {
     accordion: { control: 'boolean' }

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Layout } from '~/src/index';
 
 const meta: Meta<typeof Layout.Sidebar> = {
+  title: 'Components (Draft)/Layout/Sidebar',
   component: Layout.Sidebar,
   parameters: {
     docs: {

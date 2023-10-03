@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
+  title: 'Components (Draft)/Text inputs',
   component: TextInput,
   argTypes: {
     width: { control: 'select' },
