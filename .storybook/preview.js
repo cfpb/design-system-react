@@ -15,7 +15,7 @@ export const parameters = {
   options: {
     // Determines the display order of Stories in the sidebar
     storySort: {
-      order: ['Components (Verified)', 'Components (Draft)', '*']
+      order: ['Guides', 'Components (Verified)', 'Components (Draft)', '*']
     }
   },
   actions: { argTypesRegex: '^on[A-Z].*' },
