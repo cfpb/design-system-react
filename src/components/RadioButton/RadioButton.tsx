@@ -1,4 +1,5 @@
 import type React from 'react';
+import { HelperText } from '../HelperText/HelperText';
 
 interface RadioProperties {
   id: string;
@@ -11,19 +12,19 @@ interface RadioProperties {
     | ((instance: HTMLInputElement | null) => void)
     | null
     | undefined;
-  isDisabled?: boolean;
+  disabled?: boolean;
   isLarge?: boolean;
   name?: string;
 }
 const baseStyles = ['a-radio'];
 const containerBaseStyles = ['m-form-field m-form-field__radio'];
 
-export const Radio = ({
+export const RadioButton = ({
   id,
   name,
   helperText,
   className,
-  isDisabled = false,
+  disabled = false,
   isLarge = false,
   label,
   inputRef
@@ -42,16 +43,14 @@ export const Radio = ({
         name={name ?? id}
         className={classes}
         ref={inputRef}
-        disabled={isDisabled}
+        disabled={disabled}
       />
       <label className='a-label' htmlFor={id}>
         {label}
-        {helperText ? (
-          <small className='a-label_helper'>{helperText}</small>
-        ) : undefined}
+        <HelperText>{helperText}</HelperText>
       </label>
     </div>
   );
 };
 
-export default Radio;
+export default RadioButton;

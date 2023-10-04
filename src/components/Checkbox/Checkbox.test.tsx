@@ -48,6 +48,7 @@ describe('Checkbox', () => {
 
   it('Renders helper text that toggles checkbox when clicked', async () => {
     const helperText = 'This is optional helper text for the checkbox';
+    const helperTextOuput = `(${helperText})`;
 
     render(<CheckboxTestWrapper {...defaultProps} helperText={helperText} />);
 
@@ -55,7 +56,7 @@ describe('Checkbox', () => {
     expect(checkbox.getAttribute(attributeAria)).toMatch('false');
 
     // Clicking helper text correctly updates checkbox
-    const helper = await screen.findByText(helperText);
+    const helper = await screen.findByText(helperTextOuput);
     act(() => helper.click());
     expect(checkbox.getAttribute(attributeAria)).toMatch('true');
   });
