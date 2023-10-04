@@ -7,8 +7,8 @@ import { RadioButton } from '~/src/index';
  * Source: https://cfpb.github.io/design-system/components/radio-buttons
  */
 const meta: Meta<typeof RadioButton> = {
+  title: 'Components (Verified)/Radio buttons',
   component: RadioButton,
-  title: 'Components/Radio buttons',
   argTypes: {
     disabled: { control: 'boolean' },
     isLarge: { control: 'boolean' }
