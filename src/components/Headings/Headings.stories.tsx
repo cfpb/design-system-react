@@ -7,6 +7,7 @@ import { Heading } from '~/src/index';
  * Source: <a href='https://cfpb.github.io/design-system/foundation/headings' target='_blank'> https://cfpb.github.io/design-system/foundation/headings</a>
  */
 const meta: Meta<typeof Heading> = {
+  title: 'Components (Verified)/Headings',
   component: Heading,
   argTypes: {
     type: { control: { type: 'select' } }

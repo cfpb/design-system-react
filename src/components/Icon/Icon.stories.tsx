@@ -14,6 +14,7 @@ import {
 } from './iconLists';
 
 const meta: Meta<typeof Icon> = {
+  title: 'Components (Draft)/Icons',
   component: Icon,
   parameters: {
     docs: {

@@ -4,6 +4,7 @@ import '../PageHeader/header.less';
 import { ExampleLinks } from './Navbar';
 
 const meta: Meta<typeof Navbar> = {
+  title: 'Components (Draft)/Navbar',
   component: Navbar,
   argTypes: {}
 };

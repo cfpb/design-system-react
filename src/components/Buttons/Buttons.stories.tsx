@@ -8,6 +8,7 @@ import { ButtonGroup } from './ButtonGroup';
  Source: <a href="https://cfpb.github.io/design-system/components/buttons" target="_blank">https://cfpb.github.io/design-system/components/buttons</a>
  */
 const meta: Meta<typeof Button> = {
+  title: 'Components (Verified)/Buttons',
   component: Button,
   argTypes: {
     appearance: { control: 'select' },

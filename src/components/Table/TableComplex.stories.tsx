@@ -9,6 +9,7 @@ const PAGE_SIZE = 5;
 const ONE = 1;
 
 const meta: Meta<typeof TableComplex> = {
+  title: 'Components (Draft)/Tables/Complex',
   component: TableComplex,
   argTypes: {
     caption: { control: 'text' }

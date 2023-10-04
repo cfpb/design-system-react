@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Grid } from '~/src/index';
 
 const meta: Meta<typeof Grid.Wrapper> = {
+  title: 'Components (Draft)/Grids',
   component: Grid.Wrapper,
   parameters: {
     docs: {

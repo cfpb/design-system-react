@@ -12,6 +12,12 @@ const sharedThemeElements = {
 };
 
 export const parameters = {
+  options: {
+    // Determines the display order of Stories in the sidebar
+    storySort: {
+      order: ['Guides', 'Components (Verified)', 'Components (Draft)', '*']
+    }
+  },
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {

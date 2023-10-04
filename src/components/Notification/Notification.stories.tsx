@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Notification } from '~/src/index';
 
 const meta: Meta<typeof Notification> = {
-  title: 'Components/Notifications',
+  title: 'Components (Draft)/Notifications',
   component: Notification,
   argTypes: {
     message: { control: 'text' }

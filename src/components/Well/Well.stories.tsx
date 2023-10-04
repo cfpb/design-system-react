@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Well } from '~/src/index';
 
 const meta: Meta<typeof Well> = {
+  title: 'Components (Draft)/Wells',
   component: Well,
   argTypes: {}
 };

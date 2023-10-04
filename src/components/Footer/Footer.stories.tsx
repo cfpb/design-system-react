@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Footer, FooterCfGov, Icon } from '~/src/index';
 
 const meta: Meta<typeof Footer> = {
+  title: 'Components (Draft)/Footers',
   component: Footer,
   argTypes: {}
 };

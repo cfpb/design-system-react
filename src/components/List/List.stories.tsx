@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { List, ListItem, ListLink } from '~/src/index';
 
 const meta: Meta<typeof List> = {
+  title: 'Components (Draft)/Lists',
   component: List,
   argTypes: {}
 };
