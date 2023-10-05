@@ -1,5 +1,6 @@
 .dropdown-option-container {
   width: 100%;
+  color: #101820;
 }
 
 /* controls highlighting the checkbox if the entire line is focused */
