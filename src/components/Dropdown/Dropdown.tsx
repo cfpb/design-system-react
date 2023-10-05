@@ -18,11 +18,14 @@ import { filterOptions, onSelectInputFocus } from './utils';
 
 import { Icon } from '../Icon/Icon';
 
-const customDropdownIndicator = (properties): JSX.Element => (
-  <components.DropdownIndicator {...properties}>
-    <Icon name='down' />
-  </components.DropdownIndicator>
-);
+const customDropdownIndicator = (properties): JSX.Element => {
+  const shouldBeUp = Boolean(properties.selectProps.menuIsOpen);
+  return (
+    <components.DropdownIndicator {...properties}>
+      <Icon name={shouldBeUp ? 'up' : 'down'} />
+    </components.DropdownIndicator>
+  );
+};
 
 /**
  * A dropdown input component that supports multi-select.
