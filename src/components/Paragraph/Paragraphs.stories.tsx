@@ -1,11 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { Paragraph } from './Paragraph';
 
-/**
- * Paragraph text should provide an efficient and pleasant experience on every viewport size. Readable text makes good use of alignment, spacing, line length and height, and contrast.
- *
- * Source: https://cfpb.github.io/design-system/foundation/paragraphs
- */
 const meta: Meta<typeof Paragraph> = {
   title: 'Components (Verified)/Paragraphs',
   component: Paragraph
