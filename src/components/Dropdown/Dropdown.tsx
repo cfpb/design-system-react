@@ -131,6 +131,7 @@ export function Dropdown<
             }`,
           indicatorsContainer: () => 'dropdown-indicators-container',
           dropdownIndicator: () => 'dropdown-dropdown-indicator',
+          singleValue: () => 'dropdown-single-value',
           valueContainer: () =>
             `dropdown-value-container ${
               error
