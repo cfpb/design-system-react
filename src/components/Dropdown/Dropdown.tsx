@@ -129,7 +129,8 @@ export function Dropdown<
                 ? ''
                 : 'dropdown-indicator-separator__none'
             }`,
-          indicatorsContainer: () => 'dropdown-indicators-container',
+          indicatorsContainer: () =>
+            `${error ? 'dropdown-indicators-container--error' : ''}`,
           dropdownIndicator: () => 'dropdown-dropdown-indicator',
           singleValue: () => 'dropdown-single-value',
           valueContainer: () =>
