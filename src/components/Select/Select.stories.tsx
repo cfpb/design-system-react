@@ -23,18 +23,19 @@ const LAST_ELEMENT = -1;
 
 function SelectWrapper({ ...arguments_ }): JSX.Element {
   const [{ value }, updateArguments] = useArgs();
-  console.log(value);
 
   return (
-    <Select
-      {...arguments_}
-      value={value}
-      onSelect={(newValue): void => {
-        updateArguments({
-          value: newValue
-        });
-      }}
-    />
+    <div style={{ minHeight: '16rem' }}>
+      <Select
+        value={value}
+        onSelect={(newValue): void => {
+          updateArguments({
+            value: newValue
+          });
+        }}
+        {...arguments_}
+      />
+    </div>
   );
 }
 
@@ -52,7 +53,7 @@ export const SingleSelectWithError: Story = {
   render: _arguments => SelectWrapper(_arguments),
   name: 'Single select with error',
   args: {
-    ...DefaultSelect.args,
+    ...SingleSelect.args,
     id: 'WithError',
     error: true
   }
@@ -62,7 +63,7 @@ export const SingleSelectWithDefaultValue: Story = {
   render: _arguments => SelectWrapper(_arguments),
   name: 'Single select default value',
   args: {
-    ...DefaultSelect.args,
+    ...SingleSelect.args,
     id: 'SingleSelectWithDefaultValue',
     value: MockOptions.at(LAST_ELEMENT)
   }
@@ -71,85 +72,35 @@ export const SingleSelectWithDefaultValue: Story = {
 export const SingleSelectDisabled: Story = {
   render: _arguments => SelectWrapper(_arguments),
   args: {
-    ...DefaultSelect.args,
+    ...SingleSelect.args,
     id: 'SingleSelectDisabled',
     isDisabled: true
   }
 };
 
-export const MultiSelect: Story = {
+export const MultiSelectWithCheckboxesTagsAbove: Story = {
   render: _arguments => SelectWrapper(_arguments),
-  name: 'Multi-select',
+  name: 'Multiselect (tags above)',
   args: {
-    ...DefaultSelect.args,
-    options: [...MockOptions],
-    id: 'MultiSelect',
-    isMulti: true
-  }
-};
-
-export const MultiSelectWithDefaultValue: Story = {
-  render: _arguments => SelectWrapper(_arguments),
-  name: 'Multi-select with default value (and pills above)',
-  args: {
-    ...DefaultSelect.args,
+    ...SingleSelect.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'MultiSelectWithDefaultValue',
-    isMulti: true
-  }
-};
-
-export const MultiSelectWithCheckboxes: Story = {
-  render: _arguments => SelectWrapper(_arguments),
-  name: 'Multi-select with checkboxes',
-  args: {
-    ...DefaultSelect.args,
-    options: [...MockOptions],
-    value: [MockOptions[0]],
-    id: 'MultiSelectWithCheckboxes',
+    id: 'MultiSelectWithCheckboxesTagsBelow',
     isMulti: true,
-    pillAlign: 'bottom',
-    withCheckbox: true
+    pillAlign: 'top',
+    withCheckbox: true,
+    showClearAllSelectedButton: false
   }
 };
 
-export const MultiSelectWithPillsAlignedBottom: Story = {
+export const MultiSelectWithCheckboxesTagsBelow: Story = {
   render: _arguments => SelectWrapper(_arguments),
-  name: 'Multi-select with pills bottom-aligned',
+  name: 'Multiselect (tags below)',
   args: {
-    ...DefaultSelect.args,
+    ...SingleSelect.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
-    id: 'MultiSelectWithPillsAlignedBottom',
-    isMulti: true,
-    pillAlign: 'bottom',
-    showClearAllSelectedButton: true
-  }
-};
-
-export const MultiSelectWithCheckboxesWithoutPills: Story = {
-  render: _arguments => SelectWrapper(_arguments),
-  name: 'Multi-select with checkboxes, without pills',
-  args: {
-    ...DefaultSelect.args,
-    options: [...MockOptions],
-    value: [MockOptions[0]],
-    id: 'MultiSelectWithCheckboxesWithoutPills',
-    isMulti: true,
-    pillAlign: 'hide',
-    withCheckbox: true
-  }
-};
-
-export const MultiSelectWithCheckboxesWithoutClearAllButton: Story = {
-  render: _arguments => SelectWrapper(_arguments),
-  name: 'Multi-select with checkboxes, without bottom clear all button',
-  args: {
-    ...DefaultSelect.args,
-    options: [...MockOptions],
-    value: [MockOptions[0]],
-    id: 'MultiSelectWithCheckboxesWithoutClearAllButton',
+    id: 'MultiSelectWithCheckboxesTagsBelow',
     isMulti: true,
     pillAlign: 'bottom',
     withCheckbox: true,
@@ -161,7 +112,7 @@ function AsAControlled({ ...arguments_ }): JSX.Element {
   const [{ value }, updateArguments] = useArgs();
 
   return (
-    <>
+    <div style={{ minHeight: '15rem' }}>
       <div className='m-btn-group u-mb30'>
         <Button
           label='Add all options'
@@ -178,7 +129,6 @@ function AsAControlled({ ...arguments_ }): JSX.Element {
         />
       </div>
       <Select
-        {...arguments_}
         value={value}
         showClearAllSelectedButton={false}
         onSelect={(newValue): void => {
@@ -186,8 +136,9 @@ function AsAControlled({ ...arguments_ }): JSX.Element {
             value: newValue
           });
         }}
+        {...arguments_}
       />
-    </>
+    </div>
   );
 }
 
@@ -195,11 +146,12 @@ export const AsAControlledComponent: Story = {
   name: 'As a controlled component',
   render: _arguments => AsAControlled(_arguments),
   args: {
-    ...DefaultSelect.args,
+    ...SingleSelect.args,
     options: [...MockOptions],
     value: [MockOptions[0]],
     id: 'AsAControlledComponent',
     isMulti: true,
-    pillAlign: 'bottom'
+    pillAlign: 'bottom',
+    showClearAllSelectedButton: false
   }
 };

@@ -120,7 +120,8 @@ export function Select<
         aria-labelledby={labelID}
         className='o-multiselect'
         classNames={{
-          control: () => (error ? `select-control--error` : `select-control`),
+          control: () =>
+            `select-control ${error ? 'select-control--error' : ''}`,
           indicatorSeparator: state =>
             `select-indicator-separator ${
               state.selectProps.isClearable && state.hasValue
