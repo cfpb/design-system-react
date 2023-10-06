@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-handler-names */
-import { useArgs } from '@storybook/client-api';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { Button } from '../Buttons/Button';
 import Select from './Select';
 import { MockOptions } from './utils';
@@ -22,18 +22,16 @@ type Story = StoryObj<typeof meta>;
 const LAST_ELEMENT = -1;
 
 function SelectWrapper({ ...arguments_ }): JSX.Element {
-  const [{ value }, updateArguments] = useArgs();
+  const [value, setValue] = useState();
 
   return (
     <div style={{ minHeight: '16rem' }}>
       <Select
+        {...arguments_}
         value={value}
         onSelect={(newValue): void => {
-          updateArguments({
-            value: newValue
-          });
+          setValue(newValue);
         }}
-        {...arguments_}
       />
     </div>
   );
@@ -109,7 +107,7 @@ export const MultiSelectWithCheckboxesTagsBelow: Story = {
 };
 
 function AsAControlled({ ...arguments_ }): JSX.Element {
-  const [{ value }, updateArguments] = useArgs();
+  const [value, setValue] = useState();
 
   return (
     <div style={{ minHeight: '15rem' }}>
@@ -117,26 +115,24 @@ function AsAControlled({ ...arguments_ }): JSX.Element {
         <Button
           label='Add all options'
           onClick={(): void => {
-            updateArguments({ value: [...MockOptions] });
+            setValue([...MockOptions]);
           }}
         />
         <Button
           label='Clear all options'
           appearance='warning'
           onClick={(): void => {
-            updateArguments({ value: [] });
+            setValue([]);
           }}
         />
       </div>
       <Select
+        {...arguments_}
         value={value}
         showClearAllSelectedButton={false}
         onSelect={(newValue): void => {
-          updateArguments({
-            value: newValue
-          });
+          setValue(newValue);
         }}
-        {...arguments_}
       />
     </div>
   );
