@@ -6,7 +6,7 @@ export interface SelectOption {
   label: string;
 }
 
-export interface DropdownProperties extends StateManagerProps {
+export interface SelectProperties extends StateManagerProps {
   error?: boolean | string;
   id: string;
   isDisabled?: boolean;

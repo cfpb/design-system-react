@@ -1,5 +1,5 @@
 import type { GroupBase, OptionsOrGroups, PropsValue } from 'react-select';
-import type { SelectOption } from './Dropdown.types';
+import type { SelectOption } from './Select.types';
 
 export const MockOptions = [
   { value: 'value1', label: 'Option A' },

@@ -3,8 +3,8 @@ import type { PropsValue } from 'react-select';
 import { Button } from '../Buttons/Button';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
-import type { SelectOption } from './Dropdown.types';
-import './DropdownPills.less';
+import type { SelectOption } from './Select.types';
+import './SelectPills.less';
 
 /**
  * Event Handlers
@@ -34,14 +34,14 @@ function onKeyCloser(
  * Components
  */
 
-interface DropdownPillProperties {
+interface SelectPillProperties {
   value: string;
   onClose: ReactEventHandler<HTMLButtonElement>;
 }
-export const DropdownPill = ({
+export const SelectPill = ({
   value,
   onClose
-}: DropdownPillProperties): JSX.Element => (
+}: SelectPillProperties): JSX.Element => (
   <li className='pill'>
     <button
       type='button'
@@ -59,7 +59,7 @@ export const DropdownPill = ({
   </li>
 );
 
-interface DropdownPillsProperties {
+interface SelectPillsProperties {
   isMulti?: boolean;
   labelClearAll?: string;
   onChange: (event: PropsValue<SelectOption>) => void;
@@ -69,7 +69,7 @@ interface DropdownPillsProperties {
   showClearAllSelectedButton?: boolean;
 }
 
-export const DropdownPills = ({
+export const SelectPills = ({
   isMulti,
   labelClearAll = 'Clear All Selected Institutions',
   onChange,
@@ -77,7 +77,7 @@ export const DropdownPills = ({
   selected,
   selectRef,
   showClearAllSelectedButton
-}: DropdownPillsProperties): JSX.Element | null => {
+}: SelectPillsProperties): JSX.Element | null => {
   if (
     !isMulti ||
     !selected ||
@@ -99,7 +99,7 @@ export const DropdownPills = ({
       <figcaption>Selected:</figcaption>
       <ul>
         {selected.map(({ value, label }: SelectOption, index: number) => (
-          <DropdownPill
+          <SelectPill
             key={value}
             value={label}
             onClose={onCloser(index, onChange, selected)}

@@ -7,16 +7,15 @@ import type {
   PropsValue,
   SelectInstance
 } from 'react-select';
-import Select, { components, createFilter } from 'react-select';
+import SelectRS, { components, createFilter } from 'react-select';
+import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
-import './Dropdown.less';
-import type { DropdownProperties, SelectOption } from './Dropdown.types';
-import CheckboxInputOption from './DropdownInputWithCheckbox';
-import { DropdownPills } from './DropdownPills';
+import './Select.less';
+import type { SelectOption, SelectProperties } from './Select.types';
+import CheckboxInputOption from './SelectInputWithCheckbox';
+import { SelectPills } from './SelectPills';
 import { extendedSelectStyles } from './styles';
 import { filterOptions, onSelectInputFocus } from './utils';
-
-import { Icon } from '../Icon/Icon';
 
 const customDropdownIndicator = (properties): JSX.Element => {
   const shouldBeUp = Boolean(properties.selectProps.menuIsOpen);
@@ -28,12 +27,12 @@ const customDropdownIndicator = (properties): JSX.Element => {
 };
 
 /**
- * A dropdown input component that supports multi-select.
+ * A select input component that supports multi-select.
  *
- * Passing the `value` prop makes the dropdown a controlled component.
+ * Passing the `value` prop makes the select a controlled component.
  * @returns JSX.Element
  */
-export function Dropdown<
+export function Select<
   OptionType,
   IsMulti extends boolean = false,
   GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
@@ -41,7 +40,7 @@ export function Dropdown<
   error,
   id,
   isMulti,
-  label = 'Dropdown w/ Multi-select',
+  label = 'Select w/ Multi-select',
   labelClearAll = 'Clear All Selected Institutions',
   onSelect,
   options,
@@ -52,7 +51,7 @@ export function Dropdown<
   showClearAllSelectedButton = true,
   className = '',
   ...properties
-}: DropdownProperties & Props<OptionType, IsMulti, GroupType>): JSX.Element {
+}: Props<OptionType, IsMulti, GroupType> & SelectProperties): JSX.Element {
   const [searchString, setSearchString] = useState<string>('');
 
   // Retain user search input between interactions
@@ -106,7 +105,7 @@ export function Dropdown<
         {label}
       </Label>
       {pillAlign === 'top' && (
-        <DropdownPills
+        <SelectPills
           selectRef={selectReference}
           selected={value}
           isMulti={isMulti}
@@ -115,31 +114,30 @@ export function Dropdown<
           labelClearAll={labelClearAll}
         />
       )}
-      <Select
+      <SelectRS
         customProps={customProps} // can be passed down to custom components
         id={`${id}-select`}
         aria-labelledby={labelID}
         className='o-multiselect'
         classNames={{
-          control: () =>
-            error ? `dropdown-control--error` : `dropdown-control`,
+          control: () => (error ? `select-control--error` : `select-control`),
           indicatorSeparator: state =>
-            `dropdown-indicator-separator ${
+            `select-indicator-separator ${
               state.selectProps.isClearable && state.hasValue
                 ? ''
-                : 'dropdown-indicator-separator__none'
+                : 'select-indicator-separator__none'
             }`,
           indicatorsContainer: () =>
-            `dropdown-indicators-container ${
-              error ? 'dropdown-indicators-container--error' : ''
+            `select-indicators-container ${
+              error ? 'select-indicators-container--error' : ''
             }`,
-          dropdownIndicator: () => 'dropdown-dropdown-indicator',
-          singleValue: () => 'dropdown-single-value',
+          dropdownIndicator: () => 'select-dropdown-indicator',
+          singleValue: () => 'select-single-value',
           valueContainer: () =>
-            `dropdown-value-container ${
+            `select-value-container ${
               error
-                ? 'dropdown-value-container--error'
-                : 'dropdown-value-container--success'
+                ? 'select-value-container--error'
+                : 'select-value-container--success'
             }`
         }}
         closeMenuOnSelect={!isMulti}
@@ -167,7 +165,7 @@ export function Dropdown<
         {...properties}
       />
       {pillAlign === 'bottom' && (
-        <DropdownPills
+        <SelectPills
           isMulti={isMulti}
           onChange={onSelectionChange}
           pillAlign='bottom'
@@ -181,4 +179,4 @@ export function Dropdown<
   );
 }
 
-export default Dropdown;
+export default Select;

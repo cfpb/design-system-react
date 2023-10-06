@@ -2,7 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 import { components } from 'react-select';
 
 import Checkbox from '../Checkbox/Checkbox';
-import './DropdownInputWithCheckbox.css';
+import './SelectInputWithCheckbox.css';
 
 interface TypeCheckboxInput {
   children: ReactNode;
@@ -47,8 +47,8 @@ const CheckboxInputOption = ({
       {...rest}
     >
       <div
-        className={`dropdown-option-container ${
-          isFocused ? 'dropdown-option-container--active' : ''
+        className={`select-option-container ${
+          isFocused ? 'select-option-container--active' : ''
         }`}
       >
         {withCheckbox ? (
@@ -56,7 +56,7 @@ const CheckboxInputOption = ({
             id={id}
             disabled={isDisabled}
             checked={isSelected}
-            inputClassName={`${isFocused ? 'dropdown-option--active' : ''}`} // controls highlighting the checkbox if the entire line is focused
+            inputClassName={`${isFocused ? 'select-option--active' : ''}`} // controls highlighting the checkbox if the entire line is focused
             label={<div>{children}</div>}
           />
         ) : (

@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { DropdownPill, DropdownPills, onCloser } from './DropdownPills';
+import { SelectPill, SelectPills, onCloser } from './SelectPills';
 import { MockOptions } from './utils';
 
-describe('DropdownPill', () => {
-  // Never happens due to checks in DropdownPills but this is for full test coverage
+describe('SelectPill', () => {
+  // Never happens due to checks in SelectPills but this is for full test coverage
   it('onCloser called with nothing selected does not call onChange', async () => {
     const user = userEvent.setup();
     const testLabel = 'Test Value';
@@ -14,7 +14,7 @@ describe('DropdownPill', () => {
     const onChange = vi.fn();
     const onCloseListener = onCloser(0, onChange, selected);
 
-    render(<DropdownPill value={testLabel} onClose={onCloseListener} />);
+    render(<SelectPill value={testLabel} onClose={onCloseListener} />);
     await act(async () => {
       await user.click(screen.getByText(testLabel));
     });
@@ -22,13 +22,13 @@ describe('DropdownPill', () => {
   });
 });
 
-describe('DropdownPills', () => {
+describe('SelectPills', () => {
   it('Calls onChange when pill is clicked', async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
     const selected = MockOptions[0];
 
-    render(<DropdownPills selected={[selected]} onChange={onChange} isMulti />);
+    render(<SelectPills selected={[selected]} onChange={onChange} isMulti />);
 
     const pills = screen.queryAllByRole('button');
     expect(pills.length).toBe(1);
@@ -50,7 +50,7 @@ describe('DropdownPills', () => {
     const onChange = vi.fn();
     const selected = MockOptions[0];
 
-    render(<DropdownPills selected={[selected]} onChange={onChange} isMulti />);
+    render(<SelectPills selected={[selected]} onChange={onChange} isMulti />);
 
     const pills = screen.queryAllByRole('button');
     expect(pills.length).toBe(1);

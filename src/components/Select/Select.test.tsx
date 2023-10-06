@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Dropdown } from './Dropdown';
+import Select from './Select';
 import { MockOptions } from './utils';
 
 /**
@@ -20,14 +20,14 @@ import { MockOptions } from './utils';
 
 const onSelect = (): null => null;
 
-const label = '-default dropdown-';
+const label = '-default select-';
 const id = 'anID';
 const placeholder = 'HOLD MY PLACE';
 
 /**
  * Single select
  */
-describe('Default Dropdown', () => {
+describe('Default Select', () => {
   const defaultProps = {
     id,
     label,
@@ -37,14 +37,14 @@ describe('Default Dropdown', () => {
   };
 
   it('Renders default labels correctly', () => {
-    render(<Dropdown {...{ id, options: MockOptions, onSelect }} />);
+    render(<Select {...{ id, options: MockOptions, onSelect }} />);
     expect(screen.queryByText(label)).not.toBeInTheDocument();
-    expect(screen.getByText('Dropdown w/ Multi-select')).toBeInTheDocument();
+    expect(screen.getByText('Select w/ Multi-select')).toBeInTheDocument();
     expect(screen.getByText('Select...')).toBeInTheDocument();
   });
 
   it('Renders provided labels correctly', () => {
-    render(<Dropdown {...defaultProps} />);
+    render(<Select {...defaultProps} />);
     expect(screen.getByText(label)).toBeInTheDocument();
     expect(screen.getByText(placeholder)).toBeInTheDocument();
   });
@@ -53,7 +53,7 @@ describe('Default Dropdown', () => {
     const optionLabel = 'Option A';
     const user = userEvent.setup();
 
-    render(<Dropdown {...defaultProps} />);
+    render(<Select {...defaultProps} />);
     await act(async () => {
       await user.click(screen.getByText(label));
     });
@@ -72,7 +72,7 @@ describe('Default Dropdown', () => {
     const optionLabel = 'Option C';
     const user = userEvent.setup();
 
-    render(<Dropdown {...defaultProps} />);
+    render(<Select {...defaultProps} />);
 
     expect(screen.queryByText(optionLabel)).not.toBeInTheDocument();
     await user.click(screen.getByText(label));
@@ -85,7 +85,7 @@ describe('Default Dropdown', () => {
 
   it('Correctly displays a defaultValue', async () => {
     render(
-      <Dropdown
+      <Select
         {...{
           id,
           label,
@@ -108,7 +108,7 @@ describe('Default Dropdown', () => {
 /**
  * Multi-select
  */
-describe('Multi-select Dropdown', () => {
+describe('Multi-select Select', () => {
   const multiProperties = {
     id,
     label,
@@ -123,7 +123,7 @@ describe('Multi-select Dropdown', () => {
     const optionLabel = 'Option A';
     const user = userEvent.setup();
 
-    render(<Dropdown {...multiProperties} />);
+    render(<Select {...multiProperties} />);
     await act(async () => {
       await user.click(screen.getByText(label));
     });
@@ -148,7 +148,7 @@ describe('Multi-select Dropdown', () => {
     const optionLabel = 'Option C';
     const user = userEvent.setup();
 
-    render(<Dropdown {...multiProperties} />);
+    render(<Select {...multiProperties} />);
 
     const beforeSelection = screen.queryAllByRole('listitem');
 
@@ -187,7 +187,7 @@ describe('Multi-select Dropdown', () => {
     const user = userEvent.setup();
 
     // All options selected by default
-    render(<Dropdown {...multiProperties} defaultValue={MockOptions} />);
+    render(<Select {...multiProperties} defaultValue={MockOptions} />);
 
     // Verify pills displayed
     const afterSelection = screen.queryAllByRole('listitem');
@@ -211,7 +211,7 @@ describe('Multi-select Dropdown', () => {
 
   it('Correctly displays a default option', async () => {
     render(
-      <Dropdown
+      <Select
         {...{
           ...multiProperties,
           defaultValue: [MockOptions[1], MockOptions[2]]
@@ -229,7 +229,7 @@ describe('Multi-select Dropdown', () => {
     const user = userEvent.setup();
 
     render(
-      <Dropdown
+      <Select
         {...{
           ...multiProperties,
           defaultValue: [MockOptions[0]]
@@ -262,7 +262,7 @@ describe('Multi-select Dropdown', () => {
     const user = userEvent.setup();
 
     render(
-      <Dropdown
+      <Select
         {...{
           ...multiProperties,
           defaultValue: [MockOptions[0], MockOptions[1]]
