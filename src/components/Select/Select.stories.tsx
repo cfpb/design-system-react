@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 const LAST_ELEMENT = -1;
 
 function SelectWrapper({ ...arguments_ }): JSX.Element {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(arguments_.value);
 
   return (
     <div style={{ minHeight: '16rem' }}>
@@ -107,7 +107,7 @@ export const MultiSelectWithCheckboxesTagsBelow: Story = {
 };
 
 function AsAControlled({ ...arguments_ }): JSX.Element {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(arguments_.value);
 
   return (
     <div style={{ minHeight: '15rem' }}>
