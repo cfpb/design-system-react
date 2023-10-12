@@ -1,0 +1,19 @@
+// Styles in this file are overrides of the CFPB Design System
+
+@import (reference) "@cfpb/cfpb-design-system/src/cfpb-design-system.less";
+
+.text-intro.block {
+  margin-top: 45px;
+}
+
+.text-intro .lead-paragraph,
+.text-intro p {
+  margin-bottom: 30px;
+}
+
+.respond-to-max(@bp-xs-max, {
+  .text-intro .lead-paragraph,
+  .text-intro p {
+    margin-bottom: 15px;
+  }
+});
