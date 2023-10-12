@@ -4,6 +4,7 @@ import { Heading } from '../Headings/Heading';
 import List from '../List/List';
 import ListItem from '../List/ListItem';
 import { Paragraph } from '../Paragraph/Paragraph';
+import './TextIntroduction.less';
 
 interface TextIntroductionProperties extends React.HTMLProps<HTMLDivElement> {
   // Page title
@@ -35,7 +36,8 @@ export const TextIntroduction = ({
   isFlushBottom,
   ...properties
 }: TextIntroductionProperties): JSX.Element => {
-  const cnames = ['block', className];
+  const cnames = ['block', 'text-intro', className];
+
   if (isFlushTop) cnames.push('block__flush-top');
   if (isFlushBottom) cnames.push('block__flush-bottom');
 
