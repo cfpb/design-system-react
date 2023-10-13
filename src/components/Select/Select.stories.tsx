@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-handler-names */
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Button } from '../Buttons/Button';
 import Select from './Select';
 import { MockOptions } from './utils';
 
@@ -102,52 +101,6 @@ export const MultiSelectWithCheckboxesTagsBelow: Story = {
     isMulti: true,
     pillAlign: 'bottom',
     withCheckbox: true,
-    showClearAllSelectedButton: false
-  }
-};
-
-function AsAControlled({ ...arguments_ }): JSX.Element {
-  const [value, setValue] = useState(arguments_.value);
-
-  return (
-    <div style={{ minHeight: '15rem' }}>
-      <div className='m-btn-group u-mb30'>
-        <Button
-          label='Add all options'
-          onClick={(): void => {
-            setValue([...MockOptions]);
-          }}
-        />
-        <Button
-          label='Clear all options'
-          appearance='warning'
-          onClick={(): void => {
-            setValue([]);
-          }}
-        />
-      </div>
-      <Select
-        {...arguments_}
-        value={value}
-        showClearAllSelectedButton={false}
-        onSelect={(newValue): void => {
-          setValue(newValue);
-        }}
-      />
-    </div>
-  );
-}
-
-export const AsAControlledComponent: Story = {
-  name: 'As a controlled component',
-  render: _arguments => AsAControlled(_arguments),
-  args: {
-    ...SingleSelect.args,
-    options: [...MockOptions],
-    value: [MockOptions[0]],
-    id: 'AsAControlledComponent',
-    isMulti: true,
-    pillAlign: 'bottom',
     showClearAllSelectedButton: false
   }
 };
