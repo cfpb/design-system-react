@@ -3,9 +3,28 @@
     font-size: 15px !important;
   }
 
-  div.sidebar-item[data-selected="false"]:hover,
+  /* Sidebar hover */
+  div.sidebar-item[data-selected='false']:hover,
   button.sidebar-item:hover {
-    background-color: #5a5d61 !important;
+    background-color: #5a5d61 !important; /* gray */
     color: white !important;
   }
+
+  /* Sidebar selected */
+  div.sidebar-item[data-selected='true'] {
+    background-color: #257675 !important; /* teal */
+    color: white !important;
+  }
+
+  /* Sidebar icons */
+  .sidebar-item svg {
+    color: black;
+  }
+
+  /* Sidebar hover/selected icons */
+  div.sidebar-item[data-selected='false']:hover svg,
+  button.sidebar-item:hover svg {
+    color: white;
+  }
+
 </style>
