@@ -3,17 +3,15 @@
 @import (reference) "@cfpb/cfpb-design-system/src/cfpb-design-system.less";
 
 .text-intro.block {
-  margin-top: 45px;
+  margin-top: 0px;
 }
 
 .text-intro .lead-paragraph,
 .text-intro p {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  margin-top: 0;
 }
 
-.respond-to-max(@bp-xs-max, {
-  .text-intro .lead-paragraph,
-  .text-intro p {
-    margin-bottom: 15px;
-  }
-});
+.text-intro p + ul {
+  margin-top: 15px;
+}
