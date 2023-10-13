@@ -12,8 +12,9 @@ const colors = {
 };
 
 /**
- * Note:
- * Additional CSS customizations are implemented in `./manager-head.html`
+ * Note: Additional CSS customizations are implemented in
+ * - /.storybook/manager-head.html
+ * - /src/assets/styles/_shared.less
  */
 export default create({
   base: 'light',
