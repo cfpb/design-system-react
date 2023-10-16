@@ -31,13 +31,13 @@ export default create({
   appContentBg: 'white', // Story overview, tool panel
 
   // Sidebar
-  appBg: colors.green10, // Background
+  appBg: 'white', // Background
   textColor: colors.black, // Story names
   textMutedColor: colors.black, // Group names
 
   // Toolbars
-  colorPrimary: colors.teal, // Selected (Controls, Actions, etc)
-  colorSecondary: colors.teal, // Focused text color of objects
+  // colorPrimary: 'color', // Purpose unknown
+  colorSecondary: colors.teal, // Selected (Controls, Actions, etc)
   barTextColor: colors.black, // Text & icons
   barSelectedColor: colors.teal,
   barBg: colors.gray10,
