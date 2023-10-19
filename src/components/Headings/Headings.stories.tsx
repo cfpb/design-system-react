@@ -72,7 +72,7 @@ export const Eyebrow: Story = {
   render: arguments_ => (
     <>
       <Heading {...arguments_} />
-      <Heading>Heading 1</Heading>
+      <div className='h1'>Heading 1</div>
     </>
   )
 };
