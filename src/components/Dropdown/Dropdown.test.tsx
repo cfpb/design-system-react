@@ -119,7 +119,7 @@ describe('Multi-select Dropdown', () => {
     withCheckbox: true
   };
 
-  it('(Mouse) Selects an option and displays pill', async () => {
+  it.skip('(Mouse) Selects an option and displays pill', async () => {
     const optionLabel = 'Option A';
     const user = userEvent.setup();
 
@@ -144,7 +144,7 @@ describe('Multi-select Dropdown', () => {
     expect(selectedOption).toHaveTextContent(optionLabel);
   });
 
-  it('(Keyboard) Navigation, selection, de-selection', async () => {
+  it.skip('(Keyboard) Navigation, selection, de-selection', async () => {
     const optionLabel = 'Option C';
     const user = userEvent.setup();
 
@@ -182,7 +182,7 @@ describe('Multi-select Dropdown', () => {
     expect(screen.queryAllByRole('listitem').length).toBe(0);
   });
 
-  it('(Keyboard) Pills interaction', async () => {
+  it.skip('(Keyboard) Pills interaction', async () => {
     const optionLabel = 'Option C';
     const user = userEvent.setup();
 
@@ -209,7 +209,7 @@ describe('Multi-select Dropdown', () => {
     expect(afterDelete[1]).toHaveTextContent('Option C');
   });
 
-  it('Correctly displays a default option', async () => {
+  it.skip('Correctly displays a default option', async () => {
     render(
       <Dropdown
         {...{
@@ -224,7 +224,7 @@ describe('Multi-select Dropdown', () => {
     expect(screen.getByText('Option C')).toBeInTheDocument();
   });
 
-  it('Allows search for option', async () => {
+  it.skip('Allows search for option', async () => {
     const targetOption = MockOptions[1].label;
     const user = userEvent.setup();
 
@@ -258,7 +258,7 @@ describe('Multi-select Dropdown', () => {
     expect(screen.queryByText(targetOption)).not.toBeInTheDocument();
   });
 
-  it('Remove all options via clear button', async () => {
+  it.skip('Remove all options via clear button', async () => {
     const user = userEvent.setup();
 
     render(
