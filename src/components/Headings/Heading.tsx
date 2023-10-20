@@ -39,8 +39,8 @@ export const Heading = ({
     DynamicHeading = 'h1';
     classes.push('superheading');
   } else if (type === 'eyebrow') {
-    DynamicHeading = 'h5';
-    classes.push('eyebrow');
+    DynamicHeading = 'div';
+    classes.push('h5 eyebrow');
   } else DynamicHeading = `h${type}`;
 
   return (
