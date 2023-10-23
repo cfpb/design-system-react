@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Well } from '~/src/index';
+import { Link, Well } from '~/src/index';
 
 const meta: Meta<typeof Well> = {
   title: 'Components (Draft)/Wells',
@@ -13,33 +13,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
-    heading: 'Well title',
-    text: (
-      <>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At quae dolor
-        distinctio tenetur quibusdam rem debitis, voluptate nesciunt culpa
-        officiis quos perspiciatis nostrum illo libero autem beatae temporibus
-        ratione reprehenderit? <a href='#'>Example link</a>.
-      </>
-    )
-  }
-};
-
-export const CallToAction: Story = {
-  args: {
-    heading: 'Well title',
-    text: (
-      <>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At quae dolor
-        distinctio tenetur quibusdam rem debitis, voluptate nesciunt culpa
-        officiis quos perspiciatis nostrum illo libero autem beatae temporibus
-        ratione reprehenderit?
-      </>
-    ),
+    heading: 'Heading',
+    text: 'Lorem ipsum dolor sit amet, ei ius adhuc inani iudico, labitur instructior ex pri. Cu pri inani constituto, cum aeque noster commodo',
     links: [
-      <a href='#' key='example1'>
-        Example link
-      </a>
+      <Link type='list' href='#' key='example1'>
+        Call-to-action link
+      </Link>
     ]
   }
 };
