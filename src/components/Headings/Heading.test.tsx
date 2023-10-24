@@ -56,8 +56,9 @@ describe('<Heading />', () => {
     const current = screen.getByTestId(testid);
 
     expect(current).toBeInTheDocument();
-    expect(current.tagName.toLowerCase()).toBe('h5');
+    expect(current.tagName.toLowerCase()).toBe('div');
     expect(current.className.includes('eyebrow')).toBeTruthy();
+    expect(current.className.includes('h5')).toBeTruthy();
   });
 
   it('Renders Slug heading', () => {
