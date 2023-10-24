@@ -10,3 +10,4 @@
   ```
   <TextInput id='input1' label='Input #1' helperText='A text input field' />
   ```
+  - Trigger rebuild
