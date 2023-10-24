@@ -10,18 +10,7 @@ import {
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Draft)/Links',
-  component: Link,
-  parameters: {
-    docs: {
-      description: {
-        component: `
-### CFPB DS Link component
-
-https://cfpb.github.io/design-system/components/links
-`
-      }
-    }
-  }
+  component: Link
 };
 
 export default meta;
