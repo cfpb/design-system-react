@@ -2,7 +2,6 @@ import {
   Button,
   Checkbox,
   FooterCfGov,
-  Heading,
   Layout,
   Link,
   Dropdown as Multiselect,
@@ -10,37 +9,13 @@ import {
 } from '~/src/index';
 import { DSRForm as Form } from './DSRForm';
 import { DSRLabeledInput as TextInput } from './DSRLabeledInput';
+import { FieldGroup } from './FieldGroup';
+import { FormActions } from './FormActions';
+import { HelperText } from './HelperText';
 import { SBLInstitutionCheckboxLabel as InstitutionLabel } from './SBLInstitutionCheckboxLabel';
-
-const TextIntroduction = ({ heading, lead, body }): JSX.Element => (
-  <div className='text-introduction'>
-    <h1>{heading}</h1>
-    <p className='lead-paragraph'>{lead}</p>
-    <p>{body}</p>
-  </div>
-);
-
-const Well = ({ children }): JSX.Element => (
-  <div className='well'>{children}</div>
-);
-
-const FormActions = (): JSX.Element => (
-  <div className='form-actions'>
-    <Button label='Submit' type='submit' />
-    <Button label='Clear form' asLink appearance='warning' />
-  </div>
-);
-
-const SectionIntroduction = ({ heading, body }): JSX.Element => (
-  <>
-    <Heading type='3'>{heading}</Heading>
-    <p className='body'>{body}</p>
-  </>
-);
-
-const HelperText = ({ children }) => <p>{children}</p>;
-
-const FieldGroup = ({ children }) => <div className='fieldset'>{children}</div>;
+import { SectionIntroduction } from './SectionIntroduction';
+import { TextIntroduction } from './TextIntroduction';
+import { Well } from './Well';
 
 export const CompleteUserProfile = ({ state, setState, onChange }) => (
   <>
@@ -153,7 +128,10 @@ export const CompleteUserProfile = ({ state, setState, onChange }) => (
             </FieldGroup>
           </Well>
 
-          <FormActions />
+          <FormActions>
+            <Button label='Submit' type='submit' />
+            <Button label='Clear form' asLink appearance='warning' />
+          </FormActions>
         </Form>
       </Layout.Main>
     </Layout.Wrapper>
