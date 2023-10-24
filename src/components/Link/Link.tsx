@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import type { JSXElement } from '../../types/jsxElement';
 import ListItem from '../List/ListItem';
-import './Link.less';
 
 interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   type?: 'default' | 'destructive' | 'list';

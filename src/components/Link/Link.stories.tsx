@@ -118,7 +118,7 @@ export const JumpLink: Story = {
   },
   render: arguments_ => (
     <Link {...arguments_}>
-      <LinkText>Default jump link</LinkText>
+      <LinkText>Default jump link</LinkText>&nbsp;
       <Icon name='right' />
     </Link>
   )
@@ -133,7 +133,7 @@ export const JumpLinkIconLeft: Story = {
   render: arguments_ => (
     <Link {...arguments_}>
       <Icon name='left' />
-      <LinkText>Jump link with icon on left</LinkText>
+      &nbsp;<LinkText>Jump link with icon on left</LinkText>
     </Link>
   )
 };
