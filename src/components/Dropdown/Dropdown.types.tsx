@@ -12,8 +12,8 @@ export interface DropdownProperties extends StateManagerProps {
   isDisabled?: boolean;
   isMulti?: boolean;
   label?: string;
-  labelClearAll: string;
-  onSelect: (event: OnChangeValue<SelectOption, boolean>) => void;
+  labelClearAll?: string;
+  onSelect?: (event: OnChangeValue<SelectOption, boolean>) => void;
   options: SelectOption[];
   pillAlign?: 'bottom' | 'hide' | 'top'; // Display pills below/above the select input or hide them
   showClearAllSelectedButton?: boolean; // Show/Hide our custom 'Clear All...' button

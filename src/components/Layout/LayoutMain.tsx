@@ -14,7 +14,7 @@ export const LayoutMain = ({
   layout = '2-1',
   bleedbar
 }: LayoutMainProperties): JSX.Element => {
-  const cnames = ['content', `content__${layout}`, classes];
+  const cnames = ['content', 'content_main', `content__${layout}`, classes];
   if (bleedbar) cnames.push('content__bleedbar');
 
   return (
