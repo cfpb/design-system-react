@@ -9,7 +9,7 @@ describe('<TextIntroduction />', () => {
     expect(screen.getByText(placeholders.heading)).toBeInTheDocument();
     expect(screen.getByText(placeholders.subheading)).toBeInTheDocument();
     expect(screen.getByText(placeholders.description)).toBeInTheDocument();
-    expect(screen.getByText('Link one hypertext text')).toBeInTheDocument();
+    expect(screen.getByText('Call-to-action link')).toBeInTheDocument();
   });
 
   it('supports setting top/bottom as flush (remove margin)', () => {

@@ -1,12 +1,12 @@
 import Link from '../Link/Link';
 
 const subheading =
-  'Subheader, lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit quibusdam voluptatem dolor? At, ea dicta. Ipsum sed qui quos iure, beatae voluptas. Repellat pariatur nostrum esse aperiam! Tempore, odit?';
+  'Lead paragraph lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
 const description =
-  'Description paragraph, Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque beatae necessitatibus fugiat nesciunt possimus iste eaque vero voluptatum ab dignissimos, repellat, tempora, perspiciatis et repellendus ea quia eveniet hic molestiae.';
+  'Descriptive paragraph lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.';
 
-const callToAction = <Link href='/'>Link one hypertext text</Link>;
+const callToAction = <Link href='/'>Call-to-action link</Link>;
 
 export default {
   heading: 'Heading 1',
