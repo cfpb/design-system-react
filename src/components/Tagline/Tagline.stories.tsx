@@ -8,7 +8,8 @@ const meta: Meta<typeof Tagline> = {
     docs: {
       description: {
         component: `
-### CFPB DS - Tagline component
+
+Taglines are short paragraphs of text with a USA flag to their left.
 
 Source: https://cfpb.github.io/design-system/patterns/taglines
 `
@@ -31,8 +32,10 @@ export const StandardTagline: Story = {
     </Tagline>
   )
 };
+StandardTagline.storyName = 'Standard tagline';
 
 export const LargeTagline: Story = {
   ...StandardTagline,
   args: { isLarge: true }
 };
+LargeTagline.storyName = 'Large tagline';
