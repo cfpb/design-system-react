@@ -4,7 +4,6 @@ import { Heading } from '../Headings/Heading';
 import List from '../List/List';
 import ListItem from '../List/ListItem';
 import { Paragraph } from '../Paragraph/Paragraph';
-import './TextIntroduction.less';
 
 interface TextIntroductionProperties extends React.HTMLProps<HTMLDivElement> {
   // Page title
@@ -12,13 +11,9 @@ interface TextIntroductionProperties extends React.HTMLProps<HTMLDivElement> {
   // Lead paragraph
   subheading: string;
   // Descriptive paragraph
-  description?: ReactNode | string;
+  description?: ReactNode;
   // Call-to-action <Link>
   callToAction?: JSX.Element;
-  // Remove top margin?
-  isFlushTop?: boolean;
-  // Remove bottom margin?
-  isFlushBottom?: boolean;
 }
 
 /**
@@ -32,14 +27,9 @@ export const TextIntroduction = ({
   description,
   callToAction,
   className,
-  isFlushTop,
-  isFlushBottom,
   ...properties
 }: TextIntroductionProperties): JSX.Element => {
-  const cnames = ['block', 'text-intro', className];
-
-  if (isFlushTop) cnames.push('block__flush-top');
-  if (isFlushBottom) cnames.push('block__flush-bottom');
+  const cnames = ['o-text-introduction', className];
 
   const call2action = callToAction && (
     <List isLinks>
@@ -51,7 +41,7 @@ export const TextIntroduction = ({
     <div
       className={classnames(cnames)}
       {...properties}
-      data-testid='text-intro-wrapper'
+      data-testid='text-introduction-wrapper'
     >
       <Heading type='1'>{heading}</Heading>
       <Paragraph isLead>{subheading}</Paragraph>

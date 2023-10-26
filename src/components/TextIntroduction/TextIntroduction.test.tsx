@@ -11,12 +11,4 @@ describe('<TextIntroduction />', () => {
     expect(screen.getByText(placeholders.description)).toBeInTheDocument();
     expect(screen.getByText('Call-to-action link')).toBeInTheDocument();
   });
-
-  it('supports setting top/bottom as flush (remove margin)', () => {
-    render(<TextIntroduction {...placeholders} isFlushTop isFlushBottom />);
-    const element = screen.getByTestId('text-intro-wrapper');
-    expect(element).toBeInTheDocument();
-    expect(element.classList.contains('block__flush-top')).toBe(true);
-    expect(element.classList.contains('block__flush-bottom')).toBe(true);
-  });
 });

@@ -3,7 +3,7 @@ import { TextIntroduction } from './TextIntroduction';
 import placeholders from './testHelpers';
 
 const meta: Meta<typeof TextIntroduction> = {
-  title: 'Components (Verified)/Text introductions',
+  title: 'Components (Draft)/Text introductions',
   component: TextIntroduction
 };
 
