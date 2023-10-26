@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Tagline } from '~/src/index';
 
 const meta: Meta<typeof Tagline> = {
-  title: 'Components (Draft)/Taglines',
+  title: 'Components (Verified)/Taglines',
   component: Tagline,
   parameters: {
     docs: {
