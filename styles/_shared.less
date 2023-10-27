@@ -29,7 +29,8 @@
 
   /** Applying DS font sizing **/
   .sbdocs > p, // Custom overview page headings
-  .sbdocs .sbdocs-title + div p // Auto-generated page headings
+  .sbdocs .sbdocs-title + div p, // Auto-generated page headings
+  pre.prismjs // Code blocks
   {
     font-size: 16px;
   }
@@ -38,4 +39,21 @@
   * {
     font-family: 'Avenir Next', Arial, sans-serif;
   }
+
+  /* 
+  Make code block plain-text readable (workaround since we can't change code highlighting theme) 
+  https://github.com/storybookjs/storybook/issues/9641
+  */
+  pre.prismjs {
+    color: white;
+  }
+}
+
+/* 
+Apply a global line-height that doesn't interfere with component Stories 
+that have their own line-height settings. 
+*/
+pre.prismjs,
+:where(p:not(.sb-story *, #storybook-root *)) {
+  line-height: 22px !important;
 }
