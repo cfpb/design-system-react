@@ -9,7 +9,7 @@ import {
 } from '~/src/index';
 
 const meta: Meta<typeof Link> = {
-  title: 'Components (Draft)/Links',
+  title: 'Components (Verified)/Links',
   component: Link
 };
 
