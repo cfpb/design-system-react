@@ -95,4 +95,22 @@ describe('<Table />', () => {
     expect(cell?.classList.contains('o-table_cell__right-align')).toBe(true);
     expect(cell?.classList.contains('u-w40pct')).toBe(true);
   });
+
+  it('Pagination controls displayed when isPaginated', () => {
+    render(
+      <Table
+        columns={columnsWithConfiguration}
+        rows={defaultRows}
+        isPaginated
+      />
+    );
+
+    const previousButton = screen.getByText('Previous');
+    expect(previousButton.classList.contains('m-pagination_btn-prev')).toBe(
+      true
+    );
+
+    const nextButton = screen.getByText('Next');
+    expect(nextButton.classList.contains('m-pagination_btn-next')).toBe(true);
+  });
 });
