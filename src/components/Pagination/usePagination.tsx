@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
+import { noOp } from '~/src/utils/noOp';
 import type { PaginationProperties } from './Pagination';
 import { DEFAULT_PER_PAGE, MIN_PAGE } from './paginationConstants';
 
@@ -13,7 +14,13 @@ interface UsePaginationProperties {
 }
 
 /**
- * Hook to derive props for Pagination based on the provided list of items and configuration options
+ * Hook to determine which data is visible for the currently selected page as well as derive props for Pagination based on the provided list of items and configuration options
+ *
+ *  In the return array:
+ * - VisibleRows = Rows for the currently selected page (or all rows when not paginating)
+ * - PaginationProperties = Props that should be passed to the <Pagination /> component
+ *
+ * @returns [VisibleRows, PaginationProperties]
  */
 export const usePagination = ({
   isPaginated = true,
@@ -35,7 +42,10 @@ export const usePagination = ({
 
   const defaultProperties: PaginationProperties = {
     page: 0,
-    pageCount: 0
+    pageCount: 0,
+    onClickNext: noOp,
+    onClickPrevious: noOp,
+    onClickGo: noOp
   };
 
   // If not paginating, return the basics

@@ -13,11 +13,11 @@ export interface PaginationProperties {
   /** Total number of available pages */
   pageCount: number;
   /** Event handler for `Previous` button */
-  onClickPrevious?: () => void;
+  onClickPrevious: () => void;
   /** Event handler for `Next` button */
-  onClickNext?: () => void;
+  onClickNext: () => void;
   /** Event handler for `Go` button */
-  onClickGo?: (value: number) => void;
+  onClickGo: (value: number) => void;
   /** Text label for Previous button */
   previousLabel?: string;
   /** Text label for Next button */
