@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import type { EventHandler, SyntheticEvent } from 'react';
+import type { EventHandler, ReactElement, SyntheticEvent } from 'react';
 import { useEffect, useState } from 'react';
-import type { JSXElement } from '~/src/types/jsxElement';
 import { noOp } from '../../utils/noOp';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
@@ -126,7 +125,7 @@ export const Pagination = ({
   onClickGo = noOp,
   previousLabel = 'Previous',
   nextLabel = 'Next'
-}: PaginationProperties): JSXElement => {
+}: PaginationProperties): ReactElement => {
   const [pageNumber, setPageNumber] = useState(page);
   useEffect(() => setPageNumber(page), [page]);
 

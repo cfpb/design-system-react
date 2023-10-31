@@ -35,7 +35,7 @@ export const usePagination = ({
   // Track the currently displayed page
   const [page, setPage] = useState<number>(Math.min(startPage, pageCount));
 
-  // Keep `page` in up-to-date if `perPage` count changes
+  // Keep `page` up-to-date if `perPage` count changes
   useEffect(() => {
     setPage(Math.min(page, pageCount));
   }, [page, pageCount, perPage]);
@@ -61,6 +61,7 @@ export const usePagination = ({
     onClickGo: (targetPage: number): void => setPage(targetPage)
   };
 
+  // Calculate which rows are shown on the current page
   const lowerBound = zeroIndexedPage * perPage;
   const upperBound = zeroIndexedPage * perPage + perPage;
   const visibleRows = rows.slice(lowerBound, upperBound);
