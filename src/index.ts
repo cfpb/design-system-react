@@ -39,9 +39,9 @@ export { Pagination } from './components/Pagination/Pagination';
 export { usePagination } from './components/Pagination/usePagination';
 export { Paragraph } from './components/Paragraph/Paragraph';
 export { RadioButton } from './components/RadioButton/RadioButton';
+export { Select } from './components/Select/Select';
 export { Table } from './components/Table/Table';
 export { Tagline } from './components/Tagline/Tagline';
 export { TextInput } from './components/TextInput/TextInput';
 export { TextIntroduction } from './components/TextIntroduction/TextIntroduction';
 export { default as Well } from './components/Well/Well';
-
