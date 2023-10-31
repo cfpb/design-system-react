@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react';
 import { Paragraph } from './Paragraph';
 
 const meta: Meta<typeof Paragraph> = {
-  title: 'Components (Draft)/Paragraphs',
+  title: 'Components (Verified)/Paragraphs',
   component: Paragraph
 };
 
