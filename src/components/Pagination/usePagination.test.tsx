@@ -40,7 +40,7 @@ describe('usePagination', () => {
     const [visibleRows, paginationProperties] = result.current;
 
     // Returns all rows
-    expect(visibleRows.length).toBe(1);
+    expect(visibleRows.length).toBe(4);
 
     // Returns placeholder Pagination props
     expect(paginationProperties.page).toBe(0);
