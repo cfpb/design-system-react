@@ -42,7 +42,7 @@
     "start": "yarn storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o dist-storybook --webpack-stats-json",
-    "chromatic": "chromatic --only-changed"
+    "chromatic": "chromatic --debug --storybook-build-dir dist-storybook --only-changed"
   },
   "dependencies": {
     "@cfpb/cfpb-design-system": "^0.32.0",
@@ -117,6 +117,7 @@
     "prettier": "2.7.1",
     "start-server-and-test": "1.14.0",
     "storybook": "^7.0.6",
+    "storybook-dark-mode": "^3.0.1",
     "stylelint": "14.15.0",
     "stylelint-config-prettier": "9.0.4",
     "stylelint-config-standard": "29.0.0",
