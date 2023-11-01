@@ -28,7 +28,7 @@ export default defineConfig(() => ({
     VitePluginReactRemoveAttributes({
       attributes: ['data-testid']
     }),
-    webpackStats()
+    webpackStats({ fileName: 'preview-stats.json' })
   ],
   test: {
     globals: true,
