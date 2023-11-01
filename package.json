@@ -42,7 +42,7 @@
     "start": "yarn storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o dist-storybook --webpack-stats-json",
-    "chromatic": "chromatic --storybook-build-dir dist-storybook --only-changed"
+    "chromatic": "chromatic --only-changed"
   },
   "dependencies": {
     "@cfpb/cfpb-design-system": "^0.32.0",
