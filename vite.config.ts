@@ -1,6 +1,7 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
+import { webpackStats } from 'rollup-plugin-webpack-stats';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import VitePluginReactRemoveAttributes from 'vite-plugin-react-remove-attributes';
@@ -26,7 +27,8 @@ export default defineConfig(() => ({
     }),
     VitePluginReactRemoveAttributes({
       attributes: ['data-testid']
-    })
+    }),
+    webpackStats()
   ],
   test: {
     globals: true,
