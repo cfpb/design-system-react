@@ -8120,6 +8120,7 @@ __metadata:
     vite-plugin-dts: ^2.2.0
     vite-plugin-pwa: ^0.14.7
     vite-plugin-react-remove-attributes: ^1.0.3
+    vite-plugin-turbosnap: ^1.0.3
     vite-svg-loader: ^4.0.0
     vite-tsconfig-paths: 3.5.2
     vitest: 0.25.2
@@ -16997,6 +16998,13 @@ display-element-css@cfpb/storybook-addon-display-element-css:
   peerDependencies:
     vite: ^2.4.4
   checksum: 9ae11525a6b4d111a6d655b7495c319cb99dc2aadaf2f5e1a6c311b3db32a93118f0d4b314f2c039a27e21a15a644bbfafbb7fb87963afcc06912b95c505505b
+  languageName: node
+  linkType: hard
+
+"vite-plugin-turbosnap@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "vite-plugin-turbosnap@npm:1.0.3"
+  checksum: a66d09ecafef293e78a2bfceed133c3436556f8407c55be2796b5ed6ff6f80a85e1961e67382aa4e3a971f03fa33d7ee318706acc5a6c289bb7ce6a1a49293bc
   languageName: node
   linkType: hard
 
