@@ -29,9 +29,9 @@ module.exports = {
       plugin => plugin.name !== 'vite:dts'
     );
 
+    // load Chromatic's recommended vite plugin for dist builds to create preview-stats.json
     config.plugins = config.plugins.concat(
       turbosnap({
-        // This should be the base path of your storybook.  In monorepos, you may only need process.cwd().
         rootDir: config.root ?? process.cwd()
       })
     );
