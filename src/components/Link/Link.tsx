@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import type { JSXElement } from '../../types/jsxElement';
 import ListItem from '../List/ListItem';
-import './Link.less';
 
 interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   type?: 'default' | 'destructive' | 'list';
@@ -11,6 +10,11 @@ interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   isJumpLeft?: boolean;
 }
 
+/**
+ * Links lead users to a different page or further information. In contrast, buttons are used to signal actions. Users should be able to identify links without relying on color or styling alone.
+ * 
+ * Source: https://cfpb.github.io/design-system/components/links
+ */
 export default function Link({
   children,
   type = 'default',
