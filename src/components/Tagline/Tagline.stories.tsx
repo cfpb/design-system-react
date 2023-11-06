@@ -9,9 +9,9 @@ const meta: Meta<typeof Tagline> = {
       description: {
         component: `
 
-Taglines are short paragraphs of text with a USA flag to their left.
+Taglines are short paragraphs of text with the USA flag to their left that are used in the header and footer across consumerfinance.gov.
 
-Source: https://cfpb.github.io/design-system/patterns/taglines
+Source: https://cfpb.github.io/design-system/components/taglines
 `
       }
     }
