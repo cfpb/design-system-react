@@ -1,0 +1,7 @@
+import{b as a,T as r}from"./TextIntroduction.ff1fa05f.js";import{j as n}from"./jsx-runtime.54133100.js";import"./index.cfa9e344.js";import"./Paragraph.878bd808.js";import"./_commonjsHelpers.712cc82f.js";const s="Lead paragraph lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",d="Descriptive paragraph lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",m=n(a,{href:"/",children:"Call-to-action link"}),c={heading:"Heading 1",description:d,subheading:s,callToAction:m},h={title:"Components (Verified)/Text introductions",component:r},e={name:"Standard text introduction",args:{...c}};var o,i,t;e.parameters={...e.parameters,docs:{...(o=e.parameters)==null?void 0:o.docs,source:{originalSource:`{
+  name: 'Standard text introduction',
+  args: {
+    ...placeholders
+  }
+}`,...(t=(i=e.parameters)==null?void 0:i.docs)==null?void 0:t.source}}};const q=["Standard"];export{e as Standard,q as __namedExportsOrder,h as default};
+//# sourceMappingURL=TextIntroduction.stories.26b4e477.js.map
