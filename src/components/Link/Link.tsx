@@ -11,8 +11,8 @@ interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
 }
 
 /**
- * Links lead users to a different page or further information. In contrast, buttons are used to signal actions. Users should be able to identify links without relying on color or styling alone.
- * 
+ * Links are navigational elements that connect users to other locations, either on the current page or to a different page or site. In contrast, <a href="https://cfpb.github.io/design-system/components/buttons">buttons</a> are used to signal important actions.
+ *
  * Source: https://cfpb.github.io/design-system/components/links
  */
 export default function Link({
