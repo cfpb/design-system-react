@@ -12,7 +12,6 @@ const meta: Meta<typeof Label> = {
     docs: {
       description: {
         component: `
-### CFPB DS - Label component
 
 Labels are used to help users understand the meaning of a form input.
 
