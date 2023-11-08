@@ -27,6 +27,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const LabelHeading: Story = {
+  name: 'Label heading',
   args: {
     children: <>Label heading</>,
     htmlFor: 'testInput'
@@ -44,6 +45,7 @@ export const LabelHeading: Story = {
 };
 
 export const InlineLabel: Story = {
+  name: 'Inline label',
   args: {
     children: <>Text input label</>,
     htmlFor: 'testInput',
