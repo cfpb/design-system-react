@@ -39,7 +39,6 @@ export const LabelHeading: Story = {
         id={arguments_.htmlFor}
         name={arguments_.htmlFor}
         type='text'
-        placeholder='Example input'
       />
     </>
   )
