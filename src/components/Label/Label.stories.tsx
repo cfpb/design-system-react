@@ -14,7 +14,9 @@ const meta: Meta<typeof Label> = {
         component: `
 ### CFPB DS - Label component
 
-Source: https://cfpb.github.io/design-system/components/expandables
+Labels are used to help users understand the meaning of a form input.
+
+Source: https://cfpb.github.io/design-system/components/labels-and-legends
 `
       }
     }
@@ -27,15 +29,15 @@ type Story = StoryObj<typeof meta>;
 
 export const LabelHeading: Story = {
   args: {
-    children: <>Text input label</>,
+    children: <>Label heading</>,
     htmlFor: 'testInput'
   },
   render: arguments_ => (
     <>
-      <Label {...arguments_} htmlFor='testInput' />
+      <Label {...arguments_} />
       <TextInput
-        id='testInput'
-        name='testInput'
+        id={arguments_.htmlFor}
+        name={arguments_.htmlFor}
         type='text'
         placeholder='Example input'
       />
@@ -43,21 +45,16 @@ export const LabelHeading: Story = {
   )
 };
 
-// // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-// const Template: ComponentStory<typeof Label> = arguments_ => (
-//   <>
-//     <Label {...arguments_} htmlFor='testInput'>
-//       Text input label
-//     </Label>
-//     <TextInput
-//       id='testInput'
-//       name='testInput'
-//       type='text'
-//       placeholder='Example input'
-//     />
-//   </>
-// );
-
-// export const LabelHeading = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-// LabelHeading.args = {};
+export const InlineLabel: Story = {
+  args: {
+    children: <>Text input label</>,
+    htmlFor: 'testInput',
+    inline: true
+  },
+  render: arguments_ => (
+    <div className='m-form-field m-form-field__checkbox'>
+      <input className='a-checkbox' type='checkbox' id={arguments_.htmlFor} />
+      <Label {...arguments_}>Inline label</Label>
+    </div>
+  )
+};

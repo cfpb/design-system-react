@@ -6,11 +6,12 @@ const htmlFor = 'sprinkler';
 const text = 'Content';
 
 describe('<Label />', () => {
-  it('Default', () => {
+  it('Default (Not inline)', () => {
     render(<Label htmlFor={htmlFor}>{text}</Label>);
 
     const element = screen.getByText(text);
     expect(element).toHaveAttribute('for', htmlFor);
+    expect(element).toHaveClass('a-label');
     expect(element).toHaveClass('a-label__heading');
   });
 
@@ -24,16 +25,18 @@ describe('<Label />', () => {
     const element = screen.getByText(text);
     expect(element).toHaveAttribute('for', htmlFor);
     expect(element).toHaveAttribute('class', 'a-label');
+    expect(element).not.toHaveClass('a-label__heading');
   });
 
   it('applies provided class name', () => {
+    const otherCName = 'other-cname';
     render(
-      <Label htmlFor={htmlFor} className='other-cname'>
+      <Label htmlFor={htmlFor} className={otherCName}>
         {text}
       </Label>
     );
 
     const element = screen.getByText(text);
-    expect(element).toHaveClass('other-cname');
+    expect(element).toHaveClass(otherCName);
   });
 });
