@@ -3,18 +3,7 @@ import { Pagination } from '~/src/index';
 
 const meta: Meta<typeof Pagination> = {
   title: 'Components (Draft)/Pagination',
-  component: Pagination,
-  parameters: {
-    docs: {
-      description: {
-        component: `
-### CFPB DS - Pagination component
-
-Source: https://cfpb.github.io/design-system/patterns/pagination
-`
-      }
-    }
-  }
+  component: Pagination
 };
 
 export default meta;
@@ -27,6 +16,7 @@ const MAX_PAGE = 40;
 
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 export const Base: Story = {
+  name: 'Default pagination',
   args: {
     page: MIDDLE_PAGE,
     pageCount: MAX_PAGE
@@ -34,6 +24,7 @@ export const Base: Story = {
 };
 
 export const PreviousDisabledAtMinPage: Story = {
+  name: 'Previous button disabled on first page',
   args: {
     page: FIRST_PAGE,
     pageCount: MAX_PAGE
@@ -41,6 +32,7 @@ export const PreviousDisabledAtMinPage: Story = {
 };
 
 export const NextDisabledAtMaxPage: Story = {
+  name: 'Next button disabled on last page',
   args: {
     page: MAX_PAGE,
     pageCount: MAX_PAGE
