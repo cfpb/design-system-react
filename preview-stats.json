@@ -425,10 +425,10 @@
           "moduleName": "./src/components/List/List.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Link/Link.stories.tsx"
+          "moduleName": "./src/components/Layout/LayoutWrapper.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Layout/LayoutWrapper.stories.tsx"
+          "moduleName": "./src/components/Link/Link.stories.tsx"
         },
         {
           "moduleName": "./src/components/Layout/LayoutSidebar.stories.tsx"
@@ -830,9 +830,6 @@
           "moduleName": "./src/components/Expandable/Expandable.tsx"
         },
         {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        },
-        {
           "moduleName": "./src/components/Notification/Notification.tsx"
         },
         {
@@ -845,10 +842,13 @@
           "moduleName": "./src/components/Footer/BackToTop.tsx"
         },
         {
-          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         },
         {
           "moduleName": "./src/components/Notification/NotificationLink.tsx"
+        },
+        {
+          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
         }
       ]
     },
@@ -863,10 +863,10 @@
           "moduleName": "./src/components/Dropdown/DropdownPills.tsx"
         },
         {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
         },
         {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         }
       ]
     },
@@ -1175,37 +1175,10 @@
       "name": "./src/utils/sleep.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
+          "moduleName": "./src/components/Expandable/ExpandableGroup.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Expandable/ExpandableGroup.stories.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Dropdown/Dropdown.less",
-      "name": "./src/components/Dropdown/Dropdown.less",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
-      "name": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Dropdown/styles.tsx",
-      "name": "./src/components/Dropdown/styles.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+          "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
         }
       ]
     },
@@ -1335,6 +1308,33 @@
         },
         {
           "moduleName": "./src/components/Table/TableComplex.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Dropdown/Dropdown.less",
+      "name": "./src/components/Dropdown/Dropdown.less",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
+      "name": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Dropdown/styles.tsx",
+      "name": "./src/components/Dropdown/styles.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         }
       ]
     },
