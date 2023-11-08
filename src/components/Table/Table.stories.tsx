@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table } from '~/src/index';
-import { DEFAULT_PER_PAGE } from '../Pagination/paginationConstants';
 
 const meta: Meta<typeof Table> = {
   title: 'Components (Draft)/Tables',
@@ -131,12 +130,13 @@ const paginationRows = [...Array.from({ length: numberRows }).keys()].map(
   key => [`A${key + one}`, `B${key + one}`]
 );
 
+const PAGINATION_PER_PAGE = 5;
 export const Pagination: Story = {
   args: {
     columns: ['A', 'B'],
     rows: paginationRows,
     isPaginated: true,
-    perPage: DEFAULT_PER_PAGE
+    perPage: PAGINATION_PER_PAGE
   }
 };
 
