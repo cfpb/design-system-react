@@ -4,6 +4,7 @@ import themeCFPB from './themeCFPB';
 addons.setConfig({
   sidebar: {
     renderLabel: ({ name, type }) => {
+      if (name.match(/^use/)) return name; // Don't adjust custom hook names
       if (type === 'story') {
         // Sentence case
         let newName = name.toLowerCase();
