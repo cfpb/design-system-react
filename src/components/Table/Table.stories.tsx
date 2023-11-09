@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table } from '~/src/index';
+import { generateTestRows } from '../Pagination/Pagination.storyUtils';
 
 const meta: Meta<typeof Table> = {
   title: 'Components (Draft)/Tables',
@@ -124,11 +125,7 @@ export const RightAligned: Story = {
 };
 
 const numberRows = 30;
-const one = 1;
-
-const paginationRows = [...Array.from({ length: numberRows }).keys()].map(
-  key => [`A${key + one}`, `B${key + one}`]
-);
+const paginationRows = generateTestRows(numberRows);
 
 const PAGINATION_PER_PAGE = 5;
 export const Pagination: Story = {
