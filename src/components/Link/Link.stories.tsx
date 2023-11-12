@@ -9,7 +9,7 @@ import {
 } from '~/src/index';
 
 const meta: Meta<typeof Link> = {
-  title: 'Components (Draft)/Links',
+  title: 'Components (Verified)/Links',
   component: Link
 };
 
@@ -50,15 +50,15 @@ export const Inline: Story = {
   )
 };
 
-export const CallToAction: Story = {
-  name: 'Call-to-action links',
+export const ListLinks: Story = {
+  name: 'List links',
   args: {
     ...DefaultArguments.args
   },
   render: arguments_ => (
     <List isLinks>
-      <ListLink {...arguments_}>Sample call-to-action link</ListLink>
-      <ListLink {...arguments_}>Another sample call-to-action link</ListLink>
+      <ListLink {...arguments_}>List link 1</ListLink>
+      <ListLink {...arguments_}>List link 2</ListLink>
     </List>
   )
 };
@@ -67,13 +67,13 @@ export const Destructive: Story = {
   name: 'Destructive links',
   args: {
     ...DefaultArguments.args,
-    children: 'Sample destructive link'
+    children: 'Destructive link'
   },
   render: arguments_ => <DestructiveLink {...arguments_} />
 };
 
-export const StandardLinkWithIcon: Story = {
-  name: 'Standard link with icon',
+export const LinkWithIcon: Story = {
+  name: 'Link with icon',
   args: {
     ...DefaultArguments.args,
     hasIcon: true
@@ -93,10 +93,10 @@ export const StandardLinkWithIcon: Story = {
   )
 };
 
-export const StandardLinkWithIconNoWrapping: Story = {
-  name: 'Non-wrapping icon links',
+export const LinkWithIconNoWrapping: Story = {
+  name: 'Non-wrapping link with icon',
   args: {
-    ...StandardLinkWithIcon.args,
+    ...LinkWithIcon.args,
     noWrap: true
   },
   render: arguments_ => (
@@ -118,7 +118,7 @@ export const JumpLink: Story = {
   },
   render: arguments_ => (
     <Link {...arguments_}>
-      <LinkText>Default jump link</LinkText>&nbsp;
+      <LinkText>Jump link</LinkText>&nbsp;
       <Icon name='right' />
     </Link>
   )
