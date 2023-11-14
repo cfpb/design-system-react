@@ -3,7 +3,7 @@ import { Table } from '~/src/index';
 import { generateTestRows } from '../Pagination/Pagination.storyUtils';
 
 const meta: Meta<typeof Table> = {
-  title: 'Components (Draft)/Tables',
+  title: 'Components (Verified)/Tables',
   component: Table
 };
 
