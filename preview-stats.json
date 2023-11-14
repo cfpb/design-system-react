@@ -124,17 +124,8 @@
       ]
     },
     {
-      "id": "./src/components/Table/TableSimple.stories.tsx",
-      "name": "./src/components/Table/TableSimple.stories.tsx",
-      "reasons": [
-        {
-          "moduleName": "/virtual:/@storybook/builder-vite/storybook-stories.js"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Table/TableComplex.stories.tsx",
-      "name": "./src/components/Table/TableComplex.stories.tsx",
+      "id": "./src/components/Table/Table.stories.tsx",
+      "name": "./src/components/Table/Table.stories.tsx",
       "reasons": [
         {
           "moduleName": "/virtual:/@storybook/builder-vite/storybook-stories.js"
@@ -374,9 +365,6 @@
           "moduleName": "./src/stories/Introduction.stories.mdx"
         },
         {
-          "moduleName": "./src/components/Headings/Headings.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Grid/Grid.stories.tsx"
         },
         {
@@ -401,10 +389,7 @@
           "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Table/TableSimple.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Table/TableComplex.stories.tsx"
+          "moduleName": "./src/components/Table/Table.stories.tsx"
         },
         {
           "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
@@ -416,19 +401,19 @@
           "moduleName": "./src/components/PageHeader/PageHeader.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
+          "moduleName": "./src/components/Notification/Notification.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Notification/Notification.stories.tsx"
+          "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
         },
         {
           "moduleName": "./src/components/List/List.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Layout/LayoutWrapper.stories.tsx"
+          "moduleName": "./src/components/Link/Link.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Link/Link.stories.tsx"
+          "moduleName": "./src/components/Layout/LayoutWrapper.stories.tsx"
         },
         {
           "moduleName": "./src/components/Layout/LayoutSidebar.stories.tsx"
@@ -447,6 +432,9 @@
         },
         {
           "moduleName": "./src/components/Hero/Hero.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Headings/Headings.stories.tsx"
         },
         {
           "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
@@ -652,6 +640,18 @@
       ]
     },
     {
+      "id": "./src/components/Pagination/Pagination.storyUtils.ts",
+      "name": "./src/components/Pagination/Pagination.storyUtils.ts",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Table/Table.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
+        }
+      ]
+    },
+    {
       "id": "./src/components/Navbar/Navbar.tsx",
       "name": "./src/components/Navbar/Navbar.tsx",
       "reasons": [
@@ -827,6 +827,12 @@
           "moduleName": "./src/components/Footer/FooterCfGov.tsx"
         },
         {
+          "moduleName": "./src/components/Notification/NotificationFieldLevel.tsx"
+        },
+        {
+          "moduleName": "./src/components/Footer/BackToTop.tsx"
+        },
+        {
           "moduleName": "./src/components/Expandable/Expandable.tsx"
         },
         {
@@ -836,19 +842,13 @@
           "moduleName": "./src/components/Pagination/Pagination.tsx"
         },
         {
-          "moduleName": "./src/components/Notification/NotificationFieldLevel.tsx"
-        },
-        {
-          "moduleName": "./src/components/Footer/BackToTop.tsx"
+          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
         },
         {
           "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         },
         {
           "moduleName": "./src/components/Notification/NotificationLink.tsx"
-        },
-        {
-          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
         }
       ]
     },
@@ -905,10 +905,10 @@
           "moduleName": "./src/components/Well/Well.tsx"
         },
         {
-          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
+          "moduleName": "./src/components/Footer/FooterLinks.tsx"
         },
         {
-          "moduleName": "./src/components/Footer/FooterLinks.tsx"
+          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
         }
       ]
     },
@@ -923,13 +923,13 @@
           "moduleName": "./src/components/Well/Well.tsx"
         },
         {
+          "moduleName": "./src/components/Footer/FooterLinks.tsx"
+        },
+        {
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
         },
         {
           "moduleName": "./src/components/Link/Link.tsx"
-        },
-        {
-          "moduleName": "./src/components/Footer/FooterLinks.tsx"
         }
       ]
     },
@@ -962,7 +962,19 @@
           "moduleName": "./src/index.ts"
         },
         {
-          "moduleName": "./src/components/Table/TableComplex.tsx"
+          "moduleName": "./src/components/Table/Table.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Pagination/usePagination.tsx",
+      "name": "./src/components/Pagination/usePagination.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/index.ts"
+        },
+        {
+          "moduleName": "./src/components/Table/Table.tsx"
         }
       ]
     },
@@ -1141,36 +1153,6 @@
       ]
     },
     {
-      "id": "./src/components/Table/TableComplex.tsx",
-      "name": "./src/components/Table/TableComplex.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Table/Table.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Table/TableFilter.tsx",
-      "name": "./src/components/Table/TableFilter.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Table/Table.tsx"
-        },
-        {
-          "moduleName": "./src/components/Table/TableComplexUtils.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Table/TableSimple.tsx",
-      "name": "./src/components/Table/TableSimple.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Table/Table.tsx"
-        }
-      ]
-    },
-    {
       "id": "./src/utils/sleep.tsx",
       "name": "./src/utils/sleep.tsx",
       "reasons": [
@@ -1179,6 +1161,33 @@
         },
         {
           "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/utils/noOp.tsx",
+      "name": "./src/utils/noOp.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Pagination/usePagination.tsx"
+        },
+        {
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Pagination/paginationConstants.ts",
+      "name": "./src/components/Pagination/paginationConstants.ts",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Pagination/usePagination.tsx"
+        },
+        {
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
+        },
+        {
+          "moduleName": "./src/components/Table/Table.tsx"
         }
       ]
     },
@@ -1291,23 +1300,11 @@
       ]
     },
     {
-      "id": "./src/utils/noOp.tsx",
-      "name": "./src/utils/noOp.tsx",
+      "id": "./src/components/Table/tableUtils.tsx",
+      "name": "./src/components/Table/tableUtils.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Table/TableComplexUtils.tsx",
-      "name": "./src/components/Table/TableComplexUtils.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
-        },
-        {
-          "moduleName": "./src/components/Table/TableComplex.tsx"
+          "moduleName": "./src/components/Table/Table.tsx"
         }
       ]
     },
@@ -1353,15 +1350,6 @@
       "reasons": [
         {
           "moduleName": "./src/hooks/useIconSvg.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Table/Table.less",
-      "name": "./src/components/Table/Table.less",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Table/TableComplex.tsx"
         }
       ]
     }
