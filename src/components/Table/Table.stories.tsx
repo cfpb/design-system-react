@@ -149,7 +149,12 @@ export const Pagination: Story = {
     ]),
     isPaginated: true,
     perPage: PAGINATION_PER_PAGE
-  }
+  },
+  render: arguments_ => (
+    <div style={{ maxWidth: '770px' }}>
+      <Table {...arguments_} />
+    </div>
+  )
 };
 
 export const FixedWidth: Story = {
