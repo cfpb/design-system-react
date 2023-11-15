@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table } from '~/src/index';
-import { generateTestRows } from '../Pagination/Pagination.storyUtils';
+import { ONE } from '../Pagination/usePagination';
 
 const meta: Meta<typeof Table> = {
   title: 'Components (Verified)/Tables',
@@ -125,13 +125,28 @@ export const RightAligned: Story = {
 };
 
 const numberRows = 30;
-const paginationRows = generateTestRows(numberRows);
 
 const PAGINATION_PER_PAGE = 5;
 export const Pagination: Story = {
   args: {
-    columns: ['A', 'B'],
-    rows: paginationRows,
+    columns: [
+      'Column 1',
+      'Column 2',
+      'Column 3',
+      'Column 4',
+      'Column 5',
+      'Column 6',
+      'Column 7'
+    ],
+    rows: [...Array.from({ length: numberRows }).keys()].map(key => [
+      `Row ${key + ONE}, Column 1`,
+      `Row ${key + ONE}, Column 2`,
+      `Row ${key + ONE}, Column 3`,
+      `Row ${key + ONE}, Column 4`,
+      `Row ${key + ONE}, Column 5`,
+      `Row ${key + ONE}, Column 6`,
+      `Row ${key + ONE}, Column 7`
+    ]),
     isPaginated: true,
     perPage: PAGINATION_PER_PAGE
   }
