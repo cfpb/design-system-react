@@ -129,32 +129,18 @@ const numberRows = 30;
 const PAGINATION_PER_PAGE = 5;
 export const Pagination: Story = {
   args: {
-    columns: [
-      'Column 1',
-      'Column 2',
-      'Column 3',
-      'Column 4',
-      'Column 5',
-      'Column 6',
-      'Column 7'
-    ],
+    columns: ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'],
     rows: [...Array.from({ length: numberRows }).keys()].map(key => [
       `Row ${key + ONE}, Column 1`,
       `Row ${key + ONE}, Column 2`,
       `Row ${key + ONE}, Column 3`,
       `Row ${key + ONE}, Column 4`,
-      `Row ${key + ONE}, Column 5`,
-      `Row ${key + ONE}, Column 6`,
-      `Row ${key + ONE}, Column 7`
+      `Row ${key + ONE}, Column 5`
     ]),
     isPaginated: true,
     perPage: PAGINATION_PER_PAGE
   },
-  render: arguments_ => (
-    <div style={{ maxWidth: '770px' }}>
-      <Table {...arguments_} />
-    </div>
-  )
+  render: arguments_ => <Table {...arguments_} />
 };
 
 export const FixedWidth: Story = {

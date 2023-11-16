@@ -73,6 +73,7 @@ export const Table = ({
     tableClassnames.push('o-table o-table__stack-on-small');
   if (isDirectory) tableClassnames.push('o-table__entry-header-on-small');
   if (isStriped) tableClassnames.push('o-table__striped');
+  if (isPaginated) tableClassnames.push('u-w100pct');
 
   const tableContent = (
     <>
