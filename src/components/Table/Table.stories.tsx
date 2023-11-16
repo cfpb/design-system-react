@@ -39,7 +39,7 @@ export const Responsive: Story = {
 };
 
 export const Directory: Story = {
-  name: 'Responsive stacked table with header (directory tables)',
+  name: 'Responsive stacked table with header (directory table)',
   args: {
     columns: ['Employee name', 'Phone number', 'Email address'],
     rows: [
@@ -110,7 +110,7 @@ export const Striped: Story = {
 };
 
 export const RightAligned: Story = {
-  name: 'Right aligned table',
+  name: 'Right-aligned table',
   args: {
     columns: [
       { header: 'Col 1' },
