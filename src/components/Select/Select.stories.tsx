@@ -3,7 +3,7 @@ import { Select } from '~/src/index';
 import { DemoOptions } from './testUtils';
 
 const meta: Meta<typeof Select> = {
-  title: 'Components (Verified)/Select',
+  title: 'Components (Draft)/Select',
   component: Select,
   argTypes: {
     disabled: { control: 'boolean' },
