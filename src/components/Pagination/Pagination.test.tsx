@@ -8,14 +8,14 @@ describe('<Pagination />', () => {
     const next = screen.getByText('Next');
     expect(next).toBeInTheDocument();
 
-    const prev = screen.getByText('Previous');
-    expect(prev).toBeInTheDocument();
+    const previous = screen.getByText('Previous');
+    expect(previous).toBeInTheDocument();
   });
 
   it('disables previous button on first page', () => {
     render(<Pagination page={1} pageCount={3} />);
-    const prev = screen.getByText('Previous');
-    expect(prev.classList.contains('a-btn__disabled')).toBe(true);
+    const previous = screen.getByText('Previous');
+    expect(previous.classList.contains('a-btn__disabled')).toBe(true);
   });
 
   it('disables next button on last page', () => {

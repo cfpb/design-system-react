@@ -137,30 +137,3 @@ export const JumpLinkIconLeft: Story = {
     </Link>
   )
 };
-
-export const PrintLink: Story = {
-  name: 'Printed links',
-  render: () => {
-    const linkWeight = 500;
-    const urlWeight = 300;
-
-    return (
-      <p>
-        Here&apos;s the{' '}
-        <a
-          href='https://consumerfinance.gov/about-us/blog'
-          style={{ fontWeight: linkWeight }}
-        >
-          link style
-          <span
-            style={{ fontWeight: urlWeight, borderBottom: '1px solid #ffffff' }}
-          >
-            {' '}
-            (cfpb.gov/about-us/blog)
-          </span>
-        </a>{' '}
-        when printed.
-      </p>
-    );
-  }
-};
