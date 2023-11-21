@@ -37,7 +37,15 @@ const UnclickableLink = ({
   </span>
 );
 
-export const BannerWithLinks: Story = {
+export const USGovBanner: Story = {
+  render: properties => <Banner {...properties} />,
+  args: {
+    links: []
+  }
+};
+USGovBanner.storyName = 'US gov banner';
+
+export const USGovBannerWithLinks: Story = {
   render: properties => <Banner {...properties} />,
   args: {
     links: [
@@ -53,9 +61,10 @@ export const BannerWithLinks: Story = {
     ]
   }
 };
+USGovBannerWithLinks.storyName = 'US gov banner with generic links';
 
-export const CFGovEdition: Story = {
-  ...BannerWithLinks,
+export const USGovBannerWithCFGovLinks: Story = {
+  ...USGovBannerWithLinks,
   args: {
     links: AllLanguageCodes.filter(code => code !== 'en').map(code => (
       <UnclickableLink key={code}>
@@ -71,3 +80,4 @@ export const CFGovEdition: Story = {
     )
   }
 };
+USGovBannerWithCFGovLinks.storyName = 'US gov banner with cf.gov links';
