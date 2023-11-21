@@ -2,8 +2,8 @@ import type { HeadingLevel } from '../../types/headingLevel';
 import List from '../List/List';
 import ListItem from '../List/ListItem';
 
-interface WellProperties {
-  children: (JSX.Element | null)[] | JSX.Element;
+interface WellContainerProperties {
+  children?: (JSX.Element | null)[] | JSX.Element;
   className?: string;
 }
 
@@ -12,32 +12,32 @@ interface WellProperties {
  *
  * Source: https://cfpb.github.io/design-system/patterns/wells
  */
-const Well = ({
+const WellContainer = ({
   children,
   className = '',
   ...properties
-}: WellProperties): JSX.Element => (
+}: WellContainerProperties): JSX.Element => (
   <div className={`o-well ${className}`} {...properties}>
     {children}
   </div>
 );
 
-interface WelledCTAProperties {
-  heading: string;
+interface WellContentProperties {
+  heading?: string;
   headingLevel?: HeadingLevel;
   links?: JSX.Element[];
   text?: JSX.Element | string;
-  className?: string | undefined;
+  className?: string;
 }
 
-function WelledCTA({
+function WellContent({
   heading,
-  headingLevel = 'h4',
+  headingLevel = 'h3',
   links,
   text,
   className = '',
   ...properties
-}: WelledCTAProperties): JSX.Element {
+}: WellContentProperties): JSX.Element {
   const callsToAction = [];
   if (links)
     for (const link of links) {
@@ -45,12 +45,12 @@ function WelledCTA({
     }
 
   return (
-    <Well className={className} {...properties}>
-      <p className={headingLevel}>{heading}</p>
+    <WellContainer className={className} {...properties}>
+      {heading ? <p className={headingLevel}>{heading}</p> : null}
       {text ? <p className='text'>{text}</p> : null}
       {callsToAction.length > 0 ? <List isLinks>{callsToAction}</List> : null}
-    </Well>
+    </WellContainer>
   );
 }
 
-export { Well, WelledCTA };
+export { WellContainer, WellContent };
