@@ -5,7 +5,7 @@ const meta: Meta<typeof TextInput> = {
   title: 'Components (Draft)/Text inputs',
   component: TextInput,
   argTypes: {
-    // width: { control: 'select' },
+    width: { control: 'select' },
     isDisabled: { control: 'boolean' }
   },
   parameters: {
@@ -35,41 +35,41 @@ export const Default: Story = {
   }
 };
 
-// export const FullWidth: Story = {
-//   args: {
-//     ...Default.args,
-//     id: 'FullWidth',
-//     name: 'FullWidth',
-//     width: 'full'
-//   }
-// };
+export const FullWidth: Story = {
+  args: {
+    ...Default.args,
+    id: 'FullWidth',
+    name: 'FullWidth',
+    width: 'full'
+  }
+};
 
-// export const SuccessType: Story = {
-//   args: {
-//     ...Default.args,
-//     id: 'SuccessType',
-//     name: 'SuccessType',
-//     notificationType: 'success',
-//     textNotification: 'This is a success message'
-//   }
-// };
+export const SuccessType: Story = {
+  args: {
+    ...Default.args,
+    id: 'SuccessType',
+    name: 'SuccessType',
+    notificationType: 'success',
+    textNotification: 'This is a success message'
+  }
+};
 
-// export const WarningType: Story = {
-//   args: {
-//     ...Default.args,
-//     id: 'WarningType',
-//     name: 'WarningType',
-//     notificationType: 'warning',
-//     textNotification: 'This is a warning message'
-//   }
-// };
+export const WarningType: Story = {
+  args: {
+    ...Default.args,
+    id: 'WarningType',
+    name: 'WarningType',
+    notificationType: 'warning',
+    textNotification: 'This is a warning message'
+  }
+};
 
-// export const ErrorType: Story = {
-//   args: {
-//     ...Default.args,
-//     id: 'ErrorType',
-//     name: 'ErrorType',
-//     notificationType: 'error',
-//     textNotification: 'This is an error message'
-//   }
-// };
+export const ErrorType: Story = {
+  args: {
+    ...Default.args,
+    id: 'ErrorType',
+    name: 'ErrorType',
+    notificationType: 'error',
+    textNotification: 'This is an error message'
+  }
+};
