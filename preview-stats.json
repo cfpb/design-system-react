@@ -401,10 +401,10 @@
           "moduleName": "./src/components/PageHeader/PageHeader.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
+          "moduleName": "./src/components/Notification/Notification.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Notification/Notification.stories.tsx"
+          "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
         },
         {
           "moduleName": "./src/components/List/List.stories.tsx"
@@ -419,16 +419,16 @@
           "moduleName": "./src/components/Layout/LayoutSidebar.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Layout/LayoutMain.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Layout/LayoutContent.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Label/Label.stories.tsx"
+          "moduleName": "./src/components/Layout/LayoutMain.stories.tsx"
         },
         {
           "moduleName": "./src/components/Icon/Icon.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Label/Label.stories.tsx"
         },
         {
           "moduleName": "./src/components/Hero/Hero.stories.tsx"
@@ -682,18 +682,6 @@
       ]
     },
     {
-      "id": "./src/components/TextInput/TextInput.tsx",
-      "name": "./src/components/TextInput/TextInput.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Label/Label.stories.tsx"
-        },
-        {
-          "moduleName": "./src/index.ts"
-        }
-      ]
-    },
-    {
       "id": "./src/components/Icon/iconLists.ts",
       "name": "./src/components/Icon/iconLists.ts",
       "reasons": [
@@ -702,6 +690,18 @@
         },
         {
           "moduleName": "./src/components/Icon/Icon.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/TextInput/TextInput.tsx",
+      "name": "./src/components/TextInput/TextInput.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Label/Label.stories.tsx"
+        },
+        {
+          "moduleName": "./src/index.ts"
         }
       ]
     },
@@ -827,6 +827,12 @@
           "moduleName": "./src/components/Footer/FooterCfGov.tsx"
         },
         {
+          "moduleName": "./src/components/Notification/NotificationFieldLevel.tsx"
+        },
+        {
+          "moduleName": "./src/components/Footer/BackToTop.tsx"
+        },
+        {
           "moduleName": "./src/components/Expandable/Expandable.tsx"
         },
         {
@@ -834,12 +840,6 @@
         },
         {
           "moduleName": "./src/components/Pagination/Pagination.tsx"
-        },
-        {
-          "moduleName": "./src/components/Notification/NotificationFieldLevel.tsx"
-        },
-        {
-          "moduleName": "./src/components/Footer/BackToTop.tsx"
         },
         {
           "moduleName": "./src/components/Dropdown/Dropdown.tsx"
@@ -905,10 +905,10 @@
           "moduleName": "./src/components/Well/Well.tsx"
         },
         {
-          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
+          "moduleName": "./src/components/Footer/FooterLinks.tsx"
         },
         {
-          "moduleName": "./src/components/Footer/FooterLinks.tsx"
+          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
         }
       ]
     },
@@ -923,13 +923,13 @@
           "moduleName": "./src/components/Well/Well.tsx"
         },
         {
+          "moduleName": "./src/components/Footer/FooterLinks.tsx"
+        },
+        {
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
         },
         {
           "moduleName": "./src/components/Link/Link.tsx"
-        },
-        {
-          "moduleName": "./src/components/Footer/FooterLinks.tsx"
         }
       ]
     },
@@ -1165,11 +1165,29 @@
       ]
     },
     {
-      "id": "./src/components/Banner/Banner.less",
-      "name": "./src/components/Banner/Banner.less",
+      "id": "./src/utils/noOp.tsx",
+      "name": "./src/utils/noOp.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Banner/Banner.tsx"
+          "moduleName": "./src/components/Pagination/usePagination.tsx"
+        },
+        {
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Pagination/paginationConstants.ts",
+      "name": "./src/components/Pagination/paginationConstants.ts",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Pagination/usePagination.tsx"
+        },
+        {
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
+        },
+        {
+          "moduleName": "./src/components/Table/Table.tsx"
         }
       ]
     },
@@ -1219,11 +1237,11 @@
       ]
     },
     {
-      "id": "./src/hooks/useIconSvg.tsx",
-      "name": "./src/hooks/useIconSvg.tsx",
+      "id": "./src/components/Banner/Banner.less",
+      "name": "./src/components/Banner/Banner.less",
       "reasons": [
         {
-          "moduleName": "./src/components/Icon/Icon.tsx"
+          "moduleName": "./src/components/Banner/Banner.tsx"
         }
       ]
     },
@@ -1255,6 +1273,15 @@
       ]
     },
     {
+      "id": "./src/hooks/useIconSvg.tsx",
+      "name": "./src/hooks/useIconSvg.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Icon/Icon.tsx"
+        }
+      ]
+    },
+    {
       "id": "./src/components/Notification/Notification.css",
       "name": "./src/components/Notification/Notification.css",
       "reasons": [
@@ -1269,33 +1296,6 @@
       "reasons": [
         {
           "moduleName": "./src/components/Notification/Notification.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/utils/noOp.tsx",
-      "name": "./src/utils/noOp.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
-        },
-        {
-          "moduleName": "./src/components/Pagination/usePagination.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Pagination/paginationConstants.ts",
-      "name": "./src/components/Pagination/paginationConstants.ts",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
-        },
-        {
-          "moduleName": "./src/components/Pagination/usePagination.tsx"
-        },
-        {
-          "moduleName": "./src/components/Table/Table.tsx"
         }
       ]
     },
