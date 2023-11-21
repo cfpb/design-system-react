@@ -1,13 +1,6 @@
-import { Notification } from '../Notification/Notification';
-import type { NotificationFieldLevelType } from '../Notification/NotificationFieldLevel';
-import { NotificationFieldLevelClass } from '../Notification/NotificationFieldLevel';
+import type { ReactNode } from 'react';
 
-type TextInputReference =
-  | React.RefObject<HTMLInputElement>
-  | string
-  | ((instance: HTMLInputElement | null) => void)
-  | null
-  | undefined;
+type TextInputReference = ReactNode;
 
 export type InputType =
   | 'email'
@@ -25,12 +18,12 @@ interface RequiredTextInputProperties {
 
 interface CustomTextInputProperties {
   className?: string;
-  inputBorderColor?: string;
+  // inputBorderColor?: string;
   inputProps?: JSX.IntrinsicElements['input'];
   inputRef?: TextInputReference;
   isDisabled?: boolean;
-  notificationType?: NotificationFieldLevelType;
-  textNotification?: string;
+  // notificationType?: NotificationFieldLevelType;
+  // textNotification?: string;
   type?: InputType;
   width?: 'default' | 'full';
 }
@@ -51,12 +44,12 @@ const widthStyles = {
 export function TextInput({
   className,
   id,
-  inputBorderColor,
+  // inputBorderColor,
   inputRef,
   isDisabled = false,
   name,
-  notificationType = '',
-  textNotification,
+  // notificationType = '',
+  // textNotification,
   type = 'text',
   width = 'default',
   ...inputProperties
@@ -64,33 +57,39 @@ export function TextInput({
   const styles = [...baseStyles, ...widthStyles[width]];
   const classes = [
     className,
-    `a-text-input${NotificationFieldLevelClass[notificationType]}`,
+    // `a-text-input${NotificationFieldLevelClass[notificationType]}`,
     ...styles
   ].join(' ');
 
   return (
-    <div
-      className={`m-form-field m-form-field${NotificationFieldLevelClass[notificationType]}`}
-    >
-      <input
-        data-testid='textInput'
-        className={classes}
-        style={{ borderColor: inputBorderColor }}
-        disabled={isDisabled}
-        id={id}
-        name={name}
-        type={type}
-        ref={inputRef}
-        {...inputProperties}
-      />
-      <Notification
-        id={`${id}-notification`}
-        type={notificationType}
-        message={textNotification}
-        isFieldLevel
-      />
-    </div>
+    <input
+      data-testid='textInput'
+      className={classes}
+      // style={{ borderColor: inputBorderColor }}
+      disabled={isDisabled}
+      id={id}
+      name={name}
+      type={type}
+      ref={inputRef}
+      {...inputProperties}
+    />
   );
 }
 
 export default TextInput;
+
+// {/* <div
+//   className={`m-form-field m-form-field${NotificationFieldLevelClass[notificationType]}`}
+// > */}
+
+//       {
+//         /* <Notification
+//     id={`${id}-notification`}
+//     type={notificationType}
+//     message={textNotification}
+//     isFieldLevel
+//   /> */
+//       }
+//       {
+//         /* </div> */
+//       }
