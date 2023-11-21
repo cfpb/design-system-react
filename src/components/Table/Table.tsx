@@ -41,6 +41,8 @@ export interface TableProperties {
   startPage?: number;
   // When isPaginated, number of items to show per page
   perPage?: number;
+  // Additional CSS classes
+  className?: string;
 }
 
 /**
@@ -58,7 +60,8 @@ export const Table = ({
   isStriped = false,
   isPaginated = false,
   startPage = MIN_PAGE,
-  perPage = DEFAULT_PER_PAGE
+  perPage = DEFAULT_PER_PAGE,
+  className
 }: TableProperties): React.ReactElement => {
   const [visibleRows, paginationProperties] = usePagination({
     rows,
@@ -74,6 +77,7 @@ export const Table = ({
   if (isDirectory) tableClassnames.push('o-table__entry-header-on-small');
   if (isStriped) tableClassnames.push('o-table__striped');
   if (isPaginated) tableClassnames.push('u-w100pct');
+  if (className) tableClassnames.push(className);
 
   const tableContent = (
     <>
