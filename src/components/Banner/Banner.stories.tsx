@@ -45,26 +45,7 @@ export const USGovBanner: Story = {
 };
 USGovBanner.storyName = 'US gov banner';
 
-export const USGovBannerWithLinks: Story = {
-  render: properties => <Banner {...properties} />,
-  args: {
-    links: [
-      <UnclickableLink key='Link 1'>
-        <a href='/link'>Link 1</a>
-      </UnclickableLink>,
-      <UnclickableLink key='Link 2'>
-        <a href='/link'>Link 2</a>
-      </UnclickableLink>,
-      <UnclickableLink key='Link 3'>
-        <a href='/link'>Link 3</a>
-      </UnclickableLink>
-    ]
-  }
-};
-USGovBannerWithLinks.storyName = 'US gov banner (with generic links)';
-
 export const USGovBannerWithCFGovLinks: Story = {
-  ...USGovBannerWithLinks,
   args: {
     links: AllLanguageCodes.filter(code => code !== 'en').map(code => (
       <UnclickableLink key={code}>
@@ -81,3 +62,22 @@ export const USGovBannerWithCFGovLinks: Story = {
   }
 };
 USGovBannerWithCFGovLinks.storyName = 'US gov banner (cf.gov)';
+
+export const USGovBannerWithLinks: Story = {
+  ...USGovBannerWithCFGovLinks,
+  render: properties => <Banner {...properties} />,
+  args: {
+    links: [
+      <UnclickableLink key='Link 1'>
+        <a href='/link'>Link 1</a>
+      </UnclickableLink>,
+      <UnclickableLink key='Link 2'>
+        <a href='/link'>Link 2</a>
+      </UnclickableLink>,
+      <UnclickableLink key='Link 3'>
+        <a href='/link'>Link 3</a>
+      </UnclickableLink>
+    ]
+  }
+};
+USGovBannerWithLinks.storyName = 'US gov banner (with generic links)';
