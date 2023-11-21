@@ -3,7 +3,7 @@ import List from '../List/List';
 import ListItem from '../List/ListItem';
 
 interface WellContainerProperties {
-  children?: (JSX.Element | null)[] | JSX.Element;
+  children?: (JSX.Element | string | null)[] | JSX.Element | string;
   className?: string;
 }
 
