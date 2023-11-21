@@ -4,7 +4,7 @@ import { Banner } from '~/src/index';
 import { AllLanguageCodes, LanguageLink } from './BannerLanguageLink';
 
 const meta: Meta<typeof Banner> = {
-  title: 'Components (Draft)/Banners',
+  title: 'Components (Verified)/Banner (US gov)',
   component: Banner,
   argTypes: {}
 };
