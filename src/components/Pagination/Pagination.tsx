@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import type { EventHandler, SyntheticEvent } from 'react';
+import type { EventHandler, ReactElement, SyntheticEvent } from 'react';
 import { useEffect, useState } from 'react';
 import { noOp } from '../../utils/noOp';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
-import { FIRST_PAGE } from '../Table/TableComplexUtils';
+import { MIN_PAGE } from './paginationConstants';
 
 export interface PaginationProperties {
   /** Currently displayed page number  */
@@ -12,13 +12,13 @@ export interface PaginationProperties {
   /** Total number of available pages */
   pageCount: number;
   /** Event handler for `Previous` button */
-  onClickPrev?: () => void;
+  onClickPrevious: () => void;
   /** Event handler for `Next` button */
-  onClickNext?: () => void;
+  onClickNext: () => void;
   /** Event handler for `Go` button */
-  onClickGo?: (argument?: any) => void;
+  onClickGo: (value: number) => void;
   /** Text label for Previous button */
-  prevLabel?: string;
+  previousLabel?: string;
   /** Text label for Next button */
   nextLabel?: string;
 }
@@ -33,22 +33,22 @@ const PaginationSubmitButton = (): JSX.Element => (
   </button>
 );
 
-interface PaginationButtonProperties {
+interface PaginationNavButtonProperties {
   iconName: string;
   onClick: EventHandler<SyntheticEvent>;
   label?: string;
-  isPrev?: boolean;
+  isPrevious?: boolean;
   isNext?: boolean;
   isDisabled?: boolean;
 }
-const PaginationButton = ({
+const PaginationNavButton = ({
   iconName,
   onClick,
   label,
-  isPrev: isPrevious = false,
+  isPrevious = false,
   isNext = false,
   isDisabled = false
-}: PaginationButtonProperties): React.ReactElement => {
+}: PaginationNavButtonProperties): React.ReactElement => {
   const buttonCnames = ['a-btn'];
   const iconCnames = ['a-btn_icon'];
 
@@ -80,80 +80,96 @@ const PaginationButton = ({
 interface PaginationInputProperties {
   page: number;
   pageCount: number;
-  onChange: Function;
+  onChange: (value: number) => void;
 }
+
 const PaginationInput = ({
   page,
   pageCount,
   onChange
-}: PaginationInputProperties): React.ReactElement => (
-  <Label
-    className='m-pagination_label'
-    htmlFor='m-pagination_current-page'
-    inline
-  >
-    Page
-    <span className='u-visually-hidden'>number {page} out</span>
-    <input
-      className='m-pagination_current-page'
-      id='m-pagination_current-page-default'
-      name='page'
-      type='number'
-      min='1'
-      max={pageCount}
-      pattern='[0-9]*'
-      inputMode='numeric'
-      value={page}
-      onChange={(event): void => {
-        onChange(Number.parseInt(event.target.value));
-      }}
-    />
-    of {pageCount}
-  </Label>
-);
+}: PaginationInputProperties): React.ReactElement => {
+  const onPageChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    onChange(Number.parseInt(event.currentTarget.value, 10));
+  };
 
+  return (
+    <Label
+      className='m-pagination_label'
+      htmlFor='m-pagination_current-page'
+      inline
+    >
+      Page
+      <span className='u-visually-hidden'>number {page} out</span>
+      <input
+        className='m-pagination_current-page'
+        id='m-pagination_current-page-default'
+        name='page'
+        type='number'
+        min='1'
+        max={pageCount}
+        pattern='[0-9]*'
+        inputMode='numeric'
+        value={page}
+        onChange={onPageChange}
+      />
+      of {pageCount}
+    </Label>
+  );
+};
+
+/**
+ * Pagination is used to help split up long sets of data or content into shorter pieces, so as to make it easier for users to consume information.
+ * 
+ * Source: https://cfpb.github.io/design-system/patterns/pagination
+ */
 export const Pagination = ({
   page,
   pageCount,
-  onClickPrev: onClickPrevious = noOp,
+  onClickPrevious = noOp,
   onClickNext = noOp,
   onClickGo = noOp,
-  prevLabel: previousLabel = 'Previous',
+  previousLabel = 'Previous',
   nextLabel = 'Next'
-}: PaginationProperties): React.ReactElement => {
+}: PaginationProperties): ReactElement => {
   const [pageNumber, setPageNumber] = useState(page);
   useEffect(() => setPageNumber(page), [page]);
 
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    const formData = Object.fromEntries(new FormData(event.currentTarget));
+    const targetPage = Number.parseInt(formData.page, 10);
+    if (targetPage === page) return;
+    onClickGo(targetPage);
+  };
+
+  const onInputChange = setPageNumber;
+
   return (
     <nav className='m-pagination' role='navigation' aria-label='Pagination'>
-      <PaginationButton
+      <PaginationNavButton
         iconName='left'
         onClick={onClickPrevious}
         label={previousLabel}
-        isDisabled={pageNumber === FIRST_PAGE}
-        isPrev
+        isDisabled={page === MIN_PAGE}
+        isPrevious
       />
-      <PaginationButton
+      <PaginationNavButton
         iconName='right'
         onClick={onClickNext}
         label={nextLabel}
-        isDisabled={pageNumber === pageCount}
+        isDisabled={page === pageCount}
         isNext
       />
 
       <form
         className='m-pagination_form'
         action='#pagination_content'
-        onSubmit={e => {
-          e.preventDefault();
-          if (pageNumber == page) return;
-          onClickGo(pageNumber - 1);
-        }}
+        onSubmit={onSubmit}
       >
         <PaginationInput
           page={pageNumber}
           pageCount={pageCount}
-          onChange={setPageNumber}
+          onChange={onInputChange}
         />
         <PaginationSubmitButton />
       </form>
