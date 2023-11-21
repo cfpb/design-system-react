@@ -61,8 +61,9 @@ export const Table = ({
   isPaginated = false,
   startPage = MIN_PAGE,
   perPage = DEFAULT_PER_PAGE,
-  className
-}: TableProperties): React.ReactElement => {
+  className,
+  ...others
+}: React.HTMLProps<HTMLTableElement> & TableProperties): React.ReactElement => {
   const [visibleRows, paginationProperties] = usePagination({
     rows,
     isPaginated,
@@ -81,7 +82,11 @@ export const Table = ({
 
   const tableContent = (
     <>
-      <table data-testid='table-testid' className={classNames(tableClassnames)}>
+      <table
+        data-testid='table-testid'
+        className={classNames(tableClassnames)}
+        {...others}
+      >
         <Caption>{caption}</Caption>
         {buildColumnHeaders(columns)}
         {buildRows(visibleRows, columns)}
