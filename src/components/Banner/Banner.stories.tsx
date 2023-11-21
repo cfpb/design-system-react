@@ -61,7 +61,7 @@ export const USGovBannerWithLinks: Story = {
     ]
   }
 };
-USGovBannerWithLinks.storyName = 'US gov banner with generic links';
+USGovBannerWithLinks.storyName = 'US gov banner (with generic links)';
 
 export const USGovBannerWithCFGovLinks: Story = {
   ...USGovBannerWithLinks,
@@ -80,4 +80,4 @@ export const USGovBannerWithCFGovLinks: Story = {
     )
   }
 };
-USGovBannerWithCFGovLinks.storyName = 'US gov banner with cf.gov links';
+USGovBannerWithCFGovLinks.storyName = 'US gov banner (cf.gov)';
