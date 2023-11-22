@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Link, WellContainer, WellContent } from '~/src/index';
 
 const meta: Meta<typeof WellContainer> = {
-  title: 'Components (Draft)/Wells',
+  title: 'Components (Verified)/Wells',
   component: WellContainer,
   argTypes: {
     children: { type: 'string' }
