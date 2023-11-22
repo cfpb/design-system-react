@@ -401,10 +401,10 @@
           "moduleName": "./src/components/PageHeader/PageHeader.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
+          "moduleName": "./src/components/Notification/Notification.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Notification/Notification.stories.tsx"
+          "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
         },
         {
           "moduleName": "./src/components/List/List.stories.tsx"
@@ -640,12 +640,24 @@
       ]
     },
     {
-      "id": "./src/components/Pagination/Pagination.storyUtils.ts",
-      "name": "./src/components/Pagination/Pagination.storyUtils.ts",
+      "id": "./src/components/Pagination/usePagination.tsx",
+      "name": "./src/components/Pagination/usePagination.tsx",
       "reasons": [
         {
           "moduleName": "./src/components/Table/Table.stories.tsx"
         },
+        {
+          "moduleName": "./src/index.ts"
+        },
+        {
+          "moduleName": "./src/components/Table/Table.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Pagination/Pagination.storyUtils.ts",
+      "name": "./src/components/Pagination/Pagination.storyUtils.ts",
+      "reasons": [
         {
           "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
         }
@@ -827,6 +839,9 @@
           "moduleName": "./src/components/Footer/FooterCfGov.tsx"
         },
         {
+          "moduleName": "./src/components/Notification/NotificationFieldLevel.tsx"
+        },
+        {
           "moduleName": "./src/components/Expandable/Expandable.tsx"
         },
         {
@@ -834,9 +849,6 @@
         },
         {
           "moduleName": "./src/components/Pagination/Pagination.tsx"
-        },
-        {
-          "moduleName": "./src/components/Notification/NotificationFieldLevel.tsx"
         },
         {
           "moduleName": "./src/components/Footer/BackToTop.tsx"
@@ -957,18 +969,6 @@
     {
       "id": "./src/components/Pagination/Pagination.tsx",
       "name": "./src/components/Pagination/Pagination.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/index.ts"
-        },
-        {
-          "moduleName": "./src/components/Table/Table.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Pagination/usePagination.tsx",
-      "name": "./src/components/Pagination/usePagination.tsx",
       "reasons": [
         {
           "moduleName": "./src/index.ts"
@@ -1165,6 +1165,42 @@
       ]
     },
     {
+      "id": "./src/utils/noOp.tsx",
+      "name": "./src/utils/noOp.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Pagination/usePagination.tsx"
+        },
+        {
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Pagination/paginationConstants.ts",
+      "name": "./src/components/Pagination/paginationConstants.ts",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Pagination/usePagination.tsx"
+        },
+        {
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
+        },
+        {
+          "moduleName": "./src/components/Table/Table.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Banner/Banner.less",
+      "name": "./src/components/Banner/Banner.less",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Banner/Banner.tsx"
+        }
+      ]
+    },
+    {
       "id": "./src/components/Footer/BackToTop.tsx",
       "name": "./src/components/Footer/BackToTop.tsx",
       "reasons": [
@@ -1206,15 +1242,6 @@
       "reasons": [
         {
           "moduleName": "./src/components/Footer/Footer.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Banner/Banner.less",
-      "name": "./src/components/Banner/Banner.less",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Banner/Banner.tsx"
         }
       ]
     },
@@ -1269,33 +1296,6 @@
       "reasons": [
         {
           "moduleName": "./src/components/Notification/Notification.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/utils/noOp.tsx",
-      "name": "./src/utils/noOp.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
-        },
-        {
-          "moduleName": "./src/components/Pagination/usePagination.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Pagination/paginationConstants.ts",
-      "name": "./src/components/Pagination/paginationConstants.ts",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
-        },
-        {
-          "moduleName": "./src/components/Pagination/usePagination.tsx"
-        },
-        {
-          "moduleName": "./src/components/Table/Table.tsx"
         }
       ]
     },
