@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table } from '~/src/index';
-import { generateTestRows } from '../Pagination/Pagination.storyUtils';
+import { ONE } from '../Pagination/usePagination';
 
 const meta: Meta<typeof Table> = {
-  title: 'Components (Draft)/Tables',
+  title: 'Components (Verified)/Tables',
   component: Table
 };
 
@@ -39,7 +39,7 @@ export const Responsive: Story = {
 };
 
 export const Directory: Story = {
-  name: 'Responsive stacked table with header (directory tables)',
+  name: 'Responsive stacked table with header (directory table)',
   args: {
     columns: ['Employee name', 'Phone number', 'Email address'],
     rows: [
@@ -110,7 +110,7 @@ export const Striped: Story = {
 };
 
 export const RightAligned: Story = {
-  name: 'Right aligned table',
+  name: 'Right-aligned table',
   args: {
     columns: [
       { header: 'Col 1' },
@@ -125,16 +125,22 @@ export const RightAligned: Story = {
 };
 
 const numberRows = 30;
-const paginationRows = generateTestRows(numberRows);
 
 const PAGINATION_PER_PAGE = 5;
 export const Pagination: Story = {
   args: {
-    columns: ['A', 'B'],
-    rows: paginationRows,
+    columns: ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'],
+    rows: [...Array.from({ length: numberRows }).keys()].map(key => [
+      `Row ${key + ONE}, Column 1`,
+      `Row ${key + ONE}, Column 2`,
+      `Row ${key + ONE}, Column 3`,
+      `Row ${key + ONE}, Column 4`,
+      `Row ${key + ONE}, Column 5`
+    ]),
     isPaginated: true,
     perPage: PAGINATION_PER_PAGE
-  }
+  },
+  render: arguments_ => <Table {...arguments_} />
 };
 
 export const FixedWidth: Story = {
