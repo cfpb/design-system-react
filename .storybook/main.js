@@ -1,3 +1,5 @@
+import turbosnap from 'vite-plugin-turbosnap';
+
 module.exports = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../src/assets/'],
@@ -6,8 +8,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-a11y',
-    'display-element-css',
-    'storybook-dark-mode'
+    'display-element-css'
   ],
   docs: {
     autodocs: true,
@@ -26,6 +27,13 @@ module.exports = {
     // Skip type declaration generation for non-dist builds
     config.plugins = config.plugins.filter(
       plugin => plugin.name !== 'vite:dts'
+    );
+
+    // load Chromatic's recommended vite plugin for dist builds to create preview-stats.json
+    config.plugins = config.plugins.concat(
+      turbosnap({
+        rootDir: config.root ?? process.cwd()
+      })
     );
 
     // return the customized config

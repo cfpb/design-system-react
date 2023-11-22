@@ -2,15 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Tagline } from '~/src/index';
 
 const meta: Meta<typeof Tagline> = {
-  title: 'Components (Draft)/Taglines',
+  title: 'Components (Verified)/Taglines',
   component: Tagline,
   parameters: {
     docs: {
       description: {
         component: `
-### CFPB DS - Tagline component
 
-Source: https://cfpb.github.io/design-system/patterns/taglines
+Taglines are short paragraphs of text with the USA flag to their left that are used in the header and footer across consumerfinance.gov.
+
+Source: https://cfpb.github.io/design-system/components/taglines
 `
       }
     }
@@ -31,8 +32,10 @@ export const StandardTagline: Story = {
     </Tagline>
   )
 };
+StandardTagline.storyName = 'Standard tagline';
 
 export const LargeTagline: Story = {
   ...StandardTagline,
   args: { isLarge: true }
 };
+LargeTagline.storyName = 'Large tagline';

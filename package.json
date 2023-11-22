@@ -41,7 +41,7 @@
     "validate": "run-p lint test:ci test:e2e:headless",
     "start": "yarn storybook",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o dist-storybook --webpack-stats-json",
+    "build-storybook": "storybook build -o dist-storybook",
     "chromatic": "chromatic --storybook-build-dir dist-storybook --only-changed"
   },
   "dependencies": {
@@ -49,7 +49,6 @@
     "@cfpb/cfpb-expandables": "^0.31.0",
     "@cfpb/cfpb-forms": "^0.31.0",
     "@tanstack/react-query": "4.13.5",
-    "@tanstack/react-table": "^8.8.0",
     "classnames": "^2.3.2",
     "display-element-css": "cfpb/storybook-addon-display-element-css",
     "react": "18.2.0",
@@ -117,7 +116,6 @@
     "prettier": "2.7.1",
     "start-server-and-test": "1.14.0",
     "storybook": "^7.0.6",
-    "storybook-dark-mode": "^3.0.1",
     "stylelint": "14.15.0",
     "stylelint-config-prettier": "9.0.4",
     "stylelint-config-standard": "29.0.0",
@@ -126,6 +124,7 @@
     "vite-plugin-dts": "^2.2.0",
     "vite-plugin-pwa": "^0.14.7",
     "vite-plugin-react-remove-attributes": "^1.0.3",
+    "vite-plugin-turbosnap": "^1.0.3",
     "vite-svg-loader": "^4.0.0",
     "vite-tsconfig-paths": "3.5.2",
     "vitest": "0.25.2",

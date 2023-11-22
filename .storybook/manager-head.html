@@ -3,9 +3,22 @@
     font-size: 15px !important;
   }
 
-  div.sidebar-item[data-selected="false"]:hover,
+  /* Sidebar hover */
+  div.sidebar-item[data-selected='false']:hover,
   button.sidebar-item:hover {
     background-color: #5a5d61 !important;
     color: white !important;
   }
+
+  /* Sidebar hover/selected icons */
+  div.sidebar-item[data-selected='false']:hover svg,
+  button.sidebar-item:hover svg {
+    color: white;
+  }
+
+  /* Sidebar icons */
+  .sidebar-item svg {
+    color: black;
+  }
+
 </style>

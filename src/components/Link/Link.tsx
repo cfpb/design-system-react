@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import type { JSXElement } from '../../types/jsxElement';
 import ListItem from '../List/ListItem';
-import './Link.less';
 
 interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   type?: 'default' | 'destructive' | 'list';
@@ -11,6 +10,11 @@ interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   isJumpLeft?: boolean;
 }
 
+/**
+ * Links are navigational elements that connect users to other locations, either on the current page or to a different page or site. In contrast, <a href="https://cfpb.github.io/design-system/components/buttons">buttons</a> are used to signal important actions.
+ *
+ * Source: https://cfpb.github.io/design-system/components/links
+ */
 export default function Link({
   children,
   type = 'default',

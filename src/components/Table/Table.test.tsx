@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { TableSimple } from '~/src/index';
+import { Table } from '~/src/index';
 
 const defaultCaption = (
   <>
@@ -29,16 +29,16 @@ const columnsWithConfiguration = [
   { header: 'Right Aligned', width: 40, alignRight: true }
 ];
 
-describe('<TableSimple />', () => {
+describe('<Table />', () => {
   it('displays table when provided', () => {
     render(
-      <TableSimple
+      <Table
         caption={defaultCaption}
         columns={defaultColumns}
         rows={defaultRows}
       />
     );
-    const table = screen.queryByTestId('table-simple');
+    const table = screen.queryByTestId('table-testid');
     expect(table).toBeInTheDocument();
 
     const cell = screen.getByText('Row 1, Column 1');
@@ -47,7 +47,7 @@ describe('<TableSimple />', () => {
 
   it('displays scrollable table when provided', () => {
     render(
-      <TableSimple
+      <Table
         caption={defaultCaption}
         columns={defaultColumns}
         rows={defaultRows}
@@ -64,7 +64,7 @@ describe('<TableSimple />', () => {
 
   it('displays responsive, directory, and striped table when provided', () => {
     render(
-      <TableSimple
+      <Table
         caption={defaultCaption}
         columns={defaultColumns}
         rows={defaultRows}
@@ -74,7 +74,7 @@ describe('<TableSimple />', () => {
       />
     );
 
-    const table = screen.queryByTestId('table-simple');
+    const table = screen.queryByTestId('table-testid');
     expect(table?.classList.contains('o-table__stack-on-small')).toBe(true);
     expect(table?.classList.contains('o-table__entry-header-on-small')).toBe(
       true
@@ -84,7 +84,7 @@ describe('<TableSimple />', () => {
 
   it('accepts columns with configuration', () => {
     render(
-      <TableSimple
+      <Table
         caption={defaultCaption}
         columns={columnsWithConfiguration}
         rows={defaultRows}
@@ -94,5 +94,23 @@ describe('<TableSimple />', () => {
     const cell = screen.queryByText('Right Aligned');
     expect(cell?.classList.contains('o-table_cell__right-align')).toBe(true);
     expect(cell?.classList.contains('u-w40pct')).toBe(true);
+  });
+
+  it('Pagination controls displayed when isPaginated', () => {
+    render(
+      <Table
+        columns={columnsWithConfiguration}
+        rows={defaultRows}
+        isPaginated
+      />
+    );
+
+    const previousButton = screen.getByText('Previous');
+    expect(previousButton.classList.contains('m-pagination_btn-prev')).toBe(
+      true
+    );
+
+    const nextButton = screen.getByText('Next');
+    expect(nextButton.classList.contains('m-pagination_btn-next')).toBe(true);
   });
 });
