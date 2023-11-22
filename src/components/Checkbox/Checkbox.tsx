@@ -1,12 +1,9 @@
 import classnames from 'classnames';
-import type {
-  ChangeEvent,
-  ReactElement,
-  ReactNode,
-  RefObject
-} from 'react';
+import type { ChangeEvent, ReactElement, ReactNode, RefObject } from 'react';
 import { useCallback } from 'react';
 import { HelperText } from '../HelperText/HelperText';
+
+import { Label } from '../Label/Label';
 
 export interface CheckboxProperties {
   /** Unique identifier for this checkbox */
@@ -86,10 +83,10 @@ export const Checkbox = ({
         disabled={disabled}
         onChange={onChangeHandler}
       />
-      <label id={`${id}-label`} className='a-label' htmlFor={id}>
+      <Label id={`${id}-label`} htmlFor={id}>
         {label}
         <HelperText>{helperText}</HelperText>
-      </label>
+      </Label>
     </div>
   );
 };

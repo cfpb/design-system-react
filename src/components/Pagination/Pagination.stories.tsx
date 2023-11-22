@@ -3,7 +3,7 @@ import { Pagination, usePagination } from '~/src/index';
 import { generateTestRows, stringify } from './Pagination.storyUtils';
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Components (Draft)/Pagination',
+  title: 'Components (Verified)/Pagination',
   component: Pagination
 };
 
