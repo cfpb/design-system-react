@@ -3,7 +3,7 @@ import { Label } from '~/src/index';
 import { TextInput } from '../TextInput/TextInput';
 
 const meta: Meta<typeof Label> = {
-  title: 'Components (Draft)/Labels',
+  title: 'Components (Verified)/Labels',
   component: Label,
   argTypes: {
     inline: { control: 'boolean' }
