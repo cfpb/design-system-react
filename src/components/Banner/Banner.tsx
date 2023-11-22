@@ -31,11 +31,18 @@ const TelephoneLink = ({
 };
 
 /**
- * CFGov's Global Eyebrow component
+ *The US gov banner identifies official websites of government organizations in the United States. It helps visitors understand whether a website is official and secure.
+ *
+ * Source: <a href='https://cfpb.github.io/design-system/components/banner-us-gov' target='_blank'> https://cfpb.github.io/design-system/components/banner-us-gov</a>
  */
 export const Banner = ({
   isHorizontal = true,
-  tagline = 'This is a tagline',
+  tagline = (
+    <>
+      An official website of the{' '}
+      <span className='u-nowrap'>United States government</span>
+    </>
+  ),
   phoneNumber,
   links = [],
   className,
