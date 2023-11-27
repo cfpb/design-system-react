@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import { TextIntroduction } from './TextIntroduction';
+import { TextIntroduction } from '~/src/index';
 import placeholders from './testHelpers';
 
 const meta: Meta<typeof TextIntroduction> = {
