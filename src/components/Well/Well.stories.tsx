@@ -1,45 +1,33 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Well } from '~/src/index';
+import { Link, WellContainer, WellContent } from '~/src/index';
 
-const meta: Meta<typeof Well> = {
-  title: 'Components (Draft)/Wells',
-  component: Well,
-  argTypes: {}
+const meta: Meta<typeof WellContainer> = {
+  title: 'Components (Verified)/Wells',
+  component: WellContainer,
+  argTypes: {
+    children: { type: 'string' }
+  }
 };
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Standard: Story = {
-  args: {
-    heading: 'Well title',
-    text: (
-      <>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At quae dolor
-        distinctio tenetur quibusdam rem debitis, voluptate nesciunt culpa
-        officiis quos perspiciatis nostrum illo libero autem beatae temporibus
-        ratione reprehenderit? <a href='#'>Example link</a>.
-      </>
-    )
-  }
+export const Container: Story = {
+  name: 'Well (container)'
 };
 
-export const CallToAction: Story = {
+export const Content: Story = {
+  name: 'Well (content)',
   args: {
-    heading: 'Well title',
-    text: (
-      <>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At quae dolor
-        distinctio tenetur quibusdam rem debitis, voluptate nesciunt culpa
-        officiis quos perspiciatis nostrum illo libero autem beatae temporibus
-        ratione reprehenderit?
-      </>
-    ),
+    heading: 'Heading',
+    headingLevel: 'h3',
+    text: 'Lorem ipsum dolor sit amet, ei ius adhuc inani iudico, labitur instructior ex pri. Cu pri inani constituto, cum aeque noster commodo',
     links: [
-      <a href='#' key='example1'>
-        Example link
-      </a>
+      <Link type='list' href='/#' key='example1'>
+        Call-to-action link
+      </Link>
     ]
-  }
+  },
+  render: arguments_ => <WellContent {...arguments_} />
 };

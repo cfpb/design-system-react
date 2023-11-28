@@ -4,7 +4,7 @@ import { Banner } from '~/src/index';
 import { AllLanguageCodes, LanguageLink } from './BannerLanguageLink';
 
 const meta: Meta<typeof Banner> = {
-  title: 'Components (Draft)/Banners',
+  title: 'Components (Verified)/Banner (US gov)',
   component: Banner,
   argTypes: {}
 };
@@ -37,25 +37,15 @@ const UnclickableLink = ({
   </span>
 );
 
-export const BannerWithLinks: Story = {
+export const USGovBanner: Story = {
   render: properties => <Banner {...properties} />,
   args: {
-    links: [
-      <UnclickableLink key='Link 1'>
-        <a href='/link'>Link 1</a>
-      </UnclickableLink>,
-      <UnclickableLink key='Link 2'>
-        <a href='/link'>Link 2</a>
-      </UnclickableLink>,
-      <UnclickableLink key='Link 3'>
-        <a href='/link'>Link 3</a>
-      </UnclickableLink>
-    ]
+    links: []
   }
 };
+USGovBanner.storyName = 'US gov banner';
 
-export const CFGovEdition: Story = {
-  ...BannerWithLinks,
+export const USGovBannerWithCFGovLinks: Story = {
   args: {
     links: AllLanguageCodes.filter(code => code !== 'en').map(code => (
       <UnclickableLink key={code}>
@@ -71,3 +61,23 @@ export const CFGovEdition: Story = {
     )
   }
 };
+USGovBannerWithCFGovLinks.storyName = 'US gov banner (cf.gov)';
+
+export const USGovBannerWithLinks: Story = {
+  ...USGovBannerWithCFGovLinks,
+  render: properties => <Banner {...properties} />,
+  args: {
+    links: [
+      <UnclickableLink key='Link 1'>
+        <a href='/link'>Link 1</a>
+      </UnclickableLink>,
+      <UnclickableLink key='Link 2'>
+        <a href='/link'>Link 2</a>
+      </UnclickableLink>,
+      <UnclickableLink key='Link 3'>
+        <a href='/link'>Link 3</a>
+      </UnclickableLink>
+    ]
+  }
+};
+USGovBannerWithLinks.storyName = 'US gov banner (with generic links)';

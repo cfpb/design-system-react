@@ -43,5 +43,5 @@ export { Table } from './components/Table/Table';
 export { Tagline } from './components/Tagline/Tagline';
 export { TextInput } from './components/TextInput/TextInput';
 export { TextIntroduction } from './components/TextIntroduction/TextIntroduction';
-export { default as Well } from './components/Well/Well';
+export { WellContainer, WellContent } from './components/Well/Well';
 
