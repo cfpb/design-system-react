@@ -60,7 +60,7 @@ export const DestructiveAction: Story = {
     ...Primary.args,
     label: 'Destructive action',
     appearance: 'warning',
-    size: 'full',
+    size: 'default',
     asLink: true
   },
   render: arguments_ => (
