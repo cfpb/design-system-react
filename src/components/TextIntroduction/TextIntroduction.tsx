@@ -22,9 +22,6 @@ interface TextIntroductionProperties extends React.HTMLProps<HTMLDivElement> {
  * Source: https://cfpb.github.io/design-system/patterns/text-introductions
  */
 export const TextIntroduction = ({
-  heading,
-  subheading,
-  description,
   callToAction,
   className,
   children,

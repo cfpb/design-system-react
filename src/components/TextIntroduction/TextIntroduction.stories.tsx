@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { TextIntroduction } from '~/src/index';
 import { callToAction, description, subheading } from './testHelpers';
 
@@ -9,7 +9,9 @@ const meta: Meta<typeof TextIntroduction> = {
 
 export default meta;
 
-export const Standard = {
+type Story = StoryObj<typeof meta>;
+
+export const Standard: Story = {
   render: _arguments => (
     <TextIntroduction {..._arguments} callToAction={callToAction}>
       <TextIntroduction.Heading>Heading 1</TextIntroduction.Heading>
