@@ -27,6 +27,7 @@ export const TextIntroduction = ({
   description,
   callToAction,
   className,
+  children,
   ...properties
 }: TextIntroductionProperties): JSX.Element => {
   const cnames = ['o-text-introduction', className];
@@ -43,12 +44,29 @@ export const TextIntroduction = ({
       {...properties}
       data-testid='text-introduction-wrapper'
     >
-      <Heading type='1'>{heading}</Heading>
-      <Paragraph isLead>{subheading}</Paragraph>
-      {description ? <p>{description}</p> : null}
+      {children}
       {call2action}
     </div>
   );
 };
+interface TextIntroductionSubProperties {
+  children: ReactNode;
+}
+
+TextIntroduction.Heading = ({
+  children
+}: TextIntroductionSubProperties): JSX.Element => (
+  <Heading type='1'>{children}</Heading>
+);
+
+TextIntroduction.Description = ({
+  children
+}: TextIntroductionSubProperties): JSX.Element => <p>{children}</p>;
+
+TextIntroduction.Subheading = ({
+  children
+}: TextIntroductionSubProperties): JSX.Element => (
+  <Paragraph isLead>{children}</Paragraph>
+);
 
 export default TextIntroduction;

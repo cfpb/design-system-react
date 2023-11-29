@@ -23,7 +23,7 @@ export default function Link({
   isJump = false,
   isJumpLeft = false,
   ...others
-}: LinkProperties): JSXElement {
+}: LinkProperties): JSX.Element {
   const cname = [others.className];
 
   if (type === 'list') {
