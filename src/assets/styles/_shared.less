@@ -54,13 +54,6 @@ Apply a global line-height that doesn't interfere with component Stories
 that have their own line-height settings. 
 */
 pre.prismjs,
-:where(p:not(.sb-story *, #storybook-root *)) {
-  line-height: 22px !important;
-}
-
-/* 
-Apply a global line-height that doesn't interfere with component Stories that have their own line-height settings. 
-*/
-:where(p:not(.sb-story *, #storybook-root *)){
+#storybook-docs :where(p:not(.sb-story *)) {
   line-height: 22px !important;
 }
