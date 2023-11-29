@@ -7,17 +7,6 @@ const meta: Meta<typeof TextInput> = {
   argTypes: {
     fullWidth: { control: 'boolean' },
     isDisabled: { control: 'boolean' }
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-  Text inputs allow the user to enter any combination of letters, numbers, or symbols. Text input fields can span single or multiple lines.
-
-  Source: https://cfpb.github.io/design-system/components/text-inputs
-  `
-      }
-    }
   }
 };
 
