@@ -44,7 +44,8 @@
   Make code block plain-text readable (workaround since we can't change code highlighting theme) 
   https://github.com/storybookjs/storybook/issues/9641
   */
-  pre.prismjs {
+  pre {
+    background-color: #2b2b2b;
     color: white;
   }
 }
@@ -53,7 +54,7 @@
 Apply a global line-height that doesn't interfere with component Stories 
 that have their own line-height settings. 
 */
-pre.prismjs,
+pre,
 #storybook-docs :where(p:not(.sb-story *)) {
   line-height: 22px !important;
 }
