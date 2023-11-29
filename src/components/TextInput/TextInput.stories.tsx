@@ -127,3 +127,34 @@ export const WithButtonInsideText: Story = {
       "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable."
   }
 };
+
+export const WithButtonInsideButton: Story = {
+  render: _arguments => (
+    <div className='o-form__input-w-btn'>
+      <div className='o-form__input-w-btn_input-container'>
+        <div className='m-btn-inside-input'>
+          <TextInput {..._arguments} />
+          <button className='a-btn a-btn__link'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='cf-icon-svg cf-icon-svg__error'
+              viewBox='0 0 12 19'
+            >
+              <path d='M11.383 13.644A1.03 1.03 0 0 1 9.928 15.1L6 11.172 2.072 15.1a1.03 1.03 0 1 1-1.455-1.456l3.928-3.928L.617 5.79a1.03 1.03 0 1 1 1.455-1.456L6 8.261l3.928-3.928a1.03 1.03 0 0 1 1.455 1.456L7.455 9.716z' />
+            </svg>
+            <span className='u-visually-hidden'>Clear</span>
+          </button>
+        </div>
+      </div>
+      <div className='o-form__input-w-btn_btn-container'>
+        <button className='a-btn'>Search</button>
+      </div>
+    </div>
+  ),
+  name: 'Button inside text input with another button',
+  args: {
+    ...Default.args,
+    value:
+      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable."
+  }
+};
