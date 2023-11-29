@@ -33,7 +33,7 @@ interface CustomTextInputProperties {
   isDisabled?: boolean;
   status?: StatusType;
   type?: InputType;
-  fullWidth?: boolean;
+  isFullWidth?: boolean;
 }
 
 export type OptionalTextInputProperties = CustomTextInputProperties &
@@ -58,19 +58,19 @@ export const TextInput = forwardRef(
       name,
       status,
       type = 'text',
-      fullWidth = false,
+      isFullWidth = false,
       ...otherInputProperties
     }: JSX.IntrinsicElements['input'] & TextInputProperties,
     reference: Ref<HTMLInputElement>
   ) => {
     const classes = ['a-text-input'];
-    if (fullWidth) {
+    if (isFullWidth) {
       classes.push('a-text-input__full');
     }
     if (className) classes.push(className);
     if (status && statusAlert[status]) classes.push(statusAlert[status]);
 
-    if (fullWidth) {
+    if (isFullWidth) {
       return (
         <div className='m-form-field'>
           <input

@@ -5,7 +5,7 @@ const meta: Meta<typeof TextInput> = {
   title: 'Components (Draft)/Text inputs',
   component: TextInput,
   argTypes: {
-    fullWidth: { control: 'boolean' },
+    isFullWidth: { control: 'boolean' },
     isDisabled: { control: 'boolean' }
   }
 };
@@ -82,7 +82,7 @@ export const FullWidth: Story = {
   args: {
     ...Default.args,
     value: 'Input text',
-    fullWidth: true
+    isFullWidth: true
   }
 };
 
