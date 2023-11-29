@@ -63,6 +63,24 @@ Run `yarn test` to watch for changes and run tests automatically.
 
 [Netlify](https://www.netlify.com/) will build and deploy a preview of any pull requests you open.
 
+## Integrating changes to the CFPB Design System
+After modifications made to the Design System have been released in the [NPM package](https://www.npmjs.com/package/@cfpb/cfpb-design-system), we can integrate those changes by updating our dependencies.
+
+1. Create a PR in DSR that updates the Design System library versions
+```
+git checkout main
+git pull --rebase
+git checkout -b update-cfpb-ds
+yarn up @cfpb/cfpb-design-system
+yarn up @cfpb/cfpb-expandables
+yarn up @cfpb/cfpb-forms
+git add --all
+git commit -m 'chore: Update CFPB DS to <new.version.number>'
+git push
+```
+2. Review & merge the PR
+3. Upon merge, updates will be auto-deployed to [cfpb.github.io/design-system-react/](https://cfpb.github.io/design-system-react/)
+
 ## Open source licensing info
 
 1. [TERMS](TERMS.md)
