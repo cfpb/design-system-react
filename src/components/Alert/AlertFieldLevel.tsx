@@ -1,9 +1,9 @@
 import type { JSXElement } from '~/src/types/jsxElement';
 import { Icon } from '../Icon/Icon';
 
-export type NotificationFieldLevelType = '' | 'error' | 'success' | 'warning';
+export type AlertFieldLevelType = '' | 'error' | 'success' | 'warning';
 
-export enum NotificationFieldLevelClass {
+export enum AlertFieldLevelClass {
   '' = '',
   'error' = '__error',
   'success' = '__success',
@@ -17,31 +17,31 @@ export const MapTypeToIconName = {
   warning: 'warning'
 };
 
-export interface NotificationFieldLevelProperties
+export interface AlertFieldLevelProperties
   extends React.HTMLAttributes<HTMLDivElement> {
-  status?: NotificationFieldLevelType;
+  status?: AlertFieldLevelType;
   message: React.ReactNode;
   isVisible?: boolean;
 }
 
-export const NotificationFieldLevel = ({
+export const AlertFieldLevel = ({
   status = '',
   message,
   isVisible = true,
   ...properties
-}: NotificationFieldLevelProperties): JSXElement => {
+}: AlertFieldLevelProperties): JSXElement => {
   if (!isVisible || !message) return null;
 
   if (!['error', 'success', 'warning', ''].includes(status))
     return (
       <p data-testid='message'>
-        [Error] Unsupported field-level notification type provided: {status}
+        [Error] Unsupported field-level alert type provided: {status}
       </p>
     );
 
   return (
     <div
-      className={`a-form-alert a-form-alert${NotificationFieldLevelClass[status]}`}
+      className={`a-form-alert a-form-alert${AlertFieldLevelClass[status]}`}
       role='alert'
       {...properties}
     >

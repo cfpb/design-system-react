@@ -1,24 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Notification, NotificationFieldLevel, TextInput } from '~/src/index';
+import { Alert, AlertFieldLevel, TextInput } from '~/src/index';
 import type { StatusType } from '../TextInput/TextInput';
 
-const meta: Meta<typeof Notification> = {
-  title: 'Components (Draft)/Notifications',
-  component: Notification,
+const meta: Meta<typeof Alert> = {
+  title: 'Components (Draft)/Alerts',
+  component: Alert,
   argTypes: {
     message: { control: 'text' }
   }
-  //   parameters: {
-  //     docs: {
-  //       description: {
-  //         component: `
-  // Alerts draw a user’s attention to a change in the status of a form or page. Form-level alerts reflect a user or system action and appear below the form title. Field-level alerts appear inline with input fields and can highlight successful submissions, errors that need to be corrected, or details to know before submitting a form.
-
-  // Additional guidance: [Information (base) notification](https://cfpb.github.io/design-system/components/notifications#information-base-notification)&nbsp;&nbsp;[Modifier types](https://cfpb.github.io/design-system/components/notifications#modifier-types)&nbsp;&nbsp;[Behavior](https://cfpb.github.io/design-system/components/notifications#behavior)&nbsp;&nbsp;[Accessibility](https://cfpb.github.io/design-system/components/notifications#accessibility)&nbsp;&nbsp;[Related items](https://cfpb.github.io/design-system/components/notifications#related-items)
-  // `
-  //       }
-  //     }
-  //   }
 };
 
 export default meta;
@@ -26,7 +15,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Information: Story = {
-  render: arguments_ => <Notification {...arguments_} />,
+  render: arguments_ => <Alert {...arguments_} />,
   args: { status: 'info', message: 'A Notification' }
 };
 
@@ -94,7 +83,7 @@ export const SuccessFieldLevel: Story = {
         value='Input Text'
         type='text'
       />
-      <NotificationFieldLevel {..._arguments} />
+      <AlertFieldLevel {..._arguments} />
     </div>
   ),
   name: 'Success (field-level)',
@@ -114,7 +103,7 @@ export const WarningFieldLevel: Story = {
         value='Input Text'
         type='text'
       />
-      <NotificationFieldLevel {..._arguments} />
+      <AlertFieldLevel {..._arguments} />
     </div>
   ),
   name: 'Warning (field-level)',
@@ -134,7 +123,7 @@ export const ErrorFieldLevel: Story = {
         value='Input Text'
         type='text'
       />
-      <NotificationFieldLevel {..._arguments} />
+      <AlertFieldLevel {..._arguments} />
     </div>
   ),
   name: 'Error (field-level)',
