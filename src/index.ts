@@ -34,6 +34,7 @@ export {
 } from './components/List/ListItem';
 export { default as Navbar } from './components/Navbar/Navbar';
 export { Notification } from './components/Notification/Notification';
+export { NotificationFieldLevel } from './components/Notification/NotificationFieldLevel';
 export { default as PageHeader } from './components/PageHeader/PageHeader';
 export { Pagination } from './components/Pagination/Pagination';
 export { usePagination } from './components/Pagination/usePagination';
@@ -44,4 +45,3 @@ export { Tagline } from './components/Tagline/Tagline';
 export { TextInput } from './components/TextInput/TextInput';
 export { TextIntroduction } from './components/TextIntroduction/TextIntroduction';
 export { WellContainer, WellContent } from './components/Well/Well';
-

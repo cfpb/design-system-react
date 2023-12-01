@@ -17,35 +17,35 @@ export const MapTypeToIconName = {
   warning: 'warning'
 };
 
-interface NotificationFieldLevelProperties
+export interface NotificationFieldLevelProperties
   extends React.HTMLAttributes<HTMLDivElement> {
-  type?: NotificationFieldLevelType;
+  status?: NotificationFieldLevelType;
   message: React.ReactNode;
-  isVisible: boolean;
+  isVisible?: boolean;
 }
 
 export const NotificationFieldLevel = ({
-  type = '',
+  status = '',
   message,
-  isVisible,
+  isVisible = true,
   ...properties
 }: NotificationFieldLevelProperties): JSXElement => {
   if (!isVisible || !message) return null;
 
-  if (!['error', 'success', 'warning', ''].includes(type))
+  if (!['error', 'success', 'warning', ''].includes(status))
     return (
       <p data-testid='message'>
-        [Error] Unsupported field-level notification type provided: {type}
+        [Error] Unsupported field-level notification type provided: {status}
       </p>
     );
 
   return (
     <div
-      className={`a-form-alert a-form-alert${NotificationFieldLevelClass[type]}`}
+      className={`a-form-alert a-form-alert${NotificationFieldLevelClass[status]}`}
       role='alert'
       {...properties}
     >
-      <Icon name={MapTypeToIconName[type]} alt={type} withBg />
+      <Icon name={MapTypeToIconName[status]} alt={status} withBg />
       <span className='a-form-alert_text' data-testid='message'>
         {message}
       </span>

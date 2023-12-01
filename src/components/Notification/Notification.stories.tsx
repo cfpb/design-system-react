@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Notification } from '~/src/index';
+import { Notification, NotificationFieldLevel, TextInput } from '~/src/index';
+import type { StatusType } from '../TextInput/TextInput';
 
 const meta: Meta<typeof Notification> = {
   title: 'Components (Draft)/Notifications',
   component: Notification,
   argTypes: {
     message: { control: 'text' }
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-Notifications alert users to the state of a form or page. In forms, notifications can appear at the top of the form or in line with form fields and can highlight successful submissions, errors that need to be corrected, or details to know before submitting the form. When used on a page, notifications can call out important information about the content (including if the content is still loading).
-
-
-Additional guidance: [Information (base) notification](https://cfpb.github.io/design-system/components/notifications#information-base-notification)&nbsp;&nbsp;[Modifier types](https://cfpb.github.io/design-system/components/notifications#modifier-types)&nbsp;&nbsp;[Behavior](https://cfpb.github.io/design-system/components/notifications#behavior)&nbsp;&nbsp;[Accessibility](https://cfpb.github.io/design-system/components/notifications#accessibility)&nbsp;&nbsp;[Related items](https://cfpb.github.io/design-system/components/notifications#related-items)
-`
-      }
-    }
   }
+  //   parameters: {
+  //     docs: {
+  //       description: {
+  //         component: `
+  // Alerts draw a user’s attention to a change in the status of a form or page. Form-level alerts reflect a user or system action and appear below the form title. Field-level alerts appear inline with input fields and can highlight successful submissions, errors that need to be corrected, or details to know before submitting a form.
+
+  // Additional guidance: [Information (base) notification](https://cfpb.github.io/design-system/components/notifications#information-base-notification)&nbsp;&nbsp;[Modifier types](https://cfpb.github.io/design-system/components/notifications#modifier-types)&nbsp;&nbsp;[Behavior](https://cfpb.github.io/design-system/components/notifications#behavior)&nbsp;&nbsp;[Accessibility](https://cfpb.github.io/design-system/components/notifications#accessibility)&nbsp;&nbsp;[Related items](https://cfpb.github.io/design-system/components/notifications#related-items)
+  // `
+  //       }
+  //     }
+  //   }
 };
 
 export default meta;
@@ -27,12 +27,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Information: Story = {
   render: arguments_ => <Notification {...arguments_} />,
-  args: { type: 'info', message: 'A Notification' }
+  args: { status: 'info', message: 'A Notification' }
 };
 
-export const InformationWithExplaination: Story = {
+export const InformationWithExplanation: Story = {
   ...Information,
-  name: 'Information with explaination',
+  name: 'Information with explanation',
   args: {
     ...Information.args,
     children: 'You can also add an explanation to the notification.'
@@ -41,14 +41,14 @@ export const InformationWithExplaination: Story = {
 
 export const InformationWithLinks: Story = {
   ...Information,
-  name: 'Information with links',
+  name: 'Information with explanation and links',
   args: {
     ...Information.args,
     children: 'This is the explanation of the notification.',
     links: [
       {
         href: '/',
-        label: 'This is a link below the explaination'
+        label: 'This is a link below the explanation'
       },
       {
         href: '/',
@@ -61,47 +61,17 @@ export const InformationWithLinks: Story = {
 
 export const Success: Story = {
   ...Information,
-  args: { ...Information.args, type: 'success', message: '11 results' }
-};
-
-export const SuccessFieldLevel: Story = {
-  ...Information,
-  name: 'Success (field-level)',
-  args: {
-    ...Success.args,
-    isFieldLevel: true,
-    message: 'This is an inline alert with a success state.'
-  }
+  args: { ...Information.args, status: 'success', message: '11 results' }
 };
 
 export const Warning: Story = {
   ...Information,
-  args: { ...Information.args, type: 'warning', message: 'No results found.' }
-};
-
-export const WarningFieldLevel: Story = {
-  ...Information,
-  name: 'Warning (field-level)',
-  args: {
-    ...Warning.args,
-    isFieldLevel: true,
-    message: 'This is an inline alert with a warning state.'
-  }
+  args: { ...Information.args, status: 'warning', message: 'No results found.' }
 };
 
 export const Error: Story = {
   ...Information,
-  args: { ...Information.args, type: 'error', message: 'Page not found.' }
-};
-
-export const ErrorFieldLevel: Story = {
-  ...Information,
-  name: 'Error (field-level)',
-  args: {
-    ...Error.args,
-    isFieldLevel: true,
-    message: 'This is an inline alert with an error state.'
-  }
+  args: { ...Information.args, status: 'error', message: 'Page not found.' }
 };
 
 export const InProgress: Story = {
@@ -109,7 +79,67 @@ export const InProgress: Story = {
   name: 'In-progress',
   args: {
     ...Information.args,
-    type: 'loading',
+    status: 'loading',
     message: 'The page is loading….'
+  }
+};
+
+export const SuccessFieldLevel: Story = {
+  render: _arguments => (
+    <div className='m-form-field'>
+      <TextInput
+        id={_arguments.status as string}
+        name={_arguments.status as string}
+        status={_arguments.status as StatusType}
+        value='Input Text'
+        type='text'
+      />
+      <NotificationFieldLevel {..._arguments} />
+    </div>
+  ),
+  name: 'Success (field-level)',
+  args: {
+    status: 'success',
+    message: 'This is a field-level alert with a success status.'
+  }
+};
+
+export const WarningFieldLevel: Story = {
+  render: _arguments => (
+    <div className='m-form-field'>
+      <TextInput
+        id={_arguments.status as string}
+        name={_arguments.status as string}
+        status={_arguments.status as StatusType}
+        value='Input Text'
+        type='text'
+      />
+      <NotificationFieldLevel {..._arguments} />
+    </div>
+  ),
+  name: 'Warning (field-level)',
+  args: {
+    status: 'warning',
+    message: 'This is a field-level alert with a warning status.'
+  }
+};
+
+export const ErrorFieldLevel: Story = {
+  render: _arguments => (
+    <div className='m-form-field'>
+      <TextInput
+        id={_arguments.status as string}
+        name={_arguments.status as string}
+        status={_arguments.status as StatusType}
+        value='Input Text'
+        type='text'
+      />
+      <NotificationFieldLevel {..._arguments} />
+    </div>
+  ),
+  name: 'Error (field-level)',
+  args: {
+    status: 'error',
+    message: 'This is a field-level alert with an error status.'
   }
 };
