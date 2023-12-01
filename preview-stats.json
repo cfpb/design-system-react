@@ -392,10 +392,10 @@
           "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Table/Table.stories.tsx"
+          "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
         },
         {
-          "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
+          "moduleName": "./src/components/Table/Table.stories.tsx"
         },
         {
           "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
@@ -830,6 +830,12 @@
           "moduleName": "./src/components/Footer/FooterCfGov.tsx"
         },
         {
+          "moduleName": "./src/components/Notification/NotificationFieldLevel.tsx"
+        },
+        {
+          "moduleName": "./src/components/Footer/BackToTop.tsx"
+        },
+        {
           "moduleName": "./src/components/Expandable/Expandable.tsx"
         },
         {
@@ -839,19 +845,13 @@
           "moduleName": "./src/components/Pagination/Pagination.tsx"
         },
         {
-          "moduleName": "./src/components/Notification/NotificationFieldLevel.tsx"
-        },
-        {
-          "moduleName": "./src/components/Footer/BackToTop.tsx"
-        },
-        {
           "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         },
         {
-          "moduleName": "./src/components/Notification/NotificationLink.tsx"
+          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
         },
         {
-          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
+          "moduleName": "./src/components/Notification/NotificationLink.tsx"
         }
       ]
     },
@@ -932,10 +932,10 @@
           "moduleName": "./src/components/Well/Well.tsx"
         },
         {
-          "moduleName": "./src/components/Link/Link.tsx"
+          "moduleName": "./src/components/Footer/FooterLinks.tsx"
         },
         {
-          "moduleName": "./src/components/Footer/FooterLinks.tsx"
+          "moduleName": "./src/components/Link/Link.tsx"
         },
         {
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
