@@ -169,15 +169,6 @@
       ]
     },
     {
-      "id": "./src/components/Notification/Notification.stories.tsx",
-      "name": "./src/components/Notification/Notification.stories.tsx",
-      "reasons": [
-        {
-          "moduleName": "/virtual:/@storybook/builder-vite/storybook-stories.js"
-        }
-      ]
-    },
-    {
       "id": "./src/components/Navbar/Navbar.stories.tsx",
       "name": "./src/components/Navbar/Navbar.stories.tsx",
       "reasons": [
@@ -358,14 +349,20 @@
       ]
     },
     {
+      "id": "./src/components/Alert/Alert.stories.tsx",
+      "name": "./src/components/Alert/Alert.stories.tsx",
+      "reasons": [
+        {
+          "moduleName": "/virtual:/@storybook/builder-vite/storybook-stories.js"
+        }
+      ]
+    },
+    {
       "id": "./src/index.ts",
       "name": "./src/index.ts",
       "reasons": [
         {
           "moduleName": "./src/stories/Introduction.stories.mdx"
-        },
-        {
-          "moduleName": "./src/components/Grid/Grid.stories.tsx"
         },
         {
           "moduleName": "./src/components/Footer/Footer.stories.tsx"
@@ -378,6 +375,9 @@
         },
         {
           "moduleName": "./src/components/Banner/Banner.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Alert/Alert.stories.tsx"
         },
         {
           "moduleName": "./src/components/Well/Well.stories.tsx"
@@ -404,13 +404,10 @@
           "moduleName": "./src/components/PageHeader/PageHeader.stories.tsx"
         },
         {
-          "moduleName": "./src/components/List/List.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Notification/Notification.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/List/List.stories.tsx"
         },
         {
           "moduleName": "./src/components/Link/Link.stories.tsx"
@@ -431,13 +428,16 @@
           "moduleName": "./src/components/Label/Label.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Icon/Icon.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Hero/Hero.stories.tsx"
         },
         {
+          "moduleName": "./src/components/Icon/Icon.stories.tsx"
+        },
+        {
           "moduleName": "./src/components/Headings/Headings.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Grid/Grid.stories.tsx"
         },
         {
           "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
@@ -607,15 +607,6 @@
       ]
     },
     {
-      "id": "./src/components/TextIntroduction/testHelpers.tsx",
-      "name": "./src/components/TextIntroduction/testHelpers.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/TextIntroduction/TextIntroduction.stories.tsx"
-        }
-      ]
-    },
-    {
       "id": "./src/components/Paragraph/Paragraph.tsx",
       "name": "./src/components/Paragraph/Paragraph.tsx",
       "reasons": [
@@ -627,6 +618,15 @@
         },
         {
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/TextIntroduction/testHelpers.tsx",
+      "name": "./src/components/TextIntroduction/testHelpers.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/TextIntroduction/TextIntroduction.stories.tsx"
         }
       ]
     },
@@ -705,6 +705,27 @@
         },
         {
           "moduleName": "./src/components/Icon/Icon.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Alert/Alert.tsx",
+      "name": "./src/components/Alert/Alert.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Alert/AlertFieldLevel.tsx",
+      "name": "./src/components/Alert/AlertFieldLevel.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/index.ts"
+        },
+        {
+          "moduleName": "./src/components/Alert/Alert.tsx"
         }
       ]
     },
@@ -824,6 +845,9 @@
           "moduleName": "./src/index.ts"
         },
         {
+          "moduleName": "./src/components/Alert/AlertFieldLevel.tsx"
+        },
+        {
           "moduleName": "./src/components/Dropdown/DropdownPills.tsx"
         },
         {
@@ -836,22 +860,19 @@
           "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         },
         {
-          "moduleName": "./src/components/Footer/BackToTop.tsx"
-        },
-        {
-          "moduleName": "./src/components/Notification/Notification.tsx"
+          "moduleName": "./src/components/Alert/Alert.tsx"
         },
         {
           "moduleName": "./src/components/Pagination/Pagination.tsx"
         },
         {
+          "moduleName": "./src/components/Alert/AlertLink.tsx"
+        },
+        {
           "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
         },
         {
-          "moduleName": "./src/components/Notification/NotificationFieldLevel.tsx"
-        },
-        {
-          "moduleName": "./src/components/Notification/NotificationLink.tsx"
+          "moduleName": "./src/components/Footer/BackToTop.tsx"
         }
       ]
     },
@@ -939,15 +960,6 @@
         },
         {
           "moduleName": "./src/components/Footer/FooterLinks.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Notification/Notification.tsx",
-      "name": "./src/components/Notification/Notification.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/index.ts"
         }
       ]
     },
@@ -1148,10 +1160,10 @@
       "name": "./src/utils/sleep.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
+          "moduleName": "./src/components/Expandable/ExpandableGroup.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Expandable/ExpandableGroup.stories.tsx"
+          "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
         }
       ]
     },
@@ -1206,6 +1218,24 @@
       "reasons": [
         {
           "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Alert/Alert.css",
+      "name": "./src/components/Alert/Alert.css",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Alert/Alert.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Alert/AlertLink.tsx",
+      "name": "./src/components/Alert/AlertLink.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Alert/Alert.tsx"
         }
       ]
     },
@@ -1296,33 +1326,6 @@
       "reasons": [
         {
           "moduleName": "./src/components/Icon/Icon.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Notification/Notification.css",
-      "name": "./src/components/Notification/Notification.css",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Notification/Notification.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Notification/NotificationFieldLevel.tsx",
-      "name": "./src/components/Notification/NotificationFieldLevel.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Notification/Notification.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Notification/NotificationLink.tsx",
-      "name": "./src/components/Notification/NotificationLink.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Notification/Notification.tsx"
         }
       ]
     },
