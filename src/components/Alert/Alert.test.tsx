@@ -111,11 +111,16 @@ describe('<Alert />', () => {
 
   it('provides feedback for unsupported field-level alert type', async () => {
     const testId = 'field-level-warning';
+    const unSupportedStatus = 'incorrect-status';
     render(
-      <Alert data-testid={testId} status='info' isFieldLevel message='squish' />
+      <AlertFieldLevel
+        data-testid={testId}
+        status={unSupportedStatus}
+        message='squish'
+      />
     );
     // Renders error message
-    const message = '[Error] Unsupported field-level alert type provided: info';
+    const message = `[Error] Unsupported field-level alert type provided: ${unSupportedStatus}`;
     expect(await screen.findByText(message)).toBeVisible();
   });
 });
