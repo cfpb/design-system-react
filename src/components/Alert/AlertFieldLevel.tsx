@@ -1,51 +1,51 @@
 import type { JSXElement } from '~/src/types/jsxElement';
 import { Icon } from '../Icon/Icon';
 
-export type NotificationFieldLevelType = '' | 'error' | 'success' | 'warning';
+export type AlertFieldLevelType = 'error' | 'info' | 'success' | 'warning';
 
-export enum NotificationFieldLevelClass {
-  '' = '',
+export enum AlertFieldLevelClass {
+  'info' = '__info',
   'error' = '__error',
   'success' = '__success',
   'warning' = '__warning'
 }
 
 export const MapTypeToIconName = {
-  '': 'information',
+  info: 'information',
   error: 'error',
   success: 'approved',
   warning: 'warning'
 };
 
-interface NotificationFieldLevelProperties
+export interface AlertFieldLevelProperties
   extends React.HTMLAttributes<HTMLDivElement> {
-  type?: NotificationFieldLevelType;
+  status?: AlertFieldLevelType;
   message: React.ReactNode;
-  isVisible: boolean;
+  isVisible?: boolean;
 }
 
-export const NotificationFieldLevel = ({
-  type = '',
+export const AlertFieldLevel = ({
+  status = 'info',
   message,
-  isVisible,
+  isVisible = true,
   ...properties
-}: NotificationFieldLevelProperties): JSXElement => {
+}: AlertFieldLevelProperties): JSXElement => {
   if (!isVisible || !message) return null;
 
-  if (!['error', 'success', 'warning', ''].includes(type))
+  if (!['error', 'success', 'warning', 'info'].includes(status))
     return (
       <p data-testid='message'>
-        [Error] Unsupported field-level notification type provided: {type}
+        [Error] Unsupported field-level alert type provided: {status}
       </p>
     );
 
   return (
     <div
-      className={`a-form-alert a-form-alert${NotificationFieldLevelClass[type]}`}
+      className={`a-form-alert a-form-alert${AlertFieldLevelClass[status]}`}
       role='alert'
       {...properties}
     >
-      <Icon name={MapTypeToIconName[type]} alt={type} withBg />
+      <Icon name={MapTypeToIconName[status]} alt={status} withBg />
       <span className='a-form-alert_text' data-testid='message'>
         {message}
       </span>

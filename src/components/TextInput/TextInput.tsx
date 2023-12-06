@@ -1,13 +1,8 @@
-import { Notification } from '../Notification/Notification';
-import type { NotificationFieldLevelType } from '../Notification/NotificationFieldLevel';
-import { NotificationFieldLevelClass } from '../Notification/NotificationFieldLevel';
+import classnames from 'classnames';
+import type { Ref } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 
-type TextInputReference =
-  | React.RefObject<HTMLInputElement>
-  | string
-  | ((instance: HTMLInputElement | null) => void)
-  | null
-  | undefined;
+type TextInputReference = ReactNode;
 
 export type InputType =
   | 'email'
@@ -18,6 +13,14 @@ export type InputType =
   | 'text'
   | 'url';
 
+export type StatusType = 'error' | 'success' | 'warning';
+
+const statusAlert: Record<StatusType, string> = {
+  success: 'a-text-input__success',
+  error: 'a-text-input__error',
+  warning: 'a-text-input__warning'
+};
+
 interface RequiredTextInputProperties {
   id: string;
   name: string;
@@ -25,14 +28,12 @@ interface RequiredTextInputProperties {
 
 interface CustomTextInputProperties {
   className?: string;
-  inputBorderColor?: string;
   inputProps?: JSX.IntrinsicElements['input'];
   inputRef?: TextInputReference;
   isDisabled?: boolean;
-  notificationType?: NotificationFieldLevelType;
-  textNotification?: string;
+  status?: StatusType;
   type?: InputType;
-  width?: 'default' | 'full';
+  isFullWidth?: boolean;
 }
 
 export type OptionalTextInputProperties = CustomTextInputProperties &
@@ -41,56 +42,61 @@ export type OptionalTextInputProperties = CustomTextInputProperties &
 export type TextInputProperties = OptionalTextInputProperties &
   RequiredTextInputProperties;
 
-const baseStyles = ['a-text-input'];
+/**
+ *
+ * Text inputs allow the user to enter any combination of letters, numbers, or symbols. Text input fields can span single or multiple lines.
+ *
+ * Source: <a href='https://cfpb.github.io/design-system/components/text-inputs' target='_blank'> https://cfpb.github.io/design-system/components/text-inputs</a>
+ */
+export const TextInput = forwardRef(
+  (
+    {
+      className,
+      id,
+      inputRef,
+      isDisabled = false,
+      name,
+      status,
+      type = 'text',
+      isFullWidth = false,
+      ...otherInputProperties
+    }: JSX.IntrinsicElements['input'] & TextInputProperties,
+    reference: Ref<HTMLInputElement>
+  ) => {
+    const classes = ['a-text-input'];
+    if (isFullWidth) {
+      classes.push('a-text-input__full');
+    }
+    if (className) classes.push(className);
+    if (status && statusAlert[status]) classes.push(statusAlert[status]);
 
-const widthStyles = {
-  default: [],
-  full: ['a-text-input__full']
-};
-
-export function TextInput({
-  className,
-  id,
-  inputBorderColor,
-  inputRef,
-  isDisabled = false,
-  name,
-  notificationType = '',
-  textNotification,
-  type = 'text',
-  width = 'default',
-  ...inputProperties
-}: TextInputProperties): JSX.Element {
-  const styles = [...baseStyles, ...widthStyles[width]];
-  const classes = [
-    className,
-    `a-text-input${NotificationFieldLevelClass[notificationType]}`,
-    ...styles
-  ].join(' ');
-
-  return (
-    <div
-      className={`m-form-field m-form-field${NotificationFieldLevelClass[notificationType]}`}
-    >
+    if (isFullWidth) {
+      return (
+        <div className='m-form-field'>
+          <input
+            data-testid='textInput'
+            className={classnames(classes)}
+            disabled={isDisabled}
+            id={id}
+            name={name}
+            type={type}
+            ref={reference}
+            {...otherInputProperties}
+          />
+        </div>
+      );
+    }
+    return (
       <input
         data-testid='textInput'
-        className={classes}
-        style={{ borderColor: inputBorderColor }}
+        className={classnames(classes)}
         disabled={isDisabled}
         id={id}
         name={name}
         type={type}
-        ref={inputRef}
-        {...inputProperties}
+        ref={reference}
+        {...otherInputProperties}
       />
-      <Notification
-        id={`${id}-notification`}
-        type={notificationType}
-        message={textNotification}
-        isFieldLevel
-      />
-    </div>
-  );
-}
-
-export default TextInput;
+    );
+  }
+);
