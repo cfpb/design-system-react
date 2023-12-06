@@ -28,8 +28,8 @@ describe('usePagination', () => {
     expect(visibleRows.length).toBe(NUMBER_ROWS);
 
     // Returns placeholder Pagination props
-    expect(paginationProperties.page).toBe(0);
-    expect(paginationProperties.pageCount).toBe(0);
+    expect(paginationProperties.page).toBe(ONE);
+    expect(paginationProperties.pageCount).toBe(ONE);
   });
 
   it('Returns all rows when cannot paginate (rows.length < perPage)', () => {
@@ -43,8 +43,8 @@ describe('usePagination', () => {
     expect(visibleRows.length).toBe(4);
 
     // Returns placeholder Pagination props
-    expect(paginationProperties.page).toBe(0);
-    expect(paginationProperties.pageCount).toBe(0);
+    expect(paginationProperties.page).toBe(ONE);
+    expect(paginationProperties.pageCount).toBe(ONE);
   });
 
   it('Returns returns first page of content by default when paginating', () => {
