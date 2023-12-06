@@ -398,10 +398,10 @@
           "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
+          "moduleName": "./src/components/PageHeader/PageHeader.stories.tsx"
         },
         {
-          "moduleName": "./src/components/PageHeader/PageHeader.stories.tsx"
+          "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
         },
         {
           "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
@@ -646,15 +646,6 @@
       ]
     },
     {
-      "id": "./src/components/Pagination/Pagination.storyUtils.ts",
-      "name": "./src/components/Pagination/Pagination.storyUtils.ts",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
-        }
-      ]
-    },
-    {
       "id": "./src/components/Navbar/Navbar.tsx",
       "name": "./src/components/Navbar/Navbar.tsx",
       "reasons": [
@@ -669,6 +660,15 @@
         },
         {
           "moduleName": "./src/components/PageHeader/PageHeader.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Pagination/Pagination.storyUtils.ts",
+      "name": "./src/components/Pagination/Pagination.storyUtils.ts",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
         }
       ]
     },
@@ -857,9 +857,6 @@
           "moduleName": "./src/components/Expandable/Expandable.tsx"
         },
         {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        },
-        {
           "moduleName": "./src/components/Alert/Alert.tsx"
         },
         {
@@ -869,10 +866,13 @@
           "moduleName": "./src/components/Alert/AlertLink.tsx"
         },
         {
-          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
+          "moduleName": "./src/components/Footer/BackToTop.tsx"
         },
         {
-          "moduleName": "./src/components/Footer/BackToTop.tsx"
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        },
+        {
+          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
         }
       ]
     },
@@ -893,10 +893,10 @@
           "moduleName": "./src/components/Checkbox/Checkbox.tsx"
         },
         {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
         },
         {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         }
       ]
     },
@@ -1195,33 +1195,6 @@
       ]
     },
     {
-      "id": "./src/components/Dropdown/Dropdown.less",
-      "name": "./src/components/Dropdown/Dropdown.less",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
-      "name": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Dropdown/styles.tsx",
-      "name": "./src/components/Dropdown/styles.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        }
-      ]
-    },
-    {
       "id": "./src/components/Alert/Alert.css",
       "name": "./src/components/Alert/Alert.css",
       "reasons": [
@@ -1326,6 +1299,33 @@
       "reasons": [
         {
           "moduleName": "./src/components/Icon/Icon.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Dropdown/Dropdown.less",
+      "name": "./src/components/Dropdown/Dropdown.less",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
+      "name": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Dropdown/styles.tsx",
+      "name": "./src/components/Dropdown/styles.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         }
       ]
     },
