@@ -3,10 +3,14 @@
 }
 
 #landing-page {
+  .list-none {
+    list-style: none;
+  }
+  
   .subsection-wrapper {
-    margin-bottom: 1.5em;
     display: flex;
     flex-direction: row;
+    margin-bottom: 1.5em;
     padding-right: 5em;
 
     .left-padded {
@@ -27,7 +31,6 @@
     ul {
       padding-left: 0;
       margin-top: 1em;
-      list-style: none;
 
       li {
         margin-bottom: 0.5em;
@@ -41,5 +44,18 @@
 
   .green {
     color: #20aa3f;
+  }
+}
+
+// Mobile styles
+@media only all and (max-width: 600px) {
+  #landing-page {
+    .subsection-wrapper {
+      padding: 0;
+    }
+
+    .m-list_link {
+      margin-top: 0.25em;
+    }
   }
 }
