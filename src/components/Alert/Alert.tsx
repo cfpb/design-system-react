@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import type { HeadingLevel } from '../../types/headingLevel';
 import { Icon } from '../Icon/Icon';
-import './Notification.css';
-import type { NotificationFieldLevelType } from './NotificationFieldLevel';
-import { NotificationFieldLevel } from './NotificationFieldLevel';
-import type { NotificationLinkProperties } from './NotificationLink';
-import { NotificationLink } from './NotificationLink';
+import './Alert.css';
+import type { AlertFieldLevelType } from './AlertFieldLevel';
+import { AlertFieldLevel } from './AlertFieldLevel';
+import type { AlertLinkProperties } from './AlertLink';
+import { AlertLink } from './AlertLink';
 
 export const iconByType: Record<string, { name: string; withBg: boolean }> = {
   error: { name: 'error', withBg: true },
@@ -15,61 +15,44 @@ export const iconByType: Record<string, { name: string; withBg: boolean }> = {
   warning: { name: 'warning', withBg: true }
 };
 
-export type NotificationType =
-  | 'error'
-  | 'info'
-  | 'loading'
-  | 'success'
-  | 'warning';
+export type AlertType = 'error' | 'info' | 'loading' | 'success' | 'warning';
 
-interface NotificationProperties {
-  type?: NotificationFieldLevelType | NotificationType;
+interface AlertProperties {
+  status?: AlertFieldLevelType | AlertType;
   message?: React.ReactNode;
   headingLevel?: HeadingLevel;
   children?: React.ReactNode;
-  links?: NotificationLinkProperties[];
+  links?: AlertLinkProperties[];
   isVisible?: boolean;
   isFieldLevel?: boolean;
   showIcon?: boolean;
 }
 
 /**
- * CFPB DS Notification
+ * Alerts draw a user’s attention to a change in the status of a form or page. Form-level alerts reflect a user or system action and appear below the form title. Field-level alerts appear inline with input fields and can highlight successful submissions, errors that need to be corrected, or details to know before submitting a form. *
  *
- * https://cfpb.github.io/design-system/components/notifications
+ * Source: https://cfpb.github.io/design-system/components/alerts
  *
- * @param children Notification explaination
- * @param className Any additional classnames for the notification wrapper
- * @param headingLevel Controls sizing of primary message
- * @param links Links
- * @param message Notification reason
- * @param type Type of notification
- * @param isVisible Display/hide notification
- * @param isFieldLevel Render a field-level notification
- * @param showIcon Display/hide notification icon
- * @returns ReactElement
  */
-export const Notification = ({
+export const Alert = ({
   children,
   className,
   headingLevel = 'h4',
   links,
   message,
-  type = 'info',
+  status = 'info',
   isVisible = true,
   isFieldLevel = false,
   showIcon = true,
   ...properties
-}: NotificationProperties &
+}: AlertProperties &
   React.HTMLAttributes<HTMLDivElement>): React.ReactElement | null => {
   if (!isVisible) return null;
 
   if (isFieldLevel) {
     return (
       // @ts-expect-error NotificationFieldLevel provides feedback for incompatible `type` values
-      <NotificationFieldLevel
-        {...{ type, message, isVisible, ...properties }}
-      />
+      <AlertFieldLevel {...{ status, message, isVisible, ...properties }} />
     );
   }
 
@@ -77,17 +60,17 @@ export const Notification = ({
     'm-notification',
     'm-notification__visible',
     {
-      'm-notification__success': type === 'success',
-      'm-notification__warning': type === 'warning',
-      'm-notification__error': type === 'error',
-      'm-notification__info': type === 'info'
+      'm-notification__success': status === 'success',
+      'm-notification__warning': status === 'warning',
+      'm-notification__error': status === 'error',
+      'm-notification__info': status === 'info'
     },
     className
   );
 
   return (
     <div className={classes} data-testid='notification' {...properties}>
-      {showIcon ? <Icon {...iconByType[type]} /> : null}
+      {showIcon ? <Icon {...iconByType[status]} /> : null}
       <div className='m-notification_content'>
         {message ? (
           <p
@@ -98,14 +81,14 @@ export const Notification = ({
           </p>
         ) : null}
         {children ? (
-          <p className='m-notification_explanation' data-testid='explaination'>
+          <p className='m-notification_explanation' data-testid='explanation'>
             {children}
           </p>
         ) : null}
         {links && links.length > 0 ? (
           <ul className='m-list m-list__links'>
             {links.map(link => (
-              <NotificationLink {...link} key={link.href} />
+              <AlertLink {...link} key={link.href} />
             ))}
           </ul>
         ) : null}
@@ -114,4 +97,4 @@ export const Notification = ({
   );
 };
 
-export default Notification;
+export default Alert;

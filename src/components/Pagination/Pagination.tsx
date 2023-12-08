@@ -120,7 +120,7 @@ const PaginationInput = ({
 /**
  * Pagination is used to help split up long sets of data or content into shorter pieces, so as to make it easier for users to consume information.
  * 
- * Source: https://cfpb.github.io/design-system/patterns/pagination
+ * Source: https://cfpb.github.io/design-system/components/pagination
  */
 export const Pagination = ({
   page,
@@ -128,8 +128,8 @@ export const Pagination = ({
   onClickPrevious = noOp,
   onClickNext = noOp,
   onClickGo = noOp,
-  previousLabel = 'Previous',
-  nextLabel = 'Next'
+  previousLabel = ' Previous',
+  nextLabel = 'Next '
 }: PaginationProperties): ReactElement => {
   const [pageNumber, setPageNumber] = useState(page);
   useEffect(() => setPageNumber(page), [page]);

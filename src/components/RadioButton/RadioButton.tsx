@@ -1,5 +1,6 @@
 import type React from 'react';
 import { HelperText } from '../HelperText/HelperText';
+import { Label } from '../Label/Label';
 
 interface RadioProperties {
   id: string;
@@ -45,10 +46,10 @@ export const RadioButton = ({
         ref={inputRef}
         disabled={disabled}
       />
-      <label className='a-label' htmlFor={id}>
+      <Label htmlFor={id}>
         {label}
         <HelperText>{helperText}</HelperText>
-      </label>
+      </Label>
     </div>
   );
 };

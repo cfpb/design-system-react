@@ -1,46 +1,52 @@
 import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
-import { Notification } from '~/src/index';
+import { Alert, AlertFieldLevel } from '~/src/index';
+import { AlertType } from './Alert';
 
-const testType = (type: string) => async (): Promise<void> => {
-  render(<Notification type={type} />);
+const testType = (status: AlertType) => async (): Promise<void> => {
+  render(<Alert status={status} />);
   const element = screen.getByTestId('notification');
-  expect(element).toHaveClass(`m-notification__${type}`);
+  expect(element).toHaveClass(`m-notification__${status}`);
 
   // Renders Icon
   const icon = await within(element).findByRole('img');
   expect(icon).toBeInTheDocument();
 };
 
-const notificationTypes = ['success', 'warning', 'error', 'info'];
+const notificationStatuses: AlertType[] = [
+  'success',
+  'warning',
+  'error',
+  'info'
+];
 
-describe('<Notification />', () => {
-  for (const type of notificationTypes) {
-    it(`renders notification of type "${type}"`, testType(type));
+describe('<Alert />', () => {
+  for (const status of notificationStatuses) {
+    it(`renders alert of type "${status}"`, testType(status));
   }
 
   it('displays message when provided', () => {
-    render(<Notification type='info' />);
+    render(<Alert status='info' />);
     const noMessage = screen.queryByTestId('message');
     expect(noMessage).not.toBeInTheDocument();
 
-    render(<Notification type='info' message='testing' />);
+    render(<Alert status='info' message='testing' />);
     const message = screen.queryByTestId('message');
     expect(message).toBeInTheDocument();
   });
 
-  it('displays explaination when provided', () => {
-    render(<Notification type='info' />);
-    const noExplaination = screen.queryByTestId('explaination');
-    expect(noExplaination).not.toBeInTheDocument();
+  it('displays explanation when provided', () => {
+    render(<Alert status='info' />);
+    const noExplanation = screen.queryByTestId('explanation');
+    expect(noExplanation).not.toBeInTheDocument();
 
-    render(<Notification type='info'>Explaination</Notification>);
-    const explaination = screen.queryByTestId('explaination');
-    expect(explaination).toBeInTheDocument();
+    render(<Alert status='info'>Explanation</Alert>);
+    const explanation = screen.queryByTestId('explanation');
+    expect(explanation).toBeInTheDocument();
   });
 
   it('displays links when provided', async () => {
-    render(<Notification type='info' />);
+    render(<Alert status='info' />);
     const noLinks = screen.queryAllByRole('listitem');
     expect(noLinks.length).toBe(0);
 
@@ -49,7 +55,7 @@ describe('<Notification />', () => {
       { href: '/2', label: 'two', isExternal: true }
     ];
 
-    render(<Notification type='info' links={linkItems} />);
+    render(<Alert status='info' links={linkItems} />);
     const links = screen.queryAllByRole('listitem');
     expect(links.length).toBe(2);
 
@@ -66,12 +72,12 @@ describe('<Notification />', () => {
     expect(externalIcon).toHaveClass('cf-icon-svg__external-link');
   });
 
-  it('renders field-level notifications', async () => {
+  it('renders field-level alerts', async () => {
     const testId = 'field-level-warning';
     render(
-      <Notification
+      <Alert
         data-testid={testId}
-        type='warning'
+        status='warning'
         isFieldLevel
         message='squish'
       />
@@ -87,19 +93,34 @@ describe('<Notification />', () => {
     expect(message).toBeInTheDocument();
   });
 
-  it('provides feedback for unsupported field-level notification type', async () => {
+  it('renders field-level alerts as its own component', async () => {
     const testId = 'field-level-warning';
     render(
-      <Notification
+      <AlertFieldLevel data-testid={testId} status='warning' message='squish' />
+    );
+    const element = screen.getByTestId(testId);
+
+    // Renders Icon
+    const icon = await within(element).findByRole('img');
+    expect(icon).toBeInTheDocument();
+
+    // Render message
+    const message = screen.queryByTestId('message');
+    expect(message).toBeInTheDocument();
+  });
+
+  it('provides feedback for unsupported field-level alert type', async () => {
+    const testId = 'field-level-warning';
+    const unSupportedStatus = 'incorrect-status';
+    render(
+      <AlertFieldLevel
         data-testid={testId}
-        type='info'
-        isFieldLevel
+        status={unSupportedStatus}
         message='squish'
       />
     );
     // Renders error message
-    const message =
-      '[Error] Unsupported field-level notification type provided: info';
+    const message = `[Error] Unsupported field-level alert type provided: ${unSupportedStatus}`;
     expect(await screen.findByText(message)).toBeVisible();
   });
 });

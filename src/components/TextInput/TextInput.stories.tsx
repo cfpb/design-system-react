@@ -1,23 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextInput } from '~/src/index';
+import { Button, Icon, TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
   title: 'Components (Draft)/Text inputs',
   component: TextInput,
   argTypes: {
-    width: { control: 'select' },
+    isFullWidth: { control: 'boolean' },
     isDisabled: { control: 'boolean' }
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-### CFPB DS - TextInput component
-
-Source: https://cfpb.github.io/design-system/components/text-inputs
-`
-      }
-    }
   }
 };
 
@@ -27,49 +16,125 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    id: 'Default',
     name: 'Default',
-    placeholder: 'Placeholder text',
-    width: 'default',
+    id: 'Default',
+    value: 'Default',
     type: 'text'
   }
 };
 
+export const Hover: Story = {
+  args: {
+    ...Default.args,
+    value: 'Hover'
+  },
+  render: _arguments => <TextInput {..._arguments} className='hover' />
+};
+
+export const Focus: Story = {
+  args: {
+    ...Default.args,
+    value: 'Focus'
+  },
+  render: _arguments => <TextInput {..._arguments} className='focus' />
+};
+
+export const Disabled: Story = {
+  args: {
+    ...Default.args,
+    value: 'Disabled',
+    disabled: true
+  }
+};
+
+export const Success: Story = {
+  args: {
+    ...Default.args,
+    value: 'Success',
+    status: 'success'
+  }
+};
+
+export const Warning: Story = {
+  args: {
+    ...Default.args,
+    value: 'Warning',
+    status: 'warning'
+  }
+};
+
+export const Error: Story = {
+  args: {
+    ...Default.args,
+    value: 'Error',
+    status: 'error'
+  }
+};
+
 export const FullWidth: Story = {
+  name: 'Text input (full width)',
   args: {
     ...Default.args,
-    id: 'FullWidth',
-    name: 'FullWidth',
-    width: 'full'
+    value: 'Input text',
+    isFullWidth: true
   }
 };
 
-export const SuccessType: Story = {
+export const WithButton: Story = {
+  name: 'Text input (with button)',
   args: {
     ...Default.args,
-    id: 'SuccessType',
-    name: 'SuccessType',
-    notificationType: 'success',
-    textNotification: 'This is a success message'
-  }
+    value: ''
+  },
+  render: _arguments => (
+    <div className='o-form__input-w-btn'>
+      <div className='o-form__input-w-btn_input-container'>
+        <TextInput {..._arguments} />
+      </div>
+      <div className='o-form__input-w-btn_btn-container'>
+        <Button label='Search' />
+      </div>
+    </div>
+  )
 };
 
-export const WarningType: Story = {
+export const WithButtonInsideText: Story = {
+  name: 'Button inside text input',
   args: {
     ...Default.args,
-    id: 'WarningType',
-    name: 'WarningType',
-    notificationType: 'warning',
-    textNotification: 'This is a warning message'
-  }
+    value:
+      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable."
+  },
+  render: _arguments => (
+    <div className='m-btn-inside-input'>
+      <TextInput {..._arguments} />
+      <button className='a-btn a-btn__link'>
+        <Icon name='error' />
+      </button>
+    </div>
+  )
 };
 
-export const ErrorType: Story = {
+export const WithButtonInsideButton: Story = {
+  name: 'Button inside text input with another button',
   args: {
     ...Default.args,
-    id: 'ErrorType',
-    name: 'ErrorType',
-    notificationType: 'error',
-    textNotification: 'This is an error message'
-  }
+    value:
+      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable."
+  },
+  render: _arguments => (
+    <div className='o-form__input-w-btn'>
+      <div className='o-form__input-w-btn_input-container'>
+        <div className='m-btn-inside-input'>
+          <TextInput {..._arguments} />
+          <button className='a-btn a-btn__link'>
+            <Icon name='error' />
+          </button>
+        </div>
+      </div>
+      <div className='o-form__input-w-btn_btn-container'>
+        <button className='a-btn'>Search</button>
+      </div>
+    </div>
+  )
 };

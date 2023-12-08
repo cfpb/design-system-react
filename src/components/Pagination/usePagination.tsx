@@ -41,8 +41,8 @@ export const usePagination = ({
   }, [page, pageCount, perPage]);
 
   const defaultProperties: PaginationProperties = {
-    page: 0,
-    pageCount: 0,
+    page: MIN_PAGE,
+    pageCount: MIN_PAGE,
     onClickNext: noOp,
     onClickPrevious: noOp,
     onClickGo: noOp
