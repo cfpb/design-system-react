@@ -1,4 +1,5 @@
-import { Heading, WellContainer } from '~/src/';
+import { Heading, WellContainer } from '~/src';
+import './AffiliateInformation.less';
 import { DisplayField } from './DisplayField';
 import type { InstitutionDetailsApiType } from './institutionDetails.type';
 
@@ -8,7 +9,7 @@ export function AffiliateInformation({
   data: InstitutionDetailsApiType;
 }): JSX.Element {
   return (
-    <>
+    <div className='affiliate-information'>
       <Heading type='3' className='u-mt45'>
         Affiliate information
       </Heading>
@@ -55,7 +56,7 @@ export function AffiliateInformation({
           className='u-w33pct inline'
         />
       </WellContainer>
-    </>
+    </div>
   );
 }
 export default AffiliateInformation;
