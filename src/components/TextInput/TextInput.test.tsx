@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { TextInput } from '~/src/index';
 import { InputType } from './TextInput';
 
@@ -24,25 +24,6 @@ describe('<TextInput />', () => {
   for (const type of inputTypes)
     it(`Renders input of type ${type}`, testInputType(type));
 
-  it('Displays notification', async () => {
-    render(
-      <TextInput
-        id='alert'
-        name='alert'
-        type='number'
-        notificationType='success'
-        textNotification='Success message'
-      />
-    );
-
-    const alert = screen.getByRole('alert');
-    expect(alert).toHaveClass('a-form-alert__success');
-
-    const icon = await within(alert).findByRole('img');
-    expect(icon).toBeInTheDocument();
-    expect(screen.getByText('Success message')).toBeInTheDocument();
-  });
-
   it('Disabled input', async () => {
     render(<TextInput id='alert' name='alert' type='number' isDisabled />);
 
@@ -50,10 +31,19 @@ describe('<TextInput />', () => {
     expect(disabled).toHaveAttribute('disabled');
   });
 
-  it('Full width', async () => {
-    render(<TextInput id='alert' name='alert' type='number' width='full' />);
+  it('Status', async () => {
+    render(
+      <TextInput id='alert' name='alert' type='number' status='success' />
+    );
 
-    const full = screen.getByTestId('textInput');
-    expect(full).toHaveClass('a-text-input__full');
+    const textInput = screen.getByTestId('textInput');
+    expect(textInput).toHaveClass('a-text-input__success');
+  });
+
+  it('Full width', async () => {
+    render(<TextInput id='alert' name='alert' type='number' isFullWidth />);
+
+    const textInput = screen.getByTestId('textInput');
+    expect(textInput).toHaveClass('a-text-input__full');
   });
 });

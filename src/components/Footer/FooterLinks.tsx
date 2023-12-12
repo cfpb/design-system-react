@@ -16,7 +16,7 @@ export const NavLinks = ({ children }: WrapperProperties): JSXElement => {
 
   return (
     <List className='o-footer_nav-list'>
-      <ListItemBuilder className='m-list_link'>{children}</ListItemBuilder>
+      <ListItemBuilder itemClassname='m-list_link'>{children}</ListItemBuilder>
     </List>
   );
 };
@@ -31,7 +31,7 @@ export const SocialLinks = ({ children }: WrapperProperties): JSXElement => {
     <div className='block block__flush-top block__flush-bottom block__padded-top'>
       <div className='m-social-media m-social-media__follow'>
         <List className='m-social-media_icons' isUnstyled isHorizontal>
-          <ListItemBuilder className='m-social-media_icon'>
+          <ListItemBuilder itemClassname='m-social-media_icon'>
             {children}
           </ListItemBuilder>
         </List>
@@ -51,7 +51,9 @@ export const FooterLinksColumn = ({
   return (
     <div className='o-footer_col'>
       <List className='o-footer_list'>
-        <ListItemBuilder className='m-list_link'>{children}</ListItemBuilder>
+        <ListItemBuilder itemClassname='m-list_link'>
+          {children}
+        </ListItemBuilder>
       </List>
     </div>
   );

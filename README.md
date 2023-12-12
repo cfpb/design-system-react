@@ -21,18 +21,15 @@ If you're using yarn v2 or greater, [`yarn pack`](https://yarnpkg.com/advanced/l
 ## Usage
 
 ```ts
-import { Button, Notification } from 'design-system-react';
+import { Button, Alert } from 'design-system-react';
 import type { ReactElement } from 'react';
 
 export default function SomePage(): ReactElement {
   return (
     <main>
-      <Notification
-        message='2025-Q1 Quarterly filing period is open'
-        type='success'
-      >
+      <Alert message='2025-Q1 Quarterly filing period is open' type='success'>
         Submissions of 2025-Q1 SBL data will be accepted through May 2025.
-      </Notification>
+      </Alert>
       <Button onClick={async () => login()} label='Log in' />
       <Button
         onClick={async () => register()}
@@ -62,6 +59,27 @@ Add tests to files called `<component-name>.test.tsx`. See [`Buttons.test.tsx`](
 Run `yarn test` to watch for changes and run tests automatically.
 
 [Netlify](https://www.netlify.com/) will build and deploy a preview of any pull requests you open.
+
+## Integrating changes to the CFPB Design System
+
+After modifications made to the Design System have been released in the [NPM package](https://www.npmjs.com/package/@cfpb/cfpb-design-system), we can integrate those changes by updating our dependencies.
+
+1. Create a PR in DSR that updates the Design System library versions
+
+```
+git checkout main
+git pull --rebase
+git checkout -b update-cfpb-ds
+yarn up @cfpb/cfpb-design-system
+yarn up @cfpb/cfpb-expandables
+yarn up @cfpb/cfpb-forms
+git add --all
+git commit -m 'chore: Update CFPB DS to <new.version.number>'
+git push
+```
+
+2. Review & merge the PR
+3. Upon merge, updates will be auto-deployed to [cfpb.github.io/design-system-react/](https://cfpb.github.io/design-system-react/)
 
 ## Open source licensing info
 

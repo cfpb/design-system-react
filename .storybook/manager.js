@@ -9,6 +9,8 @@ addons.setConfig({
         // Sentence case
         let newName = name.toLowerCase();
         newName = newName[0].toUpperCase() + newName.substr(1);
+        // Preserve US (United States) initials - would cause problems for 'us' as a pronoun
+        newName = newName.replace(/\b[Uu]s\b/, 'US');
         return newName;
       }
       return name;

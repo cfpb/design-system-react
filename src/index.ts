@@ -1,5 +1,7 @@
 import './assets/styles/_shared.less';
 
+export { Alert } from './components/Alert/Alert';
+export { AlertFieldLevel } from './components/Alert/AlertFieldLevel';
 export { Banner } from './components/Banner/Banner';
 export { LanguageLink } from './components/Banner/BannerLanguageLink';
 export { Button } from './components/Buttons/Button';
@@ -33,7 +35,6 @@ export {
   ListItemBuilder
 } from './components/List/ListItem';
 export { default as Navbar } from './components/Navbar/Navbar';
-export { Notification } from './components/Notification/Notification';
 export { default as PageHeader } from './components/PageHeader/PageHeader';
 export { Pagination } from './components/Pagination/Pagination';
 export { usePagination } from './components/Pagination/usePagination';
@@ -42,5 +43,5 @@ export { RadioButton } from './components/RadioButton/RadioButton';
 export { Table } from './components/Table/Table';
 export { Tagline } from './components/Tagline/Tagline';
 export { TextInput } from './components/TextInput/TextInput';
+export { TextIntroduction } from './components/TextIntroduction/TextIntroduction';
 export { WellContainer, WellContent } from './components/Well/Well';
-
