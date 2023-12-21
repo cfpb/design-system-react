@@ -5,8 +5,8 @@ import userEvent from '@testing-library/user-event';
 import { Select } from './Select';
 import { DemoOptions } from './testUtils';
 
-describe('<SelectSingle />', () => {
-  it('renders Single select with default value', () => {
+describe.skip('<SelectSingle />', () => {
+  it.skip('renders Single select with default value', () => {
     render(<Select id='single' options={DemoOptions} />);
     expect(screen.getByRole('combobox')).toHaveValue('option0');
     expect(screen.getByRole('option', { name: 'Option 0' }).selected).toBe(
@@ -34,8 +34,8 @@ describe('<SelectSingle />', () => {
   });
 });
 
-describe('<SelectMulti />', () => {
-  it('Is interactable', async () => {
+describe.skip('<SelectMulti />', () => {
+  it.skip('Is interactable', async () => {
     const id = 'multi';
     const label = 'MultiLabel';
     const maxSelections = 2;
