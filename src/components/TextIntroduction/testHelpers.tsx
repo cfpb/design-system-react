@@ -12,6 +12,13 @@ export const callToActionText = 'Call-to-action link';
 
 export const callToAction = <Link href='/'>{callToActionText}</Link>;
 
+export const placeholders = {
+  heading,
+  subheading,
+  description,
+  callToAction
+};
+
 export default {
   heading,
   description,

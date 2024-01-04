@@ -7,6 +7,7 @@ import {
   callToActionText,
   description,
   heading,
+  placeholders,
   subheading
 } from './testHelpers';
 
