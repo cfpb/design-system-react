@@ -68,6 +68,8 @@ TextIntroduction.Container = ({
     </div>
   );
 };
+
+export const TextIntroductionContainer = TextIntroduction.Container;
 interface TextIntroductionSubProperties {
   children: ReactNode;
 }
@@ -78,14 +80,20 @@ TextIntroduction.Heading = ({
   <Heading type='1'>{children}</Heading>
 );
 
+export const TextIntroductionHeading = TextIntroduction.Heading;
+
 TextIntroduction.Description = ({
   children
 }: TextIntroductionSubProperties): JSX.Element => <p>{children}</p>;
+
+export const TextIntroductionDescription = TextIntroduction.Description;
 
 TextIntroduction.Subheading = ({
   children
 }: TextIntroductionSubProperties): JSX.Element => (
   <Paragraph isLead>{children}</Paragraph>
 );
+
+export const TextIntroductionSubheading = TextIntroduction.Subheading;
 
 export default TextIntroduction;
