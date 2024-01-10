@@ -407,13 +407,16 @@
           "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
         },
         {
-          "moduleName": "./src/components/List/List.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Link/Link.stories.tsx"
         },
         {
+          "moduleName": "./src/components/List/List.stories.tsx"
+        },
+        {
           "moduleName": "./src/components/Layout/LayoutWrapper.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Layout/LayoutContent.stories.tsx"
         },
         {
           "moduleName": "./src/components/Layout/LayoutSidebar.stories.tsx"
@@ -423,9 +426,6 @@
         },
         {
           "moduleName": "./src/components/Label/Label.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Layout/LayoutContent.stories.tsx"
         },
         {
           "moduleName": "./src/components/Hero/Hero.stories.tsx"
@@ -607,6 +607,21 @@
       ]
     },
     {
+      "id": "./src/components/Paragraph/Paragraph.tsx",
+      "name": "./src/components/Paragraph/Paragraph.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Paragraph/Paragraphs.stories.tsx"
+        },
+        {
+          "moduleName": "./src/index.ts"
+        },
+        {
+          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
+        }
+      ]
+    },
+    {
       "id": "./src/components/TextIntroduction/testHelpers.tsx",
       "name": "./src/components/TextIntroduction/testHelpers.tsx",
       "reasons": [
@@ -627,21 +642,6 @@
         },
         {
           "moduleName": "./src/components/Table/Table.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Paragraph/Paragraph.tsx",
-      "name": "./src/components/Paragraph/Paragraph.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Paragraph/Paragraphs.stories.tsx"
-        },
-        {
-          "moduleName": "./src/index.ts"
-        },
-        {
-          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
         }
       ]
     },
@@ -854,16 +854,16 @@
           "moduleName": "./src/components/Footer/FooterCfGov.tsx"
         },
         {
-          "moduleName": "./src/components/Alert/AlertLink.tsx"
-        },
-        {
-          "moduleName": "./src/components/Footer/BackToTop.tsx"
-        },
-        {
           "moduleName": "./src/components/Expandable/Expandable.tsx"
         },
         {
           "moduleName": "./src/components/Alert/Alert.tsx"
+        },
+        {
+          "moduleName": "./src/components/Alert/AlertLink.tsx"
+        },
+        {
+          "moduleName": "./src/components/Footer/BackToTop.tsx"
         },
         {
           "moduleName": "./src/components/Pagination/Pagination.tsx"
@@ -935,10 +935,10 @@
           "moduleName": "./src/components/Well/Well.tsx"
         },
         {
-          "moduleName": "./src/components/Footer/FooterLinks.tsx"
+          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
         },
         {
-          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
+          "moduleName": "./src/components/Footer/FooterLinks.tsx"
         }
       ]
     },
@@ -953,13 +953,13 @@
           "moduleName": "./src/components/Well/Well.tsx"
         },
         {
-          "moduleName": "./src/components/Footer/FooterLinks.tsx"
-        },
-        {
           "moduleName": "./src/components/Link/Link.tsx"
         },
         {
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
+        },
+        {
+          "moduleName": "./src/components/Footer/FooterLinks.tsx"
         }
       ]
     },
