@@ -18,6 +18,8 @@ export interface CheckboxProperties {
   helperText?: ReactNode;
   /** Additional CSS classes that will be applied to checkbox input element */
   inputClassName?: string;
+  /** Additional CSS classes that will be applied to checkbox label element */
+  labelClassName: string;
   /** React Ref to be enable direct access and control of the input element */
   inputRef?:
     | RefObject<HTMLInputElement>
@@ -28,6 +30,8 @@ export interface CheckboxProperties {
   /** Apply the "Large" styles for this element? */
   isLarge?: boolean;
   /** A name for this checkbox's value that can be referenced in javascript */
+  labelInline: boolean;
+  /** Removes/Adds 'label__heading' class to the Label * */
   name?: string;
   /** Is this checkbox disabled? */
   disabled?: boolean;
@@ -42,11 +46,13 @@ export const Checkbox = ({
   label,
   className,
   inputClassName,
+  labelClassName,
   checked = false,
   helperText,
   inputRef,
   disabled = false,
   isLarge = false,
+  labelInline = true, // 'true' REMOVES the a.label__heading class
   name,
   onChange,
   ...properties
@@ -83,7 +89,12 @@ export const Checkbox = ({
         disabled={disabled}
         onChange={onChangeHandler}
       />
-      <Label id={`${id}-label`} htmlFor={id}>
+      <Label
+        id={`${id}-label`}
+        className={labelClassName}
+        htmlFor={id}
+        inline={labelInline}
+      >
         {label}
         <HelperText>{helperText}</HelperText>
       </Label>
