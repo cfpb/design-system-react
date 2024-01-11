@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button, Icon, TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
-  title: 'Components (Draft)/Text inputs',
+  title: 'Components (Verified)/Text inputs',
   component: TextInput,
   argTypes: {
     isFullWidth: { control: 'boolean' },
