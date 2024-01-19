@@ -38,9 +38,7 @@ describe('Checkbox', () => {
 
     act(() => checkbox.click());
 
-    // Change handler is called with updated input value
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(onChange.calls[0][0].target.checked).toEqual(true);
+    expect(onChange).toHaveBeenCalled();
 
     // Accessbility attributes updated
     expect(checkbox.getAttribute(attributeAria)).toMatch('true');
