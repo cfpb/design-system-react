@@ -10,6 +10,10 @@ interface TagProperties {
   'data-testid'?: string;
 }
 
+/* TODO: Delete this once we're ready to move Multiselect to "Verified". 
+   I just don't want to pre-emptively delete this component then have
+   to rebuild it a later.
+ */
 export const SelectTag = ({
   value,
   label,
