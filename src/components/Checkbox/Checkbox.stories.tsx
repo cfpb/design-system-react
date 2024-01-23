@@ -97,42 +97,6 @@ export const Disabledselected: Story = {
   }
 };
 
-export const Success: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Success',
-  args: {
-    ...Default.args,
-    id: 'success',
-    name: 'success',
-    label: 'Success',
-    status: 'success'
-  }
-};
-
-export const Warning: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Warning',
-  args: {
-    ...Default.args,
-    id: 'warning',
-    name: 'warning',
-    label: 'Warning',
-    status: 'warning'
-  }
-};
-
-export const Error: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Error',
-  args: {
-    ...Default.args,
-    id: 'error',
-    name: 'error',
-    label: 'Error',
-    status: 'error'
-  }
-};
-
 export const WithHelperText: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
   name: 'With helper text',
