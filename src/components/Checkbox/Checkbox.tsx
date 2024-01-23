@@ -44,9 +44,9 @@ export interface CheckboxProperties {
 const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
 
 const borderStatus = {
-  success: '-form-field__checkbox__success',
-  warning: '-form-field__checkbox__warning',
-  error: '-form-field__checkbox__error'
+  success: 'm-form-field__checkbox__success',
+  warning: 'm-form-field__checkbox__warning',
+  error: 'm-form-field__checkbox__error'
 };
 
 export const Checkbox = ({
