@@ -37,9 +37,17 @@ export interface CheckboxProperties {
   disabled?: boolean;
   /** An event handler function that will be called when the checkbox's value is changed  */
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  /** Border status */
+  status: 'success' | 'warning' | 'error';
 }
 
 const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
+
+const borderStatus = {
+  success: '-form-field__checkbox__success',
+  warning: '-form-field__checkbox__warning',
+  error: '-form-field__checkbox__error'
+};
 
 export const Checkbox = ({
   id,
@@ -55,6 +63,7 @@ export const Checkbox = ({
   labelInline = true, // 'true' REMOVES the a.label__heading class
   name,
   onChange,
+  status,
   ...properties
 }: CheckboxProperties): ReactElement => {
   const onChangeHandler = useCallback(
@@ -67,6 +76,7 @@ export const Checkbox = ({
   const containerClasses = [
     ...containerBaseStyles,
     isLarge ? 'm-form-field__lg-target' : '',
+    borderStatus[status] ? borderStatus[status] : '',
     className
   ];
 

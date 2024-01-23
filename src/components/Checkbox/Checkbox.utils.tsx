@@ -8,9 +8,10 @@ import { Checkbox } from './Checkbox';
  */
 export const CheckboxTestWrapper = ({
   onChange,
+  checked,
   ...others
 }: CheckboxProperties): JSX.Element => {
-  const [checked, setChecked] = useState(false);
+  const [inputChecked, setChecked] = useState(false);
 
   const onWrapperChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -20,5 +21,11 @@ export const CheckboxTestWrapper = ({
     setChecked(event.target.checked);
   };
 
-  return <Checkbox {...others} checked={checked} onChange={onWrapperChange} />;
+  return (
+    <Checkbox
+      checked={checked || inputChecked}
+      {...others}
+      onChange={onWrapperChange}
+    />
+  );
 };
