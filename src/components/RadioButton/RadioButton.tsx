@@ -1,10 +1,11 @@
 import type React from 'react';
+import type { ReactNode } from 'react';
 import { HelperText } from '../HelperText/HelperText';
 import { Label } from '../Label/Label';
 
 interface RadioProperties {
   id: string;
-  label: string;
+  label: ReactNode;
   className?: string;
   helperText?: string;
   inputRef?:
@@ -16,6 +17,8 @@ interface RadioProperties {
   disabled?: boolean;
   isLarge?: boolean;
   name?: string;
+  labelClassName: string;
+  labelInline: boolean /** Removes/Adds 'label__heading' class to the Label * */;
 }
 const baseStyles = ['a-radio'];
 const containerBaseStyles = ['m-form-field m-form-field__radio'];
@@ -27,6 +30,8 @@ export const RadioButton = ({
   className,
   disabled = false,
   isLarge = false,
+  labelClassName,
+  labelInline = true, // 'true' REMOVES the a.label__heading class
   label,
   inputRef
 }: JSX.IntrinsicElements['input'] & RadioProperties): React.ReactElement => {
@@ -46,7 +51,7 @@ export const RadioButton = ({
         ref={inputRef}
         disabled={disabled}
       />
-      <Label htmlFor={id}>
+      <Label htmlFor={id} className={labelClassName} inline={labelInline}>
         {label}
         <HelperText>{helperText}</HelperText>
       </Label>
