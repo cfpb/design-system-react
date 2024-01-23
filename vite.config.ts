@@ -17,7 +17,7 @@ export default defineConfig(() => ({
   plugins: [
     eslintPlugin(),
     svgLoader({
-      defaultImport: 'url'
+      defaultImport: 'raw' // Allows DS to render it's own icons
     }),
     react(),
     tsConfigPaths(),
@@ -38,6 +38,13 @@ export default defineConfig(() => ({
       '100': true,
       reporter: ['text', 'lcov'],
       reportsDirectory: 'coverage'
+    },
+    server: {
+      deps: {
+        // Fixes -> TypeError: Unknown file extension ".svg" :)
+        // Also creates large Coverage reporting delay :(
+        inline: ['@cfpb']
+      }
     }
   },
   build: {
