@@ -9,7 +9,7 @@ Use checkboxes when the user can select more than one option from a list. Make c
 Source: https://cfpb.github.io/design-system/components/checkboxes
 */
 const meta: Meta<typeof Checkbox> = {
-  title: 'Components (Verified)/Checkboxes/ValidationStatus',
+  title: 'Components (Verified)/Checkboxes/Validation Status',
   component: Checkbox,
   argTypes: {
     disabled: { control: 'boolean' },

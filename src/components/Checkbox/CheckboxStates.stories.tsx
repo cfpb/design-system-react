@@ -9,7 +9,7 @@ Use checkboxes when the user can select more than one option from a list. Make c
 Source: https://cfpb.github.io/design-system/components/checkboxes
 */
 const meta: Meta<typeof Checkbox> = {
-  title: 'Components (Verified)/Checkboxes',
+  title: 'Components (Verified)/Checkboxes/States',
   component: Checkbox,
   argTypes: {
     disabled: { control: 'boolean' },
@@ -37,36 +37,58 @@ function CheckboxWrapper({ ...arguments_ }): JSX.Element {
   );
 }
 
-export const WithHelperText: Story = {
+export const Default: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
-  name: 'With helper text',
+  name: 'Default',
   args: {
-    id: 'WithHelper',
-    name: 'WithHelper',
-    label: 'With helper text',
-    helperText: 'This is optional helper text'
+    id: 'default',
+    name: 'default',
+    label: 'Default',
+    checked: false
   }
 };
 
-export const LargeTargetArea: Story = {
+export const Hover: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Large target area',
+  name: 'Hover',
   args: {
-    id: 'LargeTargetArea',
-    name: 'LargeTargetArea',
-    label: 'Large target area',
-    isLarge: true
+    id: 'hover',
+    name: 'hover',
+    inputClassName: 'hover',
+    label: 'Hover'
   }
 };
 
-export const LargeTargetAreaWithHelperText: Story = {
+export const Focus: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Large target area helper text',
+  name: 'Focus',
   args: {
-    id: 'LargeWithHelperText',
-    name: 'LargeWithHelperText',
-    label: 'Large target area helper text',
-    isLarge: true,
-    helperText: 'This is optional helper text'
+    id: 'focus',
+    name: 'focus',
+    inputClassName: 'focus',
+    label: 'Focus'
+  }
+};
+
+export const Selected: Story = {
+  render: _arguments => CheckboxWrapper(_arguments),
+  name: 'Selected',
+  args: {
+    id: 'selected',
+    name: 'selected',
+    label: 'Selected',
+    checked: true
+  }
+};
+
+export const Disabledselected: Story = {
+  render: _arguments => CheckboxWrapper(_arguments),
+  name: 'Disabled/selected',
+  args: {
+    id: 'disabled/selected',
+    name: 'disabled/selected',
+    label: 'Disabled/selected',
+    checked: true,
+    disabled: true
   }
 };
