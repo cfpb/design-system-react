@@ -84,7 +84,7 @@ export const Error: Story = {
 };
 
 export const FullWidth: Story = {
-  name: 'Full Width',
+  name: 'Full width',
   args: {
     ...Enabled.args,
     value: 'Input text',
