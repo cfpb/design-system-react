@@ -29,7 +29,6 @@ function CheckboxWrapper({ ...arguments_ }): JSX.Element {
       {...arguments_}
       checked={arguments_.checked}
       onChange={(): void => {
-        console.log('clicked');
         updateArguments({
           checked: !arguments_.checked
         });
