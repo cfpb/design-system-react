@@ -9,7 +9,7 @@ Use checkboxes when the user can select more than one option from a list. Make c
 Source: https://cfpb.github.io/design-system/components/checkboxes
 */
 const meta: Meta<typeof Checkbox> = {
-  title: 'Components (Verified)/Checkboxes/Default',
+  title: 'Components (Verified)/Checkboxes/Large target area',
   component: Checkbox,
   argTypes: {
     disabled: { control: 'boolean' },
@@ -25,9 +25,9 @@ export const Enabled: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
   name: 'Enabled',
   args: {
-    id: 'enabled',
+    id: 'Enabled',
     label: 'Enabled',
-    checked: false
+    isLarge: true
   }
 };
 
@@ -36,8 +36,9 @@ export const Hover: Story = {
   name: 'Hover',
   args: {
     id: 'hover',
+    label: 'Hover',
     inputClassName: 'hover',
-    label: 'Hover'
+    isLarge: true
   }
 };
 
@@ -46,8 +47,9 @@ export const Focus: Story = {
   name: 'Focus',
   args: {
     id: 'focus',
+    label: 'Focus',
     inputClassName: 'focus',
-    label: 'Focus'
+    isLarge: true
   }
 };
 
@@ -57,6 +59,7 @@ export const Selected: Story = {
   args: {
     id: 'selected',
     label: 'Selected',
+    isLarge: true,
     checked: true
   }
 };
@@ -67,49 +70,20 @@ export const Disabled: Story = {
   args: {
     id: 'disabled',
     label: 'Disabled',
-    checked: false,
+    isLarge: true,
     disabled: true
   }
 };
 
-export const Disabledselected: Story = {
+export const DisabledSelected: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Disabled/selected',
+  name: 'Disabled/Selected',
   args: {
     id: 'disabled/selected',
-    label: 'Disabled/selected',
-    checked: true,
-    disabled: true
-  }
-};
-
-export const Success: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Success',
-  args: {
-    id: 'success',
-    label: 'Success',
-    status: 'success'
-  }
-};
-
-export const Warning: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Warning',
-  args: {
-    id: 'warning',
-    label: 'Warning',
-    status: 'warning'
-  }
-};
-
-export const Error: Story = {
-  render: _arguments => CheckboxWrapper(_arguments),
-  name: 'Error',
-  args: {
-    id: 'error',
-    label: 'Error',
-    status: 'error'
+    label: 'Disabled/Selected',
+    isLarge: true,
+    disabled: true,
+    checked: true
   }
 };
 
@@ -117,8 +91,9 @@ export const WithHelperText: Story = {
   render: _arguments => CheckboxWrapper(_arguments),
   name: 'With helper text',
   args: {
-    id: 'WithHelper',
+    id: 'withHelperText',
     label: 'Label',
+    isLarge: true,
     helperText: 'This is optional helper text'
   }
 };
