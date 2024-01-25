@@ -37,12 +37,12 @@ export default defineConfig(() => ({
       enabled: true,
       '100': true,
       reporter: ['text', 'lcov'],
-      reportsDirectory: 'coverage'
+      reportsDirectory: 'coverage',
+      all: false
     },
     server: {
       deps: {
-        // Fixes -> TypeError: Unknown file extension ".svg" :)
-        // Also creates large Coverage reporting delay :(
+        // [Fix] TypeError: Unknown file extension ".svg" for @cpfb/cfpb-icons
         inline: ['@cfpb']
       }
     }
