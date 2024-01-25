@@ -4,6 +4,7 @@ import { ONE } from '../Pagination/usePagination';
 
 const meta: Meta<typeof Table> = {
   title: 'Components (Verified)/Tables',
+  tags: ['autodocs'],
   component: Table
 };
 

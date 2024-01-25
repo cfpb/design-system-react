@@ -5,6 +5,7 @@ import { ExampleLinks } from './Navbar';
 
 const meta: Meta<typeof Navbar> = {
   title: 'Components (Draft)/Navbar',
+  tags: ['autodocs'],
   component: Navbar,
   argTypes: {}
 };

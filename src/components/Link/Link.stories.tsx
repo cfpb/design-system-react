@@ -10,6 +10,7 @@ import {
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',
+  tags: ['autodocs'],
   component: Link
 };
 

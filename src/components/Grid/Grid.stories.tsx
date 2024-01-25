@@ -4,6 +4,7 @@ import { Grid } from '~/src/index';
 const meta: Meta<typeof Grid.Wrapper> = {
   title: 'Components (Draft)/Grids',
   component: Grid.Wrapper,
+  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

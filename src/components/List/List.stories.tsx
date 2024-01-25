@@ -3,6 +3,7 @@ import { List, ListItem, ListLink } from '~/src/index';
 
 const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',
+  tags: ['autodocs'],
   component: List,
   argTypes: {}
 };
