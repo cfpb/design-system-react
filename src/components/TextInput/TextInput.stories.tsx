@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button, Icon, TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
-  title: 'Components (Draft)/Text inputs',
+  title: 'Components (Verified)/Text inputs',
   tags: ['autodocs'],
   component: TextInput,
   argTypes: {
@@ -15,18 +15,20 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Enabled: Story = {
   args: {
-    name: 'Default',
-    id: 'Default',
-    value: 'Default',
+    name: 'Enabled',
+    id: 'Enabled',
+    value: 'Enabled',
     type: 'text'
   }
 };
 
 export const Hover: Story = {
   args: {
-    ...Default.args,
+    ...Enabled.args,
+    name: 'Hover',
+    id: 'Hover',
     value: 'Hover'
   },
   render: _arguments => <TextInput {..._arguments} className='hover' />
@@ -34,7 +36,9 @@ export const Hover: Story = {
 
 export const Focus: Story = {
   args: {
-    ...Default.args,
+    ...Enabled.args,
+    name: 'Focus',
+    id: 'Focus',
     value: 'Focus'
   },
   render: _arguments => <TextInput {..._arguments} className='focus' />
@@ -42,49 +46,61 @@ export const Focus: Story = {
 
 export const Disabled: Story = {
   args: {
-    ...Default.args,
+    ...Enabled.args,
     value: 'Disabled',
+    name: 'Disabled',
+    id: 'Disabled',
     disabled: true
   }
 };
 
 export const Success: Story = {
   args: {
-    ...Default.args,
+    ...Enabled.args,
     value: 'Success',
+    name: 'Success',
+    id: 'Success',
     status: 'success'
   }
 };
 
 export const Warning: Story = {
   args: {
-    ...Default.args,
+    ...Enabled.args,
     value: 'Warning',
+    name: 'Warning',
+    id: 'Warning',
     status: 'warning'
   }
 };
 
 export const Error: Story = {
   args: {
-    ...Default.args,
+    ...Enabled.args,
     value: 'Error',
+    name: 'Error',
+    id: 'Error',
     status: 'error'
   }
 };
 
 export const FullWidth: Story = {
-  name: 'Text input (full width)',
+  name: 'Full width',
   args: {
-    ...Default.args,
+    ...Enabled.args,
     value: 'Input text',
+    name: 'fullWidth',
+    id: 'fullWidth',
     isFullWidth: true
   }
 };
 
 export const WithButton: Story = {
-  name: 'Text input (with button)',
+  name: 'With button',
   args: {
-    ...Default.args,
+    ...Enabled.args,
+    name: 'withButton',
+    id: 'withButton',
     value: ''
   },
   render: _arguments => (
@@ -100,11 +116,13 @@ export const WithButton: Story = {
 };
 
 export const WithButtonInsideText: Story = {
-  name: 'Button inside text input',
+  name: 'Button inside',
   args: {
-    ...Default.args,
+    ...Enabled.args,
     value:
-      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable."
+      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable.",
+    name: 'ButtonInside',
+    id: 'ButtonInside'
   },
   render: _arguments => (
     <div className='m-btn-inside-input'>
@@ -117,11 +135,13 @@ export const WithButtonInsideText: Story = {
 };
 
 export const WithButtonInsideButton: Story = {
-  name: 'Button inside text input with another button',
+  name: 'Button inside (with button)',
   args: {
-    ...Default.args,
+    ...Enabled.args,
     value:
-      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable."
+      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable.",
+    name: 'ButtonInsideButton',
+    id: 'ButtonInsideButton'
   },
   render: _arguments => (
     <div className='o-form__input-w-btn'>
