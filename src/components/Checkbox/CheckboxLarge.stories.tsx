@@ -11,7 +11,6 @@ Source: https://cfpb.github.io/design-system/components/checkboxes
 const meta: Meta<typeof Checkbox> = {
   title: 'Components (Verified)/Checkboxes/Large target area',
   component: Checkbox,
-  tags: ['autodocs'],
   argTypes: {
     disabled: { control: 'boolean' },
     isLarge: { control: 'boolean' }
