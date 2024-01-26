@@ -97,7 +97,7 @@ describe('usePagination', () => {
       }
     });
 
-    const [_visibleRows, paginationProperties] = result.current;
+    const [, paginationProperties] = result.current;
 
     // Correctly calculates Pagination props
     expect(paginationProperties.page).toBe(3);
