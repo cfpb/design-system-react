@@ -38,7 +38,7 @@ export default function Hero({
   className,
   ...properties
 }: HeroProperties): JSX.Element {
-  const addWrapperImage = imageIsPhoto || isJumbo || is5050;
+  const addWrapperImage = imageIsPhoto ?? isJumbo ?? is5050;
   const wrapperReference = useBackgroundImage(image, addWrapperImage);
 
   const heroStyles = { backgroundColor };
