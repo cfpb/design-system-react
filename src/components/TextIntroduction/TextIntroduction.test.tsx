@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { TextIntroduction } from '~/src/index';
+import { TextIntroduction } from './TextIntroduction';
 import placeholders from './testHelpers';
 
 describe('<TextIntroduction />', () => {
