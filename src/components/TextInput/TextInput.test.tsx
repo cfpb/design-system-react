@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { TextInput } from '~/src/index';
-import { InputType } from './TextInput';
+import { InputType, TextInput } from './TextInput';
 
 const testInputType = (type: InputType) => (): void => {
   render(<TextInput id='1' name='1' type={type} />);
