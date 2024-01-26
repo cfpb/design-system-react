@@ -39,4 +39,9 @@ describe('<Label />', () => {
     const element = screen.getByText(text);
     expect(element).toHaveClass(otherCName);
   });
+
+  it('does not render if no label text is provided', () => {
+    const { container } = render(<Label htmlFor={htmlFor} />);
+    expect(container.childElementCount).toBe(0);
+  });
 });
