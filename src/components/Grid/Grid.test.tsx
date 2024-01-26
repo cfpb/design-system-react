@@ -15,6 +15,12 @@ describe('Grid', () => {
 
     expect(screen.getByRole('grid').getAttribute('class')).toMatch(`cols-10`);
   });
+
+  it('Renders a demo wrapper', async () => {
+    render(<GridWrapper demo />);
+
+    expect(screen.getByRole('grid').getAttribute('class')).toContain(`demo`);
+  });
 });
 
 describe('Grid Centered', () => {
@@ -45,7 +51,7 @@ describe('GridColumn', () => {
   });
 
   it('Renders a column with width 1', async () => {
-    render(<GridColumn width={1} />);
+    render(<GridColumn />);
 
     expect(screen.getByRole('gridcell').getAttribute('class')).toMatch(
       `col col-1`
