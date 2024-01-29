@@ -48,6 +48,8 @@
     "@cfpb/cfpb-design-system": "^0.35.0",
     "@cfpb/cfpb-expandables": "^0.35.0",
     "@cfpb/cfpb-forms": "^0.35.0",
+    "@emotion/core": "^11.0.0",
+    "@emotion/styled": "^11.11.0",
     "@storybook/blocks": "^7.6.10",
     "@tanstack/react-query": "4.13.5",
     "classnames": "^2.3.2",
@@ -132,6 +134,10 @@
     "whatwg-fetch": "3.6.2",
     "workbox-build": "6.5.4",
     "workbox-window": "6.5.4"
+  },
+  "resolutions": {
+    "@emotion/core": "11.0.0",
+    "@emotion/styled": "11.11.0"
   },
   "browserslist": {
     "production": "Edge >= 18, Firefox >= 60, Chrome >= 61, Safari >= 11, Opera >= 48",
