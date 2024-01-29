@@ -1,5 +1,6 @@
 import '@cfpb/cfpb-design-system/src/cfpb-design-system.less';
 import '../src/assets/styles/_shared.less';
+import DocumentationTemplate from './DocumentationTemplate.mdx';
 import themeCFPB from './themeCFPB';
 
 export const preview = {
@@ -18,7 +19,8 @@ export const preview = {
       }
     },
     docs: {
-      theme: themeCFPB
+      theme: themeCFPB,
+      page: DocumentationTemplate
     }
   }
 };
