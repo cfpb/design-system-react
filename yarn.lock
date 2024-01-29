@@ -1513,13 +1513,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-atomic-component@npm:^0.34.0":
-  version: 0.34.0
-  resolution: "@cfpb/cfpb-atomic-component@npm:0.34.0"
-  checksum: 8150faabb6989bc904714038022a3e6561c3730bf5961cd9d5cc2c9a0ef6a3ae91a3bdbd38bb5490b99475baf60fa13d67a865071842787c51ec15ab0dbac2a7
-  languageName: node
-  linkType: hard
-
 "@cfpb/cfpb-atomic-component@npm:^0.35.0":
   version: 0.35.0
   resolution: "@cfpb/cfpb-atomic-component@npm:0.35.0"
