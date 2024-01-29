@@ -83,10 +83,11 @@ describe('<SelectMulti />', () => {
     expect(within(AllButtons[1]).getByText(`Option 5`)).toBeInTheDocument();
     expect(AllButtons.length).toBe(2);
 
-    /* TODO: Verify that no further selections are allowed, beyond the max.
+    /* TODO: Better verification that maxSelections is enforced.
      *  We are relying on the DS implementation of Multiselect which uses CSS
      *  to show/hide options, but the options' <li> remain in the DOM. To Vitest,
-     *  these elements, even when CSS is set to `display: none`, are still "visible".
+     *  these elements, even when CSS is set to `display: none`,
+     *  are still "visible".
      *
      *  For now, I'm just checking that the `u-max-selections` class is applied.
      */

@@ -15,6 +15,7 @@ export interface SelectProperties {
   onChange?: (selected: SelectOption | SelectOption[] | undefined) => void;
   options: SelectOption[];
   maxSelections?: number;
+  className?: string;
 }
 
 /**
