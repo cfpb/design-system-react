@@ -1,5 +1,6 @@
 import type { JSXElement } from '~/src/types/jsxElement';
 import { Icon } from '../Icon/Icon';
+import './Alert.css';
 
 export type AlertFieldLevelType = 'error' | 'info' | 'success' | 'warning';
 
@@ -41,12 +42,15 @@ export const AlertFieldLevel = ({
 
   return (
     <div
-      className={`a-form-alert a-form-alert${AlertFieldLevelClass[status]}`}
+      className={`a-form-alert a-form-alert${AlertFieldLevelClass[status]} a-alertfieldlevel-container`}
       role='alert'
       {...properties}
     >
       <Icon name={MapTypeToIconName[status]} alt={status} withBg />
-      <span className='a-form-alert_text' data-testid='message'>
+      <span
+        className='a-form-alert_text a-alertfieldlevel-text'
+        data-testid='message'
+      >
         {message}
       </span>
     </div>
