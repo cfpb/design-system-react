@@ -1,13 +1,19 @@
-import classnames from 'classnames';
+import { Link as RouterLink } from 'react-router-dom';
 import type { JSXElement } from '../../types/jsxElement';
+
+import classnames from 'classnames';
 import ListItem from '../List/ListItem';
 
 interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
-  type?: 'default' | 'destructive' | 'list';
+  children?: React.ReactNode;
   hasIcon?: boolean;
-  noWrap?: boolean;
+  href?: string;
   isJump?: boolean;
   isJumpLeft?: boolean;
+  isRouterLink?: boolean;
+  noWrap?: boolean;
+  ref?: React.Ref<HTMLAnchorElement>;
+  type?: 'default' | 'destructive' | 'list';
 }
 
 /**
@@ -17,11 +23,13 @@ interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
  */
 export default function Link({
   children,
-  type = 'default',
   hasIcon = false,
-  noWrap = false,
+  href,
   isJump = false,
   isJumpLeft = false,
+  isRouterLink = false,
+  noWrap = false,
+  type = 'default',
   ...others
 }: LinkProperties): JSXElement {
   const cname = [others.className];
@@ -37,6 +45,19 @@ export default function Link({
   if (noWrap) cname.push('a-link__no-wrap');
   if (isJump) cname.push('a-link__jump a-link__icon-after-text');
   if (isJumpLeft) cname.push('a-link__jump a-link__icon-before-text');
+
+  if (isRouterLink) {
+    if (!href) {
+      throw new Error(
+        'Link component: href is a required attribute when isRouterLink is true'
+      );
+    }
+    return (
+      <RouterLink to={href} {...others} className={classnames(cname)}>
+        {children}
+      </RouterLink>
+    );
+  }
 
   return (
     <a {...others} className={classnames(cname)}>
