@@ -47,6 +47,8 @@ export default function Link({
   if (isJumpLeft) cname.push('a-link__jump a-link__icon-before-text');
 
   if (isRouterLink) {
+    console.log('href :>>', href);
+    console.log('!href :>>', !href);
     if (!href) {
       throw new Error(
         'Link component: href is a required attribute when isRouterLink is true'
