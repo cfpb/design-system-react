@@ -29,6 +29,7 @@ export {
   LinkText,
   ListLink
 } from './components/Link/Link';
+export type { LinkProperties } from './components/Link/Link';
 export { default as List } from './components/List/List';
 export {
   default as ListItem,
