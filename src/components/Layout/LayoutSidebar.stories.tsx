@@ -3,6 +3,7 @@ import { Layout } from '~/src/index';
 
 const meta: Meta<typeof Layout.Sidebar> = {
   title: 'Components (Draft)/Layout/Sidebar',
+  tags: ['autodocs'],
   component: Layout.Sidebar,
   parameters: {
     docs: {

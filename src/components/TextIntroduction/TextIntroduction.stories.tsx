@@ -4,6 +4,7 @@ import placeholders from './testHelpers';
 
 const meta: Meta<typeof TextIntroduction> = {
   title: 'Components (Verified)/Text introductions',
+  tags: ['autodocs'],
   component: TextIntroduction
 };
 

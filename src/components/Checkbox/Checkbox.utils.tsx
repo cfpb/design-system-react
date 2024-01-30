@@ -1,3 +1,4 @@
+import { useArgs } from '@storybook/client-api';
 import { useState } from 'react';
 import type { CheckboxProperties } from './Checkbox';
 import { Checkbox } from './Checkbox';
@@ -8,9 +9,10 @@ import { Checkbox } from './Checkbox';
  */
 export const CheckboxTestWrapper = ({
   onChange,
+  checked,
   ...others
 }: CheckboxProperties): JSX.Element => {
-  const [checked, setChecked] = useState(false);
+  const [inputChecked, setChecked] = useState(false);
 
   const onWrapperChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -20,5 +22,27 @@ export const CheckboxTestWrapper = ({
     setChecked(event.target.checked);
   };
 
-  return <Checkbox {...others} checked={checked} onChange={onWrapperChange} />;
+  return (
+    <Checkbox
+      checked={checked || inputChecked}
+      {...others}
+      onChange={onWrapperChange}
+    />
+  );
 };
+
+export function CheckboxWrapper({ ...arguments_ }): JSX.Element {
+  const [, updateArguments] = useArgs();
+
+  return (
+    <Checkbox
+      {...arguments_}
+      checked={arguments_.checked}
+      onChange={(): void => {
+        updateArguments({
+          checked: !arguments_.checked
+        });
+      }}
+    />
+  );
+}

@@ -3,6 +3,7 @@ import { Link, WellContainer, WellContent } from '~/src/index';
 
 const meta: Meta<typeof WellContainer> = {
   title: 'Components (Verified)/Wells',
+  tags: ['autodocs'],
   component: WellContainer,
   argTypes: {
     children: { type: 'string' }

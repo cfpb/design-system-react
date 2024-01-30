@@ -4,6 +4,7 @@ import { Hero } from '~/src/index';
 const meta: Meta<typeof Hero> = {
   title: 'Components (Draft)/Heroes',
   component: Hero,
+  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
