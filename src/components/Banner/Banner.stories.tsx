@@ -5,6 +5,7 @@ import { AllLanguageCodes, LanguageLink } from './BannerLanguageLink';
 
 const meta: Meta<typeof Banner> = {
   title: 'Components (Verified)/Banner (US gov)',
+  tags: ['autodocs'],
   component: Banner,
   argTypes: {}
 };

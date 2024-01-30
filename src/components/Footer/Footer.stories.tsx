@@ -3,6 +3,7 @@ import { Footer, FooterCfGov, Icon } from '~/src/index';
 
 const meta: Meta<typeof Footer> = {
   title: 'Components (Draft)/Footers',
+  tags: ['autodocs'],
   component: Footer,
   argTypes: {}
 };

@@ -4,6 +4,7 @@ import { TextInput } from '../TextInput/TextInput';
 
 const meta: Meta<typeof Label> = {
   title: 'Components (Verified)/Labels',
+  tags: ['autodocs'],
   component: Label,
   argTypes: {
     inline: { control: 'boolean' }

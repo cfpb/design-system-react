@@ -5,6 +5,7 @@ import type { StatusType } from '../TextInput/TextInput';
 const meta: Meta<typeof Alert> = {
   title: 'Components (Draft)/Alerts',
   component: Alert,
+  tags: ['autodocs'],
   argTypes: {
     message: { control: 'text' }
   }

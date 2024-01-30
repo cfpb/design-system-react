@@ -11,7 +11,7 @@ module.exports = {
     'display-element-css'
   ],
   docs: {
-    autodocs: true,
+    autodocs: 'tag',
     defaultName: 'Overview'
   },
   framework: {

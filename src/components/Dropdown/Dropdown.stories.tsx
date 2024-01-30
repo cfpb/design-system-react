@@ -12,6 +12,7 @@ import { MockOptions } from './utils';
  */
 const meta: Meta<typeof Dropdown> = {
   title: 'Components (Draft)/Dropdowns',
+  tags: ['autodocs'],
   component: Dropdown
 };
 

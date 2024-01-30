@@ -3,6 +3,7 @@ import { Layout } from '~/src/index';
 
 const meta: Meta<typeof Layout.Wrapper> = {
   title: 'Components (Draft)/Layout/Wrapper',
+  tags: ['autodocs'],
   component: Layout.Wrapper,
   parameters: {
     docs: {
