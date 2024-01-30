@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import './List.less';
 
 interface ListProperties {
   children: JSX.Element | JSX.Element[];
