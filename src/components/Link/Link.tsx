@@ -4,7 +4,7 @@ import type { JSXElement } from '../../types/jsxElement';
 import classnames from 'classnames';
 import ListItem from '../List/ListItem';
 
-interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
+export interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   children?: React.ReactNode;
   hasIcon?: boolean;
   href?: string;
