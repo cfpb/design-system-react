@@ -8,6 +8,7 @@ import { RadioButton } from '~/src/index';
  */
 const meta: Meta<typeof RadioButton> = {
   title: 'Components (Verified)/Radio buttons',
+  tags: ['autodocs'],
   component: RadioButton,
   argTypes: {
     disabled: { control: 'boolean' },

@@ -29,6 +29,7 @@ export {
   LinkText,
   ListLink
 } from './components/Link/Link';
+export type { LinkProperties } from './components/Link/Link';
 export { default as List } from './components/List/List';
 export {
   default as ListItem,
@@ -46,5 +47,11 @@ export { SelectSingle } from './components/Select/SelectSingle';
 export { Table } from './components/Table/Table';
 export { Tagline } from './components/Tagline/Tagline';
 export { TextInput } from './components/TextInput/TextInput';
-export { TextIntroduction } from './components/TextIntroduction/TextIntroduction';
+export {
+  TextIntroduction,
+  TextIntroductionContainer,
+  TextIntroductionDescription,
+  TextIntroductionHeading,
+  TextIntroductionSubheading
+} from './components/TextIntroduction/TextIntroduction';
 export { WellContainer, WellContent } from './components/Well/Well';

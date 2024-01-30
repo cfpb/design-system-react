@@ -1,0 +1,25 @@
+{/* NOTE: Do NOT use auto-formatting on this MDX's. Otherwise MDX creates extra <p> elements per line */}
+import { Meta } from '@storybook/addon-docs';
+import { List, Link, ListItem, Heading, Paragraph } from '~/src/index';
+
+<Meta title='Components (Verified)/Checkboxes/Overview' />
+
+{/* Workaround: This div is so that Storybook styling DOESN'T overwrite CFPB styling */}
+
+<Heading type='1'>Checkboxes</Heading>
+
+<Paragraph>Use checkboxes when the user can select more than one option from a list. Make clear with helper text that this is the case. Use [radio buttons](https://cfpb.github.io/design-system/components/radio-buttons) when the user can choose only one option from a list.</Paragraph>
+
+<Paragraph>Source: <Link href='https://cfpb.github.io/design-system/components/checkboxes'>https://cfpb.github.io/design-system/components/checkboxes</Link></Paragraph>
+
+<br />
+
+<div className="sb-unstyled">
+<Heading type='4'>Types</Heading>
+  <List>
+    <ListItem><Link href='/?path=/docs/components-verified-checkboxes-checkbox--overview'>Checkbox</Link></ListItem>
+    <ListItem><Link href='/?path=/docs/components-verified-checkboxes-large-target-area--overview'>Large target area</Link></ListItem>
+  </List>
+  
+
+</div>

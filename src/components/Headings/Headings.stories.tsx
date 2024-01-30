@@ -8,6 +8,7 @@ import { Heading } from '~/src/index';
  */
 const meta: Meta<typeof Heading> = {
   title: 'Components (Verified)/Headings',
+  tags: ['autodocs'],
   component: Heading,
   argTypes: {
     type: { control: { type: 'select' } }

@@ -3,6 +3,7 @@ import { Tagline } from '~/src/index';
 
 const meta: Meta<typeof Tagline> = {
   title: 'Components (Verified)/Taglines',
+  tags: ['autodocs'],
   component: Tagline,
   parameters: {
     docs: {

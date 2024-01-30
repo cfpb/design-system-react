@@ -3,6 +3,7 @@ import { Paragraph } from './Paragraph';
 
 const meta: Meta<typeof Paragraph> = {
   title: 'Components (Verified)/Paragraphs',
+  tags: ['autodocs'],
   component: Paragraph
 };
 

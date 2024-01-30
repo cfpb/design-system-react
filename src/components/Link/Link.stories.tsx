@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { BrowserRouter } from 'react-router-dom';
 import {
   DestructiveLink,
   Icon,
@@ -10,6 +11,7 @@ import {
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',
+  tags: ['autodocs'],
   component: Link
 };
 
@@ -135,5 +137,26 @@ export const JumpLinkIconLeft: Story = {
       <Icon name='left' />
       &nbsp;<LinkText>Jump link with icon on left</LinkText>
     </Link>
+  )
+};
+
+export const LinkWithReactRouterLink: Story = {
+  name: 'Link using React Router Link',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'See [React Router Link docs](https://reactrouter.com/en/main/components/link) for usage information'
+      }
+    }
+  },
+  render: () => (
+    <BrowserRouter>
+      <p>
+        <Link href='/#' isRouterLink>
+          Link using React Router Link
+        </Link>
+      </p>
+    </BrowserRouter>
   )
 };
