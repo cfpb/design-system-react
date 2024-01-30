@@ -60,7 +60,7 @@ export default function Link({
   }
 
   return (
-    <a {...others} className={classnames(cname)}>
+    <a {...others} className={classnames(cname)} href={href}>
       {children}
     </a>
   );
