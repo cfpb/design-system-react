@@ -392,10 +392,10 @@
           "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
         },
         {
-          "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
+          "moduleName": "./src/components/Table/Table.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Table/Table.stories.tsx"
+          "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
         },
         {
           "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
@@ -408,9 +408,6 @@
         },
         {
           "moduleName": "./src/components/List/List.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Link/Link.stories.tsx"
         },
         {
           "moduleName": "./src/components/Layout/LayoutWrapper.stories.tsx"
@@ -441,6 +438,9 @@
         },
         {
           "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Link/Link.stories.tsx"
         }
       ]
     },
@@ -607,6 +607,15 @@
       ]
     },
     {
+      "id": "./src/components/TextIntroduction/testHelpers.tsx",
+      "name": "./src/components/TextIntroduction/testHelpers.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/TextIntroduction/TextIntroduction.stories.tsx"
+        }
+      ]
+    },
+    {
       "id": "./src/components/Paragraph/Paragraph.tsx",
       "name": "./src/components/Paragraph/Paragraph.tsx",
       "reasons": [
@@ -618,15 +627,6 @@
         },
         {
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/TextIntroduction/testHelpers.tsx",
-      "name": "./src/components/TextIntroduction/testHelpers.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/TextIntroduction/TextIntroduction.stories.tsx"
         }
       ]
     },
@@ -854,25 +854,25 @@
           "moduleName": "./src/components/Footer/FooterCfGov.tsx"
         },
         {
-          "moduleName": "./src/components/Alert/AlertLink.tsx"
-        },
-        {
-          "moduleName": "./src/components/Footer/BackToTop.tsx"
-        },
-        {
           "moduleName": "./src/components/Expandable/Expandable.tsx"
+        },
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         },
         {
           "moduleName": "./src/components/Alert/Alert.tsx"
         },
         {
+          "moduleName": "./src/components/Alert/AlertLink.tsx"
+        },
+        {
           "moduleName": "./src/components/Pagination/Pagination.tsx"
         },
         {
-          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
+          "moduleName": "./src/components/Footer/BackToTop.tsx"
         },
         {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
         }
       ]
     },
@@ -893,10 +893,10 @@
           "moduleName": "./src/components/Checkbox/Checkbox.tsx"
         },
         {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         },
         {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
         }
       ]
     },
@@ -935,10 +935,10 @@
           "moduleName": "./src/components/Well/Well.tsx"
         },
         {
-          "moduleName": "./src/components/Footer/FooterLinks.tsx"
+          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
         },
         {
-          "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
+          "moduleName": "./src/components/Footer/FooterLinks.tsx"
         }
       ]
     },
@@ -953,13 +953,13 @@
           "moduleName": "./src/components/Well/Well.tsx"
         },
         {
-          "moduleName": "./src/components/Footer/FooterLinks.tsx"
-        },
-        {
           "moduleName": "./src/components/Link/Link.tsx"
         },
         {
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
+        },
+        {
+          "moduleName": "./src/components/Footer/FooterLinks.tsx"
         }
       ]
     },
@@ -1204,6 +1204,33 @@
       ]
     },
     {
+      "id": "./src/components/Dropdown/Dropdown.less",
+      "name": "./src/components/Dropdown/Dropdown.less",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
+      "name": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Dropdown/styles.tsx",
+      "name": "./src/components/Dropdown/styles.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        }
+      ]
+    },
+    {
       "id": "./src/components/Alert/Alert.css",
       "name": "./src/components/Alert/Alert.css",
       "reasons": [
@@ -1317,33 +1344,6 @@
       "reasons": [
         {
           "moduleName": "./src/components/Table/Table.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Dropdown/Dropdown.less",
-      "name": "./src/components/Dropdown/Dropdown.less",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
-      "name": "./src/components/Dropdown/DropdownInputWithCheckbox.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Dropdown/styles.tsx",
-      "name": "./src/components/Dropdown/styles.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         }
       ]
     },
