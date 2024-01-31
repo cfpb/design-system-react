@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Enabled: Story = {
   args: {
     id: 'multiSelect',
-    label: 'Label',
+    label: 'Enabled',
     isMulti: true,
     options: MultipleSelectOptions,
     disabled: true

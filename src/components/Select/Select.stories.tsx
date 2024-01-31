@@ -20,7 +20,7 @@ export const SingleSelect: Story = {
   name: 'Enabled',
   args: {
     id: 'singleSelect',
-    label: 'Label',
+    label: 'Enabled',
     options: SingleSelectOptions
   }
 };
@@ -29,7 +29,7 @@ export const SingleSelectHover: Story = {
   name: 'Hover',
   args: {
     id: 'singleSelect',
-    label: 'Label',
+    label: 'Hover',
     options: SingleSelectOptions,
     className: 'hover'
   }
@@ -39,7 +39,7 @@ export const SingleSelectFocus: Story = {
   name: 'Focus',
   args: {
     id: 'singleSelect',
-    label: 'Label',
+    label: 'Focus',
     options: SingleSelectOptions,
     className: 'focus'
   }
@@ -49,7 +49,7 @@ export const SingleSelectDisabled: Story = {
   name: 'Disabled',
   args: {
     id: 'singleSelect',
-    label: 'Label',
+    label: 'Disabled',
     options: SingleSelectOptions,
     disabled: true
   }
