@@ -3,13 +3,13 @@ import '@testing-library/jest-dom';
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Select } from './Select';
-import { DemoOptions } from './testUtils';
+import { MultipleSelectOptions, SingleSelectOptions } from './testUtils';
 
 describe('<SelectSingle />', () => {
   it('renders Single select with default value', () => {
-    render(<Select id='single' options={DemoOptions} />);
-    expect(screen.getByRole('combobox')).toHaveValue('option0');
-    expect(screen.getByRole('option', { name: 'Option 0' }).selected).toBe(
+    render(<Select id='single' options={SingleSelectOptions} />);
+    expect(screen.getByRole('combobox')).toHaveValue('option1');
+    expect(screen.getByRole('option', { name: 'Option 1' }).selected).toBe(
       true
     );
   });
@@ -22,7 +22,7 @@ describe('<SelectSingle />', () => {
       <Select
         id='single-change'
         label='Single Select'
-        options={DemoOptions}
+        options={SingleSelectOptions}
         defaultValue='option1'
         onChange={onChange}
       />
@@ -30,7 +30,7 @@ describe('<SelectSingle />', () => {
 
     await user.selectOptions(screen.getByRole('combobox'), 'option3');
     expect(screen.getByRole('combobox')).toHaveValue('option3');
-    expect(onChange).toHaveBeenCalledWith(DemoOptions[3]);
+    expect(onChange).toHaveBeenCalledWith(SingleSelectOptions[2]);
   });
 });
 
@@ -45,7 +45,7 @@ describe('<SelectMulti />', () => {
     render(
       <Select
         id={id}
-        options={DemoOptions}
+        options={MultipleSelectOptions}
         label={label}
         isMulti
         maxSelections={maxSelections}
@@ -68,19 +68,19 @@ describe('<SelectMulti />', () => {
     // Allows selection of multiple options, up to the limit
     await act(async () => {
       await user.click(screen.getByLabelText('Option 1'));
-      await user.click(screen.getByLabelText('Option 5'));
+      await user.click(screen.getByLabelText('Option 4'));
     });
 
     // Change handler is called with the expected content
     expect(onChange).toHaveBeenCalledWith([
-      { ...DemoOptions[1], selected: true },
-      { ...DemoOptions[5], selected: true }
+      { ...MultipleSelectOptions[0], selected: true },
+      { ...MultipleSelectOptions[3], selected: true }
     ]);
 
     // Tags are rendered for the selected options
     const AllButtons = screen.getAllByRole(`button`);
     expect(within(AllButtons[0]).getByText(`Option 1`)).toBeInTheDocument();
-    expect(within(AllButtons[1]).getByText(`Option 5`)).toBeInTheDocument();
+    expect(within(AllButtons[1]).getByText(`Option 4`)).toBeInTheDocument();
     expect(AllButtons.length).toBe(2);
 
     /* TODO: Better verification that maxSelections is enforced.
@@ -97,7 +97,7 @@ describe('<SelectMulti />', () => {
     // Allows deselection of options
     await act(async () => {
       await user.click(screen.getByLabelText('Option 1'));
-      await user.click(screen.getByLabelText('Option 5'));
+      await user.click(screen.getByLabelText('Option 4'));
     });
 
     const NoButtons = screen.queryAllByRole(`button`);
