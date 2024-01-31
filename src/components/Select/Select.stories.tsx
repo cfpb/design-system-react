@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Select } from '~/src/index';
-import { DemoOptions } from './testUtils';
+import { SingleSelectOptions } from './testUtils';
 
 const meta: Meta<typeof Select> = {
   title: 'Components (Draft)/Selects/Single',
@@ -20,8 +20,8 @@ export const SingleSelect: Story = {
   name: 'Enabled',
   args: {
     id: 'singleSelect',
-    label: 'Default',
-    options: DemoOptions
+    label: 'Label',
+    options: SingleSelectOptions
   }
 };
 
@@ -29,8 +29,8 @@ export const SingleSelectHover: Story = {
   name: 'Hover',
   args: {
     id: 'singleSelect',
-    label: 'Default',
-    options: DemoOptions,
+    label: 'Label',
+    options: SingleSelectOptions,
     className: 'hover'
   }
 };
@@ -39,8 +39,8 @@ export const SingleSelectFocus: Story = {
   name: 'Focus',
   args: {
     id: 'singleSelect',
-    label: 'Default',
-    options: DemoOptions,
+    label: 'Label',
+    options: SingleSelectOptions,
     className: 'focus'
   }
 };
@@ -49,8 +49,8 @@ export const SingleSelectDisabled: Story = {
   name: 'Disabled',
   args: {
     id: 'singleSelect',
-    label: 'Default',
-    options: DemoOptions,
+    label: 'Label',
+    options: SingleSelectOptions,
     disabled: true
   }
 };

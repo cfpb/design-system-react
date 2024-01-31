@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Select } from '~/src/index';
-import { DemoOptions } from './testUtils';
+import { MultipleSelectOptions } from './testUtils';
 
 const meta: Meta<typeof Select> = {
   title: 'Components (Draft)/Selects/Multiple',
@@ -21,7 +21,7 @@ export const Enabled: Story = {
     id: 'multiSelect',
     label: 'Label',
     isMulti: true,
-    options: DemoOptions,
+    options: MultipleSelectOptions,
     disabled: true
   }
 };
