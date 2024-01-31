@@ -3,7 +3,7 @@ import { Select } from '~/src/index';
 import { MultipleSelectOptions } from './testUtils';
 
 const meta: Meta<typeof Select> = {
-  title: 'Components (Draft)/Selects/Multiple',
+  title: 'Components (Draft)/Selects/Multiselect',
   component: Select,
   tags: ['autodocs'],
   argTypes: {

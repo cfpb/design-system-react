@@ -3,7 +3,7 @@ import { Select } from '~/src/index';
 import { SingleSelectOptions } from './testUtils';
 
 const meta: Meta<typeof Select> = {
-  title: 'Components (Draft)/Selects/Single',
+  title: 'Components (Draft)/Selects/Single select',
   tags: ['autodocs'],
   component: Select,
   argTypes: {
