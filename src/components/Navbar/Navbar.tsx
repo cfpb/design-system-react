@@ -5,7 +5,12 @@ import './navbar.less';
 
 export function CfpbLogo(): JSX.Element {
   return (
-    <Link href='/' title='Home' aria-label='Home' className='o-header_logo'>
+    <Link
+      href='https://www.consumerfinance.gov/'
+      title='Home'
+      aria-label='Home'
+      className='o-header_logo'
+    >
       <img className='o-header_logo-img' src={CFPBLogo} alt='CFPB Logo' />
     </Link>
   );
