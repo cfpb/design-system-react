@@ -19,8 +19,6 @@ export interface SelectProperties {
 }
 
 /**
- * Selects allow users to make a single selection or multiple selections from a finite list of options. They are not always the best choice from a usability perspective; see the use cases section below for more details.
- *
  * Source: https://cfpb.github.io/design-system/components/selects
  */
 export const Select = ({
