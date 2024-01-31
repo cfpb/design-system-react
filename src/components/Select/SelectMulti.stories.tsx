@@ -16,10 +16,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Enabled: Story = {
+export const Default: Story = {
   args: {
     id: 'multiSelect',
-    label: 'Enabled',
+    label: 'Label',
     isMulti: true,
     options: MultipleSelectOptions,
     disabled: true
