@@ -17,7 +17,7 @@ export default defineConfig(() => ({
   plugins: [
     eslintPlugin(),
     svgLoader({
-      defaultImport: 'url'
+      defaultImport: 'raw' // Allows DS to render it's own icons
     }),
     react(),
     tsConfigPaths(),
@@ -37,7 +37,14 @@ export default defineConfig(() => ({
       enabled: true,
       '100': true,
       reporter: ['text', 'lcov'],
-      reportsDirectory: 'coverage'
+      reportsDirectory: 'coverage',
+      all: false
+    },
+    server: {
+      deps: {
+        // [Fix] TypeError: Unknown file extension ".svg" for @cpfb/cfpb-icons
+        inline: ['@cfpb']
+      }
     }
   },
   build: {
