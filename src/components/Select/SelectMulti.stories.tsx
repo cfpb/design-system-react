@@ -23,5 +23,8 @@ export const Default: Story = {
     isMulti: true,
     options: MultipleSelectOptions,
     disabled: true
-  }
+  },
+  render: (arguments_) => <div style={{ minHeight: '200px' }}>
+    <Select {...arguments_} />
+  </div>
 };
