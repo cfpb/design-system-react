@@ -37,9 +37,17 @@ export interface CheckboxProperties {
   disabled?: boolean;
   /** An event handler function that will be called when the checkbox's value is changed  */
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  /** Border status */
+  status: 'error' | 'success' | 'warning';
 }
 
 const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
+
+const borderStatus = {
+  success: 'm-form-field__checkbox__success',
+  warning: 'm-form-field__checkbox__warning',
+  error: 'm-form-field__checkbox__error'
+};
 
 export const Checkbox = ({
   id,
@@ -55,8 +63,9 @@ export const Checkbox = ({
   labelInline = true, // 'true' REMOVES the a.label__heading class
   name,
   onChange,
+  status,
   ...properties
-}: CheckboxProperties): ReactElement => {
+}: CheckboxProperties & JSX.IntrinsicElements['input']): ReactElement => {
   const onChangeHandler = useCallback(
     (event: ChangeEvent<HTMLInputElement>): void => {
       onChange?.(event);
@@ -67,6 +76,7 @@ export const Checkbox = ({
   const containerClasses = [
     ...containerBaseStyles,
     isLarge ? 'm-form-field__lg-target' : '',
+    borderStatus[status] ?? '',
     className
   ];
 
@@ -74,7 +84,6 @@ export const Checkbox = ({
     <div
       className={classnames(containerClasses)}
       data-testid={`${id}-container`}
-      {...properties}
     >
       <input
         id={id}
@@ -82,12 +91,13 @@ export const Checkbox = ({
         checked={checked}
         aria-checked={checked}
         aria-labelledby={`${id}-label`}
-        data-testid={`${id}-input`}
         name={name ?? id}
-        className={classnames(['a-checkbox', inputClassName])}
         ref={inputRef}
         disabled={disabled}
         onChange={onChangeHandler}
+        {...properties}
+        data-testid={`${id}-input`}
+        className={classnames(['a-checkbox', inputClassName])}
       />
       <Label
         id={`${id}-label`}

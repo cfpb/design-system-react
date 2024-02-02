@@ -4,6 +4,7 @@ import { WellContainer, WellContent } from './Well';
 
 const meta: Meta<typeof WellContainer> = {
   title: 'Components (Verified)/Wells',
+  tags: ['autodocs'],
   component: WellContainer,
   argTypes: {
     children: { type: 'string' }

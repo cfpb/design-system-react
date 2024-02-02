@@ -4,6 +4,7 @@ import { generateTestRows, stringify } from './Pagination.storyUtils';
 
 const meta: Meta<typeof Pagination> = {
   title: 'Components (Verified)/Pagination',
+  tags: ['autodocs'],
   component: Pagination
 };
 

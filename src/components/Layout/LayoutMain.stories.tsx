@@ -3,6 +3,7 @@ import { Layout } from '~/src/index';
 
 const meta: Meta<typeof Layout.Main> = {
   title: 'Components (Draft)/Layout/Main',
+  tags: ['autodocs'],
   component: Layout.Main,
   parameters: {
     docs: {

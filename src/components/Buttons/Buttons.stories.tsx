@@ -10,6 +10,7 @@ import { ButtonGroup } from './ButtonGroup';
 const meta: Meta<typeof Button> = {
   title: 'Components (Verified)/Buttons',
   component: Button,
+  tags: ['autodocs'],
   argTypes: {
     appearance: { control: 'select' },
     size: { control: 'select' },

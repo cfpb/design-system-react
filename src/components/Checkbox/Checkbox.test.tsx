@@ -6,6 +6,7 @@ import { CheckboxTestWrapper } from './Checkbox.utils';
 const id = 'default';
 const label = 'this is a label';
 const testId = `${id}-container`;
+const inputTestId = `${id}-input`;
 
 const attributeAria = 'aria-checked';
 const attributeClass = 'class';
@@ -18,7 +19,7 @@ describe('Checkbox', () => {
     const testTitle = 'test-title';
 
     render(<Checkbox {...defaultProps} title={testTitle} />);
-    const checkbox = screen.getByTestId(testId);
+    const checkbox = screen.getByTestId(inputTestId);
 
     expect(checkbox).toBeInTheDocument();
     expect(checkbox).toHaveAttribute(attributeTitle, testTitle);

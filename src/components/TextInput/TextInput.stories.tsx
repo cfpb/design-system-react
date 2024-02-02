@@ -3,6 +3,7 @@ import { Button, Icon, TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
   title: 'Components (Verified)/Text inputs',
+  tags: ['autodocs'],
   component: TextInput,
   argTypes: {
     isFullWidth: { control: 'boolean' },

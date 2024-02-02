@@ -51,4 +51,49 @@ export const TextIntroduction = ({
   );
 };
 
+TextIntroduction.Container = ({
+  className,
+  children,
+  ...properties
+}: React.HTMLProps<HTMLDivElement>): JSX.Element => {
+  const cnames = ['o-text-introduction', className];
+
+  return (
+    <div
+      className={classnames(cnames)}
+      {...properties}
+      data-testid='text-introduction-wrapper'
+    >
+      {children}
+    </div>
+  );
+};
+
+export const TextIntroductionContainer = TextIntroduction.Container;
+interface TextIntroductionSubProperties {
+  children: ReactNode;
+}
+
+TextIntroduction.Heading = ({
+  children
+}: TextIntroductionSubProperties): JSX.Element => (
+  <Heading type='1'>{children}</Heading>
+);
+
+export const TextIntroductionHeading = TextIntroduction.Heading;
+
+TextIntroduction.Description = ({
+  children
+}: TextIntroductionSubProperties): JSX.Element => <p>{children}</p>;
+
+export const TextIntroductionDescription = TextIntroduction.Description;
+
+TextIntroduction.Subheading = ({
+  children
+}: TextIntroductionSubProperties): JSX.Element => (
+  <Paragraph isLead>{children}</Paragraph>
+);
+
+export const TextIntroductionSubheading = TextIntroduction.Subheading;
+
 export default TextIntroduction;

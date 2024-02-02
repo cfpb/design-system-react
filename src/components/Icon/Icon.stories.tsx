@@ -15,6 +15,7 @@ import {
 
 const meta: Meta<typeof Icon> = {
   title: 'Components (Draft)/Icons',
+  tags: ['autodocs'],
   component: Icon,
   parameters: {
     docs: {
