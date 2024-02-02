@@ -431,34 +431,34 @@
           "moduleName": "./src/stories/Introduction.stories.mdx"
         },
         {
-          "moduleName": "./src/components/List/List.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
         },
         {
           "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
+          "moduleName": "./src/components/List/List.stories.tsx"
         },
         {
           "moduleName": "./src/components/Table/Table.stories.tsx"
         },
         {
-          "moduleName": "./src/components/TextInput/TextInput.stories.tsx"
+          "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
         },
         {
-          "moduleName": "./src/components/TextIntroduction/TextIntroduction.stories.tsx"
+          "moduleName": "./src/components/TextInput/TextInput.stories.tsx"
         },
         {
           "moduleName": "./src/components/Well/Well.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Alert/Alert.stories.tsx"
+          "moduleName": "./src/components/TextIntroduction/TextIntroduction.stories.tsx"
         },
         {
           "moduleName": "./src/components/Banner/Banner.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Alert/Alert.stories.tsx"
         },
         {
           "moduleName": "./src/components/Buttons/Buttons.stories.tsx"
@@ -470,16 +470,16 @@
           "moduleName": "./src/components/Footer/Footer.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Grid/Grid.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Headings/Headings.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Icon/Icon.stories.tsx"
+          "moduleName": "./src/components/Grid/Grid.stories.tsx"
         },
         {
           "moduleName": "./src/components/Label/Label.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Icon/Icon.stories.tsx"
         },
         {
           "moduleName": "./src/components/Layout/LayoutContent.stories.tsx"
