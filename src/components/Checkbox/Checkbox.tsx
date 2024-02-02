@@ -38,7 +38,7 @@ export interface CheckboxProperties {
   /** An event handler function that will be called when the checkbox's value is changed  */
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   /** Border status */
-  status: 'success' | 'warning' | 'error';
+  status: 'error' | 'success' | 'warning';
 }
 
 const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
@@ -84,7 +84,6 @@ export const Checkbox = ({
     <div
       className={classnames(containerClasses)}
       data-testid={`${id}-container`}
-      {...properties}
     >
       <input
         id={id}
@@ -98,6 +97,7 @@ export const Checkbox = ({
         ref={inputRef}
         disabled={disabled}
         onChange={onChangeHandler}
+        {...properties}
       />
       <Label
         id={`${id}-label`}
