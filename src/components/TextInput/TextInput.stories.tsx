@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button, Icon, TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
-  title: 'Components (Verified)/Text inputs',
+  title: 'Components (Verified)/Text inputs/Text input',
   tags: ['autodocs'],
   component: TextInput,
   argTypes: {
