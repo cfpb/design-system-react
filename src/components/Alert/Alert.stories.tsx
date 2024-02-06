@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Alert, AlertFieldLevel, TextInput } from '~/src/index';
-import type { StatusType } from '../TextInput/TextInput';
+import type { TextInputStatusType } from '../TextInput/TextInputStatus';
+
+type AlertStatusType = TextInputStatusType & ['loading'];
 
 const meta: Meta<typeof Alert> = {
   title: 'Components (Draft)/Alerts',
@@ -80,7 +82,7 @@ export const SuccessFieldLevel: Story = {
       <TextInput
         id={_arguments.status as string}
         name={_arguments.status as string}
-        status={_arguments.status as StatusType}
+        status={_arguments.status as AlertStatusType}
         value='Input Text'
         type='text'
       />
@@ -100,7 +102,7 @@ export const WarningFieldLevel: Story = {
       <TextInput
         id={_arguments.status as string}
         name={_arguments.status as string}
-        status={_arguments.status as StatusType}
+        status={_arguments.status as AlertStatusType}
         value='Input Text'
         type='text'
       />
@@ -120,7 +122,7 @@ export const ErrorFieldLevel: Story = {
       <TextInput
         id={_arguments.status as string}
         name={_arguments.status as string}
-        status={_arguments.status as StatusType}
+        status={_arguments.status as AlertStatusType}
         value='Input Text'
         type='text'
       />
