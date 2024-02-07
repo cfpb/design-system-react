@@ -55,7 +55,7 @@ export const Success: Story = {
     id: 'Success',
     placeholder: 'Success',
     name: 'Success',
-    className: 'a-text-input__success'
+    status: 'success'
   }
 };
 
@@ -64,7 +64,7 @@ export const Warning: Story = {
     id: 'Warning',
     placeholder: 'Warning',
     name: 'Warning',
-    className: 'a-text-input__warning'
+    status: 'warning'
   }
 };
 
@@ -73,7 +73,7 @@ export const Error: Story = {
     id: 'Error',
     placeholder: 'Error',
     name: 'Error',
-    className: 'a-text-input__error'
+    status: 'error'
   }
 };
 
