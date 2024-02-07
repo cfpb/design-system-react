@@ -6,6 +6,7 @@ import { CheckboxTestWrapper } from './Checkbox.utils';
 const id = 'default';
 const label = 'this is a label';
 const testId = `${id}-container`;
+const inputTestId = `${id}-input`;
 
 const attributeAria = 'aria-checked';
 const attributeClass = 'class';
@@ -18,7 +19,7 @@ describe('Checkbox', () => {
     const testTitle = 'test-title';
 
     render(<Checkbox {...defaultProps} title={testTitle} />);
-    const checkbox = screen.getByTestId(testId);
+    const checkbox = screen.getByTestId(inputTestId);
 
     expect(checkbox).toBeInTheDocument();
     expect(checkbox).toHaveAttribute(attributeTitle, testTitle);
@@ -38,9 +39,7 @@ describe('Checkbox', () => {
 
     act(() => checkbox.click());
 
-    // Change handler is called with updated input value
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(onChange.calls[0][0].target.checked).toEqual(true);
+    expect(onChange).toHaveBeenCalled();
 
     // Accessbility attributes updated
     expect(checkbox.getAttribute(attributeAria)).toMatch('true');

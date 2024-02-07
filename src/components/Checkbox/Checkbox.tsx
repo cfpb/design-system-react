@@ -65,7 +65,7 @@ export const Checkbox = ({
   onChange,
   status,
   ...properties
-}: CheckboxProperties): ReactElement => {
+}: CheckboxProperties & JSX.IntrinsicElements['input']): ReactElement => {
   const onChangeHandler = useCallback(
     (event: ChangeEvent<HTMLInputElement>): void => {
       onChange?.(event);
@@ -84,7 +84,6 @@ export const Checkbox = ({
     <div
       className={classnames(containerClasses)}
       data-testid={`${id}-container`}
-      {...properties}
     >
       <input
         id={id}
@@ -92,12 +91,13 @@ export const Checkbox = ({
         checked={checked}
         aria-checked={checked}
         aria-labelledby={`${id}-label`}
-        data-testid={`${id}-input`}
         name={name ?? id}
-        className={classnames(['a-checkbox', inputClassName])}
         ref={inputRef}
         disabled={disabled}
         onChange={onChangeHandler}
+        {...properties}
+        data-testid={`${id}-input`}
+        className={classnames(['a-checkbox', inputClassName])}
       />
       <Label
         id={`${id}-label`}
