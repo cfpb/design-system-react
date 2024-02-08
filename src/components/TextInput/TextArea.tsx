@@ -17,6 +17,9 @@ export interface TextAreaType {
   status?: TextInputStatusType;
 }
 
+/**
+ * Source: <a href='https://cfpb.github.io/design-system/components/text-inputs' target='_blank'> https://cfpb.github.io/design-system/components/text-inputs</a>
+ */
 export const TextArea = forwardRef(
   (
     {

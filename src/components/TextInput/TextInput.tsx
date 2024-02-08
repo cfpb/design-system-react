@@ -37,9 +37,6 @@ export type TextInputProperties = OptionalTextInputProperties &
   RequiredTextInputProperties;
 
 /**
- *
- * Text inputs allow the user to enter any combination of letters, numbers, or symbols. Text input fields can span single or multiple lines.
- *
  * Source: <a href='https://cfpb.github.io/design-system/components/text-inputs' target='_blank'> https://cfpb.github.io/design-system/components/text-inputs</a>
  */
 export const TextInput = forwardRef(
