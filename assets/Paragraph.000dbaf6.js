@@ -1,3 +1,0 @@
-import{j as p,c as i}from"./index.dedf70f8.js";function r({children:a,isLead:s,className:n,...t}){const e=[n];return s&&e.push("lead-paragraph"),p.exports.jsx("p",{...t,className:i(e),children:a})}try{r.displayName="Paragraph",r.__docgenInfo={description:`Paragraph text should provide an efficient and pleasant experience on every viewport size. Readable text makes good use of alignment, spacing, line length and height, and contrast.
-
-Source: https://cfpb.github.io/design-system/foundation/paragraphs`,displayName:"Paragraph",props:{isLead:{defaultValue:null,description:"",name:"isLead",required:!1,type:{name:"boolean"}}}}}catch{}export{r as P};
