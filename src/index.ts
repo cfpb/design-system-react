@@ -46,6 +46,7 @@ export { SelectMulti } from './components/Select/SelectMulti';
 export { SelectSingle } from './components/Select/SelectSingle';
 export { Table } from './components/Table/Table';
 export { Tagline } from './components/Tagline/Tagline';
+export { TextArea } from './components/TextInput/TextArea';
 export { TextInput } from './components/TextInput/TextInput';
 export {
   TextIntroduction,

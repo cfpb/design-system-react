@@ -1,6 +1,8 @@
 import classnames from 'classnames';
 import type { Ref } from 'react';
 import { forwardRef, type ReactNode } from 'react';
+import type { TextInputStatusType } from './TextInputStatus';
+import { getTextInputStatusClass } from './TextInputStatus';
 
 type TextInputReference = ReactNode;
 
@@ -13,14 +15,6 @@ export type InputType =
   | 'text'
   | 'url';
 
-export type StatusType = 'error' | 'success' | 'warning';
-
-const statusAlert: Record<StatusType, string> = {
-  success: 'a-text-input__success',
-  error: 'a-text-input__error',
-  warning: 'a-text-input__warning'
-};
-
 interface RequiredTextInputProperties {
   id: string;
   name: string;
@@ -31,7 +25,7 @@ interface CustomTextInputProperties {
   inputProps?: JSX.IntrinsicElements['input'];
   inputRef?: TextInputReference;
   isDisabled?: boolean;
-  status?: StatusType;
+  status?: TextInputStatusType;
   type?: InputType;
   isFullWidth?: boolean;
 }
@@ -43,9 +37,6 @@ export type TextInputProperties = OptionalTextInputProperties &
   RequiredTextInputProperties;
 
 /**
- *
- * Text inputs allow the user to enter any combination of letters, numbers, or symbols. Text input fields can span single or multiple lines.
- *
  * Source: <a href='https://cfpb.github.io/design-system/components/text-inputs' target='_blank'> https://cfpb.github.io/design-system/components/text-inputs</a>
  */
 export const TextInput = forwardRef(
@@ -56,21 +47,21 @@ export const TextInput = forwardRef(
       inputRef,
       isDisabled = false,
       name,
-      status,
+      status = 'info',
       type = 'text',
       isFullWidth = false,
       ...otherInputProperties
     }: JSX.IntrinsicElements['input'] & TextInputProperties,
     reference: Ref<HTMLInputElement>
   ) => {
-    const classes = ['a-text-input'];
-    if (isFullWidth) {
-      classes.push('a-text-input__full');
-    }
-    if (className) classes.push(className);
-    if (status && statusAlert[status]) classes.push(statusAlert[status]);
+    const classes = [
+      'a-text-input',
+      className,
+      getTextInputStatusClass(status)
+    ];
 
     if (isFullWidth) {
+      classes.push('a-text-input__full');
       return (
         <div className='m-form-field'>
           <input
@@ -86,6 +77,7 @@ export const TextInput = forwardRef(
         </div>
       );
     }
+
     return (
       <input
         data-testid='textInput'

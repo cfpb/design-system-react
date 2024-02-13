@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button, Icon, TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
-  title: 'Components (Verified)/Text inputs',
+  title: 'Components (Verified)/Text inputs/Text input',
   tags: ['autodocs'],
   component: TextInput,
   argTypes: {
@@ -127,7 +127,7 @@ export const WithButtonInsideText: Story = {
   render: _arguments => (
     <div className='m-btn-inside-input'>
       <TextInput {..._arguments} />
-      <button className='a-btn a-btn__link'>
+      <button type='button' className='a-btn a-btn__link'>
         <Icon name='error' />
       </button>
     </div>
@@ -148,13 +148,15 @@ export const WithButtonInsideButton: Story = {
       <div className='o-form__input-w-btn_input-container'>
         <div className='m-btn-inside-input'>
           <TextInput {..._arguments} />
-          <button className='a-btn a-btn__link'>
+          <button type='button' className='a-btn a-btn__link'>
             <Icon name='error' />
           </button>
         </div>
       </div>
       <div className='o-form__input-w-btn_btn-container'>
-        <button className='a-btn'>Search</button>
+        <button type='button' className='a-btn'>
+          Search
+        </button>
       </div>
     </div>
   )

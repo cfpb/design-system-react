@@ -19,7 +19,7 @@ export interface CheckboxProperties {
   /** Additional CSS classes that will be applied to checkbox input element */
   inputClassName?: string;
   /** Additional CSS classes that will be applied to checkbox label element */
-  labelClassName: string;
+  labelClassName?: string;
   /** React Ref to be enable direct access and control of the input element */
   inputRef?:
     | RefObject<HTMLInputElement>
@@ -30,7 +30,7 @@ export interface CheckboxProperties {
   /** Apply the "Large" styles for this element? */
   isLarge?: boolean;
   /** A name for this checkbox's value that can be referenced in javascript */
-  labelInline: boolean;
+  labelInline?: boolean;
   /** Removes/Adds 'label__heading' class to the Label * */
   name?: string;
   /** Is this checkbox disabled? */
@@ -38,7 +38,7 @@ export interface CheckboxProperties {
   /** An event handler function that will be called when the checkbox's value is changed  */
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   /** Border status */
-  status: 'error' | 'success' | 'warning';
+  status?: 'error' | 'success' | 'warning';
 }
 
 const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
@@ -54,7 +54,7 @@ export const Checkbox = ({
   label,
   className,
   inputClassName,
-  labelClassName,
+  labelClassName = '',
   checked = false,
   helperText,
   inputRef,
