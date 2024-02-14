@@ -6,7 +6,7 @@ import { useBackgroundImage } from './useBackgroundImage';
 
 interface HeroProperties extends React.HTMLAttributes<HTMLDivElement> {
   backgroundColor?: string;
-  heading?: string;
+  heading?: React.ReactNode;
   headingLevel?: HeadingLevel;
   image?: string;
   imageAltText?: string;
@@ -14,7 +14,7 @@ interface HeroProperties extends React.HTMLAttributes<HTMLDivElement> {
   is5050?: boolean;
   isJumbo?: boolean;
   isKnockout?: boolean;
-  subheading?: string;
+  subheading?: React.ReactNode;
   subheadingLevel?: HeadingLevel;
   textColor?: string;
 }
@@ -38,7 +38,7 @@ export default function Hero({
   className,
   ...properties
 }: HeroProperties): JSX.Element {
-  const addWrapperImage = imageIsPhoto || isJumbo || is5050;
+  const addWrapperImage = imageIsPhoto ?? isJumbo ?? is5050;
   const wrapperReference = useBackgroundImage(image, addWrapperImage);
 
   const heroStyles = { backgroundColor };
