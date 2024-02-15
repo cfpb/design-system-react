@@ -6,7 +6,7 @@ import { useBackgroundImage } from './useBackgroundImage';
 
 interface HeroProperties extends React.HTMLAttributes<HTMLDivElement> {
   backgroundColor?: string;
-  heading?: string;
+  heading?: React.ReactNode;
   headingLevel?: HeadingLevel;
   image?: string;
   imageAltText?: string;
@@ -14,7 +14,7 @@ interface HeroProperties extends React.HTMLAttributes<HTMLDivElement> {
   is5050?: boolean;
   isJumbo?: boolean;
   isKnockout?: boolean;
-  subheading?: string;
+  subheading?: React.ReactNode;
   subheadingLevel?: HeadingLevel;
   textColor?: string;
 }
