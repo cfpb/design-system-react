@@ -45,7 +45,7 @@ export default function SomePage(): ReactElement {
 
 To edit components or add new ones, make sure you have Yarn v3 set up locally and then run `yarn dev`:
 
-1. Install Node v16.9+.
+1. Install Node v20+.
 1. Enable [corepack](https://yarnpkg.com/getting-started/install): `corepack enable`.
 1. `yarn`
 1. `yarn start`
