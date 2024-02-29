@@ -18,7 +18,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=16.0.0 <17.0.0"
+    "node": ">=20"
   },
   "scripts": {
     "build": "vite build",
@@ -147,5 +147,5 @@
       "vitest related --run --coverage=false"
     ]
   },
-  "packageManager": "yarn@3.6.2"
+  "packageManager": "yarn@4.1.0"
 }
