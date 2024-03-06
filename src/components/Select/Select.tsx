@@ -16,6 +16,7 @@ export interface SelectProperties {
   options: SelectOption[];
   maxSelections?: number;
   className?: string;
+  value?: string;
 }
 
 /**
