@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Select, SelectSingle } from '~/src/index';
-import type { SelectOption } from './Select';
+import type { SelectOption, SelectProperties } from './Select';
 import { SingleSelectOptions } from './testUtils';
 
 const meta: Meta<typeof Select> = {
@@ -18,20 +18,19 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-function SelectWrapper({ ...arguments_ }): JSX.Element {
-  const [selected, setSelected] = useState<string | undefined>();
+function SelectWrapper({ ...arguments_ }: SelectProperties): JSX.Element {
+  const [selected, setSelected] = useState<string>('');
 
-  const onHandleChange = (newValue: SelectOption | undefined): void => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const onHandleChange = (
+    newValue: SelectOption | SelectOption[] | undefined
+  ): void => {
+    // Just to resolve TypeScript since we are using Select in single format
+    if (Array.isArray(newValue)) return;
     setSelected(newValue?.value ?? '');
   };
 
   return (
-    <SelectSingle
-      {...arguments_}
-      value={selected.value}
-      onChange={onHandleChange}
-    />
+    <SelectSingle {...arguments_} value={selected} onChange={onHandleChange} />
   );
 }
 
