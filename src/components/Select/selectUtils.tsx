@@ -4,11 +4,19 @@ import type { SelectOption } from './Select';
 export const buildOptions = (options: SelectOption[]): JSX.Element[] => {
   if (options.length === 0) return [];
 
-  return options.map(({ value, label }: SelectOption) => (
+  const formattedOptions = options.map(({ value, label }: SelectOption) => (
     <option key={value} value={value}>
       {label}
     </option>
   ));
+
+  return [
+    <option key='initial' disabled selected value=''>
+      {' '}
+      -- select an option --{' '}
+    </option>,
+    ...formattedOptions
+  ];
 };
 
 /* Map a value to it's corresponding Option */
