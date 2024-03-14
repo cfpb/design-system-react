@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { Table } from '~/src/index';
+import { Table } from './Table';
 
 const defaultCaption = (
   <>

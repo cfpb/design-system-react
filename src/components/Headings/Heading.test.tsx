@@ -3,6 +3,19 @@ import { render, screen } from '@testing-library/react';
 import { Heading, HeadingType } from './Heading';
 
 describe('<Heading />', () => {
+  it('Renders h1 by default', () => {
+    const headingType = `default`;
+    const testid = `h${headingType}`;
+    const text = `Heading level ${headingType}`;
+
+    render(<Heading data-testid={testid}>{text}</Heading>);
+
+    const current = screen.getByTestId(testid);
+
+    expect(current).toBeInTheDocument();
+    expect(current.tagName.toLowerCase()).toBe('h1');
+  });
+
   it('Renders standard heading levels (1-5)', () => {
     const headers: HeadingType[] = ['1', '2', '3', '4', '5'];
 

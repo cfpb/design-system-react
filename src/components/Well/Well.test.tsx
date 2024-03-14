@@ -31,10 +31,10 @@ describe('<WellContent />', () => {
   it('Displays elements', async () => {
     render(<WellContent {...Content.args} />);
 
-    const heading = screen.getByText(Content.args.heading);
+    const heading = screen.getByText(Content.args?.heading);
     expect(heading).toHaveClass('h3');
 
-    const text = screen.getByText(Content.args.text);
+    const text = screen.getByText(Content.args?.text);
     expect(text).toHaveClass('text');
 
     const callToAction = screen.getByText('Call-to-action link');

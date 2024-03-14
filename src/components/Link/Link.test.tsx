@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { DestructiveLink, Link, LinkText, ListLink } from '~/src/index';
+import Link, { DestructiveLink, LinkText, ListLink } from './Link';
+// import { DestructiveLink, Link, LinkText, ListLink } from '~/src/index';
 
 describe('<Link />', () => {
   const linkBaseProperties = {
