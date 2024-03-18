@@ -44,6 +44,7 @@ export { RadioButton } from './components/RadioButton/RadioButton';
 export { Select } from './components/Select/Select';
 export { SelectMulti } from './components/Select/SelectMulti';
 export { SelectSingle } from './components/Select/SelectSingle';
+export { default as SkipNav } from './components/SkipNav/SkipNav';
 export { Table } from './components/Table/Table';
 export { Tagline } from './components/Tagline/Tagline';
 export { TextArea } from './components/TextInput/TextArea';
