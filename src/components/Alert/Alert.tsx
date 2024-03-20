@@ -81,9 +81,9 @@ export const Alert = ({
           </p>
         ) : null}
         {children ? (
-          <p className='m-notification_explanation' data-testid='explanation'>
+          <div className='m-notification_explanation' data-testid='explanation'>
             {children}
-          </p>
+          </div>
         ) : null}
         {links && links.length > 0 ? (
           <ul className='m-list m-list__links'>
