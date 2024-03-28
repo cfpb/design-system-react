@@ -52,6 +52,8 @@ const getShapeModifier = (name: string, withBg: boolean): string => {
 interface IconProperties {
   name: string;
   alt?: string;
+  ariaLabelledby?: string;
+  ariaDescribedby?: string;
   withBg?: boolean;
   size?: string;
 }
@@ -63,6 +65,8 @@ interface IconProperties {
  *
  * @param name Canonical icon name
  * @param alt Alt text for image
+ * @param ariaLabelledby ID of element that labels the SVG for accessibility
+ * @param ariaDescribedby ID of element that describes the SVG for accessibility
  * @param withBg With background?
  * @param size Match the icon size to a specified HTML element or provide a custom size. By default the icon size is determined by it's parent element's font-size.
  * @returns ReactElement | null
@@ -70,6 +74,8 @@ interface IconProperties {
 export const Icon = ({
   name,
   alt,
+  ariaLabelledby = '',
+  ariaDescribedby = '',
   withBg = false,
   size = 'inherit',
   ...others
@@ -86,6 +92,8 @@ export const Icon = ({
     `class="${classNames(classes)}"`,
     'role="img"',
     `alt="${alt ?? name}"`,
+    `aria-labelledby=${ariaLabelledby}`,
+    `aria-describedby=${ariaDescribedby}`,
     `style="font-size: ${sizeMap[size] || size}"`
   ].join(' ');
 
