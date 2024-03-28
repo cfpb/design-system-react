@@ -52,6 +52,7 @@ const getShapeModifier = (name: string, withBg: boolean): string => {
 interface IconProperties {
   name: string;
   alt?: string;
+  ariaLabel?: string;
   ariaLabelledby?: string;
   ariaDescribedby?: string;
   withBg?: boolean;
@@ -65,6 +66,7 @@ interface IconProperties {
  *
  * @param name Canonical icon name
  * @param alt Alt text for image
+ * @param ariaLabel Labels the SVG for accessibility
  * @param ariaLabelledby ID of element that labels the SVG for accessibility
  * @param ariaDescribedby ID of element that describes the SVG for accessibility
  * @param withBg With background?
@@ -74,6 +76,7 @@ interface IconProperties {
 export const Icon = ({
   name,
   alt,
+  ariaLabel = '',
   ariaLabelledby = '',
   ariaDescribedby = '',
   withBg = false,
@@ -92,12 +95,11 @@ export const Icon = ({
     `class="${classNames(classes)}"`,
     'role="img"',
     `alt="${alt ?? name}"`,
+    ariaLabel ? `aria-label="${ariaLabel}"` : '',
     ariaLabelledby ? `aria-labelledby="${ariaLabelledby}"` : '',
     ariaDescribedby ? `aria-describedby="${ariaDescribedby}"` : '',
     `style="font-size: ${sizeMap[size] || size}"`
   ].join(' ');
-
-  console.log('ariaLabelledby :>>', ariaLabelledby);
 
   const iconHtml = `${icon}`.replace('<svg', `<svg ${iconAttributes} `);
 
