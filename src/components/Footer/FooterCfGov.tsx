@@ -30,7 +30,7 @@ export const FooterCfGov = (): JSX.Element => {
       data-pretty-href='https://www.facebook.com/CFPB'
       href='/external-site/?ext_url=https%3A%2F%2Fwww.facebook.com%2FCFPB&amp;signature=mLDxq_fH8p2jVLrkPngPqkmwdsl_JEMSCoqZ74gLcCY'
     >
-      <Icon name='facebook' withBg />
+      <Icon name='facebook' isPresentational withBg />
     </a>,
     <a
       key='twitter'
@@ -38,7 +38,7 @@ export const FooterCfGov = (): JSX.Element => {
       data-pretty-href='https://twitter.com/CFPB'
       href='/external-site/?ext_url=https%3A%2F%2Ftwitter.com%2FCFPB&amp;signature=2v_Kj1FtlY2ztSvBVUEZAzTb4Mrz1xDgzU7E4914qyo'
     >
-      <Icon name='twitter' withBg />
+      <Icon name='twitter' isPresentational withBg />
     </a>,
     <a
       key='linkedin'
@@ -46,7 +46,7 @@ export const FooterCfGov = (): JSX.Element => {
       data-pretty-href='https://www.linkedin.com/company/consumer-financial-protection-bureau'
       href='/external-site/?ext_url=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fconsumer-financial-protection-bureau&amp;signature=cz77eS0N43ZshZvOXukyBB85_qSkkDBs7o0q5Ikf5m0'
     >
-      <Icon name='linkedin' withBg />
+      <Icon name='linkedin' isPresentational withBg />
     </a>,
     <a
       key='youtube'
@@ -54,7 +54,7 @@ export const FooterCfGov = (): JSX.Element => {
       data-pretty-href='https://www.youtube.com/user/cfpbvideo'
       href='/external-site/?ext_url=https%3A%2F%2Fwww.youtube.com%2Fuser%2Fcfpbvideo&amp;signature=ldBCE9dfMS_pke0Gy053F8Li0bUMA6CpBpTodqahPSA'
     >
-      <Icon name='youtube' alt='Visit us on YouTube' withBg />
+      <Icon name='youtube' alt='Visit us on YouTube' isPresentational withBg />
     </a>,
     <a
       key='flickr'
@@ -62,7 +62,7 @@ export const FooterCfGov = (): JSX.Element => {
       data-pretty-href='https://www.flickr.com/photos/cfpbphotos'
       href='/external-site/?ext_url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Fcfpbphotos&amp;signature=GbqC6nvI0a2NHWTQqKaK2EOdJBMbQ9D6sv7J1TXR1oI'
     >
-      <Icon name='flickr' alt='Visit us on Flickr' withBg />
+      <Icon name='flickr' alt='Visit us on Flickr' isPresentational withBg />
     </a>
   ];
 
@@ -117,7 +117,11 @@ export const FooterCfGov = (): JSX.Element => {
   const linksCol3 = [
     <a key='usa-gov' className='a-link a-link__icon' href='https://usa.gov/'>
       <span className='a-link_text'>USA.gov</span>
-      <Icon name='external-link' alt='External link' />
+      <Icon
+        ariaLabel='External link'
+        name='external-link'
+        alt='External link'
+      />
     </a>,
     <a
       key='inspector'
@@ -125,7 +129,11 @@ export const FooterCfGov = (): JSX.Element => {
       href='https://www.federalreserve.gov/oig/default.htm'
     >
       <span className='a-link_text'>Office of Inspector General</span>
-      <Icon name='external-link' alt='External link' />
+      <Icon
+        ariaLabel='External link'
+        name='external-link'
+        alt='External link'
+      />
     </a>
   ];
 
