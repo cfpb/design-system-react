@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Link, WellContainer, WellContent } from '~/src/index';
+import Link from '../Link/Link';
+import { WellContainer, WellContent } from './Well';
 
 const meta: Meta<typeof WellContainer> = {
   title: 'Components (Verified)/Wells',

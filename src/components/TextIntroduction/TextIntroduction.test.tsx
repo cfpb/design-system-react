@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { cloneElement } from 'react';
-import { List, ListItem, TextIntroduction } from '~/src/index';
+import List from '../List/List';
+import ListItem from '../List/ListItem';
+import { TextIntroduction } from './TextIntroduction';
 import {
   callToAction,
   callToActionText,

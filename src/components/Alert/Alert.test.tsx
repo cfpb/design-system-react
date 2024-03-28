@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
-import { Alert, AlertFieldLevel } from '~/src/index';
-import { AlertType } from './Alert';
+import { Alert, AlertType } from './Alert';
+import { AlertFieldLevel } from './AlertFieldLevel';
 
 const testType = (status: AlertType) => async (): Promise<void> => {
   render(<Alert status={status} />);
@@ -26,7 +26,7 @@ describe('<Alert />', () => {
   }
 
   it('displays message when provided', () => {
-    render(<Alert status='info' />);
+    render(<Alert />);
     const noMessage = screen.queryByTestId('message');
     expect(noMessage).not.toBeInTheDocument();
 
@@ -93,6 +93,42 @@ describe('<Alert />', () => {
     expect(message).toBeInTheDocument();
   });
 
+  it('Can be hidden via the isVisible prop', async () => {
+    const testId = 'not-visible';
+    render(
+      <Alert
+        data-testid={testId}
+        isVisible={false}
+        status='warning'
+        message='squish'
+      />
+    );
+    const element = screen.queryByTestId(testId);
+
+    // Does not render the Alert
+    expect(element).not.toBeInTheDocument();
+  });
+
+  it('Can be rendered without an icon via the showIcon prop', async () => {
+    const testId = 'without-icon';
+    render(
+      <Alert
+        data-testid={testId}
+        showIcon={false}
+        status='warning'
+        message='squish'
+      />
+    );
+    const element = screen.getByTestId(testId);
+
+    // Renders Message
+    expect(screen.getByTestId('message'));
+
+    // Renders Icon
+    const icon = within(element).queryByRole('img');
+    expect(icon).not.toBeInTheDocument();
+  });
+
   it('renders field-level alerts as its own component', async () => {
     const testId = 'field-level-warning';
     render(
@@ -122,5 +158,20 @@ describe('<Alert />', () => {
     // Renders error message
     const message = `[Error] Unsupported field-level alert type provided: ${unSupportedStatus}`;
     expect(await screen.findByText(message)).toBeVisible();
+  });
+
+  it('Can be hidden via isVisible prop', async () => {
+    const testId = 'hide-field-level-warning';
+    render(
+      <AlertFieldLevel
+        data-testid={testId}
+        isVisible={false}
+        message='squish'
+      />
+    );
+    const element = screen.queryByTestId(testId);
+
+    // Does not render the Alert
+    expect(element).not.toBeInTheDocument();
   });
 });

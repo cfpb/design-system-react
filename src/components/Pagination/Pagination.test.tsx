@@ -1,6 +1,10 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { ReactElement, useState } from 'react';
 import { Pagination } from './Pagination';
+
+const user = userEvent.setup();
 
 describe('<Pagination />', () => {
   it('displays pagination controls when provided', () => {
@@ -24,16 +28,26 @@ describe('<Pagination />', () => {
     expect(next.classList.contains('a-btn__disabled')).toBe(true);
   });
 
-  it('goes to page on submit', () => {
-    render(<Pagination page={2} pageCount={3} />);
+  it('goes to page on submit', async () => {
+    const ControlledPagination = (): ReactElement => {
+      const [page, setPage] = useState(2);
+      const onSubmit = (value: number): void => {
+        setPage(value);
+      };
+      return <Pagination page={page} pageCount={3} onClickGo={onSubmit} />;
+    };
+
+    render(<ControlledPagination />);
     const next = screen.getByText('Next');
     const input = screen.getByDisplayValue('2');
     const go = screen.getByText('Go');
 
-    fireEvent.change(input, { target: { value: '3' } });
-    fireEvent.click(go);
+    await act(async () => {
+      await user.type(input, '{Backspace}3');
+      await user.click(go);
+    });
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(next.classList.contains('a-btn__disabled')).toBe(true);
     });
   });

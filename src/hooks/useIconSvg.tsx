@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 
+interface SVGModule {
+  default: string;
+}
+
 /**
  * Dynamically import an SVG as a string
  *
@@ -10,14 +14,11 @@ export const useIconSvg = (fileName: string): string | null => {
   const [icon, setIcon] = useState<string | null>(null);
 
   useEffect(() => {
-    const importSvg = async () => {
-      if (!fileName) return null;
-
-      const importedIcon = await import(
+    const importSvg = async (): Promise<void> => {
+      const importedIcon = (await import(
         `../../node_modules/@cfpb/cfpb-icons/src/icons/${fileName}.svg?raw`
-      );
+      )) as SVGModule;
 
-      if (!importedIcon || !importedIcon.default) return;
       setIcon(importedIcon.default);
     };
 
