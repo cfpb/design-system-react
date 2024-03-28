@@ -92,8 +92,8 @@ export const Icon = ({
     `class="${classNames(classes)}"`,
     'role="img"',
     `alt="${alt ?? name}"`,
-    `aria-labelledby=${ariaLabelledby}`,
-    `aria-describedby=${ariaDescribedby}`,
+    ariaLabelledby ? `aria-labelledby="${ariaLabelledby}"` : '',
+    ariaDescribedby ? `aria-describedby="${ariaDescribedby}"` : '',
     `style="font-size: ${sizeMap[size] || size}"`
   ].join(' ');
 
