@@ -97,6 +97,8 @@ export const Icon = ({
     `style="font-size: ${sizeMap[size] || size}"`
   ].join(' ');
 
+  console.log('ariaLabelledby :>>', ariaLabelledby);
+
   const iconHtml = `${icon}`.replace('<svg', `<svg ${iconAttributes} `);
 
   return (
