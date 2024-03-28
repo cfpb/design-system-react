@@ -55,6 +55,7 @@ interface IconProperties {
   ariaLabel?: string;
   ariaLabelledby?: string;
   ariaDescribedby?: string;
+  isPresentational?: boolean;
   withBg?: boolean;
   size?: string;
 }
@@ -69,6 +70,7 @@ interface IconProperties {
  * @param ariaLabel Labels the SVG for accessibility
  * @param ariaLabelledby ID of element that labels the SVG for accessibility
  * @param ariaDescribedby ID of element that describes the SVG for accessibility
+ * @param isPresentational Is SVG purely presentational and should be ignored by screen readers?
  * @param withBg With background?
  * @param size Match the icon size to a specified HTML element or provide a custom size. By default the icon size is determined by it's parent element's font-size.
  * @returns ReactElement | null
@@ -79,6 +81,7 @@ export const Icon = ({
   ariaLabel = '',
   ariaLabelledby = '',
   ariaDescribedby = '',
+  isPresentational = false,
   withBg = false,
   size = 'inherit',
   ...others
@@ -93,8 +96,9 @@ export const Icon = ({
 
   const iconAttributes = [
     `class="${classNames(classes)}"`,
-    'role="img"',
-    `alt="${alt ?? name}"`,
+    isPresentational ? 'role="img"' : '',
+    isPresentational ? `alt="${alt ?? name}"` : '',
+    isPresentational ? 'aria-hidden="true"' : '',
     ariaLabel ? `aria-label="${ariaLabel}"` : '',
     ariaLabelledby ? `aria-labelledby="${ariaLabelledby}"` : '',
     ariaDescribedby ? `aria-describedby="${ariaDescribedby}"` : '',
