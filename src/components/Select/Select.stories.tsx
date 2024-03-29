@@ -4,7 +4,7 @@ import { Select, SelectSingle } from '~/src/index';
 import type { SelectOption, SelectProperties } from './Select';
 import { SingleSelectOptions } from './testUtils';
 
-const meta: Meta<typeof Select> = {
+const meta: Meta<typeof SelectSingle> = {
   title: 'Components (Draft)/Selects/Single select',
   tags: ['autodocs'],
   component: Select,
