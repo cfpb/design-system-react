@@ -54,6 +54,7 @@ interface IconProperties {
   alt?: string;
   withBg?: boolean;
   size?: string;
+  className: string;
 }
 
 /**
@@ -72,11 +73,12 @@ export const Icon = ({
   alt,
   withBg = false,
   size = 'inherit',
+  className,
   ...others
 }: IconProperties): JSX.Element | null => {
   const shapeModifier = getShapeModifier(name, withBg);
   const fileName = `${name}${shapeModifier}`;
-  const classes = ['cf-icon-svg', `cf-icon-svg__${fileName}`];
+  const classes = ['cf-icon-svg', `cf-icon-svg__${fileName}`, className];
 
   const icon = useIconSvg(fileName);
 
