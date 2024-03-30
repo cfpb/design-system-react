@@ -19,6 +19,7 @@ export interface SelectProperties
   maxSelections?: number;
   className?: string;
   value?: string;
+  defaultOptionLabel?: string;
 }
 
 /**

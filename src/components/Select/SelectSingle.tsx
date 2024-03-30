@@ -10,6 +10,7 @@ export const SelectSingle = ({
   onChange = noOp,
   maxSelections,
   value = '',
+  defaultOptionLabel = '-- select an option --',
   ...properties
 }: SelectProperties): JSX.Element => {
   const onSelect = (
@@ -33,7 +34,7 @@ export const SelectSingle = ({
           onChange={onSelect}
           value={value}
         >
-          {buildOptions(options)}
+          {buildOptions(options, defaultOptionLabel)}
         </select>
       </div>
     </>

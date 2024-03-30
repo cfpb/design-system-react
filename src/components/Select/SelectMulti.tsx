@@ -17,6 +17,7 @@ export const SelectMulti = ({
   options,
   label,
   onChange = noOp,
+  defaultOptionLabel = '-- select an option --',
   maxSelections = MAX_SELECTIONS,
   ...properties
 }: SelectProperties): JSX.Element => {
@@ -67,7 +68,7 @@ export const SelectMulti = ({
         data-open
         {...properties}
       >
-        {buildOptions(options)}
+        {buildOptions(options, defaultOptionLabel)}
       </select>
     </div>
   );

@@ -1,7 +1,10 @@
 import type { SelectOption } from './Select';
 
 /* Convert an SelectOption[] into HTMLOptionElement[] */
-export const buildOptions = (options: SelectOption[]): JSX.Element[] => {
+export const buildOptions = (
+  options: SelectOption[],
+  defaultOptionLabel: string
+): JSX.Element[] => {
   if (options.length === 0) return [];
 
   const formattedOptions = options.map(({ value, label }: SelectOption) => (
@@ -12,8 +15,7 @@ export const buildOptions = (options: SelectOption[]): JSX.Element[] => {
 
   return [
     <option key='initial' disabled value=''>
-      {' '}
-      -- select an option --{' '}
+      {defaultOptionLabel}
     </option>,
     ...formattedOptions
   ];
