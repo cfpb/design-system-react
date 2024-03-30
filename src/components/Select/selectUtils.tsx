@@ -11,7 +11,7 @@ export const buildOptions = (options: SelectOption[]): JSX.Element[] => {
   ));
 
   return [
-    <option key='initial' disabled selected value=''>
+    <option key='initial' disabled value=''>
       {' '}
       -- select an option --{' '}
     </option>,
