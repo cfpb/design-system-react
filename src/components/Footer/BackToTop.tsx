@@ -9,6 +9,6 @@ export const BackToTop = (): JSX.Element => (
     href='#'
   >
     Back to top
-    <Icon name='arrow-up' />
+    <Icon name='arrow-up' isPresentational />
   </a>
 );
