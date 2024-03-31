@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { createElement } from 'react';
 import type { HeadingLevel } from '../../types/headingLevel';
 import { HeroImage } from './HeroImage';
 import './hero.less';
@@ -15,7 +16,7 @@ interface HeroProperties extends React.HTMLAttributes<HTMLDivElement> {
   isJumbo?: boolean;
   isKnockout?: boolean;
   subheading?: React.ReactNode;
-  subheadingLevel?: HeadingLevel;
+  subheadingLevel?: HeadingLevel | 'p';
   textColor?: string;
 }
 
@@ -33,7 +34,7 @@ export default function Hero({
   isJumbo,
   isKnockout,
   subheading,
-  subheadingLevel,
+  subheadingLevel = 'p',
   textColor,
   className,
   ...properties
@@ -54,18 +55,22 @@ export default function Hero({
     <div className={classnames(heroCnames)} style={heroStyles} {...properties}>
       <div className='m-hero_wrapper' ref={wrapperReference}>
         <div className='m-hero_text' style={textStyles} data-testid='hero-text'>
-          <p
-            className={`m-hero_heading ${headingLevel}`}
-            data-testid='hero-heading'
-          >
-            {heading}
-          </p>
-          <p
-            className={`m-hero_subhead ${subheadingLevel ?? ''}`}
-            data-testid='hero-subheading'
-          >
-            {subheading}
-          </p>
+          {createElement(
+            headingLevel,
+            {
+              className: `m-hero_heading ${headingLevel}`,
+              'data-testid': 'hero-heading'
+            },
+            heading
+          )}
+          {createElement(
+            subheadingLevel,
+            {
+              className: `m-hero_subhead ${subheadingLevel}`,
+              'data-testid': 'hero-subheading'
+            },
+            subheading
+          )}
         </div>
         <HeroImage image={image} altText={imageAltText} />
       </div>
