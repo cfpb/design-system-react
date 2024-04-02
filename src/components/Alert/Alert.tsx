@@ -70,7 +70,7 @@ export const Alert = ({
 
   return (
     <div className={classes} data-testid='notification' {...properties}>
-      {showIcon ? <Icon {...iconByType[status]} /> : null}
+      {showIcon ? <Icon isPresentational {...iconByType[status]} /> : null}
       <div className='m-notification_content'>
         {message ? (
           <p
