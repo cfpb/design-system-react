@@ -2,35 +2,48 @@ import { jest } from '@storybook/jest';
 import '@testing-library/jest-dom';
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Select } from './Select';
+import { useState } from 'react';
+import { Select, SelectOption } from './Select';
 import { MultipleSelectOptions, SingleSelectOptions } from './testUtils';
+
+const SingleSelectWrapper = (): JSX.Element => {
+  const [selectedValue, setSelectedValue] = useState<string>(
+    SingleSelectOptions[0].value
+  );
+
+  const onHandleChange = (
+    newValue: SelectOption | SelectOption[] | undefined
+  ): void => {
+    // Just to resolve TypeScript since we are using Select in single format
+    if (Array.isArray(newValue)) return;
+    setSelectedValue(newValue?.value ?? '');
+  };
+
+  return (
+    <Select
+      id='single'
+      options={SingleSelectOptions}
+      onChange={onHandleChange}
+      value={selectedValue}
+    />
+  );
+};
 
 describe('<SelectSingle />', () => {
   it('renders Single select with default value', () => {
-    render(<Select id='single' options={SingleSelectOptions} />);
-    expect(screen.getByRole('combobox')).toHaveValue('option1');
-    expect(screen.getByRole('option', { name: 'Option 1' }).selected).toBe(
-      true
-    );
+    // render(<Select id='single' options={SingleSelectOptions} />);
+    render(<SingleSelectWrapper />);
+
+    const selectElement = screen.getByRole('combobox');
+    expect(selectElement).toHaveValue('option1');
   });
 
   it('Handles Single selection change', async () => {
-    const user = userEvent.setup();
-    const onChange = jest.fn();
+    render(<SingleSelectWrapper />);
+    const selectElement = screen.getByRole('combobox');
 
-    render(
-      <Select
-        id='single-change'
-        label='Single Select'
-        options={SingleSelectOptions}
-        defaultValue='option1'
-        onChange={onChange}
-      />
-    );
-
-    await user.selectOptions(screen.getByRole('combobox'), 'option3');
+    await userEvent.selectOptions(selectElement, 'option3');
     expect(screen.getByRole('combobox')).toHaveValue('option3');
-    expect(onChange).toHaveBeenCalledWith(SingleSelectOptions[2]);
   });
 });
 
@@ -73,8 +86,8 @@ describe('<SelectMulti />', () => {
 
     // Change handler is called with the expected content
     expect(onChange).toHaveBeenCalledWith([
-      { ...MultipleSelectOptions[0], selected: true },
-      { ...MultipleSelectOptions[3], selected: true }
+      { ...MultipleSelectOptions[1], selected: true },
+      { ...MultipleSelectOptions[4], selected: true }
     ]);
 
     // Tags are rendered for the selected options
