@@ -85,7 +85,7 @@ describe('Hero', () => {
     expect(header).toHaveProperty('textContent', headingText);
 
     // Subheading
-    const subheading = screen.getByRole('heading', { level: 3 });
+    const subheading = screen.getByRole('heading', { level: subheadingLevel });
     expect(subheading).toHaveProperty('textContent', subheadingText);
   });
 });
