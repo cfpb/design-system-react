@@ -13,9 +13,9 @@ export default function PageHeader({
   user
 }: PageHeaderProperties): JSX.Element {
   return (
-    <div className='o-header'>
+    <header className='o-header'>
       <Banner tagline='An official website of the United States government' />
       <Navbar {...{ links, user }} />
-    </div>
+    </header>
   );
 }
