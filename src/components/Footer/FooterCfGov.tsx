@@ -1,24 +1,29 @@
 import { Icon } from '../Icon/Icon';
 import Footer from './Footer';
 
-export const FooterCfGov = (): JSX.Element => {
+export const FooterCfGov = ({
+  cfLink = 'https://www.consumerfinance.gov/'
+}): JSX.Element => {
   const navLinks = [
-    <a href='/about-us/' key='about'>
+    <a href={`${cfLink}/about-us/`} key='about'>
       About Us
     </a>,
-    <a href='/about-us/contact-us/' key='contact'>
+    <a href={`${cfLink}/about-us/contact-us/`} key='contact'>
       Contact Us
     </a>,
-    <a href='/about-us/careers/' key='careers'>
+    <a href={`${cfLink}/about-us/careers/`} key='careers'>
       Careers
     </a>,
-    <a href='/about-us/events/' key='events'>
+    <a href={`${cfLink}/about-us/events/`} key='events'>
       Events
     </a>,
-    <a href='/enforcement/information-industry-whistleblowers/' key='whistle'>
+    <a
+      href={`${cfLink}/enforcement/information-industry-whistleblowers/`}
+      key='whistle'
+    >
       Industry Whistleblowers
     </a>,
-    <a href='/cfpb-ombudsman/' key='ombudsman'>
+    <a href={`${cfLink}/cfpb-ombudsman/`} key='ombudsman'>
       CFPB Ombudsman
     </a>
   ];
@@ -67,49 +72,55 @@ export const FooterCfGov = (): JSX.Element => {
   ];
 
   const linksCol1 = [
-    <a key='foia' href='/foia-requests/'>
+    <a key='foia' href={`${cfLink}/foia-requests/`}>
       FOIA
     </a>,
-    <a key='privacy' href='/privacy/'>
+    <a key='privacy' href={`${cfLink}/privacy/`}>
       Privacy
     </a>,
-    <a key='privacy-policy' href='/privacy/website-privacy-policy/'>
+    <a key='privacy-policy' href={`${cfLink}/privacy/website-privacy-policy/`}>
       Website Privacy Policy &amp; Legal Notices
     </a>,
-    <a key='data' href='/data/'>
+    <a key='data' href={`${cfLink}/data/`}>
       Data
     </a>,
-    <a key='open-government' href='/open-government/'>
+    <a key='open-government' href={`${cfLink}/open-government/`}>
       Open Government
     </a>,
     <a
       key='info-quality'
-      href='/open-government/information-quality-guidelines/'
+      href={`${cfLink}/open-government/information-quality-guidelines/`}
     >
       Information Quality Guidelines
     </a>
   ];
 
   const linksCol2 = [
-    <a key='dei' href='/about-us/diversity-and-inclusion/'>
+    <a key='dei' href={`${cfLink}/about-us/diversity-and-inclusion/`}>
       Diversity &amp; Inclusion
     </a>,
-    <a key='adjudication' href='/administrative-adjudication-proceedings/'>
+    <a
+      key='adjudication'
+      href={`${cfLink}/administrative-adjudication-proceedings/`}
+    >
       Administrative Adjudication
     </a>,
-    <a key='writing' href='/plain-writing/'>
+    <a key='writing' href={`${cfLink}/plain-writing/`}>
       Plain Writing
     </a>,
-    <a key='accessibility' href='/accessibility/'>
+    <a key='accessibility' href={`${cfLink}/accessibility/`}>
       Accessibility
     </a>,
-    <a key='civ-rights' href='/office-civil-rights/'>
+    <a key='civ-rights' href={`${cfLink}/office-civil-rights/`}>
       Office of Civil Rights
     </a>,
-    <a key='no-fear' href='/office-civil-rights/no-fear-act-cummings-act/'>
+    <a
+      key='no-fear'
+      href={`${cfLink}/office-civil-rights/no-fear-act-cummings-act/`}
+    >
       No FEAR Act &amp; Cummings Act
     </a>,
-    <a key='tribal' href='/tribal/'>
+    <a key='tribal' href={`${cfLink}/tribal/`}>
       Tribal
     </a>
   ];
