@@ -45,7 +45,12 @@ export const AlertFieldLevel = ({
       role='alert'
       {...properties}
     >
-      <Icon name={MapTypeToIconName[status]} alt={status} withBg />
+      <Icon
+        ariaLabel={`${status} icon`}
+        name={MapTypeToIconName[status]}
+        alt={status}
+        withBg
+      />
       <span className='a-form-alert_text' data-testid='message'>
         {message}
       </span>
