@@ -1,9 +1,15 @@
 import { Icon } from '../Icon/Icon';
 import Footer from './Footer';
 
+interface FootCfGovProperties {
+  cfLink?: string;
+}
+
 export const FooterCfGov = ({
-  cfLink = 'https://www.consumerfinance.gov'
-}): JSX.Element => {
+  cfLink = 'https://www.consumerfinance.gov',
+  className,
+  ...properties
+}: FootCfGovProperties & JSX.IntrinsicElements['footer']): JSX.Element => {
   const navLinks = [
     <a href={`${cfLink}/about-us/`} key='about'>
       About Us
@@ -150,6 +156,8 @@ export const FooterCfGov = ({
 
   return (
     <Footer
+      {...properties}
+      className={className}
       navLinks={navLinks}
       socialLinks={socialLinks}
       linksCol1={linksCol1}
