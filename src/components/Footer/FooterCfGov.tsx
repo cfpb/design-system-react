@@ -1,7 +1,10 @@
 import { Icon } from '../Icon/Icon';
 import Footer from './Footer';
 
-export const FooterCfGov = (): JSX.Element => {
+export const FooterCfGov = ({
+  className,
+  ...properties
+}: JSX.IntrinsicElements['footer']): JSX.Element => {
   const navLinks = [
     <a href='/about-us/' key='about'>
       About Us
@@ -139,6 +142,8 @@ export const FooterCfGov = (): JSX.Element => {
 
   return (
     <Footer
+      {...properties}
+      className={className}
       navLinks={navLinks}
       socialLinks={socialLinks}
       linksCol1={linksCol1}
