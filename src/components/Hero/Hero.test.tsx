@@ -66,19 +66,26 @@ describe('Hero', () => {
   });
 
   it('Applies heading levels', () => {
-    const headingLevel = 'h4';
-    const subheadingLevel = 'h3';
+    const headingLevel = 2;
+    const headingText = 'Heading text';
+    const subheadingLevel = 3;
+    const subheadingText = 'Subheading text';
 
     render(
-      <Hero headingLevel={headingLevel} subheadingLevel={subheadingLevel} />
+      <Hero
+        heading='Heading text'
+        headingLevel={`h${headingLevel}`}
+        subheading='Subheading text'
+        subheadingLevel={`h${subheadingLevel}`}
+      />
     );
 
     // Heading
-    const heading = screen.getByTestId('hero-heading');
-    expect(heading.className).toMatch(headingLevel);
+    const header = screen.getByRole('heading', { level: headingLevel });
+    expect(header).toHaveProperty('textContent', headingText);
 
     // Subheading
-    const subheading = screen.getByTestId('hero-subheading');
-    expect(subheading.className).toMatch(subheadingLevel);
+    const subheading = screen.getByRole('heading', { level: subheadingLevel });
+    expect(subheading).toHaveProperty('textContent', subheadingText);
   });
 });
