@@ -2,7 +2,7 @@ import { Icon } from '../Icon/Icon';
 import Footer from './Footer';
 
 export const FooterCfGov = ({
-  cfLink = 'https://www.consumerfinance.gov/'
+  cfLink = 'https://www.consumerfinance.gov'
 }): JSX.Element => {
   const navLinks = [
     <a href={`${cfLink}/about-us/`} key='about'>
