@@ -9,6 +9,8 @@ export const SelectSingle = ({
   label,
   onChange = noOp,
   maxSelections,
+  value = '',
+  defaultOptionLabel = '-- select an option --',
   ...properties
 }: SelectProperties): JSX.Element => {
   const onSelect = (
@@ -25,8 +27,14 @@ export const SelectSingle = ({
         {label}
       </label>
       <div className='a-select'>
-        <select id={id} data-testid={id} {...properties} onChange={onSelect}>
-          {buildOptions(options)}
+        <select
+          id={id}
+          data-testid={id}
+          {...properties}
+          onChange={onSelect}
+          value={value}
+        >
+          {buildOptions(options, defaultOptionLabel)}
         </select>
       </div>
     </>
