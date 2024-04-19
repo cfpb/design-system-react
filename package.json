@@ -147,5 +147,5 @@
       "vitest related --run --coverage=false"
     ]
   },
-  "packageManager": "yarn@4.1.0"
+  "packageManager": "yarn@4.1.1"
 }
