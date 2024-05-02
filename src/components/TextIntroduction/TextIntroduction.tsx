@@ -5,6 +5,13 @@ import List from '../List/List';
 import ListItem from '../List/ListItem';
 import { Paragraph } from '../Paragraph/Paragraph';
 
+const renderDescription = (description: ReactNode | string): ReactNode => {
+  if (!description) return null;
+  if (typeof description === 'string')
+    return <Paragraph>{description}</Paragraph>;
+  return description;
+};
+
 interface TextIntroductionProperties extends React.HTMLProps<HTMLDivElement> {
   // Page title
   heading: string;
@@ -45,7 +52,7 @@ export const TextIntroduction = ({
     >
       <Heading type='1'>{heading}</Heading>
       <Paragraph isLead>{subheading}</Paragraph>
-      {description ? <p>{description}</p> : null}
+      {renderDescription(description)}
       {call2action}
     </div>
   );
@@ -84,7 +91,7 @@ export const TextIntroductionHeading = TextIntroduction.Heading;
 
 TextIntroduction.Description = ({
   children
-}: TextIntroductionSubProperties): JSX.Element => <p>{children}</p>;
+}: TextIntroductionSubProperties): ReactNode => renderDescription(children);
 
 export const TextIntroductionDescription = TextIntroduction.Description;
 
