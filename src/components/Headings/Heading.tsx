@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import type { JSXElement } from '~/src/types/jsxElement';
+import type { ReactNode } from 'react';
 
 export type HeadingType =
   | '1'
@@ -21,7 +21,7 @@ export const Heading = ({
   children,
   className,
   ...properties
-}: HeadingProperties): JSXElement => {
+}: HeadingProperties): ReactNode => {
   let DynamicHeading: keyof JSX.IntrinsicElements;
   const classes = [className];
 
