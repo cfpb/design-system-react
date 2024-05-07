@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import type { ReactNode } from 'react';
 
 interface ParagraphProperties extends React.HTMLProps<HTMLParagraphElement> {
   isLead?: boolean;
@@ -14,7 +15,7 @@ export function Paragraph({
   isLead,
   className,
   ...properties
-}: ParagraphProperties): JSX.Element {
+}: ParagraphProperties): ReactNode {
   const cnames = [className];
 
   if (isLead) cnames.push('lead-paragraph');
