@@ -70,7 +70,7 @@ const PaginationNavButton = ({
     >
       {isNext ? label : null}
       <span className={classNames(iconCnames)}>
-        {iconName ? <Icon name={iconName} /> : null}
+        {iconName ? <Icon isPresentational name={iconName} /> : null}
       </span>
       {isPrevious ? label : null}
     </button>
@@ -119,7 +119,7 @@ const PaginationInput = ({
 
 /**
  * Pagination is used to help split up long sets of data or content into shorter pieces, so as to make it easier for users to consume information.
- * 
+ *
  * Source: https://cfpb.github.io/design-system/components/pagination
  */
 export const Pagination = ({
@@ -139,6 +139,8 @@ export const Pagination = ({
     const formData = Object.fromEntries(new FormData(event.currentTarget));
     const targetPage = Number.parseInt(formData.page, 10);
     if (targetPage === page) return;
+    console.log('formData', formData);
+    console.log('targetPage', targetPage);
     onClickGo(targetPage);
   };
 
