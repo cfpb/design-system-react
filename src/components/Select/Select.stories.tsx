@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Select } from '~/src/index';
+import { useState } from 'react';
+import { Select, SelectSingle } from '~/src/index';
+import type { SelectOption, SelectProperties } from './Select';
 import { SingleSelectOptions } from './testUtils';
 
-const meta: Meta<typeof Select> = {
+const meta: Meta<typeof SelectSingle> = {
   title: 'Components (Draft)/Selects/Single select',
   tags: ['autodocs'],
   component: Select,
@@ -16,7 +18,24 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+function SelectWrapper({ ...arguments_ }: SelectProperties): JSX.Element {
+  const [selected, setSelected] = useState<string>('');
+
+  const onHandleChange = (
+    newValue: SelectOption | SelectOption[] | undefined
+  ): void => {
+    // Just to resolve TypeScript since we are using Select in single format
+    if (Array.isArray(newValue)) return;
+    setSelected(newValue?.value ?? '');
+  };
+
+  return (
+    <SelectSingle {...arguments_} value={selected} onChange={onHandleChange} />
+  );
+}
+
 export const SingleSelect: Story = {
+  render: _arguments => SelectWrapper(_arguments),
   name: 'Enabled',
   args: {
     id: 'singleSelect',
@@ -26,6 +45,7 @@ export const SingleSelect: Story = {
 };
 
 export const SingleSelectHover: Story = {
+  render: _arguments => SelectWrapper(_arguments),
   name: 'Hover',
   args: {
     id: 'singleSelect',
@@ -36,6 +56,7 @@ export const SingleSelectHover: Story = {
 };
 
 export const SingleSelectFocus: Story = {
+  render: _arguments => SelectWrapper(_arguments),
   name: 'Focus',
   args: {
     id: 'singleSelect',
@@ -46,6 +67,7 @@ export const SingleSelectFocus: Story = {
 };
 
 export const SingleSelectDisabled: Story = {
+  render: _arguments => SelectWrapper(_arguments),
   name: 'Disabled',
   args: {
     id: 'singleSelect',

@@ -1,3 +1,4 @@
+import type { SelectHTMLAttributes } from 'react';
 import { SelectMulti } from './SelectMulti';
 import { SelectSingle } from './SelectSingle';
 
@@ -7,7 +8,8 @@ export interface SelectOption {
   selected?: boolean;
 }
 
-export interface SelectProperties {
+export interface SelectProperties
+  extends SelectHTMLAttributes<HTMLSelectElement> {
   disabled?: boolean;
   id: string;
   isMulti?: boolean;
@@ -15,6 +17,9 @@ export interface SelectProperties {
   onChange?: (selected: SelectOption | SelectOption[] | undefined) => void;
   options: SelectOption[];
   maxSelections?: number;
+  className?: string;
+  value?: string;
+  defaultOptionLabel?: string;
 }
 
 /**
