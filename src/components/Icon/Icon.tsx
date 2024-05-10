@@ -97,7 +97,6 @@ export const Icon = ({
   const iconAttributes = [
     `class="${classNames(classes)}"`,
     isPresentational ? '' : 'role="img"',
-    isPresentational ? '' : `alt="${alt ?? name}"`,
     isPresentational ? 'aria-hidden="true"' : '',
     ariaLabel ? `aria-label="${ariaLabel}"` : '',
     ariaLabelledby ? `aria-labelledby="${ariaLabelledby}"` : '',
