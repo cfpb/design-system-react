@@ -11,7 +11,11 @@ export function CfpbLogo(): JSX.Element {
       aria-label='Home'
       className='o-header_logo'
     >
-      <img className='o-header_logo-img' src={CFPBLogo} alt='CFPB Logo' />
+      <img
+        className='o-header_logo-img'
+        src={CFPBLogo}
+        alt='Consumer Financial Protection Bureau'
+      />
     </Link>
   );
 }
