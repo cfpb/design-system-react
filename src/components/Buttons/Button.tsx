@@ -34,7 +34,6 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const baseStyles = ['a-btn'];
 
-// appearance styles
 const appearanceStyles = {
   primary: [],
   secondary: ['a-btn__secondary'],
