@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { noOp } from '../../utils/noOp';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
+import './pagination.less';
 import { MIN_PAGE } from './paginationConstants';
 
 export interface PaginationProperties {
@@ -49,7 +50,7 @@ const PaginationNavButton = ({
   isNext = false,
   isDisabled = false
 }: PaginationNavButtonProperties): React.ReactElement => {
-  const buttonCnames = ['a-btn'];
+  const buttonCnames = ['a-btn', 'flex-center'];
   const iconCnames = ['a-btn_icon'];
 
   if (isPrevious) {
@@ -70,7 +71,7 @@ const PaginationNavButton = ({
     >
       {isNext ? label : null}
       <span className={classNames(iconCnames)}>
-        {iconName ? <Icon name={iconName} /> : null}
+        {iconName ? <Icon isPresentational name={iconName} /> : null}
       </span>
       {isPrevious ? label : null}
     </button>
@@ -119,7 +120,7 @@ const PaginationInput = ({
 
 /**
  * Pagination is used to help split up long sets of data or content into shorter pieces, so as to make it easier for users to consume information.
- * 
+ *
  * Source: https://cfpb.github.io/design-system/components/pagination
  */
 export const Pagination = ({
