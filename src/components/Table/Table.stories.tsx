@@ -158,3 +158,26 @@ export const FixedWidth: Story = {
     ]
   }
 };
+
+const maxUidTestRows = [...Array.from({ length: 100 }).keys()].map(
+  (item, index) => [
+    index + 10_000,
+    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
+    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
+    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS'
+  ]
+);
+
+export const LongCharacterSets: Story = {
+  name: 'Long Character Sets ',
+  args: {
+    columns: [
+      { header: 'Column 1', cellDisableWordWrap: true },
+      { header: 'Column 2', cellWordBreak: true },
+      { header: 'Column 3', cellWordBreak: true },
+      { header: 'Column 4', cellWordBreak: true }
+    ],
+    rows: maxUidTestRows,
+    isScrollableHorizontal: false
+  }
+};
