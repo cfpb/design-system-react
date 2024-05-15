@@ -159,9 +159,9 @@ export const FixedWidth: Story = {
   }
 };
 
-const maxUidTestRows = [...Array.from({ length: 100 }).keys()].map(
+const maxUidTestRows = [...Array.from({ length: 20 }).keys()].map(
   (item, index) => [
-    index + 10_000,
+    `Row ${index + 1_000_000_000}`,
     '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
     '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
     '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS'
