@@ -16,6 +16,7 @@ export const buildColumnHeaders = (
 
           if (column.alignRight) cnames.push('o-table_cell__right-align');
           if (column.width) cnames.push(`u-w${column.width}pct`);
+          if (!column.headerWordWrap) cnames.push('white-space-nowrap');
         } else {
           content = column;
         }
@@ -33,14 +34,21 @@ export const buildColumnHeaders = (
 const getCellProperties = (column: TableColumn): object => {
   if (!column) return {};
 
-  if (typeof column === 'string')
+  if (typeof column === 'string') {
     return {
       'data-label': column
     };
+  }
+
+  const cellCnames = [''];
+  if (column.alignRight) cellCnames.push('o-table_cell__right-align');
+  if (column.cellDisableWordWrap) cellCnames.push('white-space-nowrap');
+  if (!column.cellDisableWordWrap && column.cellWordBreak)
+    cellCnames.push('word-break-break-all');
 
   return {
     'data-label': column.header,
-    className: column.alignRight ? 'o-table_cell__right-align' : ''
+    className: classNames(cellCnames)
   };
 };
 
