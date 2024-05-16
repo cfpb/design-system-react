@@ -7,11 +7,13 @@ interface CfpbLogoProperties {
   href?: string;
 }
 
-export function CfpbLogo({ href }: CfpbLogoProperties): JSX.Element {
+export function CfpbLogo({
+  href = 'https://www.consumerfinance.gov'
+}: CfpbLogoProperties): JSX.Element {
   return (
     <Link
       data-testid='CfpbLogoLink'
-      href={href ?? 'https://www.consumerfinance.gov'}
+      href={href}
       title='Home'
       aria-label='Home'
       className='o-header_logo'
