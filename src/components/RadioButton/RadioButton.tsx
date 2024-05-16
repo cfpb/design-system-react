@@ -33,7 +33,8 @@ export const RadioButton = ({
   labelClassName,
   labelInline = true, // 'true' REMOVES the a.label__heading class
   label,
-  inputRef
+  inputRef,
+  ...others
 }: JSX.IntrinsicElements['input'] & RadioProperties): React.ReactElement => {
   const classes = [...baseStyles, className].join(' ');
   const containerClasses = [
@@ -50,6 +51,7 @@ export const RadioButton = ({
         className={classes}
         ref={inputRef}
         disabled={disabled}
+        {...others}
       />
       <Label htmlFor={id} className={labelClassName} inline={labelInline}>
         {label}
