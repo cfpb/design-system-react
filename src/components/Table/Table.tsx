@@ -5,6 +5,7 @@ import { type WidthPercent } from '../../types/WidthPercent';
 import { Pagination } from '../Pagination/Pagination';
 import { DEFAULT_PER_PAGE, MIN_PAGE } from '../Pagination/paginationConstants';
 import { usePagination } from '../Pagination/usePagination';
+import './table.less';
 import { buildColumnHeaders, buildRows } from './tableUtils';
 
 const Caption = ({ children }: { children: ReactNode }): JSXElement => {
@@ -16,6 +17,9 @@ export interface TableColumnConfiguration {
   header: string; // Column heading
   alignRight?: boolean | undefined; // Align content to the right?
   width?: WidthPercent; // Fixed percentage of table width for column to consume
+  cellWordBreak?: boolean; // Allows the td (cells) to break upon limit space
+  cellDisableWordWrap?: boolean; // Overrides 'cellWordBreak' and explicitly forces wrapping to be disabled in the td (cell)
+  headerWordWrap?: boolean; // Allows wrapping in the th (header), by default -- header fields are set to no-wrap
 }
 
 export type TableColumn = TableColumnConfiguration | string;
