@@ -49,6 +49,16 @@ describe('<RadioButton />', () => {
     expect(element.getAttribute('disabled')).toBe('');
   });
 
+  it('accepts additional input element props', () => {
+    const properties = buildProperties('default-checked');
+    render(<RadioButton {...properties} defaultChecked />);
+
+    const element = screen.getByRole(role);
+
+    expect(element).toBeInTheDocument();
+    expect(element).toBeChecked();
+  });
+
   it('Select via click', () => {
     const properties = buildProperties('click');
     render(<RadioButton {...properties} />);
