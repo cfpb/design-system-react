@@ -96,14 +96,14 @@ const PaginationInput = ({
   return (
     <Label
       className='m-pagination_label'
-      htmlFor='m-pagination_current-page'
+      htmlFor='pagination_current-page'
       inline
     >
       Page
       <span className='u-visually-hidden'>number {page} out</span>
       <input
         className='m-pagination_current-page'
-        id='m-pagination_current-page-default'
+        id='pagination_current-page'
         name='page'
         type='number'
         min='1'
