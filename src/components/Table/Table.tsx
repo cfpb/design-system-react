@@ -25,6 +25,8 @@ export interface TableColumnConfiguration {
 export type TableColumn = TableColumnConfiguration | string;
 
 export interface TableProperties {
+  // Unique identifier
+  id: string;
   // Table description, displayed atop the table
   caption?: ReactNode;
   // Array of column headers or column configurations
@@ -55,6 +57,7 @@ export interface TableProperties {
  * Source: https://cfpb.github.io/design-system/components/tables
  */
 export const Table = ({
+  id,
   caption,
   columns,
   rows,
@@ -95,7 +98,9 @@ export const Table = ({
         {buildColumnHeaders(columns)}
         {buildRows(visibleRows, columns)}
       </table>
-      {isPaginated ? <Pagination {...paginationProperties} /> : null}
+      {isPaginated ? (
+        <Pagination {...paginationProperties} tableId={id} />
+      ) : null}
     </>
   );
 

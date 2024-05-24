@@ -8,6 +8,8 @@ import './pagination.less';
 import { MIN_PAGE } from './paginationConstants';
 
 export interface PaginationProperties {
+  /** Identifier of the table this element controls */
+  tableId: string;
   /** Currently displayed page number  */
   page: number;
   /** Total number of available pages */
@@ -79,12 +81,14 @@ const PaginationNavButton = ({
 };
 
 interface PaginationInputProperties {
+  tableId: string;
   page: number;
   pageCount: number;
   onChange: (value: number) => void;
 }
 
 const PaginationInput = ({
+  tableId,
   page,
   pageCount,
   onChange
@@ -93,17 +97,15 @@ const PaginationInput = ({
     onChange(Number.parseInt(event.currentTarget.value, 10));
   };
 
+  const inputId = `${tableId}-pagination_current-page`;
+
   return (
-    <Label
-      className='m-pagination_label'
-      htmlFor='pagination_current-page'
-      inline
-    >
+    <Label className='m-pagination_label' htmlFor={inputId} inline>
       Page
       <span className='u-visually-hidden'>number {page} out</span>
       <input
         className='m-pagination_current-page'
-        id='pagination_current-page'
+        id={inputId}
         name='page'
         type='number'
         min='1'
@@ -124,6 +126,7 @@ const PaginationInput = ({
  * Source: https://cfpb.github.io/design-system/components/pagination
  */
 export const Pagination = ({
+  tableId,
   page,
   pageCount,
   onClickPrevious = noOp,
@@ -168,6 +171,7 @@ export const Pagination = ({
         onSubmit={onSubmit}
       >
         <PaginationInput
+          tableId={tableId}
           page={pageNumber}
           pageCount={pageCount}
           onChange={onInputChange}
