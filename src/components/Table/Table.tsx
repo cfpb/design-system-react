@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type ReactNode } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 import type { JSXElement } from '~/src/types/jsxElement';
 import { type WidthPercent } from '../../types/WidthPercent';
 import { Pagination } from '../Pagination/Pagination';
@@ -54,63 +54,72 @@ export interface TableProperties {
  *
  * Source: https://cfpb.github.io/design-system/components/tables
  */
-export const Table = ({
-  caption,
-  columns,
-  rows,
-  isResponsive = false,
-  isDirectory = false,
-  isScrollableHorizontal = false,
-  isStriped = false,
-  isPaginated = false,
-  startPage = MIN_PAGE,
-  perPage = DEFAULT_PER_PAGE,
-  className,
-  ...others
-}: React.HTMLProps<HTMLTableElement> & TableProperties): React.ReactElement => {
-  const [visibleRows, paginationProperties] = usePagination({
-    rows,
-    isPaginated,
-    startPage,
-    perPage
-  });
+export const Table = forwardRef<
+  HTMLTableElement,
+  React.HTMLProps<HTMLTableElement> & TableProperties
+>(
+  (
+    {
+      caption,
+      columns,
+      rows,
+      isResponsive = false,
+      isDirectory = false,
+      isScrollableHorizontal = false,
+      isStriped = false,
+      isPaginated = false,
+      startPage = MIN_PAGE,
+      perPage = DEFAULT_PER_PAGE,
+      className,
+      ...others
+    },
+    reference
+  ): React.ReactElement => {
+    const [visibleRows, paginationProperties] = usePagination({
+      rows,
+      isPaginated,
+      startPage,
+      perPage
+    });
 
-  const tableClassnames = [];
+    const tableClassnames = [];
 
-  if (isResponsive || isDirectory)
-    tableClassnames.push('o-table o-table__stack-on-small');
-  if (isDirectory) tableClassnames.push('o-table__entry-header-on-small');
-  if (isStriped) tableClassnames.push('o-table__striped');
-  if (isPaginated) tableClassnames.push('u-w100pct');
-  if (className) tableClassnames.push(className);
+    if (isResponsive || isDirectory)
+      tableClassnames.push('o-table o-table__stack-on-small');
+    if (isDirectory) tableClassnames.push('o-table__entry-header-on-small');
+    if (isStriped) tableClassnames.push('o-table__striped');
+    if (isPaginated) tableClassnames.push('u-w100pct');
+    if (className) tableClassnames.push(className);
 
-  const tableContent = (
-    <>
-      <table
-        data-testid='table-testid'
-        className={classNames(tableClassnames)}
-        {...others}
-      >
-        <Caption>{caption}</Caption>
-        {buildColumnHeaders(columns)}
-        {buildRows(visibleRows, columns)}
-      </table>
-      {isPaginated ? <Pagination {...paginationProperties} /> : null}
-    </>
-  );
-
-  if (isScrollableHorizontal) {
-    return (
-      <div
-        data-testid='table-simple-scrollable'
-        className='o-table o-table-wrapper__scrolling'
-      >
-        {tableContent}
-      </div>
+    const tableContent = (
+      <>
+        <table
+          data-testid='table-testid'
+          className={classNames(tableClassnames)}
+          ref={reference}
+          {...others}
+        >
+          <Caption>{caption}</Caption>
+          {buildColumnHeaders(columns)}
+          {buildRows(visibleRows, columns)}
+        </table>
+        {isPaginated ? <Pagination {...paginationProperties} /> : null}
+      </>
     );
-  }
 
-  return tableContent;
-};
+    if (isScrollableHorizontal) {
+      return (
+        <div
+          data-testid='table-simple-scrollable'
+          className='o-table o-table-wrapper__scrolling'
+        >
+          {tableContent}
+        </div>
+      );
+    }
+
+    return tableContent;
+  }
+);
 
 export default Table;
