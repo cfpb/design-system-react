@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { ForwardedRef } from 'react';
+import type { ForwardedRef, HTMLProps } from 'react';
 import { forwardRef, type ReactNode } from 'react';
 import type { JSXElement } from '~/src/types/jsxElement';
 import { type WidthPercent } from '../../types/WidthPercent';
@@ -9,7 +9,9 @@ import { usePagination } from '../Pagination/usePagination';
 import './table.less';
 import { buildColumnHeaders, buildRows } from './tableUtils';
 
-const Caption = ({ children }: { children: ReactNode }): JSXElement => {
+const Caption = ({
+  children
+}: HTMLProps<HTMLTableCaptionElement>): JSXElement => {
   if (!children) return null;
   return <caption>{children}</caption>;
 };
