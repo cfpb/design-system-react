@@ -59,7 +59,7 @@ export interface TableProperties {
  * Source: https://cfpb.github.io/design-system/components/tables
  */
 export const Table = forwardRef<
-  HTMLTableElement,
+  HTMLDivElement,
   React.HTMLProps<HTMLTableElement> & TableProperties
 >(
   (
