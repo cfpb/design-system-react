@@ -96,7 +96,6 @@ export const Table = forwardRef<
         <table
           data-testid='table-testid'
           className={classNames(tableClassnames)}
-          ref={reference}
           {...others}
         >
           <Caption>{caption}</Caption>
@@ -112,6 +111,7 @@ export const Table = forwardRef<
         <div
           data-testid='table-simple-scrollable'
           className='o-table o-table-wrapper__scrolling'
+          ref={reference}
         >
           {tableContent}
         </div>
