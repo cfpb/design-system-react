@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import type { ForwardedRef } from 'react';
 import { forwardRef, type ReactNode } from 'react';
 import type { JSXElement } from '~/src/types/jsxElement';
 import { type WidthPercent } from '../../types/WidthPercent';
@@ -47,6 +48,9 @@ export interface TableProperties {
   perPage?: number;
   // Additional CSS classes
   className?: string;
+  // Refs for div and table elements
+  divRef?: ForwardedRef<HTMLDivElement>;
+  tableRef?: ForwardedRef<HTMLTableElement>;
 }
 
 /**
@@ -71,6 +75,8 @@ export const Table = forwardRef<
       startPage = MIN_PAGE,
       perPage = DEFAULT_PER_PAGE,
       className,
+      divRef,
+      tableRef,
       ...others
     },
     reference
@@ -96,6 +102,7 @@ export const Table = forwardRef<
         <table
           data-testid='table-testid'
           className={classNames(tableClassnames)}
+          ref={tableRef}
           {...others}
         >
           <Caption>{caption}</Caption>
@@ -111,7 +118,7 @@ export const Table = forwardRef<
         <div
           data-testid='table-simple-scrollable'
           className='o-table o-table-wrapper__scrolling'
-          ref={reference}
+          ref={reference ?? divRef}
         >
           {tableContent}
         </div>
@@ -121,5 +128,7 @@ export const Table = forwardRef<
     return tableContent;
   }
 );
+
+Table.displayName = 'Table';
 
 export default Table;
