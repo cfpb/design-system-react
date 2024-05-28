@@ -76,7 +76,7 @@ export const Alert = ({
       aria-atomic='true'
       {...properties}
     >
-      {showIcon ? <Icon {...iconByType[status]} isPresentational /> : null}
+      {showIcon ? <Icon {...iconByType[status]} /> : null}
       <div className='m-notification_content'>
         {message ? (
           <p

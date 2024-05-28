@@ -17,8 +17,7 @@ export const AlertLink = ({
       href={href}
       aria-label={`${label || ''} external link}`}
     >
-      {label}{' '}
-      {isExternal ? <Icon name='external-link' isPresentational /> : null}
+      {label} {isExternal ? <Icon name='external-link' /> : null}
     </a>
   </li>
 );

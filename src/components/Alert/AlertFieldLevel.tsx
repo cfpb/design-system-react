@@ -46,12 +46,7 @@ export const AlertFieldLevel = ({
       aria-atomic='true'
       {...properties}
     >
-      <Icon
-        name={MapTypeToIconName[status]}
-        alt={status}
-        withBg
-        isPresentational
-      />
+      <Icon name={MapTypeToIconName[status]} alt={status} withBg />
       <span className='a-form-alert_text' data-testid='message'>
         {message}
       </span>
