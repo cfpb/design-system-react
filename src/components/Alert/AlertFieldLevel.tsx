@@ -42,10 +42,16 @@ export const AlertFieldLevel = ({
   return (
     <div
       className={`a-form-alert a-form-alert${AlertFieldLevelClass[status]}`}
-      role='alert'
+      aria-live='polite' // default accessibility setting, can be overridden by the properties spread
+      aria-atomic='true'
       {...properties}
     >
-      <Icon name={MapTypeToIconName[status]} alt={status} withBg />
+      <Icon
+        name={MapTypeToIconName[status]}
+        alt={status}
+        withBg
+        isPresentational
+      />
       <span className='a-form-alert_text' data-testid='message'>
         {message}
       </span>
