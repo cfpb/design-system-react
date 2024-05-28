@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { useId, type ReactNode } from 'react';
+import type { ForwardedRef, HTMLProps } from 'react';
+import { forwardRef, useId, type ReactNode } from 'react';
 import type { JSXElement } from '~/src/types/jsxElement';
 import { type WidthPercent } from '../../types/WidthPercent';
 import { Pagination } from '../Pagination/Pagination';
@@ -8,7 +9,9 @@ import { usePagination } from '../Pagination/usePagination';
 import './table.less';
 import { buildColumnHeaders, buildRows } from './tableUtils';
 
-const Caption = ({ children }: { children: ReactNode }): JSXElement => {
+const Caption = ({
+  children
+}: HTMLProps<HTMLTableCaptionElement>): JSXElement => {
   if (!children) return null;
   return <caption>{children}</caption>;
 };
@@ -49,6 +52,9 @@ export interface TableProperties {
   perPage?: number;
   // Additional CSS classes
   className?: string;
+  // Refs for div and table elements
+  divRef?: ForwardedRef<HTMLDivElement>;
+  tableRef?: ForwardedRef<HTMLTableElement>;
 }
 
 /**
@@ -56,69 +62,81 @@ export interface TableProperties {
  *
  * Source: https://cfpb.github.io/design-system/components/tables
  */
-export const Table = ({
-  id,
-  caption,
-  columns,
-  rows,
-  isResponsive = false,
-  isDirectory = false,
-  isScrollableHorizontal = false,
-  isStriped = false,
-  isPaginated = false,
-  startPage = MIN_PAGE,
-  perPage = DEFAULT_PER_PAGE,
-  className,
-  ...others
-}: React.HTMLProps<HTMLTableElement> & TableProperties): React.ReactElement => {
-  const [visibleRows, paginationProperties] = usePagination({
-    rows,
-    isPaginated,
-    startPage,
-    perPage
-  });
+export const Table = forwardRef<
+  HTMLDivElement,
+  React.HTMLProps<HTMLTableElement> & TableProperties
+>(
+  (
+    {
+      id,
+      caption,
+      columns,
+      rows,
+      isResponsive = false,
+      isDirectory = false,
+      isScrollableHorizontal = false,
+      isStriped = false,
+      isPaginated = false,
+      startPage = MIN_PAGE,
+      perPage = DEFAULT_PER_PAGE,
+      className,
+      divRef,
+      tableRef,
+      ...others
+    },
+    reference
+  ): React.ReactElement => {
+    const [visibleRows, paginationProperties] = usePagination({
+      rows,
+      isPaginated,
+      startPage,
+      perPage
+    });
 
-  const tableId = useId();
+    const tableId = useId();
 
-  const tableClassnames = [];
+    const tableClassnames = [];
 
-  if (isResponsive || isDirectory)
-    tableClassnames.push('o-table o-table__stack-on-small');
-  if (isDirectory) tableClassnames.push('o-table__entry-header-on-small');
-  if (isStriped) tableClassnames.push('o-table__striped');
-  if (isPaginated) tableClassnames.push('u-w100pct');
-  if (className) tableClassnames.push(className);
+    if (isResponsive || isDirectory)
+      tableClassnames.push('o-table o-table__stack-on-small');
+    if (isDirectory) tableClassnames.push('o-table__entry-header-on-small');
+    if (isStriped) tableClassnames.push('o-table__striped');
+    if (isPaginated) tableClassnames.push('u-w100pct');
+    if (className) tableClassnames.push(className);
 
-  const tableContent = (
-    <>
-      <table
-        data-testid='table-testid'
-        className={classNames(tableClassnames)}
-        id={id ?? tableId}
-        {...others}
-      >
-        <Caption>{caption}</Caption>
-        {buildColumnHeaders(columns)}
-        {buildRows(visibleRows, columns)}
-      </table>
-      {isPaginated ? (
-        <Pagination {...paginationProperties} tableId={id ?? tableId} />
-      ) : null}
-    </>
-  );
-
-  if (isScrollableHorizontal) {
-    return (
-      <div
-        data-testid='table-simple-scrollable'
-        className='o-table o-table-wrapper__scrolling'
-      >
-        {tableContent}
-      </div>
+    const tableContent = (
+      <>
+        <table
+          data-testid='table-testid'
+          className={classNames(tableClassnames)}
+          ref={tableRef}
+          id={id ?? tableId}
+          {...others}
+        >
+          <Caption>{caption}</Caption>
+          {buildColumnHeaders(columns)}
+          {buildRows(visibleRows, columns)}
+        </table>
+        {isPaginated ? <Pagination {...paginationProperties} tableId={id ?? tableId}/> : null}
+      </>
     );
-  }
 
-  return tableContent;
-};
+    if (isScrollableHorizontal) {
+      return (
+        <div
+          data-testid='table-simple-scrollable'
+          className='o-table o-table-wrapper__scrolling'
+          ref={reference ?? divRef}
+        >
+          {tableContent}
+        </div>
+      );
+    }
+
+    return tableContent;
+  }
+);
+
+Table.displayName = 'Table';
 
 export default Table;
