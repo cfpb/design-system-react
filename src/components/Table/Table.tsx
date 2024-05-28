@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import type { JSXElement } from '~/src/types/jsxElement';
 import { type WidthPercent } from '../../types/WidthPercent';
 import { Pagination } from '../Pagination/Pagination';
@@ -26,7 +26,7 @@ export type TableColumn = TableColumnConfiguration | string;
 
 export interface TableProperties {
   // Unique identifier
-  id: string;
+  id?: string;
   // Table description, displayed atop the table
   caption?: ReactNode;
   // Array of column headers or column configurations
@@ -78,6 +78,8 @@ export const Table = ({
     perPage
   });
 
+  const tableId = useId();
+
   const tableClassnames = [];
 
   if (isResponsive || isDirectory)
@@ -92,6 +94,7 @@ export const Table = ({
       <table
         data-testid='table-testid'
         className={classNames(tableClassnames)}
+        id={id ?? tableId}
         {...others}
       >
         <Caption>{caption}</Caption>
@@ -99,7 +102,7 @@ export const Table = ({
         {buildRows(visibleRows, columns)}
       </table>
       {isPaginated ? (
-        <Pagination {...paginationProperties} tableId={id} />
+        <Pagination {...paginationProperties} tableId={id ?? tableId} />
       ) : null}
     </>
   );
