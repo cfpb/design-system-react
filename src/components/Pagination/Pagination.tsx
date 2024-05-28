@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { EventHandler, ReactElement, SyntheticEvent } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { noOp } from '../../utils/noOp';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
@@ -9,7 +9,7 @@ import { MIN_PAGE } from './paginationConstants';
 
 export interface PaginationProperties {
   /** Identifier of the table this element controls */
-  tableId: string;
+  tableId?: string;
   /** Currently displayed page number  */
   page: number;
   /** Total number of available pages */
@@ -146,6 +146,8 @@ export const Pagination = ({
     onClickGo(targetPage);
   };
 
+  const paginationId = useId();
+
   const onInputChange = setPageNumber;
 
   return (
@@ -171,7 +173,7 @@ export const Pagination = ({
         onSubmit={onSubmit}
       >
         <PaginationInput
-          tableId={tableId}
+          tableId={tableId ?? paginationId}
           page={pageNumber}
           pageCount={pageCount}
           onChange={onInputChange}
