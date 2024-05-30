@@ -69,13 +69,7 @@ export const Alert = ({
   );
 
   return (
-    <div
-      className={classes}
-      data-testid='notification'
-      aria-live='polite' // default accessibility setting, can be overridden by the properties spread
-      aria-atomic='true'
-      {...properties}
-    >
+    <div className={classes} data-testid='notification' {...properties}>
       {showIcon ? <Icon {...iconByType[status]} /> : null}
       <div className='m-notification_content'>
         {message ? (
