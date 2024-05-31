@@ -18,4 +18,14 @@ describe('PageHeader', () => {
       'https://www.consumerfinance.gov'
     );
   });
+
+  it('Renders with bottom border by default', () => {
+    const { container } = render(<PageHeader />);
+    expect(container.firstChild.className).toBe('o-header bottom-border');
+  });
+
+  it('Can be rendered without bottom border', () => {
+    const { container } = render(<PageHeader withBottomBorder={false} />);
+    expect(container.firstChild.className).toBe('o-header');
+  });
 });
