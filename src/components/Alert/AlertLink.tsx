@@ -12,11 +12,7 @@ export const AlertLink = ({
   isExternal
 }: AlertLinkProperties): JSX.Element => (
   <li className='m-list_item'>
-    <a
-      className='m-list_link'
-      href={href}
-      aria-label={`${label || ''} external link}`}
-    >
+    <a className='m-list_link' href={href}>
       {label} {isExternal ? <Icon name='external-link' /> : null}
     </a>
   </li>
