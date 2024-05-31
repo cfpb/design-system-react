@@ -21,7 +21,7 @@ const isSquare = new Set([
   'github',
   'linkedin',
   'pinterest',
-  'twitter',
+  'x',
   'youtube'
 ]);
 

@@ -56,7 +56,7 @@ export const FooterCfGov = ({
       data-pretty-href={twitterLink}
       href={twitterLink}
     >
-      <Icon name='twitter' isPresentational withBg />
+      <Icon name='x' isPresentational withBg />
     </a>,
     <a
       key='linkedin'
