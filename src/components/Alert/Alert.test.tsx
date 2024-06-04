@@ -69,7 +69,7 @@ describe('<Alert />', () => {
     // Icon is displayed: External link
     const externalIcon = await within(linkTwo).findByRole('img');
     expect(externalIcon).toBeInTheDocument();
-    expect(externalIcon).toHaveClass('cf-icon-svg__external-link');
+    expect(externalIcon).toHaveClass('cf-icon-svg--external-link');
   });
 
   it('renders field-level alerts', async () => {
