@@ -3,10 +3,17 @@ import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import Link from '../Link/Link';
 import './navbar.less';
 
-export function CfpbLogo(): JSX.Element {
+interface CfpbLogoProperties {
+  href?: string;
+}
+
+export function CfpbLogo({
+  href = 'https://www.consumerfinance.gov'
+}: CfpbLogoProperties): JSX.Element {
   return (
     <Link
-      href='https://www.consumerfinance.gov/'
+      data-testid='CfpbLogoLink'
+      href={href}
       title='Home'
       aria-label='Home'
       className='o-header_logo'
@@ -33,6 +40,7 @@ const Links = ({
 interface NavbarProperties {
   links?: JSX.Element[];
   user?: User;
+  href?: string;
 }
 
 export interface User {
@@ -67,11 +75,15 @@ const UserActions = ({ user }: UserActionsProperties): JSXElement => {
   );
 };
 
-export default function Navbar({ links, user }: NavbarProperties): JSX.Element {
+export default function Navbar({
+  links,
+  user,
+  href
+}: NavbarProperties): JSX.Element {
   return (
     <div className='o-header_content'>
       <div className='navbar wrapper wrapper__match-content'>
-        <CfpbLogo />
+        <CfpbLogo href={href} />
         <div className='nav-items'>
           <Links elements={links} />
           <UserActions user={user} />
