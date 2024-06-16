@@ -28,7 +28,7 @@ export const ButtonIcon = ({
       className={classNames(['a-btn_icon', cname, className])}
       {...properties}
     >
-      <Icon name={name} />
+      <Icon isPresentational name={name} />
     </span>
   );
 };
