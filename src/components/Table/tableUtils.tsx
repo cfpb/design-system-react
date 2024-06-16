@@ -22,7 +22,7 @@ export const buildColumnHeaders = (
         }
 
         return (
-          <th key={key} className={classNames(cnames)}>
+          <th key={key} className={classNames(cnames)} scope='col'>
             {content}
           </th>
         );
