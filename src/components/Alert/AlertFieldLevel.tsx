@@ -42,7 +42,6 @@ export const AlertFieldLevel = ({
   return (
     <div
       className={`a-form-alert a-form-alert${AlertFieldLevelClass[status]}`}
-      role='alert'
       {...properties}
     >
       <Icon

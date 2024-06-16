@@ -34,7 +34,7 @@ export const socialIcons: string[] = [
   'github',
   'linkedin',
   'pinterest',
-  'twitter',
+  'x',
   'youtube'
 ];
 

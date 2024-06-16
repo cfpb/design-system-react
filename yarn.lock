@@ -1505,132 +1505,139 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-buttons@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-buttons@npm:0.35.0"
+"@cfpb/cfpb-buttons@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-buttons@npm:0.35.1"
   dependencies:
-    "@cfpb/cfpb-core": "npm:^0.35.0"
-    "@cfpb/cfpb-icons": "npm:^0.35.0"
-  checksum: 10/3569b2b954c53cca38a53b6f014852e776506c0b7df882a067c5e46c626ed0324d01d0143b70f3f53f90fde10ce998272081340bc65d9cad144d8d04debf4525
+    "@cfpb/cfpb-core": "npm:^0.35.1"
+    "@cfpb/cfpb-icons": "npm:^0.35.1"
+  checksum: 10/b7930fa64bb757d6c0c0389a4850fba43682f8aa8ba34bcd8e328a3d8048baf7075c8c00f6331a4c0c3570ff0e53462678b514b37692008cf9c88a87f1e33d5f
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-core@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-core@npm:0.35.0"
+"@cfpb/cfpb-core@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-core@npm:0.35.1"
   dependencies:
     normalize-css: "npm:^2.0.0"
-  checksum: 10/22a9339e86fef6d1692464837452fc6289b8d602de9b10c4f82e497ca3b150eda8a2a4cac4f455a42a57fea3a608302744ee0ceb39826aeb89fc03b7b41c931b
+  checksum: 10/a5e6b528a4fa0b6aeb30bff9c3025b5e2889dee16485b85ea90a3b1a1b658b72110bf06a87474bb9a4eead642a5c6ff99ea371d66c5cccc0813c713e810d67ac
   languageName: node
   linkType: hard
 
 "@cfpb/cfpb-design-system@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-design-system@npm:0.35.0"
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-design-system@npm:0.35.1"
   dependencies:
     "@cfpb/cfpb-atomic-component": "npm:^0.35.0"
-    "@cfpb/cfpb-buttons": "npm:^0.35.0"
-    "@cfpb/cfpb-core": "npm:^0.35.0"
-    "@cfpb/cfpb-expandables": "npm:^0.35.0"
-    "@cfpb/cfpb-forms": "npm:^0.35.0"
-    "@cfpb/cfpb-grid": "npm:^0.35.0"
-    "@cfpb/cfpb-icons": "npm:^0.35.0"
-    "@cfpb/cfpb-layout": "npm:^0.35.0"
-    "@cfpb/cfpb-notifications": "npm:^0.35.0"
-    "@cfpb/cfpb-pagination": "npm:^0.35.0"
-    "@cfpb/cfpb-tables": "npm:^0.35.0"
-    "@cfpb/cfpb-typography": "npm:^0.35.0"
-  checksum: 10/4687dc6c3ed5888823d84d637d95aa6624f830f425ee0dede536d24c902a9a56aa570b9854f15918a76460eb5fb10e8080a266d61296a16b620182c70ed8fbc1
+    "@cfpb/cfpb-buttons": "npm:^0.35.1"
+    "@cfpb/cfpb-core": "npm:^0.35.1"
+    "@cfpb/cfpb-expandables": "npm:^0.35.1"
+    "@cfpb/cfpb-forms": "npm:^0.35.1"
+    "@cfpb/cfpb-grid": "npm:^0.35.1"
+    "@cfpb/cfpb-icons": "npm:^0.35.1"
+    "@cfpb/cfpb-layout": "npm:^0.35.1"
+    "@cfpb/cfpb-notifications": "npm:^0.35.1"
+    "@cfpb/cfpb-pagination": "npm:^0.35.1"
+    "@cfpb/cfpb-tables": "npm:^0.35.1"
+    "@cfpb/cfpb-typography": "npm:^0.35.1"
+  checksum: 10/55bfe21fefb827cc4db3625bbb4d3f494014eda135f40e4261bc9c1a34cc8d5d58301f1f31d16961f7b8f6c1b1af6c96dd7e4cc8f4f1caaf39edf927525e543c
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-expandables@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-expandables@npm:0.35.0"
+"@cfpb/cfpb-expandables@npm:^0.35.0, @cfpb/cfpb-expandables@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-expandables@npm:0.35.1"
   dependencies:
     "@cfpb/cfpb-atomic-component": "npm:^0.35.0"
-    "@cfpb/cfpb-core": "npm:^0.35.0"
-    "@cfpb/cfpb-icons": "npm:^0.35.0"
-  checksum: 10/fecb7786819fa25d55869624ce0e312afd566d3c45dd31474678a5c386a73803cc6a37451bd1cce8c08faed1e6fc4e763bdd07e3537a6934dc49297f07197637
+    "@cfpb/cfpb-core": "npm:^0.35.1"
+    "@cfpb/cfpb-icons": "npm:^0.35.1"
+  checksum: 10/64d45464907a7223dceb411f684d71a094c1268c3e583becc4ff988b7eeca8359987e9081a66059a73f61943e5c5e19c2e689f4f936543ce6332eeba5ecc402d
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-forms@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-forms@npm:0.35.0"
+"@cfpb/cfpb-forms@npm:^0.35.0, @cfpb/cfpb-forms@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-forms@npm:0.35.1"
   dependencies:
-    "@cfpb/cfpb-buttons": "npm:^0.35.0"
-    "@cfpb/cfpb-core": "npm:^0.35.0"
-    "@cfpb/cfpb-grid": "npm:^0.35.0"
-    "@cfpb/cfpb-icons": "npm:^0.35.0"
-  checksum: 10/0698e0a37d70111913c1a3fc513721b363a3b5192daed6983ffe5f4d443ccede73969ceb482f620c74247a21182ead8174a923ac739b4a6f9ff486975fb017a4
+    "@cfpb/cfpb-buttons": "npm:^0.35.1"
+    "@cfpb/cfpb-core": "npm:^0.35.1"
+    "@cfpb/cfpb-grid": "npm:^0.35.1"
+    "@cfpb/cfpb-icons": "npm:^0.35.1"
+  checksum: 10/e4f3d1b037f78527713f5421b30e26e889d4f49b010f2e736264af0fdc7ea1a9f7a23da10cb7498f42a22dd04aabfa5c854dfb07594e1dbe1792cdda2483fa3f
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-grid@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-grid@npm:0.35.0"
+"@cfpb/cfpb-grid@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-grid@npm:0.35.1"
   dependencies:
     normalize-css: "npm:^2.0.0"
-  checksum: 10/be7fbfaca73836d7ba5e3bef2d273bbfd14d087f213cbb380772c8e1e42d6b1cb375a2ae33dc0dec36718838aef3eca2f59862a26dfbea0aa953898b2a2b6348
+  checksum: 10/badc9cf43a92b888904c3bbc9430216f2a3c2b8379cfa9654e9d52440859f2ffe35e3a9717816b8ab52a92df2cff1b07b3e63b6a445b02bad5126035a1f848cd
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-icons@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-icons@npm:0.35.0"
-  checksum: 10/36e4b079b67a41bb3d37f1a13ffb3db96dced543e74b1e5342ad8b959e6eb009042f6026497e2fdfd9804e2ae68736f21de6c72a15a6927bc3b76a18794a8cb5
+"@cfpb/cfpb-icons@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-icons@npm:0.35.1"
+  checksum: 10/c5f4f32647c1c8ac655c23e7b903b7cb10db20a9eae960f7fd91d77e895fd906d8251eaec2b6aa432b0cf1796487f725fba4719fcd0af1b9520953e5ea94457d
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-layout@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-layout@npm:0.35.0"
+"@cfpb/cfpb-icons@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@cfpb/cfpb-icons@npm:1.2.0"
+  checksum: 10/eba8931fe0275e34e2e209a82f42517add2c9c11158fb754a920c6c2c6091a2d7c81d227984a5a9d59869f5cc02857b47a9f8dda4e2004a5ab21c11f2889fb23
+  languageName: node
+  linkType: hard
+
+"@cfpb/cfpb-layout@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-layout@npm:0.35.1"
   dependencies:
-    "@cfpb/cfpb-core": "npm:^0.35.0"
-    "@cfpb/cfpb-grid": "npm:^0.35.0"
-  checksum: 10/645b641e9104667a0268fbfd5ac537fcfcac860e2aa1d225f4368a03719285b0c3b6e3cbd83cb86bb2f0fb9fc3a482002d667aa07ef1822cd93ea55488650761
+    "@cfpb/cfpb-core": "npm:^0.35.1"
+    "@cfpb/cfpb-grid": "npm:^0.35.1"
+  checksum: 10/6d46606a40ffab547b6a573eace488311a3a834068b5c1eaf47f01971bd10b5431170f6c87011f1599cf8f2c471950eeb676137f3eb14ee8f0b39713bca52043
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-notifications@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-notifications@npm:0.35.0"
+"@cfpb/cfpb-notifications@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-notifications@npm:0.35.1"
   dependencies:
-    "@cfpb/cfpb-core": "npm:^0.35.0"
-    "@cfpb/cfpb-icons": "npm:^0.35.0"
-  checksum: 10/6a3f3c735be556ddc98c08ea67ecb6e122d5a4208fcc2fb8d6b447e7a09a1e32f4062b67fdf6cdd2095c6afbc3ff72b590ac2baafb6c43b22b6e660d9595c6ca
+    "@cfpb/cfpb-core": "npm:^0.35.1"
+    "@cfpb/cfpb-icons": "npm:^0.35.1"
+  checksum: 10/5b2b8f6b2ff7ec61d636352c45b77a8ef229749280b925bd984cb4c2796e32bcfa8c2dee58cda7aa85607ba0bbbbaeb3c8527162468287d15e71a769027fc851
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-pagination@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-pagination@npm:0.35.0"
+"@cfpb/cfpb-pagination@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-pagination@npm:0.35.1"
   dependencies:
-    "@cfpb/cfpb-buttons": "npm:^0.35.0"
-    "@cfpb/cfpb-core": "npm:^0.35.0"
-    "@cfpb/cfpb-icons": "npm:^0.35.0"
-  checksum: 10/e6e4a3a8872179ddb1d642878bfc55cc90a585ab5e7b12b895d1504e5818cf94ab6691f91bab8050aa8eef2a4826627b76c0656c054e0ecba0a28380a36fbc44
+    "@cfpb/cfpb-buttons": "npm:^0.35.1"
+    "@cfpb/cfpb-core": "npm:^0.35.1"
+    "@cfpb/cfpb-icons": "npm:^0.35.1"
+  checksum: 10/67ef1125a77ebd8c578e3b470e7ded0440306f7589478e7a5a377690e2a9090aa65964c997a43292ef5995172d98f443cfe8894c12ef37b646b578973c1efbc0
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-tables@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-tables@npm:0.35.0"
+"@cfpb/cfpb-tables@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-tables@npm:0.35.1"
   dependencies:
     "@cfpb/cfpb-atomic-component": "npm:^0.35.0"
-    "@cfpb/cfpb-core": "npm:^0.35.0"
-  checksum: 10/0ccc64c725d2ca9b8afa412532f621a1ddf56027d06eeec734ec6008a97156dd787211607804e1489f2f156b8125031ad3d9fce3a516df171cef7879d390b483
+    "@cfpb/cfpb-core": "npm:^0.35.1"
+  checksum: 10/f6d0bcf8b0b39910432fc0dd913fff294a9d9cc9301da2d52217d4193a01cf66a36b8986436426545d8ec2bbf5a8c411176d147a2c0f112f7d4b72ef7d5bc843
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-typography@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@cfpb/cfpb-typography@npm:0.35.0"
+"@cfpb/cfpb-typography@npm:^0.35.1":
+  version: 0.35.1
+  resolution: "@cfpb/cfpb-typography@npm:0.35.1"
   dependencies:
-    "@cfpb/cfpb-core": "npm:^0.35.0"
-    "@cfpb/cfpb-icons": "npm:^0.35.0"
-  checksum: 10/b68b3bca026f79207b5ef7c6b2bf3fbd7d22c794703166d9bcb308ade2ccf707c7a3b45a71e828ea4112f6f3c4b0c7d94c7171b547d5ea34444696bb46110f5c
+    "@cfpb/cfpb-core": "npm:^0.35.1"
+    "@cfpb/cfpb-icons": "npm:^0.35.1"
+  checksum: 10/76736f400088eddffbc50020c627840aba54461c41d6c2a260dd4969468b02fdb1bb4634d3f63df9c7842b4c514fb0b289d273fd377726437a34e885e4fe594d
   languageName: node
   linkType: hard
 
@@ -7614,6 +7621,7 @@ __metadata:
     "@cfpb/cfpb-design-system": "npm:^0.35.0"
     "@cfpb/cfpb-expandables": "npm:^0.35.0"
     "@cfpb/cfpb-forms": "npm:^0.35.0"
+    "@cfpb/cfpb-icons": "npm:^1.2.0"
     "@nabla/vite-plugin-eslint": "npm:1.4.1"
     "@storybook/addon-a11y": "npm:^7.0.6"
     "@storybook/addon-actions": "npm:^7.0.6"
