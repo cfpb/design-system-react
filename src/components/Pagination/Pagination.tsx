@@ -104,20 +104,8 @@ const PaginationInput = ({
   return (
     <Label className='m-pagination_label' htmlFor={inputId} inline>
       Page
-      <span className='u-visually-hidden'>number {page} out</span>
-      <input
-        className='m-pagination_current-page'
-        id={inputId}
-        name='page'
-        type='number'
-        min='1'
-        max={pageCount}
-        pattern='[0-9]*'
-        inputMode='numeric'
-        value={page}
-        onChange={onPageChange}
-      />
-      of {pageCount}
+      <span className='u-visually-hidden'>number {page} out</span> {page} of{' '}
+      {pageCount}
     </Label>
   );
 };
@@ -172,7 +160,7 @@ export const Pagination = ({
           pageCount={pageCount}
           onChange={onInputChange}
         />
-        <PaginationSubmitButton />
+        {/* <PaginationSubmitButton /> */}
       </form>
       <PaginationNavButton
         style={{ top: '0' }}
