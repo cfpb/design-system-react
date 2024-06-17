@@ -50,7 +50,8 @@ const PaginationNavButton = ({
   label,
   isPrevious = false,
   isNext = false,
-  isDisabled = false
+  isDisabled = false,
+  ...others
 }: PaginationNavButtonProperties): React.ReactElement => {
   const buttonCnames = ['a-btn', 'flex-center'];
   const iconCnames = ['a-btn_icon'];
@@ -70,6 +71,7 @@ const PaginationNavButton = ({
       type='button'
       className={classNames(buttonCnames)}
       onClick={onClick}
+      {...others}
     >
       {isNext ? label : null}
       <span className={classNames(iconCnames)}>
@@ -159,14 +161,6 @@ export const Pagination = ({
         isDisabled={page === MIN_PAGE}
         isPrevious
       />
-      <PaginationNavButton
-        iconName='right'
-        onClick={onClickNext}
-        label={nextLabel}
-        isDisabled={page === pageCount}
-        isNext
-      />
-
       <form
         className='m-pagination_form'
         action='#pagination_content'
@@ -180,6 +174,14 @@ export const Pagination = ({
         />
         <PaginationSubmitButton />
       </form>
+      <PaginationNavButton
+        style={{ top: '0' }}
+        iconName='right'
+        onClick={onClickNext}
+        label={nextLabel}
+        isDisabled={page === pageCount}
+        isNext
+      />
     </nav>
   );
 };
