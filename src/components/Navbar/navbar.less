@@ -1,33 +1,71 @@
 @import (reference) '/src/assets/styles/_shared.less';
 
+@breakpoint1: 56.3125em;
+
 .navbar {
   display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 16px;
   padding-bottom: @space-sm;
+
+  @media (min-width: @breakpoint1) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .o-header_logo {
+      min-width: 237px;
+    }
+  }
 
   .nav-items {
     display: flex;
-    flex-flow: row;
+    flex-direction: column;
+    width: 100%;
+
+    @media (min-width: @breakpoint1) {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    .links,
+    .user-actions {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      @media (min-width: @breakpoint1) {
+        flex-direction: row;
+        justify-content: flex-end;
+        width: auto;
+      }
+    }
+
+    .links .nav-item:first-of-type {
+      border-top: 1px dashed;
+      @media (min-width: @breakpoint1) {
+        border-top: none;
+      }
+    }
   }
 
   .nav-item {
-    margin-right: @space-xl;
+    margin-right: 0;
     letter-spacing: unit((1px / @base-font-size-px), em);
+    padding: 10px 0;
+
+    @media (min-width: @breakpoint1) {
+      margin-right: @space-xl;
+      padding: 0;
+    }
   }
 
   .user-actions :last-child {
     margin-right: 0;
   }
 
-  .a-link {
-    color: @gray-dark;
-    font-weight: 600;
-  }
-
-  .a-link:not(.o-header_logo):hover {
+  .a-link:not(.o-header_logo) {
     color: @pacific-90;
     border-bottom: 1px dashed;
   }
@@ -37,13 +75,19 @@
   }
 
   .a-link.selected {
-    border-bottom: 3px solid @gray-dark;
+    border-bottom: 1px solid @pacific-90;
   }
 
   .username {
+    color: @pacific-90;
     font-size: unit((16px / @base-font-size-px), em);
-    margin-right: @space-xl;
+    margin-right: 0;
     font-weight: 400;
     line-height: unit((22px / @base-font-size-px), em);
+    border-bottom: 1px dashed;
+
+    @media (min-width: @breakpoint1) {
+      margin-right: @space-xl;
+    }
   }
 }

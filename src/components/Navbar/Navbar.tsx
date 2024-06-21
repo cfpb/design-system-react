@@ -65,7 +65,7 @@ const UserActions = ({ user }: UserActionsProperties): JSXElement => {
     <div className='user-actions'>
       <span className='nav-item username'>{user.name}</span>
       <Link href={user.logoutHref} className='nav-item logout'>
-        LOGOUT
+        LOG OUT
       </Link>
     </div>
   );
@@ -91,12 +91,9 @@ export default function Navbar({
 
 export const ExampleLinks: JSX.Element[] = [
   <Link href='/' className='nav-item' key='home'>
-    HOME
+    Home
   </Link>,
   <Link href='/filing' className='nav-item selected' key='filing'>
-    FILING HOME
-  </Link>,
-  <Link href='/datasets' className='nav-item' key='dataset'>
-    DATASETS
+    Filing
   </Link>
 ];
