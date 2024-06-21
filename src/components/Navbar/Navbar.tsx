@@ -1,4 +1,3 @@
-import type { JSXElement } from '~/src/types/jsxElement';
 import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import Link from '../Link/Link';
 import './navbar.less';
@@ -33,43 +32,53 @@ const Links = ({
   return <div className='links'>{elements}</div>;
 };
 
+const UserActions = ({
+  elements
+}: {
+  elements: JSX.Element[] | undefined;
+}): JSX.Element | null => {
+  if (!elements?.length) return null;
+
+  return <div className='user-actions'>{elements}</div>;
+};
+
 interface NavbarProperties {
   links?: JSX.Element[];
-  user?: User;
+  user?: JSX.Element[];
   href?: string;
 }
 
-export interface User {
-  name?: string;
-  loginHref?: string;
-  logoutHref?: string;
-}
+// export interface User {
+//   name?: string;
+//   loginHref?: string;
+//   logoutHref?: string;
+// }
 
-interface UserActionsProperties {
-  user?: User;
-}
+// interface UserActionsProperties {
+//   user?: User;
+// }
 
-const UserActions = ({ user }: UserActionsProperties): JSXElement => {
-  if (!user) return null;
+// const UserActions = ({ user }: UserActionsProperties): JSXElement => {
+//   if (!user) return null;
 
-  if (!user.name)
-    return (
-      <div className='user-actions'>
-        <Link href={user.loginHref} className='nav-item login'>
-          LOGIN
-        </Link>
-      </div>
-    );
+//   if (!user.name)
+//     return (
+//       <div className='user-actions'>
+//         <Link href={user.loginHref} className='nav-item login'>
+//           LOGIN
+//         </Link>
+//       </div>
+//     );
 
-  return (
-    <div className='user-actions'>
-      <span className='nav-item username'>{user.name}</span>
-      <Link href={user.logoutHref} className='nav-item logout'>
-        LOG OUT
-      </Link>
-    </div>
-  );
-};
+//   return (
+//     <div className='user-actions'>
+//       <span className='nav-item username'>{user.name}</span>
+//       <Link href={user.logoutHref} className='nav-item logout'>
+//         LOG OUT
+//       </Link>
+//     </div>
+//   );
+// };
 
 export default function Navbar({
   links,
@@ -82,7 +91,7 @@ export default function Navbar({
         <CfpbLogo href={href} />
         <div className='nav-items'>
           <Links elements={links} />
-          <UserActions user={user} />
+          <UserActions elements={user} />
         </div>
       </div>
     </div>
@@ -95,5 +104,20 @@ export const ExampleLinks: JSX.Element[] = [
   </Link>,
   <Link href='/filing' className='nav-item selected' key='filing'>
     Filing
+  </Link>
+];
+
+export const ExampleUserLinks: JSX.Element[] = [
+  <Link href='/profile/view' className='nav-item' key='profile'>
+    John Sample
+  </Link>,
+  <Link href='#' className='nav-item' key='logout'>
+    LOG OUT
+  </Link>
+];
+
+export const ExampleLoginLink: JSX.Element[] = [
+  <Link href='#' className='nav-item' key='login'>
+    Login
   </Link>
 ];
