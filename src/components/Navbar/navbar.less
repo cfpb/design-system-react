@@ -1,6 +1,6 @@
 @import (reference) '/src/assets/styles/_shared.less';
 
-@breakpoint1: 56.3125em;
+@breakpoint: 56.3125em;
 
 .navbar {
   display: flex;
@@ -9,7 +9,7 @@
   font-size: 16px;
   padding-bottom: @space-sm;
 
-  @media (min-width: @breakpoint1) {
+  @media (min-width: @breakpoint) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -24,29 +24,42 @@
     flex-direction: column;
     width: 100%;
 
-    @media (min-width: @breakpoint1) {
+    @media (min-width: @breakpoint) {
       flex-direction: row;
       justify-content: flex-end;
     }
 
-    .links,
-    .user-actions {
+    .links {
       display: flex;
       flex-direction: column;
       width: 100%;
 
-      @media (min-width: @breakpoint1) {
+      a {
+        cursor: pointer;
+      }
+      .a-btn {
+        font-weight: 400;
+      }
+      .a-btn__link {
+        text-decoration: none;
+      }
+
+      @media (min-width: @breakpoint) {
         flex-direction: row;
         justify-content: flex-end;
         width: auto;
       }
     }
 
-    .links .nav-item:first-of-type {
-      border-top: 1px dashed;
-      @media (min-width: @breakpoint1) {
+    .links:first-child {
+      border-top: 1px dashed @pacific-90;
+      @media (min-width: @breakpoint) {
         border-top: none;
       }
+    }
+
+    .links > *:last-child {
+      margin-right: 0;
     }
   }
 
@@ -55,14 +68,10 @@
     letter-spacing: unit((1px / @base-font-size-px), em);
     padding: 10px 0;
 
-    @media (min-width: @breakpoint1) {
+    @media (min-width: @breakpoint) {
       margin-right: @space-xl;
       padding: 0;
     }
-  }
-
-  .user-actions :last-child {
-    margin-right: 0;
   }
 
   .a-link:not(.o-header_logo) {
@@ -70,11 +79,8 @@
     border-bottom: 1px dashed;
   }
 
-  .a-link:focus {
-    color: @pacific-90;
-  }
-
-  .a-link.selected {
+  .a-link:not(.o-header_logo):hover,
+  .a-link:not(.o-header_logo).active {
     border-bottom: 1px solid @pacific-90;
   }
 
@@ -86,7 +92,7 @@
     line-height: unit((22px / @base-font-size-px), em);
     border-bottom: 1px dashed;
 
-    @media (min-width: @breakpoint1) {
+    @media (min-width: @breakpoint) {
       margin-right: @space-xl;
     }
   }
