@@ -361,27 +361,6 @@
       ]
     },
     {
-      "id": "./src/assets/styles/_shared.less",
-      "name": "./src/assets/styles/_shared.less",
-      "reasons": [
-        {
-          "moduleName": "./.storybook/preview.js"
-        },
-        {
-          "moduleName": "./src/index.ts"
-        }
-      ]
-    },
-    {
-      "id": "./.storybook/themeCFPB.js",
-      "name": "./.storybook/themeCFPB.js",
-      "reasons": [
-        {
-          "moduleName": "./.storybook/preview.js"
-        }
-      ]
-    },
-    {
       "id": "/virtual:/@storybook/builder-vite/setup-addons.js",
       "name": "/virtual:/@storybook/builder-vite/setup-addons.js",
       "reasons": [
@@ -408,6 +387,27 @@
         },
         {
           "moduleName": "/virtual:/@storybook/builder-vite/vite-app.js"
+        }
+      ]
+    },
+    {
+      "id": "./src/assets/styles/_shared.less",
+      "name": "./src/assets/styles/_shared.less",
+      "reasons": [
+        {
+          "moduleName": "./.storybook/preview.js"
+        },
+        {
+          "moduleName": "./src/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "./.storybook/themeCFPB.js",
+      "name": "./.storybook/themeCFPB.js",
+      "reasons": [
+        {
+          "moduleName": "./.storybook/preview.js"
         }
       ]
     },
@@ -461,25 +461,25 @@
           "moduleName": "./src/components/Select/Select.stories.tsx"
         },
         {
+          "moduleName": "./src/components/Table/Table.stories.tsx"
+        },
+        {
           "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
         },
         {
           "moduleName": "./src/components/TextInput/TextInput.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Table/Table.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Alert/Alert.stories.tsx"
         },
         {
           "moduleName": "./src/components/Banner/Banner.stories.tsx"
         },
         {
           "moduleName": "./src/components/Buttons/Buttons.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Alert/Alert.stories.tsx"
         },
         {
           "moduleName": "./src/components/Divider/Divider.stories.tsx"
@@ -800,13 +800,13 @@
           "moduleName": "./src/index.ts"
         },
         {
-          "moduleName": "./src/components/Alert/AlertFieldLevel.tsx"
-        },
-        {
           "moduleName": "./src/components/Dropdown/DropdownPills.tsx"
         },
         {
           "moduleName": "./src/components/Footer/FooterCfGov.tsx"
+        },
+        {
+          "moduleName": "./src/components/Alert/AlertFieldLevel.tsx"
         },
         {
           "moduleName": "./src/components/Alert/Alert.tsx"
@@ -815,19 +815,19 @@
           "moduleName": "./src/components/Pagination/Pagination.tsx"
         },
         {
-          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         },
         {
-          "moduleName": "./src/components/Alert/AlertLink.tsx"
+          "moduleName": "./src/components/Expandable/Expandable.tsx"
+        },
+        {
+          "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
         },
         {
           "moduleName": "./src/components/Footer/BackToTop.tsx"
         },
         {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        },
-        {
-          "moduleName": "./src/components/Expandable/Expandable.tsx"
+          "moduleName": "./src/components/Alert/AlertLink.tsx"
         }
       ]
     },
@@ -1402,6 +1402,15 @@
       ]
     },
     {
+      "id": "./src/components/Banner/Banner.less",
+      "name": "./src/components/Banner/Banner.less",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Banner/Banner.tsx"
+        }
+      ]
+    },
+    {
       "id": "./src/components/Alert/Alert.css",
       "name": "./src/components/Alert/Alert.css",
       "reasons": [
@@ -1416,15 +1425,6 @@
       "reasons": [
         {
           "moduleName": "./src/components/Alert/Alert.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Banner/Banner.less",
-      "name": "./src/components/Banner/Banner.less",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Banner/Banner.tsx"
         }
       ]
     },
