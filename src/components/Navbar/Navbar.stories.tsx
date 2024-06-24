@@ -21,20 +21,14 @@ const LoggedInUser = {
 
 export const LoggedIn: Story = {
   args: {
-    links: ExampleLinks,
-    user: LoggedInUser
+    links: ExampleLinks
   }
 };
 
 export const LoggedOut: Story = {
-  args: {
-    links: ExampleLinks,
-    user: { loginHref: '#' }
-  }
+  args: {}
 };
 
 export const NoUser: Story = {
-  args: {
-    links: ExampleLinks
-  }
+  args: {}
 };
