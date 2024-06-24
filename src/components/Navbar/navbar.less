@@ -36,9 +36,12 @@
 
       a {
         cursor: pointer;
+        border-bottom-width: 1px;
+        font-weight: 500;
       }
       .a-btn {
-        font-weight: 400;
+        font-weight: 600;
+        letter-spacing: 1px;
       }
       .a-btn__link {
         text-decoration: none;
@@ -52,7 +55,7 @@
     }
 
     .links > *:first-child {
-      border-top: 1px dashed @pacific-90;
+      border-top: 1px dotted @pacific-90;
       @media (min-width: @breakpoint) {
         border-top: none;
       }
@@ -65,7 +68,7 @@
 
   .nav-item {
     margin-right: 0;
-    letter-spacing: unit((1px / @base-font-size-px), em);
+    //letter-spacing: unit((1px / @base-font-size-px), em);
     padding: 10px 0;
 
     @media (min-width: @breakpoint) {
@@ -76,7 +79,7 @@
 
   .a-link:not(.o-header_logo) {
     color: @pacific-90;
-    border-bottom: 1px dashed;
+    border-bottom: 1px dotted;
   }
 
   .a-link:not(.o-header_logo):hover,
@@ -90,7 +93,7 @@
     margin-right: 0;
     font-weight: 400;
     line-height: unit((22px / @base-font-size-px), em);
-    border-bottom: 1px dashed;
+    border-bottom: 1px dotted;
 
     @media (min-width: @breakpoint) {
       margin-right: @space-xl;
