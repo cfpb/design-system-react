@@ -150,7 +150,7 @@ export const FooterCfGov = ({
     <a
       key='inspector'
       className='a-link a-link__icon'
-      href='https://www.federalreserve.gov/oig/default.htm'
+      href='https://oig.federalreserve.gov/'
     >
       <span className='a-link_text'>Office of Inspector General</span>
       <Icon
