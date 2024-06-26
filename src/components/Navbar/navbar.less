@@ -34,10 +34,43 @@
       flex-direction: column;
       width: 100%;
 
-      a {
+      a,
+      .a-btn__link {
         cursor: pointer;
-        border-bottom-width: 1px;
+        border-bottom: 1px dotted @pacific;
         font-weight: 500;
+        color: @pacific;
+        margin-right: 0;
+        padding: 10px 0;
+
+        @media (min-width: @breakpoint) {
+          border-bottom: 1px dotted transparent;
+          margin-right: @space-xl;
+          padding: 0;
+        }
+      }
+      a:hover,
+      .a-btn__link:hover {
+        border-bottom: 1px solid @pacific;
+        position: relative;
+
+        &:before {
+          position: absolute;
+          top: -1px;
+          content: '';
+          display: block;
+          height: 1px;
+          width: 100%;
+          border-top: 1px solid @pacific;
+
+          @media (min-width: @breakpoint) {
+            border-top: 1px solid transparent;
+          }
+        }
+      }
+      a.active {
+        color: #101820;
+        border-bottom: 2px solid #101820;
       }
       .a-btn {
         font-weight: 600;
@@ -55,7 +88,7 @@
     }
 
     .links > *:first-child {
-      border-top: 1px dotted @pacific-90;
+      border-top: 1px dotted @pacific;
       @media (min-width: @breakpoint) {
         border-top: none;
       }
@@ -63,40 +96,6 @@
 
     .links > *:last-child {
       margin-right: 0;
-    }
-  }
-
-  .nav-item {
-    margin-right: 0;
-    //letter-spacing: unit((1px / @base-font-size-px), em);
-    padding: 10px 0;
-
-    @media (min-width: @breakpoint) {
-      margin-right: @space-xl;
-      padding: 0;
-    }
-  }
-
-  .a-link:not(.o-header_logo) {
-    color: @pacific-90;
-    border-bottom: 1px dotted;
-  }
-
-  .a-link:not(.o-header_logo):hover,
-  .a-link:not(.o-header_logo).active {
-    border-bottom: 1px solid @pacific-90;
-  }
-
-  .username {
-    color: @pacific-90;
-    font-size: unit((16px / @base-font-size-px), em);
-    margin-right: 0;
-    font-weight: 400;
-    line-height: unit((22px / @base-font-size-px), em);
-    border-bottom: 1px dotted;
-
-    @media (min-width: @breakpoint) {
-      margin-right: @space-xl;
     }
   }
 }

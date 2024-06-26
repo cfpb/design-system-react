@@ -1,4 +1,5 @@
 import CFPBLogo from '../../assets/images/cfpb-logo.png';
+import { Button } from '../Buttons/Button';
 import Link from '../Link/Link';
 import './navbar.less';
 
@@ -60,7 +61,5 @@ export const ExampleLinks: JSX.Element[] = [
   <Link className='nav-item' key='profile'>
     John Sample
   </Link>,
-  <Link className='nav-item' key='logout'>
-    LOG OUT
-  </Link>
+  <Button label='LOG OUT' asLink onClick='' key='logout' />
 ];
