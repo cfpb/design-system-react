@@ -452,16 +452,16 @@
           "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
         },
         {
-          "moduleName": "./src/components/List/List.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Select/Select.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
         },
         {
+          "moduleName": "./src/components/List/List.stories.tsx"
+        },
+        {
           "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Select/Select.stories.tsx"
         },
         {
           "moduleName": "./src/components/Table/Table.stories.tsx"
@@ -485,19 +485,19 @@
           "moduleName": "./src/components/Divider/Divider.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Headings/Headings.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Footer/Footer.stories.tsx"
         },
         {
           "moduleName": "./src/components/Grid/Grid.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Label/Label.stories.tsx"
+          "moduleName": "./src/components/Headings/Headings.stories.tsx"
         },
         {
           "moduleName": "./src/components/Icon/Icon.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Label/Label.stories.tsx"
         },
         {
           "moduleName": "./src/components/Layout/LayoutContent.stories.tsx"
@@ -581,10 +581,10 @@
       "name": "./src/components/Checkbox/Checkbox.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Checkbox/CheckboxLarge.stories.tsx"
+          "moduleName": "./src/components/Checkbox/Checkbox.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Checkbox/Checkbox.stories.tsx"
+          "moduleName": "./src/components/Checkbox/CheckboxLarge.stories.tsx"
         },
         {
           "moduleName": "./src/index.ts"
@@ -602,10 +602,10 @@
       "name": "./src/components/Checkbox/Checkbox.utils.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Checkbox/CheckboxLarge.stories.tsx"
+          "moduleName": "./src/components/Checkbox/Checkbox.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Checkbox/Checkbox.stories.tsx"
+          "moduleName": "./src/components/Checkbox/CheckboxLarge.stories.tsx"
         }
       ]
     },
@@ -815,12 +815,6 @@
           "moduleName": "./src/components/Pagination/Pagination.tsx"
         },
         {
-          "moduleName": "./src/components/Expandable/Expandable.tsx"
-        },
-        {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
-        },
-        {
           "moduleName": "./src/components/Buttons/ButtonIcon.tsx"
         },
         {
@@ -828,6 +822,12 @@
         },
         {
           "moduleName": "./src/components/Footer/BackToTop.tsx"
+        },
+        {
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+        },
+        {
+          "moduleName": "./src/components/Expandable/Expandable.tsx"
         }
       ]
     },
@@ -1148,10 +1148,10 @@
       "name": "./src/components/Select/testUtils.ts",
       "reasons": [
         {
-          "moduleName": "./src/components/Select/Select.stories.tsx"
+          "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
+          "moduleName": "./src/components/Select/Select.stories.tsx"
         }
       ]
     },
@@ -1345,18 +1345,6 @@
       ]
     },
     {
-      "id": "./src/utils/sleep.tsx",
-      "name": "./src/utils/sleep.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Expandable/ExpandableGroup.stories.tsx"
-        }
-      ]
-    },
-    {
       "id": "./src/components/HelperText/HelperText.tsx",
       "name": "./src/components/HelperText/HelperText.tsx",
       "reasons": [
@@ -1386,6 +1374,18 @@
       "reasons": [
         {
           "moduleName": "./src/components/SkipNav/SkipNav.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/utils/sleep.tsx",
+      "name": "./src/utils/sleep.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Expandable/ExpandableGroup.stories.tsx"
         }
       ]
     },
