@@ -42,6 +42,7 @@
         color: @pacific;
         margin-right: 0;
         padding: 10px 0;
+        text-align: left;
 
         @media (min-width: @breakpoint) {
           border-bottom: 1px dotted transparent;
@@ -70,7 +71,10 @@
       }
       a.active {
         color: #101820;
-        border-bottom: 2px solid #101820;
+
+        @media (min-width: @breakpoint) {
+          border-bottom: 2px solid #101820;
+        }
       }
       .a-btn {
         font-weight: 600;
@@ -78,6 +82,11 @@
       }
       .a-btn__link {
         text-decoration: none;
+        font-size: 14px;
+        line-height: 22px;
+        @media (min-width: @breakpoint) {
+          line-height: 18px;
+        }
       }
 
       @media (min-width: @breakpoint) {

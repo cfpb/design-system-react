@@ -52,13 +52,13 @@ export default function Navbar({ links, href }: NavbarProperties): JSX.Element {
 }
 
 export const ExampleLinks: JSX.Element[] = [
-  <Link className='nav-item' key='home'>
+  <Link className='nav-item' key='home' href='/'>
     Home
   </Link>,
-  <Link className='nav-item active' key='filing'>
+  <Link className='nav-item active' key='filing' href='/filing'>
     Filing
   </Link>,
-  <Link className='nav-item' key='profile'>
+  <Link className='nav-item' key='profile' href='/profile'>
     John Sample
   </Link>,
   <Button label='LOG OUT' asLink onClick='' key='logout' />
