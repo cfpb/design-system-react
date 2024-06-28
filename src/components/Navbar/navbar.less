@@ -1,49 +1,110 @@
 @import (reference) '/src/assets/styles/_shared.less';
 
+@breakpoint: 56.3125em;
+
 .navbar {
   display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 16px;
   padding-bottom: @space-sm;
+
+  @media (min-width: @breakpoint) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .o-header_logo {
+      min-width: 237px;
+    }
+  }
 
   .nav-items {
     display: flex;
-    flex-flow: row;
-  }
+    flex-direction: column;
+    width: 100%;
 
-  .nav-item {
-    margin-right: @space-xl;
-    letter-spacing: unit((1px / @base-font-size-px), em);
-  }
+    @media (min-width: @breakpoint) {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
 
-  .user-actions :last-child {
-    margin-right: 0;
-  }
+    .links {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
 
-  .a-link {
-    color: @gray-dark;
-    font-weight: 600;
-  }
+      a,
+      .a-btn__link {
+        cursor: pointer;
+        border-bottom: 1px dotted @pacific;
+        font-weight: 500;
+        color: @pacific;
+        margin-right: 0;
+        padding: 10px 0;
+        text-align: left;
 
-  .a-link:not(.o-header_logo):hover {
-    color: @pacific-90;
-    border-bottom: 1px dashed;
-  }
+        @media (min-width: @breakpoint) {
+          border-bottom: 1px dotted transparent;
+          margin-right: @space-xl;
+          padding: 0;
+        }
+      }
+      a:hover,
+      .a-btn__link:hover {
+        border-bottom: 1px solid @pacific;
+        position: relative;
 
-  .a-link:focus {
-    color: @pacific-90;
-  }
+        &:before {
+          position: absolute;
+          top: -1px;
+          content: '';
+          display: block;
+          height: 1px;
+          width: 100%;
+          border-top: 1px solid @pacific;
 
-  .a-link.selected {
-    border-bottom: 3px solid @gray-dark;
-  }
+          @media (min-width: @breakpoint) {
+            border-top: 1px solid transparent;
+          }
+        }
+      }
+      a.active {
+        color: #101820;
 
-  .username {
-    font-size: unit((16px / @base-font-size-px), em);
-    margin-right: @space-xl;
-    font-weight: 400;
-    line-height: unit((22px / @base-font-size-px), em);
+        @media (min-width: @breakpoint) {
+          border-bottom: 2px solid #101820;
+        }
+      }
+      .a-btn {
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      .a-btn__link {
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 22px;
+        @media (min-width: @breakpoint) {
+          line-height: 18px;
+        }
+      }
+
+      @media (min-width: @breakpoint) {
+        flex-direction: row;
+        justify-content: flex-end;
+        width: auto;
+      }
+    }
+
+    .links > *:first-child {
+      border-top: 1px dotted @pacific;
+      @media (min-width: @breakpoint) {
+        border-top: none;
+      }
+    }
+
+    .links > *:last-child {
+      margin-right: 0;
+    }
   }
 }
