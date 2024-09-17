@@ -24,7 +24,7 @@
     @media (max-width: @breakpoint - 0.0625em) {
       flex-direction: row;
       align-items: center;
-      padding: 0 @space-sm;
+      padding: 0;
     }
 
     @media (min-width: @breakpoint) {
@@ -44,13 +44,24 @@
 
     .menu-toggle {
       display: block;
-      background: none;
       border: none;
+      background-color: transparent;
       cursor: pointer;
-      padding: 0;
+      height: 54px;
+      width: 54px;
+      padding: @space-sm;
       margin-bottom: 0;
-      margin-right: 1em;
+      margin-right: 0;
       z-index: 1001; // Ensure it's above the overlay
+
+      &:hover,
+      &[aria-expanded='true']:hover {
+        background-color: @gray-20;
+      }
+
+      &[aria-expanded='true'] {
+        background-color: @gray-10;
+      }
 
       @media (min-width: @breakpoint) {
         display: none;
