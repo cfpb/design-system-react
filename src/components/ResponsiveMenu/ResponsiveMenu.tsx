@@ -1,5 +1,4 @@
-import type React from 'react';
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/Button';
 import { Icon } from '../Icon/Icon';
@@ -27,13 +26,37 @@ export function CfpbLogo({
 }
 
 const Links = ({
-  elements
+  elements,
+  onLinkClick
 }: {
   elements: React.ReactNode[] | undefined;
+  onLinkClick: () => void;
 }): JSX.Element | null => {
   if (!elements?.length) return null;
 
-  return <div className='links'>{elements}</div>;
+  return (
+    <div className='links'>
+      {elements.map((element, index) => {
+        if (
+          React.isValidElement<{ onClick?: (event: React.MouseEvent) => void }>(
+            element
+          )
+        ) {
+          return React.cloneElement(element, {
+            ...element.props,
+            key: element.key ?? index,
+            onClick: (event: React.MouseEvent) => {
+              if (element.props.onClick) {
+                element.props.onClick(event);
+              }
+              onLinkClick();
+            }
+          });
+        }
+        return element;
+      })}
+    </div>
+  );
 };
 
 interface ResponsiveMenuProperties {
@@ -47,8 +70,12 @@ export default function ResponsiveMenu({
 }: ResponsiveMenuProperties): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const onToggleMenu = () => {
+  const onToggleMenu = (): void => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const onLinkClick = (): void => {
+    setIsMenuOpen(false);
   };
 
   const onHandleKeyDown = useCallback(
@@ -91,7 +118,7 @@ export default function ResponsiveMenu({
             className={`nav-items ${isMenuOpen ? 'open' : ''}`}
             id='nav-links'
           >
-            <Links elements={links} />
+            <Links elements={links} onLinkClick={onLinkClick} />
           </nav>
         </div>
       </header>
@@ -109,5 +136,5 @@ export const ExampleLinks: React.ReactNode[] = [
   <Link key='profile' href='/profile'>
     <span className='nav-item'>John Sample</span>
   </Link>,
-  <Button label='LOG OUT' asLink onClick={() => {}} key='logout' />
+  <Button label='LOG OUT' asLink onClick={(): void => {}} key='logout' />
 ];
