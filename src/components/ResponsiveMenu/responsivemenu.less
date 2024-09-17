@@ -11,6 +11,7 @@
 .o-header_content {
   background-color: #fff;
   height: auto;
+  margin-top: -6px;
   width: 100%;
   z-index: 1000;
 
@@ -36,7 +37,7 @@
     .o-header_logo {
       min-width: 237px;
 
-      @media (max-width: @breakpoint) {
+      @media (max-width: @breakpoint - 0.0625em) {
         border-left: 1px solid @gray-40;
         padding-left: @space-sm;
       }
@@ -52,7 +53,7 @@
       padding: @space-sm;
       margin-bottom: 0;
       margin-right: 0;
-      z-index: 1001; // Ensure it's above the overlay
+      z-index: 1000; // Ensure it's above the overlay
 
       &:hover,
       &[aria-expanded='true']:hover {
@@ -71,7 +72,7 @@
     .nav-items {
       @media (max-width: @breakpoint - 0.0625em) {
         position: fixed;
-        top: 64px;
+        top: 96px;
         left: -@menu-width - 15;
         //height: 100vh;
         width: @menu-width;
@@ -136,7 +137,7 @@
           &:hover {
             position: relative;
 
-            @media (max-width: @breakpoint) {
+            @media (max-width: @breakpoint - 1px) {
               &:before {
                 position: absolute;
                 top: 0;
@@ -156,7 +157,7 @@
 
           &.nav-item.active.a-link {
             color: #101820;
-            @media (max-width: @breakpoint) {
+            @media (max-width: @breakpoint - 1px) {
               &:before {
                 position: absolute;
                 top: 0;
@@ -205,13 +206,13 @@
 
 .menu-overlay {
   display: none;
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   opacity: 0;
-  transition: opacity @animation-duration ease-in-out;
+  transition: opacity 1s ease-in-out;
 
   &.open {
     display: block;
