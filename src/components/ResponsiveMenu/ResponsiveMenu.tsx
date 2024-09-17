@@ -133,8 +133,8 @@ export const ExampleLinks: React.ReactNode[] = [
   <Link key='filing' className='nav-item active' href='/filing'>
     Filing
   </Link>,
-  <Link key='profile' href='/profile'>
-    <span className='nav-item'>John Sample</span>
+  <Link key='profile' className='nav-item profile' href='/profile'>
+    <span>John Sample</span>
   </Link>,
   <Button label='LOG OUT' asLink onClick={(): void => {}} key='logout' />
 ];
