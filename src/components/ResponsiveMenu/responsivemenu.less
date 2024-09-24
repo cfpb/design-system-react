@@ -34,10 +34,14 @@
 
     .o-header_logo {
       min-width: 237px;
+      padding-left: @space-sm;
+
+      @media (min-width: 600px) {
+        padding-left: @space-md;
+      }
 
       @media (max-width: @breakpoint - 0.0625em) {
         border-left: 1px solid @gray-40;
-        padding-left: @space-sm;
       }
     }
 
@@ -52,6 +56,10 @@
       margin-bottom: 0;
       margin-right: 0;
       z-index: 1000; // Ensure it's above the overlay
+
+      .cf-icon-svg {
+        height: 21.38px;
+      }
 
       &:hover,
       &[aria-expanded='true']:hover {
