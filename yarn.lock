@@ -7681,6 +7681,7 @@ __metadata:
     eslint-plugin-testing-library: "npm:5.9.1"
     eslint-plugin-unicorn: "npm:45.0.2"
     husky: "npm:8.0.2"
+    jest-matchmedia-mock: "npm:1.1.0"
     jsdom: "npm:21.0.0"
     less: "npm:^4.1.3"
     lint-staged: "npm:13.0.3"
@@ -11280,6 +11281,15 @@ display-element-css@cfpb/storybook-addon-display-element-css:
     jest-get-type: "npm:^29.6.3"
     pretty-format: "npm:^29.7.0"
   checksum: 10/981904a494299cf1e3baed352f8a3bd8b50a8c13a662c509b6a53c31461f94ea3bfeffa9d5efcfeb248e384e318c87de7e3baa6af0f79674e987482aa189af40
+  languageName: node
+  linkType: hard
+
+"jest-matchmedia-mock@npm:1.1.0":
+  version: 1.1.0
+  resolution: "jest-matchmedia-mock@npm:1.1.0"
+  peerDependencies:
+    jest: ">=13"
+  checksum: 10/e812b9dce5a3b55057ec0db47fe07737d24f248d0ee5eb41754244ecb8ea9b906581af2c1ae434b4db8a037ce3e437af6c53075ac86538a56ce55e2645ea0138
   languageName: node
   linkType: hard
 

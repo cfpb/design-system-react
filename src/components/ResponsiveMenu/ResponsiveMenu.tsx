@@ -107,6 +107,7 @@ export default function ResponsiveMenu({
             aria-expanded={isMenuOpen}
             aria-controls='nav-links'
             type='button'
+            data-testid='menu-toggle'
           >
             <Icon name={isMenuOpen ? 'error' : 'menu'} />
             <span className='sr-only'>
