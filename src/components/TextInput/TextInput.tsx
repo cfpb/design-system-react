@@ -33,7 +33,8 @@ interface CustomTextInputProperties extends ComponentPropsWithoutRef<'input'> {
 // export type OptionalTextInputProperties = CustomTextInputProperties & JSX.IntrinsicElements['input'];
 export type OptionalTextInputProperties = CustomTextInputProperties;
 
-export type TextInputProperties = OptionalTextInputProperties & RequiredTextInputProperties;
+export type TextInputProperties = OptionalTextInputProperties &
+  RequiredTextInputProperties;
 
 /**
  * Source: <a href='https://cfpb.github.io/design-system/components/text-inputs' target='_blank'> https://cfpb.github.io/design-system/components/text-inputs</a>
