@@ -23,25 +23,32 @@ describe('ResponsiveMenu', () => {
     window.dispatchEvent(new Event('resize'));
   };
 
-  it('renders the component with default props', () => {
-    resizeScreenSize(500);
-    render(<ResponsiveMenu />);
-    const menuToggle = screen.getAllByRole('button')[0];
-    expect(menuToggle).toBeInTheDocument();
-    expect(screen.getByTestId('CfpbLogoLink')).toBeInTheDocument();
-    expect(screen.getByAltText('CFPB Logo')).toBeInTheDocument();
-    expect(screen.getByRole('navigation')).toBeInTheDocument();
-  });
+   it('does not render the menu without links', () => {
+     resizeScreenSize(500);
+     render(<ResponsiveMenu />);
 
-  it('renders with custom links', () => {
-    resizeScreenSize(500);
-    render(<ResponsiveMenu links={ExampleLinks} />);
+     expect(screen.queryByTestId('menu-toggle')).not.toBeInTheDocument();
+     expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
 
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('Filing')).toBeInTheDocument();
-    expect(screen.getByText('John Sample')).toBeInTheDocument();
-    expect(screen.getByText('LOG OUT')).toBeInTheDocument();
-  });
+     expect(screen.getByTestId('CfpbLogoLink')).toBeInTheDocument();
+     expect(screen.getByAltText('CFPB Logo')).toBeInTheDocument();
+   });
+
+   it('renders with custom links', () => {
+     resizeScreenSize(500);
+     render(<ResponsiveMenu links={ExampleLinks} />);
+
+     // Menu is rendered
+     const menuToggle = screen.getAllByRole('button')[0];
+     expect(menuToggle).toBeInTheDocument();
+     expect(screen.getByRole('navigation')).toBeInTheDocument();
+
+     // Links are rendered
+     expect(screen.getByText('Home')).toBeInTheDocument();
+     expect(screen.getByText('Filing')).toBeInTheDocument();
+     expect(screen.getByText('John Sample')).toBeInTheDocument();
+     expect(screen.getByText('LOG OUT')).toBeInTheDocument();
+   });
 
   it('toggles menu visibility on button click', () => {
     resizeScreenSize(500);

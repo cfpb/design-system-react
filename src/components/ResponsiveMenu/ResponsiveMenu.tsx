@@ -3,6 +3,7 @@ import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/Button';
 import { Icon } from '../Icon/Icon';
 import Link from '../Link/Link';
+import Navbar from '../Navbar/Navbar';
 import './responsivemenu.less';
 
 interface CfpbLogoProperties {
@@ -86,6 +87,8 @@ export default function ResponsiveMenu({
     },
     []
   );
+
+  if (!links?.length) return <Navbar href={href} />;
 
   return (
     <>
