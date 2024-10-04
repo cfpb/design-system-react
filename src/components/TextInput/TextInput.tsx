@@ -30,7 +30,6 @@ interface CustomTextInputProperties extends ComponentPropsWithoutRef<'input'> {
   isFullWidth?: boolean;
 }
 
-// export type OptionalTextInputProperties = CustomTextInputProperties & JSX.IntrinsicElements['input'];
 export type OptionalTextInputProperties = CustomTextInputProperties;
 
 export type TextInputProperties = OptionalTextInputProperties &
