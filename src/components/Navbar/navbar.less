@@ -2,17 +2,19 @@
 
 @breakpoint: 56.3125em;
 
-.navbar {
+.navbar-static {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   font-size: 16px;
   padding-bottom: @space-sm;
+  padding-left: @space-sm;
 
   @media (min-width: @breakpoint) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-left: 0;
 
     .o-header_logo {
       min-width: 237px;

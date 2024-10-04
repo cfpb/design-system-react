@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { Banner } from '../Banner/Banner';
-import type { User } from '../Navbar/Navbar';
-import Navbar from '../Navbar/Navbar';
+import type { User } from '../ResponsiveMenu/ResponsiveMenu';
+import ResponsiveMenu from '../ResponsiveMenu/ResponsiveMenu';
 import './header.less';
 
 interface PageHeaderProperties {
@@ -23,7 +23,7 @@ export default function PageHeader({
   return (
     <header className={classnames(headerClasses)}>
       <Banner tagline='An official website of the United States government' />
-      <Navbar {...{ links, user, href }} />
+      <ResponsiveMenu {...{ links, user, href }} />
     </header>
   );
 }
