@@ -48,7 +48,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
       name,
       status = 'info',
       type = 'text',
-      maxLength,
       isFullWidth = false,
       ...otherInputProperties
     },
