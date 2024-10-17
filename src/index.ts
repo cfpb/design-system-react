@@ -41,6 +41,7 @@ export { Pagination } from './components/Pagination/Pagination';
 export { usePagination } from './components/Pagination/usePagination';
 export { Paragraph } from './components/Paragraph/Paragraph';
 export { RadioButton } from './components/RadioButton/RadioButton';
+export { default as ResponsiveMenu } from './components/ResponsiveMenu/ResponsiveMenu';
 export { Select } from './components/Select/Select';
 export { SelectMulti } from './components/Select/SelectMulti';
 export { SelectSingle } from './components/Select/SelectSingle';
