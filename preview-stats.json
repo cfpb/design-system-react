@@ -361,27 +361,6 @@
       ]
     },
     {
-      "id": "./src/assets/styles/_shared.less",
-      "name": "./src/assets/styles/_shared.less",
-      "reasons": [
-        {
-          "moduleName": "./.storybook/preview.js"
-        },
-        {
-          "moduleName": "./src/index.ts"
-        }
-      ]
-    },
-    {
-      "id": "./.storybook/themeCFPB.js",
-      "name": "./.storybook/themeCFPB.js",
-      "reasons": [
-        {
-          "moduleName": "./.storybook/preview.js"
-        }
-      ]
-    },
-    {
       "id": "/virtual:/@storybook/builder-vite/setup-addons.js",
       "name": "/virtual:/@storybook/builder-vite/setup-addons.js",
       "reasons": [
@@ -412,6 +391,27 @@
       ]
     },
     {
+      "id": "./src/assets/styles/_shared.less",
+      "name": "./src/assets/styles/_shared.less",
+      "reasons": [
+        {
+          "moduleName": "./.storybook/preview.js"
+        },
+        {
+          "moduleName": "./src/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "./.storybook/themeCFPB.js",
+      "name": "./.storybook/themeCFPB.js",
+      "reasons": [
+        {
+          "moduleName": "./.storybook/preview.js"
+        }
+      ]
+    },
+    {
       "id": "./src/assets/images/cfpb-logo-vertical.png",
       "name": "./src/assets/images/cfpb-logo-vertical.png",
       "reasons": [
@@ -428,10 +428,10 @@
           "moduleName": "./src/components/Navbar/Navbar.stories.tsx"
         },
         {
-          "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
+          "moduleName": "./src/components/PageHeader/PageHeader.stories.tsx"
         },
         {
-          "moduleName": "./src/components/PageHeader/PageHeader.stories.tsx"
+          "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
         },
         {
           "moduleName": "./src/components/Hero/Hero.stories.tsx"
@@ -449,19 +449,19 @@
           "moduleName": "./src/stories/Introduction.stories.mdx"
         },
         {
-          "moduleName": "./src/components/List/List.stories.tsx"
+          "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
+          "moduleName": "./src/components/Select/Select.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/List/List.stories.tsx"
         },
         {
           "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
         },
         {
           "moduleName": "./src/components/Table/Table.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Select/Select.stories.tsx"
         },
         {
           "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
@@ -473,9 +473,6 @@
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Banner/Banner.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Alert/Alert.stories.tsx"
         },
         {
@@ -485,16 +482,22 @@
           "moduleName": "./src/components/Divider/Divider.stories.tsx"
         },
         {
+          "moduleName": "./src/components/Banner/Banner.stories.tsx"
+        },
+        {
           "moduleName": "./src/components/Footer/Footer.stories.tsx"
         },
         {
           "moduleName": "./src/components/Headings/Headings.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Label/Label.stories.tsx"
+          "moduleName": "./src/components/Grid/Grid.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Grid/Grid.stories.tsx"
+          "moduleName": "./src/components/Icon/Icon.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Label/Label.stories.tsx"
         },
         {
           "moduleName": "./src/components/Layout/LayoutContent.stories.tsx"
@@ -503,13 +506,10 @@
           "moduleName": "./src/components/Layout/LayoutMain.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Icon/Icon.stories.tsx"
+          "moduleName": "./src/components/Layout/LayoutWrapper.stories.tsx"
         },
         {
           "moduleName": "./src/components/Layout/LayoutSidebar.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Layout/LayoutWrapper.stories.tsx"
         },
         {
           "moduleName": "./src/components/Link/Link.stories.tsx"
@@ -827,10 +827,10 @@
           "moduleName": "./src/components/Footer/BackToTop.tsx"
         },
         {
-          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
+          "moduleName": "./src/components/Expandable/Expandable.tsx"
         },
         {
-          "moduleName": "./src/components/Expandable/Expandable.tsx"
+          "moduleName": "./src/components/Dropdown/Dropdown.tsx"
         }
       ]
     },
@@ -1151,10 +1151,10 @@
       "name": "./src/components/Select/testUtils.ts",
       "reasons": [
         {
-          "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
+          "moduleName": "./src/components/Select/Select.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Select/Select.stories.tsx"
+          "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
         }
       ]
     },
@@ -1322,10 +1322,10 @@
           "moduleName": "./src/components/Pagination/usePagination.tsx"
         },
         {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
+          "moduleName": "./src/components/Table/Table.tsx"
         },
         {
-          "moduleName": "./src/components/Table/Table.tsx"
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
         }
       ]
     },
@@ -1372,15 +1372,6 @@
       ]
     },
     {
-      "id": "./src/components/SkipNav/SkipNav.less",
-      "name": "./src/components/SkipNav/SkipNav.less",
-      "reasons": [
-        {
-          "moduleName": "./src/components/SkipNav/SkipNav.tsx"
-        }
-      ]
-    },
-    {
       "id": "./src/components/Select/selectUtils.tsx",
       "name": "./src/components/Select/selectUtils.tsx",
       "reasons": [
@@ -1389,6 +1380,15 @@
         },
         {
           "moduleName": "./src/components/Select/SelectMulti.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/SkipNav/SkipNav.less",
+      "name": "./src/components/SkipNav/SkipNav.less",
+      "reasons": [
+        {
+          "moduleName": "./src/components/SkipNav/SkipNav.tsx"
         }
       ]
     },
@@ -1477,15 +1477,6 @@
       ]
     },
     {
-      "id": "./src/hooks/useIconSvg.tsx",
-      "name": "./src/hooks/useIconSvg.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Icon/Icon.tsx"
-        }
-      ]
-    },
-    {
       "id": "./src/components/Hero/HeroImage.tsx",
       "name": "./src/components/Hero/HeroImage.tsx",
       "reasons": [
@@ -1513,11 +1504,11 @@
       ]
     },
     {
-      "id": "./src/components/Pagination/pagination.less",
-      "name": "./src/components/Pagination/pagination.less",
+      "id": "./src/hooks/useIconSvg.tsx",
+      "name": "./src/hooks/useIconSvg.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Pagination/Pagination.tsx"
+          "moduleName": "./src/components/Icon/Icon.tsx"
         }
       ]
     },
@@ -1536,6 +1527,15 @@
       "reasons": [
         {
           "moduleName": "./src/components/Table/Table.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Pagination/pagination.less",
+      "name": "./src/components/Pagination/pagination.less",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Pagination/Pagination.tsx"
         }
       ]
     },
