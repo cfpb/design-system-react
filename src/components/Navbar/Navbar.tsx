@@ -41,7 +41,7 @@ interface NavbarProperties {
 export default function Navbar({ links, href }: NavbarProperties): JSX.Element {
   return (
     <div className='o-header_content'>
-      <div className='navbar wrapper wrapper__match-content'>
+      <div className='navbar-static wrapper wrapper__match-content'>
         <CfpbLogo href={href} />
         <div className='nav-items'>
           <Links elements={links} />
