@@ -31,7 +31,7 @@ const Content = (
     voluptatibus soluta nobis unde quisquam temporibus magnam debitis quidem.
     Ducimus ratione corporis nesciunt earum vel est quaerat blanditiis dolore
     ipsa?&nbsp;
-    <a href='/?path=/story/components-expandable--default'>Lorem link</a>
+    <a href='/?path=/story/components-expandable--default'>Lorem link</a>.
   </p>
 );
 

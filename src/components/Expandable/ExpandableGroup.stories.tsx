@@ -44,7 +44,7 @@ const Content = ({
       voluptatibus soluta nobis unde quisquam temporibus magnam debitis quidem.
       Ducimus ratione corporis nesciunt earum vel est quaerat blanditiis dolore
       ipsa?&nbsp;
-      <a href={linkPath}>Lorem link</a>
+      <a href={linkPath}>Lorem link</a>.
     </p>
   );
 };
@@ -71,7 +71,7 @@ export const Default: Story = {
     const element = await canvas.findByTitle('Expandable A');
 
     // Helpers
-    const expectAriaExpanded = (isExpanded: string): void =>
+    const expectAriaExpanded = (isExpanded: string): Promise<void> =>
       expect(element.ariaExpanded).toBe(isExpanded);
 
     // Test
