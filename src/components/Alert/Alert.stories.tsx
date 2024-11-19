@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Alert, AlertFieldLevel, TextInput } from '~/src/index';
+import { Alert, AlertFieldLevel, Paragraph, TextInput } from '~/src/index';
 import type { TextInputStatusType } from '../TextInput/TextInputStatus';
 
 type AlertStatusType = TextInputStatusType & ['loading'];
@@ -17,9 +17,13 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const childTest = (
+  <Paragraph>This is the explanation of the notification.</Paragraph>
+);
+
 export const Information: Story = {
   render: arguments_ => <Alert {...arguments_} />,
-  args: { status: 'info', message: 'A Notification' }
+  args: { status: 'info', children: childTest }
 };
 
 export const InformationWithExplanation: Story = {

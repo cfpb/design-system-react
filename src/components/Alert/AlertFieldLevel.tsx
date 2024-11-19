@@ -47,7 +47,6 @@ export const AlertFieldLevel = ({
       <Icon
         ariaLabel={`${status} icon`}
         name={MapTypeToIconName[status]}
-        alt={status}
         withBg
       />
       <span className='a-form-alert_text' data-testid='message'>

@@ -140,7 +140,7 @@ export const FooterCfGov = ({
 
   const linksCol3 = [
     <a key='usa-gov' className='a-link a-link__icon' href='https://usa.gov/'>
-      <span className='a-link_text'>USA.gov</span>
+      <span className='a-link_text'>USA.gov</span>&nbsp;
       <Icon
         ariaLabel='External link'
         name='external-link'
@@ -152,7 +152,7 @@ export const FooterCfGov = ({
       className='a-link a-link__icon'
       href='https://oig.federalreserve.gov/'
     >
-      <span className='a-link_text'>Office of Inspector General</span>
+      <span className='a-link_text'>Office of Inspector General</span>&nbsp;
       <Icon
         ariaLabel='External link'
         name='external-link'
