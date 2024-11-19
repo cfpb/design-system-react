@@ -1,6 +1,6 @@
 /* stylelint-disable selector-class-pattern */
 
-/* Allow icons in the alert body text to remain inline */
+/* Allow icons in the alert body text to remain inline and properly colored */
 .a-form-alert .a-form-alert_text .cf-icon-svg {
   float: none;
   color: inherit;

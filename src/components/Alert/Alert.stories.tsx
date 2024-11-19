@@ -18,10 +18,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const AlertMessage = ({ status = 'a warning' }): ReactNode => (
+const FieldLevelAlertMessage = ({ status = 'a warning' }): ReactNode => (
   <>
     This is a field-level alert with {status} status.{' '}
-    <Link hasIcon href={window.location.pathname}>
+    <Link hasIcon href={window.location.host}>
       Link to more info <Icon name='external-link' />
     </Link>
     .
@@ -127,7 +127,7 @@ export const SuccessFieldLevel: Story = {
   name: 'Success (field-level)',
   args: {
     status: 'success',
-    message: <AlertMessage status='a success' />
+    message: <FieldLevelAlertMessage status='a success' />
   }
 };
 
@@ -147,7 +147,7 @@ export const WarningFieldLevel: Story = {
   name: 'Warning (field-level)',
   args: {
     status: 'warning',
-    message: <AlertMessage status='a warning' />
+    message: <FieldLevelAlertMessage status='a warning' />
   }
 };
 
@@ -167,6 +167,6 @@ export const ErrorFieldLevel: Story = {
   name: 'Error (field-level)',
   args: {
     status: 'error',
-    message: <AlertMessage status='an error' />
+    message: <FieldLevelAlertMessage status='an error' />
   }
 };
