@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
+import Paragraph from '../Paragraph/Paragraph';
 import { Alert, AlertType } from './Alert';
 import { AlertFieldLevel } from './AlertFieldLevel';
 
@@ -43,6 +44,18 @@ describe('<Alert />', () => {
     render(<Alert status='info'>Explanation</Alert>);
     const explanation = screen.queryByTestId('explanation');
     expect(explanation).toBeInTheDocument();
+  });
+
+  it('does not include an explanation wrapper class when there is no message but children are provided', async () => {
+    render(
+      <Alert status='info'>
+        <Paragraph>Test component</Paragraph>
+      </Alert>
+    );
+    // Icon is displayed: External link
+    const explanation = screen.queryByTestId('explanation');
+    expect(explanation).toBeInTheDocument();
+    expect(explanation).not.toHaveClass('m-notification_explanation');
   });
 
   it('displays links when provided', async () => {

@@ -83,7 +83,10 @@ export const Alert = ({
           </p>
         ) : null}
         {children ? (
-          <div className='m-notification_explanation' data-testid='explanation'>
+          <div
+            className={`${message ? 'm-notification_explanation' : ''}`}
+            data-testid='explanation'
+          >
             {children}
           </div>
         ) : null}

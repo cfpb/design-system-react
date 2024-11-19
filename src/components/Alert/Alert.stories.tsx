@@ -22,12 +22,21 @@ export const Information: Story = {
   args: { status: 'info', message: 'A Notification' }
 };
 
-export const InformationWithExplanation: Story = {
+export const InformationWithMessageAndExplanation: Story = {
   ...Information,
-  name: 'Information with explanation',
+  name: 'Information with a message and an explanation',
   args: {
     ...Information.args,
-    children: 'You can also add an explanation to the notification.'
+    message: 'Here is the message of the notification.',
+    children: 'Here is the explanation of the notification.'
+  }
+};
+
+export const InformationWithOnlyExplanation: Story = {
+  ...Information,
+  name: 'Information with only an explanation',
+  args: {
+    children: 'You can also only have an explanation in the notification.'
   }
 };
 
