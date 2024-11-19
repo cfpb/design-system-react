@@ -52,7 +52,6 @@ describe('<Alert />', () => {
         <Paragraph>Test component</Paragraph>
       </Alert>
     );
-    // Icon is displayed: External link
     const explanation = screen.queryByTestId('explanation');
     expect(explanation).toBeInTheDocument();
     expect(explanation).not.toHaveClass('m-notification_explanation');
