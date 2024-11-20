@@ -440,10 +440,10 @@
           "moduleName": "./src/components/PageHeader/PageHeader.stories.tsx"
         },
         {
-          "moduleName": "./src/components/ResponsiveMenu/ResponsiveMenu.stories.tsx"
+          "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
         },
         {
-          "moduleName": "./src/components/RadioButton/RadioButton.stories.tsx"
+          "moduleName": "./src/components/ResponsiveMenu/ResponsiveMenu.stories.tsx"
         },
         {
           "moduleName": "./src/components/Hero/Hero.stories.tsx"
@@ -461,22 +461,22 @@
           "moduleName": "./src/stories/Introduction.stories.mdx"
         },
         {
+          "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
+        },
+        {
           "moduleName": "./src/components/List/List.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Pagination/Pagination.stories.tsx"
+          "moduleName": "./src/components/Select/Select.stories.tsx"
         },
         {
           "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Table/Table.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Select/Select.stories.tsx"
+          "moduleName": "./src/components/Tagline/Tagline.stories.tsx"
         },
         {
           "moduleName": "./src/components/TextInput/TextInput.stories.tsx"
@@ -485,25 +485,25 @@
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Alert/Alert.stories.tsx"
-        },
-        {
           "moduleName": "./src/components/Banner/Banner.stories.tsx"
         },
         {
           "moduleName": "./src/components/Buttons/Buttons.stories.tsx"
         },
         {
+          "moduleName": "./src/components/Alert/Alert.stories.tsx"
+        },
+        {
           "moduleName": "./src/components/Divider/Divider.stories.tsx"
+        },
+        {
+          "moduleName": "./src/components/Grid/Grid.stories.tsx"
         },
         {
           "moduleName": "./src/components/Footer/Footer.stories.tsx"
         },
         {
           "moduleName": "./src/components/Headings/Headings.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Grid/Grid.stories.tsx"
         },
         {
           "moduleName": "./src/components/Icon/Icon.stories.tsx"
@@ -565,21 +565,6 @@
       ]
     },
     {
-      "id": "./src/components/ResponsiveMenu/ResponsiveMenu.tsx",
-      "name": "./src/components/ResponsiveMenu/ResponsiveMenu.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/ResponsiveMenu/ResponsiveMenu.stories.tsx"
-        },
-        {
-          "moduleName": "./src/index.ts"
-        },
-        {
-          "moduleName": "./src/components/PageHeader/PageHeader.tsx"
-        }
-      ]
-    },
-    {
       "id": "./src/components/Paragraph/Paragraph.tsx",
       "name": "./src/components/Paragraph/Paragraph.tsx",
       "reasons": [
@@ -591,6 +576,21 @@
         },
         {
           "moduleName": "./src/components/TextIntroduction/TextIntroduction.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/ResponsiveMenu/ResponsiveMenu.tsx",
+      "name": "./src/components/ResponsiveMenu/ResponsiveMenu.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/ResponsiveMenu/ResponsiveMenu.stories.tsx"
+        },
+        {
+          "moduleName": "./src/index.ts"
+        },
+        {
+          "moduleName": "./src/components/PageHeader/PageHeader.tsx"
         }
       ]
     },
@@ -611,10 +611,10 @@
       "name": "./src/components/Checkbox/Checkbox.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Checkbox/Checkbox.stories.tsx"
+          "moduleName": "./src/components/Checkbox/CheckboxLarge.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Checkbox/CheckboxLarge.stories.tsx"
+          "moduleName": "./src/components/Checkbox/Checkbox.stories.tsx"
         },
         {
           "moduleName": "./src/index.ts"
@@ -632,10 +632,10 @@
       "name": "./src/components/Checkbox/Checkbox.utils.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Checkbox/Checkbox.stories.tsx"
+          "moduleName": "./src/components/Checkbox/CheckboxLarge.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Checkbox/CheckboxLarge.stories.tsx"
+          "moduleName": "./src/components/Checkbox/Checkbox.stories.tsx"
         }
       ]
     },
@@ -1190,10 +1190,10 @@
       "name": "./src/components/Select/testUtils.ts",
       "reasons": [
         {
-          "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
+          "moduleName": "./src/components/Select/Select.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Select/Select.stories.tsx"
+          "moduleName": "./src/components/Select/SelectMulti.stories.tsx"
         }
       ]
     },
@@ -1399,14 +1399,14 @@
       ]
     },
     {
-      "id": "./src/components/Select/selectUtils.tsx",
-      "name": "./src/components/Select/selectUtils.tsx",
+      "id": "./src/utils/sleep.tsx",
+      "name": "./src/utils/sleep.tsx",
       "reasons": [
         {
-          "moduleName": "./src/components/Select/SelectSingle.tsx"
+          "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
         },
         {
-          "moduleName": "./src/components/Select/SelectMulti.tsx"
+          "moduleName": "./src/components/Expandable/ExpandableGroup.stories.tsx"
         }
       ]
     },
@@ -1423,23 +1423,23 @@
       ]
     },
     {
+      "id": "./src/components/Select/selectUtils.tsx",
+      "name": "./src/components/Select/selectUtils.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Select/SelectSingle.tsx"
+        },
+        {
+          "moduleName": "./src/components/Select/SelectMulti.tsx"
+        }
+      ]
+    },
+    {
       "id": "./src/components/SkipNav/SkipNav.less",
       "name": "./src/components/SkipNav/SkipNav.less",
       "reasons": [
         {
           "moduleName": "./src/components/SkipNav/SkipNav.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/utils/sleep.tsx",
-      "name": "./src/utils/sleep.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Expandable/Expandable.stories.tsx"
-        },
-        {
-          "moduleName": "./src/components/Expandable/ExpandableGroup.stories.tsx"
         }
       ]
     },
@@ -1452,15 +1452,6 @@
         },
         {
           "moduleName": "./src/components/TextInput/TextInput.tsx"
-        }
-      ]
-    },
-    {
-      "id": "./src/components/Banner/Banner.less",
-      "name": "./src/components/Banner/Banner.less",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Banner/Banner.tsx"
         }
       ]
     },
@@ -1479,6 +1470,15 @@
       "reasons": [
         {
           "moduleName": "./src/components/Alert/Alert.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/components/Banner/Banner.less",
+      "name": "./src/components/Banner/Banner.less",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Banner/Banner.tsx"
         }
       ]
     },
@@ -1528,15 +1528,6 @@
       ]
     },
     {
-      "id": "./src/hooks/useIconSvg.tsx",
-      "name": "./src/hooks/useIconSvg.tsx",
-      "reasons": [
-        {
-          "moduleName": "./src/components/Icon/Icon.tsx"
-        }
-      ]
-    },
-    {
       "id": "./src/components/Hero/HeroImage.tsx",
       "name": "./src/components/Hero/HeroImage.tsx",
       "reasons": [
@@ -1560,6 +1551,15 @@
       "reasons": [
         {
           "moduleName": "./src/components/Hero/Hero.tsx"
+        }
+      ]
+    },
+    {
+      "id": "./src/hooks/useIconSvg.tsx",
+      "name": "./src/hooks/useIconSvg.tsx",
+      "reasons": [
+        {
+          "moduleName": "./src/components/Icon/Icon.tsx"
         }
       ]
     },
