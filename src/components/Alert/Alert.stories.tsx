@@ -42,13 +42,22 @@ export const Information: Story = {
   args: { status: 'info', message: 'A Notification' }
 };
 
-export const InformationWithExplanation: Story = {
+export const InformationWithMessageAndExplanation: Story = {
   ...Information,
-  name: 'Information with explanation',
+  name: 'Information with a message and an explanation',
   args: {
     ...Information.args,
+    message: 'Here is the message of the notification.',
     children:
       'This is a longer explanation to demonstrate how text wrapping is applied to more extensive alert content.'
+  }
+};
+
+export const InformationWithOnlyExplanation: Story = {
+  ...Information,
+  name: 'Information with only an explanation',
+  args: {
+    children: 'You can also only have an explanation in the notification.'
   }
 };
 
