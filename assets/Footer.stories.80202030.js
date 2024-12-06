@@ -1,0 +1,11 @@
+import{j as n}from"./index.7eca609e.js";/* empty css                */import{F as C,d as u}from"./TextIntroduction.78c7eeb4.js";import"./Dropdown.5d83d4e9.js";import"./Checkbox.1213d1d0.js";import"./ExpandableGroup.8fdf162d.js";import{I as c}from"./Icon.8eb29304.js";import"./Well.b1717e7b.js";import"./Paragraph.9304145b.js";import"./TextArea.7a5ccf81.js";import"./index.ca1bfdbe.js";import"./_commonjsHelpers.712cc82f.js";import"./emotion-use-insertion-effect-with-fallbacks.browser.esm.24c2c4ec.js";import"./index.49a47dde.js";import"./iframe.5a9f21fb.js";import"../sb-preview/runtime.js";const I={title:"Components (Draft)/Footers",tags:["autodocs"],component:C,argTypes:{}},o=(e,a)=>n.exports.jsxs("a",{href:window.location.href,className:`m-list_link a-link ${a?"a-link__icon":""}`,children:[n.exports.jsx("span",{className:"a-link_text",children:e}),a?n.exports.jsx(c,{name:"external-link",alt:"External link"}):null]},e),t=e=>n.exports.jsx("a",{href:window.location.href,children:n.exports.jsx(c,{name:e,withBg:!0})},e),i={args:{navLinks:[o("Nav 1"),o("Nav 2"),o("Nav 3")],socialLinks:[t("facebook"),t("youtube")],linksCol1:[o("Col1 Link 1"),o("Col1 Link 2"),o("Col1 Link 3")],linksCol2:[o("Col2 Link 1"),o("Col2 Link 2"),o("Col2 Link 3")],linksCol3:[o("Col3 Link 1",!0),o("Col3 Link 2",!0),o("Col3 Link 3",!0)]}},r={render:()=>n.exports.jsx(u,{})};var k,s,l;i.parameters={...i.parameters,docs:{...(k=i.parameters)==null?void 0:k.docs,source:{originalSource:`{
+  args: {
+    navLinks: [makeLink('Nav 1'), makeLink('Nav 2'), makeLink('Nav 3')],
+    socialLinks: [makeSocialLink('facebook'), makeSocialLink('youtube')],
+    linksCol1: [makeLink('Col1 Link 1'), makeLink('Col1 Link 2'), makeLink('Col1 Link 3')],
+    linksCol2: [makeLink('Col2 Link 1'), makeLink('Col2 Link 2'), makeLink('Col2 Link 3')],
+    linksCol3: [makeLink('Col3 Link 1', true), makeLink('Col3 Link 2', true), makeLink('Col3 Link 3', true)]
+  }
+}`,...(l=(s=i.parameters)==null?void 0:s.docs)==null?void 0:l.source}}};var m,p,L;r.parameters={...r.parameters,docs:{...(m=r.parameters)==null?void 0:m.docs,source:{originalSource:`{
+  render: () => <FooterCfGov />
+}`,...(L=(p=r.parameters)==null?void 0:p.docs)==null?void 0:L.source}}};const B=["Example","CFGov"];export{r as CFGov,i as Example,B as __namedExportsOrder,I as default};
