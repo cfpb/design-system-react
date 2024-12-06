@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Alert, AlertFieldLevel, TextInput } from '~/src/index';
+import { ReactNode } from 'react';
+import { Alert, AlertFieldLevel, Icon, Link, TextInput } from '~/src/index';
 import type { TextInputStatusType } from '../TextInput/TextInputStatus';
 
 type AlertStatusType = TextInputStatusType & ['loading'];
@@ -17,6 +18,25 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const FieldLevelAlertMessage = ({ status = 'a warning' }): ReactNode => (
+  <>
+    This is a field-level alert with {status} status.{' '}
+    <Link hasIcon href={window.location.host}>
+      Link to more info <Icon name='external-link' />
+    </Link>
+    .
+  </>
+);
+
+const alertExplanation = (type: string): string =>
+  `This is an optional explanation of the ${type} message.`;
+
+const externalLinkProperties = {
+  href: '/',
+  label: 'This is an external link',
+  isExternal: true
+};
+
 export const Information: Story = {
   render: arguments_ => <Alert {...arguments_} />,
   args: { status: 'info', message: 'A Notification' }
@@ -28,7 +48,8 @@ export const InformationWithMessageAndExplanation: Story = {
   args: {
     ...Information.args,
     message: 'Here is the message of the notification.',
-    children: 'Here is the explanation of the notification.'
+    children:
+      'This is a longer explanation to demonstrate how text wrapping is applied to more extensive alert content.'
   }
 };
 
@@ -51,28 +72,42 @@ export const InformationWithLinks: Story = {
         href: '/',
         label: 'This is a link below the explanation'
       },
-      {
-        href: '/',
-        label: 'This is an external link',
-        isExternal: true
-      }
+      externalLinkProperties
     ]
   }
 };
 
 export const Success: Story = {
   ...Information,
-  args: { ...Information.args, status: 'success', message: '11 results' }
+  args: {
+    ...Information.args,
+    status: 'success',
+    message: '11 results',
+    links: [externalLinkProperties],
+    children: <>{alertExplanation('success')}</>
+  }
 };
 
 export const Warning: Story = {
   ...Information,
-  args: { ...Information.args, status: 'warning', message: 'No results found.' }
+  args: {
+    ...Information.args,
+    status: 'warning',
+    message: 'No results found.',
+    links: [externalLinkProperties],
+    children: <>{alertExplanation('warning')}</>
+  }
 };
 
 export const Error: Story = {
   ...Information,
-  args: { ...Information.args, status: 'error', message: 'Page not found.' }
+  args: {
+    ...Information.args,
+    status: 'error',
+    message: 'Page not found.',
+    links: [externalLinkProperties],
+    children: <>{alertExplanation('error')}</>
+  }
 };
 
 export const InProgress: Story = {
@@ -101,7 +136,7 @@ export const SuccessFieldLevel: Story = {
   name: 'Success (field-level)',
   args: {
     status: 'success',
-    message: 'This is a field-level alert with a success status.'
+    message: <FieldLevelAlertMessage status='a success' />
   }
 };
 
@@ -121,7 +156,7 @@ export const WarningFieldLevel: Story = {
   name: 'Warning (field-level)',
   args: {
     status: 'warning',
-    message: 'This is a field-level alert with a warning status.'
+    message: <FieldLevelAlertMessage status='a warning' />
   }
 };
 
@@ -141,6 +176,6 @@ export const ErrorFieldLevel: Story = {
   name: 'Error (field-level)',
   args: {
     status: 'error',
-    message: 'This is a field-level alert with an error status.'
+    message: <FieldLevelAlertMessage status='an error' />
   }
 };
