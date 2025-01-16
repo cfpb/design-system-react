@@ -1,4 +1,4 @@
-import type { ReactEventHandler, Ref } from 'react';
+import type { JSX, ReactEventHandler, Ref } from 'react';
 import type { PropsValue } from 'react-select';
 import { Button } from '../Buttons/Button';
 import { Icon } from '../Icon/Icon';

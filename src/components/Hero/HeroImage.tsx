@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 interface HeroImageProperties {
   image?: string;
   altText?: string;

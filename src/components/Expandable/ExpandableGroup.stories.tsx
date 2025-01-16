@@ -1,6 +1,7 @@
 import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, waitFor, within } from '@storybook/testing-library';
+import type { JSX } from 'react';
 import { sleep } from '../../utils/sleep';
 import { Expandable } from './Expandable';
 import { ExpandableGroup } from './ExpandableGroup';

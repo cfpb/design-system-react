@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import type { JSX } from 'react';
 import type { HeadingLevel } from '../../types/headingLevel';
 import type { HeadingType } from '../Headings/Heading';
 import { Heading } from '../Headings/Heading';

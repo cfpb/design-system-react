@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import { Select, SelectSingle } from '~/src/index';
 import type { SelectOption, SelectProperties } from './Select';
 import { SingleSelectOptions } from './testUtils';

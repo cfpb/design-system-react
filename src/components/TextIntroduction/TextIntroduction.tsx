@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { cloneElement, type ReactNode } from 'react';
+import { cloneElement, type JSX, type ReactNode } from 'react';
 import { Heading } from '../Headings/Heading';
 import List from '../List/List';
 import ListItem from '../List/ListItem';

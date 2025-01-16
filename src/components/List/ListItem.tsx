@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import type { JSX } from 'react';
 import * as React from 'react';
 
 export default function ListItem({

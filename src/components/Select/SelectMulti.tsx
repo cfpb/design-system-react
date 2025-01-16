@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 import { Multiselect } from '@cfpb/cfpb-forms';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type JSX } from 'react';
 import { noOp } from '~/src/utils/noOp';
 import type { SelectProperties } from './Select';
 import { buildOptions } from './selectUtils';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, type JSX } from 'react';
 import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/Button';
 import { Icon } from '../Icon/Icon';

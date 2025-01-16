@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import type { JSXElement } from '../../types/jsxElement';
 import List from '../List/List';
 import { ListItemBuilder } from '../List/ListItem';

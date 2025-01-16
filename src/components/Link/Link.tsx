@@ -1,7 +1,7 @@
+import classnames from 'classnames';
+import type { JSX } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import type { JSXElement } from '../../types/jsxElement';
-
-import classnames from 'classnames';
 import ListItem from '../List/ListItem';
 
 export interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
