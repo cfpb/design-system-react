@@ -49,16 +49,16 @@
     "@cfpb/cfpb-expandables": "^0.35.0",
     "@cfpb/cfpb-forms": "^0.35.0",
     "@cfpb/cfpb-icons": "^1.2.0",
+    "@storybook/client-api": "^7.4.3",
+    "@storybook/jest": "^0.2.2",
+    "@storybook/testing-library": "^0.1.0",
     "@tanstack/react-query": "^4.13.5",
     "classnames": "^2.3.2",
     "display-element-css": "cfpb/storybook-addon-display-element-css",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^6.11.1",
-    "react-select": "^5.7.2",
-    "@storybook/client-api": "^7.4.3",
-    "@storybook/jest": "^0.2.2",
-    "@storybook/testing-library": "^0.1.0"
+    "react-select": "^5.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -149,5 +149,5 @@
       "vitest related --run --coverage=false"
     ]
   },
-  "packageManager": "yarn@4.2.1"
+  "packageManager": "yarn@4.6.0"
 }
