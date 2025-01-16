@@ -54,7 +54,7 @@
     "display-element-css": "cfpb/storybook-addon-display-element-css",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.11.1",
     "react-select": "^5.7.2"
   },
   "devDependencies": {
