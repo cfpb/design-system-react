@@ -1,7 +1,8 @@
 import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-expandables/src/Expandable';
 import classnames from 'classnames';
 import type { ReactElement } from 'react';
-import React, { useEffect } from 'react';
+import * as React from 'react';
+import { useEffect } from 'react';
 import type { ExpandableProperties } from './Expandable';
 
 export interface ExpandableGroupProperties
