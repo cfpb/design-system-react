@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { ReactElement, Ref } from 'react';
+import type { JSX, ReactElement, Ref } from 'react';
 import { forwardRef, type ChangeEventHandler } from 'react';
 import { noOp as onNoOp } from '~/src/utils/noOp';
 import {

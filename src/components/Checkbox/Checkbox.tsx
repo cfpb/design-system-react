@@ -1,5 +1,11 @@
 import classnames from 'classnames';
-import type { ChangeEvent, ReactElement, ReactNode, RefObject } from 'react';
+import type {
+  ChangeEvent,
+  JSX,
+  ReactElement,
+  ReactNode,
+  RefObject
+} from 'react';
 import { useCallback } from 'react';
 import { HelperText } from '../HelperText/HelperText';
 
@@ -22,7 +28,7 @@ export interface CheckboxProperties {
   labelClassName?: string;
   /** React Ref to be enable direct access and control of the input element */
   inputRef?:
-    | RefObject<HTMLInputElement>
+    | RefObject<HTMLInputElement | null>
     | string
     | ((instance: HTMLInputElement | null) => void)
     | null

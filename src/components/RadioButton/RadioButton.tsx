@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { ReactNode } from 'react';
+import type { JSX, ReactNode } from 'react';
 import { HelperText } from '../HelperText/HelperText';
 import { Label } from '../Label/Label';
 
@@ -9,7 +9,7 @@ interface RadioProperties {
   className?: string;
   helperText?: string;
   inputRef?:
-    | React.RefObject<HTMLInputElement>
+    | React.RefObject<HTMLInputElement | null>
     | string
     | ((instance: HTMLInputElement | null) => void)
     | null

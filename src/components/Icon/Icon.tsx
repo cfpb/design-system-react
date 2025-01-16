@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import type { JSX } from 'react';
 import { useIconSvg } from '../../hooks/useIconSvg';
 import { numberIcons } from './iconLists';
 

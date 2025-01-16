@@ -1,4 +1,4 @@
-import type { KeyboardEvent, Ref } from 'react';
+import type { JSX, KeyboardEvent, Ref } from 'react';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import type {
   GroupBase,

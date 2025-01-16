@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import type { JSX } from 'react';
 
 interface GridRowProperties {
   children: JSX.Element | JSX.Element[] | string;

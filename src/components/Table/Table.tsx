@@ -117,7 +117,9 @@ export const Table = forwardRef<
           {buildColumnHeaders(columns)}
           {buildRows(visibleRows, columns)}
         </table>
-        {isPaginated ? <Pagination {...paginationProperties} tableId={id ?? tableId}/> : null}
+        {isPaginated ? (
+          <Pagination {...paginationProperties} tableId={id ?? tableId} />
+        ) : null}
       </>
     );
 

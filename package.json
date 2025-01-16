@@ -54,8 +54,11 @@
     "display-element-css": "cfpb/storybook-addon-display-element-css",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^6.3.0",
-    "react-select": "^5.7.2"
+    "react-router-dom": "^6.11.1",
+    "react-select": "^5.7.2",
+    "@storybook/client-api": "^7.4.3",
+    "@storybook/jest": "^0.2.2",
+    "@storybook/testing-library": "^0.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -65,12 +68,9 @@
     "@storybook/addon-essentials": "^7.0.6",
     "@storybook/addon-interactions": "^7.4.3",
     "@storybook/addon-links": "^7.0.6",
-    "@storybook/client-api": "^7.4.3",
-    "@storybook/jest": "^0.2.2",
     "@storybook/manager-api": "^7.3.2",
     "@storybook/react": "^7.0.6",
     "@storybook/react-vite": "^7.0.6",
-    "@storybook/testing-library": "^0.1.0",
     "@storybook/theming": "^7.3.2",
     "@testing-library/cypress": "8.0.7",
     "@testing-library/dom": "8.19.0",

@@ -1,7 +1,6 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { JSX, ReactElement, ReactNode } from 'react';
 import { components } from 'react-select';
-
-import Checkbox from '../Checkbox/Checkbox';
+import { Checkbox } from '../Checkbox/Checkbox';
 import './DropdownInputWithCheckbox.css';
 
 interface TypeCheckboxInput {

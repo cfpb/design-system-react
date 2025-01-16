@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import { Icon } from '../Icon/Icon';
 import Footer from './Footer';
 

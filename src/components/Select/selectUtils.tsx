@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import type { SelectOption } from './Select';
 
 /* Convert an SelectOption[] into HTMLOptionElement[] */

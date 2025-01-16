@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/Button';
 import Link from '../Link/Link';
