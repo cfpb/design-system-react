@@ -4353,32 +4353,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:4.36.1":
-  version: 4.36.1
-  resolution: "@tanstack/query-core@npm:4.36.1"
-  checksum: 10/7c648872cd491bcab2aa4c18e0b7ca130c072f05c277a5876977fa3bfa87634bbfde46e9d249236587d78c39866889a02e4e202b478dc6074ff96093732ae56d
-  languageName: node
-  linkType: hard
-
-"@tanstack/react-query@npm:^4.13.5":
-  version: 4.36.1
-  resolution: "@tanstack/react-query@npm:4.36.1"
-  dependencies:
-    "@tanstack/query-core": "npm:4.36.1"
-    use-sync-external-store: "npm:^1.2.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-native: "*"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 10/764b860c3ac8d254fc6b07e01054a0f58058644d59626c724b213293fbf1e31c198cbb26e4c32c0d16dcaec0353c0ae19147d9c667675b31f8cea1d64f1ff4ac
-  languageName: node
-  linkType: hard
-
 "@testing-library/cypress@npm:8.0.7":
   version: 8.0.7
   resolution: "@testing-library/cypress@npm:8.0.7"
@@ -7640,7 +7614,6 @@ __metadata:
     "@storybook/react-vite": "npm:^7.0.6"
     "@storybook/testing-library": "npm:^0.1.0"
     "@storybook/theming": "npm:^7.3.2"
-    "@tanstack/react-query": "npm:^4.13.5"
     "@testing-library/cypress": "npm:8.0.7"
     "@testing-library/dom": "npm:8.19.0"
     "@testing-library/jest-dom": "npm:5.16.5"
@@ -16513,15 +16486,6 @@ display-element-css@cfpb/storybook-addon-display-element-css:
     "@types/react":
       optional: true
   checksum: 10/ec99e31aefeb880f6dc4d02cb19a01d123364954f857811470ece32872f70d6c3eadbe4d073770706a9b7db6136f2a9fbf1bb803e07fbb21e936a47479281690
-  languageName: node
-  linkType: hard
-
-"use-sync-external-store@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "use-sync-external-store@npm:1.2.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/a676216affc203876bd47981103f201f28c2731361bb186367e12d287a7566763213a8816910c6eb88265eccd4c230426eb783d64c373c4a180905be8820ed8e
   languageName: node
   linkType: hard
 
