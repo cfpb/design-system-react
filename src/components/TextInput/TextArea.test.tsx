@@ -1,4 +1,5 @@
-import { jest } from '@storybook/jest';
+import '@storybook/test';
+import * as test from '@storybook/test';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -9,7 +10,7 @@ const TEST_STRING = 'Tiny bubbles...';
 
 describe('<TextArea />', () => {
   it('Enabled input accepts text', async () => {
-    const onChange = jest.fn();
+    const onChange = test.fn();
     render(<TextArea id='enabled' onChange={onChange} />);
     const input = screen.getByTestId('textAreaInput');
     await userEvent.type(input, TEST_STRING);
