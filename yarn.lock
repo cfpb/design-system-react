@@ -3952,7 +3952,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/blocks@npm:7.6.11":
+"@storybook/blocks@npm:7.6.11, @storybook/blocks@npm:^7.0.6":
   version: 7.6.11
   resolution: "@storybook/blocks@npm:7.6.11"
   dependencies:
@@ -7845,6 +7845,7 @@ __metadata:
     "@storybook/addon-essentials": "npm:^7.0.6"
     "@storybook/addon-interactions": "npm:^7.4.3"
     "@storybook/addon-links": "npm:^7.0.6"
+    "@storybook/blocks": "npm:^7.0.6"
     "@storybook/client-api": "npm:^7.4.3"
     "@storybook/jest": "npm:^0.2.2"
     "@storybook/manager-api": "npm:^7.3.2"

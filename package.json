@@ -67,6 +67,7 @@
     "@storybook/addon-essentials": "^7.0.6",
     "@storybook/addon-interactions": "^7.4.3",
     "@storybook/addon-links": "^7.0.6",
+    "@storybook/blocks": "^7.0.6",
     "@storybook/manager-api": "^7.3.2",
     "@storybook/react": "^7.0.6",
     "@storybook/react-vite": "^7.0.6",
