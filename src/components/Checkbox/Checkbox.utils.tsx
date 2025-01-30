@@ -1,5 +1,5 @@
 import { useArgs } from '@storybook/client-api';
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import type { CheckboxProperties } from './Checkbox';
 import { Checkbox } from './Checkbox';
 

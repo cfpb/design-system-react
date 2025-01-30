@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import type { JSX } from 'react';
 import { Icon } from '../Icon/Icon';
 
 export const BackToTop = (): JSX.Element => (

@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import type { JSX } from 'react';
 import type { JSXElement } from '../../types/jsxElement';
 import { Tagline } from '../Tagline/Tagline';
 import './Banner.less';

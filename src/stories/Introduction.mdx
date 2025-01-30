@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/blocks';
+import { Icon, Heading } from '~/src/index';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="Guides/Introduction" />
+
+<Heading type="1">CFPB Design System React</Heading>
+
+This library contains React implementations of the [CFPB Design System's] components and patterns.
+
+<Heading type="2">Installation</Heading>
+
+The `cfpb/design-system-react` library has not yet been released as an NPM package but can be integrated into your project by adding it as a "repository" dependency.
+
+In your `package.json`:
+
+```
+"dependencies": {
+  "design-system-react": "cfpb/design-system-react"
+}
+```
+
+<Heading type="2">Components - Verified vs Draft</Heading>
+
+This library is still in it's early stages of developement, with lots of changes expected in the coming months.  You will notice two subsections in the navigation sidebar: `Components (Verified)` and `Components (Draft)`.
+
+`Verified` components have been thoroughly reviewed for consistency with their [Design System] counterparts and can be considered unlikely to change in the near future.
+
+`Draft` components should be viewed as works-in-progress and may still undergo breaking changes in the near future in order to align their implementations with the [Design System].
+
+[CFPB Design System's]: https://cfpb.github.io/design-system/
+
+[Design System]: https://cfpb.github.io/design-system/

@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 export const FooterBanner = (): JSX.Element => (
   <div className='o-footer-post'>
     <div

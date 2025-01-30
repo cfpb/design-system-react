@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import type { JSX } from 'react';
 import { GridColWidth } from './GridColumn';
 
 interface GridWrapperProperties {

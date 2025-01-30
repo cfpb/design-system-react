@@ -1,8 +1,8 @@
-import { jest } from '@storybook/jest';
+import * as test from '@storybook/test';
 import '@testing-library/jest-dom';
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import { Select, SelectOption } from './Select';
 import { MultipleSelectOptions, SingleSelectOptions } from './testUtils';
 
@@ -53,7 +53,7 @@ describe('<SelectMulti />', () => {
     const label = 'MultiLabel';
     const maxSelections = 2;
     const user = userEvent.setup();
-    const onChange = jest.fn();
+    const onChange = test.fn();
 
     render(
       <Select
