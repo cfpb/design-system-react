@@ -20,8 +20,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:unicorn/all',
     'plugin:react-prefer-function-component/recommended',
-    'prettier',
-    'plugin:storybook/recommended'
+    'prettier'
   ],
   rules: {
     'no-dupe-else-if': 'error',
