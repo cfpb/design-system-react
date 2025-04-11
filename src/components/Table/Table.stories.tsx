@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 export const Standard: Story = {
   name: 'Standard table',
   args: {
-    caption: 'Table caption describing the data TEST',
+    caption: 'Table caption describing the data',
     columns: ['Column 1 header', 'Column 2 header', 'Column 3 header'],
     rows: [
       ['Row 1, Column 1', 'Row 1, Column 2', 'Row 1, Column 3'],
