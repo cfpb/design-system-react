@@ -2504,6 +2504,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource/source-sans-3@npm:^5.2.8":
+  version: 5.2.8
+  resolution: "@fontsource/source-sans-3@npm:5.2.8"
+  checksum: 10/c6e8d830f47ec1fb6ac1f342c68fb43726a1dfa7f58d01eb879f7b53b0ae0e116eda8e87173ac4a56ca7a1af8091f02bc88d07c1f83a3fcd364e96bd138cd5e6
+  languageName: node
+  linkType: hard
+
 "@hapi/hoek@npm:^9.0.0, @hapi/hoek@npm:^9.3.0":
   version: 9.3.0
   resolution: "@hapi/hoek@npm:9.3.0"
@@ -6446,6 +6453,7 @@ __metadata:
     "@cfpb/cfpb-forms": "npm:^0.35.0"
     "@cfpb/cfpb-icons": "npm:^1.2.0"
     "@chromatic-com/storybook": "npm:^3"
+    "@fontsource/source-sans-3": "npm:^5.2.8"
     "@nabla/vite-plugin-eslint": "npm:1.4.1"
     "@storybook/addon-a11y": "npm:^8.6.7"
     "@storybook/addon-actions": "npm:^8.6.7"
