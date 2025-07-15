@@ -24,7 +24,7 @@ export default create({
   brandUrl: 'https://cfpb.github.io/design-system/',
   brandTarget: '_blank',
 
-  fontBase: '"Source Sans 3", Arial ,sans-serif',
+  fontBase: '"Source Sans 3 Variable", Arial ,sans-serif',
 
   // App
   appBorderColor: colors.gray,
