@@ -50,7 +50,7 @@ export const Expandable: React.FC<ExpandableProperties> = ({
         title={header}
       >
         <h3 className='h4 o-expandable_label'>{header}</h3>
-        <span className='o-expandable_link'>
+        <span className='o-expandable_cues'>
           <span className='o-expandable_cue o-expandable_cue-open'>
             <Icon name='plus-round' alt='plus-round' />
           </span>
