@@ -4,6 +4,13 @@
 @import '@cfpb/cfpb-design-system';
 @import './variables.less';
 
+// Use Source Sans 3 Variable everywhere
+// This is a temporary fix until we update to the latest version of the DS
+// see: https://github.com/cfpb/design-system-react/issues/417
+* {
+  font-family: 'Source Sans 3 Variable', Arial, sans-serif !important;
+}
+
 /**
 /* Storybook components are not rendered within a CFPB layout so
 /* the DS' max-width restriction for text content is not applied. 
@@ -33,11 +40,6 @@
   pre.prismjs // Code blocks
   {
     font-size: 16px;
-  }
-
-  // Use Avenir Next everywhere
-  * {
-    font-family: 'Avenir Next', Arial, sans-serif;
   }
 
   /* 
