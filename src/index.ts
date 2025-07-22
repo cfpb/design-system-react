@@ -1,3 +1,4 @@
+import '@fontsource-variable/source-sans-3';
 import './assets/styles/_shared.less';
 
 export { Alert } from './components/Alert/Alert';
