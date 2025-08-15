@@ -4,7 +4,7 @@ import { Button } from '../Buttons/Button';
 import { Icon } from '../Icon/Icon';
 import Link from '../Link/Link';
 import Navbar from '../Navbar/Navbar';
-import './responsivemenu.less';
+import './responsivemenu.scss';
 
 interface CfpbLogoProperties {
   href?: string;
@@ -19,9 +19,9 @@ export function CfpbLogo({
       href={href}
       title='Home'
       aria-label='Home'
-      className='o-header_logo'
+      className='o-header__logo'
     >
-      <img className='o-header_logo-img' src={CFPBLogo} alt='CFPB Logo' />
+      <img className='o-header__logo-img' src={CFPBLogo} alt='CFPB Logo' />
     </Link>
   );
 }
@@ -102,8 +102,8 @@ export default function ResponsiveMenu({
           aria-label='Close menu'
         />
       ) : null}
-      <header className='o-header_content'>
-        <div className='navbar wrapper wrapper__match-content'>
+      <header className='o-header__content'>
+        <div className='navbar wrapper wrapper--match-content'>
           <button
             className='menu-toggle'
             onClick={onToggleMenu}

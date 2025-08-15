@@ -21,38 +21,38 @@ describe('<Link />', () => {
   it('Type: "destructive"', () => {
     render(<Link {...linkBaseProperties} type='destructive' />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link a-btn a-btn__link a-btn__warning');
+    expect(link).toHaveClass('a-link a-btn a-btn--link a-btn--warning');
   });
 
   it('Type: "list"', () => {
     render(<Link {...linkBaseProperties} type='list' />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('m-list_link');
+    expect(link).toHaveClass('m-list--link');
     expect(link).not.toHaveClass('a-link');
   });
 
   it('Option: noWrap - it adds classnames', () => {
     render(<Link {...linkBaseProperties} noWrap />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link__no-wrap');
+    expect(link).toHaveClass('a-link--no-wrap');
   });
 
   it('Option: isJump - it adds classnames', () => {
     render(<Link {...linkBaseProperties} isJump />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link__jump a-link__icon-after-text');
+    expect(link).toHaveClass('a-link--jump a-link--icon-after-text');
   });
 
   it('Option: isJumpLeft - it adds classnames', () => {
     render(<Link {...linkBaseProperties} isJumpLeft />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link__jump a-link__icon-before-text');
+    expect(link).toHaveClass('a-link--jump a-link--icon-before-text');
   });
 
   it('Option: hasIcon - it adds classnames', () => {
     render(<Link {...linkBaseProperties} hasIcon />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link a-link__icon');
+    expect(link).toHaveClass('a-link a-link--icon');
   });
 
   it('Other: propagates other attributes', () => {
@@ -66,7 +66,7 @@ describe('<LinkText>', () => {
   it('includes appropriate classnames', () => {
     render(<LinkText data-testid='link-text'>Test text</LinkText>);
     const linkText = screen.getByTestId('link-text');
-    expect(linkText).toHaveClass('a-link_text');
+    expect(linkText).toHaveClass('a-link__text');
     expect(linkText).toHaveTextContent('Test text');
   });
 });
@@ -83,7 +83,7 @@ describe('<ListLink>', () => {
 
     // Link
     const linkText = screen.getByTestId(testId);
-    expect(linkText).toHaveClass('m-list_link');
+    expect(linkText).toHaveClass('m-list--link');
     expect(linkText).toHaveTextContent('Test text');
   });
 });
@@ -95,7 +95,7 @@ describe('<DestructiveLink>', () => {
     render(<DestructiveLink data-testid={testId}>Test text</DestructiveLink>);
     const linkDestructive = screen.getByTestId(testId);
     expect(linkDestructive).toHaveClass(
-      'a-link a-btn a-btn__link a-btn__warning'
+      'a-link a-btn a-btn--link a-btn--warning'
     );
     expect(linkDestructive).toHaveTextContent('Test text');
   });

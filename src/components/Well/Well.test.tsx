@@ -38,6 +38,6 @@ describe('<WellContent />', () => {
     expect(text).toHaveClass('text');
 
     const callToAction = screen.getByText('Call-to-action link');
-    expect(callToAction).toHaveClass('m-list_link');
+    expect(callToAction).toHaveClass('m-list--link');
   });
 });

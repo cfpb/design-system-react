@@ -20,8 +20,8 @@ export const ButtonIcon = ({
   if (!name) return null;
 
   let cname = '';
-  if (isLeft) cname = 'a-btn_icon__on-left';
-  if (isRight) cname = 'a-btn_icon__on-right';
+  if (isLeft) cname = 'a-btn_icon--on-left';
+  if (isRight) cname = 'a-btn_icon--on-right';
 
   return (
     <span

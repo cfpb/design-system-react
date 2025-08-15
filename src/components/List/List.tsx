@@ -20,10 +20,10 @@ export default function List({
   isUnstyled
 }: ListProperties): JSX.Element {
   const cnames = ['m-list'];
-  if (isHorizontal) cnames.push('m-list__horizontal');
-  if (isLinks) cnames.push('m-list__links');
-  if (isSpaced) cnames.push('m-list__spaced');
-  if (isUnstyled) cnames.push('m-list__unstyled');
+  if (isHorizontal) cnames.push('m-list--horizontal');
+  if (isLinks) cnames.push('m-list--links');
+  if (isSpaced) cnames.push('m-list--spaced');
+  if (isUnstyled) cnames.push('m-list--unstyled');
   if (className) cnames.push(className);
 
   if (isOrdered) return <ol className={classnames(cnames)}>{children}</ol>;

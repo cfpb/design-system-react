@@ -30,7 +30,7 @@ describe('NavLinks', () => {
     // List rendered
     const list = screen.getAllByRole('list');
     expect(list.length).toEqual(1);
-    expect(list[0].className).toMatch(/o-footer_nav-list/g);
+    expect(list[0].className).toMatch(/o-footer__nav-list/g);
 
     // Items rendered
     const items = screen.getAllByRole('listitem');
@@ -70,7 +70,7 @@ describe('SocialLinks', () => {
     // List rendered
     const list = screen.getAllByRole('list');
     expect(list.length).toEqual(1);
-    expect(list[0].className).toMatch(/m-social-media_icons/g);
+    expect(list[0].className).toMatch(/m-social-media__icons/g);
 
     // Items rendered
     const items = screen.getAllByRole('listitem');
@@ -112,7 +112,7 @@ describe('FooterLinksColumn', () => {
     // List rendered
     const list = screen.getAllByRole('list');
     expect(list.length).toEqual(1);
-    expect(list[0].className).toMatch(/o-footer_list/g);
+    expect(list[0].className).toMatch(/o-footer__list/g);
 
     // Items rendered
     const items = screen.getAllByRole('listitem');

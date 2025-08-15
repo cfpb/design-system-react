@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Navbar } from '~/src/index';
-import '../PageHeader/header.less';
+import '../PageHeader/header.scss';
 import { ExampleLinks } from './Navbar';
 
 const meta: Meta<typeof Navbar> = {

@@ -1,9 +1,9 @@
 import classnames from 'classnames';
 import { BackToTop } from './BackToTop';
-import './Footer.less';
+import './Footer.scss';
 import { FooterBanner } from './FooterBanner';
 import { FooterLinksColumn, NavLinks, SocialLinks } from './FooterLinks';
-import './SocialMedia.less';
+import './SocialMedia.scss';
 
 interface FooterProperties extends React.HTMLProps<HTMLElement> {
   navLinks?: JSX.Element[];
@@ -33,19 +33,19 @@ export default function Footer({
       data-js-hook='state_atomic_init'
       {...properties}
     >
-      <div className='wrapper wrapper__match-content'>
-        <div className='o-footer_pre'>
+      <div className='wrapper wrapper--match-content'>
+        <div className='o-footer__pre'>
           <BackToTop />
           <NavLinks>{navLinks}</NavLinks>
           <SocialLinks>{socialLinks}</SocialLinks>
         </div>
 
-        <div className='o-footer-middle-left'>
+        <div className='o-footer__middle-left'>
           <FooterLinksColumn>{linksCol1}</FooterLinksColumn>
           <FooterLinksColumn>{linksCol2}</FooterLinksColumn>
         </div>
 
-        <div className='o-footer-middle-right'>
+        <div className='o-footer__middle-right'>
           <FooterLinksColumn>{linksCol3}</FooterLinksColumn>
         </div>
 

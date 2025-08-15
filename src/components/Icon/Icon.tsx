@@ -109,7 +109,7 @@ export const Icon = ({
 
   return (
     <span
-      className='cf-icon-svg-wrapper'
+      className='cf-icon-svg__wrapper'
       dangerouslySetInnerHTML={{ __html: iconHtml }}
       {...others}
     />

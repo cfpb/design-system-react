@@ -63,7 +63,7 @@ describe('Checkbox', () => {
   it('Renders the "Large" variant', async () => {
     render(<Checkbox {...defaultProps} isLarge />);
 
-    const largeClass = 'm-form-field__lg-target';
+    const largeClass = 'm-form-field--lg-target';
     const checkbox = screen.getByTestId(testId);
     expect(checkbox.getAttribute(attributeClass)).toMatch(largeClass);
   });

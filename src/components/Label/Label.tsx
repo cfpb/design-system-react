@@ -17,7 +17,7 @@ export const Label = ({
   ...other
 }: JSX.IntrinsicElements['label'] &
   LabelProperties): React.ReactElement | null => {
-  const styles = [...baseStyles, inline ? '' : 'a-label__heading'];
+  const styles = [...baseStyles, inline ? '' : 'a-label--heading'];
   const classes = [...styles, className];
 
   if (!children) return null;

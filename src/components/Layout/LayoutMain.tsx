@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 
 interface LayoutMainProperties {
-  bleedbar?: boolean;
   children: JSX.Element | JSX.Element[];
   classes?: string;
   id?: string;
@@ -11,11 +10,9 @@ export const LayoutMain = ({
   children,
   classes = '',
   id = 'main',
-  layout = '2-1',
-  bleedbar
+  layout = '2-1'
 }: LayoutMainProperties): JSX.Element => {
-  const cnames = ['content', `content__${layout}`, classes];
-  if (bleedbar) cnames.push('content__bleedbar');
+  const cnames = ['content', `content--${layout}`, classes];
 
   return (
     <main id={id} className={classnames(cnames)} role='main'>

@@ -35,16 +35,16 @@ export default function Link({
   const cname = [others.className];
 
   if (type === 'list') {
-    cname.push('m-list_link');
+    cname.push('m-list--link');
   } else {
     cname.push('a-link');
   }
 
-  if (type === 'destructive') cname.push('a-btn a-btn__link a-btn__warning');
-  if (hasIcon) cname.push('a-link__icon');
-  if (noWrap) cname.push('a-link__no-wrap');
-  if (isJump) cname.push('a-link__jump a-link__icon-after-text');
-  if (isJumpLeft) cname.push('a-link__jump a-link__icon-before-text');
+  if (type === 'destructive') cname.push('a-btn a-btn--link a-btn--warning');
+  if (hasIcon) cname.push('a-link--icon');
+  if (noWrap) cname.push('a-link--no-wrap');
+  if (isJump) cname.push('a-link--jump a-link--icon-after-text');
+  if (isJumpLeft) cname.push('a-link--jump a-link--icon-before-text');
 
   if (isRouterLink) {
     if (!href) {
@@ -70,7 +70,7 @@ export const LinkText = ({
   children,
   ...others
 }: React.HTMLProps<HTMLSpanElement>): JSX.Element => (
-  <span className='a-link_text' {...others}>
+  <span className='a-link__text' {...others}>
     {children}
   </span>
 );

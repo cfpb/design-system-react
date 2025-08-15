@@ -7,7 +7,7 @@ import { AlertFieldLevel } from './AlertFieldLevel';
 const testType = (status: AlertType) => async (): Promise<void> => {
   render(<Alert status={status} />);
   const element = screen.getByTestId('notification');
-  expect(element).toHaveClass(`m-notification__${status}`);
+  expect(element).toHaveClass(`m-notification--${status}`);
 
   // Renders Icon
   const icon = await within(element).findByRole('img');
@@ -54,7 +54,7 @@ describe('<Alert />', () => {
     );
     const explanation = screen.queryByTestId('explanation');
     expect(explanation).toBeInTheDocument();
-    expect(explanation).not.toHaveClass('m-notification_explanation');
+    expect(explanation).not.toHaveClass('m-notification__explanation');
   });
 
   it('displays links when provided', async () => {

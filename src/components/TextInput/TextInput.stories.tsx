@@ -127,7 +127,7 @@ export const WithButtonInsideText: Story = {
   render: _arguments => (
     <div className='m-btn-inside-input'>
       <TextInput {..._arguments} />
-      <button type='button' className='a-btn a-btn__link'>
+      <button type='button' className='a-btn a-btn--link'>
         <Icon name='error' />
       </button>
     </div>

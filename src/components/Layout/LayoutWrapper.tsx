@@ -22,7 +22,7 @@ export const LayoutWrapper = ({
   ...properties
 }: LayoutWrapperProperties &
   React.HTMLAttributes<HTMLDivElement>): JSX.Element => (
-  <div className='content_wrapper' {...properties}>
+  <div className='wrapper' {...properties}>
     {children}
   </div>
 );

@@ -1,4 +1,4 @@
-import './Grid.less';
+import './Grid.scss';
 import { GridColWidth, GridColumn } from './GridColumn';
 import { GridRow } from './GridRow';
 import { GridWrapper } from './GridWrapper';

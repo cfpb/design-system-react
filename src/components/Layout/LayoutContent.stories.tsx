@@ -16,7 +16,6 @@ Container for the primary page content within a layout.
 <li>[flushBottom](https://cfpb.github.io/design-system/development/main-content-and-sidebars#flush-bottom-modifier)</li>
 <li>[flushTopOnSmall](https://cfpb.github.io/design-system/development/main-content-and-sidebars#flush-top-modifier-only-on-small-screens)</li>
 <li>[flushAllOnSmall](https://cfpb.github.io/design-system/development/main-content-and-sidebars#flush-all-modifier-only-on-small-screens)</li>
-<li>[narrow](https://cfpb.github.io/design-system/development/main-content-and-sidebars#narrow-content-column-option)</li>
 </ul>
 
 Source: https://cfpb.github.io/design-system/development/main-content-and-sidebars
@@ -51,8 +50,7 @@ export const Content: Story = {
   args: {
     flushBottom: false,
     flushTopOnSmall: false,
-    flushAllOnSmall: false,
-    narrow: false
+    flushAllOnSmall: false
   },
   render: properties => (
     <Layout.Main>

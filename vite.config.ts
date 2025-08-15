@@ -1,6 +1,8 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
+import processIcons from './postcss/processIcons';
+
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import VitePluginReactRemoveAttributes from 'vite-plugin-react-remove-attributes';
@@ -28,6 +30,11 @@ export default defineConfig(() => ({
       attributes: ['data-testid']
     })
   ],
+  css: {
+    postcss: {
+      plugins: [processIcons]
+    }
+  },
   test: {
     globals: true,
     environment: 'jsdom',
