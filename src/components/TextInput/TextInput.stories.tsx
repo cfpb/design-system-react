@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Icon, TextInput } from '~/src/index';
+import { Icon, TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
   title: 'Components (Verified)/Text inputs/Text input',
@@ -95,69 +95,35 @@ export const FullWidth: Story = {
   }
 };
 
-export const WithButton: Story = {
-  name: 'With button',
+export const searchInput: Story = {
+  name: 'Search input',
   args: {
     ...Enabled.args,
-    name: 'withButton',
-    id: 'withButton',
-    value: ''
+    value:
+      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable.",
+    name: 'SearchInput',
+    id: 'SearchInput',
+    type: 'search',
+    isFullWidth: true
   },
   render: _arguments => (
-    <div className='o-form__input-w-btn'>
-      <div className='o-form__input-w-btn_input-container'>
+    <div className='o-search-input'>
+      <div className='o-search-input__input'>
+        <label
+          htmlFor='SearchInput'
+          className='o-search-input__input-label'
+          aria-label='Search for a term'
+        >
+          <Icon name='search' />
+        </label>
         <TextInput {..._arguments} />
-      </div>
-      <div className='o-form__input-w-btn_btn-container'>
-        <Button label='Search' />
-      </div>
-    </div>
-  )
-};
-
-export const WithButtonInsideText: Story = {
-  name: 'Button inside',
-  args: {
-    ...Enabled.args,
-    value:
-      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable.",
-    name: 'ButtonInside',
-    id: 'ButtonInside'
-  },
-  render: _arguments => (
-    <div className='m-btn-inside-input'>
-      <TextInput {..._arguments} />
-      <button type='button' className='a-btn a-btn--link'>
-        <Icon name='error' />
-      </button>
-    </div>
-  )
-};
-
-export const WithButtonInsideButton: Story = {
-  name: 'Button inside (with button)',
-  args: {
-    ...Enabled.args,
-    value:
-      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable.",
-    name: 'ButtonInsideButton',
-    id: 'ButtonInsideButton'
-  },
-  render: _arguments => (
-    <div className='o-form__input-w-btn'>
-      <div className='o-form__input-w-btn_input-container'>
-        <div className='m-btn-inside-input'>
-          <TextInput {..._arguments} />
-          <button type='button' className='a-btn a-btn__link'>
-            <Icon name='error' />
-          </button>
-        </div>
-      </div>
-      <div className='o-form__input-w-btn_btn-container'>
-        <button type='button' className='a-btn'>
-          Search
+        <button type='reset' aria-label='Clear search' title='Clear search'>
+          <Icon name='error' />
         </button>
       </div>
+      <button className='a-btn' type='submit' aria-label='Search for term(s)'>
+        Search
+      </button>
     </div>
   )
 };

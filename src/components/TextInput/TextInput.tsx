@@ -56,26 +56,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
     const classes = [
       'a-text-input',
       className,
-      getTextInputStatusClass(status)
+      getTextInputStatusClass(status),
+      isFullWidth && 'a-text-input--full'
     ];
-
-    if (isFullWidth) {
-      classes.push('a-text-input--full');
-      return (
-        <div className='m-form-field'>
-          <input
-            data-testid='textInput'
-            className={classnames(classes)}
-            disabled={isDisabled}
-            id={id}
-            name={name}
-            type={type}
-            ref={reference}
-            {...otherInputProperties}
-          />
-        </div>
-      );
-    }
 
     return (
       <input
