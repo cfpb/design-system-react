@@ -59,6 +59,6 @@ describe('Icon', () => {
     render(<Icon name={name} />);
 
     const notFound = await screen.findByText(/icon not found/i);
-    expect(notFound.getAttribute('class')).toMatch('cf-icon-svg__wrapper');
+    expect(notFound.getAttribute('class')).toMatch('cf-icon-svg-wrapper');
   });
 });

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { HeadingLevel } from '../../types/headingLevel';
 import { Icon } from '../Icon/Icon';
-import './Alert.css';
+import './Alert.scss';
 import type { AlertFieldLevelType } from './AlertFieldLevel';
 import { AlertFieldLevel } from './AlertFieldLevel';
 import type { AlertLinkProperties } from './AlertLink';

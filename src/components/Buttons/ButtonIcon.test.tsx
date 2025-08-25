@@ -9,7 +9,7 @@ describe('<ButtonIcon />', () => {
     expect(icon).toBeInTheDocument();
 
     const wrapper = screen.getByTestId('lefty');
-    expect(wrapper).toHaveClass('a-btn_icon--on-left');
+    expect(wrapper).toHaveClass('a-btn__icon--on-left');
   });
 
   it('Renders icon to the right', async () => {
@@ -18,6 +18,6 @@ describe('<ButtonIcon />', () => {
     expect(icon).toBeInTheDocument();
 
     const wrapper = screen.getByTestId('righty');
-    expect(wrapper).toHaveClass('a-btn_icon--on-right');
+    expect(wrapper).toHaveClass('a-btn__icon--on-right');
   });
 });
