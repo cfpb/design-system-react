@@ -13,7 +13,23 @@ import { name } from './package.json';
 export default defineConfig(() => ({
   resolve: {
     alias: {
-      '~': resolve(__dirname)
+      '~': resolve(__dirname),
+      '@cfpb/cfpb-design-system/src/index': resolve(
+        __dirname,
+        'node_modules/@cfpb/cfpb-design-system/src/index.scss'
+      ),
+      '@cfpb/cfpb-design-system/src/abstracts': resolve(
+        __dirname,
+        'node_modules/@cfpb/cfpb-design-system/src/abstracts/index.scss'
+      ),
+      '@cfpb/cfpb-design-system/src/utilities': resolve(
+        __dirname,
+        'node_modules/@cfpb/cfpb-design-system/src/utilities/index.scss'
+      ),
+      '@cfpb/cfpb-design-system/src/components/cfpb-typography/mixins': resolve(
+        __dirname,
+        'node_modules/@cfpb/cfpb-design-system/src/components/cfpb-typography/mixins.scss'
+      )
     }
   },
   plugins: [

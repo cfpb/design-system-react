@@ -1,5 +1,6 @@
-@use '@cfpb/cfpb-design-system/src/index' as *;
 @use './variables.scss';
+@use '@cfpb/cfpb-design-system/src/index' as *;
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
 @include define-custom-props;
 // @include licensed-font('/static/fonts');
 
