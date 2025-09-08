@@ -29,7 +29,12 @@ export default defineConfig(() => ({
       '@cfpb/cfpb-design-system/src/components/cfpb-typography/mixins': resolve(
         __dirname,
         'node_modules/@cfpb/cfpb-design-system/src/components/cfpb-typography/mixins.scss'
-      )
+      ),
+      '@cfpb/cfpb-design-system/src/components/cfpb-notifications/vars':
+        resolve(
+          __dirname,
+          'node_modules/@cfpb/cfpb-design-system/src/components/cfpb-notifications/vars.scss'
+        )
     }
   },
   plugins: [
