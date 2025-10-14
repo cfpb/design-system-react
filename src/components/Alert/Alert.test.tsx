@@ -72,10 +72,10 @@ describe('<Alert />', () => {
     expect(links.length).toBe(2);
 
     // Link attributes are correctly propagated
-    const linkOne = screen.getByText(linkItems[0].label);
+    const linkOne = screen.getByRole('link', { name: linkItems[0].label });
     expect(linkOne).toHaveAttribute('href', '/1');
 
-    const linkTwo = screen.getByText(linkItems[1].label);
+    const linkTwo = screen.getByRole('link', { name: linkItems[1].label });
     expect(linkTwo).toHaveAttribute('href', '/2');
 
     // Icon is displayed: External link

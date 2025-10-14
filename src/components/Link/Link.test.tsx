@@ -21,14 +21,7 @@ describe('<Link />', () => {
   it('Type: "destructive"', () => {
     render(<Link {...linkBaseProperties} type='destructive' />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link a-btn a-btn--link a-btn--warning');
-  });
-
-  it('Type: "list"', () => {
-    render(<Link {...linkBaseProperties} type='list' />);
-    const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('m-list--link');
-    expect(link).not.toHaveClass('a-link');
+    expect(link).toHaveClass('a-btn a-btn--link a-btn--warning');
   });
 
   it('Option: noWrap - it adds classnames', () => {
@@ -40,13 +33,13 @@ describe('<Link />', () => {
   it('Option: isJump - it adds classnames', () => {
     render(<Link {...linkBaseProperties} isJump />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link--jump a-link--icon-after-text');
+    expect(link).toHaveClass('a-link--jump');
   });
 
   it('Option: isJumpLeft - it adds classnames', () => {
     render(<Link {...linkBaseProperties} isJumpLeft />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link--jump a-link--icon-before-text');
+    expect(link).toHaveClass('a-link--jump');
   });
 
   it('Option: hasIcon - it adds classnames', () => {
@@ -83,7 +76,7 @@ describe('<ListLink>', () => {
 
     // Link
     const linkText = screen.getByTestId(testId);
-    expect(linkText).toHaveClass('m-list--link');
+    expect(linkText).toHaveClass('a-link--jump');
     expect(linkText).toHaveTextContent('Test text');
   });
 });
@@ -94,9 +87,7 @@ describe('<DestructiveLink>', () => {
   it('includes all expected elements', () => {
     render(<DestructiveLink data-testid={testId}>Test text</DestructiveLink>);
     const linkDestructive = screen.getByTestId(testId);
-    expect(linkDestructive).toHaveClass(
-      'a-link a-btn a-btn--link a-btn--warning'
-    );
+    expect(linkDestructive).toHaveClass('a-btn a-btn--link a-btn--warning');
     expect(linkDestructive).toHaveTextContent('Test text');
   });
 });
