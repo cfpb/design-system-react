@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import type { HeadingLevel } from '../../types/headingLevel';
 import { Icon } from '../Icon/Icon';
+import List from '../List/List';
 import './Alert.scss';
 import type { AlertFieldLevelType } from './AlertFieldLevel';
 import { AlertFieldLevel } from './AlertFieldLevel';
@@ -37,7 +38,6 @@ interface AlertProperties {
 export const Alert = ({
   children,
   className,
-  headingLevel = 'h4',
   links,
   message,
   status = 'info',
@@ -75,12 +75,9 @@ export const Alert = ({
       ) : null}
       <div className='m-notification__content'>
         {message ? (
-          <p
-            className={`${headingLevel} m-notification__message`}
-            data-testid='message'
-          >
+          <div className='m-notification__message' data-testid='message'>
             {message}
-          </p>
+          </div>
         ) : null}
         {children ? (
           <div
@@ -91,11 +88,11 @@ export const Alert = ({
           </div>
         ) : null}
         {links && links.length > 0 ? (
-          <ul className='m-list m-list--links'>
+          <List isLinks>
             {links.map(link => (
               <AlertLink {...link} key={link.href} />
             ))}
-          </ul>
+          </List>
         ) : null}
       </div>
     </div>

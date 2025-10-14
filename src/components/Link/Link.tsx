@@ -3,6 +3,7 @@ import type { JSXElement } from '../../types/jsxElement';
 
 import classnames from 'classnames';
 import ListItem from '../List/ListItem';
+import './Link.scss';
 
 export interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   children?: React.ReactNode;
@@ -34,17 +35,15 @@ export default function Link({
 }: LinkProperties): JSXElement {
   const cname = [others.className];
 
-  if (type === 'list') {
-    cname.push('m-list--link');
+  if (type === 'destructive') {
+    cname.push('a-btn a-btn--link a-btn--warning');
   } else {
     cname.push('a-link');
   }
-
-  if (type === 'destructive') cname.push('a-btn a-btn--link a-btn--warning');
   if (hasIcon) cname.push('a-link--icon');
   if (noWrap) cname.push('a-link--no-wrap');
-  if (isJump) cname.push('a-link--jump a-link--icon-after-text');
-  if (isJumpLeft) cname.push('a-link--jump a-link--icon-before-text');
+  if (isJump) cname.push('a-link--jump');
+  if (isJumpLeft) cname.push('a-link--jump');
 
   if (isRouterLink) {
     if (!href) {
@@ -77,7 +76,7 @@ export const LinkText = ({
 
 export const ListLink = (properties: LinkProperties): JSXElement => (
   <ListItem>
-    <Link {...properties} type='list' />
+    <Link {...properties} isJump />
   </ListItem>
 );
 

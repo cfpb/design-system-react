@@ -59,8 +59,12 @@ export const ListLinks: Story = {
   },
   render: arguments_ => (
     <List isLinks>
-      <ListLink {...arguments_}>List link 1</ListLink>
-      <ListLink {...arguments_}>List link 2</ListLink>
+      <ListLink {...arguments_}>
+        <LinkText>List link 1</LinkText>
+      </ListLink>
+      <ListLink {...arguments_}>
+        <LinkText>List link 2</LinkText>
+      </ListLink>
     </List>
   )
 };
@@ -120,7 +124,7 @@ export const JumpLink: Story = {
   },
   render: arguments_ => (
     <Link {...arguments_}>
-      <LinkText>Jump link</LinkText>&nbsp;
+      <LinkText>Jump link</LinkText>
       <Icon name='right' />
     </Link>
   )
@@ -135,7 +139,7 @@ export const JumpLinkIconLeft: Story = {
   render: arguments_ => (
     <Link {...arguments_}>
       <Icon name='left' />
-      &nbsp;<LinkText>Jump link with icon on left</LinkText>
+      <LinkText>Jump link with icon on left</LinkText>
     </Link>
   )
 };
@@ -154,7 +158,7 @@ export const LinkWithReactRouterLink: Story = {
     <BrowserRouter>
       <p>
         <Link href='/#' isRouterLink>
-          Link using React Router Link
+          <LinkText>Link using React Router Link</LinkText>
         </Link>
       </p>
     </BrowserRouter>
