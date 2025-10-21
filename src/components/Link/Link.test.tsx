@@ -14,7 +14,6 @@ describe('<Link />', () => {
   it('Type: "default"', () => {
     render(<Link {...linkBaseProperties} />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link');
     expect(link).toHaveAttribute('href', '/#');
   });
 
@@ -32,12 +31,6 @@ describe('<Link />', () => {
 
   it('Option: isJump - it adds classnames', () => {
     render(<Link {...linkBaseProperties} isJump />);
-    const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link--jump');
-  });
-
-  it('Option: isJumpLeft - it adds classnames', () => {
-    render(<Link {...linkBaseProperties} isJumpLeft />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-link--jump');
   });

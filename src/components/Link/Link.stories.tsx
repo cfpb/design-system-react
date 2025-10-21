@@ -134,7 +134,7 @@ export const JumpLinkIconLeft: Story = {
   name: 'Jump link with icon on left',
   args: {
     ...DefaultArguments.args,
-    isJumpLeft: true
+    isJump: true
   },
   render: arguments_ => (
     <Link {...arguments_}>

@@ -10,7 +10,6 @@ export interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   hasIcon?: boolean;
   href?: string;
   isJump?: boolean;
-  isJumpLeft?: boolean;
   isRouterLink?: boolean;
   noWrap?: boolean;
   ref?: React.Ref<HTMLAnchorElement>;
@@ -27,7 +26,6 @@ export default function Link({
   hasIcon = false,
   href,
   isJump = false,
-  isJumpLeft = false,
   isRouterLink = false,
   noWrap = false,
   type = 'default',
@@ -37,13 +35,10 @@ export default function Link({
 
   if (type === 'destructive') {
     cname.push('a-btn a-btn--link a-btn--warning');
-  } else {
-    cname.push('a-link');
   }
-  if (hasIcon) cname.push('a-link--icon');
-  if (noWrap) cname.push('a-link--no-wrap');
-  if (isJump) cname.push('a-link--jump');
-  if (isJumpLeft) cname.push('a-link--jump');
+  if (hasIcon) cname.push('a-link a-link--icon');
+  if (noWrap) cname.push('a-link a-link--no-wrap');
+  if (isJump) cname.push('a-link a-link--jump');
 
   if (isRouterLink) {
     if (!href) {
