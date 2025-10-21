@@ -37,7 +37,7 @@ $breakpoint: 56.3125em;
       width: 100%;
 
       a,
-      .a-btn__link {
+      .a-btn--link {
         cursor: pointer;
         border-bottom: 1px dotted var(--pacific);
         font-weight: 500;
@@ -45,7 +45,7 @@ $breakpoint: 56.3125em;
         margin-right: 0;
         padding: 10px 0;
         text-align: left;
-
+        text-decoration: none;
         @media (min-width: $breakpoint) {
           border-bottom: 1px dotted transparent;
           margin-right: $space-xl;
@@ -53,7 +53,7 @@ $breakpoint: 56.3125em;
         }
       }
       a:hover,
-      .a-btn__link:hover {
+      .a-btn--link:hover {
         border-bottom: 1px solid var(--pacific);
         position: relative;
 
@@ -82,10 +82,11 @@ $breakpoint: 56.3125em;
         font-weight: 600;
         letter-spacing: 1px;
       }
-      .a-btn__link {
-        text-decoration: none;
+      .a-btn--link {
         font-size: 14px;
+        justify-content: left;
         line-height: 22px;
+        width: auto;
         @media (min-width: $breakpoint) {
           line-height: 18px;
         }
