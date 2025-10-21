@@ -192,7 +192,9 @@ $max-width: $breakpoint - 0.0625em;
         .a-btn--link {
           text-decoration: none;
           font-size: 14px;
+          justify-content: left;
           line-height: 22px;
+          width: auto;
           @media (min-width: $breakpoint) {
             line-height: 18px;
           }
