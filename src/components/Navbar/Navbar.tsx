@@ -1,7 +1,7 @@
 import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/Button';
 import Link from '../Link/Link';
-import './navbar.less';
+import './navbar.scss';
 
 interface CfpbLogoProperties {
   href?: string;
@@ -16,9 +16,9 @@ export function CfpbLogo({
       href={href}
       title='Home'
       aria-label='Home'
-      className='o-header_logo'
+      className='o-header__logo'
     >
-      <img className='o-header_logo-img' src={CFPBLogo} alt='CFPB Logo' />
+      <img className='o-header__logo-img' src={CFPBLogo} alt='CFPB Logo' />
     </Link>
   );
 }
@@ -40,8 +40,8 @@ interface NavbarProperties {
 
 export default function Navbar({ links, href }: NavbarProperties): JSX.Element {
   return (
-    <div className='o-header_content'>
-      <div className='navbar-static wrapper wrapper__match-content'>
+    <div className='o-header__content'>
+      <div className='navbar-static wrapper wrapper--match-content'>
         <CfpbLogo href={href} />
         <div className='nav-items'>
           <Links elements={links} />

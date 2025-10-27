@@ -19,7 +19,7 @@ describe('Footer', () => {
   });
 
   it('Renders NavLinks', () => {
-    const expectedClassName = /o-footer_nav-list/g;
+    const expectedClassName = /o-footer__nav-list/g;
     const expectedItemCount = 3;
 
     const navLink = [
@@ -46,7 +46,7 @@ describe('Footer', () => {
   });
 
   it('Renders SocialLinks', () => {
-    const expectedClassName = /m-social-media_icons/g;
+    const expectedClassName = /m-social-media__icons/g;
     const expectedItemCount = 1;
 
     const socialLink = [
@@ -67,7 +67,7 @@ describe('Footer', () => {
   });
 
   it('Renders all 3 link columns', () => {
-    const expectedClassName = /o-footer_list/g;
+    const expectedClassName = /o-footer__list/g;
     const expectedItemCount = 3;
 
     const socialLink = [

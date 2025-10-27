@@ -36,13 +36,13 @@ const baseStyles = ['a-btn'];
 
 const appearanceStyles = {
   primary: [],
-  secondary: ['a-btn__secondary'],
-  warning: ['a-btn__warning']
+  secondary: ['a-btn--secondary'],
+  warning: ['a-btn--warning']
 };
 
 const sizeStyles = {
   default: [],
-  full: ['a-btn__full-on-xs']
+  full: ['a-btn--full-on-xs']
 };
 
 /**
@@ -63,9 +63,9 @@ export function Button({
     ...appearanceStyles[appearance],
     ...sizeStyles[size]
   ];
-  if (asLink) styles.push('a-btn__link');
+  if (asLink) styles.push('a-btn--link');
   if (className) styles.push(className);
-  if (properties.disabled) styles.push('a-btn__disabled');
+  if (properties.disabled) styles.push('a-btn--disabled');
 
   return (
     <button type='button' className={[...styles].join(' ')} {...properties}>

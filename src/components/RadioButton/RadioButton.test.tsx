@@ -34,7 +34,7 @@ describe('<RadioButton />', () => {
 
     expect(screen.getByText(helperTextOutput)).toBeInTheDocument();
     expect(screen.getByTestId('radio-container').getAttribute('class')).toMatch(
-      'm-form-field__lg-target'
+      'm-form-field--lg-target'
     );
   });
 

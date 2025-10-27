@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import type { HeadingLevel } from '../../types/headingLevel';
 import { Icon } from '../Icon/Icon';
-import './Alert.css';
+import List from '../List/List';
+import './Alert.scss';
 import type { AlertFieldLevelType } from './AlertFieldLevel';
 import { AlertFieldLevel } from './AlertFieldLevel';
 import type { AlertLinkProperties } from './AlertLink';
@@ -37,7 +38,6 @@ interface AlertProperties {
 export const Alert = ({
   children,
   className,
-  headingLevel = 'h4',
   links,
   message,
   status = 'info',
@@ -58,12 +58,12 @@ export const Alert = ({
 
   const classes = classNames(
     'm-notification',
-    'm-notification__visible',
+    'm-notification--visible',
     {
-      'm-notification__success': status === 'success',
-      'm-notification__warning': status === 'warning',
-      'm-notification__error': status === 'error',
-      'm-notification__info': status === 'info'
+      'm-notification--success': status === 'success',
+      'm-notification--warning': status === 'warning',
+      'm-notification--error': status === 'error',
+      'm-notification--info': status === 'info'
     },
     className
   );
@@ -73,29 +73,26 @@ export const Alert = ({
       {showIcon ? (
         <Icon ariaLabel={`${status} icon`} {...iconByType[status]} />
       ) : null}
-      <div className='m-notification_content'>
+      <div className='m-notification__content'>
         {message ? (
-          <p
-            className={`${headingLevel} m-notification_message`}
-            data-testid='message'
-          >
+          <div className='m-notification__message' data-testid='message'>
             {message}
-          </p>
+          </div>
         ) : null}
         {children ? (
           <div
-            className={`${message ? 'm-notification_explanation' : ''}`}
+            className={`${message ? 'm-notification__explanation' : ''}`}
             data-testid='explanation'
           >
             {children}
           </div>
         ) : null}
         {links && links.length > 0 ? (
-          <ul className='m-list m-list__links'>
+          <List isLinks>
             {links.map(link => (
               <AlertLink {...link} key={link.href} />
             ))}
-          </ul>
+          </List>
         ) : null}
       </div>
     </div>

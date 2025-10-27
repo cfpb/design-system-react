@@ -1,5 +1,4 @@
-import '@cfpb/cfpb-design-system/src/cfpb-design-system.less';
-import '../src/assets/styles/_shared.less';
+import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
 
 export const preview = {

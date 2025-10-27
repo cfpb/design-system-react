@@ -83,7 +83,7 @@ describe('<Banner />', () => {
 
     render(<Banner isHorizontal={false} tagline={taglineText} />);
 
-    expect(screen.getByTestId('eyebrow')).toHaveClass('m-global-eyebrow__list');
+    expect(screen.getByTestId('eyebrow')).toHaveClass('m-global-eyebrow--list');
     expect(screen.queryByText(taglineText)).not.toBeInTheDocument();
   });
 });

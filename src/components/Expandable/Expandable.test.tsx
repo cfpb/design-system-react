@@ -14,7 +14,7 @@ describe('<Expandable />', () => {
     expect(heading).toBeInTheDocument();
 
     const expandable = screen.getByTestId('expandable');
-    expect(expandable).not.toHaveClass('o-expandable__onload-open');
+    expect(expandable).not.toHaveClass('o-expandable--onload-open');
 
     const content = screen.getByText(children);
     expect(content).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe('<Expandable />', () => {
 
     const expandable = screen.getByTestId('expandable');
     expect(expandable.getAttribute('class')).toMatch(
-      /o-expandable__onload-open/g
+      /o-expandable--onload-open/g
     );
 
     const content = screen.getByText(children);
@@ -56,7 +56,7 @@ describe('<Expandable />', () => {
     // Content hidden
     const content = screen.getByText(children);
     expect(content).toBeInTheDocument();
-    expect(content).not.toHaveClass('o-expandable_content__onload-open');
+    expect(content).not.toHaveClass('o-expandable__content--onload-open');
 
     // Click to expand
     await act(async () => {

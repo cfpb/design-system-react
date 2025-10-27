@@ -4,7 +4,7 @@ import { Button } from '../Buttons/Button';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
 import type { SelectOption } from './Dropdown.types';
-import './DropdownPills.less';
+import './DropdownPills.scss';
 
 /**
  * Event Handlers
@@ -92,8 +92,8 @@ export const DropdownPills = ({
 
   return (
     <figure
-      className={`o-multiselect_choices${
-        pillAlign === 'bottom' ? ' o-multiselect_choices__bottom' : ''
+      className={`o-multiselect__choices${
+        pillAlign === 'bottom' ? ' o-multiselect__choices--bottom' : ''
       }`}
     >
       <figcaption>Selected:</figcaption>

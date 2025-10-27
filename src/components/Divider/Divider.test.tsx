@@ -14,7 +14,7 @@ describe('<Divider />', () => {
     const divider = screen.getByTestId(testId);
 
     expect(divider).toBeInTheDocument();
-    expect(divider).toHaveClass('content_line');
+    expect(divider).toHaveClass('content__line');
   });
 
   it('Integrates className', () => {

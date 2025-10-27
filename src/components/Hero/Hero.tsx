@@ -3,7 +3,7 @@ import type { HeadingLevel } from '../../types/headingLevel';
 import type { HeadingType } from '../Headings/Heading';
 import { Heading } from '../Headings/Heading';
 import { HeroImage } from './HeroImage';
-import './hero.less';
+import './hero.scss';
 import { useBackgroundImage } from './useBackgroundImage';
 
 interface HeroProperties extends React.HTMLAttributes<HTMLDivElement> {
@@ -47,10 +47,10 @@ export default function Hero({
   const textStyles = { color: textColor };
   const heroCnames = ['m-hero', className];
 
-  if (isJumbo) heroCnames.push('m-hero__jumbo');
-  if (is5050) heroCnames.push('m-hero__50-50');
-  if (isKnockout) heroCnames.push('m-hero__knockout');
-  if (imageIsPhoto) heroCnames.push('m-hero__overlay');
+  if (isJumbo) heroCnames.push('m-hero--jumbo');
+  if (is5050) heroCnames.push('m-hero--50-50');
+  if (isKnockout) heroCnames.push('m-hero--knockout');
+  if (imageIsPhoto) heroCnames.push('m-hero--overlay');
 
   // NOTE: This is a mapping of the Hero component's HeadingLevel to the Heading component's
   // HeadingType but we could also use the HeadingType directly in the Hero component with some
@@ -68,20 +68,24 @@ export default function Hero({
 
   return (
     <div className={classnames(heroCnames)} style={heroStyles} {...properties}>
-      <div className='m-hero_wrapper' ref={wrapperReference}>
-        <div className='m-hero_text' style={textStyles} data-testid='hero-text'>
+      <div className='m-hero__wrapper' ref={wrapperReference}>
+        <div
+          className='m-hero__text'
+          style={textStyles}
+          data-testid='hero-text'
+        >
           <Heading
-            className='m-hero_heading'
+            className='m-hero__heading'
             data-testid='hero-heading'
             type={HeadingLevelToHeadingType[headingLevel]}
           >
             {heading}
           </Heading>
           {subheadingLevel === 'p' ? (
-            <p className='m-hero_subhead'>{subheading}</p>
+            <p className='m-hero__subhead'>{subheading}</p>
           ) : (
             <Heading
-              className='m-hero_subhead'
+              className='m-hero__subhead'
               data-testid='hero-subheading'
               type={HeadingLevelToHeadingType[subheadingLevel]}
             >

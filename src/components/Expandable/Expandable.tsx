@@ -30,13 +30,13 @@ export const Expandable: React.FC<ExpandableProperties> = ({
 
   const expandableClasses = [
     'o-expandable',
-    'o-expandable__padded',
-    'o-expandable__background',
-    'o-expandable__border',
+    'o-expandable--padded',
+    'o-expandable--background',
+    'o-expandable--border',
     className
   ];
 
-  if (openOnLoad) expandableClasses.push('o-expandable__onload-open');
+  if (openOnLoad) expandableClasses.push('o-expandable--onload-open');
 
   return (
     <div
@@ -46,20 +46,20 @@ export const Expandable: React.FC<ExpandableProperties> = ({
     >
       <button
         type='button'
-        className='o-expandable_header o-expandable_target'
+        className='o-expandable__header o-expandable__target'
         title={header}
       >
-        <h3 className='h4 o-expandable_label'>{header}</h3>
-        <span className='o-expandable_link'>
-          <span className='o-expandable_cue o-expandable_cue-open'>
+        <h3 className='h4 o-expandable__label'>{header}</h3>
+        <span className='o-expandable__link'>
+          <span className='o-expandable__cue o-expandable__cue-open'>
             <Icon name='plus-round' alt='plus-round' />
           </span>
-          <span className='o-expandable_cue o-expandable_cue-close'>
+          <span className='o-expandable__cue o-expandable__cue-close'>
             <Icon name='minus-round' alt='minus-round' />
           </span>
         </span>
       </button>
-      <div className='o-expandable_content' data-testid='expandable-content'>
+      <div className='o-expandable__content' data-testid='expandable-content'>
         {children}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ResponsiveMenu } from '~/src/index';
-import '../PageHeader/header.less';
+import '../PageHeader/header.scss';
 import { ExampleLinks } from './ResponsiveMenu';
 
 const meta: Meta<typeof ResponsiveMenu> = {

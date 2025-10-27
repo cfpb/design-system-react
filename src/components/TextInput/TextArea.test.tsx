@@ -27,7 +27,7 @@ describe('<TextArea />', () => {
     render(<TextArea id='alert' isFullWidth />);
 
     const textInput = screen.getByTestId('textAreaInput');
-    expect(textInput).toHaveClass('a-text-input__full');
+    expect(textInput).toHaveClass('a-text-input--full');
   });
 
   it('Handles all supported statuses', async () => {
@@ -41,7 +41,7 @@ describe('<TextArea />', () => {
     for (const status of statuses) {
       render(<TextArea id='alert' {...{ status, placeholder: status }} />);
       const textInput = screen.getByPlaceholderText(status);
-      expect(textInput).toHaveClass(`a-text-input__${status}`);
+      expect(textInput).toHaveClass(`a-text-input--${status}`);
     }
   });
 });

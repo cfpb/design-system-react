@@ -1,4 +1,4 @@
-import Link from '../Link/Link';
+import { LinkText, ListLink } from '../Link/Link';
 
 export const heading = 'Heading 1';
 
@@ -10,7 +10,11 @@ export const description =
 
 export const callToActionText = 'Call-to-action link';
 
-export const callToAction = <Link href='/'>{callToActionText}</Link>;
+export const callToAction = (
+  <ListLink href='/#' key='example1'>
+    <LinkText>Call-to-action link</LinkText>
+  </ListLink>
+);
 
 export const placeholders = {
   heading,

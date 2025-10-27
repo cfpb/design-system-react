@@ -7,7 +7,7 @@ import { AlertFieldLevel } from './AlertFieldLevel';
 const testType = (status: AlertType) => async (): Promise<void> => {
   render(<Alert status={status} />);
   const element = screen.getByTestId('notification');
-  expect(element).toHaveClass(`m-notification__${status}`);
+  expect(element).toHaveClass(`m-notification--${status}`);
 
   // Renders Icon
   const icon = await within(element).findByRole('img');
@@ -54,7 +54,7 @@ describe('<Alert />', () => {
     );
     const explanation = screen.queryByTestId('explanation');
     expect(explanation).toBeInTheDocument();
-    expect(explanation).not.toHaveClass('m-notification_explanation');
+    expect(explanation).not.toHaveClass('m-notification__explanation');
   });
 
   it('displays links when provided', async () => {
@@ -72,10 +72,10 @@ describe('<Alert />', () => {
     expect(links.length).toBe(2);
 
     // Link attributes are correctly propagated
-    const linkOne = screen.getByText(linkItems[0].label);
+    const linkOne = screen.getByRole('link', { name: linkItems[0].label });
     expect(linkOne).toHaveAttribute('href', '/1');
 
-    const linkTwo = screen.getByText(linkItems[1].label);
+    const linkTwo = screen.getByRole('link', { name: linkItems[1].label });
     expect(linkTwo).toHaveAttribute('href', '/2');
 
     // Icon is displayed: External link
