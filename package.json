@@ -141,7 +141,8 @@
     "braces": "3.0.3",
     "socks": ">=2.8.3",
     "ws": ">=8.18.1",
-    "rollup": ">=2.79.2"
+    "rollup": ">=2.79.2",
+    "form-data": ">=4.0.4"
   },
   "browserslist": {
     "production": "Edge >= 18, Firefox >= 60, Chrome >= 61, Safari >= 11, Opera >= 48",
