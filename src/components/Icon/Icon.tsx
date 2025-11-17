@@ -108,8 +108,9 @@ export const Icon = ({
   const iconHtml = `${icon}`.replace('<svg', `<svg ${iconAttributes} `);
 
   return (
-    <span
+    <div
       className='cf-icon-svg-wrapper'
+      style={{ display: 'inline-block', height: '1.1875em' }}
       dangerouslySetInnerHTML={{ __html: iconHtml }}
       {...others}
     />
