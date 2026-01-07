@@ -9,7 +9,7 @@ import type {
 } from 'react-select';
 import Select, { components, createFilter } from 'react-select';
 import { Label } from '../Label/Label';
-import './Dropdown.less';
+import './Dropdown.scss';
 import type { DropdownProperties, SelectOption } from './Dropdown.types';
 import CheckboxInputOption from './DropdownInputWithCheckbox';
 import { DropdownPills } from './DropdownPills';
@@ -93,7 +93,7 @@ export function Dropdown<
   );
 
   return (
-    <div className={`m-form-field m-form-field__select ${className}`}>
+    <div className={`m-form-field m-form-field--select ${className}`}>
       <Label
         id={labelID}
         htmlFor={id}

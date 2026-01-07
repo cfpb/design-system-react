@@ -7,7 +7,7 @@ export default function ListItem({
   ...properties
 }: React.HTMLProps<HTMLLIElement>): JSX.Element {
   return (
-    <li className={classNames('m-list_item', className)} {...properties}>
+    <li className={classNames('m-list__item', className)} {...properties}>
       {children}
     </li>
   );
@@ -23,18 +23,18 @@ interface ListItemBuilderProperties {
  * while adding the provided `className` prop to the newly wrapped element.
  *
  * Example:
- * <ListItemBuilder className='u-w33pct' itemClassname='m-list_link'>
+ * <ListItemBuilder className='u-w33pct' itemClassname='m-list__link'>
  *   <a className='selected' href='/home' key='home'>Homepage</a>
  *   <a href='/away' key='away'>Other page</a>
  * </ListItemBuilder>
  *
  * Example Output:
  * <>
- *   <li class='m-list_item u-w33pct' key='home'>
- *     <a class='m-list_link selected' href='/home'>Homepage</a>
+ *   <li class='m-list__item u-w33pct' key='home'>
+ *     <a class='m-list__link selected' href='/home'>Homepage</a>
  *   </li>
- *   <li class='m-list_item u-w33pct' key='away'>
- *     <a class='m-list_link' href='/away'>Other page</a>
+ *   <li class='m-list__item u-w33pct' key='away'>
+ *     <a class='m-list__link' href='/away'>Other page</a>
  *   </li>
  * </>
  *

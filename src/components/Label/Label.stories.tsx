@@ -53,7 +53,7 @@ export const InlineLabel: Story = {
     inline: true
   },
   render: arguments_ => (
-    <div className='m-form-field m-form-field__checkbox'>
+    <div className='m-form-field m-form-field--checkbox'>
       <input className='a-checkbox' type='checkbox' id={arguments_.htmlFor} />
       <Label {...arguments_}>Inline label</Label>
     </div>

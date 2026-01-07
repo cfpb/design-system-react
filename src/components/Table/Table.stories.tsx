@@ -39,19 +39,6 @@ export const Responsive: Story = {
   }
 };
 
-export const Directory: Story = {
-  name: 'Responsive stacked table with header (directory table)',
-  args: {
-    columns: ['Employee name', 'Phone number', 'Email address'],
-    rows: [
-      ['Andrew Able', '(202) XXX-XXXX', 'aable@example.com'],
-      ['Betsy Bort', '(202) XXX-XXXX', 'bbort@example.com'],
-      ['Charles Clark', '(202) XXX-XXXX', 'cclark@example.com']
-    ],
-    isDirectory: true
-  }
-};
-
 export const HorizontalScroll: Story = {
   name: 'Responsive table with horizontal scroll',
   args: {

@@ -4,10 +4,10 @@ import { Icon } from '../Icon/Icon';
 export type AlertFieldLevelType = 'error' | 'info' | 'success' | 'warning';
 
 export enum AlertFieldLevelClass {
-  'info' = '__info',
-  'error' = '__error',
-  'success' = '__success',
-  'warning' = '__warning'
+  'info' = '--info',
+  'error' = '--error',
+  'success' = '--success',
+  'warning' = '--warning'
 }
 
 export const MapTypeToIconName = {
@@ -49,7 +49,7 @@ export const AlertFieldLevel = ({
         name={MapTypeToIconName[status]}
         withBg
       />
-      <span className='a-form-alert_text' data-testid='message'>
+      <span className='a-form-alert__text' data-testid='message'>
         {message}
       </span>
     </div>

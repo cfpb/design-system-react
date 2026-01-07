@@ -62,24 +62,20 @@ describe('<Table />', () => {
     expect(cell).toBeInTheDocument();
   });
 
-  it('displays responsive, directory, and striped table when provided', () => {
+  it('displays responsive and striped table when provided', () => {
     render(
       <Table
         caption={defaultCaption}
         columns={defaultColumns}
         rows={defaultRows}
         isResponsive
-        isDirectory
         isStriped
       />
     );
 
     const table = screen.queryByTestId('table-testid');
-    expect(table?.classList.contains('o-table__stack-on-small')).toBe(true);
-    expect(table?.classList.contains('o-table__entry-header-on-small')).toBe(
-      true
-    );
-    expect(table?.classList.contains('o-table__striped')).toBe(true);
+    expect(table?.classList.contains('o-table--stack-on-small')).toBe(true);
+    expect(table?.classList.contains('o-table--striped')).toBe(true);
   });
 
   it('accepts columns with configuration', () => {
@@ -92,7 +88,7 @@ describe('<Table />', () => {
     );
 
     const cell = screen.queryByText('Right Aligned');
-    expect(cell?.classList.contains('o-table_cell__right-align')).toBe(true);
+    expect(cell?.classList.contains('o-table_cell--right-align')).toBe(true);
     expect(cell?.classList.contains('u-w40pct')).toBe(true);
   });
 
@@ -106,11 +102,11 @@ describe('<Table />', () => {
     );
 
     const previousButton = screen.getByText('Previous');
-    expect(previousButton.classList.contains('m-pagination_btn-prev')).toBe(
+    expect(previousButton.classList.contains('m-pagination__btn-prev')).toBe(
       true
     );
 
     const nextButton = screen.getByText('Next');
-    expect(nextButton.classList.contains('m-pagination_btn-next')).toBe(true);
+    expect(nextButton.classList.contains('m-pagination__btn-next')).toBe(true);
   });
 });

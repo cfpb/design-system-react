@@ -1,0 +1,59 @@
+@use './variables.scss';
+@use '@cfpb/cfpb-design-system/src/index' as *;
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@include define-custom-props;
+// @include licensed-font('/static/fonts');
+
+/*
+ Shared styles, variables, and css overrides
+*/
+
+/**
+/* Storybook components are not rendered within a CFPB layout so
+/* the DS' max-width restriction for text content is not applied. 
+/*
+/* https://github.com/cfpb/design-system/blob/main/packages/cfpb-layout/src/cfpb-layout.scss#L210-L223
+/*
+/* A similar adjustment was made for the DS docs pages
+/* https://github.com/cfpb/design-system/pull/1220
+**/
+#storybook-root,
+#storybook-docs {
+  dd,
+  dt,
+  h3,
+  h4,
+  h5,
+  h6,
+  label,
+  li,
+  p {
+    max-width: 41.875rem;
+  }
+
+  /** Applying DS font sizing **/
+  .sbdocs > p, // Custom overview page headings
+  .sbdocs .sbdocs-title + div p, // Auto-generated page headings
+  pre.prismjs // Code blocks
+  {
+    font-size: 16px;
+  }
+
+  /* 
+  Make code block plain-text readable (workaround since we can't change code highlighting theme) 
+  https://github.com/storybookjs/storybook/issues/9641
+  */
+  pre {
+    background-color: #2b2b2b;
+    color: white;
+  }
+}
+
+/* 
+Apply a global line-height that doesn't interfere with component Stories 
+that have their own line-height settings. 
+*/
+pre,
+#storybook-docs :where(p:not(.sb-story *)) {
+  line-height: 22px !important;
+}

@@ -6,7 +6,7 @@ import { type WidthPercent } from '../../types/WidthPercent';
 import { Pagination } from '../Pagination/Pagination';
 import { DEFAULT_PER_PAGE, MIN_PAGE } from '../Pagination/paginationConstants';
 import { usePagination } from '../Pagination/usePagination';
-import './table.less';
+import './table.scss';
 import { buildColumnHeaders, buildRows } from './tableUtils';
 
 const Caption = ({
@@ -38,8 +38,6 @@ export interface TableProperties {
   rows: ReactNode[][];
   // Table layout adapts on mobile screens
   isResponsive?: boolean;
-  // https://cfpb.github.io/design-system/components/tables#responsive-stacked-table-with-header-directory-tables
-  isDirectory?: boolean;
   // Horizontal table overflow will scroll
   isScrollableHorizontal?: boolean;
   // Show background on alternate rows to improve readability
@@ -73,7 +71,6 @@ export const Table = forwardRef<
       columns,
       rows,
       isResponsive = false,
-      isDirectory = false,
       isScrollableHorizontal = false,
       isStriped = false,
       isPaginated = false,
@@ -97,10 +94,8 @@ export const Table = forwardRef<
 
     const tableClassnames = [];
 
-    if (isResponsive || isDirectory)
-      tableClassnames.push('o-table o-table__stack-on-small');
-    if (isDirectory) tableClassnames.push('o-table__entry-header-on-small');
-    if (isStriped) tableClassnames.push('o-table__striped');
+    if (isResponsive) tableClassnames.push('o-table o-table--stack-on-small');
+    if (isStriped) tableClassnames.push('o-table--striped');
     if (isPaginated) tableClassnames.push('u-w100pct');
     if (className) tableClassnames.push(className);
 
@@ -117,7 +112,9 @@ export const Table = forwardRef<
           {buildColumnHeaders(columns)}
           {buildRows(visibleRows, columns)}
         </table>
-        {isPaginated ? <Pagination {...paginationProperties} tableId={id ?? tableId}/> : null}
+        {isPaginated ? (
+          <Pagination {...paginationProperties} tableId={id ?? tableId} />
+        ) : null}
       </>
     );
 
@@ -125,7 +122,7 @@ export const Table = forwardRef<
       return (
         <div
           data-testid='table-simple-scrollable'
-          className='o-table o-table-wrapper__scrolling'
+          className='o-table o-table-wrapper--scrolling'
           ref={reference ?? divRef}
         >
           {tableContent}

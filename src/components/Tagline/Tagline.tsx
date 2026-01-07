@@ -11,7 +11,7 @@ export const Tagline = ({
   children
 }: TaglineProperties): JSXElement => {
   const baseClasses = ['a-tagline'];
-  if (isLarge) baseClasses.push('a-tagline__large');
+  if (isLarge) baseClasses.push('a-tagline--large');
 
   return (
     <div className={classnames(baseClasses)} data-testid='tagline'>

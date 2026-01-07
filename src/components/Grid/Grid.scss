@@ -1,0 +1,102 @@
+@use 'sass:math';
+
+// TODO: Do we need to support non-12-column grids?
+$oneColumnWidth: math.div(100%, 12);
+
+// Storybook styles to better visualize grid
+.demo .col {
+  background-color: var(--gray-5);
+
+  p {
+    background-color: var(--gray-10);
+    font-weight: bold;
+    text-align: center;
+    max-width: 100% !important;
+  }
+}
+
+.grid {
+  max-width: 1230px;
+  margin: 0 auto;
+}
+
+.grid .grid {
+  padding-bottom: 15px;
+}
+
+@media (min-width: 720px) {
+  .grid .col {
+    display: inline-block;
+    box-sizing: border-box;
+    border: solid transparent;
+    border-width: 0 15px;
+    vertical-align: top;
+    margin-bottom: 15px;
+  }
+
+  .col-1 {
+    width: calc(1 * $oneColumnWidth);
+  }
+
+  .col-2 {
+    width: calc(2 * $oneColumnWidth);
+  }
+
+  .col-3 {
+    width: calc(3 * $oneColumnWidth);
+  }
+
+  .col-4 {
+    width: calc(4 * $oneColumnWidth);
+  }
+
+  .col-5 {
+    width: calc(5 * $oneColumnWidth);
+  }
+
+  .col-6 {
+    width: calc(6 * $oneColumnWidth);
+  }
+
+  .col-7 {
+    width: calc(7 * $oneColumnWidth);
+  }
+
+  .col-8 {
+    width: calc(8 * $oneColumnWidth);
+  }
+
+  .col-9 {
+    width: calc(9 * $oneColumnWidth);
+  }
+
+  .col-10 {
+    width: calc(10 * $oneColumnWidth);
+  }
+
+  .col-11 {
+    width: calc(11 * $oneColumnWidth);
+  }
+
+  .col-12 {
+    width: calc(12 * $oneColumnWidth);
+  }
+
+  // Centered Grid
+  .grid.centered {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .grid.centered .row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  // Nested Subgrid
+  .grid .grid {
+    padding-bottom: 0;
+  }
+}

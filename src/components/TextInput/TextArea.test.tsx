@@ -1,4 +1,4 @@
-import { jest } from '@storybook/jest';
+import { fn } from '@storybook/test';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -9,7 +9,7 @@ const TEST_STRING = 'Tiny bubbles...';
 
 describe('<TextArea />', () => {
   it('Enabled input accepts text', async () => {
-    const onChange = jest.fn();
+    const onChange = fn();
     render(<TextArea id='enabled' onChange={onChange} />);
     const input = screen.getByTestId('textAreaInput');
     await userEvent.type(input, TEST_STRING);
@@ -27,7 +27,7 @@ describe('<TextArea />', () => {
     render(<TextArea id='alert' isFullWidth />);
 
     const textInput = screen.getByTestId('textAreaInput');
-    expect(textInput).toHaveClass('a-text-input__full');
+    expect(textInput).toHaveClass('a-text-input--full');
   });
 
   it('Handles all supported statuses', async () => {
@@ -41,7 +41,7 @@ describe('<TextArea />', () => {
     for (const status of statuses) {
       render(<TextArea id='alert' {...{ status, placeholder: status }} />);
       const textInput = screen.getByPlaceholderText(status);
-      expect(textInput).toHaveClass(`a-text-input__${status}`);
+      expect(textInput).toHaveClass(`a-text-input--${status}`);
     }
   });
 });

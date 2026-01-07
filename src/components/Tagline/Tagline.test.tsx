@@ -15,6 +15,6 @@ describe('<Tagline />', () => {
 
   it('renders large version', () => {
     render(<Tagline isLarge>tagline</Tagline>);
-    expect(screen.getByTestId('tagline')).toHaveClass('a-tagline__large');
+    expect(screen.getByTestId('tagline')).toHaveClass('a-tagline--large');
   });
 });

@@ -1,5 +1,5 @@
 import type { JSXElement } from '../../types/jsxElement';
-import './SkipNav.less';
+import './SkipNav.scss';
 
 export default function SkipNav({
   href = '#main',
@@ -7,7 +7,7 @@ export default function SkipNav({
 }): JSXElement {
   return (
     <div className='skip-nav'>
-      <a className='skip-nav_link a-btn' href={href}>
+      <a className='skip-nav__link a-btn' href={href}>
         {text}
       </a>
     </div>

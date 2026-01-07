@@ -10,7 +10,7 @@ export const ButtonGroup = ({
 }: React.HTMLProps<HTMLDivElement>): JSXElement => {
   if (!children) return null;
   return (
-    <div className={`m-btn-group ${className}`} {...other}>
+    <div className={`m-btn-group ${className ?? ''}`} {...other}>
       {children}
     </div>
   );

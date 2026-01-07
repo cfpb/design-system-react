@@ -1,0 +1,39 @@
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@use 'sass:math';
+
+.o-multiselect__choices figcaption,
+.o-multiselect__choices ul {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 1em;
+}
+
+.o-multiselect__choices .pill {
+  display: block;
+
+  .a-label {
+    border: 1px solid var(--teal);
+    background-color: var(--teal-20);
+    color: black;
+    padding: 2px 25px 2px 10px;
+
+    .cf-icon-svg {
+      fill: var(--black);
+    }
+  }
+
+  &.clear-selected .a-btn {
+    margin-top: 20px;
+  }
+}
+
+.o-multiselect__choices--bottom {
+  li {
+    margin-top: math.div(8px, $base-font-size-px) + em;
+    margin-bottom: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

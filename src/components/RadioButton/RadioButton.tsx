@@ -21,7 +21,7 @@ interface RadioProperties {
   labelInline: boolean /** Removes/Adds 'label__heading' class to the Label * */;
 }
 const baseStyles = ['a-radio'];
-const containerBaseStyles = ['m-form-field m-form-field__radio'];
+const containerBaseStyles = ['m-form-field m-form-field--radio'];
 
 export const RadioButton = ({
   id,
@@ -39,7 +39,7 @@ export const RadioButton = ({
   const classes = [...baseStyles, className].join(' ');
   const containerClasses = [
     ...containerBaseStyles,
-    isLarge ? 'm-form-field__lg-target' : ''
+    isLarge ? 'm-form-field--lg-target' : ''
   ].join(' ');
 
   return (

@@ -12,7 +12,7 @@ export const HelperText = ({
   ...properties
 }: HelperTextProperties): JSX.Element | null => {
   if (!children) return null;
-  const cnames = ['a-label_helper', className];
+  const cnames = ['a-label__helper', className];
 
   return (
     <small className={classNames(cnames)} {...properties}>

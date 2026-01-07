@@ -54,7 +54,7 @@ Note: This project uses yarn v3.5 in "plug n play" mode. There is no `node_modul
 
 Edit the files in `src/components/` and your browser should hot reload your changes.
 
-Add tests to files called `<component-name>.test.tsx`. See [`Buttons.test.tsx`](/src/components/Button.test.tsx) for an example.
+Add tests to files called `<component-name>.test.tsx`. See [`Buttons.test.tsx`](/src/components/Buttons/Button.test.tsx) for an example.
 
 Run `yarn test` to watch for changes and run tests automatically.
 

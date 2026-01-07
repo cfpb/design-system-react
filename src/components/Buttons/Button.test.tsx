@@ -6,9 +6,9 @@ import { Button } from './Button';
 const testLabel = 'button';
 
 const buttonBaseClass = 'a-btn';
-const buttonLinkClass = 'a-btn__link';
-const buttonFullXSClass = 'a-btn__full-on-xs';
-const buttonSecondaryClass = 'a-btn__secondary';
+const buttonLinkClass = 'a-btn--link';
+const buttonFullXSClass = 'a-btn--full-on-xs';
+const buttonSecondaryClass = 'a-btn--secondary';
 
 describe('<Button />', () => {
   it('Propagates additional HTML properties to main component element', () => {

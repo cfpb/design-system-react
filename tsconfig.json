@@ -21,5 +21,6 @@
     }
   },
   "include": ["src"],
+  "exclude": ["postcss"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

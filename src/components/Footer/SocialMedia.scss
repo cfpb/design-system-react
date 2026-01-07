@@ -1,0 +1,108 @@
+@use '/src/assets/styles/variables.scss';
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/utilities' as *;
+@use 'sass:math';
+
+// https://github.com/cfpb/consumerfinance.gov/blob/main/cfgov/unprocessed/css/molecules/social-media.scss
+
+/* topdoc
+  name: Social Media
+  family: cfgov-molecules
+  patterns:
+    - name: Default example
+      markup: |
+        <div class="m-social-media m-social-media--share">
+            <h5 class="m-social-media__heading">Share this</h5>
+            <ul class="m-list">
+                <li class="m-list__item">
+                    <a class="m-social-media__icon" href="#">
+                        {{ svg__icon('email') }}
+                        <span class="u-visually-hidden">
+                            Share by email
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+      codenotes:
+        - |
+          Structural cheat sheet:
+          -----------------------
+          .m-social-media.m-social-media--share
+            .m-social-media__heading
+            ul.m-list
+              li.m-list__item
+                .m-social-media__icon
+                  .cf-icon-svg
+                  span.u-visually-hidden
+      notes:
+        - "m-social-media--follow modifier is identical
+           but does not include the heading."
+  tags:
+    - cfgov-molecules
+*/
+
+.m-social-media {
+  display: inline-block;
+
+  // This could be wrapped in the `m-social-media--share` modifier,
+  // but it's ok on its own too.
+  &__heading {
+    @include heading-5;
+    display: inline-block;
+    // TODO: how to handle font-size variable
+    // 0.25em subtracted to compensate for inline spacing
+    // padding-right: math.div($grid-gutter-width, $font-size - 0.25em) + em;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+
+  .m-list {
+    display: inline-block;
+    vertical-align: middle;
+
+    .m-list__item {
+      // TODO SASS fix
+      // 0.25em subtracted to compensate for inline spacing
+      // margin-right: math.div(
+      //     math.div($grid-gutter-width, 2),
+      //     $base-font-size-px - 0.25em
+      //   ) + em;
+      margin-bottom: 0;
+    }
+
+    .m-list__item:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__icon {
+    color: var(--gray-dark);
+    font-size: math.div($grid-gutter-width, $base-font-size-px) + em;
+    line-height: 1;
+    @include u-link-colors(var(--gray-dark), var(--pacific-80));
+    @include u-link-no-border;
+  }
+
+  &__print {
+    padding-left: math.div(math.div($grid-gutter-width, 2), $base-font-size-px) +
+      'em';
+    border-left: 1px solid var(--black);
+  }
+
+  // Hide on print.
+  @media print {
+    & {
+      display: none;
+    }
+  }
+}
+
+.no-js .m-social-media__print {
+  display: none;
+}
+
+/* topdoc
+    name: EOF
+    eof: true
+*/
