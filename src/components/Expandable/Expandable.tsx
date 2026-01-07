@@ -9,6 +9,7 @@ export interface ExpandableProperties
   extends React.HTMLAttributes<HTMLDivElement> {
   header: string;
   children: ReactNode;
+  icon?: string;
   inAccordion?: boolean;
   isPadded?: boolean;
   openOnLoad?: boolean;
@@ -17,6 +18,7 @@ export interface ExpandableProperties
 export const Expandable: React.FC<ExpandableProperties> = ({
   header,
   children,
+  icon = '',
   inAccordion = false,
   isPadded = false,
   openOnLoad = false,
@@ -48,11 +50,13 @@ export const Expandable: React.FC<ExpandableProperties> = ({
       data-testid='expandable'
       {...properties}
     >
-      <button
-        type='button'
-        className='o-expandable__header'
-        title={header}
-      >
+      <button type='button' className='o-expandable__header' title={header}>
+        {
+          icon ? <span className='o-expandable__icon'>
+            <Icon name={icon} />
+          </span> : null
+        }
+
         <h3 className='o-expandable__label'>{header}</h3>
         <span className='o-expandable__cues'>
           <span className='o-expandable__cue-open'>
