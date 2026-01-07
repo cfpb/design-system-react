@@ -17,6 +17,7 @@ export const Expandable: React.FC<ExpandableProperties> = ({
   header,
   children,
   inAccordion = false,
+  isPadded = false,
   openOnLoad = false,
   className = '',
   ...properties
@@ -30,11 +31,14 @@ export const Expandable: React.FC<ExpandableProperties> = ({
 
   const expandableClasses = [
     'o-expandable',
-    'o-expandable--padded',
     'o-expandable--background',
     'o-expandable--border',
     className
   ];
+
+  if (isPadded){
+    expandableClasses.push('o-expandable--padded');
+  }
 
   if (openOnLoad) expandableClasses.push('o-expandable--onload-open');
 
