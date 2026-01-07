@@ -4,7 +4,7 @@ import { useEffect, useId, useState } from 'react';
 import { noOp } from '../../utils/noOp';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
-import './pagination.less';
+import './pagination.scss';
 import { MIN_PAGE } from './paginationConstants';
 
 export interface PaginationProperties {
@@ -28,8 +28,8 @@ export interface PaginationProperties {
 
 const PaginationSubmitButton = (): JSX.Element => (
   <button
-    className='a-btn a-btn__link m-pagination_btn-submit'
-    id='m-pagination_btn-submit-default'
+    className='a-btn a-btn--link m-pagination__btn-submit'
+    id='m-pagination__btn-submit-default'
     type='submit'
   >
     Go
@@ -53,17 +53,17 @@ const PaginationNavButton = ({
   isDisabled = false
 }: PaginationNavButtonProperties): React.ReactElement => {
   const buttonCnames = ['a-btn', 'flex-center'];
-  const iconCnames = ['a-btn_icon'];
+  const iconCnames = ['a-btn__icon'];
 
   if (isPrevious) {
-    buttonCnames.push('m-pagination_btn-prev');
-    iconCnames.push('a-btn_icon__on-left');
+    buttonCnames.push('m-pagination__btn-prev');
+    iconCnames.push('a-btn_icon--on-left');
   } else {
-    buttonCnames.push('m-pagination_btn-next');
-    iconCnames.push('a-btn_icon__on-right');
+    buttonCnames.push('m-pagination__btn-next');
+    iconCnames.push('a-btn_icon--on-right');
   }
 
-  if (isDisabled) buttonCnames.push('a-btn__disabled');
+  if (isDisabled) buttonCnames.push('a-btn--disabled');
 
   return (
     <button
@@ -100,11 +100,11 @@ const PaginationInput = ({
   const inputId = `${tableId}-pagination_current-page`;
 
   return (
-    <Label className='m-pagination_label' htmlFor={inputId} inline>
+    <Label className='m-pagination__label' htmlFor={inputId} inline>
       Page
       <span className='u-visually-hidden'>number {page} out</span>
       <input
-        className='m-pagination_current-page'
+        className='m-pagination__current-page'
         id={inputId}
         name='page'
         type='number'
@@ -168,7 +168,7 @@ export const Pagination = ({
       />
 
       <form
-        className='m-pagination_form'
+        className='m-pagination__form'
         action='#pagination_content'
         onSubmit={onSubmit}
       >

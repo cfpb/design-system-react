@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { List, ListItem, ListLink } from '~/src/index';
+import { LinkText, List, ListItem, ListLink } from '~/src/index';
 
 const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',
@@ -58,13 +58,13 @@ export const Links: Story = {
     children: (
       <>
         <ListLink type='list' href='#'>
-          First Link
+          <LinkText>First Link</LinkText>
         </ListLink>
         <ListLink type='list' href='#'>
-          Second Link
+          <LinkText>Second Link</LinkText>
         </ListLink>
         <ListLink type='list' href='#'>
-          Third Link
+          <LinkText>Third Link</LinkText>
         </ListLink>
       </>
     )

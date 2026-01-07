@@ -15,8 +15,8 @@ export const NavLinks = ({ children }: WrapperProperties): JSXElement => {
   if (isEmptyArray(children)) return null;
 
   return (
-    <List className='o-footer_nav-list'>
-      <ListItemBuilder itemClassname='m-list_link'>{children}</ListItemBuilder>
+    <List className='o-footer__nav-list m-list--links m-list--horizontal'>
+      <ListItemBuilder itemClassname='m-list__link'>{children}</ListItemBuilder>
     </List>
   );
 };
@@ -28,10 +28,10 @@ export const SocialLinks = ({ children }: WrapperProperties): JSXElement => {
   if (isEmptyArray(children)) return null;
 
   return (
-    <div className='block block__flush-top block__flush-bottom block__padded-top'>
-      <div className='m-social-media m-social-media__follow'>
-        <List className='m-social-media_icons' isUnstyled isHorizontal>
-          <ListItemBuilder itemClassname='m-social-media_icon'>
+    <div className='block block--flush-top block--flush-bottom block--padded-top'>
+      <div className='m-social-media m-social-media--follow'>
+        <List className='m-social-media__icons' isUnstyled isHorizontal>
+          <ListItemBuilder itemClassname='m-social-media__icon'>
             {children}
           </ListItemBuilder>
         </List>
@@ -49,9 +49,9 @@ export const FooterLinksColumn = ({
   if (isEmptyArray(children)) return null;
 
   return (
-    <div className='o-footer_col'>
-      <List className='o-footer_list'>
-        <ListItemBuilder itemClassname='m-list_link'>
+    <div className='o-footer__col'>
+      <List className='o-footer__list'>
+        <ListItemBuilder itemClassname='m-list__link'>
           {children}
         </ListItemBuilder>
       </List>

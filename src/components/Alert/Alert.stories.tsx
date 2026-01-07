@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Alert, AlertFieldLevel, Icon, Link, TextInput } from '~/src/index';
 import type { TextInputStatusType } from '../TextInput/TextInputStatus';
 

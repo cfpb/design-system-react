@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { Banner } from '../Banner/Banner';
 import type { User } from '../ResponsiveMenu/ResponsiveMenu';
 import ResponsiveMenu from '../ResponsiveMenu/ResponsiveMenu';
-import './header.less';
+import './header.scss';
 
 interface PageHeaderProperties {
   links?: JSX.Element[];

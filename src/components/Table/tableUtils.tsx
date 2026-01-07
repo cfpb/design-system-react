@@ -14,7 +14,7 @@ export const buildColumnHeaders = (
         if (typeof column === 'object') {
           content = column.header;
 
-          if (column.alignRight) cnames.push('o-table_cell__right-align');
+          if (column.alignRight) cnames.push('o-table_cell--right-align');
           if (column.width) cnames.push(`u-w${column.width}pct`);
           if (!column.headerWordWrap) cnames.push('white-space-nowrap');
         } else {
@@ -41,7 +41,7 @@ const getCellProperties = (column: TableColumn): object => {
   }
 
   const cellCnames = [''];
-  if (column.alignRight) cellCnames.push('o-table_cell__right-align');
+  if (column.alignRight) cellCnames.push('o-table_cell--right-align');
   if (column.cellDisableWordWrap) cellCnames.push('white-space-nowrap');
   if (!column.cellDisableWordWrap && column.cellWordBreak)
     cellCnames.push('word-break-break-all');

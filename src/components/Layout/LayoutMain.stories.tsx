@@ -20,7 +20,6 @@ Container for all of the content within a Layout. Used to configure the column s
 <li>[2-1](https://cfpb.github.io/design-system/development/main-content-and-sidebars#right-hand-sidebar-layout)</li>
 </ul></li>
 
-<li>[bleedbar](https://cfpb.github.io/design-system/development/main-content-and-sidebars#bleedbar-sidebar-styling)</li>
 </ul>
 
 
@@ -54,8 +53,7 @@ type Story = StoryObj<typeof meta>;
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Layout_2_1: Story = {
   args: {
-    layout: '2-1',
-    bleedbar: true
+    layout: '2-1'
   },
   render: properties => (
     <Layout.Main {...properties}>
@@ -87,8 +85,7 @@ export const Layout_2_1: Story = {
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Layout_1_3: Story = {
   args: {
-    layout: '1-3',
-    bleedbar: false
+    layout: '1-3'
   },
   render: properties => (
     <Layout.Main {...properties}>

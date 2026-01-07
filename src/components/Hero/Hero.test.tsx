@@ -17,16 +17,16 @@ describe('Hero', () => {
       />
     );
 
-    expect(screen.getByText(heading).className).toMatch(/m-hero_heading/g);
-    expect(screen.getByText(subheading).className).toMatch(/m-hero_subhead/g);
-    expect(screen.getByAltText(imageText).className).toMatch(/m-hero_image/g);
+    expect(screen.getByText(heading).className).toMatch(/m-hero__heading/g);
+    expect(screen.getByText(subheading).className).toMatch(/m-hero__subhead/g);
+    expect(screen.getByAltText(imageText).className).toMatch(/m-hero__image/g);
   });
 
   it('Derives CSS classes for component variations', () => {
-    const isJumbo = 'm-hero__jumbo';
-    const is5050 = 'm-hero__50-50';
-    const isKnockout = 'm-hero__knockout';
-    const imageIsPhoto = 'm-hero__overlay';
+    const isJumbo = 'm-hero--jumbo';
+    const is5050 = 'm-hero--50-50';
+    const isKnockout = 'm-hero--knockout';
+    const imageIsPhoto = 'm-hero--overlay';
 
     render(<Hero isJumbo data-testid={isJumbo} />);
     expect(screen.getByTestId(isJumbo).className).toMatch(isJumbo);
