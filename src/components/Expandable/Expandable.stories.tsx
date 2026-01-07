@@ -48,9 +48,7 @@ export const PaddedExpandable: Story = {
     ...Default.args,
     header: 'Expandable Header',
     icon: 'bank',
-    isPadded: true,
-    children: Content,
-    inAccordion: true
+    isPadded: true
   }
 };
 
