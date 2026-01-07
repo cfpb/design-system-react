@@ -38,10 +38,8 @@ export const Expandable: React.FC<ExpandableProperties> = ({
     'o-expandable--border',
     className
   ];
-  if (isPadded){
-    expandableClasses.push('o-expandable--padded');
-  }
 
+  if (isPadded) expandableClasses.push('o-expandable--padded');
   if (openOnLoad) expandableClasses.push('o-expandable--onload-open');
 
   return (
@@ -56,7 +54,6 @@ export const Expandable: React.FC<ExpandableProperties> = ({
             <Icon name={icon} />
           </span> : null
         }
-
         <h3 className='o-expandable__label'>{header}</h3>
         <span className='o-expandable__cues'>
           <span className='o-expandable__cue-open'>
