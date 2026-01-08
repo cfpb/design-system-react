@@ -14,27 +14,16 @@ export default defineConfig(() => ({
   resolve: {
     alias: {
       '~': resolve(__dirname),
-      '@cfpb/cfpb-design-system/src/index': resolve(
+      // Catch-all for internal library paths to bypass restrictive "exports" in package.json
+      '@cfpb/cfpb-design-system/src': resolve(
         __dirname,
-        'node_modules/@cfpb/cfpb-design-system/src/index.scss'
+        'node_modules/@cfpb/cfpb-design-system/src'
       ),
-      '@cfpb/cfpb-design-system/src/abstracts': resolve(
+      // Helper for specifically accessing the new abstracts location
+      '@cfpb/cfpb-design-system/src/elements/abstracts': resolve(
         __dirname,
-        'node_modules/@cfpb/cfpb-design-system/src/abstracts/index.scss'
-      ),
-      '@cfpb/cfpb-design-system/src/utilities': resolve(
-        __dirname,
-        'node_modules/@cfpb/cfpb-design-system/src/utilities/index.scss'
-      ),
-      '@cfpb/cfpb-design-system/src/components/cfpb-typography/mixins': resolve(
-        __dirname,
-        'node_modules/@cfpb/cfpb-design-system/src/components/cfpb-typography/mixins.scss'
-      ),
-      '@cfpb/cfpb-design-system/src/components/cfpb-notifications/vars':
-        resolve(
-          __dirname,
-          'node_modules/@cfpb/cfpb-design-system/src/components/cfpb-notifications/vars.scss'
-        )
+        'node_modules/@cfpb/cfpb-design-system/src/elements/abstracts/index.scss'
+      )
     }
   },
   plugins: [

@@ -1584,13 +1584,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-design-system@npm:^4.2.2":
-  version: 4.2.2
-  resolution: "@cfpb/cfpb-design-system@npm:4.2.2"
+"@cfpb/cfpb-design-system@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "@cfpb/cfpb-design-system@npm:4.3.2"
   dependencies:
     "@fontsource-variable/source-sans-3": "npm:5.2.9"
     tippy.js: "npm:6.3.7"
-  checksum: 10/46065cc6e7901332ad025a937d9d722ce75e147793619ba225a3997db633eadbd67b5cd87530bbf65e34c8bbf1214171fee74620df53d282328dfb38b370a1a5
+  checksum: 10/bafcfd51a788d9425aa13dc284d80adfb39291d54e8dbdcf8d5e45f04c63546b8e3f5b9011bf1c78e534c7049f4e27be099481d391f4013aab7974addd9c5155
   languageName: node
   linkType: hard
 
@@ -1636,7 +1636,7 @@ __metadata:
   resolution: "@cfpb/design-system-react@workspace:."
   dependencies:
     "@babel/core": "npm:^7.20.12"
-    "@cfpb/cfpb-design-system": "npm:^4.2.2"
+    "@cfpb/cfpb-design-system": "npm:^4.3.2"
     "@cfpb/cfpb-expandables": "npm:^2.0.1"
     "@cfpb/cfpb-forms": "npm:^2.0.0"
     "@cfpb/cfpb-icons": "npm:^2.0.0"

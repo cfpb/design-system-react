@@ -16,7 +16,7 @@ export const useIconSvg = (fileName: string): string | null => {
   useEffect(() => {
     const importSvg = async (): Promise<void> => {
       const importedIcon = (await import(
-        `../../node_modules/@cfpb/cfpb-icons/src/icons/${fileName}.svg?raw`
+        `@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/${fileName}.svg?raw`
       )) as SVGModule;
 
       setIcon(importedIcon.default);

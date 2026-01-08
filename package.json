@@ -53,7 +53,7 @@
     "chromatic": "chromatic --storybook-build-dir dist-storybook --only-changed"
   },
   "dependencies": {
-    "@cfpb/cfpb-design-system": "^4.2.2",
+    "@cfpb/cfpb-design-system": "^4.3.2",
     "@cfpb/cfpb-expandables": "^2.0.1",
     "@cfpb/cfpb-forms": "^2.0.0",
     "@cfpb/cfpb-icons": "^2.0.0",
