@@ -1639,7 +1639,6 @@ __metadata:
     "@cfpb/cfpb-design-system": "npm:^4.3.2"
     "@cfpb/cfpb-expandables": "npm:^2.0.1"
     "@cfpb/cfpb-forms": "npm:^2.0.0"
-    "@cfpb/cfpb-icons": "npm:^2.0.0"
     "@chromatic-com/storybook": "npm:^3"
     "@fontsource-variable/source-sans-3": "npm:^5.2.8"
     "@nabla/vite-plugin-eslint": "npm:1.4.1"

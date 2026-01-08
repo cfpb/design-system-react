@@ -16,7 +16,7 @@ export const ButtonIcon = ({
   isRight,
   className,
   ...properties
-}: ButtonIconProperties): React.ReactNode => {
+}: ButtonIconProperties): JSX.Element | null => {
   if (!name) return null;
 
   let cname = '';
