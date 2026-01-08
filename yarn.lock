@@ -1560,7 +1560,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-design-system@npm:^4.3.2":
+"@cfpb/cfpb-design-system@npm:4.3.2":
   version: 4.3.2
   resolution: "@cfpb/cfpb-design-system@npm:4.3.2"
   dependencies:
@@ -1575,7 +1575,7 @@ __metadata:
   resolution: "@cfpb/design-system-react@workspace:."
   dependencies:
     "@babel/core": "npm:^7.20.12"
-    "@cfpb/cfpb-design-system": "npm:^4.3.2"
+    "@cfpb/cfpb-design-system": "npm:4.3.2"
     "@chromatic-com/storybook": "npm:^3"
     "@nabla/vite-plugin-eslint": "npm:1.4.1"
     "@storybook/addon-a11y": "npm:^8.6.7"
