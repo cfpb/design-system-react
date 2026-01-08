@@ -39,19 +39,6 @@ export const Responsive: Story = {
   }
 };
 
-export const Directory: Story = {
-  name: 'Responsive stacked table with header (directory table)',
-  args: {
-    columns: ['Employee name', 'Phone number', 'Email address'],
-    rows: [
-      ['Andrew Able', '(202) XXX-XXXX', 'aable@example.com'],
-      ['Betsy Bort', '(202) XXX-XXXX', 'bbort@example.com'],
-      ['Charles Clark', '(202) XXX-XXXX', 'cclark@example.com']
-    ],
-    isDirectory: true
-  }
-};
-
 export const HorizontalScroll: Story = {
   name: 'Responsive table with horizontal scroll',
   args: {
@@ -156,5 +143,28 @@ export const FixedWidth: Story = {
       ['Abbeville', 'Secured', 'Yes'],
       ['Abbey', 'Secured', 'No']
     ]
+  }
+};
+
+const maxUidTestRows = [...Array.from({ length: 20 }).keys()].map(
+  (item, index) => [
+    `Row ${index + 1_000_000_000}`,
+    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
+    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
+    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS'
+  ]
+);
+
+export const LongCharacterSets: Story = {
+  name: 'Long Character Sets ',
+  args: {
+    columns: [
+      { header: 'Column 1', cellDisableWordWrap: true, headerWordWrap: false },
+      { header: 'Column 2', cellWordBreak: true },
+      { header: 'Column 3', cellWordBreak: true },
+      { header: 'Column 4', cellWordBreak: true }
+    ],
+    rows: maxUidTestRows,
+    isScrollableHorizontal: false
   }
 };

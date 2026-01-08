@@ -56,7 +56,7 @@ export const FooterCfGov = ({
       data-pretty-href={twitterLink}
       href={twitterLink}
     >
-      <Icon name='twitter' isPresentational withBg />
+      <Icon name='x' isPresentational withBg />
     </a>,
     <a
       key='linkedin'
@@ -139,8 +139,8 @@ export const FooterCfGov = ({
   ];
 
   const linksCol3 = [
-    <a key='usa-gov' className='a-link a-link__icon' href='https://usa.gov/'>
-      <span className='a-link_text'>USA.gov</span>
+    <a key='usa-gov' className='a-link a-link--icon' href='https://usa.gov/'>
+      <span className='a-link__text'>USA.gov</span>&nbsp;
       <Icon
         ariaLabel='External link'
         name='external-link'
@@ -149,10 +149,10 @@ export const FooterCfGov = ({
     </a>,
     <a
       key='inspector'
-      className='a-link a-link__icon'
-      href='https://www.federalreserve.gov/oig/default.htm'
+      className='a-link a-link--icon'
+      href='https://oig.federalreserve.gov/'
     >
-      <span className='a-link_text'>Office of Inspector General</span>
+      <span className='a-link__text'>Office of Inspector General</span>&nbsp;
       <Icon
         ariaLabel='External link'
         name='external-link'

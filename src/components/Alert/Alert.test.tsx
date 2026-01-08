@@ -1,12 +1,13 @@
 import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
+import Paragraph from '../Paragraph/Paragraph';
 import { Alert, AlertType } from './Alert';
 import { AlertFieldLevel } from './AlertFieldLevel';
 
 const testType = (status: AlertType) => async (): Promise<void> => {
   render(<Alert status={status} />);
   const element = screen.getByTestId('notification');
-  expect(element).toHaveClass(`m-notification__${status}`);
+  expect(element).toHaveClass(`m-notification--${status}`);
 
   // Renders Icon
   const icon = await within(element).findByRole('img');
@@ -45,6 +46,17 @@ describe('<Alert />', () => {
     expect(explanation).toBeInTheDocument();
   });
 
+  it('does not include an explanation wrapper class when there is no message but children are provided', async () => {
+    render(
+      <Alert status='info'>
+        <Paragraph>Test component</Paragraph>
+      </Alert>
+    );
+    const explanation = screen.queryByTestId('explanation');
+    expect(explanation).toBeInTheDocument();
+    expect(explanation).not.toHaveClass('m-notification__explanation');
+  });
+
   it('displays links when provided', async () => {
     render(<Alert status='info' />);
     const noLinks = screen.queryAllByRole('listitem');
@@ -60,16 +72,16 @@ describe('<Alert />', () => {
     expect(links.length).toBe(2);
 
     // Link attributes are correctly propagated
-    const linkOne = screen.getByText(linkItems[0].label);
+    const linkOne = screen.getByRole('link', { name: linkItems[0].label });
     expect(linkOne).toHaveAttribute('href', '/1');
 
-    const linkTwo = screen.getByText(linkItems[1].label);
+    const linkTwo = screen.getByRole('link', { name: linkItems[1].label });
     expect(linkTwo).toHaveAttribute('href', '/2');
 
     // Icon is displayed: External link
     const externalIcon = await within(linkTwo).findByRole('img');
     expect(externalIcon).toBeInTheDocument();
-    expect(externalIcon).toHaveClass('cf-icon-svg__external-link');
+    expect(externalIcon).toHaveClass('cf-icon-svg--external-link');
   });
 
   it('renders field-level alerts', async () => {

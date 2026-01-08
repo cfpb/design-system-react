@@ -41,12 +41,12 @@ export interface CheckboxProperties {
   status?: 'error' | 'success' | 'warning';
 }
 
-const containerBaseStyles = ['m-form-field m-form-field__checkbox'];
+const containerBaseStyles = ['m-form-field m-form-field--checkbox'];
 
 const borderStatus = {
-  success: 'm-form-field__checkbox__success',
-  warning: 'm-form-field__checkbox__warning',
-  error: 'm-form-field__checkbox__error'
+  success: 'm-form-field--checkbox-success',
+  warning: 'm-form-field--checkbox-warning',
+  error: 'm-form-field--checkbox-error'
 };
 
 export const Checkbox = ({
@@ -75,7 +75,7 @@ export const Checkbox = ({
 
   const containerClasses = [
     ...containerBaseStyles,
-    isLarge ? 'm-form-field__lg-target' : '',
+    isLarge ? 'm-form-field--lg-target' : '',
     borderStatus[status] ?? '',
     className
   ];

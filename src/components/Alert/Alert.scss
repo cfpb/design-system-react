@@ -1,0 +1,59 @@
+/* stylelint-disable selector-class-pattern */
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/components/cfpb-notifications/vars' as *;
+
+/* Allow icons in the alert body text to remain inline and properly colored */
+.a-form-alert .a-form-alert__text .cf-icon-svg {
+  float: none;
+  color: inherit;
+}
+
+/* Restrict alert text to 670px wide */
+.a-form-alert .a-form-alert__text,
+.m-notification .m-notification__explanation {
+  max-width: 41.875rem;
+}
+
+// /* Adjustments for the workaround (wrapper) to get SVG icons working */
+.m-notification > .cf-icon-svg-wrapper {
+  position: absolute;
+}
+
+.m-notification:not(.m-notification--error, .m-notification--success, .m-notification--warning)
+  > .cf-icon-svg-wrapper
+  .cf-icon-svg {
+  fill: #5a5d61;
+}
+
+.cf-icon-svg-wrapper + .m-notification__content {
+  padding-left: 1.5625em;
+}
+
+// /* Icons in a Notification's list */
+.m-notification .m-list .cf-icon-svg-wrapper {
+  position: relative;
+}
+
+.m-notification {
+  &--success {
+    > .cf-icon-svg-wrapper .cf-icon-svg {
+      fill: $notification-icon-success;
+    }
+  }
+
+  &--warning {
+    > .cf-icon-svg-wrapper .cf-icon-svg {
+      fill: $notification-icon-warning;
+    }
+  }
+
+  &--error {
+    > .cf-icon-svg-wrapper .cf-icon-svg {
+      fill: $notification-icon-error;
+    }
+  }
+}
+
+.m-notification .m-list .cf-icon-svg-wrapper .cf-icon-svg {
+  fill: currentcolor;
+}

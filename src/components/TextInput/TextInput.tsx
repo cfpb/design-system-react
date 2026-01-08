@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import type { Ref } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import { forwardRef, type ReactNode } from 'react';
 import type { TextInputStatusType } from './TextInputStatus';
 import { getTextInputStatusClass } from './TextInputStatus';
@@ -20,7 +20,7 @@ interface RequiredTextInputProperties {
   name: string;
 }
 
-interface CustomTextInputProperties {
+interface CustomTextInputProperties extends ComponentPropsWithoutRef<'input'> {
   className?: string;
   inputProps?: JSX.IntrinsicElements['input'];
   inputRef?: TextInputReference;
@@ -30,8 +30,7 @@ interface CustomTextInputProperties {
   isFullWidth?: boolean;
 }
 
-export type OptionalTextInputProperties = CustomTextInputProperties &
-  JSX.IntrinsicElements['input'];
+export type OptionalTextInputProperties = CustomTextInputProperties;
 
 export type TextInputProperties = OptionalTextInputProperties &
   RequiredTextInputProperties;
@@ -39,7 +38,7 @@ export type TextInputProperties = OptionalTextInputProperties &
 /**
  * Source: <a href='https://cfpb.github.io/design-system/components/text-inputs' target='_blank'> https://cfpb.github.io/design-system/components/text-inputs</a>
  */
-export const TextInput = forwardRef(
+export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
   (
     {
       className,
@@ -51,8 +50,8 @@ export const TextInput = forwardRef(
       type = 'text',
       isFullWidth = false,
       ...otherInputProperties
-    }: JSX.IntrinsicElements['input'] & TextInputProperties,
-    reference: Ref<HTMLInputElement>
+    },
+    reference
   ) => {
     const classes = [
       'a-text-input',
@@ -61,7 +60,7 @@ export const TextInput = forwardRef(
     ];
 
     if (isFullWidth) {
-      classes.push('a-text-input__full');
+      classes.push('a-text-input--full');
       return (
         <div className='m-form-field'>
           <input

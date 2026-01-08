@@ -1,12 +1,15 @@
 import classNames from 'classnames';
 import type { EventHandler, ReactElement, SyntheticEvent } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { noOp } from '../../utils/noOp';
 import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
+import './pagination.scss';
 import { MIN_PAGE } from './paginationConstants';
 
 export interface PaginationProperties {
+  /** Identifier of the table this element controls */
+  tableId?: string;
   /** Currently displayed page number  */
   page: number;
   /** Total number of available pages */
@@ -25,8 +28,8 @@ export interface PaginationProperties {
 
 const PaginationSubmitButton = (): JSX.Element => (
   <button
-    className='a-btn a-btn__link m-pagination_btn-submit'
-    id='m-pagination_btn-submit-default'
+    className='a-btn a-btn--link m-pagination__btn-submit'
+    id='m-pagination__btn-submit-default'
     type='submit'
   >
     Go
@@ -49,18 +52,18 @@ const PaginationNavButton = ({
   isNext = false,
   isDisabled = false
 }: PaginationNavButtonProperties): React.ReactElement => {
-  const buttonCnames = ['a-btn'];
-  const iconCnames = ['a-btn_icon'];
+  const buttonCnames = ['a-btn', 'flex-center'];
+  const iconCnames = ['a-btn__icon'];
 
   if (isPrevious) {
-    buttonCnames.push('m-pagination_btn-prev');
-    iconCnames.push('a-btn_icon__on-left');
+    buttonCnames.push('m-pagination__btn-prev');
+    iconCnames.push('a-btn_icon--on-left');
   } else {
-    buttonCnames.push('m-pagination_btn-next');
-    iconCnames.push('a-btn_icon__on-right');
+    buttonCnames.push('m-pagination__btn-next');
+    iconCnames.push('a-btn_icon--on-right');
   }
 
-  if (isDisabled) buttonCnames.push('a-btn__disabled');
+  if (isDisabled) buttonCnames.push('a-btn--disabled');
 
   return (
     <button
@@ -70,7 +73,7 @@ const PaginationNavButton = ({
     >
       {isNext ? label : null}
       <span className={classNames(iconCnames)}>
-        {iconName ? <Icon name={iconName} /> : null}
+        {iconName ? <Icon isPresentational name={iconName} /> : null}
       </span>
       {isPrevious ? label : null}
     </button>
@@ -78,12 +81,14 @@ const PaginationNavButton = ({
 };
 
 interface PaginationInputProperties {
+  tableId: string;
   page: number;
   pageCount: number;
   onChange: (value: number) => void;
 }
 
 const PaginationInput = ({
+  tableId,
   page,
   pageCount,
   onChange
@@ -92,17 +97,15 @@ const PaginationInput = ({
     onChange(Number.parseInt(event.currentTarget.value, 10));
   };
 
+  const inputId = `${tableId}-pagination_current-page`;
+
   return (
-    <Label
-      className='m-pagination_label'
-      htmlFor='m-pagination_current-page'
-      inline
-    >
+    <Label className='m-pagination__label' htmlFor={inputId} inline>
       Page
       <span className='u-visually-hidden'>number {page} out</span>
       <input
-        className='m-pagination_current-page'
-        id='m-pagination_current-page-default'
+        className='m-pagination__current-page'
+        id={inputId}
         name='page'
         type='number'
         min='1'
@@ -119,10 +122,11 @@ const PaginationInput = ({
 
 /**
  * Pagination is used to help split up long sets of data or content into shorter pieces, so as to make it easier for users to consume information.
- * 
+ *
  * Source: https://cfpb.github.io/design-system/components/pagination
  */
 export const Pagination = ({
+  tableId,
   page,
   pageCount,
   onClickPrevious = noOp,
@@ -141,6 +145,8 @@ export const Pagination = ({
     if (targetPage === page) return;
     onClickGo(targetPage);
   };
+
+  const paginationId = useId();
 
   const onInputChange = setPageNumber;
 
@@ -162,11 +168,12 @@ export const Pagination = ({
       />
 
       <form
-        className='m-pagination_form'
+        className='m-pagination__form'
         action='#pagination_content'
         onSubmit={onSubmit}
       >
         <PaginationInput
+          tableId={tableId ?? paginationId}
           page={pageNumber}
           pageCount={pageCount}
           onChange={onInputChange}

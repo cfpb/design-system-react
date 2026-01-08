@@ -1,6 +1,6 @@
-import { expect } from '@storybook/jest';
+import { expect } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within } from '@storybook/testing-library';
+import { userEvent, within } from '@storybook/test';
 import { Expandable } from '~/src/index';
 import { sleep } from '../../utils/sleep';
 
@@ -41,6 +41,17 @@ export const Default: Story = {
     children: Content
   }
 };
+
+
+export const PaddedExpandable: Story = {
+  args: {
+    ...Default.args,
+    header: 'Expandable Header',
+    icon: 'bank',
+    isPadded: true
+  }
+};
+
 
 export const OpenOnLoad: Story = {
   args: {

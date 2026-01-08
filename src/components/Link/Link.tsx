@@ -3,13 +3,13 @@ import type { JSXElement } from '../../types/jsxElement';
 
 import classnames from 'classnames';
 import ListItem from '../List/ListItem';
+import './Link.scss';
 
 export interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
   children?: React.ReactNode;
   hasIcon?: boolean;
   href?: string;
   isJump?: boolean;
-  isJumpLeft?: boolean;
   isRouterLink?: boolean;
   noWrap?: boolean;
   ref?: React.Ref<HTMLAnchorElement>;
@@ -26,7 +26,6 @@ export default function Link({
   hasIcon = false,
   href,
   isJump = false,
-  isJumpLeft = false,
   isRouterLink = false,
   noWrap = false,
   type = 'default',
@@ -34,17 +33,12 @@ export default function Link({
 }: LinkProperties): JSXElement {
   const cname = [others.className];
 
-  if (type === 'list') {
-    cname.push('m-list_link');
-  } else {
-    cname.push('a-link');
+  if (type === 'destructive') {
+    cname.push('a-btn a-btn--link a-btn--warning');
   }
-
-  if (type === 'destructive') cname.push('a-btn a-btn__link a-btn__warning');
-  if (hasIcon) cname.push('a-link__icon');
-  if (noWrap) cname.push('a-link__no-wrap');
-  if (isJump) cname.push('a-link__jump a-link__icon-after-text');
-  if (isJumpLeft) cname.push('a-link__jump a-link__icon-before-text');
+  if (hasIcon) cname.push('a-link a-link--icon');
+  if (noWrap) cname.push('a-link a-link--no-wrap');
+  if (isJump) cname.push('a-link a-link--jump');
 
   if (isRouterLink) {
     if (!href) {
@@ -70,14 +64,14 @@ export const LinkText = ({
   children,
   ...others
 }: React.HTMLProps<HTMLSpanElement>): JSX.Element => (
-  <span className='a-link_text' {...others}>
+  <span className='a-link__text' {...others}>
     {children}
   </span>
 );
 
 export const ListLink = (properties: LinkProperties): JSXElement => (
   <ListItem>
-    <Link {...properties} type='list' />
+    <Link {...properties} isJump />
   </ListItem>
 );
 

@@ -21,7 +21,7 @@ const isSquare = new Set([
   'github',
   'linkedin',
   'pinterest',
-  'twitter',
+  'x',
   'youtube'
 ]);
 
@@ -88,7 +88,7 @@ export const Icon = ({
 }: IconProperties): JSX.Element | null => {
   const shapeModifier = getShapeModifier(name, withBg);
   const fileName = `${name}${shapeModifier}`;
-  const classes = ['cf-icon-svg', `cf-icon-svg__${fileName}`];
+  const classes = ['cf-icon-svg', `cf-icon-svg--${fileName}`];
 
   const icon = useIconSvg(fileName);
 

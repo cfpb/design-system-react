@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import type { JSXElement } from '../../types/jsxElement';
 import { Tagline } from '../Tagline/Tagline';
-import './Banner.less';
+import './Banner.scss';
 
 interface BannerProperties extends React.HTMLProps<HTMLDivElement> {
   isHorizontal?: boolean;
@@ -54,12 +54,12 @@ export const Banner = ({
   let taglineContent = null;
 
   if (isHorizontal) {
-    eyebrowClasses.push('m-global-eyebrow__horizontal');
-    wrapperClasses.push('wrapper__match-content');
-    linkListClasses.push('m-list__horizontal m-global-eyebrow_languages');
+    eyebrowClasses.push('m-global-eyebrow--horizontal');
+    wrapperClasses.push('wrapper--match-content');
+    linkListClasses.push('m-list--horizontal m-global-eyebrow__languages');
     taglineContent = <Tagline>{tagline}</Tagline>;
   } else {
-    eyebrowClasses.push('m-global-eyebrow__list');
+    eyebrowClasses.push('m-global-eyebrow--list');
   }
 
   if (className) eyebrowClasses.push(className);
@@ -73,18 +73,18 @@ export const Banner = ({
       <div className={classnames(wrapperClasses)}>
         {taglineContent}
 
-        <div className='m-global-eyebrow_actions'>
+        <div className='m-global-eyebrow__actions'>
           {links.length > 0 && (
             <ul className={classnames(linkListClasses)}>
               {links.map(link => (
-                <li className='m-list_item' key={link.key}>
+                <li className='m-list__item' key={link.key}>
                   {link}
                 </li>
               ))}
             </ul>
           )}
           {phoneNumber ? (
-            <span className='m-global-eyebrow_phone'>
+            <span className='m-global-eyebrow__phone'>
               <TelephoneLink phoneNumber={phoneNumber} />
             </span>
           ) : null}

@@ -34,7 +34,7 @@ describe('<RadioButton />', () => {
 
     expect(screen.getByText(helperTextOutput)).toBeInTheDocument();
     expect(screen.getByTestId('radio-container').getAttribute('class')).toMatch(
-      'm-form-field__lg-target'
+      'm-form-field--lg-target'
     );
   });
 
@@ -47,6 +47,16 @@ describe('<RadioButton />', () => {
     expect(element).toBeInTheDocument();
     expect(element.getAttribute('disabled')).not.toBe('null');
     expect(element.getAttribute('disabled')).toBe('');
+  });
+
+  it('accepts additional input element props', () => {
+    const properties = buildProperties('default-checked');
+    render(<RadioButton {...properties} defaultChecked />);
+
+    const element = screen.getByRole(role);
+
+    expect(element).toBeInTheDocument();
+    expect(element).toBeChecked();
   });
 
   it('Select via click', () => {

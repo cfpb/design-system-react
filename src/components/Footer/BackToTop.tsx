@@ -3,7 +3,7 @@ import { Icon } from '../Icon/Icon';
 
 export const BackToTop = (): JSX.Element => (
   <a
-    className='a-btn a-btn__secondary o-footer_top-button'
+    className='a-btn a-btn--secondary o-footer__top-button'
     data-gtm_ignore='true'
     data-js-hook='behavior_return-to-top'
     href='#'

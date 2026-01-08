@@ -4,10 +4,10 @@ import { Icon } from '../Icon/Icon';
 export type AlertFieldLevelType = 'error' | 'info' | 'success' | 'warning';
 
 export enum AlertFieldLevelClass {
-  'info' = '__info',
-  'error' = '__error',
-  'success' = '__success',
-  'warning' = '__warning'
+  'info' = '--info',
+  'error' = '--error',
+  'success' = '--success',
+  'warning' = '--warning'
 }
 
 export const MapTypeToIconName = {
@@ -42,11 +42,14 @@ export const AlertFieldLevel = ({
   return (
     <div
       className={`a-form-alert a-form-alert${AlertFieldLevelClass[status]}`}
-      role='alert'
       {...properties}
     >
-      <Icon name={MapTypeToIconName[status]} alt={status} withBg />
-      <span className='a-form-alert_text' data-testid='message'>
+      <Icon
+        ariaLabel={`${status} icon`}
+        name={MapTypeToIconName[status]}
+        withBg
+      />
+      <span className='a-form-alert__text' data-testid='message'>
         {message}
       </span>
     </div>

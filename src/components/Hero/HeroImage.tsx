@@ -9,8 +9,8 @@ export const HeroImage = ({
   if (!image) return null;
 
   return (
-    <div className='m-hero_image-wrapper'>
-      <img src={image} alt={altText} className='m-hero_image' />
+    <div className='m-hero__image-wrapper'>
+      <img src={image} alt={altText} className='m-hero__image' />
     </div>
   );
 };

@@ -10,7 +10,7 @@ describe('Icon', () => {
 
     // Need to wait for icon to load
     const icon = await screen.findByRole(/img/i);
-    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg__${name}`);
+    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}`);
   });
 
   it('Renders a round icon', async () => {
@@ -20,7 +20,7 @@ describe('Icon', () => {
 
     // Need to wait for icon to load
     const icon = await screen.findByRole(/img/i);
-    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg__${name}`);
+    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}`);
   });
 
   it('Renders a square icon', async () => {
@@ -30,7 +30,7 @@ describe('Icon', () => {
 
     // Need to wait for icon to load
     const icon = await screen.findByRole(/img/i);
-    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg__${name}`);
+    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}`);
   });
 
   it('Renders an open number icon', async () => {
@@ -40,7 +40,7 @@ describe('Icon', () => {
 
     // Need to wait for icon to load
     const icon = await screen.findByRole(/img/i);
-    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg__${name}-open`);
+    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}-open`);
   });
 
   it('Renders a closed number icon', async () => {
@@ -50,7 +50,7 @@ describe('Icon', () => {
 
     // Need to wait for icon to load
     const icon = await screen.findByRole(/img/i);
-    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg__${name}-closed`);
+    expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}-closed`);
   });
 
   it('Provides message for unknown icons', async () => {

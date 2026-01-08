@@ -16,9 +16,9 @@ const makeLink = (label: string, isExternal?: boolean): JSX.Element => (
   <a
     key={label}
     href={window.location.href}
-    className={`m-list_link a-link ${isExternal ? 'a-link__icon' : ''}`}
+    className={`m-list__link a-link ${isExternal ? 'a-link--icon' : ''}`}
   >
-    <span className='a-link_text'>{label}</span>
+    <span className='a-link__text'>{label}</span>
     {isExternal ? <Icon name='external-link' alt='External link' /> : null}
   </a>
 );

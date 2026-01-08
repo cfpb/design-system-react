@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Link from '../Link/Link';
+import { LinkText, ListLink } from '../Link/Link';
 import { WellContainer, WellContent } from './Well';
 
 const meta: Meta<typeof WellContainer> = {
@@ -26,9 +26,9 @@ export const Content: Story = {
     headingLevel: 'h3',
     text: 'Lorem ipsum dolor sit amet, ei ius adhuc inani iudico, labitur instructior ex pri. Cu pri inani constituto, cum aeque noster commodo',
     links: [
-      <Link type='list' href='/#' key='example1'>
-        Call-to-action link
-      </Link>
+      <ListLink href='/#' key='example1'>
+        <LinkText>Call-to-action link</LinkText>
+      </ListLink>
     ]
   },
   render: arguments_ => <WellContent {...arguments_} />

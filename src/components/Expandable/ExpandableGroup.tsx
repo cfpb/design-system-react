@@ -19,7 +19,7 @@ export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
   ...properties
 }) => {
   const cname = ['o-expandable-group', className];
-  if (accordion) cname.push('o-expandable-group__accordion');
+  if (accordion) cname.push('o-expandable-group--accordion');
 
   useEffect(() => {
     if (!accordion) return;

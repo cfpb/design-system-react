@@ -1,4 +1,5 @@
 import { Icon } from '../Icon/Icon';
+import { LinkText, ListLink } from '../Link/Link';
 
 export interface AlertLinkProperties {
   href: string;
@@ -11,9 +12,10 @@ export const AlertLink = ({
   label,
   isExternal
 }: AlertLinkProperties): JSX.Element => (
-  <li className='m-list_item'>
-    <a className='m-list_link' href={href}>
-      {label} {isExternal ? <Icon name='external-link' /> : null}
-    </a>
-  </li>
+  <ListLink href={href}>
+    <LinkText>{label}</LinkText>
+    {isExternal ? (
+      <Icon ariaLabel='external link' name='external-link' />
+    ) : null}
+  </ListLink>
 );

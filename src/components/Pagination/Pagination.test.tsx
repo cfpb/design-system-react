@@ -19,13 +19,13 @@ describe('<Pagination />', () => {
   it('disables previous button on first page', () => {
     render(<Pagination page={1} pageCount={3} />);
     const previous = screen.getByText('Previous');
-    expect(previous.classList.contains('a-btn__disabled')).toBe(true);
+    expect(previous.classList.contains('a-btn--disabled')).toBe(true);
   });
 
   it('disables next button on last page', () => {
     render(<Pagination page={3} pageCount={3} />);
     const next = screen.getByText('Next');
-    expect(next.classList.contains('a-btn__disabled')).toBe(true);
+    expect(next.classList.contains('a-btn--disabled')).toBe(true);
   });
 
   it('goes to page on submit', async () => {
@@ -48,7 +48,7 @@ describe('<Pagination />', () => {
     });
 
     await waitFor(() => {
-      expect(next.classList.contains('a-btn__disabled')).toBe(true);
+      expect(next.classList.contains('a-btn--disabled')).toBe(true);
     });
   });
 });

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Navbar } from '~/src/index';
-import '../PageHeader/header.less';
+import '../PageHeader/header.scss';
 import { ExampleLinks } from './Navbar';
 
 const meta: Meta<typeof Navbar> = {
@@ -21,20 +21,14 @@ const LoggedInUser = {
 
 export const LoggedIn: Story = {
   args: {
-    links: ExampleLinks,
-    user: LoggedInUser
+    links: ExampleLinks
   }
 };
 
 export const LoggedOut: Story = {
-  args: {
-    links: ExampleLinks,
-    user: { loginHref: '#' }
-  }
+  args: {}
 };
 
 export const NoUser: Story = {
-  args: {
-    links: ExampleLinks
-  }
+  args: {}
 };

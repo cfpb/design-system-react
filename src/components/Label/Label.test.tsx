@@ -12,7 +12,7 @@ describe('<Label />', () => {
     const element = screen.getByText(text);
     expect(element).toHaveAttribute('for', htmlFor);
     expect(element).toHaveClass('a-label');
-    expect(element).toHaveClass('a-label__heading');
+    expect(element).toHaveClass('a-label--heading');
   });
 
   it('Inline Label', () => {
@@ -25,7 +25,7 @@ describe('<Label />', () => {
     const element = screen.getByText(text);
     expect(element).toHaveAttribute('for', htmlFor);
     expect(element).toHaveAttribute('class', 'a-label');
-    expect(element).not.toHaveClass('a-label__heading');
+    expect(element).not.toHaveClass('a-label--heading');
   });
 
   it('applies provided class name', () => {

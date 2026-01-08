@@ -20,12 +20,12 @@ export const ButtonIcon = ({
   if (!name) return null;
 
   let cname = '';
-  if (isLeft) cname = 'a-btn_icon__on-left';
-  if (isRight) cname = 'a-btn_icon__on-right';
+  if (isLeft) cname = 'a-btn__icon--on-left';
+  if (isRight) cname = 'a-btn__icon--on-right';
 
   return (
     <span
-      className={classNames(['a-btn_icon', cname, className])}
+      className={classNames(['a-btn__icon', cname, className])}
       {...properties}
     >
       <Icon name={name} />

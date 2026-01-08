@@ -37,7 +37,9 @@ describe('<WellContent />', () => {
     const text = screen.getByText(Content.args?.text);
     expect(text).toHaveClass('text');
 
-    const callToAction = screen.getByText('Call-to-action link');
-    expect(callToAction).toHaveClass('m-list_link');
+    const callToAction = screen.getByRole('link', {
+      name: 'Call-to-action link'
+    });
+    expect(callToAction).toHaveClass('a-link--jump');
   });
 });
