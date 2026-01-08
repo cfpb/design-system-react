@@ -8,8 +8,8 @@ describe('Icon', () => {
 
     render(<Icon name={name} withBg />);
 
-    // Need to wait for icon to load
-    const icon = await screen.findByRole(/img/i);
+    // Need to wait for icon to load - include hidden elements
+    const icon = await screen.findByRole('img', { hidden: true });
     expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}`);
   });
 
@@ -18,8 +18,8 @@ describe('Icon', () => {
 
     render(<Icon name={name} withBg />);
 
-    // Need to wait for icon to load
-    const icon = await screen.findByRole(/img/i);
+    // Need to wait for icon to load - include hidden elements
+    const icon = await screen.findByRole('img', { hidden: true });
     expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}`);
   });
 
@@ -28,8 +28,8 @@ describe('Icon', () => {
 
     render(<Icon name={name} withBg />);
 
-    // Need to wait for icon to load
-    const icon = await screen.findByRole(/img/i);
+    // Need to wait for icon to load - include hidden elements
+    const icon = await screen.findByRole('img', { hidden: true });
     expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}`);
   });
 
@@ -38,8 +38,8 @@ describe('Icon', () => {
 
     render(<Icon name={name} />);
 
-    // Need to wait for icon to load
-    const icon = await screen.findByRole(/img/i);
+    // Need to wait for icon to load - include hidden elements
+    const icon = await screen.findByRole('img', { hidden: true });
     expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}-open`);
   });
 
@@ -48,8 +48,8 @@ describe('Icon', () => {
 
     render(<Icon name={name} withBg />);
 
-    // Need to wait for icon to load
-    const icon = await screen.findByRole(/img/i);
+    // Need to wait for icon to load - include hidden elements
+    const icon = await screen.findByRole('img', { hidden: true });
     expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}-closed`);
   });
 

@@ -5,7 +5,7 @@ import { ButtonIcon } from './ButtonIcon';
 describe('<ButtonIcon />', () => {
   it('Renders icon to the left', async () => {
     render(<ButtonIcon name='left' isLeft data-testid='lefty' />);
-    const icon = await screen.findByRole(/img/i);
+    const icon = await screen.findByRole('img', { hidden: true });
     expect(icon).toBeInTheDocument();
 
     const wrapper = screen.getByTestId('lefty');
@@ -14,7 +14,7 @@ describe('<ButtonIcon />', () => {
 
   it('Renders icon to the right', async () => {
     render(<ButtonIcon name='right' isRight data-testid='righty' />);
-    const icon = await screen.findByRole(/img/i);
+    const icon = await screen.findByRole('img', { hidden: true });
     expect(icon).toBeInTheDocument();
 
     const wrapper = screen.getByTestId('righty');

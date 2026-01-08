@@ -10,7 +10,7 @@ const testType = (status: AlertType) => async (): Promise<void> => {
   expect(element).toHaveClass(`m-notification--${status}`);
 
   // Renders Icon
-  const icon = await within(element).findByRole('img');
+  const icon = await within(element).findByRole('img', { hidden: true });
   expect(icon).toBeInTheDocument();
 };
 
@@ -79,7 +79,9 @@ describe('<Alert />', () => {
     expect(linkTwo).toHaveAttribute('href', '/2');
 
     // Icon is displayed: External link
-    const externalIcon = await within(linkTwo).findByRole('img');
+    const externalIcon = await within(linkTwo).findByRole('img', {
+      hidden: true
+    });
     expect(externalIcon).toBeInTheDocument();
     expect(externalIcon).toHaveClass('cf-icon-svg--external-link');
   });
@@ -97,7 +99,7 @@ describe('<Alert />', () => {
     const element = screen.getByTestId(testId);
 
     // Renders Icon
-    const icon = await within(element).findByRole('img');
+    const icon = await within(element).findByRole('img', { hidden: true });
     expect(icon).toBeInTheDocument();
 
     // Render message
@@ -137,7 +139,7 @@ describe('<Alert />', () => {
     expect(screen.getByTestId('message'));
 
     // Renders Icon
-    const icon = within(element).queryByRole('img');
+    const icon = within(element).queryByRole('img', { hidden: true });
     expect(icon).not.toBeInTheDocument();
   });
 
@@ -149,7 +151,7 @@ describe('<Alert />', () => {
     const element = screen.getByTestId(testId);
 
     // Renders Icon
-    const icon = await within(element).findByRole('img');
+    const icon = await within(element).findByRole('img', { hidden: true });
     expect(icon).toBeInTheDocument();
 
     // Render message
