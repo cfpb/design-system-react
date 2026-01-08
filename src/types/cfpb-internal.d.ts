@@ -4,3 +4,15 @@ declare module '@cfpb/cfpb-design-system/src/components/cfpb-forms' {
     init(options?: { maxSelections?: number; renderTags?: boolean }): any;
   }
 }
+
+declare module '@cfpb/cfpb-design-system/src/components/cfpb-expandables' {
+  export class Expandable {
+    static init(element?: Element | NodeList | null): void;
+  }
+}
+
+declare module '@cfpb/cfpb-design-system/src/components/cfpb-expandables' {
+  export class ExpandableGroup {
+    static init(element?: Element | NodeList | null): void;
+  }
+}

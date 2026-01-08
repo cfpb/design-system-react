@@ -1560,20 +1560,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-atomic-component@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@cfpb/cfpb-atomic-component@npm:2.0.1"
-  checksum: 10/788f7570d6f650c1d2239a5eac23233d3d48ce4998d5ea9728551919c8e3c09fed1ae5f15d04bc8c977807d6c225a8692b366a1d5d86a75bc4c91c041074c343
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-core@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-core@npm:2.0.0"
-  checksum: 10/99c0fe8e0ae6be420f3c9adb9675d2f357b477da2d4db7436edef41e87aa37151a593d8a06c9127425e03a6089c8974a4ea6a11ace4d269f9947600e4508f5d2
-  languageName: node
-  linkType: hard
-
 "@cfpb/cfpb-design-system@npm:^4.3.2":
   version: 4.3.2
   resolution: "@cfpb/cfpb-design-system@npm:4.3.2"
@@ -1584,31 +1570,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-expandables@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@cfpb/cfpb-expandables@npm:2.0.1"
-  dependencies:
-    "@cfpb/cfpb-atomic-component": "npm:^2.0.1"
-    "@cfpb/cfpb-core": "npm:^2.0.0"
-    "@cfpb/cfpb-icons": "npm:^2.0.0"
-  checksum: 10/c1ce31a80bf6a9951a189a3e41fd296dd92b52db594b9fcbe472680f32bb1b7cb20d21072e8553a590b186f1fe4f5a999aea16c1492f50109def92d774706dcd
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-icons@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-icons@npm:2.0.0"
-  checksum: 10/fa1a05f951e36139b98cb2e83d0f9d6f027d8e55984493c0cd7a43d59924491f08dd9d792440ee3eb136ee63e45931ad281785dc7d193c870bcae3496846eef5
-  languageName: node
-  linkType: hard
-
 "@cfpb/design-system-react@workspace:.":
   version: 0.0.0-use.local
   resolution: "@cfpb/design-system-react@workspace:."
   dependencies:
     "@babel/core": "npm:^7.20.12"
     "@cfpb/cfpb-design-system": "npm:^4.3.2"
-    "@cfpb/cfpb-expandables": "npm:^2.0.1"
     "@chromatic-com/storybook": "npm:^3"
     "@fontsource-variable/source-sans-3": "npm:^5.2.8"
     "@nabla/vite-plugin-eslint": "npm:1.4.1"
