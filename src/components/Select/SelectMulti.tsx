@@ -24,8 +24,6 @@ export const SelectMulti = ({
   const [selectedIndicies, setSelectedIndicies] = useState<number[]>([]);
   const inputReference = useRef(null);
 
-  console.log(maxSelections, '<<<<<')
-
   // Initialize and configure DS Multiselect
   useEffect(() => {
     const ms = new Multiselect(inputReference.current);
