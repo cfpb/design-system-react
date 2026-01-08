@@ -42,6 +42,17 @@ export const Default: Story = {
   }
 };
 
+
+export const PaddedExpandable: Story = {
+  args: {
+    ...Default.args,
+    header: 'Expandable Header',
+    icon: 'bank',
+    isPadded: true
+  }
+};
+
+
 export const OpenOnLoad: Story = {
   args: {
     ...Default.args,

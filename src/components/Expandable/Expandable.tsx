@@ -9,14 +9,18 @@ export interface ExpandableProperties
   extends React.HTMLAttributes<HTMLDivElement> {
   header: string;
   children: ReactNode;
+  icon?: string;
   inAccordion?: boolean;
+  isPadded?: boolean;
   openOnLoad?: boolean;
 }
 
 export const Expandable: React.FC<ExpandableProperties> = ({
   header,
   children,
+  icon = '',
   inAccordion = false,
+  isPadded = false,
   openOnLoad = false,
   className = '',
   ...properties
@@ -30,12 +34,12 @@ export const Expandable: React.FC<ExpandableProperties> = ({
 
   const expandableClasses = [
     'o-expandable',
-    'o-expandable--padded',
     'o-expandable--background',
     'o-expandable--border',
     className
   ];
 
+  if (isPadded) expandableClasses.push('o-expandable--padded');
   if (openOnLoad) expandableClasses.push('o-expandable--onload-open');
 
   return (
@@ -44,17 +48,18 @@ export const Expandable: React.FC<ExpandableProperties> = ({
       data-testid='expandable'
       {...properties}
     >
-      <button
-        type='button'
-        className='o-expandable__header o-expandable__target'
-        title={header}
-      >
-        <h3 className='h4 o-expandable__label'>{header}</h3>
-        <span className='o-expandable__link'>
-          <span className='o-expandable__cue o-expandable__cue-open'>
+      <button type='button' className='o-expandable__header' title={header}>
+        {
+          icon ? <span className='o-expandable__icon'>
+            <Icon name={icon} />
+          </span> : null
+        }
+        <h3 className='o-expandable__label'>{header}</h3>
+        <span className='o-expandable__cues'>
+          <span className='o-expandable__cue-open'>
             <Icon name='plus-round' alt='plus-round' />
           </span>
-          <span className='o-expandable__cue o-expandable__cue-close'>
+          <span className='o-expandable__cue-close'>
             <Icon name='minus-round' alt='minus-round' />
           </span>
         </span>
