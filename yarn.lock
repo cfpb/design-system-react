@@ -1567,16 +1567,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-buttons@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-buttons@npm:2.0.0"
-  dependencies:
-    "@cfpb/cfpb-core": "npm:^2.0.0"
-    "@cfpb/cfpb-icons": "npm:^2.0.0"
-  checksum: 10/e07f677eb23bcc786111029740d30b26c042b0e5d7c14ea6cc7013d42c675496b6ae2d6437375e23fb1b22fef684d57a9e013c51529847558ebb8da03d80850d
-  languageName: node
-  linkType: hard
-
 "@cfpb/cfpb-core@npm:^2.0.0":
   version: 2.0.0
   resolution: "@cfpb/cfpb-core@npm:2.0.0"
@@ -1605,25 +1595,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-forms@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-forms@npm:2.0.0"
-  dependencies:
-    "@cfpb/cfpb-buttons": "npm:^2.0.0"
-    "@cfpb/cfpb-core": "npm:^2.0.0"
-    "@cfpb/cfpb-grid": "npm:^2.0.0"
-    "@cfpb/cfpb-icons": "npm:^2.0.0"
-  checksum: 10/693f231d2dc850b861979b2ee78a2e38018f68d76e9ea587196f4702a6ff22ba346bf5fa88e77c79aefffa40c20556d998028a9e4a314ea530f192547ac49032
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-grid@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-grid@npm:2.0.0"
-  checksum: 10/2f2e19f877a331fc0cc1378140a3d5c8d3d523c972c002da63ecbb16553b5e5f36a4541046f3f73853abee8c42ae391a52b57aaa3511b74b9f0fabcb7a249c5a
-  languageName: node
-  linkType: hard
-
 "@cfpb/cfpb-icons@npm:^2.0.0":
   version: 2.0.0
   resolution: "@cfpb/cfpb-icons@npm:2.0.0"
@@ -1638,7 +1609,6 @@ __metadata:
     "@babel/core": "npm:^7.20.12"
     "@cfpb/cfpb-design-system": "npm:^4.3.2"
     "@cfpb/cfpb-expandables": "npm:^2.0.1"
-    "@cfpb/cfpb-forms": "npm:^2.0.0"
     "@chromatic-com/storybook": "npm:^3"
     "@fontsource-variable/source-sans-3": "npm:^5.2.8"
     "@nabla/vite-plugin-eslint": "npm:1.4.1"
