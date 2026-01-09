@@ -6,7 +6,7 @@ import processIcons from './postcss/processIcons';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import VitePluginReactRemoveAttributes from 'vite-plugin-react-remove-attributes';
-import svgLoader from 'vite-svg-loader';
+import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
 
@@ -28,8 +28,8 @@ export default defineConfig(() => ({
   },
   plugins: [
     eslintPlugin(),
-    svgLoader({
-      defaultImport: 'raw' // Allows DS to render it's own icons
+    svgr({
+      include: '**/*.svg?react'
     }),
     react(),
     tsConfigPaths(),
@@ -42,12 +42,19 @@ export default defineConfig(() => ({
   ],
   css: {
     postcss: {
-      plugins: [processIcons]
+      plugins: [processIcons as any]
     }
   },
   test: {
     globals: true,
     environment: 'jsdom',
+    setupFiles: ['./setupTests.ts'],
+    css: true,
+    server: {
+      deps: {
+        inline: ['@cfpb', 'vite-plugin-svgr']
+      }
+    },
     clearMocks: true,
     coverage: {
       provider: 'istanbul',
@@ -57,10 +64,11 @@ export default defineConfig(() => ({
       reportsDirectory: 'coverage',
       all: false
     },
-    server: {
-      deps: {
-        // [Fix] TypeError: Unknown file extension ".svg" for @cpfb/cfpb-icons
-        inline: ['@cfpb']
+    deps: {
+      optimizer: {
+        web: {
+          include: ['vite-plugin-svgr']
+        }
       }
     }
   },

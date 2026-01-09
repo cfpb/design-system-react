@@ -16,3 +16,9 @@ declare module '@cfpb/cfpb-design-system/src/components/cfpb-expandables' {
     static init(element?: Element | NodeList | null): void;
   }
 }
+
+declare module '*.svg?react' {
+  import { FC, SVGProps } from 'react';
+  const content: FC<SVGProps<SVGSVGElement>>;
+  export default content;
+}
