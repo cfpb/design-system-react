@@ -31,7 +31,12 @@ export const useIconSvg = (
           setIconComponent(() => importedIcon.default);
         }
       } catch (error) {
-        console.error(`Icon not found: ${fileName}.svg`, error);
+        const errorIcon = (await import(
+          `@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/error.svg?react`
+        )) as SVGModule;
+        if (isMounted) {
+          setIconComponent(() => errorIcon.default);
+        }
       }
     };
 
