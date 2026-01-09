@@ -25,7 +25,7 @@ const customDropdownIndicator = (properties): JSX.Element => (
 );
 
 /**
- * A dropdown input component that supports multi-select.
+ * A dropdown input component that supports multi-select. TEst
  *
  * Passing the `value` prop makes the dropdown a controlled component.
  * @returns JSX.Element
