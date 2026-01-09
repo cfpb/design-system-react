@@ -9,6 +9,7 @@ import VitePluginReactRemoveAttributes from 'vite-plugin-react-remove-attributes
 import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
+import fs from 'fs';
 
 export default defineConfig(() => ({
   resolve: {
@@ -28,6 +29,18 @@ export default defineConfig(() => ({
   },
   plugins: [
     eslintPlugin(),
+    {
+      name: 'svg-raw-loader',
+      enforce: 'pre', // Run before SVGR and other plugins
+      load(id) {
+        // Only target .svg files that do NOT have a query (like ?react)
+        if (id.endsWith('.svg') && !id.includes('?')) {
+          const svgRaw = fs.readFileSync(id, 'utf-8');
+          // Return the raw SVG content wrapped in a JS export
+          return `export default ${JSON.stringify(svgRaw)}`;
+        }
+      }
+    },
     svgr({
       include: '**/*.svg?react'
     }),
@@ -48,7 +61,10 @@ export default defineConfig(() => ({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./setupTests.ts'],
+    // This ensures Vitest uses the same plugin pipeline as Vite
+    transformMode: {
+      web: [/.[tj]sx?$/]
+    },
     css: true,
     server: {
       deps: {
