@@ -67,7 +67,8 @@ export const DestructiveAction: Story = {
   render: arguments_ => (
     <ButtonGroup>
       <Button label='Action' />
-      <Button {...arguments_} />
+      <Button label={'Destructive action'}
+              {...arguments_} />
     </ButtonGroup>
   )
 };

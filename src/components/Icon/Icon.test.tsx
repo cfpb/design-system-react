@@ -53,12 +53,14 @@ describe('Icon', () => {
     expect(icon.getAttribute('class')).toMatch(`cf-icon-svg--${name}-closed`);
   });
 
-  it('Provides message for unknown icons', async () => {
+  it('Returns error icon when icon is unknown', async () => {
     const name = 'unknown';
 
     render(<Icon name={name} />);
 
-    const notFound = await screen.findByText(/icon not found/i);
-    expect(notFound.getAttribute('class')).toMatch('cf-icon-svg-wrapper');
+    const notFound = await screen.findByRole('img', { hidden: true });
+    expect(notFound.getAttribute('class')).toMatch(
+      'cf-icon-svg cf-icon-svg--unknown'
+    );
   });
 });

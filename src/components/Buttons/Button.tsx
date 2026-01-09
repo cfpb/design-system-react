@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
-import { ButtonIcon } from './ButtonIcon';
+import { Icon } from '../Icon/Icon';
 
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -69,9 +69,9 @@ export function Button({
 
   return (
     <button type='button' className={[...styles].join(' ')} {...properties}>
-      <ButtonIcon name={iconLeft} isLeft />
-      {label}
-      <ButtonIcon name={iconRight} isRight />
+      {iconLeft ? <Icon name={iconLeft} /> : null }
+      {iconLeft || iconRight ? <span>{label}</span> : label}
+      {iconRight ? <Icon name={iconRight} /> : null }
     </button>
   );
 }
