@@ -1,4 +1,4 @@
-import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-expandables/src/Expandable';
+import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import classnames from 'classnames';
 import type React from 'react';
 import type { ReactNode } from 'react';

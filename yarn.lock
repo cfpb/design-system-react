@@ -1560,74 +1560,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-atomic-component@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@cfpb/cfpb-atomic-component@npm:2.0.1"
-  checksum: 10/788f7570d6f650c1d2239a5eac23233d3d48ce4998d5ea9728551919c8e3c09fed1ae5f15d04bc8c977807d6c225a8692b366a1d5d86a75bc4c91c041074c343
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-buttons@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-buttons@npm:2.0.0"
-  dependencies:
-    "@cfpb/cfpb-core": "npm:^2.0.0"
-    "@cfpb/cfpb-icons": "npm:^2.0.0"
-  checksum: 10/e07f677eb23bcc786111029740d30b26c042b0e5d7c14ea6cc7013d42c675496b6ae2d6437375e23fb1b22fef684d57a9e013c51529847558ebb8da03d80850d
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-core@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-core@npm:2.0.0"
-  checksum: 10/99c0fe8e0ae6be420f3c9adb9675d2f357b477da2d4db7436edef41e87aa37151a593d8a06c9127425e03a6089c8974a4ea6a11ace4d269f9947600e4508f5d2
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-design-system@npm:^4.2.2":
-  version: 4.2.2
-  resolution: "@cfpb/cfpb-design-system@npm:4.2.2"
+"@cfpb/cfpb-design-system@npm:4.3.2":
+  version: 4.3.2
+  resolution: "@cfpb/cfpb-design-system@npm:4.3.2"
   dependencies:
     "@fontsource-variable/source-sans-3": "npm:5.2.9"
     tippy.js: "npm:6.3.7"
-  checksum: 10/46065cc6e7901332ad025a937d9d722ce75e147793619ba225a3997db633eadbd67b5cd87530bbf65e34c8bbf1214171fee74620df53d282328dfb38b370a1a5
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-expandables@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@cfpb/cfpb-expandables@npm:2.0.1"
-  dependencies:
-    "@cfpb/cfpb-atomic-component": "npm:^2.0.1"
-    "@cfpb/cfpb-core": "npm:^2.0.0"
-    "@cfpb/cfpb-icons": "npm:^2.0.0"
-  checksum: 10/c1ce31a80bf6a9951a189a3e41fd296dd92b52db594b9fcbe472680f32bb1b7cb20d21072e8553a590b186f1fe4f5a999aea16c1492f50109def92d774706dcd
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-forms@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-forms@npm:2.0.0"
-  dependencies:
-    "@cfpb/cfpb-buttons": "npm:^2.0.0"
-    "@cfpb/cfpb-core": "npm:^2.0.0"
-    "@cfpb/cfpb-grid": "npm:^2.0.0"
-    "@cfpb/cfpb-icons": "npm:^2.0.0"
-  checksum: 10/693f231d2dc850b861979b2ee78a2e38018f68d76e9ea587196f4702a6ff22ba346bf5fa88e77c79aefffa40c20556d998028a9e4a314ea530f192547ac49032
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-grid@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-grid@npm:2.0.0"
-  checksum: 10/2f2e19f877a331fc0cc1378140a3d5c8d3d523c972c002da63ecbb16553b5e5f36a4541046f3f73853abee8c42ae391a52b57aaa3511b74b9f0fabcb7a249c5a
-  languageName: node
-  linkType: hard
-
-"@cfpb/cfpb-icons@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@cfpb/cfpb-icons@npm:2.0.0"
-  checksum: 10/fa1a05f951e36139b98cb2e83d0f9d6f027d8e55984493c0cd7a43d59924491f08dd9d792440ee3eb136ee63e45931ad281785dc7d193c870bcae3496846eef5
+  checksum: 10/bafcfd51a788d9425aa13dc284d80adfb39291d54e8dbdcf8d5e45f04c63546b8e3f5b9011bf1c78e534c7049f4e27be099481d391f4013aab7974addd9c5155
   languageName: node
   linkType: hard
 
@@ -1636,12 +1575,8 @@ __metadata:
   resolution: "@cfpb/design-system-react@workspace:."
   dependencies:
     "@babel/core": "npm:^7.20.12"
-    "@cfpb/cfpb-design-system": "npm:^4.2.2"
-    "@cfpb/cfpb-expandables": "npm:^2.0.1"
-    "@cfpb/cfpb-forms": "npm:^2.0.0"
-    "@cfpb/cfpb-icons": "npm:^2.0.0"
+    "@cfpb/cfpb-design-system": "npm:4.3.2"
     "@chromatic-com/storybook": "npm:^3"
-    "@fontsource-variable/source-sans-3": "npm:^5.2.8"
     "@nabla/vite-plugin-eslint": "npm:1.4.1"
     "@storybook/addon-a11y": "npm:^8.6.7"
     "@storybook/addon-actions": "npm:^8.6.7"
@@ -2546,13 +2481,6 @@ __metadata:
   version: 5.2.9
   resolution: "@fontsource-variable/source-sans-3@npm:5.2.9"
   checksum: 10/fa48c295cc37cda0ab9bcf08b5e37d156c39fa09cd3caac41bd1cbec6b6b134858ec779ce40aa9be3af8c7970142498896404f4e5a188b3dc17b670fcd8c34c8
-  languageName: node
-  linkType: hard
-
-"@fontsource-variable/source-sans-3@npm:^5.2.8":
-  version: 5.2.8
-  resolution: "@fontsource-variable/source-sans-3@npm:5.2.8"
-  checksum: 10/256d4a169b5bc13c8f33d8050fdf5c724e0da9758df10c1b054e4db814f840cf8b563aa9e4ab28a5d28d14f3c3bb52e7c17ff7e6f995760aa16f2244ea61521e
   languageName: node
   linkType: hard
 

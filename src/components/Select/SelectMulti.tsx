@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import { Multiselect } from '@cfpb/cfpb-forms';
+import { Multiselect } from '@cfpb/cfpb-design-system/src/components/cfpb-forms';
 import { useEffect, useRef, useState } from 'react';
 import { noOp } from '~/src/utils/noOp';
 import type { SelectProperties } from './Select';
@@ -21,7 +21,7 @@ export const SelectMulti = ({
   maxSelections = MAX_SELECTIONS,
   ...properties
 }: SelectProperties): JSX.Element => {
-  const [selectedIndicies, setSelectedIndicies] = useState([]);
+  const [selectedIndicies, setSelectedIndicies] = useState<number[]>([]);
   const inputReference = useRef(null);
 
   // Initialize and configure DS Multiselect
@@ -64,7 +64,7 @@ export const SelectMulti = ({
         data-testid={id}
         ref={inputReference}
         multiple
-        placeholder={`Select up to ${maxSelections}`}
+        data-placeholder={`Select up to ${maxSelections}`}
         data-open
         {...properties}
       >
