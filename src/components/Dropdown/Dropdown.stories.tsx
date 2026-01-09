@@ -6,7 +6,7 @@ import { Dropdown } from './Dropdown';
 import { MockOptions } from './utils';
 
 /**
- * Dropdowns are cool components for cool people.
+ * Dropdowns are cool components for cool people including me. 
  *
  * Source: <a href='https://cfpb.github.io/design-system/components/dropdowns-and-multiselects' target='_blank'>https://cfpb.github.io/design-system/components/dropdowns-and-multiselects</a>
  */
