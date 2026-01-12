@@ -91,13 +91,16 @@ export default defineConfig(() => ({
   build: {
     lib: {
       entry: resolve('src', 'index.ts'),
-      name,
+      name: 'design-system-react',
       formats: ['es', 'cjs'],
-      fileName: (format): string => `${name}.${format}.js`
+      fileName: (format): string => `index.${format === 'es' ? 'mjs' : 'js'}`
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react-router-dom'],
       output: {
+        // This prevents the "flat" file explosion for icons/assets in the root
+        assetFileNames: 'assets/[name].[ext]',
+        chunkFileNames: 'chunks/[name]-[hash].js',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
