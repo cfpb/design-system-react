@@ -8,10 +8,10 @@ import dts from 'vite-plugin-dts';
 import VitePluginReactRemoveAttributes from 'vite-plugin-react-remove-attributes';
 import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
-import { name } from './package.json';
 import fs from 'fs';
 
 export default defineConfig(() => ({
+  publicDir: false,
   resolve: {
     alias: {
       '~': resolve(__dirname),
