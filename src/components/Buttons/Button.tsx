@@ -69,9 +69,9 @@ export function Button({
 
   return (
     <button type='button' className={[...styles].join(' ')} {...properties}>
-      {iconLeft ? <Icon name={iconLeft} /> : null }
+      {iconLeft ? <Icon name={iconLeft} isPresentational /> : null}
       {iconLeft || iconRight ? <span>{label}</span> : label}
-      {iconRight ? <Icon name={iconRight} /> : null }
+      {iconRight ? <Icon name={iconRight} isPresentational /> : null}
     </button>
   );
 }
