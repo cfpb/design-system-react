@@ -1,3 +1,4 @@
+import '@fontsource-variable/source-sans-3';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
 

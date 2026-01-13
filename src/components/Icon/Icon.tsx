@@ -88,29 +88,22 @@ export const Icon = ({
 }: IconProperties): JSX.Element | null => {
   const shapeModifier = getShapeModifier(name, withBg);
   const fileName = `${name}${shapeModifier}`;
-  const classes = ['cf-icon-svg', `cf-icon-svg--${fileName}`];
+  const IconComponent = useIconSvg(fileName);
 
-  const icon = useIconSvg(fileName);
+  if (!IconComponent) return null;
 
-  if (!icon) return null;
-
-  const iconAttributes = [
-    `class="${classNames(classes)}"`,
-    isPresentational ? '' : 'role="img"',
-    isPresentational ? '' : `alt="${alt ?? name}"`,
-    isPresentational ? 'aria-hidden="true"' : '',
-    ariaLabel ? `aria-label="${ariaLabel}"` : '',
-    ariaLabelledby ? `aria-labelledby="${ariaLabelledby}"` : '',
-    ariaDescribedby ? `aria-describedby="${ariaDescribedby}"` : '',
-    `style="font-size: ${sizeMap[size] || size}"`
-  ].join(' ');
-
-  const iconHtml = `${icon}`.replace('<svg', `<svg ${iconAttributes} `);
+  const classes = classNames('cf-icon-svg', `cf-icon-svg--${fileName}`);
+  const fontSize = sizeMap[size] || size;
 
   return (
-    <span
-      className='cf-icon-svg-wrapper'
-      dangerouslySetInnerHTML={{ __html: iconHtml }}
+    <IconComponent
+      className={classes}
+      style={{ fontSize }}
+      role={isPresentational ? undefined : 'img'}
+      aria-label={ariaLabel || (!isPresentational ? alt ?? name : undefined)}
+      aria-labelledby={ariaLabelledby || undefined}
+      aria-describedby={ariaDescribedby || undefined}
+      aria-hidden={isPresentational ? 'true' : undefined}
       {...others}
     />
   );

@@ -9,7 +9,7 @@ export interface SelectOption {
 }
 
 export interface SelectProperties
-  extends SelectHTMLAttributes<HTMLSelectElement> {
+  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
   disabled?: boolean;
   id: string;
   isMulti?: boolean;

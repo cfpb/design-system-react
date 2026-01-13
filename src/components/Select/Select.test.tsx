@@ -86,8 +86,8 @@ describe('<SelectMulti />', () => {
 
     // Change handler is called with the expected content
     expect(onChange).toHaveBeenCalledWith([
-      { ...MultipleSelectOptions[1], selected: true },
-      { ...MultipleSelectOptions[4], selected: true }
+      { ...MultipleSelectOptions[0], selected: true },
+      { ...MultipleSelectOptions[3], selected: true }
     ]);
 
     // Tags are rendered for the selected options
@@ -109,8 +109,8 @@ describe('<SelectMulti />', () => {
 
     // Allows deselection of options
     await act(async () => {
-      await user.click(screen.getByLabelText('Option 1'));
-      await user.click(screen.getByLabelText('Option 4'));
+      await user.click(screen.getByRole('button', {name: 'Option 1'}));
+      await user.click(screen.getByRole('button', {name: 'Option 4'}));
     });
 
     const NoButtons = screen.queryAllByRole(`button`);

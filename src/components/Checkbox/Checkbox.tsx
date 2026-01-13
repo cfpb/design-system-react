@@ -76,7 +76,7 @@ export const Checkbox = ({
   const containerClasses = [
     ...containerBaseStyles,
     isLarge ? 'm-form-field--lg-target' : '',
-    borderStatus[status] ?? '',
+    status ? borderStatus[status] : '',
     className
   ];
 

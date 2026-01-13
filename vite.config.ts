@@ -6,41 +6,43 @@ import processIcons from './postcss/processIcons';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import VitePluginReactRemoveAttributes from 'vite-plugin-react-remove-attributes';
-import svgLoader from 'vite-svg-loader';
+import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
+import fs from 'fs';
 
 export default defineConfig(() => ({
   resolve: {
     alias: {
       '~': resolve(__dirname),
-      '@cfpb/cfpb-design-system/src/index': resolve(
+      // Catch-all for internal library paths to bypass restrictive "exports" in package.json
+      '@cfpb/cfpb-design-system/src': resolve(
         __dirname,
-        'node_modules/@cfpb/cfpb-design-system/src/index.scss'
+        'node_modules/@cfpb/cfpb-design-system/src'
       ),
-      '@cfpb/cfpb-design-system/src/abstracts': resolve(
+      // Helper for specifically accessing the new abstracts location
+      '@cfpb/cfpb-design-system/src/elements/abstracts': resolve(
         __dirname,
-        'node_modules/@cfpb/cfpb-design-system/src/abstracts/index.scss'
-      ),
-      '@cfpb/cfpb-design-system/src/utilities': resolve(
-        __dirname,
-        'node_modules/@cfpb/cfpb-design-system/src/utilities/index.scss'
-      ),
-      '@cfpb/cfpb-design-system/src/components/cfpb-typography/mixins': resolve(
-        __dirname,
-        'node_modules/@cfpb/cfpb-design-system/src/components/cfpb-typography/mixins.scss'
-      ),
-      '@cfpb/cfpb-design-system/src/components/cfpb-notifications/vars':
-        resolve(
-          __dirname,
-          'node_modules/@cfpb/cfpb-design-system/src/components/cfpb-notifications/vars.scss'
-        )
+        'node_modules/@cfpb/cfpb-design-system/src/elements/abstracts/index.scss'
+      )
     }
   },
   plugins: [
     eslintPlugin(),
-    svgLoader({
-      defaultImport: 'raw' // Allows DS to render it's own icons
+    {
+      name: 'svg-raw-loader',
+      enforce: 'pre', // Run before SVGR and other plugins
+      load(id) {
+        // Only target .svg files that do NOT have a query (like ?react)
+        if (id.endsWith('.svg') && !id.includes('?')) {
+          const svgRaw = fs.readFileSync(id, 'utf-8');
+          // Return the raw SVG content wrapped in a JS export
+          return `export default ${JSON.stringify(svgRaw)}`;
+        }
+      }
+    },
+    svgr({
+      include: '**/*.svg?react'
     }),
     react(),
     tsConfigPaths(),
@@ -53,12 +55,22 @@ export default defineConfig(() => ({
   ],
   css: {
     postcss: {
-      plugins: [processIcons]
+      plugins: [processIcons as any]
     }
   },
   test: {
     globals: true,
     environment: 'jsdom',
+    // This ensures Vitest uses the same plugin pipeline as Vite
+    transformMode: {
+      web: [/.[tj]sx?$/]
+    },
+    css: true,
+    server: {
+      deps: {
+        inline: ['@cfpb', 'vite-plugin-svgr']
+      }
+    },
     clearMocks: true,
     coverage: {
       provider: 'istanbul',
@@ -68,10 +80,11 @@ export default defineConfig(() => ({
       reportsDirectory: 'coverage',
       all: false
     },
-    server: {
-      deps: {
-        // [Fix] TypeError: Unknown file extension ".svg" for @cpfb/cfpb-icons
-        inline: ['@cfpb']
+    deps: {
+      optimizer: {
+        web: {
+          include: ['vite-plugin-svgr']
+        }
       }
     }
   },
