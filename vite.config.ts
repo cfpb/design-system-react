@@ -8,6 +8,7 @@ import dts from 'vite-plugin-dts';
 import VitePluginReactRemoveAttributes from 'vite-plugin-react-remove-attributes';
 import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
+import { name } from './package.json';
 import fs from 'fs';
 
 export default defineConfig(() => ({
@@ -91,7 +92,7 @@ export default defineConfig(() => ({
   build: {
     lib: {
       entry: resolve('src', 'index.ts'),
-      name: 'design-system-react',
+      name,
       formats: ['es', 'cjs'],
       fileName: (format): string => `index.${format === 'es' ? 'mjs' : 'js'}`
     },
