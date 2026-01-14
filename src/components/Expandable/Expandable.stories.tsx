@@ -43,7 +43,7 @@ export const Default: Story = {
   }
 };
 
-export const OpenForLoad: Story = {
+export const OpenOnLoad: Story = {
   args: {
     ...Default.args,
     header: 'Expandable label',
