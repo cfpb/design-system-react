@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '~/src/index';
+import { Button, Icon, Link, LinkText } from '~/src/index';
 import { ButtonGroup } from './ButtonGroup';
 
 /**
@@ -83,6 +83,31 @@ export const FullWidthOnSmallScreens: Story = {
   }
 };
 
+export const ButtonLink: Story = {
+  name: 'Button link',
+  render: arguments_ => (
+    <ButtonGroup>
+      <Link
+        asButton
+        hasIcon
+        href='http://example.com'
+        key='Link styled as a button'
+        {...arguments_}
+      >
+        <span>Link styled as a button</span>
+        <Icon name='download' />
+      </Link>
+      <Button
+        asLink
+        key='Button styled as a link'
+        {...arguments_}
+        label='Button styled as a link'
+        iconRight='download'
+      />
+    </ButtonGroup>
+  )
+};
+
 export const ButtonsGroup: Story = {
   name: 'Button group',
   render: arguments_ => (
@@ -100,10 +125,14 @@ export const StaticIconButtons: Story = {
     ...Primary.args
   },
   render: arguments_ => (
-    <ButtonGroup>
-      <Button {...arguments_} label='Back' iconLeft='left' />
-      <Button {...arguments_} label='Next' iconRight='right' />
-    </ButtonGroup>
+    <>
+      <ButtonGroup>
+        <Button {...arguments_} label='Back' iconLeft='left' />
+        <Button {...arguments_} label='Next' iconRight='right' />
+      </ButtonGroup>
+      <br />
+      <Button label='Upload file' iconRight='upload' />
+    </>
   )
 };
 
