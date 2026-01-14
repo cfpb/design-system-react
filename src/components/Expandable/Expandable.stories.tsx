@@ -12,7 +12,8 @@ const meta: Meta<typeof Expandable> = {
     docs: {
       description: {
         component: `
-### CFPB DS - Expandable component
+### Expandables
+Expandables are components that have additional content that can be opened (expanded) and closed (collapsed). They can appear on their own or in groups. They may be helpful for FAQ sections, schedules, and for conserving vertical space by collapsing secondary information on mobile devices.
 
 Source: https://cfpb.github.io/design-system/components/expandables
 `
@@ -37,26 +38,15 @@ const Content = (
 
 export const Default: Story = {
   args: {
-    header: 'Expandable Header',
+    header: 'Expandable label',
     children: Content
   }
 };
 
-
-export const PaddedExpandable: Story = {
+export const OpenForLoad: Story = {
   args: {
     ...Default.args,
-    header: 'Expandable Header',
-    icon: 'bank',
-    isPadded: true
-  }
-};
-
-
-export const OpenOnLoad: Story = {
-  args: {
-    ...Default.args,
-    header: 'Expandable Header',
+    header: 'Expandable label',
     openOnLoad: true
   }
 };
@@ -98,6 +88,15 @@ export const TestExpandCollapse: Story = {
   },
   args: {
     ...Default.args,
-    header: 'Expandable Header'
+    header: 'Expandable label'
+  }
+};
+
+export const PaddedExpandable: Story = {
+  args: {
+    ...Default.args,
+    header: 'Expandable label',
+    icon: 'bank',
+    isPadded: true
   }
 };
