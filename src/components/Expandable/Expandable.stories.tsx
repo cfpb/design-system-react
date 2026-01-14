@@ -1,8 +1,8 @@
 import { expect } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
-import { Expandable } from '~/src/index';
 import { sleep } from '../../utils/sleep';
+import { Expandable } from '~/src/index';
 import { ExpandableGroup } from './ExpandableGroup';
 
 const meta: Meta<typeof Expandable> = {
@@ -21,6 +21,14 @@ Source: https://cfpb.github.io/design-system/components/expandables
     }
   }
 };
+
+const meta: Meta<typeof ExpandableGroup> = {
+  title: 'Components (Draft)/Expandable/Groups',
+  component: ExpandableGroup,
+  tags: ['autodocs'],
+  argTypes: {
+    accordion: { control: 'boolean' }
+  },
 
 export default meta;
 
