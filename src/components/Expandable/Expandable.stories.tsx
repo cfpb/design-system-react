@@ -52,7 +52,7 @@ export const OpenOnLoad: Story = {
   }
 };
 
-export const TestExpandCollapse: Story = {
+export const Accordion: Story = {
   play: async ({ canvasElement }) => {
     const waitTime = 500;
     const canvas = within(canvasElement);
