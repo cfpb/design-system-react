@@ -5,14 +5,14 @@ import { Expandable } from '~/src/index';
 import { sleep } from '../../utils/sleep';
 
 const meta: Meta<typeof Expandable> = {
-  title: 'Components (Draft)/Expandable/Single',
-  component: Expandable,
+  title: 'Components (Draft)/Expandables',
+  component: Expandables,
   tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
         component: `
-### Expandables
+        
 Expandables are components that have additional content that can be opened (expanded) and closed (collapsed). They can appear on their own or in groups. They may be helpful for FAQ sections, schedules, and for conserving vertical space by collapsing secondary information on mobile devices.
 
 Source: https://cfpb.github.io/design-system/components/expandables
