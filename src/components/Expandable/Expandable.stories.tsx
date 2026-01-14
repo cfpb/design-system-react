@@ -7,7 +7,7 @@ import { sleep } from '../../utils/sleep';
 const meta: Meta<typeof Expandable> = {
   title: 'Components (Draft)/Expandables',
   component: Expandable,
-  tags: ['autodocs'], 
+  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
