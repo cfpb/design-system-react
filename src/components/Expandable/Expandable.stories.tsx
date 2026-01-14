@@ -14,6 +14,7 @@ const meta: Meta<typeof Expandable> = {
         component: `
         
 Expandables are components that have additional content that can be opened (expanded) and closed (collapsed). They can appear on their own or in groups. They may be helpful for FAQ sections, schedules, and for conserving vertical space by collapsing secondary information on mobile devices.
+
 Source: https://cfpb.github.io/design-system/components/expandables
 `
       }
