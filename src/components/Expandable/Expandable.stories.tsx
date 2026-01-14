@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { sleep } from '../../utils/sleep';
 import { Expandable } from '~/src/index';
-import { ExpandableGroup } from './ExpandableGroup';
 
 const meta: Meta<typeof Expandable> = {
   title: 'Components (Draft)/Expandables',
@@ -21,14 +20,6 @@ Source: https://cfpb.github.io/design-system/components/expandables
     }
   }
 };
-
-const meta: Meta<typeof ExpandableGroup> = {
-  title: 'Components (Draft)/Expandable/Groups',
-  component: ExpandableGroup,
-  tags: ['autodocs'],
-  argTypes: {
-    accordion: { control: 'boolean' }
-  },
 
 export default meta;
 
@@ -67,55 +58,3 @@ export const PaddedExpandable: Story = {
     isPadded: true
   }
 };
-
-export const Default: Story = {
-  render: arguments_ => (
-    <ExpandableGroup {...arguments_}>
-      {['A', 'B', 'C'].map(value => (
-        <Expandable
-          key={`item-${value}`}
-          header={`Expandable ${value}`}
-          inAccordion={arguments_.accordion}
-        >
-          <Content accordion={arguments_.accordion} />
-        </Expandable>
-      ))}
-    </ExpandableGroup>
-  ),
-  play: async ({ canvasElement, step }) => {
-    // Setup
-    const timeout = 1000;
-    const options = { timeout };
-    const canvas = within(canvasElement);
-    const element = await canvas.findByTitle('Expandable A');
-
-    // Helpers
-    const expectAriaExpanded = (isExpanded: string): void =>
-      expect(element.ariaExpanded).toBe(isExpanded);
-
-    // Test
-    await step('Starts out collapsed', async () => {
-      await waitFor(async () => expectAriaExpanded('false'), options);
-    });
-
-    await step('Click to expanded', async () => {
-      userEvent.click(element);
-      await waitFor(async () => expectAriaExpanded('true'), options);
-      await sleep(timeout);
-    });
-
-    await step('Click to collapse', async () => {
-      userEvent.click(element);
-      await waitFor(async () => expectAriaExpanded('false'), options);
-    });
-  },
-  args: {
-    groupId: 'DefaultGroup'
-  }
-};
-
-export const Accordion: Story = {
-  ...Default,
-  args: {
-    accordion: true,
-    groupId: 'AccordionGroup'
