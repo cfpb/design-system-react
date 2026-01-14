@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { Expandable } from '~/src/index';
 import { sleep } from '../../utils/sleep';
+import { ExpandableGroup } from './ExpandableGroup';
 
 const meta: Meta<typeof Expandable> = {
   title: 'Components (Draft)/Expandables',
@@ -50,47 +51,6 @@ export const OpenOnLoad: Story = {
   }
 };
 
-export const TestExpandCollapse: Story = {
-  play: async ({ canvasElement }) => {
-    const waitTime = 500;
-    const canvas = within(canvasElement);
-
-    // Wait for initialization
-    await sleep(waitTime);
-
-    const heading = canvas.getByText(OpenOnLoad.args?.header ?? '');
-    expect(heading).toBeInTheDocument();
-
-    // Content wrapper collapsed
-    const showHide = canvas.getByRole('button');
-    expect(showHide.getAttribute('aria-expanded')).toMatch('false');
-
-    // Content hidden
-    const content = canvas.queryByText(/lorem ipsum/gi);
-    expect(content).not.toBeVisible();
-
-    // Toggle
-    userEvent.click(showHide);
-    await sleep(waitTime);
-
-    // Content visible
-    expect(showHide.getAttribute('aria-expanded')).toMatch('true');
-    expect(content).toBeVisible();
-
-    // Toggle
-    userEvent.click(showHide);
-    await sleep(waitTime);
-
-    // Content hidden
-    expect(showHide.getAttribute('aria-expanded')).toMatch('false');
-    expect(content).not.toBeVisible();
-  },
-  args: {
-    ...Default.args,
-    header: 'Expandable label'
-  }
-};
-
 export const PaddedExpandable: Story = {
   args: {
     ...Default.args,
@@ -99,3 +59,55 @@ export const PaddedExpandable: Story = {
     isPadded: true
   }
 };
+
+export const Default: Story = {
+  render: arguments_ => (
+    <ExpandableGroup {...arguments_}>
+      {['A', 'B', 'C'].map(value => (
+        <Expandable
+          key={`item-${value}`}
+          header={`Expandable ${value}`}
+          inAccordion={arguments_.accordion}
+        >
+          <Content accordion={arguments_.accordion} />
+        </Expandable>
+      ))}
+    </ExpandableGroup>
+  ),
+  play: async ({ canvasElement, step }) => {
+    // Setup
+    const timeout = 1000;
+    const options = { timeout };
+    const canvas = within(canvasElement);
+    const element = await canvas.findByTitle('Expandable A');
+
+    // Helpers
+    const expectAriaExpanded = (isExpanded: string): void =>
+      expect(element.ariaExpanded).toBe(isExpanded);
+
+    // Test
+    await step('Starts out collapsed', async () => {
+      await waitFor(async () => expectAriaExpanded('false'), options);
+    });
+
+    await step('Click to expanded', async () => {
+      userEvent.click(element);
+      await waitFor(async () => expectAriaExpanded('true'), options);
+      await sleep(timeout);
+    });
+
+    await step('Click to collapse', async () => {
+      userEvent.click(element);
+      await waitFor(async () => expectAriaExpanded('false'), options);
+    });
+  },
+  args: {
+    groupId: 'DefaultGroup'
+  }
+};
+
+export const Accordion: Story = {
+  ...Default,
+  args: {
+    accordion: true,
+    groupId: 'AccordionGroup'
