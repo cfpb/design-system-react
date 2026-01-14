@@ -14,6 +14,13 @@ const meta: Meta<typeof Expandable> = {
         component: `
 ### CFPB DS - Expandable component
 
+Test!
+
+#### Hey Natalia!
+
+- Hey
+- Hello
+
 Source: https://cfpb.github.io/design-system/components/expandables
 `
       }
