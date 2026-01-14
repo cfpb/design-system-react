@@ -42,17 +42,6 @@ export const Default: Story = {
   }
 };
 
-
-export const PaddedExpandable: Story = {
-  args: {
-    ...Default.args,
-    header: 'Expandable label',
-    icon: 'bank',
-    isPadded: true
-  }
-};
-
-
 export const OpenOnLoad: Story = {
   args: {
     ...Default.args,
@@ -61,7 +50,7 @@ export const OpenOnLoad: Story = {
   }
 };
 
-export const TestExpandCollapse: Story = {
+export const Accordion: Story = {
   play: async ({ canvasElement }) => {
     const waitTime = 500;
     const canvas = within(canvasElement);
@@ -99,5 +88,14 @@ export const TestExpandCollapse: Story = {
   args: {
     ...Default.args,
     header: 'Expandable label'
+  }
+};
+
+export const PaddedExpandable: Story = {
+  args: {
+    ...Default.args,
+    header: 'Expandable label',
+    icon: 'bank',
+    isPadded: true
   }
 };
