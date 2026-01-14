@@ -37,7 +37,7 @@ const Content = (
 
 export const Default: Story = {
   args: {
-    header: 'Expandable Header',
+    header: 'Expandable label',
     children: Content
   }
 };
@@ -46,7 +46,7 @@ export const Default: Story = {
 export const PaddedExpandable: Story = {
   args: {
     ...Default.args,
-    header: 'Expandable Header',
+    header: 'Expandable label',
     icon: 'bank',
     isPadded: true
   }
@@ -56,7 +56,7 @@ export const PaddedExpandable: Story = {
 export const OpenOnLoad: Story = {
   args: {
     ...Default.args,
-    header: 'Expandable Header',
+    header: 'Expandable label',
     openOnLoad: true
   }
 };
@@ -98,6 +98,6 @@ export const TestExpandCollapse: Story = {
   },
   args: {
     ...Default.args,
-    header: 'Expandable Header'
+    header: 'Expandable label'
   }
 };
