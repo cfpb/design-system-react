@@ -38,7 +38,6 @@ const Content = (
 export const Default: Story = {
   args: {
     header: 'Expandable label',
-    name: 'Default',
     children: Content
   }
 };
@@ -47,12 +46,10 @@ export const OpenOnLoad: Story = {
   args: {
     ...Default.args,
     header: 'Expandable label',
-    name: 'Open on load',
     openOnLoad: true
   }
 };
 
-<!-- 
 export const TestExpandCollapse: Story = {
   play: async ({ canvasElement }) => {
     const waitTime = 500;
@@ -93,12 +90,10 @@ export const TestExpandCollapse: Story = {
     header: 'Expandable label'
   }
 };
-  -->
 
 export const PaddedExpandable: Story = {
   args: {
     ...Default.args,
-    name: 'Padded expandable',
     header: 'Expandable label',
     icon: 'bank',
     isPadded: true
