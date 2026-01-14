@@ -6,8 +6,8 @@ import { sleep } from '../../utils/sleep';
 
 const meta: Meta<typeof Expandable> = {
   title: 'Components (Draft)/Expandables',
+  tags: ['autodocs'], 
   component: Expandable,
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
@@ -38,6 +38,7 @@ const Content = (
 export const Default: Story = {
   args: {
     header: 'Expandable label',
+    name: 'Default',
     children: Content
   }
 };
@@ -46,6 +47,7 @@ export const OpenOnLoad: Story = {
   args: {
     ...Default.args,
     header: 'Expandable label',
+    name: 'Open on load',
     openOnLoad: true
   }
 };
@@ -94,6 +96,7 @@ export const TestExpandCollapse: Story = {
 export const PaddedExpandable: Story = {
   args: {
     ...Default.args,
+    name: 'Padded expandable',
     header: 'Expandable label',
     icon: 'bank',
     isPadded: true
