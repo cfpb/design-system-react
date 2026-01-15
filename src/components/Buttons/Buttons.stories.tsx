@@ -89,7 +89,7 @@ export const ButtonsGroup: Story = {
 };
 
 export const FullWidthOnSmallScreens: Story = {
-  name: 'Full width (on x-small screens)',
+  name: 'Full-width (on x-small screens)',
   args: {
     ...Primary.args,
     label: 'Button',
