@@ -80,7 +80,6 @@ export const PaddedExpandable: Story = {
   name: 'Large',
   args: {
     ...Default.args,
-    name: 'Large',
     header: 'Expandable label',
     icon: 'bank',
     isPadded: true
