@@ -55,45 +55,6 @@ export const Destructive: Story = {
   }
 };
 
-export const DestructiveAction: Story = {
-  name: 'Destructive action',
-  args: {
-    ...Primary.args,
-    label: 'Destructive action',
-    appearance: 'warning',
-    size: 'default',
-    asLink: true
-  },
-  render: arguments_ => (
-    <ButtonGroup>
-      <Button label='Action' />
-      <Button label={'Destructive action'}
-              {...arguments_} />
-    </ButtonGroup>
-  )
-};
-
-export const FullWidthOnSmallScreens: Story = {
-  name: 'Full width (on x-small screens)',
-  args: {
-    ...Primary.args,
-    label: 'Button',
-    appearance: 'primary',
-    size: 'full'
-  }
-};
-
-export const ButtonsGroup: Story = {
-  name: 'Button group',
-  render: arguments_ => (
-    <ButtonGroup>
-      <Button key='Yes' {...arguments_} label='Yes' />
-      <Button key='No' {...arguments_} label='No' />
-      <Button key='Maybe So' {...arguments_} label='Maybe So' />
-    </ButtonGroup>
-  )
-};
-
 export const StaticIconButtons: Story = {
   name: 'With icon',
   args: {
@@ -115,3 +76,26 @@ export const AnimatedIconButtons: Story = {
   },
   render: arguments_ => <Button {...arguments_} iconRight='updating' />
 };
+
+export const ButtonsGroup: Story = {
+  name: 'Button group',
+  render: arguments_ => (
+    <ButtonGroup>
+      <Button key='Yes' {...arguments_} label='Yes' />
+      <Button key='No' {...arguments_} label='No' />
+      <Button key='Maybe So' {...arguments_} label='Maybe So' />
+    </ButtonGroup>
+  )
+};
+
+export const FullWidthOnSmallScreens: Story = {
+  name: 'Full width (on x-small screens)',
+  args: {
+    ...Primary.args,
+    label: 'Button',
+    appearance: 'primary',
+    size: 'full'
+  }
+};
+
+
