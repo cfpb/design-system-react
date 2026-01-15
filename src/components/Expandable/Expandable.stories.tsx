@@ -1,8 +1,12 @@
 import { expect } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within } from '@storybook/test';
+import { userEvent, waitFor, within } from '@storybook/test';
 import { Expandable } from '~/src/index';
 import { sleep } from '../../utils/sleep';
+
+// This is the expandable group
+import { ExpandableGroup } from './ExpandableGroup';
+
 
 const meta: Meta<typeof Expandable> = {
   title: 'Components (Draft)/Expandables',
@@ -35,6 +39,26 @@ const Content = (
   </p>
 );
 
+const ContentForGroup = ({
+  accordion
+}: {
+  accordion: boolean | undefined;
+}): JSX.Element => {
+  const linkPath = `/?path=/story/components-expandablegroup--${
+    accordion ? 'accordion' : 'default'
+  }`;
+
+  return (
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
+      voluptatibus soluta nobis unde quisquam temporibus magnam debitis quidem.
+      Ducimus ratione corporis nesciunt earum vel est quaerat blanditiis dolore
+      ipsa?&nbsp;
+      <a href={linkPath}>Lorem link</a>
+    </p>
+  );
+};
+
 export const Default: Story = {
   args: {
     header: 'Expandable label',
@@ -56,5 +80,59 @@ export const PaddedExpandable: Story = {
     header: 'Expandable label',
     icon: 'bank',
     isPadded: true
+  }
+};
+
+export const DefaultExpandableGroup: Story = {
+  render: arguments_ => (
+    <ExpandableGroup {...arguments_}>
+      {['A', 'B', 'C'].map(value => (
+        <Expandable
+          key={`item-${value}`}
+          header={`Expandable ${value}`}
+          inAccordion={arguments_.accordion}
+        >
+          <ContentForGroup accordion={arguments_.accordion} />
+        </Expandable>
+      ))}
+    </ExpandableGroup>
+  ),
+  play: async ({ canvasElement, step }) => {
+    // Setup
+    const timeout = 1000;
+    const options = { timeout };
+    const canvas = within(canvasElement);
+    const element = await canvas.findByTitle('Expandable A');
+
+    // Helpers
+    const expectAriaExpanded = (isExpanded: string): void =>
+      expect(element.ariaExpanded).toBe(isExpanded);
+
+    // Test
+    await step('Starts out collapsed', async () => {
+      await waitFor(async () => expectAriaExpanded('false'), options);
+    });
+
+    await step('Click to expanded', async () => {
+      userEvent.click(element);
+      await waitFor(async () => expectAriaExpanded('true'), options);
+      await sleep(timeout);
+    });
+
+    await step('Click to collapse', async () => {
+      userEvent.click(element);
+      await waitFor(async () => expectAriaExpanded('false'), options);
+    });
+  },
+  args: {
+    groupId: 'DefaultGroup'
+  }
+};
+
+export const Accordion: Story = {
+  ...DefaultExpandableGroup,
+  args: {
+    accordion: true,
+    groupId: 'AccordionGroup'
   }
 };
