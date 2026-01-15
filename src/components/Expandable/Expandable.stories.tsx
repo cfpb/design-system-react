@@ -90,7 +90,7 @@ export const DefaultExpandableGroup: Story = {
   name: 'Group',
   render: arguments_ => (
     <ExpandableGroup {...arguments_}>
-      {['Expandle label', 'Expandable label', 'Expandable label'].map(value => (
+      {['label', 'label', 'label'].map(value => (
         <Expandable
           key={`item-${value}`}
           header={`Expandable ${value}`}
