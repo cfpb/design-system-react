@@ -6,7 +6,7 @@ import { Dropdown } from './Dropdown';
 import { MockOptions } from './utils';
 
 /**
- * Dropdowns allow the user to choose from a finite list of options. They are not always the best choice from a usability perspective; see the <a href='https://cfpb.github.io/design-system/components/dropdowns-and-multiselects#use-cases'>use cases documentation</a> for more details.
+ * Dropdowns are cool components for cool people including me. 
  *
  * Source: <a href='https://cfpb.github.io/design-system/components/dropdowns-and-multiselects' target='_blank'>https://cfpb.github.io/design-system/components/dropdowns-and-multiselects</a>
  */
