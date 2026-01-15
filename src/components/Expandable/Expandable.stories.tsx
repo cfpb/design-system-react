@@ -60,23 +60,24 @@ const ContentForGroup = ({
 };
 
 export const Default: Story = {
-  args: {
     name: 'Standard',
+  args: {
     header: 'Expandable label',
     children: Content
   }
 };
 
 export const OpenOnLoad: Story = {
-  args: {
+   name: 'Open on load',
+   args: {
     ...Default.args,
-    name: 'Open on load',
     header: 'Expandable label',
     openOnLoad: true
   }
 };
 
 export const PaddedExpandable: Story = {
+  name: 'Large',
   args: {
     ...Default.args,
     name: 'Large',
