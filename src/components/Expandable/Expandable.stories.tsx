@@ -77,7 +77,7 @@ export const OpenOnLoad: Story = {
 };
 
 export const PaddedExpandable: Story = {
-  name: 'Large',
+  name: 'Padded',
   args: {
     ...Default.args,
     header: 'Expandable label',
@@ -87,6 +87,7 @@ export const PaddedExpandable: Story = {
 };
 
 export const DefaultExpandableGroup: Story = {
+  name: 'Group (default)',
   render: arguments_ => (
     <ExpandableGroup {...arguments_}>
       {['A', 'B', 'C'].map(value => (
@@ -133,6 +134,7 @@ export const DefaultExpandableGroup: Story = {
 };
 
 export const Accordion: Story = {
+  name: 'Group (accordion)',
   ...DefaultExpandableGroup,
   args: {
     accordion: true,
