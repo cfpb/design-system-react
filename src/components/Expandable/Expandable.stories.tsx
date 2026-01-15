@@ -61,6 +61,7 @@ const ContentForGroup = ({
 
 export const Default: Story = {
   args: {
+    name: 'Standard',
     header: 'Expandable label',
     children: Content
   }
@@ -69,6 +70,7 @@ export const Default: Story = {
 export const OpenOnLoad: Story = {
   args: {
     ...Default.args,
+    name: 'Open on load',
     header: 'Expandable label',
     openOnLoad: true
   }
@@ -77,6 +79,7 @@ export const OpenOnLoad: Story = {
 export const PaddedExpandable: Story = {
   args: {
     ...Default.args,
+    name: 'Large',
     header: 'Expandable label',
     icon: 'bank',
     isPadded: true
