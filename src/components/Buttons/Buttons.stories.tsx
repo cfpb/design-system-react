@@ -83,7 +83,7 @@ export const ButtonsGroup: Story = {
     <ButtonGroup>
       <Button key='Yes' {...arguments_} label='Yes' />
       <Button key='No' {...arguments_} label='No' />
-      <Button key='Maybe So' {...arguments_} label='Maybe So' />
+      <Button key='Maybe So' {...arguments_} label='Maybe so' />
     </ButtonGroup>
   )
 };
