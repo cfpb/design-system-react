@@ -137,7 +137,6 @@ export const PaddedExpandable: Story = {
   args: {
     ...Default.args,
     header: 'Expandable label',
-    icon: 'bank',
     isPadded: true
   }
 };
