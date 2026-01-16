@@ -125,7 +125,7 @@ export const ButtonLink: Story = {
   name: 'Button link',
   render: arguments_ => (
     <ButtonGroup>
-      <Link className='a-btn'>
+      <Link className='a-btn' href='/'>
         <LinkText>Link styled as a button</LinkText>
         <Icon name='download' />
       </Link>
