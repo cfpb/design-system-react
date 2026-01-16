@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '~/src/index';
+import { Button, Icon, Link, LinkText } from '~/src/index';
 import { ButtonGroup } from './ButtonGroup';
 
 /**
@@ -96,6 +96,25 @@ export const FullWidthOnSmallScreens: Story = {
     appearance: 'primary',
     size: 'full'
   }
+};
+
+export const ButtonLink: Story = {
+  name: 'Button link',
+  render: arguments_ => (
+    <ButtonGroup>
+      <Link className='a-btn'>
+        <LinkText>Link styled as a button</LinkText>
+        <Icon name='download' />
+      </Link>
+      <Button
+        asLink
+        key='1'
+        {...arguments_}
+        label='Button styled as a link'
+        iconRight='download'
+      />
+    </ButtonGroup>
+  )
 };
 
 
