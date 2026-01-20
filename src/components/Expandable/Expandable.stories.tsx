@@ -66,6 +66,24 @@ export const Default: Story = {
   }
 };
 
+export const PaddedExpandable: Story = {
+  name: 'Padded',
+  args: {
+    ...Default.args,
+    header: 'Expandable label',
+    isPadded: true
+  }
+};
+
+export const OpenOnLoad: Story = {
+   name: 'Open on load',
+   args: {
+    ...Default.args,
+    header: 'Expandable label',
+    openOnLoad: true
+  }
+};
+
 export const DefaultExpandableGroup: Story = {
   name: 'Group',
   render: arguments_ => (
@@ -125,22 +143,7 @@ export const Accordion: Story = {
   }
 };
 
-export const OpenOnLoad: Story = {
-   name: 'Open on load',
-   args: {
-    ...Default.args,
-    header: 'Expandable label',
-    openOnLoad: true
-  }
-};
 
-export const PaddedExpandable: Story = {
-  name: 'Padded',
-  args: {
-    ...Default.args,
-    header: 'Expandable label',
-    isPadded: true
-  }
-};
+
 
 
