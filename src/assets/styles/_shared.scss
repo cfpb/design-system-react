@@ -1,6 +1,7 @@
 @use './variables.scss';
 @use '@cfpb/cfpb-design-system/src/index' as *;
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/elements/base' as base;
 
 // @include licensed-font('/static/fonts');
 
@@ -25,10 +26,6 @@
 
   dd,
   dt,
-  h3,
-  h4,
-  h5,
-  h6,
   label,
   li,
   p {
