@@ -1,6 +1,6 @@
 .a-link--jump {
-  .a-link__text + .cf-icon-svg-wrapper,
-  .cf-icon-svg-wrapper + .a-link__text {
+  .a-link__text + svg,
+  svg + .a-link__text {
     padding-left: 0.25em;
   }
 }

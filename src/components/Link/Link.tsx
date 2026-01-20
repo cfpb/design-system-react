@@ -6,6 +6,7 @@ import ListItem from '../List/ListItem';
 import './Link.scss';
 
 export interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
+  asButton?: boolean;
   children?: React.ReactNode;
   hasIcon?: boolean;
   href?: string;
@@ -22,6 +23,7 @@ export interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
  * Source: https://cfpb.github.io/design-system/components/links
  */
 export default function Link({
+  asButton = false,
   children,
   hasIcon = false,
   href,
@@ -33,6 +35,7 @@ export default function Link({
 }: LinkProperties): JSXElement {
   const cname = [others.className];
 
+  if(asButton) cname.push('a-btn');
   if (type === 'destructive') {
     cname.push('a-btn a-btn--link a-btn--warning');
   }

@@ -35,11 +35,6 @@ $max-width: $breakpoint - 0.0625em;
 
     .o-header__logo {
       min-width: 237px;
-      padding-left: $space-sm;
-
-      @media (min-width: 600px) {
-        padding-left: $space-md;
-      }
 
       @media (max-width: $max-width) {
         border-left: 1px solid var(--gray-40);
@@ -53,7 +48,7 @@ $max-width: $breakpoint - 0.0625em;
       cursor: pointer;
       height: 54px;
       width: 54px;
-      padding: $space-sm;
+      padding: 0 $space-sm;
       margin-bottom: 0;
       margin-right: 0;
       z-index: 1000; // Ensure it's above the overlay
@@ -117,7 +112,7 @@ $max-width: $breakpoint - 0.0625em;
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding: 0 $space-md $space-md;
+        padding: 0 0 $space-md;
 
         @media (min-width: $breakpoint) {
           flex-direction: row;

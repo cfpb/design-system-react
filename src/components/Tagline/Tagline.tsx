@@ -16,7 +16,7 @@ export const Tagline = ({
   return (
     <div className={classnames(baseClasses)} data-testid='tagline'>
       <span className='u-usa-flag' data-testid='usa-flag' />
-      <div className='a-tagline_text'>{children}</div>
+      <div className='a-tagline__text'>{children}</div>
     </div>
   );
 };
