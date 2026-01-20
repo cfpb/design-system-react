@@ -71,9 +71,9 @@ export const DefaultExpandableGroup: Story = {
   name: 'Group',
   render: arguments_ => (
     <ExpandableGroup {...arguments_}>
-      {['label', 'label', 'label'].map(value => (
+      {['label', 'label', 'label'].map((value, index) => (
         <Expandable
-          key={`item-${value}`}
+          key={`item-${value}-${index}`}
           header={`Expandable ${value}`}
           inAccordion={arguments_.accordion}
         >
@@ -87,7 +87,7 @@ export const DefaultExpandableGroup: Story = {
     const timeout = 1000;
     const options = { timeout };
     const canvas = within(canvasElement);
-    const element = await canvas.findByTitle('Expandable A');
+    const element = await canvas.findByTitle('Expandable label');
 
     // Helpers
     const expectAriaExpanded = (isExpanded: string): void =>
