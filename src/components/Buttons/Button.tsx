@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from 'react';
+import { forwardRef, type ButtonHTMLAttributes } from 'react';
 import { Icon } from '../Icon/Icon';
 
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -48,30 +48,43 @@ const sizeStyles = {
 /**
  * Primary UI component for user interaction
  */
-export function Button({
-  appearance = 'primary',
-  asLink = false,
-  size = 'default',
-  label,
-  className,
-  iconLeft,
-  iconRight,
-  ...properties
-}: ButtonProperties): JSX.Element {
-  const styles = [
-    ...baseStyles,
-    ...appearanceStyles[appearance],
-    ...sizeStyles[size]
-  ];
-  if (asLink) styles.push('a-btn--link');
-  if (className) styles.push(className);
-  if (properties.disabled) styles.push('a-btn--disabled');
+export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
+  (
+    {
+      appearance = 'primary',
+      asLink = false,
+      size = 'default',
+      label,
+      className,
+      iconLeft,
+      iconRight,
+      ...properties
+    },
+    ref, // Receive the ref as the second argument
+  ): JSX.Element => {
+    const styles = [
+      ...baseStyles,
+      ...appearanceStyles[appearance],
+      ...sizeStyles[size],
+    ];
+    if (asLink) styles.push('a-btn--link');
+    if (className) styles.push(className);
+    if (properties.disabled) styles.push('a-btn--disabled');
 
-  return (
-    <button type='button' className={[...styles].join(' ')} {...properties}>
-      {iconLeft ? <Icon name={iconLeft} /> : null }
-      {iconLeft || iconRight ? <span>{label}</span> : label}
-      {iconRight ? <Icon name={iconRight} /> : null }
-    </button>
-  );
-}
+    return (
+      <button
+        ref={ref} // Attach the forwarded ref here
+        type="button"
+        className={[...styles].join(' ')}
+        {...properties}
+      >
+        {iconLeft ? <Icon name={iconLeft} isPresentational /> : null}
+        {iconLeft || iconRight ? <span>{label}</span> : label}
+        {iconRight ? <Icon name={iconRight} isPresentational /> : null}
+      </button>
+    );
+  },
+);
+
+// Optional: Set displayName for better debugging in React DevTools
+Button.displayName = 'Button';

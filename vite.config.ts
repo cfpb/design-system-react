@@ -12,6 +12,7 @@ import { name } from './package.json';
 import fs from 'fs';
 
 export default defineConfig(() => ({
+  publicDir: false,
   resolve: {
     alias: {
       '~': resolve(__dirname),
@@ -93,11 +94,14 @@ export default defineConfig(() => ({
       entry: resolve('src', 'index.ts'),
       name,
       formats: ['es', 'cjs'],
-      fileName: (format): string => `${name}.${format}.js`
+      fileName: (format): string => `index.${format === 'es' ? 'mjs' : 'js'}`
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react-router-dom'],
       output: {
+        // This prevents the "flat" file explosion for icons/assets in the root
+        assetFileNames: 'assets/[name].[ext]',
+        chunkFileNames: 'chunks/[name]-[hash].js',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
