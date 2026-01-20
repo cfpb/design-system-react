@@ -1,6 +1,5 @@
-import { expect } from '@storybook/test';
+import { expect, userEvent, waitFor, within } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, waitFor, within } from '@storybook/test';
 import { Expandable } from '~/src/index';
 import { sleep } from '../../utils/sleep';
 
@@ -87,7 +86,10 @@ export const DefaultExpandableGroup: Story = {
     const timeout = 1000;
     const options = { timeout };
     const canvas = within(canvasElement);
-    const element = await canvas.findByTitle('Expandable label');
+    const allElements = await canvas.findAllByTitle('Expandable label');
+
+    // get the first one
+    const element = allElements[0];
 
     // Helpers
     const expectAriaExpanded = (isExpanded: string): void =>
