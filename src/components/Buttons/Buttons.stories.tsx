@@ -94,31 +94,6 @@ export const AnimatedIconButtons: Story = {
   render: arguments_ => <Button {...arguments_} iconRight='updating' />
 };
 
-export const ButtonLink: Story = {
-  name: 'Button link',
-  render: arguments_ => (
-    <ButtonGroup>
-      <Link
-        asButton
-        hasIcon
-        href='http://example.com'
-        key='Link styled as a button'
-        {...arguments_}
-      >
-        <span>Link styled as a button</span>
-        <Icon name='download' />
-      </Link>
-      <Button
-        asLink
-        key='Button styled as a link'
-        {...arguments_}
-        label='Button styled as a link'
-        iconRight='download'
-      />
-    </ButtonGroup>
-  )
-};
-
 export const ButtonsGroup: Story = {
   name: 'Button group',
   render: arguments_ => (
