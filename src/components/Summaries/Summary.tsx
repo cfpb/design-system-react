@@ -7,6 +7,7 @@ import type React from 'react';
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import { Icon } from '~/src';
+import './Summary.scss';
 
 export interface SummaryProperties
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -59,7 +60,10 @@ export const Summary: React.FC<SummaryProperties> = ({
       data-testid='summary'
       {...properties}
     >
-      <div className={`${baseClass}__content`} data-testid='summary-content'>
+      <div
+        className={`${baseClass}__content`}
+        data-testid='summary-content'
+      >
         {children}
       </div>
       <button
@@ -70,11 +74,11 @@ export const Summary: React.FC<SummaryProperties> = ({
         {isMinimal ? (
           <>
             <span className='o-summary-minimal__cue-open'>
-              Show
+              Show&nbsp;
               <Icon name='plus' isPresentational withBg />
             </span>
             <span className='o-summary-minimal__cue-close'>
-              Hide
+              Hide&nbsp;
               <Icon name='minus' isPresentational withBg />
             </span>
           </>
