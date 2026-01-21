@@ -1,4 +1,7 @@
-import { Summary as CFPB_Summary } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
+import {
+  Summary as CFPB_Summary,
+  SummaryMinimal as CFPB_SummaryMinimal
+} from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import classnames from 'classnames';
 import type React from 'react';
 import type { ReactNode } from 'react';
@@ -12,35 +15,42 @@ export interface SummaryProperties
   label?: string;
   /** Whether the summary behavior should only apply on mobile viewports */
   isMobileOnly?: boolean;
+  /** Use the minimal variation with toggle capabilities */
+  isMinimal?: boolean;
 }
 
+/**
+ * Summary components hides content over a certain height. When the hidden content is shown it can’t be reverted to the summary until the page is reloaded.
+ *
+ * Source: <a href='https://cfpb.github.io/design-system/components/summaries' target='_blank'>https://cfpb.github.io/design-system/components/summaries</a>
+ */
 export const Summary: React.FC<SummaryProperties> = ({
   children,
   label = 'Show full text',
   isMobileOnly = false,
+  isMinimal = false,
   className = '',
   ...properties
 }) => {
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    CFPB_Summary.init();
+    if (isMinimal) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      CFPB_SummaryMinimal.init();
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      CFPB_Summary.init();
+    }
 
-    /**
-     * The CFPB Summary component waits for the window 'load' event to calculate
-     * heights and initialize its behavior. In a React environment, especially
-     * in Storybook or during client-side navigation, the 'load' event may have
-     * already fired. If so, we manually trigger it to ensure the component
-     * initializes correctly.
-     */
     if (document.readyState === 'complete') {
       window.dispatchEvent(new Event('load'));
     }
-  }, []);
+  }, [isMinimal]);
 
-  const summaryClasses = ['o-summary', className];
+  const baseClass = isMinimal ? 'o-summary-minimal' : 'o-summary';
+  const summaryClasses = [baseClass, className];
 
   if (isMobileOnly) {
-    summaryClasses.push('o-summary--mobile');
+    summaryClasses.push(`${baseClass}--mobile`);
   }
 
   return (
@@ -49,16 +59,31 @@ export const Summary: React.FC<SummaryProperties> = ({
       data-testid='summary'
       {...properties}
     >
-      <div className='o-summary__content' data-testid='summary-content'>
+      <div className={`${baseClass}__content`} data-testid='summary-content'>
         {children}
       </div>
       <button
         type='button'
-        className='o-summary__btn'
+        className={`${baseClass}__btn`}
         data-testid='summary-btn'
       >
-        {label}
-        <Icon name='plus' isPresentational withBg/>
+        {isMinimal ? (
+          <>
+            <span className='o-summary-minimal__cue-open'>
+              Show
+              <Icon name='plus' isPresentational withBg />
+            </span>
+            <span className='o-summary-minimal__cue-close'>
+              Hide
+              <Icon name='minus' isPresentational withBg />
+            </span>
+          </>
+        ) : (
+          <>
+            {label}
+            <Icon name='plus' isPresentational withBg />
+          </>
+        )}
       </button>
     </div>
   );

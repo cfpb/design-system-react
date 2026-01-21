@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Summary } from './Summary';
 
 const meta: Meta<typeof Summary> = {
@@ -38,7 +37,7 @@ const longTextContent = (
     </p>
     <p>
       The button label can be customized as well. In this example, we are using
-      the default label "Show full text". When the user clicks the button, the
+      the default label &quot;Show full text&quot;. When the user clicks the button, the
       content expands to its full height and the button is hidden.
     </p>
     <p>
@@ -49,7 +48,7 @@ const longTextContent = (
 );
 
 export const Default: Story = {
-  name: 'Summary',
+  name: 'Summary (on desktop)',
   args: {
     label: 'Show full text',
     children: longTextContent
@@ -57,7 +56,7 @@ export const Default: Story = {
 };
 
 export const MobileOnly: Story = {
-  name: 'Mobile-only summary',
+  name: 'Summary on Mobile',
   args: {
     label: 'Show full text',
     isMobileOnly: true,
@@ -66,7 +65,29 @@ export const MobileOnly: Story = {
         <p>
           This summary behavior will only be applied on mobile viewports (widths
           below 600px). On larger screens, the content will be fully visible and
-          the "Show full text" button will be hidden.
+          the &quot;Show full text&quot; button will be hidden.
+        </p>
+        <p>
+          Try resizing your browser or switching to a mobile view in Storybook
+          to see the behavior change.
+        </p>
+        {longTextContent}
+      </>
+    )
+  }
+};
+
+export const Minimal: Story = {
+  name: 'Summary Minimal',
+  args: {
+    label: 'Show full text',
+    isMinimal: true,
+    children: (
+      <>
+        <p>
+          This summary behavior will only be applied on mobile viewports (widths
+          below 600px). On larger screens, the content will be fully visible and
+          the &quot;Show full text&quot; button will be hidden.
         </p>
         <p>
           Try resizing your browser or switching to a mobile view in Storybook
