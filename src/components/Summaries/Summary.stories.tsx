@@ -25,24 +25,24 @@ type Story = StoryObj<typeof meta>;
 const longTextContent = (
   <>
     <p>
-      This is a long block of text that should be truncated by the Summary
-      component. The component is designed to automatically wrap long blocks of
-      content and provide a toggle button to reveal the full text when the
-      content exceeds a certain height (typically 88px or 5.5em).
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. <a href='#'>Duis</a> aute irure dolor in reprehenderit
+      in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
     </p>
     <p>
-      By default, the Summary component is always active, but it can also be
-      configured to only apply the summary behavior on mobile viewports using
-      the <code>isMobileOnly</code> prop.
-    </p>
-    <p>
-      The button label can be customized as well. In this example, we are using
-      the default label &quot;Show full text&quot;. When the user clicks the button, the
-      content expands to its full height and the button is hidden.
-    </p>
-    <p>
-      This implementation follows the CFPB Design System standards for
-      summaries, ensuring a consistent user experience across platforms.
+      <ul>
+        <li>
+          <a href='#'>Link</a>
+        </li>
+        <li>
+          <a href='#'>Link</a>
+        </li>
+        <li>
+          <a href='#'>Link</a>
+        </li>
+      </ul>
     </p>
   </>
 );
@@ -62,16 +62,13 @@ export const MobileOnly: Story = {
     isMobileOnly: true,
     children: (
       <>
-        <p>
-          This summary behavior will only be applied on mobile viewports (widths
-          below 600px). On larger screens, the content will be fully visible and
-          the &quot;Show full text&quot; button will be hidden.
-        </p>
-        <p>
-          Try resizing your browser or switching to a mobile view in Storybook
-          to see the behavior change.
-        </p>
-        {longTextContent}
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. <a href='#'>Duis</a> aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum.
       </>
     )
   }
@@ -86,10 +83,10 @@ export const Minimal: Story = {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        commodo consequat. <a href='#'>Duis</a> aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum.
       </>
     )
   }
