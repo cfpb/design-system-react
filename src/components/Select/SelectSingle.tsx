@@ -22,8 +22,8 @@ export const SelectSingle = ({
   };
 
   return (
-    <>
-      <label className='a-label a-label__heading' htmlFor={id}>
+    <div className='m-form-field'>
+      <label className='a-label a-label--heading' htmlFor={id}>
         {label}
       </label>
       <div className='a-select'>
@@ -37,6 +37,6 @@ export const SelectSingle = ({
           {buildOptions(options, defaultOptionLabel)}
         </select>
       </div>
-    </>
+    </div>
   );
 };

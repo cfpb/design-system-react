@@ -53,14 +53,15 @@ export const SelectMulti = ({
 
   return (
     <div
-      className='m-form-field m-form-field__select'
+      className='m-form-field'
       id={`multi-wrapper-${id}`}
     >
-      <label className='a-label a-label__heading' htmlFor={id}>
+      <label className='a-label a-label--heading' htmlFor={id}>
         {label}
       </label>
       <select
         id={id}
+        className='o-multiselect'
         data-testid={id}
         ref={inputReference}
         multiple
