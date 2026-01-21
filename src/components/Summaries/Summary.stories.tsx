@@ -80,20 +80,16 @@ export const MobileOnly: Story = {
 export const Minimal: Story = {
   name: 'Minimal',
   args: {
-    label: 'Show full text',
     isMinimal: true,
     children: (
       <>
-        <p>
-          This summary behavior will only be applied on mobile viewports (widths
-          below 600px). On larger screens, the content will be fully visible and
-          the &quot;Show full text&quot; button will be hidden.
-        </p>
-        <p>
-          Try resizing your browser or switching to a mobile view in Storybook
-          to see the behavior change.
-        </p>
-        {longTextContent}
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
       </>
     )
   }

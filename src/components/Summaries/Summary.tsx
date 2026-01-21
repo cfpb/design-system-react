@@ -7,7 +7,6 @@ import type React from 'react';
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import { Icon } from '~/src';
-import './Summary.scss';
 
 export interface SummaryProperties
   extends React.HTMLAttributes<HTMLDivElement> {
