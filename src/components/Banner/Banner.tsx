@@ -31,7 +31,7 @@ const TelephoneLink = ({
 };
 
 /**
- *The US gov banner identifies official websites of government organizations in the United States. It helps visitors understand whether a website is official and secure.
+ * The US gov banner identifies official websites of government organizations in the United States. It helps visitors understand whether a website is official and secure.
  *
  * Source: <a href='https://cfpb.github.io/design-system/components/banner-us-gov' target='_blank'> https://cfpb.github.io/design-system/components/banner-us-gov</a>
  */

@@ -1,4 +1,4 @@
-import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
+import { ExpandableGroup as CFPB_ExpandableGroup } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import classnames from 'classnames';
 import type { ReactElement } from 'react';
 import React, { useEffect } from 'react';
@@ -22,18 +22,18 @@ export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
   if (accordion) cname.push('o-expandable-group--accordion');
 
   useEffect(() => {
-    if (!accordion) return;
-
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    CFPB_Expandable.init(document.querySelector(`#${groupId}`));
-  }, [accordion, groupId]);
+    CFPB_ExpandableGroup.init();
+  }, [accordion]);
 
   const childrenWithProperties = React.Children.map(children, child => {
-    if (React.isValidElement(child) && accordion) {
-      return React.cloneElement(child, { inAccordion: accordion } as Pick<
-        ExpandableProperties,
-        'inAccordion'
-      >);
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, {
+        // We set inAccordion to true if the item is in a group
+        // to ensure it sheds its standalone borders/background
+        inAccordion: true,
+        openOnLoad: child.props.openOnLoad || false
+      } as Partial<ExpandableProperties>);
     }
     return child;
   });
