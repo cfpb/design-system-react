@@ -46,6 +46,7 @@ export { default as ResponsiveMenu } from './components/ResponsiveMenu/Responsiv
 export { Select } from './components/Select/Select';
 export { SelectMulti } from './components/Select/SelectMulti';
 export { SelectSingle } from './components/Select/SelectSingle';
+export { Summary } from './components/Summaries/Summary';
 export { default as SkipNav } from './components/SkipNav/SkipNav';
 export { Table } from './components/Table/Table';
 export { Tagline } from './components/Tagline/Tagline';
