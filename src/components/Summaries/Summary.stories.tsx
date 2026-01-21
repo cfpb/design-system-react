@@ -48,7 +48,7 @@ const longTextContent = (
 );
 
 export const Default: Story = {
-  name: 'Summary (on desktop)',
+  name: 'Default',
   args: {
     label: 'Show full text',
     children: longTextContent
@@ -56,7 +56,7 @@ export const Default: Story = {
 };
 
 export const MobileOnly: Story = {
-  name: 'Summary on Mobile',
+  name: 'Mobile-only',
   args: {
     label: 'Show full text',
     isMobileOnly: true,
@@ -78,7 +78,7 @@ export const MobileOnly: Story = {
 };
 
 export const Minimal: Story = {
-  name: 'Summary Minimal',
+  name: 'Minimal',
   args: {
     label: 'Show full text',
     isMinimal: true,
