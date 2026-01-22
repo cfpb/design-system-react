@@ -1888,7 +1888,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.28.6"
     "@cfpb/cfpb-design-system": "npm:4.3.2"
-    "@chromatic-com/storybook": "npm:^3"
+    "@chromatic-com/storybook": "npm:^3.2.7"
     "@nabla/vite-plugin-eslint": "npm:1.6.0"
     "@storybook/addon-a11y": "npm:^8.6.7"
     "@storybook/addon-actions": "npm:^8.6.7"
@@ -1947,10 +1947,10 @@ __metadata:
     npm-run-all: "npm:4.1.5"
     postcss: "npm:8.4.31"
     prettier: "npm:2.7.1"
-    react: "npm:18.2.0"
-    react-dom: "npm:18.2.0"
-    react-router-dom: "npm:^6.3.0"
-    react-select: "npm:^5.7.2"
+    react: "npm:18.3.1"
+    react-dom: "npm:18.3.1"
+    react-router-dom: "npm:^6.30.3"
+    react-select: "npm:^5.10.2"
     sass: "npm:^1.90.0"
     sass-embedded: "npm:^1.90.0"
     scss: "npm:^0.2.4"
@@ -1974,7 +1974,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chromatic-com/storybook@npm:^3":
+"@chromatic-com/storybook@npm:^3.2.7":
   version: 3.2.7
   resolution: "@chromatic-com/storybook@npm:3.2.7"
   dependencies:
@@ -13306,15 +13306,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:18.2.0":
-  version: 18.2.0
-  resolution: "react-dom@npm:18.2.0"
+"react-dom@npm:18.3.1":
+  version: 18.3.1
+  resolution: "react-dom@npm:18.3.1"
   dependencies:
     loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.23.0"
+    scheduler: "npm:^0.23.2"
   peerDependencies:
-    react: ^18.2.0
-  checksum: 10/ca5e7762ec8c17a472a3605b6f111895c9f87ac7d43a610ab7024f68cd833d08eda0625ce02ec7178cc1f3c957cf0b9273cdc17aa2cd02da87544331c43b1d21
+    react: ^18.3.1
+  checksum: 10/3f4b73a3aa083091173b29812b10394dd06f4ac06aff410b74702cfb3aa29d7b0ced208aab92d5272919b612e5cda21aeb1d54191848cf6e46e9e354f3541f81
   languageName: node
   linkType: hard
 
@@ -13357,7 +13357,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^6.3.0":
+"react-router-dom@npm:^6.30.3":
   version: 6.30.3
   resolution: "react-router-dom@npm:6.30.3"
   dependencies:
@@ -13381,7 +13381,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-select@npm:^5.7.2":
+"react-select@npm:^5.10.2":
   version: 5.10.2
   resolution: "react-select@npm:5.10.2"
   dependencies:
@@ -13416,12 +13416,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.2.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
+"react@npm:18.3.1":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
   dependencies:
     loose-envify: "npm:^1.1.0"
-  checksum: 10/b9214a9bd79e99d08de55f8bef2b7fc8c39630be97c4e29d7be173d14a9a10670b5325e94485f74cd8bff4966ef3c78ee53c79a7b0b9b70cba20aa8973acc694
+  checksum: 10/261137d3f3993eaa2368a83110466fc0e558bc2c7f7ae7ca52d94f03aac945f45146bd85e5f481044db1758a1dbb57879e2fcdd33924e2dde1bdc550ce73f7bf
   languageName: node
   linkType: hard
 
@@ -14308,7 +14308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.23.0":
+"scheduler@npm:^0.23.2":
   version: 0.23.2
   resolution: "scheduler@npm:0.23.2"
   dependencies:
