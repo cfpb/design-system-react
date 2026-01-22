@@ -1,0 +1,14 @@
+import{j as e}from"./jsx-runtime-BLchON5X.js";import{useMDXComponents as o}from"./index-B0CD_qLk.js";import"./index-CWUhZOUL.js";/* empty css                */import{H as i}from"./TextIntroduction-DUkKXHvK.js";import"./Dropdown-BT6K47fQ.js";import"./Checkbox-Caysy1F0.js";import"./Well-B2cr-7Hx.js";import"./Paragraph-CSOJQ8Ca.js";import"./TextArea-Bg_-DZq5.js";import{M as r}from"./DocsRenderer-CFRXHY34-CvCbAFpC.js";import"./index-kA4PVysc.js";import"./index-D_VgsJHj.js";import"./_commonjsHelpers-CqkleIqs.js";import"./preview-DtxCxHxD.js";import"./iframe-D-Yp4Rm0.js";import"./index-6tNKdD3S.js";import"./index-CkhFrLeO.js";import"./index-F3Nh2vET.js";import"./index-a_ETdH9U.js";import"./index-DrFu-skq.js";import"./client-BOwdQAHt.js";function s(t){const n={a:"a",code:"code",p:"p",pre:"pre",...o(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"Guides/Introduction"}),`
+`,e.jsx(i,{type:"1",children:"CFPB Design System React"}),`
+`,e.jsxs(n.p,{children:["This library contains React implementations of the ",e.jsx(n.a,{href:"https://cfpb.github.io/design-system/",rel:"nofollow",children:"CFPB Design System's"})," components and patterns."]}),`
+`,e.jsx(i,{type:"2",children:"Installation"}),`
+`,e.jsxs(n.p,{children:["The ",e.jsx(n.code,{children:"cfpb/design-system-react"}),' library has not yet been released as an NPM package but can be integrated into your project by adding it as a "repository" dependency.']}),`
+`,e.jsxs(n.p,{children:["In your ",e.jsx(n.code,{children:"package.json"}),":"]}),`
+`,e.jsx(n.pre,{children:e.jsx(n.code,{children:`"dependencies": {
+  "design-system-react": "cfpb/design-system-react"
+}
+`})}),`
+`,e.jsx(i,{type:"2",children:"Components - Verified vs Draft"}),`
+`,e.jsxs(n.p,{children:["This library is still in it's early stages of developement, with lots of changes expected in the coming months.  You will notice two subsections in the navigation sidebar: ",e.jsx(n.code,{children:"Components (Verified)"})," and ",e.jsx(n.code,{children:"Components (Draft)"}),"."]}),`
+`,e.jsxs(n.p,{children:[e.jsx(n.code,{children:"Verified"})," components have been thoroughly reviewed for consistency with their ",e.jsx(n.a,{href:"https://cfpb.github.io/design-system/",rel:"nofollow",children:"Design System"})," counterparts and can be considered unlikely to change in the near future."]}),`
+`,e.jsxs(n.p,{children:[e.jsx(n.code,{children:"Draft"})," components should be viewed as works-in-progress and may still undergo breaking changes in the near future in order to align their implementations with the ",e.jsx(n.a,{href:"https://cfpb.github.io/design-system/",rel:"nofollow",children:"Design System"}),"."]})]})}function I(t={}){const{wrapper:n}={...o(),...t.components};return n?e.jsx(n,{...t,children:e.jsx(s,{...t})}):s(t)}export{I as default};
