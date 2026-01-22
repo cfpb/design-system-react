@@ -61,7 +61,7 @@
     "sass-embedded": "^1.90.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
+    "@babel/core": "^7.28.6",
     "@chromatic-com/storybook": "^3",
     "@nabla/vite-plugin-eslint": "1.4.1",
     "@storybook/addon-a11y": "^8.6.7",
