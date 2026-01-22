@@ -9,6 +9,7 @@ A React/Storybook implementation of [CFPB's Design System](https://github.com/cf
 Current components: https://cfpb.github.io/design-system-react
 
 ## Installation
+The `@cfpb/design-system-react` library is released as an [NPM package](https://www.npmjs.com/package/@cfpb/design-system-react).
 
 To install the package:
 ```
