@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import type { HTMLAttributes } from 'react';
 import classnames from 'classnames';
+import './Breadcrumb.scss';
 
 export interface BreadcrumbCrumb {
   href: string;
