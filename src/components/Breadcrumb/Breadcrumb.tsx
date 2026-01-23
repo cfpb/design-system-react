@@ -34,7 +34,7 @@ export const Breadcrumb = ({
       <nav className='m-breadcrumbs' aria-label={ariaLabel}>
         {crumbs.map(crumb => (
           <Fragment key={`${crumb.href}-${crumb.label}`}>
-            &nbsp;/&nbsp;
+            {` / `}
             {crumb.isCurrent ? (
               <span className='m-breadcrumbs__crumb' aria-current='page'>
                 {` ${crumb.label} `}
