@@ -12,7 +12,6 @@ export interface BreadcrumbProperties
   extends HTMLAttributes<HTMLDivElement> {
   crumbs: BreadcrumbCrumb[];
   ariaLabel?: string;
-  separator?: ReactNode;
 }
 
 /**
@@ -22,7 +21,6 @@ export interface BreadcrumbProperties
 export const Breadcrumb = ({
   crumbs,
   ariaLabel = 'Breadcrumbs',
-  separator = ' / ',
   className,
   ...properties
 }: BreadcrumbProperties): JSX.Element | null => {
@@ -36,7 +34,7 @@ export const Breadcrumb = ({
       <nav className='m-breadcrumbs' aria-label={ariaLabel}>
         {crumbs.map((crumb) => (
           <Fragment key={`${crumb.href}-${crumb.label}`}>
-            {separator}
+            /
             {crumb.isCurrent ? (
               <span className='m-breadcrumbs__crumb' aria-current='page'>
                 {crumb.label}

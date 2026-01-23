@@ -61,23 +61,3 @@ export const CurrentPage: Story = {
 };
 
 CurrentPage.storyName = 'Current page (aria-current)';
-
-export const CustomSeparator: Story = {
-  render: properties => <Breadcrumb {...properties} />,
-  args: {
-    separator: ' > ',
-    crumbs: [
-      {
-        href: '/a',
-        label: 'Section'
-      },
-      {
-        href: '/a/b',
-        label: 'Subsection'
-      },
-      { href: '/a/b/c', label: 'Current', isCurrent: true }
-    ]
-  }
-};
-
-CustomSeparator.storyName = 'Custom separator';
