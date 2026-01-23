@@ -13,51 +13,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 
-export const SingleCrumb: Story = {
+export const Crumb: Story = {
   render: properties => <Breadcrumb {...properties} />,
   args: {
     crumbs: [
       {
-        href: '/data-research/prepaid-accounts/',
-        label: 'Prepaid Account Agreements'
+        href: '/example',
+        label: 'Page link'
       }
     ]
   }
 };
-SingleCrumb.storyName = 'Single crumb';
-
-export const MultipleCrumbs: Story = {
-  render: properties => <Breadcrumb {...properties} />,
-  args: {
-    crumbs: [
-      {
-        href: '/data-research/',
-        label: 'Data & research'
-      },
-      {
-        href: '/data-research/prepaid-accounts/',
-        label: 'Prepaid Account Agreements'
-      }
-    ]
-  }
-};
-MultipleCrumbs.storyName = 'Multiple crumbs';
-
-export const CurrentPage: Story = {
-  render: properties => <Breadcrumb {...properties} />,
-  args: {
-    crumbs: [
-      {
-        href: '/data-research/',
-        label: 'Data & research'
-      },
-      {
-        href: '/data-research/prepaid-accounts/',
-        label: 'Prepaid Account Agreements',
-        isCurrent: true
-      }
-    ]
-  }
-};
-
-CurrentPage.storyName = 'Current page (aria-current)';
+Crumb.storyName = 'Crumb';

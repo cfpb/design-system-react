@@ -16,7 +16,7 @@ export interface BreadcrumbProperties
 }
 
 /**
- * Breadcrumbs help users understand where they are in a site’s hierarchy and navigate back up.
+ * Breadcrumbs provide secondary navigation to help users understand where they are in a website.
  *
  */
 export const Breadcrumb = ({
