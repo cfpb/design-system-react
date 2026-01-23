@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import type { ReactNode, HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import classnames from 'classnames';
 
 export interface BreadcrumbCrumb {
