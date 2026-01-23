@@ -26,15 +26,28 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const ExampleUsage: Story = {
+export const ExampleUsage30px: Story = {
+  args: {
+    className: 'u-mb30 u-mt30'
+  },
+  render: arguments_ => (
+    <>
+      This content is above the divider by 30px
+      <Divider {...arguments_} />
+      This content is below the divider by 30px
+    </>
+  )
+};
+
+export const ExampleUsage45px: Story = {
   args: {
     className: 'u-mb45 u-mt45'
   },
   render: arguments_ => (
     <>
-      Content above
+      This content is above the divider by 45px
       <Divider {...arguments_} />
-      Content below
+      This content is below the divider by 45px
     </>
   )
 };
