@@ -1,3 +1,13 @@
 .u-layout-grid__breadcrumbs {
-  font-size: .875rem;
+  .m-breadcrumbs {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: .875rem;
+    gap: .625rem;
+    min-height: 33px;
+    padding-bottom: .9375rem;
+    padding-top: .9375rem;
+    position: relative;
+  }
 }
