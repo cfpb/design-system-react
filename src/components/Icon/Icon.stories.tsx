@@ -76,6 +76,56 @@ export const IconWithBackground = (): React.ReactElement => (
   </span>
 );
 
+export const IconWithText = (): React.ReactElement => {
+  const elements = ['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'a'];
+
+  return (
+    <table className='t-icon-with-text'>
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Text + Icon</th>
+          <th>Icon + Text</th>
+          <th>Round Icon + Text</th>
+        </tr>
+      </thead>
+      <tbody>
+        {elements.map(element => {
+          const DynamicTag = element;
+
+          return (
+            <tr key={element}>
+              <td>{element}</td>
+              <td>
+                <DynamicTag className='u-icon-after-text'>
+                  {element} text
+                  <Icon name='email' />
+                </DynamicTag>
+              </td>
+
+              <td>
+                <DynamicTag className='u-icon-before-text'>
+                  <Icon name='email' />
+                  {element} text
+                </DynamicTag>
+              </td>
+              <td>
+                <DynamicTag className='u-icon-before-text'>
+                  <Icon name='zero' withBg />
+                  {element} text
+                </DynamicTag>
+              </td>
+            </tr>
+          );
+        })}
+        <tr>
+          <td>test space</td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
+
 export const NavigationIcons = (): React.ReactElement => (
   <IconTable>{makeRows(navigationIcons)}</IconTable>
 );
