@@ -9,9 +9,11 @@ const meta: Meta<typeof Divider> = {
     docs: {
       description: {
         component: `
-### CFPB DS Divider component
-
 A component to provide a horizontal rule for separating content.
+
+<a href="https://cfpb.github.io/design-system/development/blocks#content-dividers">
+https://cfpb.github.io/design-system/development/blocks#content-dividers
+</a>
 `
       }
     }
