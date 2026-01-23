@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import type { SyntheticEvent } from 'react';
 import { Breadcrumb, Link } from '~/src/index';
 
 const meta: Meta<typeof Breadcrumb> = {
@@ -20,11 +19,7 @@ export const SingleCrumb: Story = {
     crumbs: [
       {
         href: '/data-research/prepaid-accounts/',
-        label: (
-          <Link href='/data-research/prepaid-accounts/'>
-            Prepaid Account Agreements
-          </Link>
-        )
+        label: 'Prepaid Account Agreements'
       }
     ]
   }
@@ -37,19 +32,11 @@ export const MultipleCrumbs: Story = {
     crumbs: [
       {
         href: '/data-research/',
-        label: (
-          <Link href='/data-research/'>
-            Data & research
-          </Link>
-        )
+        label: 'Data & research'
       },
       {
         href: '/data-research/prepaid-accounts/',
-        label: (
-          <Link href='/data-research/prepaid-accounts/'>
-            Prepaid Account Agreements
-          </Link>
-        )
+        label: 'Prepaid Account Agreements'
       }
     ]
   }
@@ -62,11 +49,7 @@ export const CurrentPage: Story = {
     crumbs: [
       {
         href: '/data-research/',
-        label: (
-          <Link href='/data-research/'>
-            Data & research
-          </Link>
-        )
+        label: 'Data & research'
       },
       {
         href: '/data-research/prepaid-accounts/',
@@ -86,11 +69,11 @@ export const CustomSeparator: Story = {
     crumbs: [
       {
         href: '/a',
-        label: <Link href='/a'>Section</Link>
+        label: 'Section'
       },
       {
         href: '/a/b',
-        label: <Link href='/a/b'>Subsection</Link>
+        label: 'Subsection'
       },
       { href: '/a/b/c', label: 'Current', isCurrent: true }
     ]

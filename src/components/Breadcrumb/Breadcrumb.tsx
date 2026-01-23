@@ -1,21 +1,24 @@
+import { Fragment } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
 import classnames from 'classnames';
-import React from 'react';
 
 export interface BreadcrumbCrumb {
   href: string;
-  label: React.ReactNode;
+  label: string;
   isCurrent?: boolean;
 }
 
-export interface BreadcrumbProperties extends React.HTMLAttributes<HTMLDivElement> {
+export interface BreadcrumbProperties
+  extends HTMLAttributes<HTMLDivElement> {
   crumbs: BreadcrumbCrumb[];
   ariaLabel?: string;
-  separator?: string;
+  separator?: ReactNode;
 }
 
 /**
  * Breadcrumbs help users understand where they are in a site’s hierarchy and navigate back up.
  *
+ * Source: https://cfpb.github.io/design-system/components/breadcrumbs
  */
 export const Breadcrumb = ({
   crumbs,
@@ -24,7 +27,7 @@ export const Breadcrumb = ({
   className,
   ...properties
 }: BreadcrumbProperties): JSX.Element | null => {
-  if (!crumbs || crumbs.length === 0) return null;
+  if (crumbs.length === 0) return null;
 
   return (
     <div
@@ -32,17 +35,19 @@ export const Breadcrumb = ({
       {...properties}
     >
       <nav className='m-breadcrumbs' aria-label={ariaLabel}>
-        {crumbs.map((crumb, index) => (
-          <React.Fragment key={`${crumb.href}-${index}`}>
+        {crumbs.map((crumb) => (
+          <Fragment key={`${crumb.href}-${crumb.label}`}>
             {separator}
-            <a
-              className='m-breadcrumbs__crumb'
-              href={crumb.href}
-              aria-current={crumb.isCurrent ? 'page' : undefined}
-            >
-              {crumb.label}
-            </a>
-          </React.Fragment>
+            {crumb.isCurrent ? (
+              <span className='m-breadcrumbs__crumb' aria-current='page'>
+                {crumb.label}
+              </span>
+            ) : (
+              <a className='m-breadcrumbs__crumb' href={crumb.href}>
+                {crumb.label}
+              </a>
+            )}
+          </Fragment>
         ))}
       </nav>
     </div>
