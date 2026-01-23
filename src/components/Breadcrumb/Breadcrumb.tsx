@@ -18,7 +18,6 @@ export interface BreadcrumbProperties
 /**
  * Breadcrumbs help users understand where they are in a site’s hierarchy and navigate back up.
  *
- * Source: https://cfpb.github.io/design-system/components/breadcrumbs
  */
 export const Breadcrumb = ({
   crumbs,
