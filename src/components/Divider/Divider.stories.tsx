@@ -2,16 +2,18 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Divider } from '~/src/index';
 
 const meta: Meta<typeof Divider> = {
-  title: 'Components (Draft)/Divider',
+  title: 'Components (Draft)/Dividers',
   component: Divider,
   tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
         component: `
-### CFPB DS Divider component
+Dividers create visual separation between content sections by rendering a horizontal line.
 
-A component to provide a horizontal rule for separating content.
+<a href="https://cfpb.github.io/design-system/development/blocks#content-dividers">
+https://cfpb.github.io/design-system/development/blocks#content-dividers
+</a>
 `
       }
     }
@@ -26,13 +28,13 @@ export const Default: Story = {};
 
 export const ExampleUsage: Story = {
   args: {
-    className: 'u-mb45 u-mt45'
+    className: 'u-mb30 u-mt30'
   },
   render: arguments_ => (
     <>
-      Content above
+      This content is above the divider by 30px
       <Divider {...arguments_} />
-      Content below
+      This content is below the divider by 30px
     </>
   )
 };
