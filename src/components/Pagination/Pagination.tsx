@@ -1,11 +1,10 @@
-import classNames from 'classnames';
-import type { EventHandler, ReactElement, SyntheticEvent } from 'react';
+import type { ReactElement } from 'react';
 import { useEffect, useId, useState } from 'react';
 import { noOp } from '../../utils/noOp';
-import { Icon } from '../Icon/Icon';
 import { Label } from '../Label/Label';
-import './pagination.scss';
 import { MIN_PAGE } from './paginationConstants';
+import { Button } from '~/src';
+import '@cfpb/cfpb-design-system/src/components/cfpb-pagination/pagination.scss'
 
 export interface PaginationProperties {
   /** Identifier of the table this element controls */
@@ -27,58 +26,14 @@ export interface PaginationProperties {
 }
 
 const PaginationSubmitButton = (): JSX.Element => (
-  <button
-    className='a-btn a-btn--link m-pagination__btn-submit'
+  <Button
+    asLink
+    className='m-pagination__btn-submit'
     id='m-pagination__btn-submit-default'
+    label='Go'
     type='submit'
-  >
-    Go
-  </button>
+  />
 );
-
-interface PaginationNavButtonProperties {
-  iconName: string;
-  onClick: EventHandler<SyntheticEvent>;
-  label?: string;
-  isPrevious?: boolean;
-  isNext?: boolean;
-  isDisabled?: boolean;
-}
-const PaginationNavButton = ({
-  iconName,
-  onClick,
-  label,
-  isPrevious = false,
-  isNext = false,
-  isDisabled = false
-}: PaginationNavButtonProperties): React.ReactElement => {
-  const buttonCnames = ['a-btn', 'flex-center'];
-  const iconCnames = ['a-btn__icon'];
-
-  if (isPrevious) {
-    buttonCnames.push('m-pagination__btn-prev');
-    iconCnames.push('a-btn_icon--on-left');
-  } else {
-    buttonCnames.push('m-pagination__btn-next');
-    iconCnames.push('a-btn_icon--on-right');
-  }
-
-  if (isDisabled) buttonCnames.push('a-btn--disabled');
-
-  return (
-    <button
-      type='button'
-      className={classNames(buttonCnames)}
-      onClick={onClick}
-    >
-      {isNext ? label : null}
-      <span className={classNames(iconCnames)}>
-        {iconName ? <Icon isPresentational name={iconName} /> : null}
-      </span>
-      {isPrevious ? label : null}
-    </button>
-  );
-};
 
 interface PaginationInputProperties {
   tableId: string;
@@ -102,7 +57,7 @@ const PaginationInput = ({
   return (
     <Label className='m-pagination__label' htmlFor={inputId} inline>
       Page
-      <span className='u-visually-hidden'>number {page} out</span>
+      <span className='u-visually-hidden'>{ `number ${page} out`}</span>
       <input
         className='m-pagination__current-page'
         id={inputId}
@@ -115,7 +70,7 @@ const PaginationInput = ({
         value={page}
         onChange={onPageChange}
       />
-      of {pageCount}
+      {`of ${pageCount}`}
     </Label>
   );
 };
@@ -152,19 +107,19 @@ export const Pagination = ({
 
   return (
     <nav className='m-pagination' role='navigation' aria-label='Pagination'>
-      <PaginationNavButton
-        iconName='left'
+      <Button
+        iconLeft='left'
+        className={'m-pagination__btn-prev'}
         onClick={onClickPrevious}
         label={previousLabel}
-        isDisabled={page === MIN_PAGE}
-        isPrevious
+        disabled={page === MIN_PAGE}
       />
-      <PaginationNavButton
-        iconName='right'
+      <Button
+        iconRight='right'
+        className={'m-pagination__btn-next'}
         onClick={onClickNext}
         label={nextLabel}
-        isDisabled={page === pageCount}
-        isNext
+        disabled={page === pageCount}
       />
 
       <form
