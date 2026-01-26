@@ -1,7 +1,6 @@
 import type { ReactElement } from 'react';
 import { useEffect, useId, useState } from 'react';
 import { noOp } from '../../utils/noOp';
-import { Label } from '../Label/Label';
 import { MIN_PAGE } from './paginationConstants';
 import { Button } from '~/src';
 import '@cfpb/cfpb-design-system/src/components/cfpb-pagination/pagination.scss'
@@ -55,7 +54,7 @@ const PaginationInput = ({
   const inputId = `${tableId}-pagination_current-page`;
 
   return (
-    <Label className='m-pagination__label' htmlFor={inputId} inline>
+    <label className='m-pagination__label' htmlFor={inputId}>
       Page
       <span className='u-visually-hidden'>{ `number ${page} out`}</span>
       <input
@@ -71,7 +70,7 @@ const PaginationInput = ({
         onChange={onPageChange}
       />
       {`of ${pageCount}`}
-    </Label>
+    </label>
   );
 };
 
