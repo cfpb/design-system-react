@@ -5,10 +5,11 @@ export { Alert } from './components/Alert/Alert';
 export { AlertFieldLevel } from './components/Alert/AlertFieldLevel';
 export { Banner } from './components/Banner/Banner';
 export { LanguageLink } from './components/Banner/BannerLanguageLink';
+export { Breadcrumb } from './components/Breadcrumb/Breadcrumb';
 export { Button } from './components/Buttons/Button';
 export { ButtonGroup } from './components/Buttons/ButtonGroup';
 export { Checkbox } from './components/Checkbox/Checkbox';
-export { default as Divider } from './components/Divider/Divider';
+export { Divider } from './components/Divider/Divider';
 export { Dropdown } from './components/Dropdown/Dropdown';
 export {
   DropdownPill,

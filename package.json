@@ -1,7 +1,7 @@
 {
   "name": "@cfpb/design-system-react",
   "license": "MIT",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "repository": {
     "type": "git",
     "url": "https://github.com/cfpb/design-system-react.git"
