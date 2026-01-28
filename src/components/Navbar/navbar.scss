@@ -78,18 +78,11 @@ $breakpoint: 56.3125em;
           border-bottom: 2px solid #101820;
         }
       }
-      .a-btn {
-        font-weight: 600;
-        letter-spacing: 1px;
-      }
       .a-btn--link {
         font-size: 14px;
         justify-content: left;
         line-height: 22px;
         width: auto;
-        @media (min-width: $breakpoint) {
-          line-height: 18px;
-        }
       }
 
       @media (min-width: $breakpoint) {
