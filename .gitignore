@@ -8,7 +8,6 @@ dist-storybook
 coverage
 .nyc_output
 .stylelintcache
-cypress/videos
 .env
 .pnp.*
 .yarn/*

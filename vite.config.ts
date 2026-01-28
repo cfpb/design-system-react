@@ -62,6 +62,11 @@ export default defineConfig(() => ({
   test: {
     globals: true,
     environment: 'jsdom',
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/.{idea,git,cache,output,temp}/**'
+    ],
     // This ensures Vitest uses the same plugin pipeline as Vite
     transformMode: {
       web: [/.[tj]sx?$/]

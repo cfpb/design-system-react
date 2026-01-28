@@ -30,7 +30,7 @@ describe('Checkbox', () => {
 
     render(<CheckboxTestWrapper {...defaultProps} onChange={onChange} />);
 
-    const checkbox = await screen.findByRole(/checkbox/i);
+    const checkbox = await screen.findByRole('checkbox');
 
     expect(checkbox.getAttribute(attributeClass)).toMatch('a-checkbox');
     expect(checkbox.getAttribute(attributeAria)).toMatch('false');
@@ -51,7 +51,7 @@ describe('Checkbox', () => {
 
     render(<CheckboxTestWrapper {...defaultProps} helperText={helperText} />);
 
-    const checkbox = await screen.findByRole(/checkbox/i);
+    const checkbox = await screen.findByRole('checkbox');
     expect(checkbox.getAttribute(attributeAria)).toMatch('false');
 
     // Clicking helper text correctly updates checkbox
@@ -71,7 +71,7 @@ describe('Checkbox', () => {
   it('Is disabled when passing the "disabled" prop', async () => {
     render(<Checkbox {...defaultProps} disabled />);
 
-    const checkbox = await screen.findByRole(/checkbox/i);
+    const checkbox = await screen.findByRole('checkbox');
     expect(checkbox).toBeDisabled();
   });
 

@@ -17,7 +17,10 @@
     "jsx": "react-jsx",
     "types": ["vite/client", "vitest/globals", "vite-plugin-pwa/client"],
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "@cfpb/cfpb-design-system/src/components/cfpb-expandables": [
+        "./src/types/CfpbExpandables.d.ts"
+      ]
     }
   },
   "include": ["src"],

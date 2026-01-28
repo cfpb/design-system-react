@@ -10,3 +10,11 @@ declare module '@cfpb/cfpb-design-system/src/components/cfpb-expandables' {
     static init(element?: Element | NodeList | null): void;
   }
 }
+
+export class Summary {
+  static init(element?: Element | NodeList | null): void;
+}
+
+export class SummaryMinimal {
+  static init(element?: Element | NodeList | null): void;
+}
