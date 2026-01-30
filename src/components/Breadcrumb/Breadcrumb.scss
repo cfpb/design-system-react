@@ -11,3 +11,27 @@
     position: relative;
   }
 }
+
+@media only screen and (max-width: 56.25em) {
+  .u-layout-grid__breadcrumbs {
+    background:var(--gray-5);
+    border-bottom: 1px solid var(--gray-40);
+    margin-left: -1.875rem;
+    margin-right: -1.875rem;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem
+  }
+}
+
+@media only screen and (min-width: 37.5625em)and (max-width:56.25em) {
+  .u-layout-grid__breadcrumbs {
+    padding-left: .9375rem;
+    padding-right: .9375rem
+  }
+}
+
+@media only screen and (min-width: 37.5625em) {
+  .u-layout-grid__breadcrumbs {
+    margin-top: 0
+  }
+}
