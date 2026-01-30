@@ -98,15 +98,14 @@ describe('<Table />', () => {
         columns={columnsWithConfiguration}
         rows={defaultRows}
         isPaginated
+        id='table-pagination'
       />
     );
 
-    const previousButton = screen.getByText('Previous');
-    expect(previousButton.classList.contains('m-pagination__btn-prev')).toBe(
-      true
-    );
+    const previousButton = screen.getByRole('button', { name: 'Previous' });
+    expect(previousButton.classList.contains('m-pagination__btn-prev')).toBe(true);
 
-    const nextButton = screen.getByText('Next');
+    const nextButton = screen.getByRole('button', { name: 'Next' });
     expect(nextButton.classList.contains('m-pagination__btn-next')).toBe(true);
   });
 });
