@@ -16,9 +16,9 @@ export const Unordered: Story = {
   args: {
     children: (
       <>
-        <ListItem>First</ListItem>
-        <ListItem>Second</ListItem>
-        <ListItem>Third</ListItem>
+        <ListItem>List item 1</ListItem>
+        <ListItem>List item 2</ListItem>
+        <ListItem>List item 3</ListItem>
       </>
     )
   }
@@ -58,13 +58,13 @@ export const Links: Story = {
     children: (
       <>
         <ListLink type='list' href='#'>
-          <LinkText>First Link</LinkText>
+          <LinkText>List item 1</LinkText>
         </ListLink>
         <ListLink type='list' href='#'>
-          <LinkText>Second Link</LinkText>
+          <LinkText>List item 2</LinkText>
         </ListLink>
         <ListLink type='list' href='#'>
-          <LinkText>Third Link</LinkText>
+          <LinkText>List item 3</LinkText>
         </ListLink>
       </>
     )
