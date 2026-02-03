@@ -40,6 +40,22 @@ describe('<Button />', () => {
     expect(screen.getByText(wowLabel).textContent).toEqual(wowLabel);
   });
 
+  it('Renders left icon correctly', async () => {
+    render(<Button label={testLabel} iconLeft='left' />);
+    expect(screen.getByText(testLabel)).toBeInTheDocument();
+    expect(screen.getByText(testLabel).textContent).toEqual(testLabel);
+    expect(screen.getByText(testLabel, { selector: 'span' })).toBeInTheDocument();
+    expect(await screen.findByTestId('button-icon-left')).toBeInTheDocument();
+  });
+
+  it('Renders right icon correctly', async () => {
+    render(<Button label={testLabel} iconRight='right' />);
+    expect(screen.getByText(testLabel)).toBeInTheDocument();
+    expect(screen.getByText(testLabel).textContent).toEqual(testLabel);
+    expect(screen.getByText(testLabel, { selector: 'span' })).toBeInTheDocument();
+    expect(await screen.findByTestId('button-icon-right')).toBeInTheDocument();
+  });
+
   it('Renders alternative appearances', () => {
     render(<Button label={testLabel} />);
     expect(screen.getByText(testLabel)).toHaveClass(buttonBaseClass);

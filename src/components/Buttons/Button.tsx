@@ -78,9 +78,21 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
         className={[...styles].join(' ')}
         {...properties}
       >
-        {iconLeft ? <Icon name={iconLeft} isPresentational /> : null}
+        {iconLeft ? (
+          <Icon
+            name={iconLeft}
+            isPresentational
+            data-testid="button-icon-left"
+          />
+        ) : null}
         {iconLeft || iconRight ? <span>{label}</span> : label}
-        {iconRight ? <Icon name={iconRight} isPresentational /> : null}
+        {iconRight ? (
+          <Icon
+            name={iconRight}
+            isPresentational
+            data-testid="button-icon-right"
+          />
+        ) : null}
       </button>
     );
   },
