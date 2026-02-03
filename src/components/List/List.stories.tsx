@@ -5,7 +5,6 @@ const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',
   component: List,
   tags: ['autodocs'],
-  argTypes: 
   parameters: {
     docs: {
       description: {
