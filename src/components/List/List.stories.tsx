@@ -3,9 +3,19 @@ import { LinkText, List, ListItem, ListLink } from '~/src/index';
 
 const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',
-  tags: ['autodocs'],
   component: List,
-  argTypes: {}
+  tags: ['autodocs'],
+  argTypes: 
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Lists are an effective way to visually highlight important information so that it can be more easily scanned and read. Before writing a list, it’s important to identify the best style needed for the information being presented.
+Source: https://cfpb.github.io/design-system/components/lists
+`
+      }
+    }
+  }
 };
 
 export default meta;
