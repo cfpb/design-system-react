@@ -22,6 +22,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Unordered: Story = {
+  name: 'Bulleted',
   args: {
     children: (
       <>
@@ -34,6 +35,7 @@ export const Unordered: Story = {
 };
 
 export const Ordered: Story = {
+  name: 'Numbered',
   args: {
     ...Unordered.args,
     isOrdered: true
@@ -41,6 +43,7 @@ export const Ordered: Story = {
 };
 
 export const Unstyled: Story = {
+  name: 'Unstyled',
   args: {
     ...Unordered.args,
     isUnstyled: true
@@ -48,6 +51,7 @@ export const Unstyled: Story = {
 };
 
 export const Horizontal: Story = {
+  name: 'Horizontal',
   args: {
     ...Unordered.args,
     isHorizontal: true
@@ -55,6 +59,7 @@ export const Horizontal: Story = {
 };
 
 export const Spaced: Story = {
+  name: 'Spaced',
   args: {
     ...Unordered.args,
     isSpaced: true
@@ -62,6 +67,7 @@ export const Spaced: Story = {
 };
 
 export const Links: Story = {
+  name: 'Link',
   args: {
     isLinks: true,
     children: (
