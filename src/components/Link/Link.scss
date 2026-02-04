@@ -1,11 +1,9 @@
-.a-link--jump {
-  svg + .a-link__text {
-    padding-left: 0.25em;
+.a-link {
+  .a-link__text + svg {
+    margin-left: 0.25em;
   }
-}
 
-.a-link--icon-right {
-  .a-link__text {
-    margin-right: 0.25em;
+  svg + .a-link__text {
+    margin-left: 0.25em;
   }
 }
