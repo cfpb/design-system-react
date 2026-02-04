@@ -23,7 +23,7 @@ export default function PageHeader({
   return (
     <header className={classnames(headerClasses)}>
       <Banner tagline='An official website of the United States government' />
-      <ResponsiveMenu {...{ links, user, href }} />
+      <ResponsiveMenu links={links} user={user} href={href} />
     </header>
   );
 }

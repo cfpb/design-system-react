@@ -146,10 +146,18 @@ export const WithIcon: Story = {
   )
 };
 
-export const ListLinks: Story = {
-  name: 'List links',
+export const Listlink: Story = {
+  name: 'List',
   args: {
     ...DefaultArguments.args
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'A list link is an item in a set of two or more stacked standalone links. Items in a link list are medium weight and are underlined at larger screen widths. At smaller screen widths, they convert to full block links with a top and bottom border.'
+      }
+    }
   },
   render: arguments_ => (
     <List isLinks>
