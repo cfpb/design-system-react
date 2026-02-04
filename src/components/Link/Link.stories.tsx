@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
-import {
-  Heading,
-  Icon,
-  Link,
-  LinkText,
-  List,
-  ListLink
-} from '~/src/index';
+import { Heading, Link, List, ListLink } from '~/src/index';
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',
@@ -39,15 +32,7 @@ export const Inline: Story = {
   },
   render: () => (
     <p>
-      Here&apos;s the{' '}
-      <Link href='/#' label='default link style'/>
-      . For reference, here&apos;s the{' '}
-      <Link href='/#' label='hover link style' className='hover' />. Train your
-      eyes on the{' '}
-      <Link href='/#' label='focused link style' className='focus' />. Jump to
-      the <Link href='/#' label='active link style' className='active' />.
-      We&apos;ve all been to the{' '}
-      <Link href='/#' label='visited link style' className='visited' />.
+      Here&apos;s the default <Link href='/#' label='inline link' /> style.
     </p>
   )
 };
@@ -64,7 +49,9 @@ export const Standalone: Story = {
       }
     }
   },
-  render: arguments_ => <Link {...arguments_} href='/#' isJump label='Standalone link' />
+  render: arguments_ => (
+    <Link {...arguments_} href='/#' isJump label='Standalone link' />
+  )
 };
 
 export const WithIcon: Story = {
@@ -84,7 +71,7 @@ export const WithIcon: Story = {
       }
     }
   },
-  render: arguments_ => (
+  render: () => (
     <>
       <Heading type='4'>Inline</Heading>
       <p>
@@ -152,24 +139,18 @@ export const Listlink: Story = {
       }
     }
   },
-  render: arguments_ => (
+  render: () => (
     <List isLinks>
-      <ListLink {...arguments_}>
-        <LinkText>List item 1</LinkText>
-      </ListLink>
-      <ListLink {...arguments_}>
-        <LinkText>List item 2</LinkText>
-      </ListLink>
-      <ListLink {...arguments_}>
-        <LinkText>List item 3</LinkText>
-      </ListLink>
+      <ListLink href='/#' label='List item 1' />
+      <ListLink href='/#' label='List item 2' />
+      <ListLink href='/#' label='List item 3' />
     </List>
   )
 };
 
 export const Destructive: Story = {
   args: {
-    ...DefaultArguments.args,
+    ...DefaultArguments.args
   },
   parameters: {
     docs: {
@@ -183,7 +164,7 @@ export const Destructive: Story = {
       }
     }
   },
-  render: arguments_ => <Link href='/#' type='destructive' label='Destructive link' />
+  render: () => <Link href='/#' type='destructive' label='Destructive link' />
 };
 
 export const LinkWithReactRouterLink: Story = {
@@ -199,11 +180,7 @@ export const LinkWithReactRouterLink: Story = {
   },
   render: () => (
     <BrowserRouter>
-      <p>
-        <Link href='/#' isRouterLink>
-          <LinkText>Link using React Router Link</LinkText>
-        </Link>
-      </p>
+      <Link href='/#' label='Link using React Router Link' isRouterLink />
     </BrowserRouter>
   )
 };

@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Link, { DestructiveLink, LinkText, ListLink } from './Link';
-// import { DestructiveLink, Link, LinkText, ListLink } from '~/src/index';
+import Link, { ListLink } from './Link';
 
 describe('<Link />', () => {
   const linkBaseProperties = {
@@ -12,48 +11,43 @@ describe('<Link />', () => {
   const testId = linkBaseProperties['data-testid'];
 
   it('Type: "default"', () => {
-    render(<Link {...linkBaseProperties} />);
+    render(<Link label='some link' {...linkBaseProperties} />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveAttribute('href', '/#');
   });
 
   it('Type: "destructive"', () => {
-    render(<Link {...linkBaseProperties} type='destructive' />);
+    render(
+      <Link label='some link' {...linkBaseProperties} type='destructive' />
+    );
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-btn a-btn--link a-btn--warning');
   });
 
-  it('Option: noWrap - it adds classnames', () => {
-    render(<Link {...linkBaseProperties} noWrap />);
-    const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link--no-wrap');
-  });
-
   it('Option: isJump - it adds classnames', () => {
-    render(<Link {...linkBaseProperties} isJump />);
+    render(<Link label='some link' {...linkBaseProperties} isJump />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-link--jump');
   });
 
-  it('Option: hasIcon - it adds classnames', () => {
-    render(<Link {...linkBaseProperties} hasIcon />);
+  it('Option: leftIcon - it adds left icon', () => {
+    render(<Link label='some link' {...linkBaseProperties} iconLeft='left' />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link a-link--icon');
+    expect(link).toHaveClass('a-link');
+  });
+
+  it('Option: rightIcon - it adds right icon', () => {
+    render(
+      <Link label='some link' {...linkBaseProperties} iconRight='right' />
+    );
+    const link = screen.getByTestId(testId);
+    expect(link).toHaveClass('a-link');
   });
 
   it('Other: propagates other attributes', () => {
-    render(<Link {...linkBaseProperties} target='_blank' />);
+    render(<Link label='some link' {...linkBaseProperties} target='_blank' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveAttribute('target', '_blank');
-  });
-});
-
-describe('<LinkText>', () => {
-  it('includes appropriate classnames', () => {
-    render(<LinkText data-testid='link-text'>Test text</LinkText>);
-    const linkText = screen.getByTestId('link-text');
-    expect(linkText).toHaveClass('a-link__text');
-    expect(linkText).toHaveTextContent('Test text');
   });
 });
 
@@ -71,16 +65,5 @@ describe('<ListLink>', () => {
     const linkText = screen.getByTestId(testId);
     expect(linkText).toHaveClass('a-link--jump');
     expect(linkText).toHaveTextContent('Test text');
-  });
-});
-
-describe('<DestructiveLink>', () => {
-  const testId = 'destructive-link';
-
-  it('includes all expected elements', () => {
-    render(<DestructiveLink data-testid={testId}>Test text</DestructiveLink>);
-    const linkDestructive = screen.getByTestId(testId);
-    expect(linkDestructive).toHaveClass('a-btn a-btn--link a-btn--warning');
-    expect(linkDestructive).toHaveTextContent('Test text');
   });
 });

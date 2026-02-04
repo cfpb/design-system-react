@@ -4,7 +4,7 @@ import type { JSXElement } from '../../types/jsxElement';
 import classnames from 'classnames';
 import ListItem from '../List/ListItem';
 import './Link.scss';
-import type { HTMLProps, Ref } from 'react';
+import type { HTMLProps, ReactNode, Ref } from 'react';
 import { Icon } from '~/src';
 
 export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
@@ -12,6 +12,10 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
    * Whether the link should be rendered as a button.
    */
   asButton?: boolean;
+  /**
+   * Any children to render within the link
+   */
+  children?: ReactNode;
   /**
    * The link's destination URL.
    */
@@ -37,7 +41,10 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
    */
   label: string;
   ref?: Ref<HTMLAnchorElement>;
-  type?: 'default' | 'destructive' | 'list';
+  /**
+   * What type of link should be rendered
+   */
+  type?: 'default' | 'destructive';
 }
 
 /**
@@ -59,17 +66,15 @@ export default function Link({
 }: LinkProperties): JSXElement {
   const cname = [others.className];
 
-  if(asButton || type==='destructive') {
+  if (asButton || type === 'destructive') {
     cname.push('a-btn');
-  } else {
-    cname.push('a-link');
   }
 
   if (type === 'destructive') {
     cname.push('a-btn a-btn--link a-btn--warning');
   }
   if (isJump) cname.push('a-link--jump');
-  if (iconRight) cname.push('a-link--icon-right');
+  if (iconLeft || iconRight || isJump) cname.push('a-link');
 
   if (isRouterLink) {
     if (!href) {
@@ -79,13 +84,14 @@ export default function Link({
     }
     return (
       <RouterLink to={href} {...others} className={classnames(cname)}>
-        {children}
+        {label}
       </RouterLink>
     );
   }
 
   return (
     <a {...others} className={classnames(cname)} href={href}>
+      {children}
       {iconLeft ? (
         <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
       ) : null}
@@ -114,8 +120,4 @@ export const ListLink = (properties: LinkProperties): JSXElement => (
   <ListItem>
     <Link {...properties} isJump />
   </ListItem>
-);
-
-export const DestructiveLink = (properties: LinkProperties): JSXElement => (
-  <Link {...properties} type='destructive' />
 );
