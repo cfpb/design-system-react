@@ -37,9 +37,9 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
    */
   isRouterLink?: boolean;
   /**
-   * The link's text content
+   * The link's text content, not required if children are provided
    */
-  label: string;
+  label?: string;
   ref?: Ref<HTMLAnchorElement>;
   /**
    * What type of link should be rendered
