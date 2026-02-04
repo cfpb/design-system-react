@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { LinkText, List, ListItem, ListLink } from '~/src/index';
+import { Link } from '~/src';
 
 const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',
@@ -57,15 +58,14 @@ export const Links: Story = {
     isLinks: true,
     children: (
       <>
-        <ListLink type='list' href='#'>
-          <LinkText>First Link</LinkText>
-        </ListLink>
-        <ListLink type='list' href='#'>
-          <LinkText>Second Link</LinkText>
-        </ListLink>
-        <ListLink type='list' href='#'>
-          <LinkText>Third Link</LinkText>
-        </ListLink>
+        Link lists is where each item in a list is a jump link, which converts
+        to a finger-friendly link with a large tap area on smaller screens. See
+        example on the{' '}
+        <Link
+          label='links'
+          href='/?path=/docs/components-verified-links--listlink'
+        />{' '}
+        page.
       </>
     )
   }
