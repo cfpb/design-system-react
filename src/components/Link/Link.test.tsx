@@ -1,10 +1,11 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Link, { ListLink } from './Link';
+import { MemoryRouter } from 'react-router-dom';
+import Link, { LinkText, ListLink } from './Link';
 
 describe('<Link />', () => {
   const linkBaseProperties = {
-    href: '/#',
+    href: '/foo/bar',
     'data-testid': 'link-test-id',
     label: 'some link'
   };
@@ -13,7 +14,7 @@ describe('<Link />', () => {
   it('Type: "default"', () => {
     render(<Link {...linkBaseProperties} />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveAttribute('href', '/#');
+    expect(link).toHaveAttribute('href', '/foo/bar');
   });
 
   it('Type: "destructive"', () => {
@@ -47,13 +48,44 @@ describe('<Link />', () => {
     const link = screen.getByTestId(testId);
     expect(link).toHaveAttribute('target', '_blank');
   });
+
+  it('Option: isRouterLink - it renders a router link', () => {
+    render(
+      <MemoryRouter initialEntries={['/foo/bar']}>
+        <Link {...linkBaseProperties} isRouterLink />
+      </MemoryRouter>
+    );
+
+    const link = screen.getByRole('link', { name: /some link/i });
+    expect(link).toHaveAttribute('href', '/foo/bar');
+  });
+
+  it('Option: isRouterLink - it requires href', () => {
+    const brokenProperties = {
+      ...linkBaseProperties,
+      href: undefined as unknown as string
+    };
+
+    expect(() => render(<Link {...brokenProperties} isRouterLink />)).toThrow(
+      'Link component: href is a required attribute when isRouterLink is true'
+    );
+  });
+});
+
+describe('<LinkText>', () => {
+  it('includes appropriate classnames', () => {
+    render(<LinkText data-testid='link-text'>Test text</LinkText>);
+    const linkText = screen.getByTestId('link-text');
+    expect(linkText).toHaveClass('a-link__text');
+    expect(linkText).toHaveTextContent('Test text');
+  });
 });
 
 describe('<ListLink>', () => {
   const testId = 'list-link';
 
   it('includes all expected elements', () => {
-    render(<ListLink data-testid={testId} href='/#' label='Test text' />);
+    render(<ListLink data-testid={testId} href='/foo/bar' label='Test text' />);
     // ListItem
     const listItem = screen.getByRole('listitem');
     expect(listItem).toBeInTheDocument();
