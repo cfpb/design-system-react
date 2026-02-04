@@ -13,7 +13,7 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
    */
   asButton?: boolean;
   /**
-   * Any children to render within the link
+   * Any children to render within the link. Allows you to wrap any node with anchor tag
    */
   children?: ReactNode;
   /**
