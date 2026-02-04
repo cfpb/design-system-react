@@ -28,7 +28,6 @@ const DefaultArguments = {
 };
 
 export const Inline: Story = {
-  name: 'Inline',
   parameters: {
     docs: {
       description: {
@@ -64,7 +63,6 @@ export const Inline: Story = {
 };
 
 export const Standalone: Story = {
-  name: 'Standalone',
   args: {
     ...DefaultArguments.args,
     isJump: true
@@ -169,7 +167,6 @@ export const ListLinks: Story = {
 };
 
 export const Destructive: Story = {
-  name: 'Destructive links',
   args: {
     ...DefaultArguments.args,
     children: 'Destructive link'
