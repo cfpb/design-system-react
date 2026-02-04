@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
 import {
-  DestructiveLink,
   Heading,
   Icon,
   Link,
@@ -40,33 +39,20 @@ export const Inline: Story = {
   },
   render: () => (
     <p>
-      Here&apos;s the <Link href='/#'>default link style</Link>. For reference,
-      here&apos;s the{' '}
-      <Link href='/#' className='hover'>
-        hover link style
-      </Link>
-      . Train your eyes on the{' '}
-      <Link href='/#' className='focus'>
-        focused link style
-      </Link>
-      . Jump to the{' '}
-      <Link href='/#' className='active'>
-        active link style
-      </Link>
-      . We&apos;ve all been to the{' '}
-      <Link href='/#' className='visited'>
-        visited link style
-      </Link>
-      .
+      Here&apos;s the{' '}
+      <Link href='/#' label='default link style'/>
+      . For reference, here&apos;s the{' '}
+      <Link href='/#' label='hover link style' className='hover' />. Train your
+      eyes on the{' '}
+      <Link href='/#' label='focused link style' className='focus' />. Jump to
+      the <Link href='/#' label='active link style' className='active' />.
+      We&apos;ve all been to the{' '}
+      <Link href='/#' label='visited link style' className='visited' />.
     </p>
   )
 };
 
 export const Standalone: Story = {
-  args: {
-    ...DefaultArguments.args,
-    isJump: true
-  },
   parameters: {
     docs: {
       description: {
@@ -78,18 +64,13 @@ export const Standalone: Story = {
       }
     }
   },
-  render: arguments_ => (
-    <Link {...arguments_}>
-      <LinkText>Standalone link</LinkText>
-    </Link>
-  )
+  render: arguments_ => <Link {...arguments_} href='/#' isJump label='Standalone link' />
 };
 
 export const WithIcon: Story = {
   name: 'With icon',
   args: {
-    ...DefaultArguments.args,
-    hasIcon: true
+    ...DefaultArguments.args
   },
   parameters: {
     docs: {
@@ -108,39 +89,51 @@ export const WithIcon: Story = {
       <Heading type='4'>Inline</Heading>
       <p>
         The document icon should emphasize a link that contains a{' '}
-        <Link {...arguments_}>
-          <LinkText>file or document</LinkText> <Icon name='download' />
-        </Link>
+        <Link
+          href={DefaultArguments.args.href}
+          label='file or document'
+          iconRight='download'
+        />
         . The external link icon is used to emphasize a link to a{' '}
-        <Link {...arguments_}>
-          <LinkText>a non-CFPB webpage</LinkText> <Icon name='external-link' />
-        </Link>
+        <Link
+          href={DefaultArguments.args.href}
+          label='non-CFPB webpage'
+          iconRight='external-link'
+        />
         .
       </p>
       <Heading type='4'>Standalone</Heading>
       <p>
-        <Link hasIcon isJump href='https://www.example.com'>
-          <Icon name='left' />
-          <LinkText>Go back</LinkText>
-        </Link>
+        <Link
+          isJump
+          href='https://www.example.com'
+          iconLeft='left'
+          label='Go back'
+        />
       </p>
       <p>
-        <Link hasIcon isJump href='https://www.example.com'>
-          <LinkText>Continue</LinkText>
-          <Icon name='right' />
-        </Link>
+        <Link
+          isJump
+          href='https://www.example.com'
+          label='Continue'
+          iconRight='right'
+        />
       </p>
       <p>
-        <Link hasIcon isJump href='https://www.example.com'>
-          <LinkText>External link</LinkText>
-          <Icon name='external-link' />
-        </Link>
+        <Link
+          isJump
+          href='https://www.example.com'
+          label='External link'
+          iconRight='external-link'
+        />
       </p>
       <p>
-        <Link hasIcon isJump href='https://www.example.com'>
-          <LinkText>Document or file</LinkText>
-          <Icon name='document' />
-        </Link>
+        <Link
+          isJump
+          href='https://www.example.com'
+          label='Document or file'
+          iconRight='document'
+        />
       </p>
     </>
   )
@@ -177,7 +170,6 @@ export const Listlink: Story = {
 export const Destructive: Story = {
   args: {
     ...DefaultArguments.args,
-    children: 'Destructive link'
   },
   parameters: {
     docs: {
@@ -191,7 +183,7 @@ export const Destructive: Story = {
       }
     }
   },
-  render: arguments_ => <DestructiveLink {...arguments_} />
+  render: arguments_ => <Link href='/#' type='destructive' label='Destructive link' />
 };
 
 export const LinkWithReactRouterLink: Story = {
