@@ -1,0 +1,58 @@
+import{j as e}from"./jsx-runtime-Wp9Qcrv3.js";/* empty css                */import"./Well-BmV_z6qr.js";import"./Dropdown-CSpkwQSl.js";import"./Checkbox-uScmMply.js";import{L as t}from"./Layout-CK-vxef-.js";import"./Paragraph-CHJO3p8T.js";import"./TextArea-CKaCfP7D.js";import"./index-KmaxkdDD.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-DUolvyrz.js";import"./index-XmDEAOo_.js";import"./iframe-DhilgTQg.js";const x={title:"Components (Draft)/Layout/Sidebar",tags:["autodocs"],component:t.Sidebar,parameters:{docs:{description:{component:`
+### CFPB DS Layout.Sidebar component
+
+Container for the sidebar content within a layout.
+
+<ul>
+<li>[flushBottom](https://cfpb.github.io/design-system/development/main-content-and-sidebars#flush-bottom-modifier)</li>
+<li>[flushTopOnSmall](https://cfpb.github.io/design-system/development/main-content-and-sidebars#flush-top-modifier-only-on-small-screens)</li>
+<li>[flushAllOnSmall](https://cfpb.github.io/design-system/development/main-content-and-sidebars#flush-all-modifier-only-on-small-screens)</li>
+</ul>
+
+Source: https://cfpb.github.io/design-system/development/main-content-and-sidebars
+
+### Usage
+
+import Layout from './Layout<br/>
+
+< Layout.Main ><br/>
+&nbsp;&nbsp;< Hero / ><br/>
+&nbsp;&nbsp;< Layout.Wrapper ><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;< Layout.Content ><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Main Content<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;< /Layout.Content ><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;< Layout.Sidebar ><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sidebar Content<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;< /Layout.Sidebar ><br/>
+&nbsp;&nbsp;< /Layout.Wrapper ><br/>
+< /Layout.Main ><br/>
+`}}}},n={args:{flushBottom:!1,flushTopOnSmall:!1,flushAllOnSmall:!1},render:r=>e.jsx(t.Main,{children:e.jsxs(t.Wrapper,{children:[e.jsx(t.Sidebar,{...r,children:e.jsxs("div",{children:[e.jsx("h2",{children:"Layout.Sidebar"}),e.jsxs("ul",{children:[e.jsx("li",{children:"Item 1"}),e.jsx("li",{children:"Item 2"}),e.jsx("li",{children:"Item 3"})]})]})}),e.jsxs(t.Content,{children:[e.jsx("h1",{children:"Layout.Content"}),e.jsx("p",{children:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat alias eum ut officiis optio similique explicabo cupiditate architecto voluptatem nostrum recusandae, eaque consectetur iure, veritatis eos, mollitia possimus error earum?"})]})]})})};var s,i,o;n.parameters={...n.parameters,docs:{...(s=n.parameters)==null?void 0:s.docs,source:{originalSource:`{
+  args: {
+    flushBottom: false,
+    flushTopOnSmall: false,
+    flushAllOnSmall: false
+  },
+  render: properties => <Layout.Main>
+      <Layout.Wrapper>
+        <Layout.Sidebar {...properties}>
+          <div>
+            <h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+          </div>
+        </Layout.Sidebar>
+        <Layout.Content>
+          <h1>Layout.Content</h1>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat
+            alias eum ut officiis optio similique explicabo cupiditate
+            architecto voluptatem nostrum recusandae, eaque consectetur iure,
+            veritatis eos, mollitia possimus error earum?
+          </p>
+        </Layout.Content>
+      </Layout.Wrapper>
+    </Layout.Main>
+}`,...(o=(i=n.parameters)==null?void 0:i.docs)==null?void 0:o.source}}};const g=["Sidebar"];export{n as Sidebar,g as __namedExportsOrder,x as default};
