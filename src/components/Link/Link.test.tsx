@@ -7,7 +7,6 @@ describe('<Link />', () => {
     href: '/#',
     'data-testid': 'link-test-id'
   };
-
   const testId = linkBaseProperties['data-testid'];
 
   it('Type: "default"', () => {
@@ -55,7 +54,7 @@ describe('<ListLink>', () => {
   const testId = 'list-link';
 
   it('includes all expected elements', () => {
-    render(<ListLink data-testid={testId}>Test text</ListLink>);
+    render(<ListLink data-testid={testId} href='/#' label='Test text' />);
     // ListItem
     const listItem = screen.getByRole('listitem');
     expect(listItem).toBeInTheDocument();
