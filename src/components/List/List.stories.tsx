@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LinkText, List, ListItem, ListLink } from '~/src/index';
+import { List, ListItem } from '~/src/index';
 import { Link } from '~/src';
 
 const meta: Meta<typeof List> = {

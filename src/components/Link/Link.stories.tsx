@@ -173,7 +173,7 @@ export const LinkWithReactRouterLink: Story = {
     docs: {
       description: {
         story:
-          'See [React Router Link docs](https://reactrouter.com/en/main/components/link) ' +
+          'See [React Router Link docs](https://reactrouter.com/api/components/Link) ' +
           'for usage information'
       }
     }
