@@ -5,46 +5,45 @@ import Link, { ListLink } from './Link';
 describe('<Link />', () => {
   const linkBaseProperties = {
     href: '/#',
-    'data-testid': 'link-test-id'
+    'data-testid': 'link-test-id',
+    label: 'some link'
   };
   const testId = linkBaseProperties['data-testid'];
 
   it('Type: "default"', () => {
-    render(<Link label='some link' {...linkBaseProperties} />);
+    render(<Link {...linkBaseProperties} />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveAttribute('href', '/#');
   });
 
   it('Type: "destructive"', () => {
-    render(
-      <Link label='some link' {...linkBaseProperties} type='destructive' />
-    );
+    render(<Link {...linkBaseProperties} type='destructive' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-btn a-btn--link a-btn--warning');
   });
 
   it('Option: isJump - it adds classnames', () => {
-    render(<Link label='some link' {...linkBaseProperties} isJump />);
+    render(<Link {...linkBaseProperties} isJump />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-link--jump');
   });
 
-  it('Option: leftIcon - it adds left icon', () => {
-    render(<Link label='some link' {...linkBaseProperties} iconLeft='left' />);
+  it('Option: leftIcon - it adds left icon', async () => {
+    render(<Link {...linkBaseProperties} iconLeft='left' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-link');
+    expect(await screen.findByTestId('link-icon-left')).toBeInTheDocument();
   });
 
-  it('Option: rightIcon - it adds right icon', () => {
-    render(
-      <Link label='some link' {...linkBaseProperties} iconRight='right' />
-    );
+  it('Option: rightIcon - it adds right icon', async () => {
+    render(<Link {...linkBaseProperties} iconRight='right' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-link');
+    expect(await screen.findByTestId('link-icon-right')).toBeInTheDocument();
   });
 
   it('Other: propagates other attributes', () => {
-    render(<Link label='some link' {...linkBaseProperties} target='_blank' />);
+    render(<Link {...linkBaseProperties} target='_blank' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveAttribute('target', '_blank');
   });
