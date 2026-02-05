@@ -34,7 +34,7 @@ const Content = (
     voluptatibus soluta nobis unde quisquam temporibus magnam debitis quidem.
     Ducimus ratione corporis nesciunt earum vel est quaerat blanditiis dolore
     ipsa?&nbsp;
-    <a href='/?path=/story/components-expandable--default'>Lorem link</a>
+    <a href='./?path=/story/components-expandable--default'>Lorem link</a>
   </p>
 );
 
@@ -43,7 +43,7 @@ const ContentForGroup = ({
 }: {
   accordion: boolean | undefined;
 }): JSX.Element => {
-  const linkPath = `/?path=/story/components-expandablegroup--${
+  const linkPath = `./?path=/story/components-expandablegroup--${
     accordion ? 'accordion' : 'default'
   }`;
 
