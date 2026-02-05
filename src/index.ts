@@ -10,7 +10,6 @@ export { Button } from './components/Buttons/Button';
 export { ButtonGroup } from './components/Buttons/ButtonGroup';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { Divider } from './components/Divider/Divider';
-export { Dropdown } from './components/Dropdown/Dropdown';
 export {
   DropdownPill,
   DropdownPills
