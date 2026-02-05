@@ -48,7 +48,8 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
 }
 
 /**
- * Links are navigational elements that connect users to other locations, either on the current page or to a different page or site. In contrast, <a href="https://cfpb.github.io/design-system/components/buttons">buttons</a> are used to signal important actions.
+ * Links are navigational elements that connect users to other locations, either on the current page or to a different
+ * page or site. In contrast, buttons are used to signal important actions.
  *
  * Source: https://cfpb.github.io/design-system/components/links
  */
