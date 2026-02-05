@@ -4,44 +4,78 @@ import type { JSXElement } from '../../types/jsxElement';
 import classnames from 'classnames';
 import ListItem from '../List/ListItem';
 import './Link.scss';
+import type { HTMLProps, ReactNode, Ref } from 'react';
+import { Icon } from '~/src';
 
-export interface LinkProperties extends React.HTMLProps<HTMLAnchorElement> {
+export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
+  /**
+   * Whether the link should be rendered as a button.
+   */
   asButton?: boolean;
-  children?: React.ReactNode;
-  hasIcon?: boolean;
-  href?: string;
+  /**
+   * Any children to render within the link. Allows you to wrap any node with anchor tag
+   */
+  children?: ReactNode;
+  /**
+   * The link's destination URL.
+   */
+  href: string;
+  /**
+   * Name of icon to display left of link text
+   */
+  iconLeft?: string;
+  /**
+   * Name of icon to display right of link text
+   */
+  iconRight?: string;
+  /**
+   * Whether the link is a standalone link
+   */
   isJump?: boolean;
+  /**
+   * Whether the link is a react router link
+   */
   isRouterLink?: boolean;
-  noWrap?: boolean;
-  ref?: React.Ref<HTMLAnchorElement>;
-  type?: 'default' | 'destructive' | 'list';
+  /**
+   * The link's text content, not required if children are provided
+   */
+  label?: string;
+  ref?: Ref<HTMLAnchorElement>;
+  /**
+   * What type of link should be rendered
+   */
+  type?: 'default' | 'destructive';
 }
 
 /**
- * Links are navigational elements that connect users to other locations, either on the current page or to a different page or site. In contrast, <a href="https://cfpb.github.io/design-system/components/buttons">buttons</a> are used to signal important actions.
+ * Links are navigational elements that connect users to other locations, either on the current page or to a different
+ * page or site. In contrast, buttons are used to signal important actions.
  *
  * Source: https://cfpb.github.io/design-system/components/links
  */
 export default function Link({
   asButton = false,
   children,
-  hasIcon = false,
   href,
+  iconLeft,
+  iconRight,
   isJump = false,
   isRouterLink = false,
-  noWrap = false,
+  label,
   type = 'default',
   ...others
 }: LinkProperties): JSXElement {
   const cname = [others.className];
 
-  if(asButton) cname.push('a-btn');
+  if (asButton || type === 'destructive') {
+    cname.push('a-btn');
+  }
+
   if (type === 'destructive') {
     cname.push('a-btn a-btn--link a-btn--warning');
   }
-  if (hasIcon) cname.push('a-link a-link--icon');
-  if (noWrap) cname.push('a-link a-link--no-wrap');
-  if (isJump) cname.push('a-link a-link--jump');
+  if (isJump) cname.push('a-link--jump');
+  if (iconLeft || iconRight || isJump) cname.push('a-link');
 
   if (isRouterLink) {
     if (!href) {
@@ -51,7 +85,7 @@ export default function Link({
     }
     return (
       <RouterLink to={href} {...others} className={classnames(cname)}>
-        {children}
+        {label}
       </RouterLink>
     );
   }
@@ -59,6 +93,17 @@ export default function Link({
   return (
     <a {...others} className={classnames(cname)} href={href}>
       {children}
+      {iconLeft ? (
+        <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
+      ) : null}
+      {iconLeft || iconRight || isJump ? (
+        <span className='a-link__text'>{label}</span>
+      ) : (
+        label
+      )}
+      {iconRight ? (
+        <Icon name={iconRight} isPresentational data-testid='link-icon-right' />
+      ) : null}
     </a>
   );
 }
@@ -66,7 +111,7 @@ export default function Link({
 export const LinkText = ({
   children,
   ...others
-}: React.HTMLProps<HTMLSpanElement>): JSX.Element => (
+}: HTMLProps<HTMLSpanElement>): JSX.Element => (
   <span className='a-link__text' {...others}>
     {children}
   </span>
@@ -76,8 +121,4 @@ export const ListLink = (properties: LinkProperties): JSXElement => (
   <ListItem>
     <Link {...properties} isJump />
   </ListItem>
-);
-
-export const DestructiveLink = (properties: LinkProperties): JSXElement => (
-  <Link {...properties} type='destructive' />
 );
