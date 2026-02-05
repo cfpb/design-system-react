@@ -21,8 +21,22 @@ const meta: Meta<typeof Icon> = {
     docs: {
       description: {
         component: `
-Expandables are components that have additional content that can be opened (expanded) and closed (collapsed). They can appear on their own or in groups. They may be helpful for FAQ sections, schedules, and for conserving vertical space by collapsing secondary information on mobile devices.
+const meta: Meta<typeof Expandable> = {
+  title: 'Components (Draft)/Expandables',
+  component: Expandable,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Icons visually reinforce an interface action, file type, status, or category. They are visually simple, quickly recognizable, and easy to understand. They are almost always used in context with descriptive text and function to reinforce the message of that text.
 
+Source: https://cfpb.github.io/design-system/foundation/iconography
+`
+      }
+    }
+  }
+};
 Source: https://cfpb.github.io/design-system/components/expandables
 `
       }
