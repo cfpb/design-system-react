@@ -14,9 +14,9 @@ interface SVGModule {
 export const useIconSvg = (
   fileName: string
 ): FC<SVGProps<SVGSVGElement>> | null => {
-  const [IconComponent, setIconComponent] = useState<FC<
-    SVGProps<SVGSVGElement>
-  > | null>(null);
+  const [iconComponent, setIconComponent] = useState<SVGModule['default'] | null>(
+    null
+  );
 
   useEffect(() => {
     let isMounted = true;
@@ -30,7 +30,7 @@ export const useIconSvg = (
         if (isMounted) {
           setIconComponent(() => importedIcon.default);
         }
-      } catch (error) {
+      } catch {
         const errorIcon = (await import(
           `@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/error.svg?react`
         )) as SVGModule;
@@ -40,12 +40,12 @@ export const useIconSvg = (
       }
     };
 
-    importSvg();
+    void importSvg();
 
     return () => {
       isMounted = false;
     };
   }, [fileName]);
 
-  return IconComponent;
+  return iconComponent;
 };

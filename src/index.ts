@@ -21,7 +21,6 @@ export { Icon } from './components/Icon/Icon';
 export { Label } from './components/Label/Label';
 export { default as Layout } from './components/Layout/Layout';
 export {
-  DestructiveLink,
   default as Link,
   LinkText,
   ListLink
