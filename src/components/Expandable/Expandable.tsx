@@ -57,11 +57,11 @@ export const Expandable: React.FC<ExpandableProperties> = ({
         ) : null}
         <h3 className='o-expandable__label'>{header}</h3>
         <span className='o-expandable__cues'>
-          <span className='o-expandable__cue-open'>
-            <Icon name='plus-round' alt='plus-round' />
+          <span className='o-expandable__cue-open' aria-label='Show'>
+            <Icon name='plus-round' isPresentational />
           </span>
-          <span className='o-expandable__cue-close'>
-            <Icon name='minus-round' alt='minus-round' />
+          <span className='o-expandable__cue-close' aria-label='Hide'>
+            <Icon name='minus-round' isPresentational />
           </span>
         </span>
       </button>
