@@ -37,8 +37,7 @@ export const Expandable: React.FC<ExpandableProperties> = ({
 
   // If it's NOT in a group/accordion, apply the default standalone styles
   if (!inAccordion) {
-    expandableClasses.push('o-expandable--background');
-    expandableClasses.push('o-expandable--border');
+    expandableClasses.push('o-expandable--background', 'o-expandable--border');
   }
 
   if (isPadded) expandableClasses.push('o-expandable--padded');
