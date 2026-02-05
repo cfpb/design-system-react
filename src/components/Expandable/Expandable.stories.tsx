@@ -8,7 +8,7 @@ import { ExpandableGroup } from './ExpandableGroup';
 
 
 const meta: Meta<typeof Expandable> = {
-  title: 'Components (Draft)/Expandables',
+  title: 'Components (Verified)/Expandables',
   component: Expandable,
   tags: ['autodocs'],
   parameters: {
