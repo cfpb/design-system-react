@@ -6,7 +6,6 @@ import {
   getTextInputStatusClass,
   type TextInputStatusType
 } from './TextInputStatus';
-
 export interface TextAreaType {
   id: string;
   onChange?: (value: string) => void;

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ListLink } from '../Link/Link';
 import { WellContainer, WellContent } from './Well';
 

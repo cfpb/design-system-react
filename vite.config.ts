@@ -3,14 +3,14 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
 import processIcons from './postcss/processIcons';
 
+import fs from 'node:fs';
+import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import VitePluginReactRemoveAttributes from 'vite-plugin-react-remove-attributes';
 import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
-import fs from 'fs';
 
 export default defineConfig(({ mode }) => {
   const plugins: Plugin[] = [
@@ -37,8 +37,9 @@ export default defineConfig(({ mode }) => {
     }),
     mode === 'test'
       ? null
-      : VitePluginReactRemoveAttributes({
-          attributes: ['data-testid']
+      : removeAttributes({
+          attributes: ['data-testid'],
+          usage: 'vite',
         })
   ].filter(Boolean) as Plugin[];
 
