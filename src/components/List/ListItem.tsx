@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { JSX } from 'react';
 
 export default function ListItem({
   children,

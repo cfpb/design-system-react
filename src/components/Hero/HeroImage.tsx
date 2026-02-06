@@ -1,7 +1,10 @@
+import { JSX } from 'react';
+
 interface HeroImageProperties {
   image?: string;
   altText?: string;
 }
+
 export const HeroImage = ({
   image,
   altText

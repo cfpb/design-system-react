@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import type { ChangeEvent, ReactElement, ReactNode, RefObject } from 'react';
-import { useCallback } from 'react';
+import { JSX, useCallback } from 'react';
 import { HelperText } from '../HelperText/HelperText';
 
 import { Label } from '../Label/Label';

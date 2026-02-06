@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PageHeader } from '~/src/index';
 import type { User } from '../Navbar/Navbar';
 import { ExampleLinks } from '../Navbar/Navbar';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { cloneElement } from 'react';
 import { List, ListItem, TextIntroduction } from '~/src/index';
 import {

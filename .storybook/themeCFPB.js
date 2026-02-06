@@ -1,4 +1,4 @@
-import { create } from '@storybook/theming/create';
+import { create } from 'storybook/theming/create';
 import CfpbLogo from '../src/assets/images/cfpb-logo-vertical.png';
 
 const colors = {

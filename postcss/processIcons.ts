@@ -1,8 +1,8 @@
 // modified from
 // https://github.com/cfpb/design-system/blob/main/esbuild/plugins/postcss-process-icons.js
 
-const { readFileSync } = require('fs');
-const path = require('path');
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 
 const currentDir = path.dirname(__filename);
 

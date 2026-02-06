@@ -1,11 +1,12 @@
+import { JSX } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 import type { JSXElement } from '../../types/jsxElement';
 
 import classnames from 'classnames';
-import ListItem from '../List/ListItem';
-import './Link.scss';
 import type { HTMLProps, ReactNode, Ref } from 'react';
 import { Icon } from '~/src';
+import ListItem from '../List/ListItem';
+import './Link.scss';
 
 export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
   /**

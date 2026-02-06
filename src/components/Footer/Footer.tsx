@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { JSX } from 'react';
 import { BackToTop } from './BackToTop';
 import './Footer.scss';
 import { FooterBanner } from './FooterBanner';

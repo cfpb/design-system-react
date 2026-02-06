@@ -1,12 +1,11 @@
 import classNames from 'classnames';
 import type { ReactElement, Ref } from 'react';
-import { forwardRef, type ChangeEventHandler } from 'react';
+import { forwardRef, JSX, type ChangeEventHandler } from 'react';
 import { noOp as onNoOp } from '~/src/utils/noOp';
 import {
   getTextInputStatusClass,
   type TextInputStatusType
 } from './TextInputStatus';
-
 export interface TextAreaType {
   id: string;
   onChange?: (value: string) => void;

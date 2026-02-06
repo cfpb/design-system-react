@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import type { ComponentPropsWithoutRef } from 'react';
-import { forwardRef, type ReactNode } from 'react';
+import { forwardRef, JSX, type ReactNode } from 'react';
 import type { TextInputStatusType } from './TextInputStatus';
 import { getTextInputStatusClass } from './TextInputStatus';
 

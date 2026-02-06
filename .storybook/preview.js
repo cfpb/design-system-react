@@ -45,7 +45,9 @@ export const preview = {
     docs: {
       theme: themeCFPB
     }
-  }
+  },
+
+  tags: ['autodocs']
 };
 
 export default preview;
