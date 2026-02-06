@@ -1,3 +1,4 @@
+import type { SVGProps } from 'react';
 import classNames from 'classnames';
 import { useIconSvg } from '../../hooks/useIconSvg';
 import { numberIcons } from './iconLists';
@@ -49,7 +50,7 @@ const getShapeModifier = (name: string, withBg: boolean): string => {
   return '-round';
 };
 
-interface IconProperties {
+interface IconProperties extends Omit<SVGProps<SVGSVGElement>, 'name'> {
   name: string;
   alt?: string;
   ariaLabel?: string;
@@ -100,7 +101,7 @@ export const Icon = ({
       className={classes}
       style={{ fontSize }}
       role={isPresentational ? undefined : 'img'}
-      aria-label={ariaLabel || (!isPresentational ? alt ?? name : undefined)}
+      aria-label={ariaLabel || (isPresentational ? undefined : alt ?? name)}
       aria-labelledby={ariaLabelledby || undefined}
       aria-describedby={ariaDescribedby || undefined}
       aria-hidden={isPresentational ? 'true' : undefined}

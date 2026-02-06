@@ -1,12 +1,19 @@
 import '@testing-library/jest-dom';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import { Expandable } from './Expandable';
 
 const header = 'Tuesday Rememberance';
 const children = 'It was a warm Spring morning in the midwest...';
 
 describe('<Expandable />', () => {
+  let initSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    initSpy = vi.spyOn(CFPB_Expandable, 'init');
+  });
+
   it('Default', async () => {
     render(<Expandable header={header}>{children}</Expandable>);
 
@@ -18,6 +25,57 @@ describe('<Expandable />', () => {
 
     const content = screen.getByText(children);
     expect(content).toBeInTheDocument();
+  });
+
+  it('Initializes when not in an accordion', () => {
+    render(<Expandable header={header}>{children}</Expandable>);
+    expect(initSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('Does not initialize when in an accordion', () => {
+    render(
+      <Expandable header={header} inAccordion>
+        {children}
+      </Expandable>
+    );
+    expect(initSpy).not.toHaveBeenCalled();
+  });
+
+  it('Adds default standalone styles when not in an accordion', () => {
+    render(<Expandable header={header}>{children}</Expandable>);
+    const expandable = screen.getByTestId('expandable');
+    expect(expandable).toHaveClass('o-expandable--background');
+    expect(expandable).toHaveClass('o-expandable--border');
+  });
+
+  it('Omits default standalone styles when in an accordion', () => {
+    render(
+      <Expandable header={header} inAccordion>
+        {children}
+      </Expandable>
+    );
+    const expandable = screen.getByTestId('expandable');
+    expect(expandable).not.toHaveClass('o-expandable--background');
+    expect(expandable).not.toHaveClass('o-expandable--border');
+  });
+
+  it('Supports padded content', () => {
+    render(
+      <Expandable header={header} isPadded>
+        {children}
+      </Expandable>
+    );
+    const expandable = screen.getByTestId('expandable');
+    expect(expandable).toHaveClass('o-expandable--padded');
+  });
+
+  it('Renders a custom icon when provided', async () => {
+    render(
+      <Expandable header={header} icon='left'>
+        {children}
+      </Expandable>
+    );
+    expect(await screen.findByRole('img', { name: 'left' })).toBeInTheDocument();
   });
 
   it('Supports openOnLoad', async () => {

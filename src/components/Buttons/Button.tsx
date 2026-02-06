@@ -60,7 +60,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
       iconRight,
       ...properties
     },
-    ref, // Receive the ref as the second argument
+    reference, // Receive the ref as the second argument
   ): JSX.Element => {
     const styles = [
       ...baseStyles,
@@ -73,14 +73,26 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
 
     return (
       <button
-        ref={ref} // Attach the forwarded ref here
+        ref={reference} // Attach the forwarded ref here
         type="button"
         className={[...styles].join(' ')}
         {...properties}
       >
-        {iconLeft ? <Icon name={iconLeft} isPresentational /> : null}
+        {iconLeft ? (
+          <Icon
+            name={iconLeft}
+            isPresentational
+            data-testid="button-icon-left"
+          />
+        ) : null}
         {iconLeft || iconRight ? <span>{label}</span> : label}
-        {iconRight ? <Icon name={iconRight} isPresentational /> : null}
+        {iconRight ? (
+          <Icon
+            name={iconRight}
+            isPresentational
+            data-testid="button-icon-right"
+          />
+        ) : null}
       </button>
     );
   },

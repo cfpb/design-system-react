@@ -1,20 +1,20 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Link, { DestructiveLink, LinkText, ListLink } from './Link';
-// import { DestructiveLink, Link, LinkText, ListLink } from '~/src/index';
+import { MemoryRouter } from 'react-router-dom';
+import Link, { LinkText, ListLink } from './Link';
 
 describe('<Link />', () => {
   const linkBaseProperties = {
-    href: '/#',
-    'data-testid': 'link-test-id'
+    href: '/foo/bar',
+    'data-testid': 'link-test-id',
+    label: 'some link'
   };
-
   const testId = linkBaseProperties['data-testid'];
 
   it('Type: "default"', () => {
     render(<Link {...linkBaseProperties} />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveAttribute('href', '/#');
+    expect(link).toHaveAttribute('href', '/foo/bar');
   });
 
   it('Type: "destructive"', () => {
@@ -23,28 +23,52 @@ describe('<Link />', () => {
     expect(link).toHaveClass('a-btn a-btn--link a-btn--warning');
   });
 
-  it('Option: noWrap - it adds classnames', () => {
-    render(<Link {...linkBaseProperties} noWrap />);
-    const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link--no-wrap');
-  });
-
   it('Option: isJump - it adds classnames', () => {
     render(<Link {...linkBaseProperties} isJump />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-link--jump');
   });
 
-  it('Option: hasIcon - it adds classnames', () => {
-    render(<Link {...linkBaseProperties} hasIcon />);
+  it('Option: leftIcon - it adds left icon', async () => {
+    render(<Link {...linkBaseProperties} iconLeft='left' />);
     const link = screen.getByTestId(testId);
-    expect(link).toHaveClass('a-link a-link--icon');
+    expect(link).toHaveClass('a-link');
+    expect(await screen.findByTestId('link-icon-left')).toBeInTheDocument();
+  });
+
+  it('Option: rightIcon - it adds right icon', async () => {
+    render(<Link {...linkBaseProperties} iconRight='right' />);
+    const link = screen.getByTestId(testId);
+    expect(link).toHaveClass('a-link');
+    expect(await screen.findByTestId('link-icon-right')).toBeInTheDocument();
   });
 
   it('Other: propagates other attributes', () => {
     render(<Link {...linkBaseProperties} target='_blank' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveAttribute('target', '_blank');
+  });
+
+  it('Option: isRouterLink - it renders a router link', () => {
+    render(
+      <MemoryRouter initialEntries={['/foo/bar']}>
+        <Link {...linkBaseProperties} isRouterLink />
+      </MemoryRouter>
+    );
+
+    const link = screen.getByRole('link', { name: /some link/i });
+    expect(link).toHaveAttribute('href', '/foo/bar');
+  });
+
+  it('Option: isRouterLink - it requires href', () => {
+    const brokenProperties = {
+      ...linkBaseProperties,
+      href: undefined as unknown as string
+    };
+
+    expect(() => render(<Link {...brokenProperties} isRouterLink />)).toThrow(
+      'Link component: href is a required attribute when isRouterLink is true'
+    );
   });
 });
 
@@ -61,7 +85,7 @@ describe('<ListLink>', () => {
   const testId = 'list-link';
 
   it('includes all expected elements', () => {
-    render(<ListLink data-testid={testId}>Test text</ListLink>);
+    render(<ListLink data-testid={testId} href='/foo/bar' label='Test text' />);
     // ListItem
     const listItem = screen.getByRole('listitem');
     expect(listItem).toBeInTheDocument();
@@ -71,16 +95,5 @@ describe('<ListLink>', () => {
     const linkText = screen.getByTestId(testId);
     expect(linkText).toHaveClass('a-link--jump');
     expect(linkText).toHaveTextContent('Test text');
-  });
-});
-
-describe('<DestructiveLink>', () => {
-  const testId = 'destructive-link';
-
-  it('includes all expected elements', () => {
-    render(<DestructiveLink data-testid={testId}>Test text</DestructiveLink>);
-    const linkDestructive = screen.getByTestId(testId);
-    expect(linkDestructive).toHaveClass('a-btn a-btn--link a-btn--warning');
-    expect(linkDestructive).toHaveTextContent('Test text');
   });
 });

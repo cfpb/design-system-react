@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
-import {
-  DestructiveLink,
-  Icon,
-  Link,
-  LinkText,
-  List,
-  ListLink
-} from '~/src/index';
+import { Heading, Link, List, ListLink } from '~/src/index';
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',
@@ -27,121 +20,98 @@ const DefaultArguments = {
 };
 
 export const Inline: Story = {
-  name: 'Inline links',
   render: () => (
     <p>
-      Here&apos;s the <Link href='/#'>default link style</Link>. For reference,
-      here&apos;s the{' '}
-      <Link href='/#' className='hover'>
-        hover link style
-      </Link>
-      . Train your eyes on the{' '}
-      <Link href='/#' className='focus'>
-        focused link style
-      </Link>
-      . Jump to the{' '}
-      <Link href='/#' className='active'>
-        active link style
-      </Link>
-      . We&apos;ve all been to the{' '}
-      <Link href='/#' className='visited'>
-        visited link style
-      </Link>
-      .
+      Here&apos;s the default <Link href='/#' label='inline link' /> style.
     </p>
   )
 };
 
-export const ListLinks: Story = {
-  name: 'List links',
+export const Standalone: Story = {
+  render: arguments_ => (
+    <Link {...arguments_} href='/#' isJump label='Standalone link' />
+  )
+};
+
+export const WithIcon: Story = {
+  name: 'With icon',
   args: {
     ...DefaultArguments.args
   },
-  render: arguments_ => (
+  render: () => (
+    <>
+      <Heading type='4'>Inline</Heading>
+      <p>
+        The document icon should emphasize a link that contains a{' '}
+        <Link
+          href={DefaultArguments.args.href}
+          label='file or document'
+          iconRight='download'
+        />
+        . The external link icon is used to emphasize a link to a{' '}
+        <Link
+          href={DefaultArguments.args.href}
+          label='non-CFPB webpage'
+          iconRight='external-link'
+        />
+        .
+      </p>
+      <Heading type='4'>Standalone</Heading>
+      <p>
+        <Link
+          isJump
+          href='https://www.example.com'
+          iconLeft='left'
+          label='Go back'
+        />
+      </p>
+      <p>
+        <Link
+          isJump
+          href='https://www.example.com'
+          label='Continue'
+          iconRight='right'
+        />
+      </p>
+      <p>
+        <Link
+          isJump
+          href='https://www.example.com'
+          label='External link'
+          iconRight='external-link'
+        />
+      </p>
+      <p>
+        <Link
+          isJump
+          href='https://www.example.com'
+          label='Document or file'
+          iconRight='document'
+        />
+      </p>
+    </>
+  )
+};
+
+export const Listlink: Story = {
+  name: 'List',
+  args: {
+    ...DefaultArguments.args
+  },
+  render: () => (
     <List isLinks>
-      <ListLink {...arguments_}>
-        <LinkText>List link 1</LinkText>
-      </ListLink>
-      <ListLink {...arguments_}>
-        <LinkText>List link 2</LinkText>
-      </ListLink>
+      <ListLink href='/#' label='List item 1' />
+      <ListLink href='/#' label='List item 2' />
+      <ListLink href='/#' label='List item 3' />
     </List>
   )
 };
 
 export const Destructive: Story = {
-  name: 'Destructive links',
   args: {
-    ...DefaultArguments.args,
-    children: 'Destructive link'
+    ...DefaultArguments.args
   },
-  render: arguments_ => <DestructiveLink {...arguments_} />
-};
-
-export const LinkWithIcon: Story = {
-  name: 'Link with icon',
-  args: {
-    ...DefaultArguments.args,
-    hasIcon: true
-  },
-  render: arguments_ => (
-    <>
-      The document icon should emphasize a link that contains a{' '}
-      <Link {...arguments_}>
-        <LinkText>file or document</LinkText> <Icon name='download' />
-      </Link>
-      . Use the external link icon to emphasize{' '}
-      <Link {...arguments_}>
-        <LinkText>a non-CFPB webpage</LinkText> <Icon name='external-link' />
-      </Link>{' '}
-      for further details.
-    </>
-  )
-};
-
-export const LinkWithIconNoWrapping: Story = {
-  name: 'Non-wrapping link with icon',
-  args: {
-    ...LinkWithIcon.args,
-    noWrap: true
-  },
-  render: arguments_ => (
-    <>
-      The document icon should emphasize a link that contains a{' '}
-      <Link {...arguments_}>
-        <LinkText>file or document</LinkText> <Icon name='download' />
-      </Link>
-      .
-    </>
-  )
-};
-
-export const JumpLink: Story = {
-  name: 'Jump link',
-  args: {
-    ...DefaultArguments.args,
-    isJump: true
-  },
-  render: arguments_ => (
-    <Link {...arguments_}>
-      <LinkText>Jump link</LinkText>
-      <Icon name='right' />
-    </Link>
-  )
-};
-
-export const JumpLinkIconLeft: Story = {
-  name: 'Jump link with icon on left',
-  args: {
-    ...DefaultArguments.args,
-    isJump: true
-  },
-  render: arguments_ => (
-    <Link {...arguments_}>
-      <Icon name='left' />
-      <LinkText>Jump link with icon on left</LinkText>
-    </Link>
-  )
+  render: () => <Link href='/#' type='destructive' label='Destructive link' />
 };
 
 export const LinkWithReactRouterLink: Story = {
@@ -150,17 +120,13 @@ export const LinkWithReactRouterLink: Story = {
     docs: {
       description: {
         story:
-          'See [React Router Link docs](https://reactrouter.com/en/main/components/link) for usage information'
+          'See [React Router Link docs](https://reactrouter.com/api/components/Link) for usage information'
       }
     }
   },
   render: () => (
     <BrowserRouter>
-      <p>
-        <Link href='/#' isRouterLink>
-          <LinkText>Link using React Router Link</LinkText>
-        </Link>
-      </p>
+      <Link href='/#' label='Link using React Router Link' isRouterLink />
     </BrowserRouter>
   )
 };

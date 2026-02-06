@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Icon, Link, LinkText } from '~/src/index';
+import { Button, Link } from '~/src/index';
 import { ButtonGroup } from './ButtonGroup';
 
 /**
@@ -125,10 +125,12 @@ export const ButtonLink: Story = {
   name: 'Button link',
   render: arguments_ => (
     <ButtonGroup>
-      <Link className='a-btn' href='/'>
-        <LinkText>Link styled as a button</LinkText>
-        <Icon name='download' />
-      </Link>
+      <Link
+        className='a-btn'
+        href='/'
+        label='Link styled as a button'
+        iconRight='download'
+      />
       <Button
         asLink
         key='1'

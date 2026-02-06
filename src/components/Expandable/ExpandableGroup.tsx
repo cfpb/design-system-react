@@ -32,7 +32,7 @@ export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
         // We set inAccordion to true if the item is in a group
         // to ensure it sheds its standalone borders/background
         inAccordion: true,
-        openOnLoad: child.props.openOnLoad || false
+        openOnLoad: child.props.openOnLoad ?? false
       } as Partial<ExpandableProperties>);
     }
     return child;

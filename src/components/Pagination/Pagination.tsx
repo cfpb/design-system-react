@@ -108,14 +108,18 @@ export const Pagination = ({
     <nav className='m-pagination' role='navigation' aria-label='Pagination'>
       <Button
         iconLeft='left'
-        className={'m-pagination__btn-prev' + (page === MIN_PAGE ? ' a-btn--disabled' : '')}
+        className={`m-pagination__btn-prev${
+          page === MIN_PAGE ? ' a-btn--disabled' : ''
+        }`}
         onClick={onClickPrevious}
         label={previousLabel}
         disabled={page === MIN_PAGE}
       />
       <Button
         iconRight='right'
-        className={'m-pagination__btn-next' + (page === pageCount ? ' a-btn--disabled' : '')}
+        className={`m-pagination__btn-next${
+          page === pageCount ? ' a-btn--disabled' : ''
+        }`}
         onClick={onClickNext}
         label={nextLabel}
         disabled={page === pageCount}
