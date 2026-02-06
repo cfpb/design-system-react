@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import type React from 'react';
+import { JSX } from 'react';
 
 type HelperTextProperties = React.HTMLProps<HTMLDivElement>;
 

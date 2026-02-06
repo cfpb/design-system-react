@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Icon } from '../Icon/Icon';
 

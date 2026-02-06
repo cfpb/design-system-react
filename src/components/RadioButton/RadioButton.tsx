@@ -1,5 +1,6 @@
 import type React from 'react';
 import type { ReactNode } from 'react';
+import { JSX } from 'react';
 import { HelperText } from '../HelperText/HelperText';
 import { Label } from '../Label/Label';
 

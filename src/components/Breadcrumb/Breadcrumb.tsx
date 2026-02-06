@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
-import type { HTMLAttributes } from 'react';
 import classnames from 'classnames';
+import type { HTMLAttributes } from 'react';
+import { Fragment, JSX } from 'react';
 import './Breadcrumb.scss';
 
 export interface BreadcrumbCrumb {
