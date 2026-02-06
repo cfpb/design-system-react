@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import { JSX } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import type { JSXElement } from '../../types/jsxElement';
 
@@ -66,17 +66,17 @@ export default function Link({
   type = 'default',
   ...others
 }: LinkProperties): JSXElement {
-  const cname = [others.className];
-
-  if (asButton || type === 'destructive') {
-    cname.push('a-btn');
-  }
-
-  if (type === 'destructive') {
-    cname.push('a-btn a-btn--link a-btn--warning');
-  }
-  if (isJump) cname.push('a-link--jump');
-  if (iconLeft || iconRight || isJump) cname.push('a-link');
+  const hasIcons = Boolean(iconLeft ?? iconRight);
+  const shouldUseLinkStyles = !asButton && (hasIcons || isJump);
+  const shouldWrapLabel = asButton || shouldUseLinkStyles;
+  const labelNode = shouldWrapLabel ? <LinkText>{label}</LinkText> : label;
+  const cname = classnames(others.className, {
+    'a-btn': asButton || type === 'destructive',
+    'a-btn--link': type === 'destructive',
+    'a-btn--warning': type === 'destructive',
+    'a-link--jump': isJump,
+    'a-link': shouldUseLinkStyles
+  });
 
   if (isRouterLink) {
     if (!href) {
@@ -85,26 +85,22 @@ export default function Link({
       );
     }
     return (
-      <RouterLink to={href} {...others} className={classnames(cname)}>
+      <RouterLink to={href} {...others} className={cname}>
         {label}
       </RouterLink>
     );
   }
 
   return (
-    <a {...others} className={classnames(cname)} href={href}>
+    <a {...others} className={cname} href={href}>
       {children}
-      {iconLeft ? (
+      {!!iconLeft && (
         <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
-      ) : null}
-      {iconLeft || iconRight || isJump ? (
-        <span className='a-link__text'>{label}</span>
-      ) : (
-        label
       )}
-      {iconRight ? (
+      {labelNode}
+      {!!iconRight && (
         <Icon name={iconRight} isPresentational data-testid='link-icon-right' />
-      ) : null}
+      )}
     </a>
   );
 }

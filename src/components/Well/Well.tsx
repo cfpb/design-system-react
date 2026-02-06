@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import { JSX } from 'react';
 import type { HeadingLevel } from '../../types/headingLevel';
 import List from '../List/List';
 import ListItem from '../List/ListItem';

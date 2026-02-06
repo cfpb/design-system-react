@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import { JSX } from 'react';
 import { ListLink } from '../Link/Link';
 
 export interface AlertLinkProperties {

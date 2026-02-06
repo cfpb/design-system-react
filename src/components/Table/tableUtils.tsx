@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { JSX } from "react";
+import { JSX } from 'react';
 import type { TableColumn, TableProperties } from './Table';
 
 export const buildColumnHeaders = (

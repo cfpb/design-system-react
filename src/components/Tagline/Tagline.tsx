@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { JSX } from "react";
+import { JSX } from 'react';
 import type { JSXElement } from '../../types/jsxElement';
 
 interface TaglineProperties {

@@ -1,5 +1,5 @@
 import type { SelectHTMLAttributes } from 'react';
-import { JSX } from "react";
+import { JSX } from 'react';
 import { SelectMulti } from './SelectMulti';
 import { SelectSingle } from './SelectSingle';
 
