@@ -1927,6 +1927,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cfpb/browserslist-config@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "@cfpb/browserslist-config@npm:0.0.6"
+  checksum: 10/29518353fe6d7ee8d9efed6bcbd3e61caab467b474912ce925e280753e5ea6b8293c50077bc61050310d9aec8976d97f25870f35d82eb9461e397b0ea6a87690
+  languageName: node
+  linkType: hard
+
 "@cfpb/cfpb-design-system@npm:4.3.2":
   version: 4.3.2
   resolution: "@cfpb/cfpb-design-system@npm:4.3.2"
@@ -1942,6 +1949,7 @@ __metadata:
   resolution: "@cfpb/design-system-react@workspace:."
   dependencies:
     "@cfpb/cfpb-design-system": "npm:4.3.2"
+    "@cfpb/browserslist-config": "npm:^0.0.6"
     "@chromatic-com/storybook": "npm:^3.2.7"
     "@eslint/js": "npm:^9.39.2"
     "@nabla/vite-plugin-eslint": "npm:^2.0.6"
