@@ -60,12 +60,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
       iconRight,
       ...properties
     },
-    reference, // Receive the ref as the second argument
+    reference // Receive the ref as the second argument
   ): JSX.Element => {
     const styles = [
       ...baseStyles,
       ...appearanceStyles[appearance],
-      ...sizeStyles[size],
+      ...sizeStyles[size]
     ];
     if (asLink) styles.push('a-btn--link');
     if (className) styles.push(className);
@@ -74,28 +74,28 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
     return (
       <button
         ref={reference} // Attach the forwarded ref here
-        type="button"
+        type='button'
         className={[...styles].join(' ')}
         {...properties}
       >
-        {iconLeft ? (
+        {!!iconLeft && (
           <Icon
             name={iconLeft}
             isPresentational
-            data-testid="button-icon-left"
+            data-testid='button-icon-left'
           />
-        ) : null}
+        )}
         {iconLeft || iconRight ? <span>{label}</span> : label}
-        {iconRight ? (
+        {!!iconRight && (
           <Icon
             name={iconRight}
             isPresentational
-            data-testid="button-icon-right"
+            data-testid='button-icon-right'
           />
-        ) : null}
+        )}
       </button>
     );
-  },
+  }
 );
 
 // Optional: Set displayName for better debugging in React DevTools

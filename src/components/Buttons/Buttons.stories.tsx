@@ -79,7 +79,7 @@ export const StaticIconButtons: Story = {
           appearance='secondary'
         />
       </ButtonGroup>
-      <br/>
+      <br />
       <Button iconRight='upload' label='Upload file' />
     </>
   )
@@ -99,13 +99,30 @@ export const ButtonsGroup: Story = {
   render: arguments_ => (
     <>
       <ButtonGroup>
-        <Button key='Go back' {...arguments_} appearance='secondary' label='Go back' iconLeft='left' />
-        <Button key='Continue' {...arguments_} label='Continue' iconRight='right' />
+        <Button
+          key='Go back'
+          {...arguments_}
+          appearance='secondary'
+          label='Go back'
+          iconLeft='left'
+        />
+        <Button
+          key='Continue'
+          {...arguments_}
+          label='Continue'
+          iconRight='right'
+        />
       </ButtonGroup>
       <br />
       <ButtonGroup>
         <Button key='Submit' {...arguments_} label='Submit' />
-        <Button appearance='warning' asLink key='Clear form' {...arguments_} label='Clear form' />
+        <Button
+          appearance='warning'
+          asLink
+          key='Clear form'
+          {...arguments_}
+          label='Clear form'
+        />
       </ButtonGroup>
     </>
   )
@@ -126,7 +143,7 @@ export const ButtonLink: Story = {
   render: arguments_ => (
     <ButtonGroup>
       <Link
-        className='a-btn'
+        asButton
         href='/'
         label='Link styled as a button'
         iconRight='download'
@@ -141,5 +158,3 @@ export const ButtonLink: Story = {
     </ButtonGroup>
   )
 };
-
-
