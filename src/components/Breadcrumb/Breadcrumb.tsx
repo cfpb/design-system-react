@@ -9,8 +9,7 @@ export interface BreadcrumbCrumb {
   isCurrent?: boolean;
 }
 
-export interface BreadcrumbProperties
-  extends HTMLAttributes<HTMLDivElement> {
+export interface BreadcrumbProperties extends HTMLAttributes<HTMLDivElement> {
   crumbs: BreadcrumbCrumb[];
   ariaLabel?: string;
 }

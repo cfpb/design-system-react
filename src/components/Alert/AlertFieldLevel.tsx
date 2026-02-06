@@ -17,8 +17,7 @@ export const MapTypeToIconName = {
   warning: 'warning'
 };
 
-export interface AlertFieldLevelProperties
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface AlertFieldLevelProperties extends React.HTMLAttributes<HTMLDivElement> {
   status?: AlertFieldLevelType;
   message: React.ReactNode;
   isVisible?: boolean;

@@ -8,5 +8,4 @@ export const Divider = ({
   <div className={`content__line ${className}`} {...properties} />
 );
 
-
 export default Divider;

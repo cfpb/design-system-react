@@ -79,9 +79,7 @@ describe('<Alert />', () => {
     expect(linkTwo).toHaveAttribute('href', '/2');
 
     // Icon is displayed: External link
-    const externalIcon = await within(linkTwo).findByTestId(
-      'link-icon-right'
-    );
+    const externalIcon = await within(linkTwo).findByTestId('link-icon-right');
     expect(externalIcon).toBeInTheDocument();
     expect(externalIcon).toHaveClass('cf-icon-svg--external-link');
   });

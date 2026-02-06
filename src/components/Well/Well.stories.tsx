@@ -25,9 +25,7 @@ export const Content: Story = {
     heading: 'Heading',
     headingLevel: 'h3',
     text: 'Lorem ipsum dolor sit amet, ei ius adhuc inani iudico, labitur instructior ex pri. Cu pri inani constituto, cum aeque noster commodo',
-    links: [
-      <ListLink href='/#' key='example1' label='Call-to-action link' />
-    ]
+    links: [<ListLink href='/#' key='example1' label='Call-to-action link' />]
   },
   render: arguments_ => <WellContent {...arguments_} />
 };

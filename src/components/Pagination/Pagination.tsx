@@ -56,7 +56,7 @@ const PaginationInput = ({
   return (
     <label className='m-pagination__label' htmlFor={inputId}>
       Page
-      <span className='u-visually-hidden'>{ `number ${page} out`}</span>
+      <span className='u-visually-hidden'>{`number ${page} out`}</span>
       <input
         className='m-pagination__current-page'
         id={inputId}

@@ -1,5 +1,11 @@
 import '@testing-library/jest-dom';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ReactElement, useState } from 'react';
 import { Pagination } from './Pagination';
@@ -24,7 +30,7 @@ describe('<Pagination />', () => {
 
   it('disables next button on last page', () => {
     render(<Pagination page={3} pageCount={3} tableId='pagination' />);
-    const next = screen.getByRole('button', { name:'Next' });
+    const next = screen.getByRole('button', { name: 'Next' });
     expect(next.classList.contains('a-btn--disabled')).toBe(true);
   });
 

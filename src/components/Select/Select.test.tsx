@@ -109,8 +109,8 @@ describe('<SelectMulti />', () => {
 
     // Allows deselection of options
     await act(async () => {
-      await user.click(screen.getByRole('button', {name: 'Option 1'}));
-      await user.click(screen.getByRole('button', {name: 'Option 4'}));
+      await user.click(screen.getByRole('button', { name: 'Option 1' }));
+      await user.click(screen.getByRole('button', { name: 'Option 4' }));
     });
 
     const NoButtons = screen.queryAllByRole(`button`);

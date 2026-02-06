@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
       ? null
       : removeAttributes({
           attributes: ['data-testid'],
-          usage: 'vite',
+          usage: 'vite'
         })
   ].filter(Boolean) as Plugin[];
 

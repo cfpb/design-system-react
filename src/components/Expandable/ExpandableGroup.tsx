@@ -4,8 +4,7 @@ import type { ReactElement } from 'react';
 import React, { useEffect } from 'react';
 import type { ExpandableProperties } from './Expandable';
 
-export interface ExpandableGroupProperties
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ExpandableGroupProperties extends React.HTMLAttributes<HTMLDivElement> {
   groupId: string;
   accordion?: boolean;
   children?: ReactElement<ExpandableProperties>[];

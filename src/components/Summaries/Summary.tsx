@@ -8,8 +8,7 @@ import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import { Icon } from '~/src';
 
-export interface SummaryProperties
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface SummaryProperties extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   /** Label for the toggle button */
   label?: string;
@@ -59,10 +58,7 @@ export const Summary: React.FC<SummaryProperties> = ({
       data-testid='summary'
       {...properties}
     >
-      <div
-        className={`${baseClass}__content`}
-        data-testid='summary-content'
-      >
+      <div className={`${baseClass}__content`} data-testid='summary-content'>
         {children}
       </div>
       <button

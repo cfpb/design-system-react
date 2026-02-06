@@ -1,7 +1,6 @@
 @use '/src/assets/styles/variables' as *;
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
 @use '@cfpb/cfpb-design-system/src/utilities' as *;
-
 @use 'sass:math';
 
 .m-global-eyebrow {
@@ -52,7 +51,8 @@
 
     .wrapper--match-content {
       padding-left: $space-sm;
-      @media (min-width: 600px) {
+
+      @media (width >= 600px) {
         padding-left: $space-md;
       }
     }
@@ -65,6 +65,7 @@
     @include respond-to-max($bp-sm-max) {
       .m-global-eyebrow__actions {
         display: none;
+
         /* Prevent spacing issues since the languages aren't displayed */
         .a-tagline {
           float: none;
@@ -74,12 +75,9 @@
   }
 
   &--list {
-    padding-top: math.div(math.div($grid-gutter-width, 2), $base-font-size-px) +
-      rem;
-    padding-left: math.div($grid-gutter-width, $base-font-size-px) + rem;
-    padding-right: math.div(math.div($grid-gutter-width, 2), $base-font-size-px) +
-      rem;
-    padding-bottom: math.div($grid-gutter-width, $base-font-size-px) + rem;
+    padding: math.div(math.div($grid-gutter-width, 2), $base-font-size-px) +
+      rem math.div(math.div($grid-gutter-width, 2), $base-font-size-px) +
+      rem math.div($grid-gutter-width, $base-font-size-px) + rem math.div($grid-gutter-width, $base-font-size-px) + rem;
 
     .m-global-eyebrow__actions {
       padding: 0;

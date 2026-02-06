@@ -38,7 +38,7 @@
     "test:ci": "vitest run",
     "format": "prettier -uw --cache --ignore-path .gitignore .",
     "run-tsc": "tsc",
-    "run-eslint": "eslint --cache --fix --ignore-path .gitignore .",
+    "run-eslint": "scripts/lint.sh",
     "run-stylelint": "stylelint --cache --fix --ignore-path .gitignore **/*.css",
     "lint": "run-p run-tsc run-eslint run-stylelint",
     "validate": "run-p lint test:ci test:e2e:headless",

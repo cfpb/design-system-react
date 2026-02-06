@@ -12,7 +12,7 @@
   }
 }
 
-@media only screen and (max-width: 56.25em) {
+@media only screen and (width <= 56.25em) {
   .u-layout-grid__breadcrumbs {
     background:var(--gray-5);
     border-bottom: 1px solid var(--gray-40);
@@ -23,14 +23,14 @@
   }
 }
 
-@media only screen and (min-width: 37.5625em)and (max-width:56.25em) {
+@media only screen and (width >= 37.5625em)and (width <=56.25em) {
   .u-layout-grid__breadcrumbs {
     padding-left: .9375rem;
     padding-right: .9375rem
   }
 }
 
-@media only screen and (min-width: 37.5625em) {
+@media only screen and (width >= 37.5625em) {
   .u-layout-grid__breadcrumbs {
     margin-top: 0
   }

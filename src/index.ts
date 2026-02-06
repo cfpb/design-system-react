@@ -20,11 +20,7 @@ export { default as Hero } from './components/Hero/Hero';
 export { Icon } from './components/Icon/Icon';
 export { Label } from './components/Label/Label';
 export { default as Layout } from './components/Layout/Layout';
-export {
-  default as Link,
-  LinkText,
-  ListLink
-} from './components/Link/Link';
+export { default as Link, LinkText, ListLink } from './components/Link/Link';
 export type { LinkProperties } from './components/Link/Link';
 export { default as List } from './components/List/List';
 export {

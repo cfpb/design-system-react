@@ -14,9 +14,9 @@ interface SVGModule {
 export const useIconSvg = (
   fileName: string
 ): FC<SVGProps<SVGSVGElement>> | null => {
-  const [iconComponent, setIconComponent] = useState<SVGModule['default'] | null>(
-    null
-  );
+  const [iconComponent, setIconComponent] = useState<
+    SVGModule['default'] | null
+  >(null);
 
   useEffect(() => {
     let isMounted = true;
