@@ -57,7 +57,6 @@
     "sass-embedded": "^1.97.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.6",
     "@chromatic-com/storybook": "^3.2.7",
     "@eslint/js": "^9.39.2",
     "@nabla/vite-plugin-eslint": "^2.0.6",
@@ -87,7 +86,6 @@
     "@vitejs/plugin-react": "^5.1.2",
     "@vitest/coverage-istanbul": "^4.0.17",
     "autoprefixer": "10.4.13",
-    "babel-loader": "^8.3.0",
     "chromatic": "^6.19.9",
     "classnames": "^2.5.1",
     "commitizen": "4.2.5",
