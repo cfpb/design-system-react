@@ -1948,8 +1948,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cfpb/design-system-react@workspace:."
   dependencies:
-    "@cfpb/cfpb-design-system": "npm:4.3.2"
     "@cfpb/browserslist-config": "npm:^0.0.6"
+    "@cfpb/cfpb-design-system": "npm:4.3.2"
     "@chromatic-com/storybook": "npm:^3.2.7"
     "@eslint/js": "npm:^9.39.2"
     "@nabla/vite-plugin-eslint": "npm:^2.0.6"
