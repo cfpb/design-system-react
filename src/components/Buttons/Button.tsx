@@ -1,4 +1,4 @@
-import { forwardRef, type ButtonHTMLAttributes } from 'react';
+import { forwardRef, JSX, type ButtonHTMLAttributes } from 'react';
 import { Icon } from '../Icon/Icon';
 
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {

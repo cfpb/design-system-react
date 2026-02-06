@@ -50,9 +50,9 @@
   "dependencies": {
     "@cfpb/browserslist-config": "^0.0.6",
     "@cfpb/cfpb-design-system": "4.3.2",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-router-dom": "^7.12.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-router-dom": "^7.13.0",
     "react-select": "^5.10.2"
   },
   "devDependencies": {
@@ -76,8 +76,8 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/css-mediaquery": "0.1.4",
-    "@types/react": "18.3.27",
-    "@types/react-dom": "18.3.7",
+    "@types/react": "19.2.13",
+    "@types/react-dom": "19.2.3",
     "@types/react-router-dom": "5.3.3",
     "@types/testing-library__jest-dom": "6.0.0",
     "@typescript-eslint/eslint-plugin": "8.53.1",

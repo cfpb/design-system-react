@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { JSX } from 'react';
 
 interface ListProperties {
   children: JSX.Element | JSX.Element[];

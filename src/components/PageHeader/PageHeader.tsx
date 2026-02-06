@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { JSX } from 'react';
 import { Banner } from '../Banner/Banner';
 import type { User } from '../ResponsiveMenu/ResponsiveMenu';
 import ResponsiveMenu from '../ResponsiveMenu/ResponsiveMenu';

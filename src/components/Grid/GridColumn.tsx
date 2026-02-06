@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { JSX } from 'react';
 
 export enum GridColWidth {
   Full = 12,

@@ -1,9 +1,9 @@
+import '@cfpb/cfpb-design-system/src/components/cfpb-pagination/pagination.scss';
 import type { ReactElement } from 'react';
-import { useEffect, useId, useState } from 'react';
+import { JSX, useEffect, useId, useState } from 'react';
+import { Button } from '~/src';
 import { noOp } from '../../utils/noOp';
 import { MIN_PAGE } from './paginationConstants';
-import { Button } from '~/src';
-import '@cfpb/cfpb-design-system/src/components/cfpb-pagination/pagination.scss'
 
 export interface PaginationProperties {
   /** Identifier of the table this element controls */

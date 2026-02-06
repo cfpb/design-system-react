@@ -1,5 +1,6 @@
-import type { SVGProps } from 'react';
 import classNames from 'classnames';
+import type { SVGProps } from 'react';
+import { JSX } from 'react';
 import { useIconSvg } from '../../hooks/useIconSvg';
 import { numberIcons } from './iconLists';
 
