@@ -16,14 +16,28 @@ import {
 const meta: Meta<typeof Icon> = {
   title: 'Components (Draft)/Icons',
   tags: ['autodocs'],
-  component: Icon,
+  component: Icons,
   parameters: {
     docs: {
       description: {
         component: `
-### CFPB DS Icon component
+const meta: Meta<typeof Expandable> = {
+  title: 'Components (Draft)/Expandables',
+  component: Expandable,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Icons visually reinforce an interface action, file type, status, or category. They are visually simple, quickly recognizable, and easy to understand. They are almost always used in context with descriptive text and function to reinforce the message of that text.
 
 Source: https://cfpb.github.io/design-system/foundation/iconography
+`
+      }
+    }
+  }
+};
+Source: https://cfpb.github.io/design-system/components/expandables
 `
       }
     }
