@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
+ 
 
 /**
  * Values pulled from cfpb-core width utilities

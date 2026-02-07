@@ -15,12 +15,12 @@ describe('ResponsiveMenu', () => {
   });
 
   const resizeScreenSize = (width: number) => {
-    Object.defineProperty(window, 'innerWidth', {
+    Object.defineProperty(globalThis, 'innerWidth', {
       writable: true,
       configurable: true,
       value: width
     });
-    window.dispatchEvent(new Event('resize'));
+    globalThis.dispatchEvent(new Event('resize'));
   };
 
   it('does not render the menu without links', () => {

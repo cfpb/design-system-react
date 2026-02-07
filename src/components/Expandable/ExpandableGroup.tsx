@@ -21,7 +21,7 @@ export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
   if (accordion) cname.push('o-expandable-group--accordion');
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+     
     CFPB_ExpandableGroup.init();
   }, [accordion]);
 

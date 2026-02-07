@@ -33,15 +33,15 @@ export const Summary: React.FC<SummaryProperties> = ({
 }) => {
   useEffect(() => {
     if (isMinimal) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+       
       CFPB_SummaryMinimal.init();
     } else {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+       
       CFPB_Summary.init();
     }
 
     if (document.readyState === 'complete') {
-      window.dispatchEvent(new Event('load'));
+      globalThis.dispatchEvent(new Event('load'));
     }
   }, [isMinimal]);
 

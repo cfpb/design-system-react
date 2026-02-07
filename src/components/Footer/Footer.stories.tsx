@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 const makeLink = (label: string, isExternal?: boolean): JSX.Element => (
   <a
     key={label}
-    href={window.location.href}
+    href={globalThis.location.href}
     className={`m-list__link a-link ${isExternal ? 'a-link--icon' : ''}`}
   >
     <span className='a-link__text'>{label}</span>
@@ -24,7 +24,7 @@ const makeLink = (label: string, isExternal?: boolean): JSX.Element => (
 );
 
 const makeSocialLink = (label: string): JSX.Element => (
-  <a key={label} href={window.location.href}>
+  <a key={label} href={globalThis.location.href}>
     <Icon name={label} withBg />
   </a>
 );
