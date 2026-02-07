@@ -59,7 +59,6 @@ export const LanguageLink = ({
   let labelResolved = label;
   let hrefResolved = href;
 
-   
   if (config) {
     codeResolved = config.code;
     langResolved = config.code;

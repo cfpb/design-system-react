@@ -17,7 +17,6 @@ export const CheckboxTestWrapper = ({
   const onWrapperChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-     
     onChange?.(event);
     setChecked(event.target.checked);
   };

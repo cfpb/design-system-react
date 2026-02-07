@@ -21,7 +21,6 @@ export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
   if (accordion) cname.push('o-expandable-group--accordion');
 
   useEffect(() => {
-     
     CFPB_ExpandableGroup.init();
   }, [accordion]);
 

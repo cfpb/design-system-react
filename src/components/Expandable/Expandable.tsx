@@ -28,7 +28,6 @@ export const Expandable: React.FC<ExpandableProperties> = ({
     // If we're in an accordion, the parent ExpandableGroup will handle initialization
     if (inAccordion) return;
 
-     
     CFPB_Expandable.init();
   }, [inAccordion]);
 

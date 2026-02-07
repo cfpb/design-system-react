@@ -33,10 +33,8 @@ export const Summary: React.FC<SummaryProperties> = ({
 }) => {
   useEffect(() => {
     if (isMinimal) {
-       
       CFPB_SummaryMinimal.init();
     } else {
-       
       CFPB_Summary.init();
     }
 

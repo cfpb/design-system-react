@@ -50,7 +50,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
- 
 export const Layout_2_1: Story = {
   args: {
     layout: '2-1'
@@ -82,7 +81,6 @@ export const Layout_2_1: Story = {
   )
 };
 
- 
 export const Layout_1_3: Story = {
   args: {
     layout: '1-3'

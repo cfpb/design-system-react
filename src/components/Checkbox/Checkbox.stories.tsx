@@ -1,4 +1,3 @@
- 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Checkbox from './Checkbox';
 import { CheckboxWrapper } from './Checkbox.utils';

@@ -46,7 +46,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
- 
 export const Sidebar: Story = {
   args: {
     flushBottom: false,
