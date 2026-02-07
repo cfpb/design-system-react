@@ -1283,6 +1283,7 @@ __metadata:
     postcss: "npm:8.5.6"
     prettier: "npm:3.8.1"
     react: "npm:19.2.4"
+    react-docgen-typescript: "npm:^2.4.0"
     react-dom: "npm:19.2.4"
     react-router-dom: "npm:^7.13.0"
     react-select: "npm:^5.10.2"
@@ -9062,7 +9063,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-docgen-typescript@npm:^2.2.2":
+"react-docgen-typescript@npm:^2.2.2, react-docgen-typescript@npm:^2.4.0":
   version: 2.4.0
   resolution: "react-docgen-typescript@npm:2.4.0"
   peerDependencies:

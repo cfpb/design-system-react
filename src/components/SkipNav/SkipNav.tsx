@@ -4,7 +4,6 @@ import { Link } from '~/src';
 
 export interface SkipNavProperties {
   href?: string;
-  text?: string;
 }
 
 /**
@@ -15,12 +14,16 @@ export interface SkipNavProperties {
  * efficiency.
  */
 export default function SkipNav({
-  href = '#main',
-  text = 'Skip to main content'
+  href = '#main'
 }: SkipNavProperties): JSXElement {
   return (
     <div className='skip-nav'>
-      <Link href={href} label={text} className={'skip-nav__link'} asButton />
+      <Link
+        href={href}
+        label={'Skip to main content'}
+        className={'skip-nav__link'}
+        asButton
+      />
     </div>
   );
 }
