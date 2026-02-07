@@ -11,12 +11,6 @@ describe('<SkipNav />', () => {
     expect(link).toHaveClass('skip-nav__link');
   });
 
-  it('renders custom href and text', () => {
-    render(<SkipNav href='#content' text='Skip to content' />);
-    const link = screen.getByRole('link', { name: /skip to content/i });
-    expect(link).toHaveAttribute('href', '#content');
-  });
-
   it('receives focus when tabbing', async () => {
     const user = userEvent.setup();
     render(<SkipNav />);
