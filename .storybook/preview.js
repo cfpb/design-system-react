@@ -31,6 +31,7 @@ export const preview = {
             'Wells'
           ],
           'Components (Draft)',
+          'Templates',
           '*'
         ]
       }
