@@ -1,0 +1,29 @@
+import{j as n}from"./jsx-runtime-u17CrQMm.js";import"./iframe-BfhSYTcc.js";import{B as o,A as l,L as k}from"./Well-DQqqkL_8.js";import"./Checkbox-BAxl2dDc.js";import"./Paragraph-BsYMa97f.js";import"./TextArea-BfQf7_HS.js";import"./preload-helper-PPVm8Dsz.js";import"./index-BhjVL2tz.js";const f={title:"Components (Verified)/Banner (US gov)",tags:["autodocs"],component:o,argTypes:{}},t=e=>{e.preventDefault()},s=({children:e,...c})=>n.jsx("span",{role:"link",onClick:t,onKeyUp:t,...c,children:e}),a={render:e=>n.jsx(o,{...e}),args:{links:[]}};a.storyName="US gov banner";const r={args:{links:l.filter(e=>e!=="en").map(e=>n.jsx(s,{children:n.jsx(k,{code:e})},e)),phoneNumber:"1-855-411-2372",tagline:n.jsxs(n.Fragment,{children:["An official website of the"," ",n.jsx("span",{className:"u-nowrap",children:"United States government"})]})}};r.storyName="US gov banner (cf.gov)";const i={...r,render:e=>n.jsx(o,{...e}),args:{links:[n.jsx(s,{children:n.jsx("a",{href:"/link",children:"Link 1"})},"Link 1"),n.jsx(s,{children:n.jsx("a",{href:"/link",children:"Link 2"})},"Link 2"),n.jsx(s,{children:n.jsx("a",{href:"/link",children:"Link 3"})},"Link 3")]}};i.storyName="US gov banner (with generic links)";a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`{
+  render: properties => <Banner {...properties} />,
+  args: {
+    links: []
+  }
+}`,...a.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  args: {
+    links: AllLanguageCodes.filter(code => code !== 'en').map(code => <UnclickableLink key={code}>
+        <LanguageLink code={code} />
+      </UnclickableLink>),
+    phoneNumber: '1-855-411-2372',
+    tagline: <>
+        An official website of the{' '}
+        <span className='u-nowrap'>United States government</span>
+      </>
+  }
+}`,...r.parameters?.docs?.source}}};i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`{
+  ...USGovBannerWithCFGovLinks,
+  render: properties => <Banner {...properties} />,
+  args: {
+    links: [<UnclickableLink key='Link 1'>
+        <a href='/link'>Link 1</a>
+      </UnclickableLink>, <UnclickableLink key='Link 2'>
+        <a href='/link'>Link 2</a>
+      </UnclickableLink>, <UnclickableLink key='Link 3'>
+        <a href='/link'>Link 3</a>
+      </UnclickableLink>]
+  }
+}`,...i.parameters?.docs?.source}}};const v=["USGovBanner","USGovBannerWithCFGovLinks","USGovBannerWithLinks"];export{a as USGovBanner,r as USGovBannerWithCFGovLinks,i as USGovBannerWithLinks,v as __namedExportsOrder,f as default};
