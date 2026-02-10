@@ -67,8 +67,8 @@ export const Links: Story = {
     isLinks: true,
     children: (
       <>
-        In a "Link list" each list item is a standalone link, which converts
-        to a touch-friendly link with a large tap area on smaller screens. See
+        In the list link component each list item is a standalone link, which converts
+        to a touch-friendly link with a large tap area at smaller screen widths. See
         example on the{' '}
         <Link
           label='links'
