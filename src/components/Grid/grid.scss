@@ -1,7 +1,7 @@
 @use 'sass:math';
 
 // TODO: Do we need to support non-12-column grids?
-$oneColumnWidth: math.div(100%, 12);
+$one-column-width: math.div(100%, 12);
 
 // Storybook styles to better visualize grid
 .demo .col {
@@ -24,7 +24,7 @@ $oneColumnWidth: math.div(100%, 12);
   padding-bottom: 15px;
 }
 
-@media (min-width: 720px) {
+@media (width >= 720px) {
   .grid .col {
     display: inline-block;
     box-sizing: border-box;
@@ -35,51 +35,51 @@ $oneColumnWidth: math.div(100%, 12);
   }
 
   .col-1 {
-    width: calc(1 * $oneColumnWidth);
+    width: calc(1 * $one-column-width);
   }
 
   .col-2 {
-    width: calc(2 * $oneColumnWidth);
+    width: calc(2 * $one-column-width);
   }
 
   .col-3 {
-    width: calc(3 * $oneColumnWidth);
+    width: calc(3 * $one-column-width);
   }
 
   .col-4 {
-    width: calc(4 * $oneColumnWidth);
+    width: calc(4 * $one-column-width);
   }
 
   .col-5 {
-    width: calc(5 * $oneColumnWidth);
+    width: calc(5 * $one-column-width);
   }
 
   .col-6 {
-    width: calc(6 * $oneColumnWidth);
+    width: calc(6 * $one-column-width);
   }
 
   .col-7 {
-    width: calc(7 * $oneColumnWidth);
+    width: calc(7 * $one-column-width);
   }
 
   .col-8 {
-    width: calc(8 * $oneColumnWidth);
+    width: calc(8 * $one-column-width);
   }
 
   .col-9 {
-    width: calc(9 * $oneColumnWidth);
+    width: calc(9 * $one-column-width);
   }
 
   .col-10 {
-    width: calc(10 * $oneColumnWidth);
+    width: calc(10 * $one-column-width);
   }
 
   .col-11 {
-    width: calc(11 * $oneColumnWidth);
+    width: calc(11 * $one-column-width);
   }
 
   .col-12 {
-    width: calc(12 * $oneColumnWidth);
+    width: calc(12 * $one-column-width);
   }
 
   // Centered Grid
