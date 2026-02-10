@@ -1,4 +1,4 @@
-@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/variables';
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
 @use '@cfpb/cfpb-design-system/src/utilities' as *;
 @use 'sass:math';
@@ -50,6 +50,7 @@
   &__heading {
     @include heading-5;
     display: inline-block;
+
     // TODO: how to handle font-size variable
     // 0.25em subtracted to compensate for inline spacing
     // padding-right: math.div($grid-gutter-width, $font-size - 0.25em) + em;
@@ -80,6 +81,7 @@
     color: var(--gray-dark);
     font-size: math.div($grid-gutter-width, $base-font-size-px) + em;
     line-height: 1;
+
     @include u-link-colors(var(--gray-dark), var(--pacific-80));
     @include u-link-no-border;
   }
@@ -92,9 +94,7 @@
 
   // Hide on print.
   @media print {
-    & {
-      display: none;
-    }
+    display: none;
   }
 }
 
