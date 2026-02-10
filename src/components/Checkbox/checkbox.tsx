@@ -12,7 +12,7 @@ export interface CheckboxProperties {
   label: ReactNode;
   /** Additional CSS classes applied to the checkbox's wrapper element */
   className?: string;
-  /** Is checkboxed checked? */
+  /** Is the checkbox checked? */
   checked?: boolean;
   /** Additional text to further clarify purpose of checkbox */
   helperText?: ReactNode;
@@ -20,10 +20,9 @@ export interface CheckboxProperties {
   inputClassName?: string;
   /** Additional CSS classes that will be applied to checkbox label element */
   labelClassName?: string;
-  /** React Ref to be enable direct access and control of the input element */
+  /** React Ref to enable direct access and control of the input element */
   inputRef?:
     | RefObject<HTMLInputElement>
-    | string
     | ((instance: HTMLInputElement | null) => void)
     | null
     | undefined;
