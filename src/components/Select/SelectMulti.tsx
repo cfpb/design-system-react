@@ -51,10 +51,7 @@ export const SelectMulti = ({
   }, [selectedIndicies, onChange, options]);
 
   return (
-    <div
-      className='m-form-field'
-      id={`multi-wrapper-${id}`}
-    >
+    <div className='m-form-field' id={`multi-wrapper-${id}`}>
       <label className='a-label a-label--heading' htmlFor={id}>
         {label}
       </label>

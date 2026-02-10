@@ -103,7 +103,9 @@ describe('<Table />', () => {
     );
 
     const previousButton = screen.getByRole('button', { name: 'Previous' });
-    expect(previousButton.classList.contains('m-pagination__btn-prev')).toBe(true);
+    expect(previousButton.classList.contains('m-pagination__btn-prev')).toBe(
+      true
+    );
 
     const nextButton = screen.getByRole('button', { name: 'Next' });
     expect(nextButton.classList.contains('m-pagination__btn-next')).toBe(true);

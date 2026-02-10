@@ -75,7 +75,9 @@ describe('<Expandable />', () => {
         {children}
       </Expandable>
     );
-    expect(await screen.findByRole('img', { name: 'left' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('img', { name: 'left' })
+    ).toBeInTheDocument();
   });
 
   it('Supports openOnLoad', async () => {

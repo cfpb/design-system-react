@@ -23,14 +23,14 @@ const pluginProcessIcons = () => {
         const pathToSVG = path.join(
           __dirname,
           '/../node_modules/@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/' +
-          iconName +
-          '.svg'
+            iconName +
+            '.svg'
         );
 
         let rawSVG;
         try {
           rawSVG = await fs.readFile(pathToSVG, 'utf8');
-        } catch(err) {
+        } catch (err) {
           console.error(`Error reading SVG file: ${pathToSVG}`, err);
           return;
         }

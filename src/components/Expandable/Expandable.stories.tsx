@@ -6,7 +6,6 @@ import { sleep } from '../../utils/sleep';
 // This is the expandable group
 import { ExpandableGroup } from './ExpandableGroup';
 
-
 const meta: Meta<typeof Expandable> = {
   title: 'Components (Verified)/Expandables',
   component: Expandable,
@@ -59,7 +58,7 @@ const ContentForGroup = ({
 };
 
 export const Default: Story = {
-    name: 'Single',
+  name: 'Single',
   args: {
     header: 'Expandable label',
     children: Content
@@ -76,8 +75,8 @@ export const PaddedExpandable: Story = {
 };
 
 export const OpenOnLoad: Story = {
-   name: 'Open on load',
-   args: {
+  name: 'Open on load',
+  args: {
     ...Default.args,
     header: 'Expandable label',
     openOnLoad: true
@@ -142,8 +141,3 @@ export const Accordion: Story = {
     groupId: 'AccordionGroup'
   }
 };
-
-
-
-
-

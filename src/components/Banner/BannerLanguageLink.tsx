@@ -59,7 +59,6 @@ export const LanguageLink = ({
   let labelResolved = label;
   let hrefResolved = href;
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (config) {
     codeResolved = config.code;
     langResolved = config.code;

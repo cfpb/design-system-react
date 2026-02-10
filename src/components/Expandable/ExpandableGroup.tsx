@@ -4,8 +4,7 @@ import type { ReactElement } from 'react';
 import React, { useEffect } from 'react';
 import type { ExpandableProperties } from './Expandable';
 
-export interface ExpandableGroupProperties
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ExpandableGroupProperties extends React.HTMLAttributes<HTMLDivElement> {
   groupId: string;
   accordion?: boolean;
   children?: ReactElement<ExpandableProperties>[];
@@ -22,7 +21,6 @@ export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
   if (accordion) cname.push('o-expandable-group--accordion');
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     CFPB_ExpandableGroup.init();
   }, [accordion]);
 

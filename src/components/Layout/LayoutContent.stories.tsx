@@ -45,7 +45,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Content: Story = {
   args: {
     flushBottom: false,

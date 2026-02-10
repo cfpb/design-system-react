@@ -5,8 +5,7 @@ import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import { Icon } from '../Icon/Icon';
 
-export interface ExpandableProperties
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ExpandableProperties extends React.HTMLAttributes<HTMLDivElement> {
   header: string;
   children: ReactNode;
   icon?: string;
@@ -29,7 +28,6 @@ export const Expandable: React.FC<ExpandableProperties> = ({
     // If we're in an accordion, the parent ExpandableGroup will handle initialization
     if (inAccordion) return;
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     CFPB_Expandable.init();
   }, [inAccordion]);
 

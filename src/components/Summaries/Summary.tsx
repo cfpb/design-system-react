@@ -8,8 +8,7 @@ import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import { Icon } from '~/src';
 
-export interface SummaryProperties
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface SummaryProperties extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   /** Label for the toggle button */
   label?: string;
@@ -34,15 +33,13 @@ export const Summary: React.FC<SummaryProperties> = ({
 }) => {
   useEffect(() => {
     if (isMinimal) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       CFPB_SummaryMinimal.init();
     } else {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       CFPB_Summary.init();
     }
 
     if (document.readyState === 'complete') {
-      window.dispatchEvent(new Event('load'));
+      globalThis.dispatchEvent(new Event('load'));
     }
   }, [isMinimal]);
 
@@ -59,10 +56,7 @@ export const Summary: React.FC<SummaryProperties> = ({
       data-testid='summary'
       {...properties}
     >
-      <div
-        className={`${baseClass}__content`}
-        data-testid='summary-content'
-      >
+      <div className={`${baseClass}__content`} data-testid='summary-content'>
         {children}
       </div>
       <button

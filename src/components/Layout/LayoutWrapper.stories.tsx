@@ -40,7 +40,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Wrapper: Story = {
   args: {
     children: [

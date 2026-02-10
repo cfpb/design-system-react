@@ -29,7 +29,6 @@ export const Default: Story = {
   }
 };
 
-
 export const Crumb: Story = {
   render: properties => <Breadcrumb {...properties} />,
   args: {
@@ -41,4 +40,3 @@ export const Crumb: Story = {
     ]
   }
 };
-

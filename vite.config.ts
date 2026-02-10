@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
       load(id) {
         // Only target .svg files that do NOT have a query (like ?react)
         if (id.endsWith('.svg') && !id.includes('?')) {
-          const svgRaw = fs.readFileSync(id, 'utf-8');
+          const svgRaw = fs.readFileSync(id, 'utf8');
           // Return the raw SVG content wrapped in a JS export
           return `export default ${JSON.stringify(svgRaw)}`;
         }
@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
       ? null
       : removeAttributes({
           attributes: ['data-testid'],
-          usage: 'vite',
+          usage: 'vite'
         })
   ].filter(Boolean) as Plugin[];
 
