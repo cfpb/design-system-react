@@ -1,16 +1,16 @@
 // modified from
 // https://github.com/cfpb/design-system/blob/main/esbuild/plugins/postcss-process-icons.js
 
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 
 // __filename and __dirname equivalents in ESM.
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const pluginProcessIcons = () => {
-  const stripQuotes = (str) => str.replace(/['"]+/g, '');
+  const stripQuotes = (str) => str.replaceAll(/['"]+/g, '');
 
   return {
     postcssPlugin: 'process-icons',
@@ -30,8 +30,8 @@ const pluginProcessIcons = () => {
         let rawSVG;
         try {
           rawSVG = await fs.readFile(pathToSVG, 'utf8');
-        } catch (err) {
-          console.error(`Error reading SVG file: ${pathToSVG}`, err);
+        } catch (error) {
+          console.error(`Error reading SVG file: ${pathToSVG}`, error);
           return;
         }
 

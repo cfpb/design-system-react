@@ -23,14 +23,14 @@ describe('<TextInput />', () => {
   for (const type of inputTypes)
     it(`Renders input of type ${type}`, testInputType(type));
 
-  it('Disabled input', async () => {
+  it('Disabled input', () => {
     render(<TextInput id='alert' name='alert' type='number' isDisabled />);
 
     const disabled = screen.getByTestId('textInput');
     expect(disabled).toHaveAttribute('disabled');
   });
 
-  it('Status', async () => {
+  it('Status', () => {
     render(
       <TextInput id='alert' name='alert' type='number' status='success' />,
     );
@@ -39,7 +39,7 @@ describe('<TextInput />', () => {
     expect(textInput).toHaveClass('a-text-input--success');
   });
 
-  it('Full width', async () => {
+  it('Full width', () => {
     render(<TextInput id='alert' name='alert' type='number' isFullWidth />);
 
     const textInput = screen.getByTestId('textInput');

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { List, ListItem } from '~/src/index';
-import { Link } from '~/src';
+import { List, ListItem, Link } from '~/src/index';
 
 const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',

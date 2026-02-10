@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { act, render, screen, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { JSX, useState } from 'react';
 import { fn } from 'storybook/test';
@@ -79,10 +79,8 @@ describe('<SelectMulti />', () => {
     expect(document.querySelectorAll('.u-max-selections').length).toBe(0);
 
     // Allows selection of multiple options, up to the limit
-    await act(async () => {
-      await user.click(screen.getByLabelText('Option 1'));
-      await user.click(screen.getByLabelText('Option 4'));
-    });
+    await user.click(screen.getByLabelText('Option 1'));
+    await user.click(screen.getByLabelText('Option 4'));
 
     // Change handler is called with the expected content
     expect(onChange).toHaveBeenCalledWith([
@@ -108,10 +106,8 @@ describe('<SelectMulti />', () => {
     expect(document.querySelectorAll('.u-max-selections').length).toBe(1);
 
     // Allows deselection of options
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Option 1' }));
-      await user.click(screen.getByRole('button', { name: 'Option 4' }));
-    });
+    await user.click(screen.getByRole('button', { name: 'Option 1' }));
+    await user.click(screen.getByRole('button', { name: 'Option 4' }));
 
     const NoButtons = screen.queryAllByRole(`button`);
     expect(NoButtons.length).toBe(0);

@@ -41,15 +41,15 @@ export default {
       'always-multi-line',
       {
         except: 'first-nested',
-        ignore: ['after-comment', 'inside-block']
-      }
+        ignore: ['after-comment', 'inside-block'],
+      },
     ],
     'selector-id-pattern': null,
     'selector-class-pattern': [
       '^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$',
-      { resolveNestedSelectors: true }
+      { resolveNestedSelectors: true },
     ],
     'scss/operator-no-newline-after': null,
-    'scss/comment-no-empty': null
-  }
+    'scss/comment-no-empty': null,
+  },
 };
