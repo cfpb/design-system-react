@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 import { fn } from 'storybook/test';
 import { Select, SelectOption } from './Select';
 import { MultipleSelectOptions, SingleSelectOptions } from './testUtils';
