@@ -14,7 +14,7 @@ export const LanguageMap: LanguageDefinition = {
   tl: { label: 'Tagalog', code: 'tl' },
   ru: { label: 'Pусский', code: 'ru' },
   ar: { label: 'العربية', code: 'ar' },
-  ht: { label: 'Kreyòl Ayisyen', code: 'ht' }
+  ht: { label: 'Kreyòl Ayisyen', code: 'ht' },
 };
 
 export const AllLanguageCodes = [
@@ -26,7 +26,7 @@ export const AllLanguageCodes = [
   'tl',
   'ru',
   'ar',
-  'ht'
+  'ht',
 ];
 
 export interface LanguageLinkProperties {

@@ -5,7 +5,7 @@ import { generateTestRows, stringify } from './pagination.story-utils';
 const meta: Meta<typeof Pagination> = {
   title: 'Components (Verified)/Pagination',
   tags: ['autodocs'],
-  component: Pagination
+  component: Pagination,
 };
 
 export default meta;
@@ -21,24 +21,24 @@ export const Base: Story = {
   name: 'Default pagination',
   args: {
     page: MIDDLE_PAGE,
-    pageCount: MAX_PAGE
-  }
+    pageCount: MAX_PAGE,
+  },
 };
 
 export const PreviousDisabledAtMinPage: Story = {
   name: 'Previous button disabled on first page',
   args: {
     page: FIRST_PAGE,
-    pageCount: MAX_PAGE
-  }
+    pageCount: MAX_PAGE,
+  },
 };
 
 export const NextDisabledAtMaxPage: Story = {
   name: 'Next button disabled on last page',
   args: {
     page: MAX_PAGE,
-    pageCount: MAX_PAGE
-  }
+    pageCount: MAX_PAGE,
+  },
 };
 
 export const UsePagination = {
@@ -47,9 +47,9 @@ export const UsePagination = {
     docs: {
       description: {
         story:
-          'A custom hook to manage paginated data and generate props for the Pagination component. The hook internally tracks pagination state and provides event handlers to update this state.'
-      }
-    }
+          'A custom hook to manage paginated data and generate props for the Pagination component. The hook internally tracks pagination state and provides event handlers to update this state.',
+      },
+    },
   },
   render: (): JSX.Element => {
     const START_PAGE = 1;
@@ -61,11 +61,11 @@ export const UsePagination = {
     const usePaginationArguments = {
       rows: paginationRows,
       perPage: PER_PAGE,
-      startPage: START_PAGE
+      startPage: START_PAGE,
     };
 
     const [visibleRows, paginationProperties] = usePagination(
-      usePaginationArguments
+      usePaginationArguments,
     );
 
     return (
@@ -98,5 +98,5 @@ export const UsePagination = {
         <Pagination {...paginationProperties} />
       </>
     );
-  }
+  },
 };

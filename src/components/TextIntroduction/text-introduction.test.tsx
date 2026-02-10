@@ -9,7 +9,7 @@ import {
   description,
   heading,
   placeholders,
-  subheading
+  subheading,
 } from './test-helpers';
 import { TextIntroduction } from './text-introduction';
 
@@ -35,7 +35,7 @@ describe('<TextIntroduction.Container />', () => {
         <List isLinks>
           <ListItem>{cloneElement(callToAction, { type: 'list' })}</ListItem>
         </List>
-      </TextIntroduction.Container>
+      </TextIntroduction.Container>,
     );
     expect(screen.getByText(heading)).toBeInTheDocument();
     expect(screen.getByText(subheading)).toBeInTheDocument();

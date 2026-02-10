@@ -45,7 +45,7 @@ export const SocialLinks = ({ children }: WrapperProperties): JSXElement => {
  * Wrapper for column of Footer Links
  */
 export const FooterLinksColumn = ({
-  children
+  children,
 }: WrapperProperties): JSXElement => {
   if (isEmptyArray(children)) return null;
 

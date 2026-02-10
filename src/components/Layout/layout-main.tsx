@@ -11,7 +11,7 @@ export const LayoutMain = ({
   children,
   classes = '',
   id = 'main',
-  layout = '2-1'
+  layout = '2-1',
 }: LayoutMainProperties): JSX.Element => {
   const cnames = ['content', `content--${layout}`, classes];
 

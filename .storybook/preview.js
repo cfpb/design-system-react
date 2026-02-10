@@ -28,26 +28,26 @@ export const preview = {
             'Text inputs',
             ['Overview', '*'], // Display the custom Overview page first
             'Text introductions',
-            'Wells'
+            'Wells',
           ],
           'Components (Draft)',
-          '*'
-        ]
-      }
+          '*',
+        ],
+      },
     },
     actions: {},
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/
-      }
+        date: /Date$/,
+      },
     },
     docs: {
-      theme: themeCFPB
-    }
+      theme: themeCFPB,
+    },
   },
 
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export default preview;

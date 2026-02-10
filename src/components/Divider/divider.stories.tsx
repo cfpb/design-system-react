@@ -14,10 +14,10 @@ Dividers create visual separation between content sections by rendering a horizo
 <a href="https://cfpb.github.io/design-system/development/blocks#content-dividers">
 https://cfpb.github.io/design-system/development/blocks#content-dividers
 </a>
-`
-      }
-    }
-  }
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -28,13 +28,13 @@ export const Default: Story = {};
 
 export const ExampleUsage: Story = {
   args: {
-    className: 'u-mb30 u-mt30'
+    className: 'u-mb30 u-mt30',
   },
-  render: arguments_ => (
+  render: (arguments_) => (
     <>
       This content is above the divider by 30px
       <Divider {...arguments_} />
       This content is below the divider by 30px
     </>
-  )
+  ),
 };

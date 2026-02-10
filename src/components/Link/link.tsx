@@ -75,13 +75,13 @@ export default function Link({
     'a-btn--link': type === 'destructive',
     'a-btn--warning': type === 'destructive',
     'a-link--jump': isJump,
-    'a-link': shouldUseLinkStyles
+    'a-link': shouldUseLinkStyles,
   });
 
   if (isRouterLink) {
     if (!href) {
       throw new Error(
-        'Link component: href is a required attribute when isRouterLink is true'
+        'Link component: href is a required attribute when isRouterLink is true',
       );
     }
     return (

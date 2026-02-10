@@ -9,7 +9,7 @@ describe('<ButtonGroup />', () => {
       <ButtonGroup data-testid='group'>
         <Button label='first' data-testid='first' />
         <Button label='second' data-testid='second' />
-      </ButtonGroup>
+      </ButtonGroup>,
     );
 
     expect(screen.getByTestId('group')).toBeInTheDocument();

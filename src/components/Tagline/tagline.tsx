@@ -9,7 +9,7 @@ interface TaglineProperties {
 
 export const Tagline = ({
   isLarge = false,
-  children
+  children,
 }: TaglineProperties): JSXElement => {
   const baseClasses = ['a-tagline'];
   if (isLarge) baseClasses.push('a-tagline--large');

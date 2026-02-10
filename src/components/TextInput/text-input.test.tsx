@@ -16,7 +16,7 @@ const inputTypes: InputType[] = [
   'search',
   'tel',
   'text',
-  'url'
+  'url',
 ];
 
 describe('<TextInput />', () => {
@@ -32,7 +32,7 @@ describe('<TextInput />', () => {
 
   it('Status', async () => {
     render(
-      <TextInput id='alert' name='alert' type='number' status='success' />
+      <TextInput id='alert' name='alert' type='number' status='success' />,
     );
 
     const textInput = screen.getByTestId('textInput');

@@ -40,7 +40,7 @@ export const RadioButton = ({
   const classes = [...baseStyles, className].join(' ');
   const containerClasses = [
     ...containerBaseStyles,
-    isLarge ? 'm-form-field--lg-target' : ''
+    isLarge ? 'm-form-field--lg-target' : '',
   ].join(' ');
 
   return (

@@ -14,10 +14,10 @@ describe('<Breadcrumb />', () => {
         crumbs={[
           {
             href: '/home',
-            label: 'Home'
-          }
+            label: 'Home',
+          },
         ]}
-      />
+      />,
     );
 
     const nav = screen.getByRole('navigation', { name: 'Breadcrumbs' });
@@ -33,9 +33,9 @@ describe('<Breadcrumb />', () => {
       <Breadcrumb
         crumbs={[
           { href: '/home', label: 'Home' },
-          { href: '/section', label: 'Section' }
+          { href: '/section', label: 'Section' },
         ]}
-      />
+      />,
     );
 
     const nav = screen.getByRole('navigation');
@@ -50,9 +50,9 @@ describe('<Breadcrumb />', () => {
       <Breadcrumb
         crumbs={[
           { href: '/home', label: 'Home' },
-          { href: '/current', label: 'Current', isCurrent: true }
+          { href: '/current', label: 'Current', isCurrent: true },
         ]}
-      />
+      />,
     );
 
     const currentCrumb = screen.getByText(/Current/);

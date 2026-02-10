@@ -16,7 +16,7 @@ export default function PageHeader({
   links,
   user,
   href,
-  withBottomBorder = true
+  withBottomBorder = true,
 }: PageHeaderProperties): JSX.Element {
   const headerClasses = ['o-header'];
   if (withBottomBorder) headerClasses.push('bottom-border');

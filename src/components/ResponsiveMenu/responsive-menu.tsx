@@ -11,7 +11,7 @@ interface CfpbLogoProperties {
 }
 
 export function CfpbLogo({
-  href = 'https://www.consumerfinance.gov'
+  href = 'https://www.consumerfinance.gov',
 }: CfpbLogoProperties): JSX.Element {
   return (
     <Link
@@ -28,7 +28,7 @@ export function CfpbLogo({
 
 const Links = ({
   elements,
-  onLinkClick
+  onLinkClick,
 }: {
   elements: React.ReactNode[] | undefined;
   onLinkClick: () => void;
@@ -40,7 +40,7 @@ const Links = ({
       {elements.map((element, index) => {
         if (
           React.isValidElement<{ onClick?: (event: React.MouseEvent) => void }>(
-            element
+            element,
           )
         ) {
           return React.cloneElement(element, {
@@ -51,7 +51,7 @@ const Links = ({
                 element.props.onClick(event);
               }
               onLinkClick();
-            }
+            },
           });
         }
         return element;
@@ -67,7 +67,7 @@ interface ResponsiveMenuProperties {
 
 export default function ResponsiveMenu({
   links,
-  href
+  href,
 }: ResponsiveMenuProperties): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -85,7 +85,7 @@ export default function ResponsiveMenu({
         setIsMenuOpen(false);
       }
     },
-    []
+    [],
   );
 
   if (!links?.length) return <Navbar href={href} />;
@@ -140,5 +140,5 @@ export const ExampleLinks: React.ReactNode[] = [
   <Link key='profile' className='nav-item profile' href='/profile'>
     <span>John Sample</span>
   </Link>,
-  <Button label='LOG OUT' asLink onClick={(): void => {}} key='logout' />
+  <Button label='LOG OUT' asLink onClick={(): void => {}} key='logout' />,
 ];

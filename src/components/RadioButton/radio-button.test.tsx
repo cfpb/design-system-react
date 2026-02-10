@@ -4,10 +4,10 @@ import userEvent from '@testing-library/user-event';
 import { RadioButton } from './radio-button';
 
 const buildProperties = (
-  additive: number | string
+  additive: number | string,
 ): { id: string; label: string } => ({
   id: `radio-${additive}`,
-  label: `label-${additive}`
+  label: `label-${additive}`,
 });
 
 describe('<RadioButton />', () => {
@@ -34,7 +34,7 @@ describe('<RadioButton />', () => {
 
     expect(screen.getByText(helperTextOutput)).toBeInTheDocument();
     expect(screen.getByTestId('radio-container').getAttribute('class')).toMatch(
-      'm-form-field--lg-target'
+      'm-form-field--lg-target',
     );
   });
 

@@ -3,9 +3,9 @@ const INDENTATION = 2;
 
 // Produce tabular test data
 export const generateTestRows = (rowCount: number): string[][] =>
-  [...Array.from({ length: rowCount }).keys()].map(key => [
+  [...Array.from({ length: rowCount }).keys()].map((key) => [
     `A${key + ONE}`,
-    `B${key + ONE}`
+    `B${key + ONE}`,
   ]);
 
 // Stringify an object while preserving Functions
@@ -21,10 +21,10 @@ export const stringify = (object: object): string => {
       }
       return value;
     },
-    INDENTATION
+    INDENTATION,
   );
   json = json.replaceAll(new RegExp(`"${placeholder}"`, 'g'), () =>
-    fns.shift()
+    fns.shift(),
   );
   return json;
 };

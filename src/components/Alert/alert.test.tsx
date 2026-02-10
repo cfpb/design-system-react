@@ -18,7 +18,7 @@ const notificationStatuses: AlertType[] = [
   'success',
   'warning',
   'error',
-  'info'
+  'info',
 ];
 
 describe('<Alert />', () => {
@@ -50,7 +50,7 @@ describe('<Alert />', () => {
     render(
       <Alert status='info'>
         <Paragraph>Test component</Paragraph>
-      </Alert>
+      </Alert>,
     );
     const explanation = screen.queryByTestId('explanation');
     expect(explanation).toBeInTheDocument();
@@ -64,7 +64,7 @@ describe('<Alert />', () => {
 
     const linkItems = [
       { href: '/1', label: 'one' },
-      { href: '/2', label: 'two', isExternal: true }
+      { href: '/2', label: 'two', isExternal: true },
     ];
 
     render(<Alert status='info' links={linkItems} />);
@@ -92,7 +92,7 @@ describe('<Alert />', () => {
         status='warning'
         isFieldLevel
         message='squish'
-      />
+      />,
     );
     const element = screen.getByTestId(testId);
 
@@ -113,7 +113,7 @@ describe('<Alert />', () => {
         isVisible={false}
         status='warning'
         message='squish'
-      />
+      />,
     );
     const element = screen.queryByTestId(testId);
 
@@ -129,7 +129,7 @@ describe('<Alert />', () => {
         showIcon={false}
         status='warning'
         message='squish'
-      />
+      />,
     );
     const element = screen.getByTestId(testId);
 
@@ -144,7 +144,11 @@ describe('<Alert />', () => {
   it('renders field-level alerts as its own component', async () => {
     const testId = 'field-level-warning';
     render(
-      <AlertFieldLevel data-testid={testId} status='warning' message='squish' />
+      <AlertFieldLevel
+        data-testid={testId}
+        status='warning'
+        message='squish'
+      />,
     );
     const element = screen.getByTestId(testId);
 
@@ -165,7 +169,7 @@ describe('<Alert />', () => {
         data-testid={testId}
         status={unSupportedStatus}
         message='squish'
-      />
+      />,
     );
     // Renders error message
     const message = `[Error] Unsupported field-level alert type provided: ${unSupportedStatus}`;
@@ -179,7 +183,7 @@ describe('<Alert />', () => {
         data-testid={testId}
         isVisible={false}
         message='squish'
-      />
+      />,
     );
     const element = screen.queryByTestId(testId);
 

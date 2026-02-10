@@ -51,12 +51,12 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
       isFullWidth = false,
       ...otherInputProperties
     },
-    reference
+    reference,
   ) => {
     const classes = [
       'a-text-input',
       className,
-      getTextInputStatusClass(status)
+      getTextInputStatusClass(status),
     ];
 
     if (isFullWidth) {
@@ -89,5 +89,5 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
         {...otherInputProperties}
       />
     );
-  }
+  },
 );
