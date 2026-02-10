@@ -1,5 +1,7 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
+import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import react from '@vitejs/plugin-react';
+import { playwright } from '@vitest/browser-playwright';
 import { resolve } from 'node:path';
 import processIcons from './postcss/processIcons';
 
@@ -12,7 +14,16 @@ import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(async ({ mode }) => {
+  const storybookConfigDir = process.env.STORYBOOK_CONFIG_DIR;
+  const isStorybookTest = Boolean(storybookConfigDir);
+  if (isStorybookTest) {
+    console.log(
+      '[storybook][vitest-config] project name:',
+      `storybook:${storybookConfigDir}`,
+    );
+  }
+  const storybookPlugins = isStorybookTest ? await storybookTest() : [];
   const plugins: Plugin[] = [
     eslintPlugin(),
     {
@@ -35,6 +46,7 @@ export default defineConfig(({ mode }) => {
     dts({
       insertTypesEntry: true,
     }),
+    ...storybookPlugins,
     mode === 'test'
       ? null
       : removeAttributes({
@@ -68,11 +80,17 @@ export default defineConfig(({ mode }) => {
     },
     test: {
       globals: true,
-      environment: 'jsdom',
+      ...(isStorybookTest
+        ? {
+            name: `storybook:${storybookConfigDir}`,
+            setupFiles: resolve(__dirname, '.storybook/vitest.setup.ts'),
+          }
+        : { environment: 'jsdom' }),
       exclude: [
         '**/node_modules/**',
         '**/dist/**',
         '**/.{idea,git,cache,output,temp}/**',
+        ...(isStorybookTest ? [] : ['**/*.stories.{js,jsx,ts,tsx}']),
       ],
       // This ensures Vitest uses the same plugin pipeline as Vite
       transformMode: {
@@ -100,6 +118,16 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
+      ...(isStorybookTest
+        ? {
+            browser: {
+              enabled: true,
+              provider: playwright(),
+              instances: [{ browser: 'chromium' }],
+              headless: true,
+            },
+          }
+        : {}),
     },
     build: {
       lib: {
