@@ -1,0 +1,66 @@
+import { JSX } from 'react';
+import CFPBLogo from '../../assets/images/cfpb-logo.png';
+import { Button } from '../Buttons/button';
+import Link from '../Link/link';
+import './navbar.scss';
+
+interface CfpbLogoProperties {
+  href?: string;
+}
+
+export function CfpbLogo({
+  href = 'https://www.consumerfinance.gov',
+}: CfpbLogoProperties): JSX.Element {
+  return (
+    <Link
+      data-testid='CfpbLogoLink'
+      href={href}
+      title='Home'
+      aria-label='Home'
+      className='o-header__logo'
+    >
+      <img className='o-header__logo-img' src={CFPBLogo} alt='CFPB Logo' />
+    </Link>
+  );
+}
+
+const Links = ({
+  elements,
+}: {
+  elements: JSX.Element[] | undefined;
+}): JSX.Element | null => {
+  if (!elements?.length) return null;
+
+  return <div className='links'>{elements}</div>;
+};
+
+interface NavbarProperties {
+  links?: JSX.Element[];
+  href?: string;
+}
+
+export default function Navbar({ links, href }: NavbarProperties): JSX.Element {
+  return (
+    <div className='o-header__content'>
+      <div className='navbar-static wrapper wrapper--match-content'>
+        <CfpbLogo href={href} />
+        <div className='nav-items'>
+          <Links elements={links} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export const ExampleLinks: JSX.Element[] = [
+  <Link className='nav-item' key='home' href='/'>
+    Home
+  </Link>,
+  <Link className='nav-item active' key='filing' href='/filing'>
+    Filing
+  </Link>,
+  <Link className='nav-item' key='profile' href='/profile'>
+    John Sample
+  </Link>,
+  <Button label='LOG OUT' asLink onClick='' key='logout' />,
+];

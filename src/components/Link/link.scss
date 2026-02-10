@@ -1,0 +1,9 @@
+.a-link {
+  .a-link__text + svg {
+    margin-left: 0.25em;
+  }
+
+  svg + .a-link__text {
+    margin-left: 0.25em;
+  }
+}

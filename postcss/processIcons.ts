@@ -1,46 +1,52 @@
 // modified from
 // https://github.com/cfpb/design-system/blob/main/esbuild/plugins/postcss-process-icons.js
 
-const { readFileSync } = require('fs');
-const path = require('path');
+import fs from 'fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'url';
 
-const currentDir = path.dirname(__filename);
+// __filename and __dirname equivalents in ESM.
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const pluginProcessIcons = () => {
-  const stripQuotes = str => str.replace(/['"]+/g, '');
+  const stripQuotes = (str) => str.replace(/['"]+/g, '');
 
   return {
     postcssPlugin: 'process-icons',
     Declaration: {
-      '--cfpb-background-icon-svg': async decl => {
+      '--cfpb-background-icon-svg': async (decl) => {
         const props = decl.value.split(' ');
         const iconName = stripQuotes(props[0]);
         const iconColor = props.length > 1 ? stripQuotes(props[1]) : '';
 
-        const pathToSVG =
-          currentDir +
+        const pathToSVG = path.join(
+          __dirname,
           '/../node_modules/@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/' +
-          iconName +
-          '.svg';
-        const rawSVG = await readFileSync(pathToSVG, 'utf8', (err, data) => {
-          // eslint-disable-next-line no-console
-          if (err) console.log(err);
+            iconName +
+            '.svg',
+        );
 
-          return data;
-        });
+        let rawSVG;
+        try {
+          rawSVG = await fs.readFile(pathToSVG, 'utf8');
+        } catch (err) {
+          console.error(`Error reading SVG file: ${pathToSVG}`, err);
+          return;
+        }
 
         let cleanSVG = rawSVG;
         if (iconColor !== '') {
           cleanSVG = rawSVG.replace(
             /class="cf-icon-svg .+" /,
-            `fill="${iconColor}" `
+            `fill="${iconColor}" `,
           );
         }
 
         decl.prop = 'background-image';
         decl.value = `url('data:image/svg+xml;charset=UTF-8,${cleanSVG}')`;
-      }
-    }
+      },
+    },
   };
 };
 pluginProcessIcons.postcss = true;

@@ -4,24 +4,24 @@ A React/Storybook implementation of [CFPB's Design System](https://github.com/cf
 
 ## Status
 
-✨ Pre-release. Interfaces will change. Things will break.
+✨ Work in progress. Interfaces will change. Things will break.
 
 Current components: https://cfpb.github.io/design-system-react
 
 ## Installation
 
-Until we start publishing to npm, install this github repo:
+The `@cfpb/design-system-react` library is released as an [NPM package](https://www.npmjs.com/package/@cfpb/design-system-react).
+
+To install the package:
 
 ```
-yarn add cfpb/design-system-react
+yarn add @cfpb/design-system-react
 ```
-
-If you're using yarn v2 or greater, [`yarn pack`](https://yarnpkg.com/advanced/lifecycle-scripts) will automatically build the package for you after it's installed.
 
 ## Usage
 
 ```ts
-import { Button, Alert } from 'design-system-react';
+import { Alert, Button } from '@cfpb/design-system-react';
 import type { ReactElement } from 'react';
 
 export default function SomePage(): ReactElement {
@@ -45,7 +45,7 @@ export default function SomePage(): ReactElement {
 
 To edit components or add new ones, make sure you have Yarn v3 set up locally and then run `yarn dev`:
 
-1. Install Node v20+.
+1. Install Node v24+.
 1. Enable [corepack](https://yarnpkg.com/getting-started/install): `corepack enable`.
 1. `yarn`
 1. `yarn start`
@@ -58,7 +58,7 @@ Add tests to files called `<component-name>.test.tsx`. See [`Buttons.test.tsx`](
 
 Run `yarn test` to watch for changes and run tests automatically.
 
-[Netlify](https://www.netlify.com/) will build and deploy a preview of any pull requests you open.
+[Github actions](https://github.com/rossjrw/pr-preview-action) will build and deploy a preview of any pull requests you open.
 
 ## Integrating changes to the CFPB Design System
 
@@ -71,8 +71,6 @@ git checkout main
 git pull --rebase
 git checkout -b update-cfpb-ds
 yarn up @cfpb/cfpb-design-system
-yarn up @cfpb/cfpb-expandables
-yarn up @cfpb/cfpb-forms
 git add --all
 git commit -m 'chore: Update CFPB DS to <new.version.number>'
 git push

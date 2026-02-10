@@ -1,0 +1,31 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { ListLink } from '../Link/link';
+import { WellContainer, WellContent } from './well';
+
+const meta: Meta<typeof WellContainer> = {
+  title: 'Components (Verified)/Wells',
+  tags: ['autodocs'],
+  component: WellContainer,
+  argTypes: {
+    children: { type: 'string' },
+  },
+};
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Container: Story = {
+  name: 'Well (container)',
+};
+
+export const Content: Story = {
+  name: 'Well (content)',
+  args: {
+    heading: 'Heading',
+    headingLevel: 'h3',
+    text: 'Lorem ipsum dolor sit amet, ei ius adhuc inani iudico, labitur instructior ex pri. Cu pri inani constituto, cum aeque noster commodo',
+    links: [<ListLink href='/#' key='example1' label='Call-to-action link' />],
+  },
+  render: (arguments_) => <WellContent {...arguments_} />,
+};

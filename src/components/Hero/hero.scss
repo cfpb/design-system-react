@@ -1,5 +1,6 @@
 .m-hero {
   --m-hero-background-color: var(--gray-30);
+
   background-color: var(--gray-30);
 }
 
@@ -13,15 +14,16 @@
 .m-hero--jumbo,
 .m-hero--50-50 {
   .m-hero__wrapper {
-    background-size: 0px 0px;
+    background-size: 0 0;
   }
 }
 
-@media screen and (min-width: 37.5625em) {
+@media screen and (width >= 37.5625em) {
   .m-hero--jumbo {
     .m-hero__image {
       display: none;
     }
+
     .m-hero__wrapper {
       background-size: cover;
     }
