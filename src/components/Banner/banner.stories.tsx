@@ -7,7 +7,7 @@ const meta: Meta<typeof Banner> = {
   title: 'Components (Verified)/Banner (US gov)',
   tags: ['autodocs'],
   component: Banner,
-  argTypes: {}
+  argTypes: {},
 };
 
 export default meta;
@@ -39,16 +39,16 @@ const UnclickableLink = ({
 );
 
 export const USGovBanner: Story = {
-  render: properties => <Banner {...properties} />,
+  render: (properties) => <Banner {...properties} />,
   args: {
-    links: []
-  }
+    links: [],
+  },
 };
 USGovBanner.storyName = 'US gov banner';
 
 export const USGovBannerWithCFGovLinks: Story = {
   args: {
-    links: AllLanguageCodes.filter(code => code !== 'en').map(code => (
+    links: AllLanguageCodes.filter((code) => code !== 'en').map((code) => (
       <UnclickableLink key={code}>
         <LanguageLink code={code} />
       </UnclickableLink>
@@ -59,14 +59,14 @@ export const USGovBannerWithCFGovLinks: Story = {
         An official website of the{' '}
         <span className='u-nowrap'>United States government</span>
       </>
-    )
-  }
+    ),
+  },
 };
 USGovBannerWithCFGovLinks.storyName = 'US gov banner (cf.gov)';
 
 export const USGovBannerWithLinks: Story = {
   ...USGovBannerWithCFGovLinks,
-  render: properties => <Banner {...properties} />,
+  render: (properties) => <Banner {...properties} />,
   args: {
     links: [
       <UnclickableLink key='Link 1'>
@@ -77,8 +77,8 @@ export const USGovBannerWithLinks: Story = {
       </UnclickableLink>,
       <UnclickableLink key='Link 3'>
         <a href='/link'>Link 3</a>
-      </UnclickableLink>
-    ]
-  }
+      </UnclickableLink>,
+    ],
+  },
 };
 USGovBannerWithLinks.storyName = 'US gov banner (with generic links)';

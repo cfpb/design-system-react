@@ -7,14 +7,14 @@ export enum AlertFieldLevelClass {
   'info' = '--info',
   'error' = '--error',
   'success' = '--success',
-  'warning' = '--warning'
+  'warning' = '--warning',
 }
 
 export const MapTypeToIconName = {
   info: 'information',
   error: 'error',
   success: 'approved',
-  warning: 'warning'
+  warning: 'warning',
 };
 
 export interface AlertFieldLevelProperties extends React.HTMLAttributes<HTMLDivElement> {

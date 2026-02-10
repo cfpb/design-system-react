@@ -18,7 +18,7 @@ describe('<WellContainer />', () => {
     render(
       <WellContainer {...Container.args}>
         <div className={textClass}>{text}</div>
-      </WellContainer>
+      </WellContainer>,
     );
 
     const content = screen.getByText(text);
@@ -38,7 +38,7 @@ describe('<WellContent />', () => {
     expect(text).toHaveClass('text');
 
     const callToAction = screen.getByRole('link', {
-      name: 'Call-to-action link'
+      name: 'Call-to-action link',
     });
     expect(callToAction).toHaveClass('a-link--jump');
   });

@@ -6,7 +6,7 @@ const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',
   tags: ['autodocs'],
   component: List,
-  argTypes: {}
+  argTypes: {},
 };
 
 export default meta;
@@ -21,36 +21,36 @@ export const Unordered: Story = {
         <ListItem>Second</ListItem>
         <ListItem>Third</ListItem>
       </>
-    )
-  }
+    ),
+  },
 };
 
 export const Ordered: Story = {
   args: {
     ...Unordered.args,
-    isOrdered: true
-  }
+    isOrdered: true,
+  },
 };
 
 export const Unstyled: Story = {
   args: {
     ...Unordered.args,
-    isUnstyled: true
-  }
+    isUnstyled: true,
+  },
 };
 
 export const Horizontal: Story = {
   args: {
     ...Unordered.args,
-    isHorizontal: true
-  }
+    isHorizontal: true,
+  },
 };
 
 export const Spaced: Story = {
   args: {
     ...Unordered.args,
-    isSpaced: true
-  }
+    isSpaced: true,
+  },
 };
 
 export const Links: Story = {
@@ -67,6 +67,6 @@ export const Links: Story = {
         />{' '}
         page.
       </>
-    )
-  }
+    ),
+  },
 };

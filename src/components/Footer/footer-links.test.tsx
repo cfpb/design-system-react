@@ -24,7 +24,7 @@ describe('NavLinks', () => {
         <a href='/' key='second' className='f2'>
           Second
         </a>
-      </NavLinks>
+      </NavLinks>,
     );
 
     // List rendered
@@ -62,9 +62,9 @@ describe('SocialLinks', () => {
         {[
           <a href='/' key='first' className='facebook'>
             <Icon name='facebook' withBg />
-          </a>
+          </a>,
         ]}
-      </SocialLinks>
+      </SocialLinks>,
     );
 
     // List rendered
@@ -104,9 +104,9 @@ describe('FooterLinksColumn', () => {
         {[
           <a href='/' key='first' className='facebook'>
             Link 1
-          </a>
+          </a>,
         ]}
-      </FooterLinksColumn>
+      </FooterLinksColumn>,
     );
 
     // List rendered

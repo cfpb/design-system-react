@@ -45,7 +45,7 @@ const PaginationInput = ({
   tableId,
   page,
   pageCount,
-  onChange
+  onChange,
 }: PaginationInputProperties): React.ReactElement => {
   const onPageChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(Number.parseInt(event.currentTarget.value, 10));
@@ -87,7 +87,7 @@ export const Pagination = ({
   onClickNext = noOp,
   onClickGo = noOp,
   previousLabel = 'Previous',
-  nextLabel = 'Next'
+  nextLabel = 'Next',
 }: PaginationProperties): ReactElement => {
   const [pageNumber, setPageNumber] = useState(page);
   useEffect(() => setPageNumber(page), [page]);

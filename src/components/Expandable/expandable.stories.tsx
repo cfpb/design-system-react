@@ -17,10 +17,10 @@ const meta: Meta<typeof Expandable> = {
 Expandables are components that have additional content that can be opened (expanded) and closed (collapsed). They can appear on their own or in groups. They may be helpful for FAQ sections, schedules, and for conserving vertical space by collapsing secondary information on mobile devices.
 
 Source: https://cfpb.github.io/design-system/components/expandables
-`
-      }
-    }
-  }
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -38,7 +38,7 @@ const Content = (
 );
 
 const ContentForGroup = ({
-  accordion
+  accordion,
 }: {
   accordion: boolean | undefined;
 }): JSX.Element => {
@@ -61,8 +61,8 @@ export const Default: Story = {
   name: 'Single',
   args: {
     header: 'Expandable label',
-    children: Content
-  }
+    children: Content,
+  },
 };
 
 export const PaddedExpandable: Story = {
@@ -70,8 +70,8 @@ export const PaddedExpandable: Story = {
   args: {
     ...Default.args,
     header: 'Expandable label',
-    isPadded: true
-  }
+    isPadded: true,
+  },
 };
 
 export const OpenOnLoad: Story = {
@@ -79,13 +79,13 @@ export const OpenOnLoad: Story = {
   args: {
     ...Default.args,
     header: 'Expandable label',
-    openOnLoad: true
-  }
+    openOnLoad: true,
+  },
 };
 
 export const DefaultExpandableGroup: Story = {
   name: 'Group',
-  render: arguments_ => (
+  render: (arguments_) => (
     <ExpandableGroup {...arguments_}>
       {['label', 'label', 'label'].map((value, index) => (
         <Expandable
@@ -129,8 +129,8 @@ export const DefaultExpandableGroup: Story = {
     });
   },
   args: {
-    groupId: 'DefaultGroup'
-  }
+    groupId: 'DefaultGroup',
+  },
 };
 
 export const Accordion: Story = {
@@ -138,6 +138,6 @@ export const Accordion: Story = {
   name: 'Accordion',
   args: {
     accordion: true,
-    groupId: 'AccordionGroup'
-  }
+    groupId: 'AccordionGroup',
+  },
 };

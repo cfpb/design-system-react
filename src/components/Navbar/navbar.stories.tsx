@@ -7,7 +7,7 @@ const meta: Meta<typeof Navbar> = {
   title: 'Components (Draft)/Navbar',
   tags: ['autodocs'],
   component: Navbar,
-  argTypes: {}
+  argTypes: {},
 };
 
 export default meta;
@@ -16,19 +16,19 @@ type Story = StoryObj<typeof meta>;
 
 const LoggedInUser = {
   name: 'John Sample',
-  logoutHref: '#'
+  logoutHref: '#',
 };
 
 export const LoggedIn: Story = {
   args: {
-    links: ExampleLinks
-  }
+    links: ExampleLinks,
+  },
 };
 
 export const LoggedOut: Story = {
-  args: {}
+  args: {},
 };
 
 export const NoUser: Story = {
-  args: {}
+  args: {},
 };

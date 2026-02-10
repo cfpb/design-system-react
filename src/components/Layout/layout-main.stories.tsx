@@ -40,10 +40,10 @@ import Layout from './Layout<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;< /Layout.Sidebar ><br/>
 &nbsp;&nbsp;< /Layout.Wrapper ><br/>
 < /Layout.Main ><br/>
-`
-      }
-    }
-  }
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -52,9 +52,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Layout_2_1: Story = {
   args: {
-    layout: '2-1'
+    layout: '2-1',
   },
-  render: properties => (
+  render: (properties) => (
     <Layout.Main {...properties}>
       <Layout.Wrapper>
         <Layout.Content>
@@ -78,14 +78,14 @@ export const Layout_2_1: Story = {
         </Layout.Sidebar>
       </Layout.Wrapper>
     </Layout.Main>
-  )
+  ),
 };
 
 export const Layout_1_3: Story = {
   args: {
-    layout: '1-3'
+    layout: '1-3',
   },
-  render: properties => (
+  render: (properties) => (
     <Layout.Main {...properties}>
       <Layout.Wrapper>
         <Layout.Sidebar>
@@ -109,5 +109,5 @@ export const Layout_1_3: Story = {
         </Layout.Content>
       </Layout.Wrapper>
     </Layout.Main>
-  )
+  ),
 };

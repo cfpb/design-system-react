@@ -10,8 +10,8 @@ const meta: Meta<typeof Alert> = {
   component: Alert,
   tags: ['autodocs'],
   argTypes: {
-    message: { control: 'text' }
-  }
+    message: { control: 'text' },
+  },
 };
 
 export default meta;
@@ -34,12 +34,12 @@ const alertExplanation = (type: string): string =>
 const externalLinkProperties = {
   href: '/',
   label: 'This is an external link',
-  isExternal: true
+  isExternal: true,
 };
 
 export const Information: Story = {
-  render: arguments_ => <Alert {...arguments_} />,
-  args: { status: 'info', message: 'A Notification' }
+  render: (arguments_) => <Alert {...arguments_} />,
+  args: { status: 'info', message: 'A Notification' },
 };
 
 export const InformationWithMessageAndExplanation: Story = {
@@ -49,16 +49,16 @@ export const InformationWithMessageAndExplanation: Story = {
     ...Information.args,
     message: 'Here is the message of the notification.',
     children:
-      'This is a longer explanation to demonstrate how text wrapping is applied to more extensive alert content.'
-  }
+      'This is a longer explanation to demonstrate how text wrapping is applied to more extensive alert content.',
+  },
 };
 
 export const InformationWithOnlyExplanation: Story = {
   ...Information,
   name: 'Information with only an explanation',
   args: {
-    children: 'You can also only have an explanation in the notification.'
-  }
+    children: 'You can also only have an explanation in the notification.',
+  },
 };
 
 export const InformationWithLinks: Story = {
@@ -70,11 +70,11 @@ export const InformationWithLinks: Story = {
     links: [
       {
         href: '/',
-        label: 'This is a link below the explanation'
+        label: 'This is a link below the explanation',
       },
-      externalLinkProperties
-    ]
-  }
+      externalLinkProperties,
+    ],
+  },
 };
 
 export const Success: Story = {
@@ -84,8 +84,8 @@ export const Success: Story = {
     status: 'success',
     message: '11 results',
     links: [externalLinkProperties],
-    children: <>{alertExplanation('success')}</>
-  }
+    children: <>{alertExplanation('success')}</>,
+  },
 };
 
 export const Warning: Story = {
@@ -95,8 +95,8 @@ export const Warning: Story = {
     status: 'warning',
     message: 'No results found.',
     links: [externalLinkProperties],
-    children: <>{alertExplanation('warning')}</>
-  }
+    children: <>{alertExplanation('warning')}</>,
+  },
 };
 
 export const Error: Story = {
@@ -106,8 +106,8 @@ export const Error: Story = {
     status: 'error',
     message: 'Page not found.',
     links: [externalLinkProperties],
-    children: <>{alertExplanation('error')}</>
-  }
+    children: <>{alertExplanation('error')}</>,
+  },
 };
 
 export const InProgress: Story = {
@@ -116,12 +116,12 @@ export const InProgress: Story = {
   args: {
     ...Information.args,
     status: 'loading',
-    message: 'The page is loading….'
-  }
+    message: 'The page is loading….',
+  },
 };
 
 export const SuccessFieldLevel: Story = {
-  render: _arguments => (
+  render: (_arguments) => (
     <div className='m-form-field'>
       <TextInput
         id={_arguments.status as string}
@@ -136,12 +136,12 @@ export const SuccessFieldLevel: Story = {
   name: 'Success (field-level)',
   args: {
     status: 'success',
-    message: <FieldLevelAlertMessage status='a success' />
-  }
+    message: <FieldLevelAlertMessage status='a success' />,
+  },
 };
 
 export const WarningFieldLevel: Story = {
-  render: _arguments => (
+  render: (_arguments) => (
     <div className='m-form-field'>
       <TextInput
         id={_arguments.status as string}
@@ -156,12 +156,12 @@ export const WarningFieldLevel: Story = {
   name: 'Warning (field-level)',
   args: {
     status: 'warning',
-    message: <FieldLevelAlertMessage status='a warning' />
-  }
+    message: <FieldLevelAlertMessage status='a warning' />,
+  },
 };
 
 export const ErrorFieldLevel: Story = {
-  render: _arguments => (
+  render: (_arguments) => (
     <div className='m-form-field'>
       <TextInput
         id={_arguments.status as string}
@@ -176,6 +176,6 @@ export const ErrorFieldLevel: Story = {
   name: 'Error (field-level)',
   args: {
     status: 'error',
-    message: <FieldLevelAlertMessage status='an error' />
-  }
+    message: <FieldLevelAlertMessage status='an error' />,
+  },
 };

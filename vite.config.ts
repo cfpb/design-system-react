@@ -25,22 +25,22 @@ export default defineConfig(({ mode }) => {
           // Return the raw SVG content wrapped in a JS export
           return `export default ${JSON.stringify(svgRaw)}`;
         }
-      }
+      },
     },
     svgr({
-      include: '**/*.svg?react'
+      include: '**/*.svg?react',
     }),
     react(),
     tsConfigPaths(),
     dts({
-      insertTypesEntry: true
+      insertTypesEntry: true,
     }),
     mode === 'test'
       ? null
       : removeAttributes({
           attributes: ['data-testid'],
-          usage: 'vite'
-        })
+          usage: 'vite',
+        }),
   ].filter(Boolean) as Plugin[];
 
   return {
@@ -51,20 +51,20 @@ export default defineConfig(({ mode }) => {
         // Catch-all for internal library paths to bypass restrictive "exports" in package.json
         '@cfpb/cfpb-design-system/src': resolve(
           __dirname,
-          'node_modules/@cfpb/cfpb-design-system/src'
+          'node_modules/@cfpb/cfpb-design-system/src',
         ),
         // Helper for specifically accessing the new abstracts location
         '@cfpb/cfpb-design-system/src/elements/abstracts': resolve(
           __dirname,
-          'node_modules/@cfpb/cfpb-design-system/src/elements/abstracts/index.scss'
-        )
-      }
+          'node_modules/@cfpb/cfpb-design-system/src/elements/abstracts/index.scss',
+        ),
+      },
     },
     plugins,
     css: {
       postcss: {
-        plugins: [processIcons as any]
-      }
+        plugins: [processIcons as any],
+      },
     },
     test: {
       globals: true,
@@ -72,17 +72,17 @@ export default defineConfig(({ mode }) => {
       exclude: [
         '**/node_modules/**',
         '**/dist/**',
-        '**/.{idea,git,cache,output,temp}/**'
+        '**/.{idea,git,cache,output,temp}/**',
       ],
       // This ensures Vitest uses the same plugin pipeline as Vite
       transformMode: {
-        web: [/.[tj]sx?$/]
+        web: [/.[tj]sx?$/],
       },
       css: true,
       server: {
         deps: {
-          inline: ['@cfpb', 'vite-plugin-svgr']
-        }
+          inline: ['@cfpb', 'vite-plugin-svgr'],
+        },
       },
       clearMocks: true,
       coverage: {
@@ -91,22 +91,22 @@ export default defineConfig(({ mode }) => {
         '100': true,
         reporter: ['text', 'lcov'],
         reportsDirectory: 'coverage',
-        all: false
+        all: false,
       },
       deps: {
         optimizer: {
           web: {
-            include: ['vite-plugin-svgr']
-          }
-        }
-      }
+            include: ['vite-plugin-svgr'],
+          },
+        },
+      },
     },
     build: {
       lib: {
         entry: resolve('src', 'index.ts'),
         name,
         formats: ['es', 'cjs'],
-        fileName: (format): string => `index.${format === 'es' ? 'mjs' : 'js'}`
+        fileName: (format): string => `index.${format === 'es' ? 'mjs' : 'js'}`,
       },
       rollupOptions: {
         external: ['react', 'react-dom', 'react-router-dom'],
@@ -117,16 +117,16 @@ export default defineConfig(({ mode }) => {
           globals: {
             react: 'React',
             'react-dom': 'ReactDOM',
-            'react-router-dom': 'ReactRouterDOM'
-          }
-        }
+            'react-router-dom': 'ReactRouterDOM',
+          },
+        },
       },
       optimizeDeps: {
-        exclude: ['react', 'react-dom', 'react-router-dom']
+        exclude: ['react', 'react-dom', 'react-router-dom'],
       },
       esbuild: {
-        minify: true
-      }
-    }
+        minify: true,
+      },
+    },
   };
 });

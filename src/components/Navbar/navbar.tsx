@@ -9,7 +9,7 @@ interface CfpbLogoProperties {
 }
 
 export function CfpbLogo({
-  href = 'https://www.consumerfinance.gov'
+  href = 'https://www.consumerfinance.gov',
 }: CfpbLogoProperties): JSX.Element {
   return (
     <Link
@@ -25,7 +25,7 @@ export function CfpbLogo({
 }
 
 const Links = ({
-  elements
+  elements,
 }: {
   elements: JSX.Element[] | undefined;
 }): JSX.Element | null => {
@@ -62,5 +62,5 @@ export const ExampleLinks: JSX.Element[] = [
   <Link className='nav-item' key='profile' href='/profile'>
     John Sample
   </Link>,
-  <Button label='LOG OUT' asLink onClick='' key='logout' />
+  <Button label='LOG OUT' asLink onClick='' key='logout' />,
 ];

@@ -25,7 +25,7 @@ export type { LinkProperties } from './components/Link/link';
 export { default as List } from './components/List/list';
 export {
   default as ListItem,
-  ListItemBuilder
+  ListItemBuilder,
 } from './components/List/list-item';
 export { default as Navbar } from './components/Navbar/navbar';
 export { default as PageHeader } from './components/PageHeader/page-header';
@@ -48,6 +48,6 @@ export {
   TextIntroductionContainer,
   TextIntroductionDescription,
   TextIntroductionHeading,
-  TextIntroductionSubheading
+  TextIntroductionSubheading,
 } from './components/TextIntroduction/text-introduction';
 export { WellContainer, WellContent } from './components/Well/well';

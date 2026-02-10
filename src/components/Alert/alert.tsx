@@ -13,7 +13,7 @@ export const iconByType: Record<string, { name: string; withBg: boolean }> = {
   info: { name: 'information', withBg: true },
   loading: { name: 'updating', withBg: false },
   success: { name: 'approved', withBg: true },
-  warning: { name: 'warning', withBg: true }
+  warning: { name: 'warning', withBg: true },
 };
 
 export type AlertType = 'error' | 'info' | 'loading' | 'success' | 'warning';
@@ -63,9 +63,9 @@ export const Alert = ({
       'm-notification--success': status === 'success',
       'm-notification--warning': status === 'warning',
       'm-notification--error': status === 'error',
-      'm-notification--info': status === 'info'
+      'm-notification--info': status === 'info',
     },
-    className
+    className,
   );
 
   return (
@@ -89,7 +89,7 @@ export const Alert = ({
         ) : null}
         {links && links.length > 0 ? (
           <List isLinks>
-            {links.map(link => (
+            {links.map((link) => (
               <AlertLink {...link} key={link.href} />
             ))}
           </List>

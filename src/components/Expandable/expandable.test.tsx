@@ -36,7 +36,7 @@ describe('<Expandable />', () => {
     render(
       <Expandable header={header} inAccordion>
         {children}
-      </Expandable>
+      </Expandable>,
     );
     expect(initSpy).not.toHaveBeenCalled();
   });
@@ -52,7 +52,7 @@ describe('<Expandable />', () => {
     render(
       <Expandable header={header} inAccordion>
         {children}
-      </Expandable>
+      </Expandable>,
     );
     const expandable = screen.getByTestId('expandable');
     expect(expandable).not.toHaveClass('o-expandable--background');
@@ -63,7 +63,7 @@ describe('<Expandable />', () => {
     render(
       <Expandable header={header} isPadded>
         {children}
-      </Expandable>
+      </Expandable>,
     );
     const expandable = screen.getByTestId('expandable');
     expect(expandable).toHaveClass('o-expandable--padded');
@@ -73,10 +73,10 @@ describe('<Expandable />', () => {
     render(
       <Expandable header={header} icon='left'>
         {children}
-      </Expandable>
+      </Expandable>,
     );
     expect(
-      await screen.findByRole('img', { name: 'left' })
+      await screen.findByRole('img', { name: 'left' }),
     ).toBeInTheDocument();
   });
 
@@ -84,7 +84,7 @@ describe('<Expandable />', () => {
     render(
       <Expandable header={header} openOnLoad>
         {children}
-      </Expandable>
+      </Expandable>,
     );
 
     const heading = screen.getByText(header);
@@ -92,7 +92,7 @@ describe('<Expandable />', () => {
 
     const expandable = screen.getByTestId('expandable');
     expect(expandable.getAttribute('class')).toMatch(
-      /o-expandable--onload-open/g
+      /o-expandable--onload-open/g,
     );
 
     const content = screen.getByText(children);
@@ -135,7 +135,7 @@ describe('<Expandable />', () => {
 
     // Verify collapsed
     await waitFor(() =>
-      expect(showHide.getAttribute('aria-expanded')).toMatch('false')
+      expect(showHide.getAttribute('aria-expanded')).toMatch('false'),
     );
   });
 });

@@ -10,7 +10,7 @@ import { useEffect, useRef } from 'react';
  */
 export const useBackgroundImage = (
   image?: string,
-  shoudAddStyles?: boolean
+  shoudAddStyles?: boolean,
 ): Ref<HTMLDivElement> => {
   const imageWrapperReference = useRef<HTMLDivElement>(null);
 
@@ -30,7 +30,7 @@ export const useBackgroundImage = (
       background-image: image-set(
         url(${image}) 1x,
         url(${image}) 2x
-      );`
+      );`,
     );
   }, [imageWrapperReference, image, shoudAddStyles]);
 

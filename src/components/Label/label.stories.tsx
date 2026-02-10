@@ -7,7 +7,7 @@ const meta: Meta<typeof Label> = {
   tags: ['autodocs'],
   component: Label,
   argTypes: {
-    inline: { control: 'boolean' }
+    inline: { control: 'boolean' },
   },
   parameters: {
     docs: {
@@ -17,10 +17,10 @@ const meta: Meta<typeof Label> = {
 Labels are used to help users understand the meaning of a form input.
 
 Source: https://cfpb.github.io/design-system/components/labels-and-legends
-`
-      }
-    }
-  }
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -31,9 +31,9 @@ export const LabelHeading: Story = {
   name: 'Label heading',
   args: {
     children: <>Label heading</>,
-    htmlFor: 'testInput'
+    htmlFor: 'testInput',
   },
-  render: arguments_ => (
+  render: (arguments_) => (
     <>
       <Label {...arguments_} />
       <TextInput
@@ -42,7 +42,7 @@ export const LabelHeading: Story = {
         type='text'
       />
     </>
-  )
+  ),
 };
 
 export const InlineLabel: Story = {
@@ -50,12 +50,12 @@ export const InlineLabel: Story = {
   args: {
     children: <>Text input label</>,
     htmlFor: 'testInput',
-    inline: true
+    inline: true,
   },
-  render: arguments_ => (
+  render: (arguments_) => (
     <div className='m-form-field m-form-field--checkbox'>
       <input className='a-checkbox' type='checkbox' id={arguments_.htmlFor} />
       <Label {...arguments_}>Inline label</Label>
     </div>
-  )
+  ),
 };

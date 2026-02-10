@@ -42,9 +42,9 @@ export const SelectMulti = ({
   // Notify parent on change of selected options
   useEffect(() => {
     // Map our simplified tracking state to actual Option objects
-    const selectedValues = selectedIndicies.map(index => ({
+    const selectedValues = selectedIndicies.map((index) => ({
       ...options[index],
-      selected: true
+      selected: true,
     }));
 
     onChange(selectedValues);

@@ -18,7 +18,7 @@ describe('ResponsiveMenu', () => {
     Object.defineProperty(globalThis, 'innerWidth', {
       writable: true,
       configurable: true,
-      value: width
+      value: width,
     });
     globalThis.dispatchEvent(new Event('resize'));
   };
@@ -64,7 +64,7 @@ describe('ResponsiveMenu', () => {
     expect(navItems).toHaveClass('open');
     expect(menuToggle).toHaveAttribute('aria-expanded', 'true');
     expect(menuToggle.querySelector('.sr-only')).toHaveTextContent(
-      'Close menu'
+      'Close menu',
     );
 
     fireEvent.click(menuToggle);
