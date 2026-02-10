@@ -1,0 +1,15 @@
+import { JSX } from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { Icon } from '../Icon/icon';
+
+export const BackToTop = (): JSX.Element => (
+  <a
+    className='a-btn a-btn--secondary o-footer__top-button'
+    data-gtm_ignore='true'
+    data-js-hook='behavior_return-to-top'
+    href='#'
+  >
+    Back to top
+    <Icon name='arrow-up' isPresentational />
+  </a>
+);
