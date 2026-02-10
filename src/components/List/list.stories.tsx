@@ -71,7 +71,7 @@ export const Links: Story = {
         <Link
           label='list link'
           href='./?path=/docs/components-verified-links--listlink'
-        />{' '}
+        />
       </>component each list item is a standalone link, which converts
         to a touch-friendly link with a large tap area at smaller screen widths.
       </>
