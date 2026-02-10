@@ -13,7 +13,7 @@ import Component from './component';
 
 const meta: Meta<typeof Component> = {
   // TODO: Update to your component's category and name.
-  title: 'Templates/Component name',
+  title: 'Guides/Component name',
   component: Component,
   tags: ['autodocs'],
   // TODO: Add only the controls you want exposed in the UI.
