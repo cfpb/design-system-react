@@ -23,7 +23,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Unordered: Story = {
-  name: 'Bulleted',
+  name: 'Unordered',
   args: {
     children: (
       <>
@@ -36,7 +36,7 @@ export const Unordered: Story = {
 };
 
 export const Ordered: Story = {
-  name: 'Numbered',
+  name: 'Ordered',
   args: {
     ...Unordered.args,
     isOrdered: true
