@@ -64,7 +64,7 @@ export default function Hero({
     h5: '5',
     display: 'display',
     eyebrow: 'eyebrow',
-    slug: 'slug'
+    slug: 'slug',
   };
 
   return (

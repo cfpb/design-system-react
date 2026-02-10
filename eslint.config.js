@@ -10,7 +10,7 @@ import globals from 'globals';
 
 export default tseslint.config(
   {
-    ignores: ['dist/**', 'coverage/**', '.eslintcache', 'node_modules/**']
+    ignores: ['dist/**', 'coverage/**', '.eslintcache', 'node_modules/**'],
   },
   // Base JS & TS Recommended
   js.configs.recommended,
@@ -30,18 +30,18 @@ export default tseslint.config(
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.node
+        ...globals.node,
       },
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: import.meta.dirname
-      }
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     plugins: {
-      'react-hooks': reactHooks
+      'react-hooks': reactHooks,
     },
     settings: {
-      react: { version: 'detect' }
+      react: { version: 'detect' },
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -50,20 +50,20 @@ export default tseslint.config(
       'no-console': 'warn',
       '@typescript-eslint/no-unused-vars': [
         'error',
-        { argsIgnorePattern: '^_' }
+        { argsIgnorePattern: '^_' },
       ],
       'unicorn/prevent-abbreviations': 'off', // Airbnb was less strict than Unicorn
       'unicorn/null-data-property': 'off',
 
       // Prettier always last
-      ...prettierConfig.rules
-    }
+      ...prettierConfig.rules,
+    },
   },
   // Overrides for Tests
   {
     files: ['**/*.test.ts?(x)'],
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off'
-    }
-  }
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
 );

@@ -36,7 +36,7 @@ describe('<TextArea />', () => {
       'error',
       'success',
       'warning',
-      'info'
+      'info',
     ];
     for (const status of statuses) {
       render(<TextArea id='alert' {...{ status, placeholder: status }} />);

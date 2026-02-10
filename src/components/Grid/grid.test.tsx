@@ -28,7 +28,7 @@ describe('Grid Centered', () => {
     render(<GridWrapper center />);
 
     expect(screen.getByRole('grid').getAttribute('class')).toMatch(
-      `cols-12 centered`
+      `cols-12 centered`,
     );
   });
 
@@ -36,7 +36,7 @@ describe('Grid Centered', () => {
     render(<GridWrapper width={10} center />);
 
     expect(screen.getByRole('grid').getAttribute('class')).toMatch(
-      `cols-10 centered`
+      `cols-10 centered`,
     );
   });
 });
@@ -46,7 +46,7 @@ describe('GridColumn', () => {
     render(<GridColumn width={12} />);
 
     expect(screen.getByRole('gridcell').getAttribute('class')).toMatch(
-      `col col-12`
+      `col col-12`,
     );
   });
 
@@ -54,7 +54,7 @@ describe('GridColumn', () => {
     render(<GridColumn />);
 
     expect(screen.getByRole('gridcell').getAttribute('class')).toMatch(
-      `col col-1`
+      `col col-1`,
     );
   });
 });

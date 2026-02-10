@@ -16,7 +16,7 @@ describe('<Button />', () => {
     const testTitle = 'test-title';
 
     render(
-      <Button label={testLabel} className={testClass} title={testTitle} />
+      <Button label={testLabel} className={testClass} title={testTitle} />,
     );
     expect(screen.getByText(testLabel)).toBeInTheDocument();
     expect(screen.getByText(testLabel)).toHaveClass(buttonBaseClass);
@@ -45,7 +45,7 @@ describe('<Button />', () => {
     expect(screen.getByText(testLabel)).toBeInTheDocument();
     expect(screen.getByText(testLabel).textContent).toEqual(testLabel);
     expect(
-      screen.getByText(testLabel, { selector: 'span' })
+      screen.getByText(testLabel, { selector: 'span' }),
     ).toBeInTheDocument();
     expect(await screen.findByTestId('button-icon-left')).toBeInTheDocument();
   });
@@ -55,7 +55,7 @@ describe('<Button />', () => {
     expect(screen.getByText(testLabel)).toBeInTheDocument();
     expect(screen.getByText(testLabel).textContent).toEqual(testLabel);
     expect(
-      screen.getByText(testLabel, { selector: 'span' })
+      screen.getByText(testLabel, { selector: 'span' }),
     ).toBeInTheDocument();
     expect(await screen.findByTestId('button-icon-right')).toBeInTheDocument();
   });

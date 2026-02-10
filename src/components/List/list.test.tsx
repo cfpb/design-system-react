@@ -7,7 +7,7 @@ describe('List', () => {
     render(
       <List isHorizontal>
         <p>Test</p>
-      </List>
+      </List>,
     );
 
     const list = screen.getByRole('list');
@@ -19,7 +19,7 @@ describe('List', () => {
     render(
       <List isLinks>
         <p>Test</p>
-      </List>
+      </List>,
     );
 
     const list = screen.getByRole('list');
@@ -31,7 +31,7 @@ describe('List', () => {
     render(
       <List isSpaced>
         <p>Test</p>
-      </List>
+      </List>,
     );
 
     const list = screen.getByRole('list');
@@ -43,7 +43,7 @@ describe('List', () => {
     render(
       <List isUnstyled>
         <p>Test</p>
-      </List>
+      </List>,
     );
 
     const list = screen.getByRole('list');
@@ -55,7 +55,7 @@ describe('List', () => {
     render(
       <List isOrdered>
         <p>Test</p>
-      </List>
+      </List>,
     );
     const list = screen.getByRole('list');
 

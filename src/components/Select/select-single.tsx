@@ -15,7 +15,7 @@ export const SelectSingle = ({
   ...properties
 }: SelectProperties): JSX.Element => {
   const onSelect = (
-    event: ChangeEvent<HTMLSelectElement>
+    event: ChangeEvent<HTMLSelectElement>,
   ): SelectOption | undefined => {
     const selected = findOptionByValue(options, event.target.value);
     onChange(selected); // Notify parent component of changes

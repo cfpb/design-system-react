@@ -12,7 +12,7 @@ interface SVGModule {
  * @returns ReactComponent | null
  */
 export const useIconSvg = (
-  fileName: string
+  fileName: string,
 ): FC<SVGProps<SVGSVGElement>> | null => {
   const [iconComponent, setIconComponent] = useState<
     SVGModule['default'] | null

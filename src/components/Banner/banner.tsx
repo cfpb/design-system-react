@@ -16,7 +16,7 @@ interface TelephoneLinkProperties {
 }
 
 const TelephoneLink = ({
-  phoneNumber
+  phoneNumber,
 }: TelephoneLinkProperties): JSXElement => {
   if (/\d-\d{3}-\d{3}-\d{4}/.test(phoneNumber)) {
     const [, areaCode, ...others] = phoneNumber.split('-');
@@ -77,7 +77,7 @@ export const Banner = ({
         <div className='m-global-eyebrow__actions'>
           {links.length > 0 && (
             <ul className={classnames(linkListClasses)}>
-              {links.map(link => (
+              {links.map((link) => (
                 <li className='m-list__item' key={link.key}>
                   {link}
                 </li>

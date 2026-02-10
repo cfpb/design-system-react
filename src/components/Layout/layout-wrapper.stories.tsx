@@ -30,10 +30,10 @@ import Layout from './Layout<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;< /Layout.Sidebar ><br/>
 &nbsp;&nbsp;< /Layout.Wrapper ><br/>
 < /Layout.Main ><br/>
-`
-      }
-    }
-  }
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -61,12 +61,12 @@ export const Wrapper: Story = {
           voluptatem nostrum recusandae, eaque consectetur iure, veritatis eos,
           mollitia possimus error earum?
         </p>
-      </Layout.Content>
-    ]
+      </Layout.Content>,
+    ],
   },
   render: ({ children }) => (
     <Layout.Main>
       <Layout.Wrapper>{children}</Layout.Wrapper>
     </Layout.Main>
-  )
+  ),
 };

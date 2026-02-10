@@ -7,7 +7,7 @@ describe('<Link />', () => {
   const linkBaseProperties = {
     href: '/foo/bar',
     'data-testid': 'link-test-id',
-    label: 'some link'
+    label: 'some link',
   };
   const testId = linkBaseProperties['data-testid'];
 
@@ -73,7 +73,7 @@ describe('<Link />', () => {
     render(
       <MemoryRouter initialEntries={['/foo/bar']}>
         <Link {...linkBaseProperties} isRouterLink />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const link = screen.getByRole('link', { name: /some link/i });
@@ -83,11 +83,11 @@ describe('<Link />', () => {
   it('Option: isRouterLink - it requires href', () => {
     const brokenProperties = {
       ...linkBaseProperties,
-      href: undefined as unknown as string
+      href: undefined as unknown as string,
     };
 
     expect(() => render(<Link {...brokenProperties} isRouterLink />)).toThrow(
-      'Link component: href is a required attribute when isRouterLink is true'
+      'Link component: href is a required attribute when isRouterLink is true',
     );
   });
 });

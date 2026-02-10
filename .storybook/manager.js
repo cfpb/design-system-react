@@ -14,7 +14,7 @@ addons.setConfig({
         return newName;
       }
       return name;
-    }
+    },
   },
-  theme: themeCFPB
+  theme: themeCFPB,
 });

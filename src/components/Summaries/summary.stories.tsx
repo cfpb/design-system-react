@@ -8,14 +8,14 @@ const meta: Meta<typeof Summary> = {
   argTypes: {
     label: {
       control: 'text',
-      description: 'Label for the toggle button'
+      description: 'Label for the toggle button',
     },
     isMobileOnly: {
       control: 'boolean',
       description:
-        'Whether the summary behavior should only apply on mobile viewports'
-    }
-  }
+        'Whether the summary behavior should only apply on mobile viewports',
+    },
+  },
 };
 
 export default meta;
@@ -51,8 +51,8 @@ export const Default: Story = {
   name: 'Default',
   args: {
     label: 'Show full text',
-    children: longTextContent
-  }
+    children: longTextContent,
+  },
 };
 
 export const MobileOnly: Story = {
@@ -70,8 +70,8 @@ export const MobileOnly: Story = {
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
         qui officia deserunt mollit anim id est laborum.
       </>
-    )
-  }
+    ),
+  },
 };
 
 export const Minimal: Story = {
@@ -88,6 +88,6 @@ export const Minimal: Story = {
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
         qui officia deserunt mollit anim id est laborum.
       </>
-    )
-  }
+    ),
+  },
 };

@@ -7,7 +7,7 @@ describe('PageHeader', () => {
     render(<PageHeader href='https://www.google.com' />);
     expect(screen.getByTestId('CfpbLogoLink')).toHaveAttribute(
       'href',
-      'https://www.google.com'
+      'https://www.google.com',
     );
   });
 
@@ -15,7 +15,7 @@ describe('PageHeader', () => {
     render(<PageHeader />);
     expect(screen.getByTestId('CfpbLogoLink')).toHaveAttribute(
       'href',
-      'https://www.consumerfinance.gov'
+      'https://www.consumerfinance.gov',
     );
   });
 

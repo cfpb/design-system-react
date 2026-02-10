@@ -82,7 +82,7 @@ interface TextIntroductionSubProperties {
 }
 
 TextIntroduction.Heading = ({
-  children
+  children,
 }: TextIntroductionSubProperties): JSX.Element => (
   <Heading type='1'>{children}</Heading>
 );
@@ -90,13 +90,13 @@ TextIntroduction.Heading = ({
 export const TextIntroductionHeading = TextIntroduction.Heading;
 
 TextIntroduction.Description = ({
-  children
+  children,
 }: TextIntroductionSubProperties): ReactNode => renderDescription(children);
 
 export const TextIntroductionDescription = TextIntroduction.Description;
 
 TextIntroduction.Subheading = ({
-  children
+  children,
 }: TextIntroductionSubProperties): JSX.Element => (
   <Paragraph isLead>{children}</Paragraph>
 );

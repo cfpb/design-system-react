@@ -10,7 +10,7 @@ import { buildColumnHeaders, buildRows } from './table-utils';
 import './table.scss';
 
 const Caption = ({
-  children
+  children,
 }: HTMLProps<HTMLTableCaptionElement>): JSXElement => {
   if (!children) return null;
   return <caption>{children}</caption>;
@@ -81,13 +81,13 @@ export const Table = forwardRef<
       tableRef,
       ...others
     },
-    reference
+    reference,
   ): React.ReactElement => {
     const [visibleRows, paginationProperties] = usePagination({
       rows,
       isPaginated,
       startPage,
-      perPage
+      perPage,
     });
 
     const tableId = useId();
@@ -131,7 +131,7 @@ export const Table = forwardRef<
     }
 
     return tableContent;
-  }
+  },
 );
 
 Table.displayName = 'Table';

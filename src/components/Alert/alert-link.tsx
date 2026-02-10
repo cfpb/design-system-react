@@ -10,7 +10,7 @@ export interface AlertLinkProperties {
 export const AlertLink = ({
   href,
   label,
-  isExternal
+  isExternal,
 }: AlertLinkProperties): JSX.Element => (
   <ListLink
     href={href}

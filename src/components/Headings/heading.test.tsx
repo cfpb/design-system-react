@@ -27,7 +27,7 @@ describe('<Heading />', () => {
       render(
         <Heading type={headingType} data-testid={testid}>
           {text}
-        </Heading>
+        </Heading>,
       );
 
       const current = screen.getByTestId(testid);
@@ -45,7 +45,7 @@ describe('<Heading />', () => {
     render(
       <Heading type={headingType} data-testid={testid}>
         {text}
-      </Heading>
+      </Heading>,
     );
 
     const current = screen.getByTestId(testid);
@@ -63,7 +63,7 @@ describe('<Heading />', () => {
     render(
       <Heading type={headingType} data-testid={testid}>
         {text}
-      </Heading>
+      </Heading>,
     );
 
     const current = screen.getByTestId(testid);
@@ -82,7 +82,7 @@ describe('<Heading />', () => {
     render(
       <Heading type={headingType} data-testid={testid}>
         {text}
-      </Heading>
+      </Heading>,
     );
 
     const wrapper = screen.getByTestId(testid);

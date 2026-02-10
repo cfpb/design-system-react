@@ -1,6 +1,6 @@
 import {
   Summary as CFPB_Summary,
-  SummaryMinimal as CFPB_SummaryMinimal
+  SummaryMinimal as CFPB_SummaryMinimal,
 } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import classnames from 'classnames';
 import type React from 'react';

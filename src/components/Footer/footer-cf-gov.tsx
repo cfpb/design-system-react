@@ -32,7 +32,7 @@ export const FooterCfGov = ({
     </a>,
     <a href={`${cfLink}/cfpb-ombudsman/`} key='ombudsman'>
       CFPB Ombudsman
-    </a>
+    </a>,
   ];
 
   const facebookLink = 'https://www.facebook.com/CFPB';
@@ -82,7 +82,7 @@ export const FooterCfGov = ({
       href={flickrLink}
     >
       <Icon name='flickr' alt='Visit us on Flickr' isPresentational withBg />
-    </a>
+    </a>,
   ];
 
   const linksCol1 = [
@@ -106,7 +106,7 @@ export const FooterCfGov = ({
       href={`${cfLink}/open-government/information-quality-guidelines/`}
     >
       Information Quality Guidelines
-    </a>
+    </a>,
   ];
 
   const linksCol2 = [
@@ -136,7 +136,7 @@ export const FooterCfGov = ({
     </a>,
     <a key='tribal' href={`${cfLink}/tribal/`}>
       Tribal
-    </a>
+    </a>,
   ];
 
   const linksCol3 = [
@@ -159,7 +159,7 @@ export const FooterCfGov = ({
         name='external-link'
         alt='External link'
       />
-    </a>
+    </a>,
   ];
 
   return (

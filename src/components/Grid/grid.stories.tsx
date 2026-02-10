@@ -12,10 +12,10 @@ const meta: Meta<typeof Grid.Wrapper> = {
 ### CFPB DS Grid component
 
 Source: https://cfpb.github.io/design-system/foundation/grid
-`
-      }
-    }
-  }
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -142,8 +142,8 @@ export const StandardGrid: Story = {
           </Grid.Column>
         </Grid.Row>
       </>
-    )
-  }
+    ),
+  },
 };
 
 export const NestedGrid: Story = {
@@ -227,8 +227,8 @@ export const NestedGrid: Story = {
           </Grid.Column>
         </Grid.Row>
       </>
-    )
-  }
+    ),
+  },
 };
 
 export const CenteredGrid: Story = {
@@ -262,8 +262,8 @@ export const CenteredGrid: Story = {
           </Grid.Column>
         </Grid.Row>
       </>
-    )
-  }
+    ),
+  },
 };
 
 export const GridColWidthEnum: Story = {
@@ -271,9 +271,9 @@ export const GridColWidthEnum: Story = {
     docs: {
       description: {
         story:
-          'GridColWidth is an enum used to help simplify sizing Grid.Columns.'
-      }
-    }
+          'GridColWidth is an enum used to help simplify sizing Grid.Columns.',
+      },
+    },
   },
   args: {
     demo: true,
@@ -310,6 +310,6 @@ export const GridColWidthEnum: Story = {
           </Grid.Column>
         </Grid.Row>
       </>
-    )
-  }
+    ),
+  },
 };

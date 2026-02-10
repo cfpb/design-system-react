@@ -37,12 +37,12 @@ const baseStyles = ['a-btn'];
 const appearanceStyles = {
   primary: [],
   secondary: ['a-btn--secondary'],
-  warning: ['a-btn--warning']
+  warning: ['a-btn--warning'],
 };
 
 const sizeStyles = {
   default: [],
-  full: ['a-btn--full-on-xs']
+  full: ['a-btn--full-on-xs'],
 };
 
 /**
@@ -60,12 +60,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
       iconRight,
       ...properties
     },
-    reference // Receive the ref as the second argument
+    reference, // Receive the ref as the second argument
   ): JSX.Element => {
     const styles = [
       ...baseStyles,
       ...appearanceStyles[appearance],
-      ...sizeStyles[size]
+      ...sizeStyles[size],
     ];
     if (asLink) styles.push('a-btn--link');
     if (className) styles.push(className);
@@ -95,7 +95,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
         )}
       </button>
     );
-  }
+  },
 );
 
 // Optional: Set displayName for better debugging in React DevTools

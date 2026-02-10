@@ -45,7 +45,7 @@ const containerBaseStyles = ['m-form-field m-form-field--checkbox'];
 const borderStatus = {
   success: 'm-form-field--checkbox-success',
   warning: 'm-form-field--checkbox-warning',
-  error: 'm-form-field--checkbox-error'
+  error: 'm-form-field--checkbox-error',
 };
 
 export const Checkbox = ({
@@ -69,14 +69,14 @@ export const Checkbox = ({
     (event: ChangeEvent<HTMLInputElement>): void => {
       onChange?.(event);
     },
-    [onChange]
+    [onChange],
   );
 
   const containerClasses = [
     ...containerBaseStyles,
     isLarge ? 'm-form-field--lg-target' : '',
     status ? borderStatus[status] : '',
-    className
+    className,
   ];
 
   return (

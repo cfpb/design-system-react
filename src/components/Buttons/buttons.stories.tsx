@@ -14,8 +14,8 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     appearance: { control: 'select' },
     size: { control: 'select' },
-    disabled: { control: 'boolean' }
-  }
+    disabled: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -30,40 +30,40 @@ export const Primary: Story = {
     disabled: false,
     asLink: false,
     iconLeft: undefined,
-    iconRight: undefined
-  }
+    iconRight: undefined,
+  },
 };
 
 export const Secondary: Story = {
   args: {
     ...Primary.args,
     label: 'Secondary',
-    appearance: 'secondary'
-  }
+    appearance: 'secondary',
+  },
 };
 
 export const Disabled: Story = {
   args: {
     ...Primary.args,
     label: 'Disabled',
-    disabled: true
-  }
+    disabled: true,
+  },
 };
 
 export const Destructive: Story = {
   args: {
     ...Primary.args,
     label: 'Destructive',
-    appearance: 'warning'
-  }
+    appearance: 'warning',
+  },
 };
 
 export const StaticIconButtons: Story = {
   name: 'With icon',
   args: {
-    ...Primary.args
+    ...Primary.args,
   },
-  render: arguments_ => (
+  render: (arguments_) => (
     <>
       <ButtonGroup>
         <Button
@@ -82,21 +82,21 @@ export const StaticIconButtons: Story = {
       <br />
       <Button iconRight='upload' label='Upload file' />
     </>
-  )
+  ),
 };
 
 export const AnimatedIconButtons: Story = {
   name: 'With animated icon',
   args: {
     ...Primary.args,
-    label: 'Submit your complaint'
+    label: 'Submit your complaint',
   },
-  render: arguments_ => <Button {...arguments_} iconRight='updating' />
+  render: (arguments_) => <Button {...arguments_} iconRight='updating' />,
 };
 
 export const ButtonsGroup: Story = {
   name: 'Button group',
-  render: arguments_ => (
+  render: (arguments_) => (
     <>
       <ButtonGroup>
         <Button
@@ -125,7 +125,7 @@ export const ButtonsGroup: Story = {
         />
       </ButtonGroup>
     </>
-  )
+  ),
 };
 
 export const FullWidthOnSmallScreens: Story = {
@@ -134,13 +134,13 @@ export const FullWidthOnSmallScreens: Story = {
     ...Primary.args,
     label: 'Resize to mobile to see effect',
     appearance: 'primary',
-    size: 'full'
-  }
+    size: 'full',
+  },
 };
 
 export const ButtonLink: Story = {
   name: 'Button link',
-  render: arguments_ => (
+  render: (arguments_) => (
     <ButtonGroup>
       <Link
         asButton
@@ -156,5 +156,5 @@ export const ButtonLink: Story = {
         iconRight='download'
       />
     </ButtonGroup>
-  )
+  ),
 };

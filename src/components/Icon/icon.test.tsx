@@ -60,7 +60,7 @@ describe('Icon', () => {
 
     const notFound = await screen.findByRole('img', { hidden: true });
     expect(notFound.getAttribute('class')).toMatch(
-      'cf-icon-svg cf-icon-svg--unknown'
+      'cf-icon-svg cf-icon-svg--unknown',
     );
   });
 });

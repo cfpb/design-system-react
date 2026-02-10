@@ -122,6 +122,10 @@
     "form-data": ">=4.0.4",
     "glob": ">=11.1.0"
   },
+  "prettier": {
+    "singleQuote": true,
+    "jsxSingleQuote": true
+  },
   "browserslist": "> 0.2% in @cfpb/browserslist-config stats",
   "lint-staged": {
     "*": "prettier -uw --cache",

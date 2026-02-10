@@ -15,7 +15,7 @@ export const CheckboxTestWrapper = ({
   const [inputChecked, setChecked] = useState(false);
 
   const onWrapperChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     onChange?.(event);
     setChecked(event.target.checked);
@@ -39,7 +39,7 @@ export function CheckboxWrapper({ ...arguments_ }): JSX.Element {
       checked={arguments_.checked}
       onChange={(): void => {
         updateArguments({
-          checked: !arguments_.checked
+          checked: !arguments_.checked,
         });
       }}
     />

@@ -8,11 +8,11 @@ import { MultipleSelectOptions, SingleSelectOptions } from './test-utils';
 
 const SingleSelectWrapper = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<string>(
-    SingleSelectOptions[0].value
+    SingleSelectOptions[0].value,
   );
 
   const onHandleChange = (
-    newValue: SelectOption | SelectOption[] | undefined
+    newValue: SelectOption | SelectOption[] | undefined,
   ): void => {
     // Just to resolve TypeScript since we are using Select in single format
     if (Array.isArray(newValue)) return;
@@ -63,7 +63,7 @@ describe('<SelectMulti />', () => {
         isMulti
         maxSelections={maxSelections}
         onChange={onChange}
-      />
+      />,
     );
 
     // Has correct placeholder text based on maxSelections
@@ -87,7 +87,7 @@ describe('<SelectMulti />', () => {
     // Change handler is called with the expected content
     expect(onChange).toHaveBeenCalledWith([
       { ...MultipleSelectOptions[0], selected: true },
-      { ...MultipleSelectOptions[3], selected: true }
+      { ...MultipleSelectOptions[3], selected: true },
     ]);
 
     // Tags are rendered for the selected options
