@@ -67,13 +67,13 @@ export const Links: Story = {
     isLinks: true,
     children: (
       <>
-        In the {' '} component each list item is a standalone link, which converts
-        to a touch-friendly link with a large tap area at smaller screen widths.
+        In the {' '}         
         <Link
           label='list link'
           href='./?path=/docs/components-verified-links--listlink'
         />{' '}
-        page.
+      </>component each list item is a standalone link, which converts
+        to a touch-friendly link with a large tap area at smaller screen widths.
       </>
     ),
   },
