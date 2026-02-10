@@ -1,4 +1,4 @@
-import type { KeyboardEvent, MouseEvent } from 'react';
+import type { JSX, KeyboardEvent, MouseEvent } from 'react';
 import { Icon } from '~/src/index';
 
 interface TagProperties {
