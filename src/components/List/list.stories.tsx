@@ -69,7 +69,7 @@ export const Links: Story = {
       <>
         The{' '}
         <Link
-          label='links'
+          label='list links'
           href='./?path=/docs/components-verified-links--listlink'
         />{' '}
        component presents each list item as a standalone link, which converts
