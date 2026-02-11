@@ -1,6 +1,4 @@
 /* NOTES:
-at-rule-no-unknown -
-  Ignore to allow at rules from Sass.
 color-function-notation -
   Set to 'legacy' to support older browsers in our browserslist (for now).
 declaration-block-no-redundant-longhand-properties -
@@ -16,9 +14,6 @@ number-max-precision -
   TODO: See if long decimal values can be shortened.
 rule-empty-line-before -
   Custom setting that differs from stylelint-config-standard.
-selector-id-pattern -
-  Turned off.
-  TODO: Turn on this rule and work out regex for BEM syntax.
 selector-class-pattern -
   getBEM style syntax check for classes.
 scss/operator-no-newline-after -
@@ -31,7 +26,6 @@ export default {
   extends: ['stylelint-config-standard-scss'],
   ignoreFiles: ['packages/**/node_modules/**/*.scss'],
   rules: {
-    'at-rule-no-unknown': null,
     'color-function-notation': ['legacy'],
     'declaration-block-no-redundant-longhand-properties': null,
     'declaration-empty-line-before': null,
@@ -41,15 +35,14 @@ export default {
       'always-multi-line',
       {
         except: 'first-nested',
-        ignore: ['after-comment', 'inside-block']
-      }
+        ignore: ['after-comment', 'inside-block'],
+      },
     ],
-    'selector-id-pattern': null,
     'selector-class-pattern': [
       '^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$',
-      { resolveNestedSelectors: true }
+      { resolveNestedSelectors: true },
     ],
     'scss/operator-no-newline-after': null,
-    'scss/comment-no-empty': null
-  }
+    'scss/comment-no-empty': null,
+  },
 };
