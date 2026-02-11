@@ -70,10 +70,11 @@ export const Links: Story = {
         The{' '}
         <Link
           label='list link'
-          href='/?path=/docs/components-verified-links--listlink'
+          ./?path=asdsf/docs/components-verified-links--listlink'
         />{' '}
        component presents each list item as a standalone link, which converts
         to a touch-friendly link with a large tap area at smaller screen widths.
+         </>
     ),
   },
 };
