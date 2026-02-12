@@ -1,0 +1,21 @@
+import{j as n}from"./jsx-runtime-u17CrQMm.js";import"./iframe-BzcVj03w.js";import{l as s}from"./well-D0FfXT02.js";import"./checkbox-B8aZJ3eP.js";import"./paragraph-BYyong7_.js";import"./text-area-OIejLN3P.js";import"./preload-helper-lKO2eUTi.js";import"./index-BfNSi6fk.js";const d={title:"Components (Draft)/Breadcrumbs",tags:["autodocs"],component:s,argTypes:{}},e={name:"Breadcrumb",render:a=>n.jsx(s,{...a}),args:{crumbs:[{href:"/example",label:"Page link"},{href:"/example2",label:"Page link"}]}},r={render:a=>n.jsx(s,{...a}),args:{crumbs:[{href:"/example",label:"Page link"}]}};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:`{
+  name: 'Breadcrumb',
+  render: properties => <Breadcrumb {...properties} />,
+  args: {
+    crumbs: [{
+      href: '/example',
+      label: 'Page link'
+    }, {
+      href: '/example2',
+      label: 'Page link'
+    }]
+  }
+}`,...e.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  render: properties => <Breadcrumb {...properties} />,
+  args: {
+    crumbs: [{
+      href: '/example',
+      label: 'Page link'
+    }]
+  }
+}`,...r.parameters?.docs?.source}}};const b=["Default","Crumb"];export{r as Crumb,e as Default,b as __namedExportsOrder,d as default};
