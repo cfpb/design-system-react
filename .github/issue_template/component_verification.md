@@ -19,7 +19,6 @@
 
 ### For new components 
 All steps for existing components **plus** the following steps:
-- [ ] The new component has been added to the CFPB Design System OR
 - [ ] A "Component change or addition request" issue has been submitted on the DS repo (https://github.com/cfpb/design-system/issues) 
    - [ ] DS documentation has been written for the new component (this is not a blocker for moving a component to verified)
 
