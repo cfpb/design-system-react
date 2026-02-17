@@ -121,12 +121,13 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
-      optimizeDeps: {
-        exclude: ['react', 'react-dom', 'react-router-dom'],
-      },
+
       esbuild: {
         minify: true,
       },
+    },
+    optimizeDeps: {
+      exclude: ['react', 'react-dom', 'react-router-dom'],
     },
   };
 });
