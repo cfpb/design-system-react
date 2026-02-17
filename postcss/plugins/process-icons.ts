@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const pluginProcessIcons = () => {
+const processIcons = () => {
   const stripQuotes = (str) => str.replaceAll(/['"]+/g, '');
 
   return {
@@ -49,6 +49,6 @@ const pluginProcessIcons = () => {
     },
   };
 };
-pluginProcessIcons.postcss = true;
+processIcons.postcss = true;
 
-export default pluginProcessIcons;
+export { processIcons };

@@ -1,7 +1,6 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import react from '@vitejs/plugin-react';
 import path from 'node:path';
-import processIcons from './postcss/process-icons';
 
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
@@ -52,11 +51,6 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins,
-    css: {
-      postcss: {
-        plugins: [processIcons as any],
-      },
-    },
     test: {
       globals: true,
       environment: 'jsdom',

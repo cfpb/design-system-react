@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { List, ListItem, Link } from '~/src/index';
 
-
 const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',
   component: List,
@@ -72,9 +71,9 @@ export const Links: Story = {
           label='list links'
           href='./?path=/docs/components-verified-links--listlink'
         />{' '}
-       component presents each list item as a standalone link, which converts
+        component presents each list item as a standalone link, which converts
         to a touch-friendly link with a large tap area at smaller screen widths.
-         </>
+      </>
     ),
   },
 };
