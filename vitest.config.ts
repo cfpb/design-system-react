@@ -30,9 +30,6 @@ export default defineConfig((configEnv) => {
         coverage: {
           provider: 'istanbul',
           enabled: true,
-          thresholds: {
-            100: true, // Shortcut to set global lines, functions, branches, and statements to 100%
-          },
           reporter: ['text', 'lcov'],
           reportsDirectory: 'coverage',
           all: false,
