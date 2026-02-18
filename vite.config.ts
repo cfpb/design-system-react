@@ -110,10 +110,6 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
-
-      esbuild: {
-        minify: true,
-      },
     },
     optimizeDeps: {
       exclude: ['react', 'react-dom', 'react-router-dom'],
