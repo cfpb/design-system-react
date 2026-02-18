@@ -1,7 +1,7 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import react from '@vitejs/plugin-react';
-import { resolve } from 'node:path';
-import processIcons from './postcss/processIcons';
+import path from 'node:path';
+import processIcons from './postcss/process-icons';
 
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
@@ -11,6 +11,8 @@ import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
 import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
+
+const { resolve } = path;
 
 export default defineConfig(({ mode }) => {
   const plugins: Plugin[] = [

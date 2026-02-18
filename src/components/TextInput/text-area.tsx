@@ -1,6 +1,11 @@
 import classNames from 'classnames';
-import type { ReactElement, Ref } from 'react';
-import { forwardRef, JSX, type ChangeEventHandler } from 'react';
+import {
+  forwardRef,
+  JSX,
+  type ChangeEventHandler,
+  type ReactElement,
+  type Ref,
+} from 'react';
 import { noOp as onNoOp } from '~/src/utils/no-op';
 import {
   getTextInputStatusClass,
