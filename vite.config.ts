@@ -15,6 +15,9 @@ import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
 const __dirname = import.meta.dirname;
 const { resolve } = path;
 
+// Auto-detect Storybook from the CLI command.
+const isStorybook = process.argv.some((arg) => arg.includes('storybook'));
+
 export default defineConfig(({ mode }) => {
   const plugins: Plugin[] = [
     eslintPlugin(),
@@ -101,7 +104,8 @@ export default defineConfig(({ mode }) => {
         fileName: (format): string => `index.${format === 'es' ? 'mjs' : 'js'}`,
       },
       rollupOptions: {
-        external: ['react', 'react-dom', 'react-router-dom'],
+        // Only externalize in production/library build, not in Storybook dev mode.
+        external: isStorybook ? [] : ['react', 'react-dom', 'react-router-dom'],
         output: {
           // This prevents the "flat" file explosion for icons/assets in the root
           assetFileNames: 'assets/[name].[ext]',
@@ -115,7 +119,8 @@ export default defineConfig(({ mode }) => {
       },
     },
     optimizeDeps: {
-      exclude: ['react', 'react-dom', 'react-router-dom'],
+      // Only exclude in production/library build, not in Storybook dev mode.
+      exclude: isStorybook ? [] : ['react', 'react-dom', 'react-router-dom'],
     },
   };
 });
