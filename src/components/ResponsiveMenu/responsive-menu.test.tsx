@@ -5,6 +5,15 @@ import ResponsiveMenu, { ExampleLinks } from './responsive-menu';
 
 let matchMedia: matchMediaMock;
 
+const resizeScreenSize = (width: number) => {
+  Object.defineProperty(globalThis, 'innerWidth', {
+    writable: true,
+    configurable: true,
+    value: width,
+  });
+  globalThis.dispatchEvent(new Event('resize'));
+};
+
 describe('ResponsiveMenu', () => {
   beforeAll(() => {
     matchMedia = new matchMediaMock();
@@ -13,15 +22,6 @@ describe('ResponsiveMenu', () => {
   afterEach(() => {
     matchMedia.clear();
   });
-
-  const resizeScreenSize = (width: number) => {
-    Object.defineProperty(globalThis, 'innerWidth', {
-      writable: true,
-      configurable: true,
-      value: width,
-    });
-    globalThis.dispatchEvent(new Event('resize'));
-  };
 
   it('does not render the menu without links', () => {
     resizeScreenSize(500);

@@ -23,7 +23,7 @@ export const CheckboxTestWrapper = ({
 
   return (
     <Checkbox
-      checked={checked || inputChecked}
+      checked={checked ?? inputChecked}
       {...others}
       onChange={onWrapperChange}
     />
