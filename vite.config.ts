@@ -1,7 +1,7 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import pluginReact from '@vitejs/plugin-react';
 import path from 'node:path';
-import processIcons from './postcss/plugins/process-icons';
+import { processIcons } from './postcss/plugins/process-icons';
 
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
