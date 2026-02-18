@@ -15,9 +15,7 @@ import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
 const { resolve } = path;
 
 // Auto-detect Storybook from the CLI command.
-const isStorybook = process.argv.some(
-  (arg) => arg.includes('storybook') || arg.includes('start-storybook'),
-);
+const isStorybook = process.argv.some((arg) => arg.includes('storybook'));
 
 export default defineConfig(({ mode }) => {
   const plugins: Plugin[] = [
