@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
 import processIcons from './postcss/processIcons';
 
-import fs from 'node:fs';
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
@@ -11,22 +10,12 @@ import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
+import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
 
 export default defineConfig(({ mode }) => {
   const plugins: Plugin[] = [
     eslintPlugin(),
-    {
-      name: 'svg-raw-loader',
-      enforce: 'pre', // Run before SVGR and other plugins
-      load(id) {
-        // Only target .svg files that do NOT have a query (like ?react)
-        if (id.endsWith('.svg') && !id.includes('?')) {
-          const svgRaw = fs.readFileSync(id, 'utf8');
-          // Return the raw SVG content wrapped in a JS export
-          return `export default ${JSON.stringify(svgRaw)}`;
-        }
-      },
-    },
+    svgRawLoaderPlugin(),
     svgr({
       include: '**/*.svg?react',
     }),
