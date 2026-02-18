@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import List from './list';
 
 describe('List', () => {
-  it('Adds the "m-list--horizontal" class to the List when the isHorizontal prop is passed in', async () => {
+  it('Adds the "m-list--horizontal" class to the List when the isHorizontal prop is passed in', () => {
     render(
       <List isHorizontal>
         <p>Test</p>
@@ -15,7 +15,7 @@ describe('List', () => {
     expect(list).toHaveClass('m-list--horizontal');
   });
 
-  it('Adds the "m-list--links" class to the List when the isLinks prop is passed in', async () => {
+  it('Adds the "m-list--links" class to the List when the isLinks prop is passed in', () => {
     render(
       <List isLinks>
         <p>Test</p>
@@ -27,7 +27,7 @@ describe('List', () => {
     expect(list).toHaveClass('m-list--links');
   });
 
-  it('Adds the "m-list--spaced" class to the List when the isSpaced prop is passed in', async () => {
+  it('Adds the "m-list--spaced" class to the List when the isSpaced prop is passed in', () => {
     render(
       <List isSpaced>
         <p>Test</p>
@@ -39,7 +39,7 @@ describe('List', () => {
     expect(list).toHaveClass('m-list--spaced');
   });
 
-  it('Adds the "m-list--unstyled" class to the List when the isUnstyled prop is passed in', async () => {
+  it('Adds the "m-list--unstyled" class to the List when the isUnstyled prop is passed in', () => {
     render(
       <List isUnstyled>
         <p>Test</p>
@@ -51,7 +51,7 @@ describe('List', () => {
     expect(list).toHaveClass('m-list--unstyled');
   });
 
-  it('Renders an ol when the isOrdered prop is passed in', async () => {
+  it('Renders an ol when the isOrdered prop is passed in', () => {
     render(
       <List isOrdered>
         <p>Test</p>

@@ -1,6 +1,11 @@
 import classNames from 'classnames';
-import type { ForwardedRef, HTMLProps } from 'react';
-import { forwardRef, useId, type ReactNode } from 'react';
+import {
+  forwardRef,
+  useId,
+  type ForwardedRef,
+  type HTMLProps,
+  type ReactNode,
+} from 'react';
 import type { JSXElement } from '~/src/types/jsx-element';
 import { type WidthPercent } from '../../types/width-percent';
 import { Pagination } from '../Pagination/pagination';

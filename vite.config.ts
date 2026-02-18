@@ -2,10 +2,8 @@ import eslintPlugin from '@nabla/vite-plugin-eslint';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import react from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
-import { resolve } from 'node:path';
-import processIcons from './postcss/processIcons';
-
-import fs from 'node:fs';
+import path from 'node:path';
+import processIcons from './postcss/process-icons';
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
@@ -13,6 +11,12 @@ import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
+import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
+
+const { resolve } = path;
+
+// Auto-detect Storybook from the CLI command.
+const isStorybook = process.argv.some((arg) => arg.includes('storybook'));
 
 export default defineConfig(async ({ mode }) => {
   const storybookConfigDir = process.env.STORYBOOK_CONFIG_DIR;
@@ -26,18 +30,7 @@ export default defineConfig(async ({ mode }) => {
   const storybookPlugins = isStorybookTest ? await storybookTest() : [];
   const plugins: Plugin[] = [
     eslintPlugin(),
-    {
-      name: 'svg-raw-loader',
-      enforce: 'pre', // Run before SVGR and other plugins
-      load(id) {
-        // Only target .svg files that do NOT have a query (like ?react)
-        if (id.endsWith('.svg') && !id.includes('?')) {
-          const svgRaw = fs.readFileSync(id, 'utf8');
-          // Return the raw SVG content wrapped in a JS export
-          return `export default ${JSON.stringify(svgRaw)}`;
-        }
-      },
-    },
+    svgRawLoaderPlugin(),
     svgr({
       include: '**/*.svg?react',
     }),
@@ -137,7 +130,8 @@ export default defineConfig(async ({ mode }) => {
         fileName: (format): string => `index.${format === 'es' ? 'mjs' : 'js'}`,
       },
       rollupOptions: {
-        external: ['react', 'react-dom', 'react-router-dom'],
+        // Only externalize in production/library build, not in Storybook dev mode.
+        external: isStorybook ? [] : ['react', 'react-dom', 'react-router-dom'],
         output: {
           // This prevents the "flat" file explosion for icons/assets in the root
           assetFileNames: 'assets/[name].[ext]',
@@ -149,12 +143,10 @@ export default defineConfig(async ({ mode }) => {
           },
         },
       },
-      optimizeDeps: {
-        exclude: ['react', 'react-dom', 'react-router-dom'],
-      },
-      esbuild: {
-        minify: true,
-      },
+    },
+    optimizeDeps: {
+      // Only exclude in production/library build, not in Storybook dev mode.
+      exclude: isStorybook ? [] : ['react', 'react-dom', 'react-router-dom'],
     },
   };
 });

@@ -1,6 +1,6 @@
 import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import '@testing-library/jest-dom';
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Expandable } from './expandable';
 
@@ -14,7 +14,7 @@ describe('<Expandable />', () => {
     initSpy = vi.spyOn(CFPB_Expandable, 'init');
   });
 
-  it('Default', async () => {
+  it('Default', () => {
     render(<Expandable header={header}>{children}</Expandable>);
 
     const heading = screen.getByText(header);
@@ -80,7 +80,7 @@ describe('<Expandable />', () => {
     ).toBeInTheDocument();
   });
 
-  it('Supports openOnLoad', async () => {
+  it('Supports openOnLoad', () => {
     render(
       <Expandable header={header} openOnLoad>
         {children}
@@ -119,19 +119,15 @@ describe('<Expandable />', () => {
     expect(content).not.toHaveClass('o-expandable__content--onload-open');
 
     // Click to expand
-    await act(async () => {
-      await user.click(showHide);
-    });
+    await user.click(showHide);
 
     // Verify expanded
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(showHide.getAttribute('aria-expanded')).toMatch('true');
     });
 
     // Click to collapse
-    await act(async () => {
-      await user.click(showHide);
-    });
+    await user.click(showHide);
 
     // Verify collapsed
     await waitFor(() =>

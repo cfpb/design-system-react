@@ -114,18 +114,18 @@ export const DefaultExpandableGroup: Story = {
 
     // Test
     await step('Starts out collapsed', async () => {
-      await waitFor(async () => expectAriaExpanded('false'), options);
+      await waitFor(() => expectAriaExpanded('false'), options);
     });
 
     await step('Click to expanded', async () => {
-      userEvent.click(element);
-      await waitFor(async () => expectAriaExpanded('true'), options);
+      await userEvent.click(element);
+      await waitFor(() => expectAriaExpanded('true'), options);
       await sleep(timeout);
     });
 
     await step('Click to collapse', async () => {
-      userEvent.click(element);
-      await waitFor(async () => expectAriaExpanded('false'), options);
+      await userEvent.click(element);
+      await waitFor(() => expectAriaExpanded('false'), options);
     });
   },
   args: {

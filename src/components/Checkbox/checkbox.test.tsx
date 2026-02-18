@@ -60,7 +60,7 @@ describe('Checkbox', () => {
     expect(checkbox.getAttribute(attributeAria)).toMatch('true');
   });
 
-  it('Renders the "Large" variant', async () => {
+  it('Renders the "Large" variant', () => {
     render(<Checkbox {...defaultProps} isLarge />);
 
     const largeClass = 'm-form-field--lg-target';
@@ -75,7 +75,7 @@ describe('Checkbox', () => {
     expect(checkbox).toBeDisabled();
   });
 
-  it('Integrates a provided className', async () => {
+  it('Integrates a provided className', () => {
     const cname = 'extraCname';
 
     render(<Checkbox {...defaultProps} className={cname} />);
@@ -84,7 +84,7 @@ describe('Checkbox', () => {
     expect(checkbox).toHaveClass(cname);
   });
 
-  it('Integrates a provided inputClassName', async () => {
+  it('Integrates a provided inputClassName', () => {
     const cname = 'extraInputCname';
 
     render(<Checkbox {...defaultProps} inputClassName={cname} />);

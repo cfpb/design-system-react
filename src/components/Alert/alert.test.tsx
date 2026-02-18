@@ -46,7 +46,7 @@ describe('<Alert />', () => {
     expect(explanation).toBeInTheDocument();
   });
 
-  it('does not include an explanation wrapper class when there is no message but children are provided', async () => {
+  it('does not include an explanation wrapper class when there is no message but children are provided', () => {
     render(
       <Alert status='info'>
         <Paragraph>Test component</Paragraph>
@@ -105,7 +105,7 @@ describe('<Alert />', () => {
     expect(message).toBeInTheDocument();
   });
 
-  it('Can be hidden via the isVisible prop', async () => {
+  it('Can be hidden via the isVisible prop', () => {
     const testId = 'not-visible';
     render(
       <Alert
@@ -121,7 +121,7 @@ describe('<Alert />', () => {
     expect(element).not.toBeInTheDocument();
   });
 
-  it('Can be rendered without an icon via the showIcon prop', async () => {
+  it('Can be rendered without an icon via the showIcon prop', () => {
     const testId = 'without-icon';
     render(
       <Alert
@@ -176,7 +176,7 @@ describe('<Alert />', () => {
     expect(await screen.findByText(message)).toBeVisible();
   });
 
-  it('Can be hidden via isVisible prop', async () => {
+  it('Can be hidden via isVisible prop', () => {
     const testId = 'hide-field-level-warning';
     render(
       <AlertFieldLevel
