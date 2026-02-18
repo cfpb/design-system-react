@@ -110,9 +110,9 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
-      optimizeDeps: {
-        exclude: ['react', 'react-dom', 'react-router-dom'],
-      },
+    },
+    optimizeDeps: {
+      exclude: ['react', 'react-dom', 'react-router-dom'],
     },
   };
 });
