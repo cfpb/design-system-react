@@ -15,7 +15,7 @@ import { JSX } from 'react';
  *  </Layout.Wrapper>
  * </Layout.Main>
  */
-interface LayoutWrapperProperties {
+export interface LayoutWrapperProperties {
   children: JSX.Element | JSX.Element[] | string;
 }
 
