@@ -19,6 +19,7 @@ export default tseslint.config(
       'coverage/**',
       '.eslintcache',
       'node_modules/**',
+      '*.config.js',
     ],
   },
   // Base JS & TS Recommended
@@ -65,7 +66,9 @@ export default tseslint.config(
 
       // Tell eslint-plugin-import how to resolve TS/JS files.
       'import/resolver': {
-        typescript: true,
+        typescript: {
+          project: './tsconfig.json',
+        },
       },
     },
     rules: {
@@ -78,6 +81,7 @@ export default tseslint.config(
       'unicorn/prevent-abbreviations': 'off', // Airbnb was less strict than Unicorn
       'unicorn/null-data-property': 'off',
       'unicorn/no-null': 'off',
+      'react/prop-types': 'off', // Using TypeScript, so don't use PropTypes.
     },
   },
   // Overrides for Tests

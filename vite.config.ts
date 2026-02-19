@@ -1,7 +1,7 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
-import react from '@vitejs/plugin-react';
+import pluginReact from '@vitejs/plugin-react';
 import path from 'node:path';
-import processIcons from './postcss/process-icons';
+import { processIcons } from './postcss/plugins/process-icons';
 
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
@@ -12,6 +12,7 @@ import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
 import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
 
+const __dirname = import.meta.dirname;
 const { resolve } = path;
 
 // Auto-detect Storybook from the CLI command.
@@ -24,7 +25,7 @@ export default defineConfig(({ mode }) => {
     svgr({
       include: '**/*.svg?react',
     }),
-    react(),
+    pluginReact(),
     tsConfigPaths(),
     dts({
       insertTypesEntry: true,
