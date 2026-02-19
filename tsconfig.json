@@ -23,7 +23,6 @@
       ]
     }
   },
-  "include": ["src"],
-  "exclude": ["postcss"],
+  "include": ["src", "postcss", "vite"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
