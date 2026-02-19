@@ -6,6 +6,7 @@ import { ExampleLinks } from '../Navbar/navbar';
 const meta: Meta<typeof PageHeader> = {
   title: 'Components (Draft)/Header',
   component: PageHeader,
+  argTypes: {},
   tags: ['autodocs'],
   parameters: {
     docs: {
