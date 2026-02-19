@@ -4,7 +4,7 @@ import type { User } from '../Navbar/navbar';
 import { ExampleLinks } from '../Navbar/navbar';
 
 const meta: Meta<typeof PageHeader> = {
-  title: 'Components (Draft)/Page header',
+  title: 'Components (Draft)/Header',
   tags: ['autodocs'],
   component: PageHeader,
   argTypes: {},
@@ -15,7 +15,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const LoggedInUser: User = {
-  name: 'John Sample',
+  name: 'Jane Sample',
   logoutHref: '/logout',
   loginHref: '/login',
 };
