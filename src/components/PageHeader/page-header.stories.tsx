@@ -5,9 +5,17 @@ import { ExampleLinks } from '../Navbar/navbar';
 
 const meta: Meta<typeof PageHeader> = {
   title: 'Components (Draft)/Header',
-  tags: ['autodocs'],
   component: PageHeader,
-  argTypes: {},
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 
+A header helps users identify where they are and provides a quick, organized way to reach the main sections of a website.
+`,
+      },
+    },
+  },
 };
 
 export default meta;
