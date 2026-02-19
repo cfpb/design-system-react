@@ -1,6 +1,7 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import react from '@vitejs/plugin-react';
+import { playwright } from '@vitest/browser-playwright';
 import path from 'node:path';
 import processIcons from './postcss/process-icons';
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
@@ -110,6 +111,16 @@ export default defineConfig(async ({ mode }) => {
           },
         },
       },
+      ...(isStorybookTest
+        ? {
+            browser: {
+              enabled: true,
+              provider: playwright(),
+              instances: [{ browser: 'chromium' }],
+              headless: true,
+            },
+          }
+        : {}),
     },
     build: {
       lib: {
