@@ -22,6 +22,7 @@ const LoggedInUser: User = {
 
 export const LoggedIn: Story = {
   args: {
+    name: 'Logged in',
     links: ExampleLinks,
     user: LoggedInUser,
   },
@@ -29,6 +30,7 @@ export const LoggedIn: Story = {
 
 export const LoggedOut: Story = {
   args: {
+    name: 'Logged out',
     links: ExampleLinks,
   },
 };
