@@ -21,7 +21,7 @@ const processIcons = (): Plugin => {
 
         const pathToSVG: string = path.join(
           __dirname,
-          '/../node_modules/@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/' +
+          '/../../node_modules/@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/' +
             iconName +
             '.svg',
         );

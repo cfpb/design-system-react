@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
 
-interface LayoutMainProperties {
+export interface LayoutMainProperties {
   children: JSX.Element | JSX.Element[];
   classes?: string;
   id?: string;
