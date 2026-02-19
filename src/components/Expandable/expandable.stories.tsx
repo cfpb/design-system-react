@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { JSX } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { Expandable } from '~/src/index';
 import { sleep } from '../../utils/sleep';
