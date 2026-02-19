@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { SyntheticEvent } from 'react';
+import type { ReactNode, SyntheticEvent } from 'react';
 import { Banner } from '~/src/index';
 import { AllLanguageCodes, LanguageLink } from './banner-language-link';
 
@@ -24,9 +24,9 @@ const UnclickableLink = ({
   children,
   ...others
 }: {
-  children: JSX.Element | string;
-  [key: string]: JSX.Element | string;
-}): JSX.Element => (
+  children: ReactNode | string;
+  [key: string]: ReactNode | string;
+}): ReactNode => (
   // eslint-disable-next-line jsx-a11y/interactive-supports-focus
   <span
     role='link'
