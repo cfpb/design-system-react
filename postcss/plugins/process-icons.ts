@@ -20,10 +20,9 @@ const processIcons = (): Plugin => {
         const iconColor: string = props.length > 1 ? stripQuotes(props[1]) : '';
 
         const pathToSVG: string = path.join(
-          __dirname,
-          '/../node_modules/@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/' +
-            iconName +
-            '.svg',
+          process.cwd(),
+          'node_modules/@cfpb/cfpb-design-system/src/components/cfpb-icons/icons',
+          `${iconName}.svg`,
         );
 
         let rawSVG: string;
