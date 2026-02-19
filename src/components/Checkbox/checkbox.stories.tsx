@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import Checkbox from './checkbox';
 import { CheckboxWrapper } from './checkbox.utils';
 
@@ -25,7 +26,24 @@ export const Enabled: Story = {
   args: {
     id: 'enabled',
     label: 'Enabled',
-    checked: false,
+    checked: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox', { name: /enabled/i });
+    await waitFor(() =>
+      expect(canvas.getByRole('checkbox', { name: /enabled/i })).toBeChecked(),
+    );
+    await userEvent.click(checkbox);
+    await waitFor(() =>
+      expect(
+        canvas.getByRole('checkbox', { name: /enabled/i }),
+      ).not.toBeChecked(),
+    );
+    await userEvent.click(checkbox);
+    await waitFor(() =>
+      expect(canvas.getByRole('checkbox', { name: /enabled/i })).toBeChecked(),
+    );
   },
 };
 
@@ -67,6 +85,14 @@ export const Disabled: Story = {
     label: 'Disabled',
     checked: false,
     disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox', { name: /disabled/i });
+
+    await userEvent.click(checkbox);
+    expect(checkbox).toBeDisabled();
+    expect(checkbox).not.toBeChecked();
   },
 };
 
