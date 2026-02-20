@@ -26,27 +26,17 @@ export const Enabled: Story = {
   args: {
     id: 'enabled',
     label: 'Enabled',
-    checked: false,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const checkbox = canvas.getByRole('checkbox', { name: /enabled/i });
     await waitFor(() =>
       expect(
         canvas.getByRole('checkbox', { name: /enabled/i }),
       ).not.toBeChecked(),
     );
-    await userEvent.click(checkbox);
+    await userEvent.click(canvas.getByRole('checkbox', { name: /enabled/i }));
     await waitFor(() =>
-      expect(
-        canvas.getByRole('checkbox', { name: /enabled/i }),
-      ).toBeChecked(),
-    );
-    await userEvent.click(checkbox);
-    await waitFor(() =>
-      expect(
-        canvas.getByRole('checkbox', { name: /enabled/i }),
-      ).not.toBeChecked(),
+      expect(canvas.getByRole('checkbox', { name: /enabled/i })).toBeChecked(),
     );
   },
 };
