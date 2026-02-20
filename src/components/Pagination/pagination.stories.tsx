@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { JSX } from 'react';
 import { Pagination, usePagination } from '~/src/index';
 import { generateTestRows, stringify } from './pagination.story-utils';
 

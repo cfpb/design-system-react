@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
 
-interface LayoutContentProperties {
+export interface LayoutContentProperties {
   children: JSX.Element | JSX.Element[] | string;
   flushAllOnSmall?: boolean;
   flushBottom?: boolean;

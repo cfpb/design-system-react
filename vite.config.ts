@@ -1,9 +1,9 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
-import react from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
-import path from 'node:path';
 import processIcons from './postcss/process-icons';
+import pluginReact from '@vitejs/plugin-react';
+import path from 'node:path';
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
@@ -13,6 +13,7 @@ import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
 import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
 
+const __dirname = import.meta.dirname;
 const { resolve } = path;
 
 // Auto-detect Storybook from the CLI command.
@@ -34,7 +35,7 @@ export default defineConfig(async ({ mode }) => {
     svgr({
       include: '**/*.svg?react',
     }),
-    react(),
+    pluginReact(),
     tsConfigPaths(),
     dts({
       insertTypesEntry: true,
@@ -131,7 +132,15 @@ export default defineConfig(async ({ mode }) => {
       },
       rollupOptions: {
         // Only externalize in production/library build, not in Storybook dev mode.
-        external: isStorybook ? [] : ['react', 'react-dom', 'react-router-dom'],
+        external: isStorybook
+          ? []
+          : [
+              'react',
+              'react-dom',
+              'react-router-dom',
+              'react/jsx-runtime',
+              'react/jsx-dev-runtime',
+            ],
         output: {
           // This prevents the "flat" file explosion for icons/assets in the root
           assetFileNames: 'assets/[name].[ext]',
