@@ -3,7 +3,8 @@ import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/button';
 import { Icon } from '../Icon/icon';
 import Link from '../Link/link';
-import Navbar from '../Navbar/navbar';
+import Navbar, { buildUserLinks } from '../Navbar/navbar';
+import type { User } from '../../types/user';
 import './responsive-menu.scss';
 
 interface CfpbLogoProperties {
@@ -63,11 +64,13 @@ const Links = ({
 interface ResponsiveMenuProperties {
   links?: React.ReactNode[];
   href?: string;
+  user?: User;
 }
 
 export default function ResponsiveMenu({
   links,
   href,
+  user,
 }: ResponsiveMenuProperties): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -88,7 +91,9 @@ export default function ResponsiveMenu({
     [],
   );
 
-  if (!links?.length) return <Navbar href={href} />;
+  const allLinks = [...(links ?? []), ...buildUserLinks(user)];
+
+  if (!allLinks.length) return <Navbar href={href} user={user} />;
 
   return (
     <>
@@ -122,7 +127,7 @@ export default function ResponsiveMenu({
             className={`nav-items ${isMenuOpen ? 'open' : ''}`}
             id='nav-links'
           >
-            <Links elements={links} onLinkClick={onLinkClick} />
+            <Links elements={allLinks} onLinkClick={onLinkClick} />
           </nav>
         </div>
       </header>

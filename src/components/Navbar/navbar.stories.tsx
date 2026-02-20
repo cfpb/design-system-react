@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Navbar } from '~/src/index';
+import type { User } from '../../types/user';
 import '../PageHeader/page-header.scss';
 import { ExampleLinks } from './navbar';
 
@@ -14,14 +15,16 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const LoggedInUser = {
+const LoggedInUser: User = {
   name: 'John Sample',
-  logoutHref: '#',
+  profileHref: '/profile',
+  logoutHref: '/logout',
 };
 
 export const LoggedIn: Story = {
   args: {
     links: ExampleLinks,
+    user: LoggedInUser,
   },
 };
 

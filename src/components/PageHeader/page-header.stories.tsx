@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PageHeader } from '~/src/index';
-import type { User } from '../Navbar/navbar';
+import type { User } from '../../types/user';
 import { ExampleLinks } from '../Navbar/navbar';
 
 const meta: Meta<typeof PageHeader> = {
@@ -17,8 +17,8 @@ type Story = StoryObj<typeof meta>;
 
 const LoggedInUser: User = {
   name: 'John Sample',
+  profileHref: '/profile',
   logoutHref: '/logout',
-  loginHref: '/login',
 };
 
 export const LoggedIn: Story = {
