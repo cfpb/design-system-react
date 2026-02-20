@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import PageHeader from './page-header';
+import Header from './header';
 
-describe('PageHeader', () => {
+describe('Header', () => {
   it('Logo href should have custom declared value', () => {
-    render(<PageHeader href='https://www.google.com' />);
+    render(<Header href='https://www.google.com' />);
     expect(screen.getByTestId('CfpbLogoLink')).toHaveAttribute(
       'href',
       'https://www.google.com',
@@ -12,7 +12,7 @@ describe('PageHeader', () => {
   });
 
   it('Logo with undeclared href should default to cf.govq', () => {
-    render(<PageHeader />);
+    render(<Header />);
     expect(screen.getByTestId('CfpbLogoLink')).toHaveAttribute(
       'href',
       'https://www.consumerfinance.gov',
@@ -20,12 +20,12 @@ describe('PageHeader', () => {
   });
 
   it('Renders with bottom border by default', () => {
-    const { container } = render(<PageHeader />);
+    const { container } = render(<Header />);
     expect(container.firstChild.className).toBe('o-header bottom-border');
   });
 
   it('Can be rendered without bottom border', () => {
-    const { container } = render(<PageHeader withBottomBorder={false} />);
+    const { container } = render(<Header withBottomBorder={false} />);
     expect(container.firstChild.className).toBe('o-header');
   });
 });

@@ -3,21 +3,25 @@ import { JSX } from 'react';
 import { Banner } from '../Banner/banner';
 import type { User } from '../../types/user';
 import ResponsiveMenu from '../ResponsiveMenu/responsive-menu';
-import './page-header.scss';
+import './header.scss';
 
-interface PageHeaderProperties {
+export interface HeaderProperties {
   links?: JSX.Element[];
   user?: User;
   href?: string;
   withBottomBorder?: boolean;
 }
 
-export default function PageHeader({
+/**
+ * A header helps users identify where they are and provides a quick, organized way to reach the main sections of a website.
+ *
+ */
+export const Header = ({
   links,
   user,
   href,
   withBottomBorder = true,
-}: PageHeaderProperties): JSX.Element {
+}: HeaderProperties): JSX.Element => {
   const headerClasses = ['o-header'];
   if (withBottomBorder) headerClasses.push('bottom-border');
 
@@ -27,4 +31,4 @@ export default function PageHeader({
       <ResponsiveMenu links={links} href={href} user={user} />
     </header>
   );
-}
+};

@@ -28,7 +28,7 @@ export {
   ListItemBuilder,
 } from './components/List/list-item';
 export { default as Navbar } from './components/Navbar/navbar';
-export { default as PageHeader } from './components/PageHeader/page-header';
+export { Header } from './components/Header/header';
 export { Pagination } from './components/Pagination/pagination';
 export { usePagination } from './components/Pagination/use-pagination';
 export { Paragraph } from './components/Paragraph/paragraph';

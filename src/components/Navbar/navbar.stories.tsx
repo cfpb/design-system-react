@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Navbar } from '~/src/index';
 import type { User } from '../../types/user';
-import '../PageHeader/page-header.scss';
+import '../Header/header.scss';
 import { ExampleLinks } from './navbar';
 
 const meta: Meta<typeof Navbar> = {

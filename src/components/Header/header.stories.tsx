@@ -1,19 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { PageHeader } from '~/src/index';
+import { Header } from '~/src/index';
 import type { User } from '../../types/user';
 import { ExampleLinks } from '../Navbar/navbar';
 
-const meta: Meta<typeof PageHeader> = {
+const meta: Meta<typeof Header> = {
   title: 'Components (Draft)/Header',
   tags: ['autodocs'],
-  component: PageHeader,
+  component: Header,
   argTypes: {},
-
 };
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  name: 'Header',
+  render: (properties) => <Header {...properties} />,
+  args: {
+    links: ExampleLinks,
+  },
+};
 
 const LoggedInUser: User = {
   name: 'John Sample',
@@ -22,16 +29,16 @@ const LoggedInUser: User = {
 };
 
 export const LoggedIn: Story = {
+  name: 'Logged in',
   args: {
-    name: 'Logged in',
     links: ExampleLinks,
-    user: LoggedInUser,
+    // user: LoggedInUser,
   },
 };
 
 export const LoggedOut: Story = {
+  name: 'Logged out',
   args: {
-    name: 'Logged out',
     links: ExampleLinks,
   },
 };

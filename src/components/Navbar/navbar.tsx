@@ -48,23 +48,32 @@ export const buildUserLinks = (user?: User): JSX.Element[] => {
 
   if (user.name && user.profileHref) {
     userLinks.push(
-      <Link className='nav-item profile' key='profile' href={user.profileHref}>
-        {user.name}
-      </Link>,
+      <Link
+        className='nav-item profile'
+        key='profile'
+        href={user.profileHref}
+        label={user.name}
+      />,
     );
   }
 
   if (user.logoutHref) {
     userLinks.push(
-      <Link className='nav-item' key='logout' href={user.logoutHref}>
-        Log out
-      </Link>,
+      <Link
+        className='nav-item'
+        key='logout'
+        href={user.logoutHref}
+        label={'Log out'}
+      />,
     );
   } else if (user.loginHref) {
     userLinks.push(
-      <Link className='nav-item' key='login' href={user.loginHref}>
-        Log in
-      </Link>,
+      <Link
+        className='nav-item'
+        key='login'
+        href={user.loginHref}
+        label={'Log in'}
+      />,
     );
   }
 
@@ -91,14 +100,18 @@ export default function Navbar({
 }
 
 export const ExampleLinks: JSX.Element[] = [
-  <Link className='nav-item' key='home' href='/'>
-    Home
-  </Link>,
-  <Link className='nav-item active' key='filing' href='/filing'>
-    Filing
-  </Link>,
-  <Link className='nav-item' key='profile' href='/profile'>
-    John Sample
-  </Link>,
+  <Link className='nav-item' key='home' href='/' label='Home' />,
+  <Link
+    className='nav-item active'
+    key='filing'
+    href='/filing'
+    label='Filing'
+  />,
+  <Link
+    className='nav-item'
+    key='profile'
+    href='/profile'
+    label={'John Sample'}
+  />,
   <Button label='LOG OUT' asLink key='logout' />,
 ];
