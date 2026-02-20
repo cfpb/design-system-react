@@ -1,7 +1,6 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
-import processIcons from './postcss/process-icons';
 import pluginReact from '@vitejs/plugin-react';
 import path from 'node:path';
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
@@ -67,11 +66,6 @@ export default defineConfig(async ({ mode }) => {
       },
     },
     plugins,
-    css: {
-      postcss: {
-        plugins: [processIcons as any],
-      },
-    },
     test: {
       globals: true,
       ...(isStorybookTest
