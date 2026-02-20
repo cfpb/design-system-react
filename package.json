@@ -47,6 +47,7 @@
   "dependencies": {
     "@cfpb/browserslist-config": "^0.0.6",
     "@cfpb/cfpb-design-system": "4.4.0",
+    "lit": "3.3.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-router-dom": "^7.13.0",
@@ -109,6 +110,7 @@
     "typescript-eslint": "^8.56.0",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-lit-css": "^2.2.2",
     "vite-plugin-pwa": "^1.2.0",
     "vite-plugin-svgr": "^4.5.0",
     "vite-plugin-turbosnap": "^1.0.3",

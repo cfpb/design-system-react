@@ -6,6 +6,8 @@ export const preview = {
   parameters: {
     options: {
       // Determines the display order of Stories in the sidebar
+      // and is the source of truth for where "CFPB Web Components (Beta)"
+      // appears in Storybook navigation.
       storySort: {
         method: 'alphabetical',
         order: [
@@ -30,7 +32,10 @@ export const preview = {
             'Text introductions',
             'Wells',
           ],
-          'Components (Draft)',
+          // Web components are intentionally listed after existing React sections
+          // so React verified/draft content remains primary.
+          'CFPB web Components (Beta)',
+          ['Buttons'],
           '*',
         ],
       },
