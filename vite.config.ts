@@ -64,10 +64,18 @@ export default defineConfig(({ mode }) => {
       },
       rollupOptions: {
         // Only externalize in production/library build, not in Storybook dev mode.
-        external: isStorybook ? [] : ['react', 'react-dom', 'react-router-dom'],
+        external: isStorybook
+          ? []
+          : [
+              'react',
+              'react-dom',
+              'react-router-dom',
+              'react/jsx-runtime',
+              'react/jsx-dev-runtime',
+            ],
         output: {
           // This prevents the "flat" file explosion for icons/assets in the root
-          assetFileNames: 'assets/[name].[ext]',
+          assetFileNames: 'index.css',
           chunkFileNames: 'chunks/[name]-[hash].js',
           globals: {
             react: 'React',
