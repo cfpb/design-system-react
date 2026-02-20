@@ -1316,6 +1316,10 @@ __metadata:
     vite-plugin-turbosnap: "npm:^1.0.3"
     vite-tsconfig-paths: "npm:^6.1.1"
     vitest: "npm:^4.0.18"
+  peerDependencies:
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+    react-router-dom: ^7.13.0
   languageName: unknown
   linkType: soft
 

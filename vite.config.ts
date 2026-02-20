@@ -143,7 +143,7 @@ export default defineConfig(async ({ mode }) => {
             ],
         output: {
           // This prevents the "flat" file explosion for icons/assets in the root
-          assetFileNames: 'assets/[name].[ext]',
+          assetFileNames: 'index.css',
           chunkFileNames: 'chunks/[name]-[hash].js',
           globals: {
             react: 'React',
