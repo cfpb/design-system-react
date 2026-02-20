@@ -25,12 +25,6 @@ export default {
 
   async viteFinal(config, { configType }) {
     config.base = process.env.BASE_PATH || config.base;
-    if (process.env.STORYBOOK_CONFIG_DIR) {
-      config.test = {
-        ...(config.test ?? {}),
-        name: `storybook:${process.env.STORYBOOK_CONFIG_DIR}`,
-      };
-    }
 
     // Skip type declaration generation for non-dist builds
     config.plugins = config.plugins.filter(
