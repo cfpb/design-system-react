@@ -1,7 +1,6 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
-import react from '@vitejs/plugin-react';
+import pluginReact from '@vitejs/plugin-react';
 import path from 'node:path';
-import processIcons from './postcss/process-icons';
 
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
@@ -12,6 +11,7 @@ import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
 import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
 
+const __dirname = import.meta.dirname;
 const { resolve } = path;
 
 // Auto-detect Storybook from the CLI command.
@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
     svgr({
       include: '**/*.svg?react',
     }),
-    react(),
+    pluginReact(),
     tsConfigPaths(),
     dts({
       insertTypesEntry: true,
@@ -55,46 +55,6 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins,
-    css: {
-      postcss: {
-        plugins: [processIcons as any],
-      },
-    },
-    test: {
-      globals: true,
-      environment: 'jsdom',
-      exclude: [
-        '**/node_modules/**',
-        '**/dist/**',
-        '**/.{idea,git,cache,output,temp}/**',
-      ],
-      // This ensures Vitest uses the same plugin pipeline as Vite
-      transformMode: {
-        web: [/.[tj]sx?$/],
-      },
-      css: true,
-      server: {
-        deps: {
-          inline: ['@cfpb', 'vite-plugin-svgr'],
-        },
-      },
-      clearMocks: true,
-      coverage: {
-        provider: 'istanbul',
-        enabled: true,
-        '100': true,
-        reporter: ['text', 'lcov'],
-        reportsDirectory: 'coverage',
-        all: false,
-      },
-      deps: {
-        optimizer: {
-          web: {
-            include: ['vite-plugin-svgr'],
-          },
-        },
-      },
-    },
     build: {
       lib: {
         entry: resolve('src', 'index.ts'),
@@ -104,10 +64,18 @@ export default defineConfig(({ mode }) => {
       },
       rollupOptions: {
         // Only externalize in production/library build, not in Storybook dev mode.
-        external: isStorybook ? [] : ['react', 'react-dom', 'react-router-dom'],
+        external: isStorybook
+          ? []
+          : [
+              'react',
+              'react-dom',
+              'react-router-dom',
+              'react/jsx-runtime',
+              'react/jsx-dev-runtime',
+            ],
         output: {
           // This prevents the "flat" file explosion for icons/assets in the root
-          assetFileNames: 'assets/[name].[ext]',
+          assetFileNames: 'index.css',
           chunkFileNames: 'chunks/[name]-[hash].js',
           globals: {
             react: 'React',

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Header from './header';
+import { Header } from './header';
 
 describe('Header', () => {
   it('Logo href should have custom declared value', () => {
@@ -11,7 +11,7 @@ describe('Header', () => {
     );
   });
 
-  it('Logo with undeclared href should default to cf.govq', () => {
+  it('Logo with undeclared href should default to cf.gov', () => {
     render(<Header />);
     expect(screen.getByTestId('CfpbLogoLink')).toHaveAttribute(
       'href',

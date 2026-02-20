@@ -1,7 +1,7 @@
 {
   "name": "@cfpb/design-system-react",
   "license": "MIT",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "repository": {
     "type": "git",
     "url": "https://github.com/cfpb/design-system-react.git"
@@ -18,7 +18,7 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./style.css": "./dist/assets/style.css"
+    "./index.css": "./index.css"
   },
   "files": [
     "dist"
@@ -47,10 +47,12 @@
   "dependencies": {
     "@cfpb/browserslist-config": "^0.0.6",
     "@cfpb/cfpb-design-system": "4.4.0",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "react-router-dom": "^7.13.0",
     "react-select": "^5.10.2"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
@@ -65,8 +67,9 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/css-mediaquery": "0.1.4",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
+    "@types/node": "^25.3.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@types/react-router-dom": "5.3.3",
     "@types/testing-library__jest-dom": "6.0.0",
     "@typescript-eslint/eslint-plugin": "8.56.0",
@@ -87,8 +90,8 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-storybook": "^10.2.7",
-    "eslint-plugin-testing-library": "7.15.4",
+    "eslint-plugin-storybook": "^10.2.10",
+    "eslint-plugin-testing-library": "7.16.0",
     "eslint-plugin-unicorn": "^62.0.0",
     "globals": "^17.3.0",
     "husky": "9.1.7",
@@ -98,6 +101,9 @@
     "npm-run-all": "4.1.5",
     "postcss": "8.5.6",
     "prettier": "3.8.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-router-dom": "^7.13.0",
     "rollup-plugin-jsx-remove-attributes": "^3.1.2",
     "sass": "^1.97.3",
     "start-server-and-test": "2.1.3",
