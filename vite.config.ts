@@ -75,11 +75,7 @@ export default defineConfig(({ mode }) => {
             ],
         output: {
           // This prevents the "flat" file explosion for icons/assets in the root
-          assetFileNames: (assetInfo): string => {
-            return assetInfo.name === 'design-system-react.css'
-              ? 'assets/index.css'
-              : 'assets/[name].[ext]';
-          },
+          assetFileNames: 'index.css',
           chunkFileNames: 'chunks/[name]-[hash].js',
           globals: {
             react: 'React',
