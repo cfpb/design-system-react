@@ -88,12 +88,13 @@ export default function ResponsiveMenu({
   );
 
   if (!links?.length) {
+    // no need for hamburger menu button or any links
     return (
-      <header className='o-header__content'>
+      <div className='o-header__content'>
         <div className='navbar wrapper wrapper--match-content'>
           <CfpbLogo href={href} />
         </div>
-      </header>
+      </div>
     );
   }
 
@@ -109,7 +110,7 @@ export default function ResponsiveMenu({
           aria-label='Close menu'
         />
       ) : null}
-      <header className='o-header__content'>
+      <div className='o-header__content'>
         <div className='navbar wrapper wrapper--match-content'>
           <button
             className='menu-toggle'
@@ -132,23 +133,27 @@ export default function ResponsiveMenu({
             <Links elements={links} onLinkClick={onLinkClick} />
           </nav>
         </div>
-      </header>
+      </div>
     </>
   );
 }
 
 export const ExampleLinks: React.ReactNode[] = [
-  <Link key='home' href='/'>
-    <span className='nav-item'>Home</span>
-  </Link>,
-  <Link key='filing' className='nav-item active' href='/filing'>
-    Filing
-  </Link>,
-  <Link key='profile' className='nav-item profile' href='/profile'>
-    <span>John Sample</span>
-  </Link>,
+  <Link key='home' href='/' label='Home' />,
+  <Link
+    key='filing'
+    className='nav-item active'
+    href='/filing'
+    label='Filing'
+  />,
+  <Link
+    key='profile'
+    className='nav-item profile'
+    href='/profile'
+    label='John Sample'
+  />,
   <Button
-    label='LOG OUT'
+    label='Log Out'
     asLink
     onClick={(): void => {
       /* Empty*/
