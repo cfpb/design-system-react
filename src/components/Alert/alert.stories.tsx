@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
-import { Alert, AlertFieldLevel, Icon, Link, TextInput } from '~/src/index';
+import { Alert, AlertFieldLevel, Link, TextInput } from '~/src/index';
 import type { TextInputStatusType } from '../TextInput/text-input-status';
 
 type AlertStatusType = TextInputStatusType & ['loading'];
