@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router';
 import type { JSXElement } from '../../types/jsx-element';
 
 import classnames from 'classnames';
