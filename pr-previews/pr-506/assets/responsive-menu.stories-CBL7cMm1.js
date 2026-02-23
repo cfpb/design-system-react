@@ -1,5 +1,0 @@
-import"./iframe-WLC9tYgX.js";import{E as s,z as o}from"./well-D9d_8NCx.js";import"./checkbox-B22Ni8o6.js";import"./paragraph-BPdy-WOn.js";import"./text-area-CDAXjPJD.js";import"./preload-helper-PPVm8Dsz.js";import"./jsx-runtime-u17CrQMm.js";import"./index-BGcnwbip.js";const l={title:"Components (Draft)/ResponsiveMenu",tags:["autodocs"],component:o,argTypes:{}},e={args:{links:s}};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:`{
-  args: {
-    links: ExampleLinks
-  }
-}`,...e.parameters?.docs?.source}}};const u=["Default"];export{e as Default,u as __namedExportsOrder,l as default};
