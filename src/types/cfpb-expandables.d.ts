@@ -1,4 +1,3 @@
- 
 declare module '@cfpb/cfpb-design-system/src/components/cfpb-expandables' {
   export const Expandable: {
     init(element?: Element | NodeList | null): void;
