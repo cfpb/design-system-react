@@ -1,4 +1,4 @@
-import type { JSXElement } from '~/src/types/jsx-element';
+import type { JSXElement } from '../../types/jsx-element';
 
 /**
  * Display a collection of related Buttons

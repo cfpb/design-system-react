@@ -1,6 +1,6 @@
 import type { ChangeEvent } from 'react';
 import { JSX } from 'react';
-import { noOp } from '~/src/utils/no-op';
+import { noOp } from '../../utils/no-op';
 import type { SelectOption, SelectProperties } from './select';
 import { buildOptions, findOptionByValue } from './select-utils';
 

@@ -1,7 +1,7 @@
 import '@cfpb/cfpb-design-system/src/components/cfpb-pagination/pagination.scss';
 import type { ReactElement } from 'react';
 import { JSX, useEffect, useId, useState } from 'react';
-import { Button } from '~/src';
+import { Button } from '../Buttons/button';
 import { noOp } from '../../utils/no-op';
 import { MIN_PAGE } from './pagination-constants';
 
