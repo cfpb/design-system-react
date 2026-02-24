@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src",
+    "postcss",
+    "vite",
+    "postcss.config.ts",
+    "vite.config.ts",
+    "vitest.config.ts",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx"
+  ]
+}
