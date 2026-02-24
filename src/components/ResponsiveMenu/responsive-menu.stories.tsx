@@ -14,16 +14,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const LoggedIn: Story = {
+export const Default: Story = {
   args: {
     links: ExampleLinks,
   },
-};
-
-export const LoggedOut: Story = {
-  args: {},
-};
-
-export const NoUser: Story = {
-  args: {},
 };

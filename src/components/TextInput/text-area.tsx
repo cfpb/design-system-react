@@ -6,7 +6,7 @@ import {
   type ReactElement,
   type Ref,
 } from 'react';
-import { noOp as onNoOp } from '~/src/utils/no-op';
+import { noOp as onNoOp } from '../../utils/no-op';
 import {
   getTextInputStatusClass,
   type TextInputStatusType,

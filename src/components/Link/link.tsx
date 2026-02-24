@@ -1,10 +1,10 @@
 import { JSX } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router';
 import type { JSXElement } from '../../types/jsx-element';
 
 import classnames from 'classnames';
 import type { HTMLProps, ReactNode, Ref } from 'react';
-import { Icon } from '~/src';
+import { Icon } from '../Icon/icon';
 import ListItem from '../List/list-item';
 import './link.scss';
 

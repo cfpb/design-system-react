@@ -95,7 +95,7 @@ export const FullWidth: Story = {
   },
 };
 
-export const searchInput: Story = {
+export const SearchInput: Story = {
   name: 'Search input',
   args: {
     ...Enabled.args,

@@ -1,4 +1,4 @@
-import type { JSXElement } from '~/src/types/jsx-element';
+import type { JSXElement } from '../../types/jsx-element';
 import { Icon } from '../Icon/icon';
 
 export type AlertFieldLevelType = 'error' | 'info' | 'success' | 'warning';

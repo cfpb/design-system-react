@@ -72,7 +72,7 @@ export default defineConfig(async ({ mode }) => {
           : [
               'react',
               'react-dom',
-              'react-router-dom',
+              'react-router',
               'react/jsx-runtime',
               'react/jsx-dev-runtime',
             ],
@@ -83,14 +83,14 @@ export default defineConfig(async ({ mode }) => {
           globals: {
             react: 'React',
             'react-dom': 'ReactDOM',
-            'react-router-dom': 'ReactRouterDOM',
+            'react-router': 'ReactRouter',
           },
         },
       },
     },
     optimizeDeps: {
       // Only exclude in production/library build, not in Storybook dev mode.
-      exclude: isStorybook ? [] : ['react', 'react-dom', 'react-router-dom'],
+      exclude: isStorybook ? [] : ['react', 'react-dom', 'react-router'],
     },
   };
 });

@@ -47,7 +47,7 @@ describe('ResponsiveMenu', () => {
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Filing')).toBeInTheDocument();
     expect(screen.getByText('John Sample')).toBeInTheDocument();
-    expect(screen.getByText('LOG OUT')).toBeInTheDocument();
+    expect(screen.getByText('Log Out')).toBeInTheDocument();
   });
 
   it('toggles menu visibility on button click', () => {

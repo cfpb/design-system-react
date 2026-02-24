@@ -53,7 +53,7 @@ export default tseslint.config(
         ...globals.node,
       },
       parserOptions: {
-        projectService: true,
+        project: './tsconfig.eslint.json',
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -82,6 +82,11 @@ export default tseslint.config(
       'unicorn/null-data-property': 'off',
       'unicorn/no-null': 'off',
       'react/prop-types': 'off', // Using TypeScript, so don't use PropTypes.
+      // Resolver cannot resolve @cfpb/cfpb-design-system src subpaths (Vite alias + node_modules do at build/runtime).
+      'import/no-unresolved': [
+        'error',
+        { ignore: ['^@cfpb/cfpb-design-system/'] },
+      ],
     },
   },
   // Overrides for Tests
