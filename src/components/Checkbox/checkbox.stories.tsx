@@ -29,15 +29,9 @@ export const Enabled: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await waitFor(() =>
-      expect(
-        canvas.getByRole('checkbox', { name: /enabled/i }),
-      ).not.toBeChecked(),
-    );
-    await userEvent.click(canvas.getByRole('checkbox', { name: /enabled/i }));
-    await waitFor(() =>
-      expect(canvas.getByRole('checkbox', { name: /enabled/i })).toBeChecked(),
-    );
+    await waitFor(() => expect(canvas.getByRole('checkbox')).not.toBeChecked());
+    await userEvent.click(canvas.getByRole('checkbox'));
+    await waitFor(() => expect(canvas.getByRole('checkbox')).toBeChecked());
   },
 };
 
@@ -82,8 +76,7 @@ export const Disabled: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const checkbox = canvas.getByRole('checkbox', { name: /disabled/i });
-
+    const checkbox = canvas.getByRole('checkbox');
     await userEvent.click(checkbox);
     expect(checkbox).toBeDisabled();
     expect(checkbox).not.toBeChecked();
