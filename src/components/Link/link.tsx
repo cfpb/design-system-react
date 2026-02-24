@@ -4,7 +4,7 @@ import type { JSXElement } from '../../types/jsx-element';
 
 import classnames from 'classnames';
 import type { HTMLProps, ReactNode, Ref } from 'react';
-import { Icon } from '~/src';
+import { Icon } from '../Icon/icon';
 import ListItem from '../List/list-item';
 import './link.scss';
 

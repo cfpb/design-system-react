@@ -3,7 +3,6 @@ import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/button';
 import { Icon } from '../Icon/icon';
 import Link from '../Link/link';
-import Navbar from '../Navbar/navbar';
 import './responsive-menu.scss';
 
 interface CfpbLogoProperties {
@@ -88,7 +87,16 @@ export default function ResponsiveMenu({
     [],
   );
 
-  if (!links?.length) return <Navbar href={href} />;
+  if (!links?.length) {
+    // no need for hamburger menu button or any links
+    return (
+      <div className='o-header__content'>
+        <div className='navbar wrapper wrapper--match-content'>
+          <CfpbLogo href={href} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -102,7 +110,7 @@ export default function ResponsiveMenu({
           aria-label='Close menu'
         />
       ) : null}
-      <header className='o-header__content'>
+      <div className='o-header__content'>
         <div className='navbar wrapper wrapper--match-content'>
           <button
             className='menu-toggle'
@@ -125,23 +133,27 @@ export default function ResponsiveMenu({
             <Links elements={links} onLinkClick={onLinkClick} />
           </nav>
         </div>
-      </header>
+      </div>
     </>
   );
 }
 
 export const ExampleLinks: React.ReactNode[] = [
-  <Link key='home' href='/'>
-    <span className='nav-item'>Home</span>
-  </Link>,
-  <Link key='filing' className='nav-item active' href='/filing'>
-    Filing
-  </Link>,
-  <Link key='profile' className='nav-item profile' href='/profile'>
-    <span>John Sample</span>
-  </Link>,
+  <Link key='home' href='/' label='Home' />,
+  <Link
+    key='filing'
+    className='nav-item active'
+    href='/filing'
+    label='Filing'
+  />,
+  <Link
+    key='profile'
+    className='nav-item profile'
+    href='/profile'
+    label='John Sample'
+  />,
   <Button
-    label='LOG OUT'
+    label='Log Out'
     asLink
     onClick={(): void => {
       /* Empty*/

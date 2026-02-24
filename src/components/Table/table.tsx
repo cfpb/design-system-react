@@ -6,7 +6,7 @@ import {
   type HTMLProps,
   type ReactNode,
 } from 'react';
-import type { JSXElement } from '~/src/types/jsx-element';
+import type { JSXElement } from '../../types/jsx-element';
 import { type WidthPercent } from '../../types/width-percent';
 import { Pagination } from '../Pagination/pagination';
 import { DEFAULT_PER_PAGE, MIN_PAGE } from '../Pagination/pagination-constants';
