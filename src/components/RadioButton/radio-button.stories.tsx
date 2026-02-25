@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { RadioButton } from '~/src/index';
 
 /**
@@ -28,6 +29,13 @@ export const StandardRadio: Story = {
     id: 'testRadio',
     label: 'Standard radio button',
     name: 'Radio select',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const radio = canvas.getByRole('radio', { name: /standard radio button/i });
+    await waitFor(() => expect(radio).not.toBeChecked());
+    await userEvent.click(radio);
+    await waitFor(() => expect(radio).toBeChecked());
   },
 };
 
