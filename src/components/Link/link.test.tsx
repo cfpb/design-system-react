@@ -46,6 +46,16 @@ describe('<Link />', () => {
     expect(await screen.findByTestId('link-icon-right')).toBeInTheDocument();
   });
 
+  it('Throws an error when both left and right icons are provided', () => {
+    expect(() =>
+      render(
+        <Link {...linkBaseProperties} iconLeft='left' iconRight='right' />,
+      ),
+    ).toThrow(
+      'Link component: only one of iconLeft or iconRight can be provided',
+    );
+  });
+
   it('Option: asButton - it does not add a-link and wraps the label', () => {
     render(<Link {...linkBaseProperties} asButton />);
     const link = screen.getByTestId(testId);
@@ -78,6 +88,22 @@ describe('<Link />', () => {
 
     const link = screen.getByRole('link', { name: /some link/i });
     expect(link).toHaveAttribute('href', '/foo/bar');
+  });
+
+  it('Option: isRouterLink - it renders children and icons', async () => {
+    render(
+      <MemoryRouter initialEntries={['/foo/bar']}>
+        <Link {...linkBaseProperties} isRouterLink iconLeft='left'>
+          <span data-testid='link-child'>Child</span>
+        </Link>
+      </MemoryRouter>,
+    );
+
+    const link = screen.getByRole('link', { name: /some link/i });
+    expect(link).toHaveClass('a-link');
+    expect(screen.getByTestId('link-child')).toBeInTheDocument();
+    expect(screen.getByText('some link')).toHaveClass('a-link__text');
+    expect(await screen.findByTestId('link-icon-left')).toBeInTheDocument();
   });
 
   it('Option: isRouterLink - it requires href', () => {

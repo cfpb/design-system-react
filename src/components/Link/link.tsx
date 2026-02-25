@@ -66,7 +66,9 @@ export default function Link({
   type = 'default',
   ...others
 }: LinkProperties): JSXElement {
-  const hasIcons = Boolean(iconLeft ?? iconRight);
+  const hasLeftIcon = Boolean(iconLeft);
+  const hasRightIcon = Boolean(iconRight);
+  const hasIcons = hasLeftIcon || hasRightIcon;
   const shouldUseLinkStyles = !asButton && (hasIcons || isJump);
   const shouldWrapLabel = asButton || shouldUseLinkStyles;
   const labelNode = shouldWrapLabel ? <LinkText>{label}</LinkText> : label;
@@ -78,6 +80,12 @@ export default function Link({
     'a-link': shouldUseLinkStyles,
   });
 
+  if (hasLeftIcon && hasRightIcon) {
+    throw new Error(
+      'Link component: only one of iconLeft or iconRight can be provided',
+    );
+  }
+
   if (isRouterLink) {
     if (!href) {
       throw new Error(
@@ -86,7 +94,22 @@ export default function Link({
     }
     return (
       <RouterLink to={href} {...others} className={cname}>
-        {label}
+        {children}
+        {!!iconLeft && (
+          <Icon
+            name={iconLeft}
+            isPresentational
+            data-testid='link-icon-left'
+          />
+        )}
+        {labelNode}
+        {!!iconRight && (
+          <Icon
+            name={iconRight}
+            isPresentational
+            data-testid='link-icon-right'
+          />
+        )}
       </RouterLink>
     );
   }

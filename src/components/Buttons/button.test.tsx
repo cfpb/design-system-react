@@ -40,6 +40,23 @@ describe('<Button />', () => {
     expect(screen.getByText(wowLabel).textContent).toEqual(wowLabel);
   });
 
+  it('Renders children without a label', () => {
+    render(
+      <Button>
+        <span data-testid='button-child'>Child</span>
+      </Button>,
+    );
+    expect(screen.getByTestId('button-child')).toBeInTheDocument();
+  });
+
+  it('Throws an error when both left and right icons are provided', () => {
+    expect(() =>
+      render(<Button label={testLabel} iconLeft='left' iconRight='right' />),
+    ).toThrow(
+      'Button component: only one of iconLeft or iconRight can be provided',
+    );
+  });
+
   it('Renders left icon correctly', async () => {
     render(<Button label={testLabel} iconLeft='left' />);
     expect(screen.getByText(testLabel)).toBeInTheDocument();
