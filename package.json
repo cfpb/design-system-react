@@ -45,16 +45,17 @@
     "chromatic": "chromatic --storybook-build-dir dist-storybook --only-changed"
   },
   "dependencies": {
-    "@cfpb/browserslist-config": "^0.0.6",
-    "@cfpb/cfpb-design-system": "4.4.0",
     "react-select": "^5.10.2"
   },
   "peerDependencies": {
+    "@cfpb/cfpb-design-system": "4.4.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
     "react-router": "^7.13.0"
   },
   "devDependencies": {
+    "@cfpb/browserslist-config": "^0.0.6",
+    "@cfpb/cfpb-design-system": "4.4.0",
     "@chromatic-com/storybook": "^5.0.1",
     "@eslint/js": "^9.39.3",
     "@nabla/vite-plugin-eslint": "^2.0.6",
