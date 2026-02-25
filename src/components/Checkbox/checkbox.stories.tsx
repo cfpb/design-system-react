@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import Checkbox from './checkbox';
-import { CheckboxWrapper } from './checkbox.utils';
+import { CheckboxTestWrapper, CheckboxWrapper } from './checkbox.utils';
 
 /**
 Source: https://cfpb.github.io/design-system/components/checkboxes
@@ -20,12 +21,17 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Enabled: Story = {
-  render: (_arguments) => CheckboxWrapper(_arguments),
+  render: (_arguments) => <CheckboxTestWrapper {..._arguments} />,
   name: 'Enabled',
   args: {
     id: 'enabled',
     label: 'Enabled',
-    checked: false,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await waitFor(() => expect(canvas.getByRole('checkbox')).not.toBeChecked());
+    await userEvent.click(canvas.getByRole('checkbox'));
+    await waitFor(() => expect(canvas.getByRole('checkbox')).toBeChecked());
   },
 };
 
@@ -67,6 +73,13 @@ export const Disabled: Story = {
     label: 'Disabled',
     checked: false,
     disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox');
+    await userEvent.click(checkbox);
+    expect(checkbox).toBeDisabled();
+    expect(checkbox).not.toBeChecked();
   },
 };
 

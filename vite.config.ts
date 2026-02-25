@@ -1,7 +1,7 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
+import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import pluginReact from '@vitejs/plugin-react';
 import path from 'node:path';
-
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
@@ -17,7 +17,9 @@ const { resolve } = path;
 // Auto-detect Storybook from the CLI command.
 const isStorybook = process.argv.some((arg) => arg.includes('storybook'));
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(async ({ mode }) => {
+  const isStorybookTest = Boolean(process.env.STORYBOOK_CONFIG_DIR);
+  const storybookPlugins = isStorybookTest ? await storybookTest() : [];
   const plugins: Plugin[] = [
     eslintPlugin(),
     svgRawLoaderPlugin(),
@@ -29,6 +31,7 @@ export default defineConfig(({ mode }) => {
     dts({
       insertTypesEntry: true,
     }),
+    ...storybookPlugins,
     mode === 'test'
       ? null
       : removeAttributes({

@@ -5,7 +5,7 @@ import { Checkbox } from './checkbox';
 
 /*
  * Helper for controlled component state.
- * ARIA attributes won't updated without the updated onClick state being fed back into the component.
+ * ARIA attributes won't update without the updated onClick state being fed back into the component.
  */
 export const CheckboxTestWrapper = ({
   onChange,

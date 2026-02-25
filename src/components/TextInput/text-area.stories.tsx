@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, within } from 'storybook/test';
 import { TextArea } from './text-area';
 
 const meta: Meta<typeof TextArea> = {
@@ -20,6 +21,12 @@ export const Enabled: Story = {
     id: 'Enabled',
     placeholder: 'Enabled',
     name: 'Enabled',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textbox = canvas.getByRole('textbox');
+    await userEvent.type(textbox, 'Sample comment');
+    expect(textbox).toHaveValue('Sample comment');
   },
 };
 

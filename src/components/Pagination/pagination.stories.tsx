@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Pagination, usePagination } from '~/src/index';
 import { generateTestRows, stringify } from './pagination.story-utils';
 
@@ -23,6 +24,19 @@ export const Base: Story = {
   args: {
     page: MIDDLE_PAGE,
     pageCount: MAX_PAGE,
+    onClickPrevious: fn(),
+    onClickNext: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const nextButton = canvas.getByRole('button', { name: /next/i });
+    const prevButton = canvas.getByRole('button', { name: /previous/i });
+
+    await userEvent.click(nextButton);
+    expect(args.onClickNext).toHaveBeenCalledTimes(1);
+
+    await userEvent.click(prevButton);
+    expect(args.onClickPrevious).toHaveBeenCalledTimes(1);
   },
 };
 

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Button, Link } from '~/src/index';
 import { ButtonGroup } from './button-group';
 
@@ -31,6 +32,14 @@ export const Primary: Story = {
     asLink: false,
     iconLeft: undefined,
     iconRight: undefined,
+    onClick: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /primary/i });
+
+    await userEvent.click(button);
+    expect(args.onClick).toHaveBeenCalledTimes(1);
   },
 };
 
@@ -47,6 +56,15 @@ export const Disabled: Story = {
     ...Primary.args,
     label: 'Disabled',
     disabled: true,
+    onClick: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /disabled/i });
+
+    await userEvent.click(button);
+    expect(button).toBeDisabled();
+    expect(args.onClick).not.toHaveBeenCalled();
   },
 };
 
