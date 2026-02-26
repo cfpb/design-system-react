@@ -1,11 +1,20 @@
-import { forwardRef, JSX, type ButtonHTMLAttributes } from 'react';
+import {
+  forwardRef,
+  JSX,
+  type ButtonHTMLAttributes,
+  type ReactNode,
+} from 'react';
 import { Icon } from '../Icon/icon';
 
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Button contents
    */
-  label: string;
+  label?: string;
+  /**
+   * Any children to render within the button. Allows you to wrap any node with button tag
+   */
+  children?: ReactNode;
   /**
    * What is the button's appearance?
    */
@@ -58,6 +67,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
       className,
       iconLeft,
       iconRight,
+      children,
       ...properties
     },
     reference, // Receive the ref as the second argument
@@ -71,6 +81,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
     if (className) styles.push(className);
     if (properties.disabled) styles.push('a-btn--disabled');
 
+    const hasLeftIcon = Boolean(iconLeft);
+    const hasRightIcon = Boolean(iconRight);
+    const hasIcons = hasLeftIcon || hasRightIcon;
+    const labelNode = label ? (hasIcons ? <span>{label}</span> : label) : null;
+
+    if (hasLeftIcon && hasRightIcon) {
+      throw new Error(
+        'Button component: only one of iconLeft or iconRight can be provided',
+      );
+    }
+
     return (
       <button
         ref={reference} // Attach the forwarded ref here
@@ -78,6 +99,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
         className={[...styles].join(' ')}
         {...properties}
       >
+        {children}
         {!!iconLeft && (
           <Icon
             name={iconLeft}
@@ -85,7 +107,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
             data-testid='button-icon-left'
           />
         )}
-        {iconLeft || iconRight ? <span>{label}</span> : label}
+        {labelNode}
         {!!iconRight && (
           <Icon
             name={iconRight}
