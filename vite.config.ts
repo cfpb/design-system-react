@@ -50,11 +50,6 @@ export default defineConfig(async ({ mode }) => {
           __dirname,
           'node_modules/@cfpb/cfpb-design-system/src',
         ),
-        // Helper for specifically accessing the new abstracts location
-        '@cfpb/cfpb-design-system/src/elements/abstracts': resolve(
-          __dirname,
-          'node_modules/@cfpb/cfpb-design-system/src/elements/abstracts/index.scss',
-        ),
       },
     },
     plugins,
