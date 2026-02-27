@@ -33,10 +33,10 @@ export const Base: Story = {
     const prevButton = canvas.getByRole('button', { name: /previous/i });
 
     await userEvent.click(nextButton);
-    expect(args.onClickNext).toHaveBeenCalledTimes(1);
+    await expect(args.onClickNext).toHaveBeenCalledTimes(1);
 
     await userEvent.click(prevButton);
-    expect(args.onClickPrevious).toHaveBeenCalledTimes(1);
+    await expect(args.onClickPrevious).toHaveBeenCalledTimes(1);
   },
 };
 

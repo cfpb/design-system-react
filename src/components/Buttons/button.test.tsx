@@ -25,7 +25,7 @@ describe('<Button />', () => {
   });
 
   it('Renders as a link', () => {
-    render(<Button label={testLabel} asLink />);
+    render(<Button label={testLabel} isLink />);
     expect(screen.getByText(testLabel)).toHaveClass(buttonLinkClass);
   });
 

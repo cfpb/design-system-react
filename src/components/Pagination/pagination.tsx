@@ -26,7 +26,7 @@ export interface PaginationProperties {
 
 const PaginationSubmitButton = (): JSX.Element => (
   <Button
-    asLink
+    isLink
     className='m-pagination__btn-submit'
     id='m-pagination__btn-submit-default'
     label='Go'

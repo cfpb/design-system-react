@@ -29,7 +29,7 @@ export const Primary: Story = {
     appearance: 'primary',
     size: 'default',
     disabled: false,
-    asLink: false,
+    isLink: false,
     iconLeft: undefined,
     iconRight: undefined,
     onClick: fn(),
@@ -39,7 +39,7 @@ export const Primary: Story = {
     const button = canvas.getByRole('button', { name: /primary/i });
 
     await userEvent.click(button);
-    expect(args.onClick).toHaveBeenCalledTimes(1);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
   },
 };
 
@@ -63,8 +63,8 @@ export const Disabled: Story = {
     const button = canvas.getByRole('button', { name: /disabled/i });
 
     await userEvent.click(button);
-    expect(button).toBeDisabled();
-    expect(args.onClick).not.toHaveBeenCalled();
+    await expect(button).toBeDisabled();
+    await expect(args.onClick).not.toHaveBeenCalled();
   },
 };
 
@@ -136,7 +136,7 @@ export const ButtonsGroup: Story = {
         <Button key='Submit' {...arguments_} label='Submit' />
         <Button
           appearance='warning'
-          asLink
+          isLink
           key='Clear form'
           {...arguments_}
           label='Clear form'
@@ -161,13 +161,13 @@ export const ButtonLink: Story = {
   render: (arguments_) => (
     <ButtonGroup>
       <Link
-        asButton
+        isButton
         href='/'
         label='Link styled as a button'
         iconRight='download'
       />
       <Button
-        asLink
+        isLink
         key='1'
         {...arguments_}
         label='Button styled as a link'
