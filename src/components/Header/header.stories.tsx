@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Header } from '~/src/index';
-import { ExampleLinks } from '../Navbar/navbar';
+import { ExampleLinks } from '../ResponsiveMenu/responsive-menu';
 
 const meta: Meta<typeof Header> = {
   title: 'Components (Draft)/Header',
