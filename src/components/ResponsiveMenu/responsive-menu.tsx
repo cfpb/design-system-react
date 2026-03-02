@@ -62,7 +62,6 @@ const Links = ({
 interface ResponsiveMenuProperties {
   links?: React.ReactNode[];
   href?: string;
-  user?: User;
 }
 
 export default function ResponsiveMenu({
