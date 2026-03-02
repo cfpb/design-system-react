@@ -17,7 +17,7 @@ describe('<Label />', () => {
 
   it('Inline Label', () => {
     render(
-      <Label htmlFor={htmlFor} inline>
+      <Label htmlFor={htmlFor} isInline>
         {text}
       </Label>,
     );

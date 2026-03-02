@@ -11,6 +11,7 @@ export { ButtonGroup } from './components/Buttons/button-group';
 export { Checkbox } from './components/Checkbox/checkbox';
 export { Divider } from './components/Divider/divider';
 export { Expandable } from './components/Expandable/expandable';
+export { Fieldset } from './components/Fieldset/fieldset';
 export { ExpandableGroup } from './components/Expandable/expandable-group';
 export { default as Footer } from './components/Footer/footer';
 export { FooterCfGov } from './components/Footer/footer-cf-gov';

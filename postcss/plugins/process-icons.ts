@@ -30,6 +30,7 @@ const processIcons = (): Plugin => {
         try {
           rawSVG = await fs.readFile(pathToSVG, 'utf8');
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error(`Error reading SVG file: ${pathToSVG}`, error);
           return;
         }

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import { noOp } from '~/src/utils/no-op';
+import { noOp } from '../../utils/no-op';
 import type { PaginationProperties } from './pagination';
 import { DEFAULT_PER_PAGE, MIN_PAGE } from './pagination-constants';
 

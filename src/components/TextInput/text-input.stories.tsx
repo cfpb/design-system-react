@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, within } from 'storybook/test';
 import { Icon, TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
@@ -21,6 +22,13 @@ export const Enabled: Story = {
     id: 'Enabled',
     value: 'Enabled',
     type: 'text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+    expect(input).toHaveValue('Enabled');
+    await userEvent.click(input);
+    expect(input).toHaveFocus();
   },
 };
 
@@ -95,7 +103,7 @@ export const FullWidth: Story = {
   },
 };
 
-export const searchInput: Story = {
+export const SearchInput: Story = {
   name: 'Search input',
   args: {
     ...Enabled.args,

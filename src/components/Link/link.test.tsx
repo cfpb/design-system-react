@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import Link, { LinkText, ListLink } from './link';
 
 describe('<Link />', () => {
@@ -46,16 +46,26 @@ describe('<Link />', () => {
     expect(await screen.findByTestId('link-icon-right')).toBeInTheDocument();
   });
 
-  it('Option: asButton - it does not add a-link and wraps the label', () => {
-    render(<Link {...linkBaseProperties} asButton />);
+  it('Throws an error when both left and right icons are provided', () => {
+    expect(() =>
+      render(
+        <Link {...linkBaseProperties} iconLeft='left' iconRight='right' />,
+      ),
+    ).toThrow(
+      'Link component: only one of iconLeft or iconRight can be provided',
+    );
+  });
+
+  it('Option: isButton - it does not add a-link and wraps the label', () => {
+    render(<Link {...linkBaseProperties} isButton />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-btn');
     expect(link).not.toHaveClass('a-link');
     expect(screen.getByText('some link')).toHaveClass('a-link__text');
   });
 
-  it('Option: asButton with icon - it keeps a-btn, skips a-link, and shows icon', async () => {
-    render(<Link {...linkBaseProperties} asButton iconRight='right' />);
+  it('Option: isButton with icon - it keeps a-btn, skips a-link, and shows icon', async () => {
+    render(<Link {...linkBaseProperties} isButton iconRight='right' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-btn');
     expect(link).not.toHaveClass('a-link');
@@ -78,6 +88,22 @@ describe('<Link />', () => {
 
     const link = screen.getByRole('link', { name: /some link/i });
     expect(link).toHaveAttribute('href', '/foo/bar');
+  });
+
+  it('Option: isRouterLink - it renders children and icons', async () => {
+    render(
+      <MemoryRouter initialEntries={['/foo/bar']}>
+        <Link {...linkBaseProperties} isRouterLink iconLeft='left'>
+          <span data-testid='link-child'>Child</span>
+        </Link>
+      </MemoryRouter>,
+    );
+
+    const link = screen.getByRole('link', { name: /some link/i });
+    expect(link).toHaveClass('a-link');
+    expect(screen.getByTestId('link-child')).toBeInTheDocument();
+    expect(screen.getByText('some link')).toHaveClass('a-link__text');
+    expect(await screen.findByTestId('link-icon-left')).toBeInTheDocument();
   });
 
   it('Option: isRouterLink - it requires href', () => {

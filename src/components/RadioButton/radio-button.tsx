@@ -18,8 +18,9 @@ interface RadioProperties {
   disabled?: boolean;
   isLarge?: boolean;
   name?: string;
-  labelClassName: string;
-  labelInline: boolean /** Removes/Adds 'label__heading' class to the Label * */;
+  labelClassName?: string;
+  /** Removes/Adds 'label__heading' class to the Label. When true, uses inline label style. */
+  isLabelInline?: boolean;
 }
 const baseStyles = ['a-radio'];
 const containerBaseStyles = ['m-form-field m-form-field--radio'];
@@ -32,7 +33,7 @@ export const RadioButton = ({
   disabled = false,
   isLarge = false,
   labelClassName,
-  labelInline = true, // 'true' REMOVES the a.label__heading class
+  isLabelInline = true,
   label,
   inputRef,
   ...properties
@@ -54,7 +55,7 @@ export const RadioButton = ({
         disabled={disabled}
         {...properties}
       />
-      <Label htmlFor={id} className={labelClassName} inline={labelInline}>
+      <Label htmlFor={id} className={labelClassName} isInline={isLabelInline}>
         {label}
         <HelperText>{helperText}</HelperText>
       </Label>

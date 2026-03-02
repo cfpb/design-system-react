@@ -9,6 +9,7 @@ export default {
     '@storybook/addon-a11y',
     '@chromatic-com/storybook',
     '@storybook/addon-docs',
+    '@storybook/addon-vitest',
   ],
 
   docs: {

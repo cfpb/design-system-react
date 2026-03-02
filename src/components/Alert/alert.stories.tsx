@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
-import { Alert, AlertFieldLevel, Icon, Link, TextInput } from '~/src/index';
+import { Alert, AlertFieldLevel, Link, TextInput } from '~/src/index';
 import type { TextInputStatusType } from '../TextInput/text-input-status';
 
 type AlertStatusType = TextInputStatusType & ['loading'];
@@ -21,9 +21,11 @@ type Story = StoryObj<typeof meta>;
 const FieldLevelAlertMessage = ({ status = 'a warning' }): ReactNode => (
   <>
     This is a field-level alert with {status} status.{' '}
-    <Link hasIcon href={globalThis.location.host}>
-      Link to more info <Icon name='external-link' />
-    </Link>
+    <Link
+      iconRight={'external-link'}
+      href={globalThis.location.host}
+      label='Link to more info'
+    />
     .
   </>
 );

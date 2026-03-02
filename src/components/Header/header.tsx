@@ -7,7 +7,6 @@ import './header.scss';
 
 export interface HeaderProperties {
   links?: JSX.Element[];
-  user?: User;
   href?: string;
   withBottomBorder?: boolean;
 }
@@ -18,7 +17,6 @@ export interface HeaderProperties {
  */
 export const Header = ({
   links,
-  user,
   href,
   withBottomBorder = true,
 }: HeaderProperties): JSX.Element => {
@@ -28,7 +26,7 @@ export const Header = ({
   return (
     <header className={classnames(headerClasses)}>
       <Banner tagline='An official website of the United States government' />
-      <ResponsiveMenu links={links} href={href} user={user} />
+      <ResponsiveMenu links={links} href={href} />
     </header>
   );
 };

@@ -3,7 +3,8 @@ import { JSX } from 'react';
 
 interface LabelProperties {
   children: React.ReactNode;
-  inline?: boolean;
+  /** When true, uses inline label style instead of heading style */
+  isInline?: boolean;
   htmlFor: string;
   className?: string;
 }
@@ -12,13 +13,13 @@ const baseStyles = ['a-label'];
 
 export const Label = ({
   children,
-  inline = false,
+  isInline = false,
   htmlFor,
   className,
   ...other
 }: JSX.IntrinsicElements['label'] &
   LabelProperties): React.ReactElement | null => {
-  const styles = [...baseStyles, inline ? '' : 'a-label--heading'];
+  const styles = [...baseStyles, isInline ? '' : 'a-label--heading'];
   const classes = [...styles, className];
 
   if (!children) return null;

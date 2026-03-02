@@ -1,7 +1,7 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
+import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import pluginReact from '@vitejs/plugin-react';
 import path from 'node:path';
-
 import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
@@ -17,7 +17,9 @@ const { resolve } = path;
 // Auto-detect Storybook from the CLI command.
 const isStorybook = process.argv.some((arg) => arg.includes('storybook'));
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(async ({ mode }) => {
+  const isStorybookTest = Boolean(process.env.STORYBOOK_CONFIG_DIR);
+  const storybookPlugins = isStorybookTest ? await storybookTest() : [];
   const plugins: Plugin[] = [
     eslintPlugin(),
     svgRawLoaderPlugin(),
@@ -29,6 +31,7 @@ export default defineConfig(({ mode }) => {
     dts({
       insertTypesEntry: true,
     }),
+    ...storybookPlugins,
     mode === 'test'
       ? null
       : removeAttributes({
@@ -47,11 +50,6 @@ export default defineConfig(({ mode }) => {
           __dirname,
           'node_modules/@cfpb/cfpb-design-system/src',
         ),
-        // Helper for specifically accessing the new abstracts location
-        '@cfpb/cfpb-design-system/src/elements/abstracts': resolve(
-          __dirname,
-          'node_modules/@cfpb/cfpb-design-system/src/elements/abstracts/index.scss',
-        ),
       },
     },
     plugins,
@@ -69,7 +67,7 @@ export default defineConfig(({ mode }) => {
           : [
               'react',
               'react-dom',
-              'react-router-dom',
+              'react-router',
               'react/jsx-runtime',
               'react/jsx-dev-runtime',
             ],
@@ -80,14 +78,14 @@ export default defineConfig(({ mode }) => {
           globals: {
             react: 'React',
             'react-dom': 'ReactDOM',
-            'react-router-dom': 'ReactRouterDOM',
+            'react-router': 'ReactRouter',
           },
         },
       },
     },
     optimizeDeps: {
       // Only exclude in production/library build, not in Storybook dev mode.
-      exclude: isStorybook ? [] : ['react', 'react-dom', 'react-router-dom'],
+      exclude: isStorybook ? [] : ['react', 'react-dom', 'react-router'],
     },
   };
 });
