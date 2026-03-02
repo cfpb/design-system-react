@@ -3,11 +3,6 @@ import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/button';
 import { Icon } from '../Icon/icon';
 import Link from '../Link/link';
-<<<<<<< HEAD
-import Navbar, { buildUserLinks } from '../Navbar/navbar';
-import type { User } from '../../types/user';
-=======
->>>>>>> main
 import './responsive-menu.scss';
 
 interface CfpbLogoProperties {
@@ -73,7 +68,6 @@ interface ResponsiveMenuProperties {
 export default function ResponsiveMenu({
   links,
   href,
-  user,
 }: ResponsiveMenuProperties): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -93,7 +87,7 @@ export default function ResponsiveMenu({
     },
     [],
   );
-  
+
   if (!links?.length) {
     // no need for hamburger menu button or any links
     return (
@@ -137,7 +131,7 @@ export default function ResponsiveMenu({
             className={`nav-items ${isMenuOpen ? 'open' : ''}`}
             id='nav-links'
           >
-            <Links elements={allLinks} onLinkClick={onLinkClick} />
+            <Links elements={links} onLinkClick={onLinkClick} />
           </nav>
         </div>
       </div>
