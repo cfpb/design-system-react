@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
 import { Banner } from '../Banner/banner';
-import type { User } from '../../types/user';
 import ResponsiveMenu from '../ResponsiveMenu/responsive-menu';
 import './header.scss';
 
