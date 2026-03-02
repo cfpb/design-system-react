@@ -17,6 +17,7 @@ export const preview = {
             'Checkboxes',
             ['Overview', '*'], // Display the custom Overview page first
             'Expandables',
+            'Fieldsets',
             'Headings',
             'Labels',
             'Links',

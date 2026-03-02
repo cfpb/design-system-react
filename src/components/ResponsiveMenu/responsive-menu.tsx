@@ -154,7 +154,7 @@ export const ExampleLinks: React.ReactNode[] = [
   />,
   <Button
     label='Log Out'
-    asLink
+    isLink
     onClick={(): void => {
       /* Empty*/
     }}

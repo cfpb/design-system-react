@@ -7,7 +7,7 @@ const meta: Meta<typeof Label> = {
   tags: ['autodocs'],
   component: Label,
   argTypes: {
-    inline: { control: 'boolean' },
+    isInline: { control: 'boolean' },
   },
   parameters: {
     docs: {
@@ -50,7 +50,7 @@ export const InlineLabel: Story = {
   args: {
     children: <>Text input label</>,
     htmlFor: 'testInput',
-    inline: true,
+    isInline: true,
   },
   render: (arguments_) => (
     <div className='m-form-field m-form-field--checkbox'>

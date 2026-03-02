@@ -12,7 +12,7 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
   /**
    * Whether the link should be rendered as a button.
    */
-  asButton?: boolean;
+  isButton?: boolean;
   /**
    * Any children to render within the link. Allows you to wrap any node with anchor tag
    */
@@ -55,7 +55,7 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
  * Source: https://cfpb.github.io/design-system/components/links
  */
 export default function Link({
-  asButton = false,
+  isButton = false,
   children,
   href,
   iconLeft,
@@ -69,11 +69,11 @@ export default function Link({
   const hasLeftIcon = Boolean(iconLeft);
   const hasRightIcon = Boolean(iconRight);
   const hasIcons = hasLeftIcon || hasRightIcon;
-  const shouldUseLinkStyles = !asButton && (hasIcons || isJump);
-  const shouldWrapLabel = asButton || shouldUseLinkStyles;
+  const shouldUseLinkStyles = !isButton && (hasIcons || isJump);
+  const shouldWrapLabel = isButton || shouldUseLinkStyles;
   const labelNode = shouldWrapLabel ? <LinkText>{label}</LinkText> : label;
   const cname = classnames(others.className, {
-    'a-btn': asButton || type === 'destructive',
+    'a-btn': isButton || type === 'destructive',
     'a-btn--link': type === 'destructive',
     'a-btn--warning': type === 'destructive',
     'a-link--jump': isJump,
@@ -96,11 +96,7 @@ export default function Link({
       <RouterLink to={href} {...others} className={cname}>
         {children}
         {!!iconLeft && (
-          <Icon
-            name={iconLeft}
-            isPresentational
-            data-testid='link-icon-left'
-          />
+          <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
         )}
         {labelNode}
         {!!iconRight && (

@@ -30,7 +30,7 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Button should be styled as a link?
    */
-  asLink?: boolean;
+  isLink?: boolean;
   /**
    * Name of icon to display left of button text
    */
@@ -61,7 +61,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
   (
     {
       appearance = 'primary',
-      asLink = false,
+      isLink = false,
       size = 'default',
       label,
       className,
@@ -77,14 +77,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
       ...appearanceStyles[appearance],
       ...sizeStyles[size],
     ];
-    if (asLink) styles.push('a-btn--link');
+    if (isLink) styles.push('a-btn--link');
     if (className) styles.push(className);
     if (properties.disabled) styles.push('a-btn--disabled');
 
     const hasLeftIcon = Boolean(iconLeft);
     const hasRightIcon = Boolean(iconRight);
     const hasIcons = hasLeftIcon || hasRightIcon;
-    const labelNode = label ? (hasIcons ? <span>{label}</span> : label) : null;
+    const labelNode = label ? hasIcons ? <span>{label}</span> : label : null;
 
     if (hasLeftIcon && hasRightIcon) {
       throw new Error(

@@ -35,7 +35,7 @@ export const Standalone: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByRole('link', { name: /standalone link/i });
-    expect(link).toHaveAttribute('href', '/#');
+    await expect(link).toHaveAttribute('href', '/#');
   },
 };
 

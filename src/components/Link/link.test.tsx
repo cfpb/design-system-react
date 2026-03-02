@@ -56,16 +56,16 @@ describe('<Link />', () => {
     );
   });
 
-  it('Option: asButton - it does not add a-link and wraps the label', () => {
-    render(<Link {...linkBaseProperties} asButton />);
+  it('Option: isButton - it does not add a-link and wraps the label', () => {
+    render(<Link {...linkBaseProperties} isButton />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-btn');
     expect(link).not.toHaveClass('a-link');
     expect(screen.getByText('some link')).toHaveClass('a-link__text');
   });
 
-  it('Option: asButton with icon - it keeps a-btn, skips a-link, and shows icon', async () => {
-    render(<Link {...linkBaseProperties} asButton iconRight='right' />);
+  it('Option: isButton with icon - it keeps a-btn, skips a-link, and shows icon', async () => {
+    render(<Link {...linkBaseProperties} isButton iconRight='right' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-btn');
     expect(link).not.toHaveClass('a-link');

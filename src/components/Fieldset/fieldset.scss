@@ -1,0 +1,15 @@
+@use 'sass:math';
+@use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
+
+.o-form__fieldset--inline {
+  > .o-form__fieldset-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: math.div(15px, $base-font-size-px) + em;
+
+    > .m-form-field + .m-form-field {
+      margin-top: 0;
+    }
+  }
+}
