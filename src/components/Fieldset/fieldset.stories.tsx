@@ -147,8 +147,9 @@ export const WithRadioButtons: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const radioA = canvas.getByRole('radio', { name: /choice a/i });
-    const radioB = canvas.getByRole('radio', { name: /choice b/i });
+    const radioButtons = canvas.queryAllByRole('radio', { name: /label/i });
+    const radioA = radioButtons[0];
+    const radioB = radioButtons[1];
 
     await waitFor(() => expect(radioA).not.toBeChecked());
     await waitFor(() => expect(radioB).not.toBeChecked());
