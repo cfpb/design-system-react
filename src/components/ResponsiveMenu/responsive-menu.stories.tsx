@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ResponsiveMenu } from '~/src/index';
-import '../PageHeader/page-header.scss';
+import '../Header/header.scss';
 import { ExampleLinks } from './responsive-menu';
 
 const meta: Meta<typeof ResponsiveMenu> = {
