@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Icon, Heading } from '~/src/index';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+import { MermaidChart} from '../utils/mermaid-renderer.tsx';
+
+<Meta title='Guides/Governance' />
+
+<Heading type='1'>Project Governance</Heading>
+
+The CFPB Design System in React (DSR) is a shared responsibility between the CFPB teams that implement the component library in their projects. Contributors to the DSR must follow the [CFPB's Open Source Code of Conduct](https://github.com/cfpb/design-system-react/blob/main/CODE_OF_CONDUCT.md) principles and [contribution guidelines](https://github.com/cfpb/design-system-react/blob/main/CONTRIBUTING.md).
+
+<Heading type='2'>Core Contributors</Heading>
+
+The core contributors of the DSR are:
+
+<MermaidChart chart={`graph TD
+  A[Core Contributors] -->|Collaborate on| B[Project Maintenance]
+`} />

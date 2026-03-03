@@ -10,27 +10,8 @@ export const preview = {
         method: 'alphabetical',
         order: [
           'Guides',
+          ['Introduction', '*'],
           'Components (Verified)',
-          [
-            'Banner (US gov)',
-            'Buttons',
-            'Checkboxes',
-            ['Overview', '*'], // Display the custom Overview page first
-            'Expandables',
-            'Fieldsets',
-            'Headings',
-            'Labels',
-            'Links',
-            'Pagination',
-            'Paragraphs',
-            'Radio buttons',
-            'Tables',
-            'Taglines',
-            'Text inputs',
-            ['Overview', '*'], // Display the custom Overview page first
-            'Text introductions',
-            'Wells',
-          ],
           'Components (Draft)',
           '*',
         ],
