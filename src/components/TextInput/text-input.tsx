@@ -64,7 +64,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
     ];
 
     if (isFullWidth) {
-      classes.push('a-text-input--full');
+      classes.push('a-text-input__full');
       return (
         <div className='m-form-field'>
           <input
