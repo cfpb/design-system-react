@@ -27,7 +27,7 @@ describe('<TextArea />', () => {
     render(<TextArea id='alert' isFullWidth />);
 
     const textInput = screen.getByTestId('textAreaInput');
-    expect(textInput).toHaveClass('a-text-input--full');
+    expect(textInput).toHaveClass('a-text-input__full');
   });
 
   it('Handles all supported statuses', () => {
