@@ -193,10 +193,6 @@ $max-width: $breakpoint - 0.0625em;
           justify-content: left;
           line-height: 22px;
           width: auto;
-
-          @media (min-width: $breakpoint) {
-            line-height: 18px;
-          }
         }
 
         & > *:first-child {
