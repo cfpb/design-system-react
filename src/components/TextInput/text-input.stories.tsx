@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-import { Icon, TextInput } from '~/src/index';
+import { Button, Icon, TextInput } from '~/src/index';
 import type { TextInputProperties } from './text-input';
 
 const meta: Meta<typeof TextInput> = {
@@ -151,9 +151,7 @@ export const SearchInput: Story = {
               <Icon name='error' />
             </button>
           </div>
-          <button className='a-btn' type='submit' aria-label='Search for term(s)'>
-            Search
-          </button>
+          <Button type='submit' aria-label='Search for term(s)' label='Search' />
         </div>
       </form>
     );
