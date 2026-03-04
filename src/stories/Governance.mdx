@@ -14,12 +14,34 @@ import { MermaidChart} from '../utils/mermaid-renderer.tsx';
 
 <Heading type='1'>Project Governance</Heading>
 
-The CFPB Design System in React (DSR) is a shared responsibility between the CFPB teams that implement the component library in their projects. Contributors to the DSR must follow the [CFPB's Open Source Code of Conduct](https://github.com/cfpb/design-system-react/blob/main/CODE_OF_CONDUCT.md) principles and [contribution guidelines](https://github.com/cfpb/design-system-react/blob/main/CONTRIBUTING.md).
+The CFPB Design System in React (DSR) is a shared responsibility between the CFPB teams that implement and support the component library in their projects. Contributors to the DSR must follow the [CFPB's Open Source Code of Conduct](https://github.com/cfpb/design-system-react/blob/main/CODE_OF_CONDUCT.md) principles and [contribution guidelines](https://github.com/cfpb/design-system-react/blob/main/CONTRIBUTING.md).
 
 <Heading type='2'>Core Contributors</Heading>
 
-The core contributors of the DSR are:
+The current core contributors of the DSR are from four CFPB teams:
 
-<MermaidChart chart={`graph TD
-  A[Core Contributors] -->|Collaborate on| B[Project Maintenance]
+<MermaidChart chart={`graph BT
+  A(("<b style='font-size:18px'>DSR<br/>Core Contributors</b>")):::core
+  B["<b style='font-size:14px'>CFPB Design System</b><br/><a href='https://github.com/natalia-fitzgerald'>Natalia Fitzgerald</a> · <i>designer</i><br/><a href='https://github.com/flacoman91'>Richard Dinh</a> · <i>developer</i>"]:::team --> A
+  C["<b style='font-size:14px'>Complaint Explorer</b><br/><a href='https://github.com/anselmbradford'>Ans Bradford</a> · <i>developer</i><br/><a href='https://github.com/itsmedavep'>David Palmer</a> · <i>designer</i>"]:::team --> A
+  D["<b style='font-size:14px'>Metro2</b><br/><a href='https://github.com/virginiacc'>Virginia Czosek</a> · <i>developer</i>"]:::team --> A
+  E["<b style='font-size:14px;white-space:nowrap'>Small Business Lending (inactive)</b><br/><a href='https://github.com/billhimmelsbach/'>Bill Himmelsbach</a> · <i>developer</i><br/><a href='https://github.com/contolini'>Chris Contolini</a> · <i>developer</i>"]:::inactive --> A
+  
+  classDef core fill:#addc91
+  classDef team fill:#d6e8fa
+  classDef inactive fill:#e7e8e9
 `} />
+
+The responsibilities of the core contributors can include:
+- Attending the DSR's biweekly meetings to discuss updates, blockers, and planning
+- Reviewing and merging pull requests
+- Verifying new components against the CFPB Design System
+- Triaging security issues and bugs
+- Updating documentation and helping onboard new users and projects
+
+For a full list of contributors, see the [GitHub repository](https://github.com/cfpb/design-system-react/graphs/contributors).
+
+<Heading type='2'>Meetings</Heading>
+
+There's a biweekly meeting for DSR contributors to discuss updates, blockers, and planning. See the meeting invite for details and a link to the meeting notes. If you are a CFPB employee interested in joining the meeting, contact Bill Himmelsbach or Natalia Fitzgerald.
+
