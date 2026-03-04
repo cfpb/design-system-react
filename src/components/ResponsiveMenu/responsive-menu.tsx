@@ -153,7 +153,7 @@ export const ExampleLinks: React.ReactNode[] = [
     label='John Sample'
   />,
   <Button
-    label='Log Out'
+    label='LOG OUT'
     isLink
     onClick={(): void => {
       /* Empty*/
