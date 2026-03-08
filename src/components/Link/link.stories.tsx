@@ -7,6 +7,21 @@ const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',
   tags: ['autodocs'],
   component: Link,
+  argTypes: {
+    href: { control: 'text' },
+    label: { control: 'text' },
+    type: { control: 'select' },
+    isButton: { control: 'boolean' },
+    isJump: { control: 'boolean' },
+    isRouterLink: { control: 'boolean' },
+    appearance: {
+      control: 'select',
+      options: ['primary', 'secondary', 'warning'],
+    },
+    iconLeft: { control: 'text' },
+    iconRight: { control: 'text' },
+    children: { control: 'text' },
+  },
 };
 
 export default meta;
@@ -15,8 +30,35 @@ type Story = StoryObj<typeof meta>;
 
 const DefaultArguments = {
   args: {
-    href: '#',
-    children: 'Link Text',
+    href: '/#',
+    label: 'Link Text',
+    type: 'default',
+    isButton: false,
+    isJump: false,
+    isRouterLink: false,
+    appearance: 'primary',
+    iconLeft: undefined,
+    iconRight: undefined,
+    children: undefined,
+  },
+};
+
+export const Configurable: Story = {
+  args: {
+    ...DefaultArguments.args,
+  },
+  render: (arguments_) =>
+    arguments_.isRouterLink ? (
+      <BrowserRouter>
+        <Link {...arguments_} />
+      </BrowserRouter>
+    ) : (
+      <Link {...arguments_} />
+    ),
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByRole('link');
+    await expect(link).toHaveAttribute('href', args.href);
   },
 };
 

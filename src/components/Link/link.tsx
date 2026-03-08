@@ -14,6 +14,10 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
    */
   isButton?: boolean;
   /**
+   * What is the link's appearance when rendered as a button?
+   */
+  appearance?: 'primary' | 'secondary' | 'warning';
+  /**
    * Any children to render within the link. Allows you to wrap any node with anchor tag
    */
   children?: ReactNode;
@@ -56,6 +60,7 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
  */
 export default function Link({
   isButton = false,
+  appearance,
   children,
   href,
   iconLeft,
@@ -75,7 +80,8 @@ export default function Link({
   const cname = classnames(others.className, {
     'a-btn': isButton || type === 'destructive',
     'a-btn--link': type === 'destructive',
-    'a-btn--warning': type === 'destructive',
+    'a-btn--warning': type === 'destructive' || (isButton && appearance === 'warning'),
+    'a-btn--secondary': isButton && appearance === 'secondary',
     'a-link--jump': isJump,
     'a-link': shouldUseLinkStyles,
   });
