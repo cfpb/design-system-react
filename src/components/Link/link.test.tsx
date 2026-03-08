@@ -73,6 +73,29 @@ describe('<Link />', () => {
     expect(await screen.findByTestId('link-icon-right')).toBeInTheDocument();
   });
 
+  it('Option: appearance - it applies button appearance classes when isButton', () => {
+    render(
+      <Link {...linkBaseProperties} isButton appearance='secondary' />,
+    );
+    const link = screen.getByTestId(testId);
+    expect(link).toHaveClass('a-btn');
+    expect(link).toHaveClass('a-btn--secondary');
+  });
+
+  it('Option: appearance - it applies warning class when isButton', () => {
+    render(<Link {...linkBaseProperties} isButton appearance='warning' />);
+    const link = screen.getByTestId(testId);
+    expect(link).toHaveClass('a-btn');
+    expect(link).toHaveClass('a-btn--warning');
+  });
+
+  it('Option: appearance - it does not apply button appearance classes without isButton', () => {
+    render(<Link {...linkBaseProperties} appearance='secondary' />);
+    const link = screen.getByTestId(testId);
+    expect(link).not.toHaveClass('a-btn--secondary');
+    expect(link).not.toHaveClass('a-btn--warning');
+  });
+
   it('Other: propagates other attributes', () => {
     render(<Link {...linkBaseProperties} target='_blank' />);
     const link = screen.getByTestId(testId);
