@@ -5,10 +5,9 @@ $menu-width: 100%;
 $animation-duration: 0.3s;
 $max-width: $breakpoint - 0.0625em;
 
-.o-header,
 .o-header-scope {
   .o-header__content {
-    background-color: #fff;
+    background-color: var(--white);
     height: auto;
     width: 100%;
     z-index: 1000;
@@ -78,10 +77,8 @@ $max-width: $breakpoint - 0.0625em;
           position: absolute;
           top: 54px;
           left: -$menu-width - 15;
-
-          // height: 100vh;
           width: $menu-width;
-          background-color: #fff;
+          background-color: var(--white);
           border-top: 1px solid var(--gray-40);
           overflow-y: auto;
           padding-top: $space-sm;
@@ -157,13 +154,12 @@ $max-width: $breakpoint - 0.0625em;
               }
 
               @media (min-width: $breakpoint) {
-                // border-top: 1px solid transparent;
                 border-bottom: 1px solid var(--pacific);
               }
             }
 
             &.nav-item.active.a-link {
-              color: #101820;
+              color: var(--black);
 
               @media (max-width: $max-width) {
                 &::before {
@@ -179,7 +175,7 @@ $max-width: $breakpoint - 0.0625em;
               }
 
               @media (min-width: $breakpoint) {
-                border-bottom: 2px solid #101820;
+                border-bottom: 2px solid var(--black);
               }
             }
           }

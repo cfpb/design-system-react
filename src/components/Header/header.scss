@@ -1,12 +1,11 @@
-.o-header,
-.o-header-scope {
+.o-header {
   min-width: 320px;
   position: relative;
   z-index: 10;
-  background-color: #fff;
+  background-color: var(--white);
 
   &.bottom-border {
-    border-bottom: 5px solid #20aa3f;
+    border-bottom: 5px solid var(--green);
   }
 
   .o-header__content {
@@ -103,13 +102,11 @@
 }
 
 @media print {
-  .o-header .o-header__logo,
-  .o-header-scope .o-header__logo {
+  .o-header .o-header__logo {
     margin-left: 15px !important;
   }
 }
 
-.print .o-header .o-header__logo,
-.print .o-header-scope .o-header__logo {
+.print .o-header .o-header__logo {
   margin-left: 15px !important;
 }
