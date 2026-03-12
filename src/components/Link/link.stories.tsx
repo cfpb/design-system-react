@@ -15,7 +15,7 @@ const meta: Meta<typeof Link> = {
     isRouterLink: { control: 'boolean' },
     appearance: {
       control: 'select',
-      options: ['primary', 'secondary', 'warning'],
+      options: ['primary', 'secondary', 'warning', 'destructive'],
     },
     iconLeft: { control: 'text' },
     iconRight: { control: 'text' },
