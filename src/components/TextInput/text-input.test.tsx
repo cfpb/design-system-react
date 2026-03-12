@@ -43,6 +43,6 @@ describe('<TextInput />', () => {
     render(<TextInput id='alert' name='alert' type='number' isFullWidth />);
 
     const textInput = screen.getByTestId('textInput');
-    expect(textInput).toHaveClass('a-text-input--full');
+    expect(textInput).toHaveClass('a-text-input__full');
   });
 });
