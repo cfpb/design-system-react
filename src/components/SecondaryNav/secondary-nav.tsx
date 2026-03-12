@@ -77,12 +77,14 @@ export const SecondaryNav = ({
                     {item.label}
                   </Link>
                 ) : (
-                  <span
+                  // Section header when a child is active; matches CFPB markup (anchor without href)
+                  // eslint-disable-next-line jsx-a11y/anchor-is-valid -- placeholder anchor per CFPB pattern
+                  <a
                     className='o-secondary-nav__link o-secondary-nav__link--parent'
                     aria-current={undefined}
                   >
                     {item.label}
-                  </span>
+                  </a>
                 )}
                 {item.children && item.children.length > 0 ? (
                   <ul className='o-secondary-nav__list o-secondary-nav__list--children'>
