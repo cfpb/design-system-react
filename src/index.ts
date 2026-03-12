@@ -33,6 +33,12 @@ export { Pagination } from './components/Pagination/pagination';
 export { usePagination } from './components/Pagination/use-pagination';
 export { Paragraph } from './components/Paragraph/paragraph';
 export { RadioButton } from './components/RadioButton/radio-button';
+export { SecondaryNav } from './components/SecondaryNav/secondary-nav';
+export type {
+  SecondaryNavChildItem,
+  SecondaryNavItem,
+  SecondaryNavProperties,
+} from './components/SecondaryNav/secondary-nav';
 export { default as ResponsiveMenu } from './components/ResponsiveMenu/responsive-menu';
 export { Select } from './components/Select/select';
 export { SelectMulti } from './components/Select/select-multi';
