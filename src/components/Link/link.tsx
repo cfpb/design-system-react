@@ -14,9 +14,9 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
    */
   isButton?: boolean;
   /**
-   * What is the link's appearance when rendered as a button?
+   * What is the link's appearance?
    */
-  appearance?: 'primary' | 'secondary' | 'warning';
+  appearance?: 'primary' | 'secondary' | 'destructive' | 'warning';
   /**
    * Any children to render within the link. Allows you to wrap any node with anchor tag
    */
@@ -46,10 +46,6 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
    */
   label?: string;
   ref?: Ref<HTMLAnchorElement>;
-  /**
-   * What type of link should be rendered
-   */
-  type?: 'default' | 'destructive';
 }
 
 /**
@@ -68,7 +64,6 @@ export default function Link({
   isJump = false,
   isRouterLink = false,
   label,
-  type = 'default',
   ...others
 }: LinkProperties): JSXElement {
   const hasLeftIcon = Boolean(iconLeft);
@@ -77,10 +72,11 @@ export default function Link({
   const shouldUseLinkStyles = !isButton && (hasIcons || isJump);
   const shouldWrapLabel = isButton || shouldUseLinkStyles;
   const labelNode = shouldWrapLabel ? <LinkText>{label}</LinkText> : label;
+  const isDestructive = ['destructive', 'warning'].includes(appearance);
   const cname = classnames(others.className, {
-    'a-btn': isButton || type === 'destructive',
-    'a-btn--link': type === 'destructive',
-    'a-btn--warning': type === 'destructive' || (isButton && appearance === 'warning'),
+    'a-btn': isButton || isDestructive,
+    'a-btn--link': isDestructive && !isButton,
+    'a-btn--warning': isDestructive,
     'a-btn--secondary': isButton && appearance === 'secondary',
     'a-link--jump': isJump,
     'a-link': shouldUseLinkStyles,

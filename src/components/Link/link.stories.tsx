@@ -10,7 +10,6 @@ const meta: Meta<typeof Link> = {
   argTypes: {
     href: { control: 'text' },
     label: { control: 'text' },
-    type: { control: 'select' },
     isButton: { control: 'boolean' },
     isJump: { control: 'boolean' },
     isRouterLink: { control: 'boolean' },
@@ -32,7 +31,6 @@ const DefaultArguments = {
   args: {
     href: '/#',
     label: 'Link Text',
-    type: 'default',
     isButton: false,
     isJump: false,
     isRouterLink: false,
@@ -159,7 +157,9 @@ export const Destructive: Story = {
   args: {
     ...DefaultArguments.args,
   },
-  render: () => <Link href='/#' type='destructive' label='Destructive link' />,
+  render: () => (
+    <Link href='/#' appearance='warning' label='Destructive link' />
+  ),
 };
 
 export const LinkWithReactRouterLink: Story = {

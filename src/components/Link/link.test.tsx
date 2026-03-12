@@ -11,14 +11,14 @@ describe('<Link />', () => {
   };
   const testId = linkBaseProperties['data-testid'];
 
-  it('Type: "default"', () => {
+  it('Appearance: "primary" (default)', () => {
     render(<Link {...linkBaseProperties} />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveAttribute('href', '/foo/bar');
   });
 
-  it('Type: "destructive"', () => {
-    render(<Link {...linkBaseProperties} type='destructive' />);
+  it('Appearance: "warning" (destructive)', () => {
+    render(<Link {...linkBaseProperties} appearance='warning' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-btn a-btn--link a-btn--warning');
   });
@@ -89,7 +89,7 @@ describe('<Link />', () => {
     expect(link).toHaveClass('a-btn--warning');
   });
 
-  it('Option: appearance - it does not apply button appearance classes without isButton', () => {
+  it('Option: appearance - it does not apply secondary class without isButton', () => {
     render(<Link {...linkBaseProperties} appearance='secondary' />);
     const link = screen.getByTestId(testId);
     expect(link).not.toHaveClass('a-btn--secondary');
