@@ -18,4 +18,11 @@ export const Default: Story = {
   args: {
     links: ExampleLinks,
   },
+  decorators: [
+    (Story) => (
+      <div className='o-header-scope'>
+        <Story />
+      </div>
+    ),
+  ],
 };

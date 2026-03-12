@@ -1,5 +1,4 @@
-.o-header,
-.o-header-scope {
+.o-header {
   min-width: 320px;
   position: relative;
   z-index: 10;
@@ -103,13 +102,11 @@
 }
 
 @media print {
-  .o-header .o-header__logo,
-  .o-header-scope .o-header__logo {
+  .o-header .o-header__logo {
     margin-left: 15px !important;
   }
 }
 
-.print .o-header .o-header__logo,
-.print .o-header-scope .o-header__logo {
+.print .o-header .o-header__logo {
   margin-left: 15px !important;
 }

@@ -90,18 +90,16 @@ export default function ResponsiveMenu({
   if (!links?.length) {
     // no need for hamburger menu button or any links
     return (
-      <div className='o-header-scope'>
-        <div className='o-header__content'>
-          <div className='navbar wrapper wrapper--match-content'>
-            <CfpbLogo href={href} />
-          </div>
+      <div className='o-header__content'>
+        <div className='navbar wrapper wrapper--match-content'>
+          <CfpbLogo href={href} />
         </div>
       </div>
     );
   }
 
   return (
-    <div className='o-header-scope'>
+    <>
       {isMenuOpen ? (
         <div
           className='menu-overlay open'
@@ -136,7 +134,7 @@ export default function ResponsiveMenu({
           </nav>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
