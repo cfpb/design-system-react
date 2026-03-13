@@ -44,6 +44,7 @@ const defaultItems: SecondaryNavItem[] = [
 const itemsWithSubMenu: SecondaryNavItem[] = [
   {
     label: 'Section 1',
+    href: '/section-1',
     children: [
       { href: '/section-1/item-a', label: 'Item A', isActive: true },
       { href: '/section-1/item-b', label: 'Item B' },
