@@ -55,9 +55,8 @@ export const SecondaryNav = ({
           {items.map((item) => {
             const hasChildren = Boolean(item.children?.length);
             const hasActiveChild = hasChildren && item.children!.some((c) => c.isActive);
-            const parentIsActive = hasChildren ? false : item.isActive;
-            const sectionHasActive =
-              hasActiveChild || (!hasChildren && item.isActive);
+            const parentIsActive = Boolean(item.isActive && !hasActiveChild);
+            const sectionHasActive = hasActiveChild || parentIsActive;
 
             return (
               <li
