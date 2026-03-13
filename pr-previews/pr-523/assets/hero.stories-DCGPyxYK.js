@@ -1,0 +1,48 @@
+import"./iframe-C5B-1o6k.js";import{k as s}from"./text-introduction-B8NNNB6X.js";import"./checkbox-BWWx8d60.js";import"./icon-EOcJtYna.js";import"./link-CO7iNnF-.js";import"./well-D2Grgs8k.js";import"./paragraph-7_6hvewa.js";import"./secondary-nav-CELy5Y7V.js";import"./summary-BdVmCIPz.js";import"./text-area-0By9hp3g.js";import"./preload-helper-PPVm8Dsz.js";import"./jsx-runtime-u17CrQMm.js";import"./index-nIh48lan.js";const w={title:"Components (Draft)/Heroes",component:s,tags:["autodocs"],parameters:{docs:{description:{component:`
+Heroes are a primary focal point on landing and sublanding pages. They introduce a collection of pages by combining a brief description of the goals of that section along with a visually impactful graphic. To introduce lower-level pages, use the [text introduction](https://cfpb.github.io/design-system/patterns/text-introductions) instead.
+
+Source: https://cfpb.github.io/design-system/patterns/heroes
+`}}}},e={args:{heading:"41 chars max for a one-line heading",image:"https://cfpb.github.io/design-system/images/uploads/hero_illustration_example_keys.png",subheading:"This text has a recommended count of 165-186 characters (three lines at 1230px) following a one-line heading and 108-124 characters (two lines at 1230px) following a two-line heading.",backgroundColor:"#d4e7e6"}},a={args:{...e.args,imageIsPhoto:!0,image:"https://files.consumerfinance.gov/f/images/PC_hero.original.jpg",backgroundColor:"#f7f8f9"}},o={args:{...e.args,heading:"50 chars max for a two-line heading",subheading:"This text has a recommended count of 140-175 characters (four lines at 1230px) following a two- or three-line heading.",isJumbo:!0,image:"https://cfpb.github.io/design-system/images/uploads/jumbo_hero_image_wide.jpeg",backgroundColor:"rgb(168,213,200	)"}},t={name:"50/50",args:{...e.args,heading:"50 chars max for a two-line heading",subheading:"This text has a recommended count of 140-175 characters (four lines at 1230px) following a two- or three-line heading.",is5050:!0,image:"https://cfpb.github.io/design-system/images/uploads/jumbo-hero-image.png",backgroundColor:"white"}},n={name:"With knockout text",args:{...e.args,heading:"Max of 41 chars for a one-line heading",subheading:"This text has a recommended count of 165-186 characters (three lines at 1230px) following a one-line heading and 108-124 characters (two lines at 1230px) following a two-line heading.",backgroundColor:"#207676",isKnockout:!0,image:"https://cfpb.github.io/design-system/images/uploads/design_system_hero_example.png"}};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:`{
+  args: {
+    heading: '41 chars max for a one-line heading',
+    image: 'https://cfpb.github.io/design-system/images/uploads/hero_illustration_example_keys.png',
+    subheading: 'This text has a recommended count of 165-186 characters (three lines at 1230px) following a one-line heading and 108-124 characters (two lines at 1230px) following a two-line heading.',
+    backgroundColor: '#d4e7e6'
+  }
+}`,...e.parameters?.docs?.source}}};a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`{
+  args: {
+    ...WithIllustration.args,
+    imageIsPhoto: true,
+    image: 'https://files.consumerfinance.gov/f/images/PC_hero.original.jpg',
+    backgroundColor: '#f7f8f9'
+  }
+}`,...a.parameters?.docs?.source}}};o.parameters={...o.parameters,docs:{...o.parameters?.docs,source:{originalSource:`{
+  args: {
+    ...WithIllustration.args,
+    heading: '50 chars max for a two-line heading',
+    subheading: 'This text has a recommended count of 140-175 characters (four lines at 1230px) following a two- or three-line heading.',
+    isJumbo: true,
+    image: 'https://cfpb.github.io/design-system/images/uploads/jumbo_hero_image_wide.jpeg',
+    backgroundColor: 'rgb(168,213,200	)'
+  }
+}`,...o.parameters?.docs?.source}}};t.parameters={...t.parameters,docs:{...t.parameters?.docs,source:{originalSource:`{
+  name: '50/50',
+  args: {
+    ...WithIllustration.args,
+    heading: '50 chars max for a two-line heading',
+    subheading: 'This text has a recommended count of 140-175 characters (four lines at 1230px) following a two- or three-line heading.',
+    is5050: true,
+    image: 'https://cfpb.github.io/design-system/images/uploads/jumbo-hero-image.png',
+    backgroundColor: 'white'
+  }
+}`,...t.parameters?.docs?.source}}};n.parameters={...n.parameters,docs:{...n.parameters?.docs,source:{originalSource:`{
+  name: 'With knockout text',
+  args: {
+    ...WithIllustration.args,
+    heading: 'Max of 41 chars for a one-line heading',
+    subheading: 'This text has a recommended count of 165-186 characters (three lines at 1230px) following a one-line heading and 108-124 characters (two lines at 1230px) following a two-line heading.',
+    backgroundColor: '#207676',
+    isKnockout: true,
+    image: 'https://cfpb.github.io/design-system/images/uploads/design_system_hero_example.png'
+  }
+}`,...n.parameters?.docs?.source}}};const y=["WithIllustration","WithPhotograph","Jumbo","FiftyFifty","WithKnockoutText"];export{t as FiftyFifty,o as Jumbo,e as WithIllustration,n as WithKnockoutText,a as WithPhotograph,y as __namedExportsOrder,w as default};
