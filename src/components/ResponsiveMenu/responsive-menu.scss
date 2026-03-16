@@ -42,6 +42,19 @@ $max-width: $breakpoint - 0.0625em;
         }
       }
 
+      .o-header__logo-img {
+        height: 34px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        vertical-align: middle;
+      }
+
+      @media (min-width: $breakpoint) {
+        .o-header__logo-img {
+          height: 50px;
+        }
+      }
+
       .menu-toggle {
         display: block;
         border: none;
@@ -55,6 +68,7 @@ $max-width: $breakpoint - 0.0625em;
         z-index: 1000; // Ensure it's above the overlay
 
         .cf-icon-svg {
+          // make hamburger icon appear slightly bigger in mobile menu
           height: 21.38px;
         }
 

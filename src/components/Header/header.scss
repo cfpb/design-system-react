@@ -65,19 +65,6 @@
     }
   }
 
-  .o-header__logo-img {
-    height: 34px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    vertical-align: middle;
-  }
-
-  @media only all and (width >= 56.3125em) {
-    .o-header__logo-img {
-      height: 50px;
-    }
-  }
-
   @media only all and (width >= 56.3125em) {
     .o-header__mega-menu {
       min-height: 167px;
