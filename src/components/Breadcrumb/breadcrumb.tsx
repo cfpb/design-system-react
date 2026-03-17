@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import type { HTMLAttributes } from 'react';
 import { Fragment, JSX } from 'react';
+import Link from '../Link/link';
 import './breadcrumb.scss';
 
 export interface BreadcrumbCrumb {
@@ -40,9 +41,9 @@ export const Breadcrumb = ({
                 {` ${crumb.label} `}
               </span>
             ) : (
-              <a className='m-breadcrumbs__crumb' href={crumb.href}>
+              <Link className='m-breadcrumbs__crumb' href={crumb.href}>
                 {` ${crumb.label} `}
-              </a>
+              </Link>
             )}
           </Fragment>
         ))}
