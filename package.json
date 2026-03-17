@@ -120,7 +120,6 @@
     "vite-plugin-pwa": "^1.2.0",
     "vite-plugin-svgr": "^4.5.0",
     "vite-plugin-turbosnap": "^1.0.3",
-    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.0"
   },
   "resolutions": {

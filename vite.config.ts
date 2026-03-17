@@ -7,7 +7,6 @@ import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
-import tsConfigPaths from 'vite-tsconfig-paths';
 import { name } from './package.json';
 import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
 
@@ -27,7 +26,6 @@ export default defineConfig(async ({ mode }) => {
       include: '**/*.svg?react',
     }),
     pluginReact(),
-    tsConfigPaths(),
     dts({
       insertTypesEntry: true,
     }),
@@ -43,6 +41,7 @@ export default defineConfig(async ({ mode }) => {
   return {
     publicDir: false,
     resolve: {
+      tsconfigPaths: true,
       alias: {
         '~': resolve(__dirname),
         // Catch-all for internal library paths to bypass restrictive "exports" in package.json
