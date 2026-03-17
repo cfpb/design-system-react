@@ -1,9 +1,0 @@
-import{j as e}from"./jsx-runtime-u17CrQMm.js";import{useMDXComponents as c}from"./index-B44b7e3W.js";import{M as a}from"./blocks-DW-XeRjV.js";import"./iframe-C5B-1o6k.js";import{H as s}from"./text-introduction-B8NNNB6X.js";import"./checkbox-BWWx8d60.js";import"./icon-EOcJtYna.js";import{L as h,a as n}from"./link-CO7iNnF-.js";import{L as m}from"./well-D2Grgs8k.js";import{P as r}from"./paragraph-7_6hvewa.js";import"./secondary-nav-CELy5Y7V.js";import"./summary-BdVmCIPz.js";import"./text-area-0By9hp3g.js";import"./preload-helper-PPVm8Dsz.js";import"./index-BK9bRsnL.js";import"./index-nIh48lan.js";function i(t){const o={a:"a",...c(),...t.components};return e.jsxs(e.Fragment,{children:[`
-`,`
-`,e.jsx(a,{title:"Components (Verified)/Checkboxes/Overview"}),`
-`,`
-`,e.jsx(s,{type:"1",children:"Checkboxes"}),`
-`,e.jsxs(r,{children:["Use checkboxes when the user can select more than one option from a list. Make clear with helper text that this is the case. Use ",e.jsx(o.a,{href:"https://cfpb.github.io/design-system/components/radio-buttons",rel:"nofollow",children:"radio buttons"})," when the user can choose only one option from a list."]}),`
-`,e.jsxs(r,{children:["Source: ",e.jsx(h,{href:"https://cfpb.github.io/design-system/components/checkboxes",children:"https://cfpb.github.io/design-system/components/checkboxes"})]}),`
-`,e.jsx("br",{}),`
-`,e.jsxs("div",{className:"sb-unstyled",children:[e.jsx(s,{type:"4",children:"Types"}),e.jsxs(m,{isLink:!0,children:[e.jsx(n,{target:"_top",href:"./?path=/docs/components-verified-checkboxes-checkbox--overview",label:"Checkbox"}),e.jsx(n,{target:"_top",href:"./?path=/docs/components-verified-checkboxes-large-target-area--overview",label:"Large target area"})]})]})]})}function _(t={}){const{wrapper:o}={...c(),...t.components};return o?e.jsx(o,{...t,children:e.jsx(i,{...t})}):i(t)}export{_ as default};
