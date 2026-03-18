@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { LitElement } from 'lit';
 import styles from './cfpb-flag-usa.component.scss';
 
 /**
@@ -6,10 +6,6 @@ import styles from './cfpb-flag-usa.component.scss';
  */
 export class CfpbFlagUsa extends LitElement {
   static styles = styles;
-
-  render() {
-    return html` <span class="u-usa-flag"> </span> `;
-  }
 
   static init() {
     window.customElements.get('cfpb-flag-usa') ||

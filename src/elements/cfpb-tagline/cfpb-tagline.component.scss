@@ -14,14 +14,14 @@
       display: inline-block;
     }
 
-    & .u-usa-flag {
+    & cfpb-flag-usa {
       margin-top: 1px;
     }
 
     &--large {
       font-size: math.div(16px, $base-font-size-px) + rem;
 
-      & .u-usa-flag {
+      & cfpb-flag-usa {
         margin-top: 4px;
       }
     }
