@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Tagline } from '~/src/index';
+import { CfpbTagline } from '../../elements/cfpb-tagline';
 
-const meta: Meta<typeof Tagline> = {
+CfpbTagline.init();
+
+const meta: Meta<typeof CfpbTagline> = {
   title: 'Components (Verified)/Taglines',
   tags: ['autodocs'],
-  component: Tagline,
+  component: CfpbTagline,
   parameters: {
     docs: {
       description: {
@@ -25,12 +27,10 @@ type Story = StoryObj<typeof meta>;
 
 export const StandardTagline: Story = {
   render: (properties) => (
-    <Tagline {...properties}>
-      <>
-        An official website of the{' '}
-        <span className='u-nowrap'>United States government</span>
-      </>
-    </Tagline>
+    <cfpb-tagline {...properties}>
+      An official website of the{' '}
+      <span className='u-nowrap'>United States government</span>
+    </cfpb-tagline>
   ),
 };
 StandardTagline.storyName = 'Standard tagline';

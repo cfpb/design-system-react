@@ -1,8 +1,10 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
+import { CfpbTagline } from '../../elements/cfpb-tagline';
 import type { JSXElement } from '../../types/jsx-element';
-import { Tagline } from '../Tagline/tagline';
 import './banner.scss';
+
+CfpbTagline.init();
 
 interface BannerProperties extends React.HTMLProps<HTMLDivElement> {
   isHorizontal?: boolean;
@@ -58,7 +60,7 @@ export const Banner = ({
     eyebrowClasses.push('m-global-eyebrow--horizontal');
     wrapperClasses.push('wrapper--match-content');
     linkListClasses.push('m-list--horizontal m-global-eyebrow__languages');
-    taglineContent = <Tagline>{tagline}</Tagline>;
+    taglineContent = <cfpb-tagline>{tagline}</cfpb-tagline>;
   } else {
     eyebrowClasses.push('m-global-eyebrow--list');
   }

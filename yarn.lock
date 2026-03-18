@@ -1270,6 +1270,7 @@ __metadata:
     jest-matchmedia-mock: "npm:1.1.0"
     jsdom: "npm:29.0.0"
     lint-staged: "npm:16.4.0"
+    lit: "npm:^3.3.2"
     npm-run-all: "npm:4.1.5"
     playwright: "npm:^1.58.2"
     postcss: "npm:8.5.8"
@@ -1288,6 +1289,7 @@ __metadata:
     typescript-eslint: "npm:^8.57.1"
     vite: "npm:^8.0.0"
     vite-plugin-dts: "npm:^4.5.4"
+    vite-plugin-lit-css: "npm:^2.2.2"
     vite-plugin-pwa: "npm:^1.2.0"
     vite-plugin-svgr: "npm:^4.5.0"
     vite-plugin-turbosnap: "npm:^1.0.3"
@@ -2102,6 +2104,22 @@ __metadata:
   version: 1.1.1
   resolution: "@keyv/serialize@npm:1.1.1"
   checksum: 10/e3b2cb1377863342acedd5ff785af3e69269bee9b44707c617d1c8bc14eeb5ac763159d6455903ffe92f143c2238e1e783c4f113f9c8910eacccf172894472da
+  languageName: node
+  linkType: hard
+
+"@lit-labs/ssr-dom-shim@npm:^1.5.0":
+  version: 1.5.1
+  resolution: "@lit-labs/ssr-dom-shim@npm:1.5.1"
+  checksum: 10/8b90e101cbaef3aa9d3a16cd90010c2c7c13cc0b3effa8ce166e2c7a57e52e759fb7bb4f800ce5b5dfb1d7cbd8430a0b430bcc8bcb8b54d1417dbf2eb046dd6a
+  languageName: node
+  linkType: hard
+
+"@lit/reactive-element@npm:^2.1.0":
+  version: 2.1.2
+  resolution: "@lit/reactive-element@npm:2.1.2"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": "npm:^1.5.0"
+  checksum: 10/91ae952d34fba51ac4936f7d6b3a4300e48a54a9e7c77c8747a08148124a2a9a52cd057db059eff8424ae43c6fa342275550793e6ecfc0054bce8286df4214cb
   languageName: node
   linkType: hard
 
@@ -8294,6 +8312,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lit-element@npm:^4.2.0":
+  version: 4.2.2
+  resolution: "lit-element@npm:4.2.2"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": "npm:^1.5.0"
+    "@lit/reactive-element": "npm:^2.1.0"
+    lit-html: "npm:^3.3.0"
+  checksum: 10/268705c5a88c68ceeffb4dc871ffa7a9e5b5405b4907bc408cdc3336ea865b1690b4f4a34155af287200cc0737933c25326ed6816fa2c040b747925717bc21a6
+  languageName: node
+  linkType: hard
+
+"lit-html@npm:^3.3.0":
+  version: 3.3.2
+  resolution: "lit-html@npm:3.3.2"
+  dependencies:
+    "@types/trusted-types": "npm:^2.0.2"
+  checksum: 10/5e938739641e312673e722eb41d5ca48dfcf69277e665c72dadd6514f53fc3dc4d5172cf8ca6af67736df1bce267f6189b3ef6fcb4125386b2490cd10c266b8f
+  languageName: node
+  linkType: hard
+
+"lit@npm:^3.3.2":
+  version: 3.3.2
+  resolution: "lit@npm:3.3.2"
+  dependencies:
+    "@lit/reactive-element": "npm:^2.1.0"
+    lit-element: "npm:^4.2.0"
+    lit-html: "npm:^3.3.0"
+  checksum: 10/0af8e06a0ef5bb6a84c3dd58b64b6b554baf4bc195d725951ae60bbd9999618364815dc4438bf949051e7f15497b71b2bb9f7514772b33c4526882bdfb805858
+  languageName: node
+  linkType: hard
+
 "load-json-file@npm:^4.0.0":
   version: 4.0.0
   resolution: "load-json-file@npm:4.0.0"
@@ -11814,6 +11863,16 @@ __metadata:
     vite:
       optional: true
   checksum: 10/1504a8da02f8015c3138ef57a690179ad9b9d4369a054ae48b52a1c8cbc7ad05474551eab309cd90cf758800e17b67ccd13317aa5f8e28efde957547c7a339fb
+  languageName: node
+  linkType: hard
+
+"vite-plugin-lit-css@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "vite-plugin-lit-css@npm:2.2.2"
+  peerDependencies:
+    lit: ^2.0.0 || ^3.0.0
+    vite: ^5.2.10 || ^6.0.0 || ^7.0.0
+  checksum: 10/6fae46ed4322ee564984356200e69590a3830c8115585cee7a4dfc8725095228ae4be5fd2c3f5afbd3bdcaf1cd972768ba0517f61d137437f5e27d47dd8da3d1
   languageName: node
   linkType: hard
 
