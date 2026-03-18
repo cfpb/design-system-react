@@ -8,7 +8,7 @@ export class CfpbFlagUsa extends LitElement {
   static styles = styles;
 
   static init() {
-    window.customElements.get('cfpb-flag-usa') ||
-      window.customElements.define('cfpb-flag-usa', CfpbFlagUsa);
+    globalThis.customElements.get('cfpb-flag-usa') ??
+      globalThis.customElements.define('cfpb-flag-usa', CfpbFlagUsa);
   }
 }

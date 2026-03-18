@@ -45,7 +45,7 @@ export class CfpbTagline extends LitElement {
   static init() {
     CfpbFlagUsa.init();
 
-    window.customElements.get('cfpb-tagline') ||
-      window.customElements.define('cfpb-tagline', CfpbTagline);
+    globalThis.customElements.get('cfpb-tagline') ??
+      globalThis.customElements.define('cfpb-tagline', CfpbTagline);
   }
 }
