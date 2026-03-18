@@ -26,12 +26,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const StandardTagline: Story = {
-  render: (properties) => (
-    <cfpb-tagline {...properties}>
-      An official website of the{' '}
-      <span className='u-nowrap'>United States government</span>
-    </cfpb-tagline>
-  ),
+  render: (properties) => <cfpb-tagline {...properties}></cfpb-tagline>,
 };
 StandardTagline.storyName = 'Standard tagline';
 

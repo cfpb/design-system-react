@@ -27,10 +27,16 @@ export class CfpbTagline extends LitElement {
     if (this.isLarge) baseClasses.push('a-tagline--large');
 
     return html`
-      <div class="${baseClasses.join(' ')}">
+      <div
+        class="${baseClasses.join(' ')}"
+        aria-label="Official website of the United States government"
+      >
         <cfpb-flag-usa></cfpb-flag-usa>
         <div class="a-tagline__text">
-          <slot></slot>
+          <slot>
+            An official website of the
+            <span class="u-nowrap">United States government</span>
+          </slot>
         </div>
       </div>
     `;
