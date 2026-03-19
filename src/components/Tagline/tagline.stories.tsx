@@ -1,12 +1,21 @@
+import type { ComponentPropsWithoutRef } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CfpbTagline } from '../../elements/cfpb-tagline';
 
 CfpbTagline.init();
 
-const meta: Meta<typeof CfpbTagline> = {
+type TaglineProps = ComponentPropsWithoutRef<'cfpb-tagline'> & {
+  isLarge?: boolean;
+};
+
+const TaglineComponent = (properties: TaglineProps) => (
+  <cfpb-tagline {...properties}></cfpb-tagline>
+);
+
+const meta = {
   title: 'Components (Verified)/Taglines',
   tags: ['autodocs'],
-  component: CfpbTagline,
+  component: TaglineComponent,
   parameters: {
     docs: {
       description: {
@@ -19,7 +28,7 @@ Source: https://cfpb.github.io/design-system/components/taglines
       },
     },
   },
-};
+} satisfies Meta<TaglineProps>;
 
 export default meta;
 
