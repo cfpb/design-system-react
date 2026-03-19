@@ -9,6 +9,9 @@ type CustomElementProps<Attributes extends object = {}> =
     Attributes;
 
 declare global {
+  // Pattern:
+  // 1. Add a colocated `index.d.ts` next to the element's `index.js`.
+  // 2. Import the class here, add to `HTMLElementTagNameMap`, and wire JSX props.
   interface HTMLElementTagNameMap {
     'cfpb-flag-usa': CfpbFlagUsa;
     'cfpb-tagline': CfpbTagline;
