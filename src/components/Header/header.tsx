@@ -23,9 +23,11 @@ export const Header = ({
   if (withBottomBorder) headerClasses.push('bottom-border');
 
   return (
-    <header className={classnames(headerClasses)}>
-      <Banner tagline='An official website of the United States government' />
-      <ResponsiveMenu links={links} href={href} />
-    </header>
+    <div className='o-header-scope'>
+      <header className={classnames(headerClasses)}>
+        <Banner tagline='An official website of the United States government' />
+        <ResponsiveMenu links={links} href={href} />
+      </header>
+    </div>
   );
 };

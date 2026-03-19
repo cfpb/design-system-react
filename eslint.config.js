@@ -62,7 +62,7 @@ export default tseslint.config(
       'testing-library': testingLibrary,
     },
     settings: {
-      react: { version: 'detect' },
+      react: { version: '19' },
 
       // Tell eslint-plugin-import how to resolve TS/JS files.
       'import/resolver': {

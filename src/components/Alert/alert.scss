@@ -19,10 +19,8 @@
   position: absolute;
 }
 
-.m-notification:not(.m-notification--error, .m-notification--success, .m-notification--warning)
-  > .cf-icon-svg-wrapper
-  .cf-icon-svg {
-  fill: #5a5d61;
+.m-notification:not(.m-notification--error, .m-notification--success, .m-notification--warning) > .cf-icon-svg-wrapper .cf-icon-svg {
+  fill: var(--gray);
 }
 
 .cf-icon-svg-wrapper + .m-notification__content {
