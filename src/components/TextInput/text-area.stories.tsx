@@ -26,7 +26,7 @@ export const Enabled: Story = {
     const canvas = within(canvasElement);
     const textbox = canvas.getByRole('textbox');
     await userEvent.type(textbox, 'Sample comment');
-    expect(textbox).toHaveValue('Sample comment');
+    await expect(textbox).toHaveValue('Sample comment');
   },
 };
 

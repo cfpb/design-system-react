@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { List, ListItem, Link } from '~/src/index';
+import { Link, List, ListItem } from '~/src/index';
 
 const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',
@@ -24,7 +24,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Unordered: Story = {
-  name: 'Unordered',
   args: {
     children: (
       <>
@@ -37,7 +36,6 @@ export const Unordered: Story = {
 };
 
 export const Ordered: Story = {
-  name: 'Ordered',
   args: {
     ...Unordered.args,
     isOrdered: true,
@@ -45,7 +43,6 @@ export const Ordered: Story = {
 };
 
 export const Unstyled: Story = {
-  name: 'Unstyled',
   args: {
     ...Unordered.args,
     isUnstyled: true,
@@ -53,7 +50,6 @@ export const Unstyled: Story = {
 };
 
 export const Horizontal: Story = {
-  name: 'Horizontal',
   args: {
     ...Unordered.args,
     isHorizontal: true,

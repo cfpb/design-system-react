@@ -26,9 +26,9 @@ export const Enabled: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
-    expect(input).toHaveValue('Enabled');
+    await expect(input).toHaveValue('Enabled');
     await userEvent.click(input);
-    expect(input).toHaveFocus();
+    await expect(input).toHaveFocus();
   },
 };
 

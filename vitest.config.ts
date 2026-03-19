@@ -10,6 +10,7 @@ export default defineConfig(async (configEnv) => {
   const storybookConfigDir = process.env.STORYBOOK_CONFIG_DIR;
   const isStorybookTest = Boolean(storybookConfigDir);
   if (isStorybookTest) {
+    // eslint-disable-next-line no-console
     console.log(
       '[storybook][vitest-config] project name:',
       `storybook:${storybookConfigDir}`,

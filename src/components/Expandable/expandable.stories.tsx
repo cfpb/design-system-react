@@ -136,7 +136,6 @@ export const DefaultExpandableGroup: Story = {
 
 export const Accordion: Story = {
   ...DefaultExpandableGroup,
-  name: 'Accordion',
   args: {
     accordion: true,
     groupId: 'AccordionGroup',
