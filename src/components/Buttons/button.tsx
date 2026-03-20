@@ -1,11 +1,20 @@
-import { forwardRef, JSX, type ButtonHTMLAttributes } from 'react';
+import {
+  forwardRef,
+  JSX,
+  type ButtonHTMLAttributes,
+  type ReactNode,
+} from 'react';
 import { Icon } from '../Icon/icon';
 
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Button contents
    */
-  label: string;
+  label?: string;
+  /**
+   * Any children to render within the button. Allows you to wrap any node with button tag
+   */
+  children?: ReactNode;
   /**
    * What is the button's appearance?
    */
@@ -21,7 +30,7 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Button should be styled as a link?
    */
-  asLink?: boolean;
+  isLink?: boolean;
   /**
    * Name of icon to display left of button text
    */
@@ -37,12 +46,12 @@ const baseStyles = ['a-btn'];
 const appearanceStyles = {
   primary: [],
   secondary: ['a-btn--secondary'],
-  warning: ['a-btn--warning']
+  warning: ['a-btn--warning'],
 };
 
 const sizeStyles = {
   default: [],
-  full: ['a-btn--full-on-xs']
+  full: ['a-btn--full-on-xs'],
 };
 
 /**
@@ -52,24 +61,36 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
   (
     {
       appearance = 'primary',
-      asLink = false,
+      isLink = false,
       size = 'default',
       label,
       className,
       iconLeft,
       iconRight,
+      children,
       ...properties
     },
-    reference // Receive the ref as the second argument
+    reference, // Receive the ref as the second argument
   ): JSX.Element => {
     const styles = [
       ...baseStyles,
       ...appearanceStyles[appearance],
-      ...sizeStyles[size]
+      ...sizeStyles[size],
     ];
-    if (asLink) styles.push('a-btn--link');
+    if (isLink) styles.push('a-btn--link');
     if (className) styles.push(className);
     if (properties.disabled) styles.push('a-btn--disabled');
+
+    const hasLeftIcon = Boolean(iconLeft);
+    const hasRightIcon = Boolean(iconRight);
+    const hasIcons = hasLeftIcon || hasRightIcon;
+    const labelNode = label ? hasIcons ? <span>{label}</span> : label : null;
+
+    if (hasLeftIcon && hasRightIcon) {
+      throw new Error(
+        'Button component: only one of iconLeft or iconRight can be provided',
+      );
+    }
 
     return (
       <button
@@ -78,6 +99,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
         className={[...styles].join(' ')}
         {...properties}
       >
+        {children}
         {!!iconLeft && (
           <Icon
             name={iconLeft}
@@ -85,7 +107,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
             data-testid='button-icon-left'
           />
         )}
-        {iconLeft || iconRight ? <span>{label}</span> : label}
+        {labelNode}
         {!!iconRight && (
           <Icon
             name={iconRight}
@@ -95,7 +117,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
         )}
       </button>
     );
-  }
+  },
 );
 
 // Optional: Set displayName for better debugging in React DevTools

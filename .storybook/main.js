@@ -8,16 +8,17 @@ export default {
     '@storybook/addon-links',
     '@storybook/addon-a11y',
     '@chromatic-com/storybook',
-    '@storybook/addon-docs'
+    '@storybook/addon-docs',
+    '@storybook/addon-vitest',
   ],
 
   docs: {
-    defaultName: 'Overview'
+    defaultName: 'Overview',
   },
 
   framework: {
     name: '@storybook/react-vite',
-    options: {}
+    options: {},
   },
 
   features: {},
@@ -27,14 +28,14 @@ export default {
 
     // Skip type declaration generation for non-dist builds
     config.plugins = config.plugins.filter(
-      plugin => plugin.name !== 'vite:dts'
+      (plugin) => plugin.name !== 'vite:dts',
     );
 
     // load Chromatic's recommended vite plugin for dist builds to create preview-stats.json
     config.plugins = config.plugins.concat(
       turbosnap({
-        rootDir: config.root ?? process.cwd()
-      })
+        rootDir: config.root ?? process.cwd(),
+      }),
     );
 
     // return the customized config
@@ -42,6 +43,6 @@ export default {
   },
 
   typescript: {
-    reactDocgen: 'react-docgen-typescript'
-  }
+    reactDocgen: 'react-docgen-typescript',
+  },
 };

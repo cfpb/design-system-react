@@ -1,12 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { List, ListItem } from '~/src/index';
-import { Link } from '~/src';
+import { Link, List, ListItem } from '~/src/index';
 
 const meta: Meta<typeof List> = {
   title: 'Components (Draft)/Lists',
-  tags: ['autodocs'],
   component: List,
-  argTypes: {}
+  argTypes: {},
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Lists are an effective way to visually highlight important information so that it can be more easily scanned and read. Before writing a list, it’s important to identify the best style needed for the information being presented.
+
+Source: https://cfpb.github.io/design-system/components/lists
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -17,56 +27,49 @@ export const Unordered: Story = {
   args: {
     children: (
       <>
-        <ListItem>First</ListItem>
-        <ListItem>Second</ListItem>
-        <ListItem>Third</ListItem>
+        <ListItem>List item 1</ListItem>
+        <ListItem>List item 2</ListItem>
+        <ListItem>List item 3</ListItem>
       </>
-    )
-  }
+    ),
+  },
 };
 
 export const Ordered: Story = {
   args: {
     ...Unordered.args,
-    isOrdered: true
-  }
+    isOrdered: true,
+  },
 };
 
 export const Unstyled: Story = {
   args: {
     ...Unordered.args,
-    isUnstyled: true
-  }
+    isUnstyled: true,
+  },
 };
 
 export const Horizontal: Story = {
   args: {
     ...Unordered.args,
-    isHorizontal: true
-  }
-};
-
-export const Spaced: Story = {
-  args: {
-    ...Unordered.args,
-    isSpaced: true
-  }
+    isHorizontal: true,
+  },
 };
 
 export const Links: Story = {
+  name: 'Link',
   args: {
     isLinks: true,
     children: (
       <>
-        Link lists is where each item in a list is a jump link, which converts
-        to a finger-friendly link with a large tap area on smaller screens. See
-        example on the{' '}
+        The{' '}
         <Link
-          label='links'
-          href='/?path=/docs/components-verified-links--listlink'
+          label='list links'
+          href='./?path=/docs/components-verified-links--listlink'
         />{' '}
-        page.
+        component presents each list item as a standalone link, which converts
+        to a touch-friendly link with a large tap area at smaller screen widths.
       </>
-    )
-  }
+    ),
+  },
 };

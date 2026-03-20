@@ -12,26 +12,27 @@ export interface CheckboxProperties {
   label: ReactNode;
   /** Additional CSS classes applied to the checkbox's wrapper element */
   className?: string;
-  /** Is checkboxed checked? */
+  /** Is the checkbox checked? (controlled mode). Omit for uncontrolled mode. */
   checked?: boolean;
+  /** Initial checked state (uncontrolled mode only) */
+  defaultChecked?: boolean;
   /** Additional text to further clarify purpose of checkbox */
   helperText?: ReactNode;
   /** Additional CSS classes that will be applied to checkbox input element */
   inputClassName?: string;
   /** Additional CSS classes that will be applied to checkbox label element */
   labelClassName?: string;
-  /** React Ref to be enable direct access and control of the input element */
+  /** React Ref to enable direct access and control of the input element */
   inputRef?:
     | RefObject<HTMLInputElement>
-    | string
     | ((instance: HTMLInputElement | null) => void)
     | null
     | undefined;
   /** Apply the "Large" styles for this element? */
   isLarge?: boolean;
+  /** Removes/Adds 'label__heading' class to the Label. When true, uses inline label style. */
+  isLabelInline?: boolean;
   /** A name for this checkbox's value that can be referenced in javascript */
-  labelInline?: boolean;
-  /** Removes/Adds 'label__heading' class to the Label * */
   name?: string;
   /** Is this checkbox disabled? */
   disabled?: boolean;
@@ -46,7 +47,7 @@ const containerBaseStyles = ['m-form-field m-form-field--checkbox'];
 const borderStatus = {
   success: 'm-form-field--checkbox-success',
   warning: 'm-form-field--checkbox-warning',
-  error: 'm-form-field--checkbox-error'
+  error: 'm-form-field--checkbox-error',
 };
 
 export const Checkbox = ({
@@ -55,55 +56,66 @@ export const Checkbox = ({
   className,
   inputClassName,
   labelClassName = '',
-  checked = false,
+  checked,
+  defaultChecked,
   helperText,
   inputRef,
   disabled = false,
   isLarge = false,
-  labelInline = true, // 'true' REMOVES the a.label__heading class
+  isLabelInline = true,
   name,
   onChange,
   status,
   ...properties
 }: CheckboxProperties & JSX.IntrinsicElements['input']): ReactElement => {
+  const isControlled = checked !== undefined;
+
   const onChangeHandler = useCallback(
     (event: ChangeEvent<HTMLInputElement>): void => {
       onChange?.(event);
     },
-    [onChange]
+    [onChange],
   );
 
   const containerClasses = [
     ...containerBaseStyles,
     isLarge ? 'm-form-field--lg-target' : '',
     status ? borderStatus[status] : '',
-    className
+    className,
   ];
+
+  const inputProps = {
+    ...properties,
+    id,
+    type: 'checkbox' as const,
+    'aria-labelledby': `${id}-label`,
+    name: name ?? id,
+    ref: inputRef,
+    disabled,
+    onChange: onChangeHandler,
+    'data-testid': `${id}-input`,
+    className: classnames(['a-checkbox', inputClassName]),
+  };
+
+  if (isControlled) {
+    Object.assign(inputProps, { checked, 'aria-checked': checked });
+  } else {
+    Object.assign(inputProps, {
+      defaultChecked: defaultChecked ?? false,
+    });
+  }
 
   return (
     <div
       className={classnames(containerClasses)}
       data-testid={`${id}-container`}
     >
-      <input
-        id={id}
-        type='checkbox'
-        checked={checked}
-        aria-checked={checked}
-        aria-labelledby={`${id}-label`}
-        name={name ?? id}
-        ref={inputRef}
-        disabled={disabled}
-        onChange={onChangeHandler}
-        {...properties}
-        data-testid={`${id}-input`}
-        className={classnames(['a-checkbox', inputClassName])}
-      />
+      <input {...inputProps} />
       <Label
         id={`${id}-label`}
         className={labelClassName}
         htmlFor={id}
-        inline={labelInline}
+        isInline={isLabelInline}
       >
         {label}
         <HelperText>{helperText}</HelperText>

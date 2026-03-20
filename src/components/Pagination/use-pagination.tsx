@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import { noOp } from '~/src/utils/no-op';
+import { noOp } from '../../utils/no-op';
 import type { PaginationProperties } from './pagination';
 import { DEFAULT_PER_PAGE, MIN_PAGE } from './pagination-constants';
 
@@ -26,7 +26,7 @@ export const usePagination = ({
   isPaginated = true,
   startPage = MIN_PAGE,
   rows = [],
-  perPage = DEFAULT_PER_PAGE
+  perPage = DEFAULT_PER_PAGE,
 }: UsePaginationProperties): [ReactNode[][], PaginationProperties] => {
   const rowCount = rows.length;
   const pageCount = Math.max(Math.ceil(rowCount / perPage), MIN_PAGE);
@@ -45,7 +45,7 @@ export const usePagination = ({
     pageCount: MIN_PAGE,
     onClickNext: noOp,
     onClickPrevious: noOp,
-    onClickGo: noOp
+    onClickGo: noOp,
   };
 
   // If not paginating, return the basics
@@ -58,7 +58,7 @@ export const usePagination = ({
     pageCount,
     onClickNext: (): void => setPage(Math.min(page + ONE, pageCount)),
     onClickPrevious: (): void => setPage(Math.max(zeroIndexedPage, MIN_PAGE)),
-    onClickGo: (targetPage: number): void => setPage(targetPage)
+    onClickGo: (targetPage: number): void => setPage(targetPage),
   };
 
   // Calculate which rows are shown on the current page

@@ -8,7 +8,7 @@ export enum GridColWidth {
   Half = 6,
   Third = 4,
   Quarter = 3,
-  Single = 1
+  Single = 1,
 }
 
 interface GridColumnProperties {

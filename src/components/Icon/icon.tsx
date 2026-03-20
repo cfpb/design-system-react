@@ -12,7 +12,7 @@ const sizeMap: Record<string, string> = {
   h4: '18px',
   h5: '14px',
   p: '16px',
-  sub: '12px'
+  sub: '12px',
 };
 
 // Icons who's background is square as opposed to round
@@ -24,7 +24,7 @@ const isSquare = new Set([
   'linkedin',
   'pinterest',
   'x',
-  'youtube'
+  'youtube',
 ]);
 
 // Is this an number icon, based on the icon name?

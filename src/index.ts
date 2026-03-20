@@ -11,6 +11,7 @@ export { ButtonGroup } from './components/Buttons/button-group';
 export { Checkbox } from './components/Checkbox/checkbox';
 export { Divider } from './components/Divider/divider';
 export { Expandable } from './components/Expandable/expandable';
+export { Fieldset } from './components/Fieldset/fieldset';
 export { ExpandableGroup } from './components/Expandable/expandable-group';
 export { default as Footer } from './components/Footer/footer';
 export { FooterCfGov } from './components/Footer/footer-cf-gov';
@@ -25,14 +26,19 @@ export type { LinkProperties } from './components/Link/link';
 export { default as List } from './components/List/list';
 export {
   default as ListItem,
-  ListItemBuilder
+  ListItemBuilder,
 } from './components/List/list-item';
-export { default as Navbar } from './components/Navbar/navbar';
-export { default as PageHeader } from './components/PageHeader/page-header';
+export { Header } from './components/Header/header';
 export { Pagination } from './components/Pagination/pagination';
 export { usePagination } from './components/Pagination/use-pagination';
 export { Paragraph } from './components/Paragraph/paragraph';
 export { RadioButton } from './components/RadioButton/radio-button';
+export { SecondaryNav } from './components/SecondaryNav/secondary-nav';
+export type {
+  SecondaryNavChildItem,
+  SecondaryNavItem,
+  SecondaryNavProperties,
+} from './components/SecondaryNav/secondary-nav';
 export { default as ResponsiveMenu } from './components/ResponsiveMenu/responsive-menu';
 export { Select } from './components/Select/select';
 export { SelectMulti } from './components/Select/select-multi';
@@ -48,6 +54,6 @@ export {
   TextIntroductionContainer,
   TextIntroductionDescription,
   TextIntroductionHeading,
-  TextIntroductionSubheading
+  TextIntroductionSubheading,
 } from './components/TextIntroduction/text-introduction';
 export { WellContainer, WellContent } from './components/Well/well';

@@ -1,12 +1,12 @@
 import {
   Summary as CFPB_Summary,
-  SummaryMinimal as CFPB_SummaryMinimal
+  SummaryMinimal as CFPB_SummaryMinimal,
 } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import classnames from 'classnames';
 import type React from 'react';
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
-import { Icon } from '~/src';
+import { Icon } from '../Icon/icon';
 
 export interface SummaryProperties extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;

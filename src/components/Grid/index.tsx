@@ -12,5 +12,5 @@ export default {
   Column: GridColumn,
   Row: GridRow,
   Width: GridColWidth,
-  Wrapper: GridWrapper
+  Wrapper: GridWrapper,
 };

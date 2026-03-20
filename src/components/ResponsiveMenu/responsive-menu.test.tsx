@@ -5,7 +5,19 @@ import ResponsiveMenu, { ExampleLinks } from './responsive-menu';
 
 let matchMedia: matchMediaMock;
 
+const resizeScreenSize = (width: number) => {
+  Object.defineProperty(globalThis, 'innerWidth', {
+    writable: true,
+    configurable: true,
+    value: width,
+  });
+  globalThis.dispatchEvent(new Event('resize'));
+};
+
 describe('ResponsiveMenu', () => {
+  const renderWithScope = (ui: React.ReactElement) =>
+    render(<div className='o-header-scope'>{ui}</div>);
+
   beforeAll(() => {
     matchMedia = new matchMediaMock();
   });
@@ -14,18 +26,9 @@ describe('ResponsiveMenu', () => {
     matchMedia.clear();
   });
 
-  const resizeScreenSize = (width: number) => {
-    Object.defineProperty(globalThis, 'innerWidth', {
-      writable: true,
-      configurable: true,
-      value: width
-    });
-    globalThis.dispatchEvent(new Event('resize'));
-  };
-
   it('does not render the menu without links', () => {
     resizeScreenSize(500);
-    render(<ResponsiveMenu />);
+    renderWithScope(<ResponsiveMenu />);
 
     expect(screen.queryByTestId('menu-toggle')).not.toBeInTheDocument();
     expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
@@ -36,7 +39,7 @@ describe('ResponsiveMenu', () => {
 
   it('renders with custom links', () => {
     resizeScreenSize(500);
-    render(<ResponsiveMenu links={ExampleLinks} />);
+    renderWithScope(<ResponsiveMenu links={ExampleLinks} />);
 
     // Menu is rendered
     const menuToggle = screen.getAllByRole('button')[0];
@@ -53,7 +56,7 @@ describe('ResponsiveMenu', () => {
   it('toggles menu visibility on button click', () => {
     resizeScreenSize(500);
 
-    render(<ResponsiveMenu links={ExampleLinks} />);
+    renderWithScope(<ResponsiveMenu links={ExampleLinks} />);
     const menuToggle = screen.getAllByRole('button')[0];
     const navItems = screen.getByRole('navigation');
     expect(navItems).not.toHaveClass('open');
@@ -64,7 +67,7 @@ describe('ResponsiveMenu', () => {
     expect(navItems).toHaveClass('open');
     expect(menuToggle).toHaveAttribute('aria-expanded', 'true');
     expect(menuToggle.querySelector('.sr-only')).toHaveTextContent(
-      'Close menu'
+      'Close menu',
     );
 
     fireEvent.click(menuToggle);
@@ -75,7 +78,7 @@ describe('ResponsiveMenu', () => {
   });
 
   it('closes menu when clicking overlay', () => {
-    render(<ResponsiveMenu links={ExampleLinks} />);
+    renderWithScope(<ResponsiveMenu links={ExampleLinks} />);
     const menuToggle = screen.getAllByRole('button')[0];
     fireEvent.click(menuToggle);
 
@@ -86,7 +89,7 @@ describe('ResponsiveMenu', () => {
   });
 
   it('closes menu when clicking a link', () => {
-    render(<ResponsiveMenu links={ExampleLinks} />);
+    renderWithScope(<ResponsiveMenu links={ExampleLinks} />);
     const menuToggle = screen.getAllByRole('button')[0];
     fireEvent.click(menuToggle);
 
@@ -97,8 +100,7 @@ describe('ResponsiveMenu', () => {
   });
 
   it('applies active class to the current page link', () => {
-    render(<ResponsiveMenu links={ExampleLinks} />);
-    const menuToggle = screen.getAllByRole('button')[0];
+    renderWithScope(<ResponsiveMenu links={ExampleLinks} />);
 
     const activeLink = screen.getByText('Filing');
     expect(activeLink).toHaveClass('active');
@@ -106,7 +108,7 @@ describe('ResponsiveMenu', () => {
 
   it('renders CFPB logo with custom href', () => {
     const customHref = 'https://example.com';
-    render(<ResponsiveMenu href={customHref} />);
+    renderWithScope(<ResponsiveMenu href={customHref} />);
 
     const logoLink = screen.getByTestId('CfpbLogoLink');
     expect(logoLink).toHaveAttribute('href', customHref);

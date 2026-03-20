@@ -8,7 +8,7 @@ export const navigationIcons: string[] = [
   'arrow-down',
   'arrow-left',
   'left-right',
-  'up-down'
+  'up-down',
 ];
 
 export const statusIcons: string[] = [
@@ -24,7 +24,7 @@ export const statusIcons: string[] = [
   'minus',
   'divide',
   'equal',
-  'percentage'
+  'percentage',
 ];
 
 export const socialIcons: string[] = [
@@ -35,7 +35,7 @@ export const socialIcons: string[] = [
   'linkedin',
   'pinterest',
   'x',
-  'youtube'
+  'youtube',
 ];
 
 export const communicationIcons: string[] = [
@@ -47,7 +47,7 @@ export const communicationIcons: string[] = [
   'presentation',
   'technology',
   'video',
-  'web'
+  'web',
 ];
 
 export const numberIcons: string[] = [
@@ -60,7 +60,7 @@ export const numberIcons: string[] = [
   'six',
   'seven',
   'eight',
-  'nine'
+  'nine',
 ];
 
 export const documentIcons: string[] = [
@@ -80,7 +80,7 @@ export const documentIcons: string[] = [
   'print',
   'rss',
   'save',
-  'supplement'
+  'supplement',
 ];
 
 export const financialIcons: string[] = [
@@ -115,7 +115,7 @@ export const financialIcons: string[] = [
   'servicemembers',
   'sold',
   'split',
-  'toolbox'
+  'toolbox',
 ];
 
 export const expenseIcons: string[] = [
@@ -142,7 +142,7 @@ export const expenseIcons: string[] = [
   'summer',
   'taxes',
   'travel',
-  'winter'
+  'winter',
 ];
 
 export const webIcons: string[] = [
@@ -192,5 +192,5 @@ export const webIcons: string[] = [
   'speech-bubble',
   'thought-bubble',
   'user',
-  'wifi'
+  'wifi',
 ];

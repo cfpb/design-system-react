@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { JSX } from 'react';
 import { Heading, Icon } from '~/src/index';
 import type { HeadingType } from '../Headings/heading';
 import {
@@ -10,7 +11,7 @@ import {
   numberIcons,
   socialIcons,
   statusIcons,
-  webIcons
+  webIcons,
 } from './icon-lists';
 
 const meta: Meta<typeof Icon> = {
@@ -24,10 +25,10 @@ const meta: Meta<typeof Icon> = {
 ### CFPB DS Icon component
 
 Source: https://cfpb.github.io/design-system/foundation/iconography
-`
-      }
-    }
-  }
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -48,7 +49,7 @@ const makeRows = (names: string[]): JSX.Element[] =>
         </td>
         <td>{name}</td>
       </tr>
-    )
+    ),
   );
 
 const IconTable = ({ children }: { children: JSX.Element[] }): JSX.Element => (
@@ -123,7 +124,7 @@ export const IconWithText: Story = {
       { type: '2', text: 'Auto loans' },
       { type: '3', text: 'Bank accounts' },
       { type: '4', text: 'Credit cards' },
-      { type: '5', text: 'Submit a complaint' }
+      { type: '5', text: 'Submit a complaint' },
     ];
 
     return (
@@ -165,5 +166,5 @@ export const IconWithText: Story = {
         </tbody>
       </table>
     );
-  }
+  },
 };

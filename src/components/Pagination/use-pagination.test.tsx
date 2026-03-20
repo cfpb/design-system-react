@@ -8,9 +8,9 @@ const PER_PAGE = 10;
 const NUMBER_ROWS = 30;
 
 const generateTestRows = (quantity: number): ReactNode[][] =>
-  [...Array.from({ length: quantity }).keys()].map(key => [
+  [...Array.from({ length: quantity }).keys()].map((key) => [
     `A${key + ONE}`,
-    `B${key + ONE}`
+    `B${key + ONE}`,
   ]);
 
 describe('usePagination', () => {
@@ -18,8 +18,8 @@ describe('usePagination', () => {
     const { result } = renderHook(usePagination, {
       initialProps: {
         rows: generateTestRows(NUMBER_ROWS),
-        isPaginated: false
-      }
+        isPaginated: false,
+      },
     });
 
     const [visibleRows, paginationProperties] = result.current;
@@ -34,7 +34,7 @@ describe('usePagination', () => {
 
   it('Returns all rows when cannot paginate (rows.length < perPage)', () => {
     const { result } = renderHook(usePagination, {
-      initialProps: { rows: generateTestRows(4), perPage: 5 }
+      initialProps: { rows: generateTestRows(4), perPage: 5 },
     });
 
     const [visibleRows, paginationProperties] = result.current;
@@ -51,8 +51,8 @@ describe('usePagination', () => {
     const { result } = renderHook(usePagination, {
       initialProps: {
         rows: generateTestRows(NUMBER_ROWS),
-        perPage: PER_PAGE
-      }
+        perPage: PER_PAGE,
+      },
     });
 
     const [visibleRows, paginationProperties] = result.current;
@@ -72,8 +72,8 @@ describe('usePagination', () => {
       initialProps: {
         rows: generateTestRows(NUMBER_ROWS),
         perPage: PER_PAGE,
-        startPage: 3
-      }
+        startPage: 3,
+      },
     });
 
     const [visibleRows, paginationProperties] = result.current;
@@ -93,8 +93,8 @@ describe('usePagination', () => {
       initialProps: {
         rows: generateTestRows(NUMBER_ROWS),
         perPage: PER_PAGE,
-        startPage: 3
-      }
+        startPage: 3,
+      },
     });
 
     const [, paginationProperties] = result.current;

@@ -17,9 +17,9 @@ describe('<Label />', () => {
 
   it('Inline Label', () => {
     render(
-      <Label htmlFor={htmlFor} inline>
+      <Label htmlFor={htmlFor} isInline>
         {text}
-      </Label>
+      </Label>,
     );
 
     const element = screen.getByText(text);
@@ -33,7 +33,7 @@ describe('<Label />', () => {
     render(
       <Label htmlFor={htmlFor} className={otherCName}>
         {text}
-      </Label>
+      </Label>,
     );
 
     const element = screen.getByText(text);

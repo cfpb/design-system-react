@@ -1,7 +1,7 @@
 import '@cfpb/cfpb-design-system/src/components/cfpb-pagination/pagination.scss';
 import type { ReactElement } from 'react';
 import { JSX, useEffect, useId, useState } from 'react';
-import { Button } from '~/src';
+import { Button } from '../Buttons/button';
 import { noOp } from '../../utils/no-op';
 import { MIN_PAGE } from './pagination-constants';
 
@@ -26,7 +26,7 @@ export interface PaginationProperties {
 
 const PaginationSubmitButton = (): JSX.Element => (
   <Button
-    asLink
+    isLink
     className='m-pagination__btn-submit'
     id='m-pagination__btn-submit-default'
     label='Go'
@@ -45,7 +45,7 @@ const PaginationInput = ({
   tableId,
   page,
   pageCount,
-  onChange
+  onChange,
 }: PaginationInputProperties): React.ReactElement => {
   const onPageChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(Number.parseInt(event.currentTarget.value, 10));
@@ -87,7 +87,7 @@ export const Pagination = ({
   onClickNext = noOp,
   onClickGo = noOp,
   previousLabel = 'Previous',
-  nextLabel = 'Next'
+  nextLabel = 'Next',
 }: PaginationProperties): ReactElement => {
   const [pageNumber, setPageNumber] = useState(page);
   useEffect(() => setPageNumber(page), [page]);

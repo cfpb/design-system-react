@@ -8,5 +8,5 @@ export default {
   Content: LayoutContent,
   Main: LayoutMain,
   Sidebar: LayoutSidebar,
-  Wrapper: LayoutWrapper
+  Wrapper: LayoutWrapper,
 };

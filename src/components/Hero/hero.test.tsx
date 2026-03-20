@@ -14,7 +14,7 @@ describe('Hero', () => {
         subheading={subheading}
         image={image}
         imageAltText={imageText}
-      />
+      />,
     );
 
     expect(screen.getByText(heading).className).toMatch(/m-hero__heading/g);
@@ -53,7 +53,7 @@ describe('Hero', () => {
         textColor={textColor}
         backgroundColor={backgroundColor}
         heading='test'
-      />
+      />,
     );
 
     // Background color
@@ -77,7 +77,7 @@ describe('Hero', () => {
         headingLevel={`h${headingLevel}`}
         subheading='Subheading text'
         subheadingLevel={`h${subheadingLevel}`}
-      />
+      />,
     );
 
     // Heading

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, within } from 'storybook/test';
 import { TextArea } from './text-area';
 
 const meta: Meta<typeof TextArea> = {
@@ -7,8 +8,8 @@ const meta: Meta<typeof TextArea> = {
   component: TextArea,
   argTypes: {
     isFullWidth: { control: 'boolean' },
-    isDisabled: { control: 'boolean' }
-  }
+    isDisabled: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -19,8 +20,14 @@ export const Enabled: Story = {
   args: {
     id: 'Enabled',
     placeholder: 'Enabled',
-    name: 'Enabled'
-  }
+    name: 'Enabled',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textbox = canvas.getByRole('textbox');
+    await userEvent.type(textbox, 'Sample comment');
+    await expect(textbox).toHaveValue('Sample comment');
+  },
 };
 
 export const Hover: Story = {
@@ -28,8 +35,8 @@ export const Hover: Story = {
     id: 'Hover',
     placeholder: 'Hover',
     name: 'Hover',
-    className: 'hover'
-  }
+    className: 'hover',
+  },
 };
 
 export const Focus: Story = {
@@ -37,8 +44,8 @@ export const Focus: Story = {
     id: 'Focus',
     placeholder: 'Focus',
     name: 'Focus',
-    className: 'focus'
-  }
+    className: 'focus',
+  },
 };
 
 export const Disabled: Story = {
@@ -46,8 +53,8 @@ export const Disabled: Story = {
     id: 'Disabled',
     placeholder: 'Disabled',
     name: 'Disabled',
-    isDisabled: true
-  }
+    isDisabled: true,
+  },
 };
 
 export const Success: Story = {
@@ -55,8 +62,8 @@ export const Success: Story = {
     id: 'Success',
     placeholder: 'Success',
     name: 'Success',
-    status: 'success'
-  }
+    status: 'success',
+  },
 };
 
 export const Warning: Story = {
@@ -64,8 +71,8 @@ export const Warning: Story = {
     id: 'Warning',
     placeholder: 'Warning',
     name: 'Warning',
-    status: 'warning'
-  }
+    status: 'warning',
+  },
 };
 
 export const Error: Story = {
@@ -73,8 +80,8 @@ export const Error: Story = {
     id: 'Error',
     placeholder: 'Error',
     name: 'Error',
-    status: 'error'
-  }
+    status: 'error',
+  },
 };
 
 export const FullWidth: Story = {
@@ -82,6 +89,6 @@ export const FullWidth: Story = {
     id: 'Full width',
     placeholder: 'Full width',
     name: 'Full width',
-    isFullWidth: true
-  }
+    isFullWidth: true,
+  },
 };

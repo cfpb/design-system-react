@@ -18,11 +18,11 @@ describe('<Banner />', () => {
 
   it('renders tagline correctly', () => {
     render(
-      <Banner tagline='An official website of the United States government' />
+      <Banner tagline='An official website of the United States government' />,
     );
 
     expect(
-      screen.getByText('An official website of the United States government')
+      screen.getByText('An official website of the United States government'),
     ).toBeInTheDocument();
   });
 
@@ -48,9 +48,9 @@ describe('<Banner />', () => {
             key=':)'
             href='/customLang'
             label='Custom language'
-          />
+          />,
         ]}
-      />
+      />,
     );
 
     const spanish = screen.getByText('Español');

@@ -10,7 +10,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -23,7 +23,6 @@
       ]
     }
   },
-  "include": ["src"],
-  "exclude": ["postcss"],
+  "include": ["src", "postcss", "vite"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

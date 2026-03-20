@@ -5,7 +5,7 @@ import { Checkbox } from './checkbox';
 
 /*
  * Helper for controlled component state.
- * ARIA attributes won't updated without the updated onClick state being fed back into the component.
+ * ARIA attributes won't update without the updated onClick state being fed back into the component.
  */
 export const CheckboxTestWrapper = ({
   onChange,
@@ -15,7 +15,7 @@ export const CheckboxTestWrapper = ({
   const [inputChecked, setChecked] = useState(false);
 
   const onWrapperChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     onChange?.(event);
     setChecked(event.target.checked);
@@ -23,7 +23,7 @@ export const CheckboxTestWrapper = ({
 
   return (
     <Checkbox
-      checked={checked || inputChecked}
+      checked={checked ?? inputChecked}
       {...others}
       onChange={onWrapperChange}
     />
@@ -39,7 +39,7 @@ export function CheckboxWrapper({ ...arguments_ }): JSX.Element {
       checked={arguments_.checked}
       onChange={(): void => {
         updateArguments({
-          checked: !arguments_.checked
+          checked: !arguments_.checked,
         });
       }}
     />

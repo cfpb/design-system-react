@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
 
-interface LayoutMainProperties {
+export interface LayoutMainProperties {
   children: JSX.Element | JSX.Element[];
   classes?: string;
   id?: string;
@@ -11,7 +11,7 @@ export const LayoutMain = ({
   children,
   classes = '',
   id = 'main',
-  layout = '2-1'
+  layout = '2-1',
 }: LayoutMainProperties): JSX.Element => {
   const cnames = ['content', `content--${layout}`, classes];
 

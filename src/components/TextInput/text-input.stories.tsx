@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, within } from 'storybook/test';
 import { Icon, TextInput } from '~/src/index';
 
 const meta: Meta<typeof TextInput> = {
@@ -7,8 +8,8 @@ const meta: Meta<typeof TextInput> = {
   component: TextInput,
   argTypes: {
     isFullWidth: { control: 'boolean' },
-    isDisabled: { control: 'boolean' }
-  }
+    isDisabled: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -20,8 +21,15 @@ export const Enabled: Story = {
     name: 'Enabled',
     id: 'Enabled',
     value: 'Enabled',
-    type: 'text'
-  }
+    type: 'text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+    await expect(input).toHaveValue('Enabled');
+    await userEvent.click(input);
+    await expect(input).toHaveFocus();
+  },
 };
 
 export const Hover: Story = {
@@ -29,9 +37,9 @@ export const Hover: Story = {
     ...Enabled.args,
     name: 'Hover',
     id: 'Hover',
-    value: 'Hover'
+    value: 'Hover',
   },
-  render: _arguments => <TextInput {..._arguments} className='hover' />
+  render: (_arguments) => <TextInput {..._arguments} className='hover' />,
 };
 
 export const Focus: Story = {
@@ -39,9 +47,9 @@ export const Focus: Story = {
     ...Enabled.args,
     name: 'Focus',
     id: 'Focus',
-    value: 'Focus'
+    value: 'Focus',
   },
-  render: _arguments => <TextInput {..._arguments} className='focus' />
+  render: (_arguments) => <TextInput {..._arguments} className='focus' />,
 };
 
 export const Disabled: Story = {
@@ -50,8 +58,8 @@ export const Disabled: Story = {
     value: 'Disabled',
     name: 'Disabled',
     id: 'Disabled',
-    disabled: true
-  }
+    disabled: true,
+  },
 };
 
 export const Success: Story = {
@@ -60,8 +68,8 @@ export const Success: Story = {
     value: 'Success',
     name: 'Success',
     id: 'Success',
-    status: 'success'
-  }
+    status: 'success',
+  },
 };
 
 export const Warning: Story = {
@@ -70,8 +78,8 @@ export const Warning: Story = {
     value: 'Warning',
     name: 'Warning',
     id: 'Warning',
-    status: 'warning'
-  }
+    status: 'warning',
+  },
 };
 
 export const Error: Story = {
@@ -80,8 +88,8 @@ export const Error: Story = {
     value: 'Error',
     name: 'Error',
     id: 'Error',
-    status: 'error'
-  }
+    status: 'error',
+  },
 };
 
 export const FullWidth: Story = {
@@ -91,11 +99,11 @@ export const FullWidth: Story = {
     value: 'Input text',
     name: 'fullWidth',
     id: 'fullWidth',
-    isFullWidth: true
-  }
+    isFullWidth: true,
+  },
 };
 
-export const searchInput: Story = {
+export const SearchInput: Story = {
   name: 'Search input',
   args: {
     ...Enabled.args,
@@ -104,9 +112,9 @@ export const searchInput: Story = {
     name: 'SearchInput',
     id: 'SearchInput',
     type: 'search',
-    isFullWidth: true
+    isFullWidth: true,
   },
-  render: _arguments => (
+  render: (_arguments) => (
     <div className='o-search-input'>
       <div className='o-search-input__input'>
         <label
@@ -125,5 +133,5 @@ export const searchInput: Story = {
         Search
       </button>
     </div>
-  )
+  ),
 };

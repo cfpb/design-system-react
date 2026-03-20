@@ -4,7 +4,7 @@ import { WellContainer, WellContent } from './well';
 import { Container, Content } from './well.stories';
 
 describe('<WellContainer />', () => {
-  it('Display text content', async () => {
+  it('Display text content', () => {
     const text = 'bazinga';
     render(<WellContainer {...Container.args}>{text}</WellContainer>);
 
@@ -12,13 +12,13 @@ describe('<WellContainer />', () => {
     expect(content).toBeInTheDocument();
   });
 
-  it('Displays element content', async () => {
+  it('Displays element content', () => {
     const text = 'bazinga';
     const textClass = `${text}-test`;
     render(
       <WellContainer {...Container.args}>
         <div className={textClass}>{text}</div>
-      </WellContainer>
+      </WellContainer>,
     );
 
     const content = screen.getByText(text);
@@ -28,7 +28,7 @@ describe('<WellContainer />', () => {
 });
 
 describe('<WellContent />', () => {
-  it('Displays elements', async () => {
+  it('Displays elements', () => {
     render(<WellContent {...Content.args} />);
 
     const heading = screen.getByText(Content.args?.heading);
@@ -38,7 +38,7 @@ describe('<WellContent />', () => {
     expect(text).toHaveClass('text');
 
     const callToAction = screen.getByRole('link', {
-      name: 'Call-to-action link'
+      name: 'Call-to-action link',
     });
     expect(callToAction).toHaveClass('a-link--jump');
   });

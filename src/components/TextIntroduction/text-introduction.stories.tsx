@@ -6,13 +6,13 @@ import {
   description,
   heading,
   placeholders,
-  subheading
+  subheading,
 } from './test-helpers';
 
 const meta: Meta<typeof TextIntroduction> = {
   title: 'Components (Verified)/Text introductions',
   tags: ['autodocs'],
-  component: TextIntroduction
+  component: TextIntroduction,
 };
 
 export default meta;
@@ -22,12 +22,12 @@ type Story = StoryObj<typeof meta>;
 export const Standard = {
   name: 'Standard text introduction',
   args: {
-    ...placeholders
-  }
+    ...placeholders,
+  },
 };
 
 export const Flexible: Story = {
-  render: _arguments => (
+  render: (_arguments) => (
     <TextIntroduction.Container {..._arguments}>
       <TextIntroduction.Heading>{heading}</TextIntroduction.Heading>
       <TextIntroduction.Subheading>{subheading}</TextIntroduction.Subheading>
@@ -38,5 +38,5 @@ export const Flexible: Story = {
     </TextIntroduction.Container>
   ),
   name: 'Flexible text introduction',
-  args: {}
+  args: {},
 };

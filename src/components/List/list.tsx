@@ -18,7 +18,7 @@ export default function List({
   isLinks = false,
   isOrdered,
   isSpaced,
-  isUnstyled
+  isUnstyled,
 }: ListProperties): JSX.Element {
   const cnames = ['m-list'];
   if (isHorizontal) cnames.push('m-list--horizontal');

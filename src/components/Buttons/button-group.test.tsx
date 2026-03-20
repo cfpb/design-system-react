@@ -4,12 +4,12 @@ import { Button } from './button';
 import { ButtonGroup } from './button-group';
 
 describe('<ButtonGroup />', () => {
-  it('Renders a group of buttons', async () => {
+  it('Renders a group of buttons', () => {
     render(
       <ButtonGroup data-testid='group'>
         <Button label='first' data-testid='first' />
         <Button label='second' data-testid='second' />
-      </ButtonGroup>
+      </ButtonGroup>,
     );
 
     expect(screen.getByTestId('group')).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe('<ButtonGroup />', () => {
     expect(screen.getByTestId('second')).toBeInTheDocument();
   });
 
-  it('Does not render without children', async () => {
+  it('Does not render without children', () => {
     render(<ButtonGroup data-testid='group' />);
     expect(screen.queryByTestId('group')).not.toBeInTheDocument();
   });

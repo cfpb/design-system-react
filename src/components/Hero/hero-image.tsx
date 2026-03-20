@@ -7,7 +7,7 @@ interface HeroImageProperties {
 
 export const HeroImage = ({
   image,
-  altText
+  altText,
 }: HeroImageProperties): JSX.Element | null => {
   if (!image) return null;
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { SyntheticEvent } from 'react';
+import type { ReactNode, SyntheticEvent } from 'react';
 import { Banner } from '~/src/index';
 import { AllLanguageCodes, LanguageLink } from './banner-language-link';
 
@@ -7,7 +7,7 @@ const meta: Meta<typeof Banner> = {
   title: 'Components (Verified)/Banner (US gov)',
   tags: ['autodocs'],
   component: Banner,
-  argTypes: {}
+  argTypes: {},
 };
 
 export default meta;
@@ -24,9 +24,9 @@ const UnclickableLink = ({
   children,
   ...others
 }: {
-  children: JSX.Element | string;
-  [key: string]: JSX.Element | string;
-}): JSX.Element => (
+  children: ReactNode | string;
+  [key: string]: ReactNode | string;
+}): ReactNode => (
   // eslint-disable-next-line jsx-a11y/interactive-supports-focus
   <span
     role='link'
@@ -39,16 +39,16 @@ const UnclickableLink = ({
 );
 
 export const USGovBanner: Story = {
-  render: properties => <Banner {...properties} />,
+  render: (properties) => <Banner {...properties} />,
   args: {
-    links: []
-  }
+    links: [],
+  },
 };
 USGovBanner.storyName = 'US gov banner';
 
 export const USGovBannerWithCFGovLinks: Story = {
   args: {
-    links: AllLanguageCodes.filter(code => code !== 'en').map(code => (
+    links: AllLanguageCodes.filter((code) => code !== 'en').map((code) => (
       <UnclickableLink key={code}>
         <LanguageLink code={code} />
       </UnclickableLink>
@@ -59,14 +59,14 @@ export const USGovBannerWithCFGovLinks: Story = {
         An official website of the{' '}
         <span className='u-nowrap'>United States government</span>
       </>
-    )
-  }
+    ),
+  },
 };
 USGovBannerWithCFGovLinks.storyName = 'US gov banner (cf.gov)';
 
 export const USGovBannerWithLinks: Story = {
   ...USGovBannerWithCFGovLinks,
-  render: properties => <Banner {...properties} />,
+  render: (properties) => <Banner {...properties} />,
   args: {
     links: [
       <UnclickableLink key='Link 1'>
@@ -77,8 +77,8 @@ export const USGovBannerWithLinks: Story = {
       </UnclickableLink>,
       <UnclickableLink key='Link 3'>
         <a href='/link'>Link 3</a>
-      </UnclickableLink>
-    ]
-  }
+      </UnclickableLink>,
+    ],
+  },
 };
 USGovBannerWithLinks.storyName = 'US gov banner (with generic links)';

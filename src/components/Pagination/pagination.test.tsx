@@ -1,11 +1,5 @@
 import '@testing-library/jest-dom';
-import {
-  act,
-  fireEvent,
-  render,
-  screen,
-  waitFor
-} from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ReactElement, useState } from 'react';
 import { Pagination } from './pagination';
@@ -55,10 +49,8 @@ describe('<Pagination />', () => {
     const input = screen.getByLabelText(/number/);
     const go = screen.getByRole('button', { name: 'Go' });
 
-    await act(async () => {
-      fireEvent.change(input, { target: { value: '3' } });
-      await user.click(go);
-    });
+    fireEvent.change(input, { target: { value: '3' } });
+    await user.click(go);
 
     await waitFor(() => {
       expect(next.classList.contains('a-btn--disabled')).toBe(true);

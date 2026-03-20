@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Button, Link } from '~/src/index';
 import { ButtonGroup } from './button-group';
 
@@ -14,8 +15,8 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     appearance: { control: 'select' },
     size: { control: 'select' },
-    disabled: { control: 'boolean' }
-  }
+    disabled: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -28,42 +29,59 @@ export const Primary: Story = {
     appearance: 'primary',
     size: 'default',
     disabled: false,
-    asLink: false,
+    isLink: false,
     iconLeft: undefined,
-    iconRight: undefined
-  }
+    iconRight: undefined,
+    onClick: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /primary/i });
+
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+  },
 };
 
 export const Secondary: Story = {
   args: {
     ...Primary.args,
     label: 'Secondary',
-    appearance: 'secondary'
-  }
+    appearance: 'secondary',
+  },
 };
 
 export const Disabled: Story = {
   args: {
     ...Primary.args,
     label: 'Disabled',
-    disabled: true
-  }
+    disabled: true,
+    onClick: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /disabled/i });
+
+    await userEvent.click(button);
+    await expect(button).toBeDisabled();
+    await expect(args.onClick).not.toHaveBeenCalled();
+  },
 };
 
 export const Destructive: Story = {
   args: {
     ...Primary.args,
     label: 'Destructive',
-    appearance: 'warning'
-  }
+    appearance: 'warning',
+  },
 };
 
 export const StaticIconButtons: Story = {
   name: 'With icon',
   args: {
-    ...Primary.args
+    ...Primary.args,
   },
-  render: arguments_ => (
+  render: (arguments_) => (
     <>
       <ButtonGroup>
         <Button
@@ -82,21 +100,21 @@ export const StaticIconButtons: Story = {
       <br />
       <Button iconRight='upload' label='Upload file' />
     </>
-  )
+  ),
 };
 
 export const AnimatedIconButtons: Story = {
   name: 'With animated icon',
   args: {
     ...Primary.args,
-    label: 'Submit your complaint'
+    label: 'Submit your complaint',
   },
-  render: arguments_ => <Button {...arguments_} iconRight='updating' />
+  render: (arguments_) => <Button {...arguments_} iconRight='updating' />,
 };
 
 export const ButtonsGroup: Story = {
   name: 'Button group',
-  render: arguments_ => (
+  render: (arguments_) => (
     <>
       <ButtonGroup>
         <Button
@@ -118,14 +136,14 @@ export const ButtonsGroup: Story = {
         <Button key='Submit' {...arguments_} label='Submit' />
         <Button
           appearance='warning'
-          asLink
+          isLink
           key='Clear form'
           {...arguments_}
           label='Clear form'
         />
       </ButtonGroup>
     </>
-  )
+  ),
 };
 
 export const FullWidthOnSmallScreens: Story = {
@@ -134,27 +152,27 @@ export const FullWidthOnSmallScreens: Story = {
     ...Primary.args,
     label: 'Resize to mobile to see effect',
     appearance: 'primary',
-    size: 'full'
-  }
+    size: 'full',
+  },
 };
 
 export const ButtonLink: Story = {
   name: 'Button link',
-  render: arguments_ => (
+  render: (arguments_) => (
     <ButtonGroup>
       <Link
-        asButton
+        isButton
         href='/'
         label='Link styled as a button'
         iconRight='download'
       />
       <Button
-        asLink
+        isLink
         key='1'
         {...arguments_}
         label='Button styled as a link'
         iconRight='download'
       />
     </ButtonGroup>
-  )
+  ),
 };
