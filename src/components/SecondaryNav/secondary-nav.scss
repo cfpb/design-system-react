@@ -1,0 +1,72 @@
+// Secondary navigation (left panel / "Navigate this section" pattern)
+// Matches consumerfinance.gov compliance section sidebar
+// Active = black 5px left border; hover = green 5px left border
+// @see https://www.consumerfinance.gov/compliance/supervisory-highlights/
+// @see https://www.consumerfinance.gov/static/css/main.a624b7218b13.css
+
+.o-secondary-nav {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &--children {
+      padding-left: 0.9375rem;
+    }
+  }
+
+  &__item {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    display: block;
+    padding: 0.5rem 0 0.5rem 0.9375rem;
+    color: var(--pacific);
+    text-decoration: none;
+    border: solid transparent;
+    border-width: 0 0 0 5px;
+    overflow-wrap: anywhere;
+    word-break: normal;
+
+    &:hover,
+    &:focus {
+      border-left-color: var(--green);
+      color: var(--black);
+      text-decoration-color: var(--green);
+    }
+
+    &:focus {
+      outline: 1px dotted var(--pacific);
+      outline-offset: -1px;
+    }
+
+    &:visited {
+      color: var(--pacific);
+      text-decoration-color: transparent;
+    }
+
+    &--current {
+      border-left-color: var(--black);
+      color: var(--black);
+      cursor: text;
+      text-decoration: none;
+      text-decoration-color: var(--black);
+
+      &:hover,
+      &:focus,
+      &:visited {
+        border-left-color: var(--black);
+        color: var(--black);
+        text-decoration: none;
+        text-decoration-color: var(--black);
+      }
+    }
+
+    &--parent {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+}
