@@ -18,13 +18,10 @@ describe('<SecondaryNav />', () => {
   });
 
   it('renders custom aria-label when provided', () => {
-    render(
-      <SecondaryNav
-        items={defaultItems}
-        ariaLabel='On this page'
-      />,
-    );
-    expect(screen.getByRole('navigation', { name: 'On this page' })).toBeInTheDocument();
+    render(<SecondaryNav items={defaultItems} ariaLabel='On this page' />);
+    expect(
+      screen.getByRole('navigation', { name: 'On this page' }),
+    ).toBeInTheDocument();
   });
 
   it('renders all items as links; active link has aria-current', () => {
@@ -53,12 +50,7 @@ describe('<SecondaryNav />', () => {
   });
 
   it('applies custom className', () => {
-    render(
-      <SecondaryNav
-        items={defaultItems}
-        className='custom-nav'
-      />,
-    );
+    render(<SecondaryNav items={defaultItems} className='custom-nav' />);
     const nav = screen.getByRole('navigation', { name: 'Page navigation' });
     expect(nav).toHaveClass('o-secondary-nav');
     expect(nav).toHaveClass('custom-nav');
@@ -77,8 +69,17 @@ describe('<SecondaryNav />', () => {
     ];
     render(<SecondaryNav items={itemsWithChildren} />);
     expect(screen.getByText('Parent')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Child A' })).toHaveAttribute('href', '/child-a');
-    expect(screen.getByRole('link', { name: 'Child B' })).toHaveAttribute('href', '/child-b');
-    expect(screen.getByRole('link', { name: 'Child A' })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('link', { name: 'Child A' })).toHaveAttribute(
+      'href',
+      '/child-a',
+    );
+    expect(screen.getByRole('link', { name: 'Child B' })).toHaveAttribute(
+      'href',
+      '/child-b',
+    );
+    expect(screen.getByRole('link', { name: 'Child A' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
   });
 });
