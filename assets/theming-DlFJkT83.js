@@ -1,1 +1,0 @@
-import{n as e}from"./chunk-IH6QJILI-DyM-lPU3.js";import{c as t}from"./theming-C3L0H2BS.js";t();export{e as color};
