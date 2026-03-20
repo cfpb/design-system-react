@@ -8,7 +8,7 @@ export const buildColumnHeaders = (
   <thead>
     <tr>
       {columns.map((column, index) => {
-        let content = '';
+        let content;
         const cnames = [''];
         const key = `header-${index}`;
 

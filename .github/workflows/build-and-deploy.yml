@@ -31,3 +31,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist-storybook # The folder the action should deploy.
+          # Exclude the pr-previews folder from being deleted on deploy
+          clean-exclude: | 
+            pr-previews 

@@ -22,7 +22,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Enabled: Story = {
   render: (_arguments) => <CheckboxTestWrapper {..._arguments} />,
-  name: 'Enabled',
   args: {
     id: 'enabled',
     label: 'Enabled',
@@ -37,7 +36,6 @@ export const Enabled: Story = {
 
 export const Hover: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Hover',
   args: {
     id: 'hover',
     inputClassName: 'hover',
@@ -47,7 +45,6 @@ export const Hover: Story = {
 
 export const Focus: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Focus',
   args: {
     id: 'focus',
     inputClassName: 'focus',
@@ -57,7 +54,6 @@ export const Focus: Story = {
 
 export const Selected: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Selected',
   args: {
     id: 'selected',
     label: 'Selected',
@@ -67,7 +63,6 @@ export const Selected: Story = {
 
 export const Disabled: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Disabled',
   args: {
     id: 'disabled',
     label: 'Disabled',
@@ -78,8 +73,8 @@ export const Disabled: Story = {
     const canvas = within(canvasElement);
     const checkbox = canvas.getByRole('checkbox');
     await userEvent.click(checkbox);
-    expect(checkbox).toBeDisabled();
-    expect(checkbox).not.toBeChecked();
+    await expect(checkbox).toBeDisabled();
+    await expect(checkbox).not.toBeChecked();
   },
 };
 
@@ -96,7 +91,6 @@ export const Disabledselected: Story = {
 
 export const Success: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Success',
   args: {
     id: 'success',
     label: 'Success',
@@ -106,7 +100,6 @@ export const Success: Story = {
 
 export const Warning: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Warning',
   args: {
     id: 'warning',
     label: 'Warning',
@@ -116,7 +109,6 @@ export const Warning: Story = {
 
 export const Error: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Error',
   args: {
     id: 'error',
     label: 'Error',

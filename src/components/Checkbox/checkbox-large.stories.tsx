@@ -21,7 +21,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Enabled: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Enabled',
   args: {
     id: 'Enabled',
     label: 'Enabled',
@@ -31,7 +30,6 @@ export const Enabled: Story = {
 
 export const Hover: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Hover',
   args: {
     id: 'hover',
     label: 'Hover',
@@ -42,7 +40,6 @@ export const Hover: Story = {
 
 export const Focus: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Focus',
   args: {
     id: 'focus',
     label: 'Focus',
@@ -53,7 +50,6 @@ export const Focus: Story = {
 
 export const Selected: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Selected',
   args: {
     id: 'selected',
     label: 'Selected',
@@ -64,7 +60,6 @@ export const Selected: Story = {
 
 export const Disabled: Story = {
   render: (_arguments) => CheckboxWrapper(_arguments),
-  name: 'Disabled',
   args: {
     id: 'disabled',
     label: 'Disabled',
