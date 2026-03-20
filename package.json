@@ -1,7 +1,7 @@
 {
   "name": "@cfpb/design-system-react",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/cfpb/design-system-react.git"
@@ -49,8 +49,8 @@
   },
   "peerDependencies": {
     "@cfpb/cfpb-design-system": "4.4.0",
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-router": "^7.13.0"
   },
   "devDependencies": {
@@ -144,5 +144,5 @@
     ]
   },
   "type": "module",
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.13.0"
 }
