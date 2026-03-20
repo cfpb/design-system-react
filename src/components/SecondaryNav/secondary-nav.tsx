@@ -54,7 +54,8 @@ export const SecondaryNav = ({
         <ul className='o-secondary-nav__list o-secondary-nav__list--parents'>
           {items.map((item) => {
             const hasChildren = Boolean(item.children?.length);
-            const hasActiveChild = hasChildren && item.children!.some((c) => c.isActive);
+            const hasActiveChild =
+              hasChildren && item.children!.some((c) => c.isActive);
             const parentIsActive = Boolean(item.isActive && !hasActiveChild);
             const sectionHasActive = hasActiveChild || parentIsActive;
 
