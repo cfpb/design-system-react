@@ -1,1 +1,0 @@
-import{r as e}from"./chunk-YKABRMAI-D-hO-hyc.js";import{rt as t}from"./components-oSO6-SSF.js";t();export{e as createCopyToClipboardFunction};
