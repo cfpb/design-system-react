@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-import { Icon, TextInput } from '~/src/index';
+import { Button, Icon, TextInput } from '~/src/index';
+import type { TextInputProperties } from './text-input';
 
 const meta: Meta<typeof TextInput> = {
   title: 'Components (Verified)/Text inputs/Text input',
@@ -26,9 +28,9 @@ export const Enabled: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
-    expect(input).toHaveValue('Enabled');
+    await expect(input).toHaveValue('Enabled');
     await userEvent.click(input);
-    expect(input).toHaveFocus();
+    await expect(input).toHaveFocus();
   },
 };
 
@@ -107,31 +109,51 @@ export const SearchInput: Story = {
   name: 'Search input',
   args: {
     ...Enabled.args,
-    value:
-      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable.",
+    value: '',
+    placeholder: 'Enter your search term(s)',
     name: 'SearchInput',
     id: 'SearchInput',
     type: 'search',
-    isFullWidth: true,
+    isFullWidth: false,
+    className: 'a-text-input__full',
   },
-  render: (_arguments) => (
-    <div className='o-search-input'>
-      <div className='o-search-input__input'>
-        <label
-          htmlFor='SearchInput'
-          className='o-search-input__input-label'
-          aria-label='Search for a term'
-        >
-          <Icon name='search' />
-        </label>
-        <TextInput {..._arguments} />
-        <button type='reset' aria-label='Clear search' title='Clear search'>
-          <Icon name='error' />
-        </button>
-      </div>
-      <button className='a-btn' type='submit' aria-label='Search for term(s)'>
-        Search
-      </button>
-    </div>
-  ),
+  render: (args) => {
+    const { value: initialValue, ...restArgs } = args as TextInputProperties & {
+      value: string;
+    };
+    const [value, setValue] = useState(initialValue ?? '');
+    return (
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        onReset={() => setValue('')}
+      >
+        <div className='o-search-input'>
+          <div className='o-search-input__input'>
+            <label
+              htmlFor='SearchInput'
+              className='o-search-input__input-label'
+              aria-label='Search for a term'
+            >
+              <Icon name='search' />
+            </label>
+            <TextInput
+              {...restArgs}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+            <button type='reset' aria-label='Clear search' title='Clear search'>
+              <Icon name='error' />
+            </button>
+          </div>
+          <Button
+            type='submit'
+            aria-label='Search for term(s)'
+            label='Search'
+          />
+        </div>
+      </form>
+    );
+  },
 };

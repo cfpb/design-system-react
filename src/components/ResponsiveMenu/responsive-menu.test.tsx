@@ -101,7 +101,6 @@ describe('ResponsiveMenu', () => {
 
   it('applies active class to the current page link', () => {
     renderWithScope(<ResponsiveMenu links={ExampleLinks} />);
-    const menuToggle = screen.getAllByRole('button')[0];
 
     const activeLink = screen.getByText('Filing');
     expect(activeLink).toHaveClass('active');
