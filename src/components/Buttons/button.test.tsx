@@ -16,7 +16,7 @@ describe('<Button />', () => {
     const testTitle = 'test-title';
 
     render(
-      <Button label={testLabel} className={testClass} title={testTitle} />
+      <Button label={testLabel} className={testClass} title={testTitle} />,
     );
     expect(screen.getByText(testLabel)).toBeInTheDocument();
     expect(screen.getByText(testLabel)).toHaveClass(buttonBaseClass);
@@ -25,7 +25,7 @@ describe('<Button />', () => {
   });
 
   it('Renders as a link', () => {
-    render(<Button label={testLabel} asLink />);
+    render(<Button label={testLabel} isLink />);
     expect(screen.getByText(testLabel)).toHaveClass(buttonLinkClass);
   });
 
@@ -40,12 +40,29 @@ describe('<Button />', () => {
     expect(screen.getByText(wowLabel).textContent).toEqual(wowLabel);
   });
 
+  it('Renders children without a label', () => {
+    render(
+      <Button>
+        <span data-testid='button-child'>Child</span>
+      </Button>,
+    );
+    expect(screen.getByTestId('button-child')).toBeInTheDocument();
+  });
+
+  it('Throws an error when both left and right icons are provided', () => {
+    expect(() =>
+      render(<Button label={testLabel} iconLeft='left' iconRight='right' />),
+    ).toThrow(
+      'Button component: only one of iconLeft or iconRight can be provided',
+    );
+  });
+
   it('Renders left icon correctly', async () => {
     render(<Button label={testLabel} iconLeft='left' />);
     expect(screen.getByText(testLabel)).toBeInTheDocument();
     expect(screen.getByText(testLabel).textContent).toEqual(testLabel);
     expect(
-      screen.getByText(testLabel, { selector: 'span' })
+      screen.getByText(testLabel, { selector: 'span' }),
     ).toBeInTheDocument();
     expect(await screen.findByTestId('button-icon-left')).toBeInTheDocument();
   });
@@ -55,7 +72,7 @@ describe('<Button />', () => {
     expect(screen.getByText(testLabel)).toBeInTheDocument();
     expect(screen.getByText(testLabel).textContent).toEqual(testLabel);
     expect(
-      screen.getByText(testLabel, { selector: 'span' })
+      screen.getByText(testLabel, { selector: 'span' }),
     ).toBeInTheDocument();
     expect(await screen.findByTestId('button-icon-right')).toBeInTheDocument();
   });

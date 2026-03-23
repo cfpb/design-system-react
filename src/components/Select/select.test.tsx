@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { act, render, screen, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { JSX, useState } from 'react';
 import { fn } from 'storybook/test';
@@ -8,11 +8,11 @@ import { MultipleSelectOptions, SingleSelectOptions } from './test-utils';
 
 const SingleSelectWrapper = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<string>(
-    SingleSelectOptions[0].value
+    SingleSelectOptions[0].value,
   );
 
   const onHandleChange = (
-    newValue: SelectOption | SelectOption[] | undefined
+    newValue: SelectOption | SelectOption[] | undefined,
   ): void => {
     // Just to resolve TypeScript since we are using Select in single format
     if (Array.isArray(newValue)) return;
@@ -63,7 +63,7 @@ describe('<SelectMulti />', () => {
         isMulti
         maxSelections={maxSelections}
         onChange={onChange}
-      />
+      />,
     );
 
     // Has correct placeholder text based on maxSelections
@@ -79,15 +79,13 @@ describe('<SelectMulti />', () => {
     expect(document.querySelectorAll('.u-max-selections').length).toBe(0);
 
     // Allows selection of multiple options, up to the limit
-    await act(async () => {
-      await user.click(screen.getByLabelText('Option 1'));
-      await user.click(screen.getByLabelText('Option 4'));
-    });
+    await user.click(screen.getByLabelText('Option 1'));
+    await user.click(screen.getByLabelText('Option 4'));
 
     // Change handler is called with the expected content
     expect(onChange).toHaveBeenCalledWith([
       { ...MultipleSelectOptions[0], selected: true },
-      { ...MultipleSelectOptions[3], selected: true }
+      { ...MultipleSelectOptions[3], selected: true },
     ]);
 
     // Tags are rendered for the selected options
@@ -108,10 +106,8 @@ describe('<SelectMulti />', () => {
     expect(document.querySelectorAll('.u-max-selections').length).toBe(1);
 
     // Allows deselection of options
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Option 1' }));
-      await user.click(screen.getByRole('button', { name: 'Option 4' }));
-    });
+    await user.click(screen.getByRole('button', { name: 'Option 1' }));
+    await user.click(screen.getByRole('button', { name: 'Option 4' }));
 
     const NoButtons = screen.queryAllByRole(`button`);
     expect(NoButtons.length).toBe(0);

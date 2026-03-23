@@ -3,12 +3,12 @@ import { JSX } from 'react';
 import type { TableColumn, TableProperties } from './table';
 
 export const buildColumnHeaders = (
-  columns: TableProperties['columns']
+  columns: TableProperties['columns'],
 ): JSX.Element | null => (
   <thead>
     <tr>
       {columns.map((column, index) => {
-        let content = '';
+        let content;
         const cnames = [''];
         const key = `header-${index}`;
 
@@ -37,7 +37,7 @@ const getCellProperties = (column: TableColumn): object => {
 
   if (typeof column === 'string') {
     return {
-      'data-label': column
+      'data-label': column,
     };
   }
 
@@ -49,13 +49,13 @@ const getCellProperties = (column: TableColumn): object => {
 
   return {
     'data-label': column.header,
-    className: classNames(cellCnames)
+    className: classNames(cellCnames),
   };
 };
 
 export const buildRows = (
   rows: TableProperties['rows'],
-  columns: TableProperties['columns']
+  columns: TableProperties['columns'],
 ): JSX.Element | null => (
   <tbody>
     {rows.map((row, rowIndex) => {

@@ -3,7 +3,7 @@ import './skip-nav.scss';
 
 export default function SkipNav({
   href = '#main',
-  text = 'Skip to main content'
+  text = 'Skip to main content',
 }): JSXElement {
   return (
     <div className='skip-nav'>

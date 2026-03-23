@@ -10,8 +10,8 @@ const meta: Meta<typeof SelectSingle> = {
   component: Select,
   argTypes: {
     disabled: { control: 'boolean' },
-    isMulti: { control: 'boolean' }
-  }
+    isMulti: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -22,7 +22,7 @@ function SelectWrapper({ ...arguments_ }: SelectProperties): JSX.Element {
   const [selected, setSelected] = useState<string>('');
 
   const onHandleChange = (
-    newValue: SelectOption | SelectOption[] | undefined
+    newValue: SelectOption | SelectOption[] | undefined,
   ): void => {
     // Just to resolve TypeScript since we are using Select in single format
     if (Array.isArray(newValue)) return;
@@ -35,44 +35,44 @@ function SelectWrapper({ ...arguments_ }: SelectProperties): JSX.Element {
 }
 
 export const SingleSelect: Story = {
-  render: _arguments => SelectWrapper(_arguments),
+  render: (_arguments) => SelectWrapper(_arguments),
   name: 'Enabled',
   args: {
     id: 'singleSelect',
     label: 'Enabled',
-    options: SingleSelectOptions
-  }
+    options: SingleSelectOptions,
+  },
 };
 
 export const SingleSelectHover: Story = {
-  render: _arguments => SelectWrapper(_arguments),
+  render: (_arguments) => SelectWrapper(_arguments),
   name: 'Hover',
   args: {
     id: 'singleSelect',
     label: 'Hover',
     options: SingleSelectOptions,
-    className: 'hover'
-  }
+    className: 'hover',
+  },
 };
 
 export const SingleSelectFocus: Story = {
-  render: _arguments => SelectWrapper(_arguments),
+  render: (_arguments) => SelectWrapper(_arguments),
   name: 'Focus',
   args: {
     id: 'singleSelect',
     label: 'Focus',
     options: SingleSelectOptions,
-    className: 'focus'
-  }
+    className: 'focus',
+  },
 };
 
 export const SingleSelectDisabled: Story = {
-  render: _arguments => SelectWrapper(_arguments),
+  render: (_arguments) => SelectWrapper(_arguments),
   name: 'Disabled',
   args: {
     id: 'singleSelect',
     label: 'Disabled',
     options: SingleSelectOptions,
-    disabled: true
-  }
+    disabled: true,
+  },
 };

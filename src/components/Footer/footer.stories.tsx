@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { JSX } from 'react';
 import { Footer, FooterCfGov, Icon } from '~/src/index';
 
 const meta: Meta<typeof Footer> = {
   title: 'Components (Draft)/Footers',
   tags: ['autodocs'],
   component: Footer,
-  argTypes: {}
+  argTypes: {},
 };
 
 export default meta;
@@ -36,21 +37,21 @@ export const Example: Story = {
     linksCol1: [
       makeLink('Col1 Link 1'),
       makeLink('Col1 Link 2'),
-      makeLink('Col1 Link 3')
+      makeLink('Col1 Link 3'),
     ],
     linksCol2: [
       makeLink('Col2 Link 1'),
       makeLink('Col2 Link 2'),
-      makeLink('Col2 Link 3')
+      makeLink('Col2 Link 3'),
     ],
     linksCol3: [
       makeLink('Col3 Link 1', true),
       makeLink('Col3 Link 2', true),
-      makeLink('Col3 Link 3', true)
-    ]
-  }
+      makeLink('Col3 Link 3', true),
+    ],
+  },
 };
 
 export const CFGov: Story = {
-  render: () => <FooterCfGov />
+  render: () => <FooterCfGov />,
 };

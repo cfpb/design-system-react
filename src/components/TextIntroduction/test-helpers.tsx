@@ -18,7 +18,7 @@ export const placeholders = {
   heading,
   subheading,
   description,
-  callToAction
+  callToAction,
 };
 
 export default {
@@ -26,5 +26,5 @@ export default {
   description,
   subheading,
   callToAction,
-  callToActionText
+  callToActionText,
 };

@@ -1,10 +1,10 @@
 import { JSX } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router';
 import type { JSXElement } from '../../types/jsx-element';
 
 import classnames from 'classnames';
 import type { HTMLProps, ReactNode, Ref } from 'react';
-import { Icon } from '~/src';
+import { Icon } from '../Icon/icon';
 import ListItem from '../List/list-item';
 import './link.scss';
 
@@ -12,7 +12,7 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
   /**
    * Whether the link should be rendered as a button.
    */
-  asButton?: boolean;
+  isButton?: boolean;
   /**
    * Any children to render within the link. Allows you to wrap any node with anchor tag
    */
@@ -55,7 +55,7 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
  * Source: https://cfpb.github.io/design-system/components/links
  */
 export default function Link({
-  asButton = false,
+  isButton = false,
   children,
   href,
   iconLeft,
@@ -66,27 +66,46 @@ export default function Link({
   type = 'default',
   ...others
 }: LinkProperties): JSXElement {
-  const hasIcons = Boolean(iconLeft ?? iconRight);
-  const shouldUseLinkStyles = !asButton && (hasIcons || isJump);
-  const shouldWrapLabel = asButton || shouldUseLinkStyles;
+  const hasLeftIcon = Boolean(iconLeft);
+  const hasRightIcon = Boolean(iconRight);
+  const hasIcons = hasLeftIcon || hasRightIcon;
+  const shouldUseLinkStyles = !isButton && (hasIcons || isJump);
+  const shouldWrapLabel = isButton || shouldUseLinkStyles;
   const labelNode = shouldWrapLabel ? <LinkText>{label}</LinkText> : label;
   const cname = classnames(others.className, {
-    'a-btn': asButton || type === 'destructive',
+    'a-btn': isButton || type === 'destructive',
     'a-btn--link': type === 'destructive',
     'a-btn--warning': type === 'destructive',
     'a-link--jump': isJump,
-    'a-link': shouldUseLinkStyles
+    'a-link': shouldUseLinkStyles,
   });
+
+  if (hasLeftIcon && hasRightIcon) {
+    throw new Error(
+      'Link component: only one of iconLeft or iconRight can be provided',
+    );
+  }
 
   if (isRouterLink) {
     if (!href) {
       throw new Error(
-        'Link component: href is a required attribute when isRouterLink is true'
+        'Link component: href is a required attribute when isRouterLink is true',
       );
     }
     return (
       <RouterLink to={href} {...others} className={cname}>
-        {label}
+        {children}
+        {!!iconLeft && (
+          <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
+        )}
+        {labelNode}
+        {!!iconRight && (
+          <Icon
+            name={iconRight}
+            isPresentational
+            data-testid='link-icon-right'
+          />
+        )}
       </RouterLink>
     );
   }

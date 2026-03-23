@@ -31,7 +31,7 @@ describe('Footer', () => {
       </a>,
       <a href='/' className='link3' key='link3'>
         Link 3
-      </a>
+      </a>,
     ];
     render(<Footer navLinks={navLink} />);
 
@@ -52,7 +52,7 @@ describe('Footer', () => {
     const socialLink = [
       <a href='/' className='link1' key='link1'>
         Link 1
-      </a>
+      </a>,
     ];
     render(<Footer socialLinks={socialLink} />);
 
@@ -73,14 +73,14 @@ describe('Footer', () => {
     const socialLink = [
       <a href='/' className='link1' key='link1'>
         Link 1
-      </a>
+      </a>,
     ];
     render(
       <Footer
         linksCol1={socialLink}
         linksCol2={socialLink}
         linksCol3={socialLink}
-      />
+      />,
     );
 
     // Lists rendered

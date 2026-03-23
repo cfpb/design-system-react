@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { RadioButton } from '~/src/index';
 
 /**
@@ -12,8 +13,8 @@ const meta: Meta<typeof RadioButton> = {
   component: RadioButton,
   argTypes: {
     disabled: { control: 'boolean' },
-    isLarge: { control: 'boolean' }
-  }
+    isLarge: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -27,8 +28,15 @@ export const StandardRadio: Story = {
   args: {
     id: 'testRadio',
     label: 'Standard radio button',
-    name: 'Radio select'
-  }
+    name: 'Radio select',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const radio = canvas.getByRole('radio', { name: /standard radio button/i });
+    await waitFor(() => expect(radio).not.toBeChecked());
+    await userEvent.click(radio);
+    await waitFor(() => expect(radio).toBeChecked());
+  },
 };
 
 export const StandardRadioWithHelper: Story = {
@@ -36,8 +44,8 @@ export const StandardRadioWithHelper: Story = {
   args: {
     ...StandardRadio.args,
     id: 'StandardRadioWithHelper',
-    helperText
-  }
+    helperText,
+  },
 };
 
 export const LargeRadio: Story = {
@@ -46,8 +54,8 @@ export const LargeRadio: Story = {
     ...StandardRadio.args,
     id: 'LargeRadio',
     isLarge: true,
-    label: 'Large target area radio button'
-  }
+    label: 'Large target area radio button',
+  },
 };
 
 export const LargeRadioWithHelper: Story = {
@@ -56,6 +64,6 @@ export const LargeRadioWithHelper: Story = {
     ...LargeRadio.args,
     id: 'LargeRadioWithHelper',
     isLarge: true,
-    helperText
-  }
+    helperText,
+  },
 };

@@ -13,20 +13,20 @@ const defaultColumns = [
   'Column 1 header',
   'Column 2 header',
   'Column 3 header',
-  'Column 4 header'
+  'Column 4 header',
 ];
 
 const defaultRows = [
   ['Row 1, Column 1', 'Row 1, Column 2', 'Row 1, Column 3', 'Row 1, Column 4'],
   ['Row 2, Column 1', 'Row 2, Column 2', 'Row 2, Column 3', 'Row 2, Column 4'],
-  ['Row 3, Column 1', 'Row 3, Column 2', 'Row 3, Column 3', 'Row 3, Column 4']
+  ['Row 3, Column 1', 'Row 3, Column 2', 'Row 3, Column 3', 'Row 3, Column 4'],
 ];
 
 const columnsWithConfiguration = [
   { header: 'Col 1', width: 30 },
   'Col 2',
   'Col 3',
-  { header: 'Right Aligned', width: 40, alignRight: true }
+  { header: 'Right Aligned', width: 40, alignRight: true },
 ];
 
 describe('<Table />', () => {
@@ -36,7 +36,7 @@ describe('<Table />', () => {
         caption={defaultCaption}
         columns={defaultColumns}
         rows={defaultRows}
-      />
+      />,
     );
     const table = screen.queryByTestId('table-testid');
     expect(table).toBeInTheDocument();
@@ -52,7 +52,7 @@ describe('<Table />', () => {
         columns={defaultColumns}
         rows={defaultRows}
         isScrollableHorizontal
-      />
+      />,
     );
 
     const scrollable = screen.queryByTestId('table-simple-scrollable');
@@ -70,7 +70,7 @@ describe('<Table />', () => {
         rows={defaultRows}
         isResponsive
         isStriped
-      />
+      />,
     );
 
     const table = screen.queryByTestId('table-testid');
@@ -84,7 +84,7 @@ describe('<Table />', () => {
         caption={defaultCaption}
         columns={columnsWithConfiguration}
         rows={defaultRows}
-      />
+      />,
     );
 
     const cell = screen.queryByText('Right Aligned');
@@ -99,12 +99,12 @@ describe('<Table />', () => {
         rows={defaultRows}
         isPaginated
         id='table-pagination'
-      />
+      />,
     );
 
     const previousButton = screen.getByRole('button', { name: 'Previous' });
     expect(previousButton.classList.contains('m-pagination__btn-prev')).toBe(
-      true
+      true,
     );
 
     const nextButton = screen.getByRole('button', { name: 'Next' });

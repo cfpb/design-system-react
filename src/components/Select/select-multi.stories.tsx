@@ -8,8 +8,8 @@ const meta: Meta<typeof Select> = {
   tags: ['autodocs'],
   argTypes: {
     disabled: { control: 'boolean' },
-    isMulti: { control: 'boolean' }
-  }
+    isMulti: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -22,11 +22,11 @@ export const Default: Story = {
     label: 'Label',
     isMulti: true,
     options: MultipleSelectOptions,
-    disabled: true
+    disabled: true,
   },
-  render: arguments_ => (
+  render: (arguments_) => (
     <div style={{ minHeight: '200px' }}>
       <Select {...arguments_} />
     </div>
-  )
+  ),
 };

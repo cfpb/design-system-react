@@ -18,6 +18,7 @@ export const preview = {
             'Checkboxes',
             ['Overview', '*'], // Display the custom Overview page first
             'Expandables',
+            'Fieldsets',
             'Headings',
             'Labels',
             'Links',
@@ -29,26 +30,36 @@ export const preview = {
             'Text inputs',
             ['Overview', '*'], // Display the custom Overview page first
             'Text introductions',
-            'Wells'
+            'Wells',
           ],
           'Components (Draft)',
-          '*'
-        ]
-      }
+          '*',
+        ],
+      },
     },
+
     actions: {},
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/
-      }
+        date: /Date$/,
+      },
     },
+
     docs: {
-      theme: themeCFPB
-    }
+      theme: themeCFPB,
+    },
+
+    a11y: {
+      // 'todo' - show a11y violations in the test UI only
+      // 'error' - fail CI on a11y violations
+      // 'off' - skip a11y checks entirely
+      test: 'todo',
+    },
   },
 
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export default preview;

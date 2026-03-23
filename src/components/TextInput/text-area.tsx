@@ -1,10 +1,15 @@
 import classNames from 'classnames';
-import type { ReactElement, Ref } from 'react';
-import { forwardRef, JSX, type ChangeEventHandler } from 'react';
-import { noOp as onNoOp } from '~/src/utils/no-op';
+import {
+  forwardRef,
+  JSX,
+  type ChangeEventHandler,
+  type ReactElement,
+  type Ref,
+} from 'react';
+import { noOp as onNoOp } from '../../utils/no-op';
 import {
   getTextInputStatusClass,
-  type TextInputStatusType
+  type TextInputStatusType,
 } from './text-input-status';
 export interface TextAreaType {
   id: string;
@@ -31,9 +36,11 @@ export const TextArea = forwardRef(
       onChange = onNoOp,
       ...properties
     }: JSX.IntrinsicElements['textarea'] & TextAreaType,
-    reference: Ref<HTMLTextAreaElement>
+    reference: Ref<HTMLTextAreaElement>,
   ): ReactElement => {
-    const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = event => {
+    const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (
+      event,
+    ) => {
       event.preventDefault();
       onChange(event.target.value);
     };
@@ -41,9 +48,9 @@ export const TextArea = forwardRef(
     const classes = [
       'a-text-input',
       getTextInputStatusClass(status),
-      isFullWidth ? 'a-text-input--full' : '',
-      className || ''
-    ].filter(x => x.length);
+      isFullWidth ? 'a-text-input__full' : '',
+      className || '',
+    ].filter((x) => x.length);
 
     return (
       <div className='m-form-field'>
@@ -59,5 +66,5 @@ export const TextArea = forwardRef(
         />
       </div>
     );
-  }
+  },
 );

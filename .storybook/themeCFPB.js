@@ -8,7 +8,7 @@ const colors = {
   gray40: '#b4b5b6',
   green10: '#f0f8eb',
   teal: '#257675',
-  teal80: '#579695'
+  teal80: '#579695',
 };
 
 /**
@@ -49,5 +49,5 @@ export default create({
   booleanSelectedBg: colors.teal80,
   inputBg: 'white',
   inputBorder: colors.gray,
-  inputTextColor: colors.black
+  inputTextColor: colors.black,
 });

@@ -46,14 +46,14 @@ interface ListItemBuilderProperties {
 export function ListItemBuilder({
   children,
   itemClassname = '',
-  className
+  className,
 }: ListItemBuilderProperties): JSX.Element {
   return (
     <>
       {children.map((element: JSX.Element) => (
         <ListItem key={element.key} className={className}>
           {React.cloneElement(element, {
-            className: `${itemClassname} ${element.props?.className ?? ''}`
+            className: `${itemClassname} ${element.props?.className ?? ''}`,
           })}
         </ListItem>
       ))}

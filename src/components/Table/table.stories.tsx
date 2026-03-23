@@ -5,7 +5,7 @@ import { ONE } from '../Pagination/use-pagination';
 const meta: Meta<typeof Table> = {
   title: 'Components (Verified)/Tables',
   tags: ['autodocs'],
-  component: Table
+  component: Table,
 };
 
 export default meta;
@@ -20,9 +20,9 @@ export const Standard: Story = {
     rows: [
       ['Row 1, Column 1', 'Row 1, Column 2', 'Row 1, Column 3'],
       ['Row 2, Column 1', 'Row 2, Column 2', 'Row 2, Column 3'],
-      ['Row 3, Column 1', 'Row 3, Column 2', 'Row 3, Column 3']
-    ]
-  }
+      ['Row 3, Column 1', 'Row 3, Column 2', 'Row 3, Column 3'],
+    ],
+  },
 };
 
 export const Responsive: Story = {
@@ -33,10 +33,10 @@ export const Responsive: Story = {
       ['Row A', 'Cell A2', 'Cell A3'],
       ['Row B', 'Cell B2', 'Cell B3'],
       ['Row C', 'Cell C2', 'Cell C3'],
-      ['Row D', 'Cell D2', 'Cell D3']
+      ['Row D', 'Cell D2', 'Cell D3'],
     ],
-    isResponsive: true
-  }
+    isResponsive: true,
+  },
 };
 
 export const HorizontalScroll: Story = {
@@ -50,7 +50,7 @@ export const HorizontalScroll: Story = {
       'Column 5',
       'Column 6',
       'Column 7',
-      'Column 8'
+      'Column 8',
     ],
     rows: [
       [
@@ -61,7 +61,7 @@ export const HorizontalScroll: Story = {
         'Cell A5',
         'Cell A6',
         'Cell A7',
-        'Cell A8'
+        'Cell A8',
       ],
       [
         'Row B',
@@ -71,7 +71,7 @@ export const HorizontalScroll: Story = {
         'Cell B5',
         'Cell B6',
         'Cell B7',
-        'Cell B8'
+        'Cell B8',
       ],
       [
         'Row C',
@@ -81,11 +81,11 @@ export const HorizontalScroll: Story = {
         'Cell C5',
         'Cell C6',
         'Cell C7',
-        'Cell C8'
-      ]
+        'Cell C8',
+      ],
     ],
-    isScrollableHorizontal: true
-  }
+    isScrollableHorizontal: true,
+  },
 };
 
 export const Striped: Story = {
@@ -93,8 +93,8 @@ export const Striped: Story = {
   args: {
     columns: Responsive.args?.columns,
     rows: Responsive.args?.rows,
-    isStriped: true
-  }
+    isStriped: true,
+  },
 };
 
 export const RightAligned: Story = {
@@ -103,13 +103,13 @@ export const RightAligned: Story = {
     columns: [
       { header: 'Col 1' },
       'Col 2',
-      { header: 'Right-aligned column', alignRight: true }
+      { header: 'Right-aligned column', alignRight: true },
     ],
     rows: [
       ['Row A', 'Cell A2', '$1.00'],
-      ['Row B', 'Cell B2', '$200.02']
-    ]
-  }
+      ['Row B', 'Cell B2', '$200.02'],
+    ],
+  },
 };
 
 const numberRows = 30;
@@ -118,17 +118,17 @@ const PAGINATION_PER_PAGE = 5;
 export const Pagination: Story = {
   args: {
     columns: ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'],
-    rows: [...Array.from({ length: numberRows }).keys()].map(key => [
+    rows: [...Array.from({ length: numberRows }).keys()].map((key) => [
       `Row ${key + ONE}, Column 1`,
       `Row ${key + ONE}, Column 2`,
       `Row ${key + ONE}, Column 3`,
       `Row ${key + ONE}, Column 4`,
-      `Row ${key + ONE}, Column 5`
+      `Row ${key + ONE}, Column 5`,
     ]),
     isPaginated: true,
-    perPage: PAGINATION_PER_PAGE
+    perPage: PAGINATION_PER_PAGE,
   },
-  render: arguments_ => <Table {...arguments_} />
+  render: (arguments_) => <Table {...arguments_} />,
 };
 
 export const FixedWidth: Story = {
@@ -137,13 +137,13 @@ export const FixedWidth: Story = {
     columns: [
       { header: 'County', width: '20' },
       { header: 'Lien status', width: '60' },
-      { header: 'Active', width: '20' }
+      { header: 'Active', width: '20' },
     ],
     rows: [
       ['Abbeville', 'Secured', 'Yes'],
-      ['Abbey', 'Secured', 'No']
-    ]
-  }
+      ['Abbey', 'Secured', 'No'],
+    ],
+  },
 };
 
 const maxUidTestRows = [...Array.from({ length: 20 }).keys()].map(
@@ -151,8 +151,8 @@ const maxUidTestRows = [...Array.from({ length: 20 }).keys()].map(
     `Row ${index + 1_000_000_000}`,
     '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
     '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
-    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS'
-  ]
+    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
+  ],
 );
 
 export const LongCharacterSets: Story = {
@@ -162,9 +162,9 @@ export const LongCharacterSets: Story = {
       { header: 'Column 1', cellDisableWordWrap: true, headerWordWrap: false },
       { header: 'Column 2', cellWordBreak: true },
       { header: 'Column 3', cellWordBreak: true },
-      { header: 'Column 4', cellWordBreak: true }
+      { header: 'Column 4', cellWordBreak: true },
     ],
     rows: maxUidTestRows,
-    isScrollableHorizontal: false
-  }
+    isScrollableHorizontal: false,
+  },
 };

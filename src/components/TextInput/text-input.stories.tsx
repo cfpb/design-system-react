@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Icon, TextInput } from '~/src/index';
+import { useState } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
+import { Button, Icon, TextInput } from '~/src/index';
+import type { TextInputProperties } from './text-input';
 
 const meta: Meta<typeof TextInput> = {
   title: 'Components (Verified)/Text inputs/Text input',
@@ -7,8 +10,8 @@ const meta: Meta<typeof TextInput> = {
   component: TextInput,
   argTypes: {
     isFullWidth: { control: 'boolean' },
-    isDisabled: { control: 'boolean' }
-  }
+    isDisabled: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -20,8 +23,15 @@ export const Enabled: Story = {
     name: 'Enabled',
     id: 'Enabled',
     value: 'Enabled',
-    type: 'text'
-  }
+    type: 'text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+    await expect(input).toHaveValue('Enabled');
+    await userEvent.click(input);
+    await expect(input).toHaveFocus();
+  },
 };
 
 export const Hover: Story = {
@@ -29,9 +39,9 @@ export const Hover: Story = {
     ...Enabled.args,
     name: 'Hover',
     id: 'Hover',
-    value: 'Hover'
+    value: 'Hover',
   },
-  render: _arguments => <TextInput {..._arguments} className='hover' />
+  render: (_arguments) => <TextInput {..._arguments} className='hover' />,
 };
 
 export const Focus: Story = {
@@ -39,9 +49,9 @@ export const Focus: Story = {
     ...Enabled.args,
     name: 'Focus',
     id: 'Focus',
-    value: 'Focus'
+    value: 'Focus',
   },
-  render: _arguments => <TextInput {..._arguments} className='focus' />
+  render: (_arguments) => <TextInput {..._arguments} className='focus' />,
 };
 
 export const Disabled: Story = {
@@ -50,8 +60,8 @@ export const Disabled: Story = {
     value: 'Disabled',
     name: 'Disabled',
     id: 'Disabled',
-    disabled: true
-  }
+    disabled: true,
+  },
 };
 
 export const Success: Story = {
@@ -60,8 +70,8 @@ export const Success: Story = {
     value: 'Success',
     name: 'Success',
     id: 'Success',
-    status: 'success'
-  }
+    status: 'success',
+  },
 };
 
 export const Warning: Story = {
@@ -70,8 +80,8 @@ export const Warning: Story = {
     value: 'Warning',
     name: 'Warning',
     id: 'Warning',
-    status: 'warning'
-  }
+    status: 'warning',
+  },
 };
 
 export const Error: Story = {
@@ -80,8 +90,8 @@ export const Error: Story = {
     value: 'Error',
     name: 'Error',
     id: 'Error',
-    status: 'error'
-  }
+    status: 'error',
+  },
 };
 
 export const FullWidth: Story = {
@@ -91,39 +101,59 @@ export const FullWidth: Story = {
     value: 'Input text',
     name: 'fullWidth',
     id: 'fullWidth',
-    isFullWidth: true
-  }
+    isFullWidth: true,
+  },
 };
 
-export const searchInput: Story = {
+export const SearchInput: Story = {
   name: 'Search input',
   args: {
     ...Enabled.args,
-    value:
-      "This is some really long text to make sure that the button doesn't overlap the content in such a way that this input becomes unusable.",
+    value: '',
+    placeholder: 'Enter your search term(s)',
     name: 'SearchInput',
     id: 'SearchInput',
     type: 'search',
-    isFullWidth: true
+    isFullWidth: false,
+    className: 'a-text-input__full',
   },
-  render: _arguments => (
-    <div className='o-search-input'>
-      <div className='o-search-input__input'>
-        <label
-          htmlFor='SearchInput'
-          className='o-search-input__input-label'
-          aria-label='Search for a term'
-        >
-          <Icon name='search' />
-        </label>
-        <TextInput {..._arguments} />
-        <button type='reset' aria-label='Clear search' title='Clear search'>
-          <Icon name='error' />
-        </button>
-      </div>
-      <button className='a-btn' type='submit' aria-label='Search for term(s)'>
-        Search
-      </button>
-    </div>
-  )
+  render: (args) => {
+    const { value: initialValue, ...restArgs } = args as TextInputProperties & {
+      value: string;
+    };
+    const [value, setValue] = useState(initialValue ?? '');
+    return (
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        onReset={() => setValue('')}
+      >
+        <div className='o-search-input'>
+          <div className='o-search-input__input'>
+            <label
+              htmlFor='SearchInput'
+              className='o-search-input__input-label'
+              aria-label='Search for a term'
+            >
+              <Icon name='search' />
+            </label>
+            <TextInput
+              {...restArgs}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+            <button type='reset' aria-label='Clear search' title='Clear search'>
+              <Icon name='error' />
+            </button>
+          </div>
+          <Button
+            type='submit'
+            aria-label='Search for term(s)'
+            label='Search'
+          />
+        </div>
+      </form>
+    );
+  },
 };

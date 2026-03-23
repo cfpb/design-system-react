@@ -5,7 +5,7 @@ import Divider from './divider';
 const testId = 'divider';
 
 const defaultProps = {
-  'data-testid': testId
+  'data-testid': testId,
 };
 
 describe('<Divider />', () => {

@@ -36,10 +36,10 @@ import Layout from './Layout<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;< /Layout.Sidebar ><br/>
 &nbsp;&nbsp;< /Layout.Wrapper ><br/>
 < /Layout.Main ><br/>
-`
-      }
-    }
-  }
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -50,9 +50,9 @@ export const Sidebar: Story = {
   args: {
     flushBottom: false,
     flushTopOnSmall: false,
-    flushAllOnSmall: false
+    flushAllOnSmall: false,
   },
-  render: properties => (
+  render: (properties) => (
     <Layout.Main>
       <Layout.Wrapper>
         <Layout.Sidebar {...properties}>
@@ -76,5 +76,5 @@ export const Sidebar: Story = {
         </Layout.Content>
       </Layout.Wrapper>
     </Layout.Main>
-  )
+  ),
 };

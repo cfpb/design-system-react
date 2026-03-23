@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
+import { expect, within } from 'storybook/test';
 import { Heading, Link, List, ListLink } from '~/src/index';
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',
   tags: ['autodocs'],
-  component: Link
+  component: Link,
 };
 
 export default meta;
@@ -15,8 +16,8 @@ type Story = StoryObj<typeof meta>;
 const DefaultArguments = {
   args: {
     href: '#',
-    children: 'Link Text'
-  }
+    children: 'Link Text',
+  },
 };
 
 export const Inline: Story = {
@@ -24,19 +25,24 @@ export const Inline: Story = {
     <p>
       Here&apos;s the default <Link href='/#' label='inline link' /> style.
     </p>
-  )
+  ),
 };
 
 export const Standalone: Story = {
-  render: arguments_ => (
+  render: (arguments_) => (
     <Link {...arguments_} href='/#' isJump label='Standalone link' />
-  )
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByRole('link', { name: /standalone link/i });
+    await expect(link).toHaveAttribute('href', '/#');
+  },
 };
 
 export const WithIcon: Story = {
   name: 'With icon',
   args: {
-    ...DefaultArguments.args
+    ...DefaultArguments.args,
   },
   render: () => (
     <>
@@ -90,13 +96,13 @@ export const WithIcon: Story = {
         />
       </p>
     </>
-  )
+  ),
 };
 
 export const Listlink: Story = {
   name: 'List',
   args: {
-    ...DefaultArguments.args
+    ...DefaultArguments.args,
   },
   render: () => (
     <List isLinks>
@@ -104,14 +110,14 @@ export const Listlink: Story = {
       <ListLink href='/#' label='List item 2' />
       <ListLink href='/#' label='List item 3' />
     </List>
-  )
+  ),
 };
 
 export const Destructive: Story = {
   args: {
-    ...DefaultArguments.args
+    ...DefaultArguments.args,
   },
-  render: () => <Link href='/#' type='destructive' label='Destructive link' />
+  render: () => <Link href='/#' type='destructive' label='Destructive link' />,
 };
 
 export const LinkWithReactRouterLink: Story = {
@@ -120,13 +126,13 @@ export const LinkWithReactRouterLink: Story = {
     docs: {
       description: {
         story:
-          'See [React Router Link docs](https://reactrouter.com/api/components/Link) for usage information'
-      }
-    }
+          'See [React Router Link docs](https://reactrouter.com/api/components/Link) for usage information',
+      },
+    },
   },
   render: () => (
     <BrowserRouter>
       <Link href='/#' label='Link using React Router Link' isRouterLink />
     </BrowserRouter>
-  )
+  ),
 };

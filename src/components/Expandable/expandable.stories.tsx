@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { JSX } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { Expandable } from '~/src/index';
 import { sleep } from '../../utils/sleep';
@@ -17,10 +18,10 @@ const meta: Meta<typeof Expandable> = {
 Expandables are components that have additional content that can be opened (expanded) and closed (collapsed). They can appear on their own or in groups. They may be helpful for FAQ sections, schedules, and for conserving vertical space by collapsing secondary information on mobile devices.
 
 Source: https://cfpb.github.io/design-system/components/expandables
-`
-      }
-    }
-  }
+`,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -38,7 +39,7 @@ const Content = (
 );
 
 const ContentForGroup = ({
-  accordion
+  accordion,
 }: {
   accordion: boolean | undefined;
 }): JSX.Element => {
@@ -61,8 +62,8 @@ export const Default: Story = {
   name: 'Single',
   args: {
     header: 'Expandable label',
-    children: Content
-  }
+    children: Content,
+  },
 };
 
 export const PaddedExpandable: Story = {
@@ -70,8 +71,8 @@ export const PaddedExpandable: Story = {
   args: {
     ...Default.args,
     header: 'Expandable label',
-    isPadded: true
-  }
+    isPadded: true,
+  },
 };
 
 export const OpenOnLoad: Story = {
@@ -79,13 +80,13 @@ export const OpenOnLoad: Story = {
   args: {
     ...Default.args,
     header: 'Expandable label',
-    openOnLoad: true
-  }
+    openOnLoad: true,
+  },
 };
 
 export const DefaultExpandableGroup: Story = {
   name: 'Group',
-  render: arguments_ => (
+  render: (arguments_) => (
     <ExpandableGroup {...arguments_}>
       {['label', 'label', 'label'].map((value, index) => (
         <Expandable
@@ -114,30 +115,29 @@ export const DefaultExpandableGroup: Story = {
 
     // Test
     await step('Starts out collapsed', async () => {
-      await waitFor(async () => expectAriaExpanded('false'), options);
+      await waitFor(() => expectAriaExpanded('false'), options);
     });
 
     await step('Click to expanded', async () => {
-      userEvent.click(element);
-      await waitFor(async () => expectAriaExpanded('true'), options);
+      await userEvent.click(element);
+      await waitFor(() => expectAriaExpanded('true'), options);
       await sleep(timeout);
     });
 
     await step('Click to collapse', async () => {
-      userEvent.click(element);
-      await waitFor(async () => expectAriaExpanded('false'), options);
+      await userEvent.click(element);
+      await waitFor(() => expectAriaExpanded('false'), options);
     });
   },
   args: {
-    groupId: 'DefaultGroup'
-  }
+    groupId: 'DefaultGroup',
+  },
 };
 
 export const Accordion: Story = {
   ...DefaultExpandableGroup,
-  name: 'Accordion',
   args: {
     accordion: true,
-    groupId: 'AccordionGroup'
-  }
+    groupId: 'AccordionGroup',
+  },
 };

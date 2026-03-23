@@ -16,27 +16,27 @@ describe('<TextArea />', () => {
     expect(onChange).toBeCalledWith(TEST_STRING);
   });
 
-  it('Disabled input', async () => {
+  it('Disabled input', () => {
     render(<TextArea id='disabled' isDisabled />);
 
     const disabled = screen.getByTestId('textAreaInput');
     expect(disabled).toHaveAttribute('disabled');
   });
 
-  it('Full width', async () => {
+  it('Full width', () => {
     render(<TextArea id='alert' isFullWidth />);
 
     const textInput = screen.getByTestId('textAreaInput');
-    expect(textInput).toHaveClass('a-text-input--full');
+    expect(textInput).toHaveClass('a-text-input__full');
   });
 
-  it('Handles all supported statuses', async () => {
+  it('Handles all supported statuses', () => {
     // Valid status should have associated class
     const statuses: TextInputStatusType[] = [
       'error',
       'success',
       'warning',
-      'info'
+      'info',
     ];
     for (const status of statuses) {
       render(<TextArea id='alert' {...{ status, placeholder: status }} />);
