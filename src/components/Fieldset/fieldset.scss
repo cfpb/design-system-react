@@ -6,7 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: math.div(15px, $base-font-size-px) + em;
+    gap: math.div(20px, $base-font-size-px) + em;
 
     > .m-form-field + .m-form-field {
       margin-top: 0;

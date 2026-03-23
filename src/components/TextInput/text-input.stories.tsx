@@ -143,15 +143,15 @@ export const SearchInput: Story = {
               value={value}
               onChange={(e) => setValue(e.target.value)}
             />
-            <button
-              type='reset'
-              aria-label='Clear search'
-              title='Clear search'
-            >
+            <button type='reset' aria-label='Clear search' title='Clear search'>
               <Icon name='error' />
             </button>
           </div>
-          <Button type='submit' aria-label='Search for term(s)' label='Search' />
+          <Button
+            type='submit'
+            aria-label='Search for term(s)'
+            label='Search'
+          />
         </div>
       </form>
     );
