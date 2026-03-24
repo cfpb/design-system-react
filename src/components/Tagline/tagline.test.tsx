@@ -17,7 +17,7 @@ describe('<Tagline />', () => {
     const elm = screen.getByText('tagline');
     const shadowRoot = elm?.shadowRoot;
 
-    await elm.updateComplete;
+    await new Promise((resolve) => requestAnimationFrame(resolve));
 
     expect(shadowRoot?.querySelector('cfpb-flag-usa')).toBeInTheDocument();
   });
@@ -27,7 +27,7 @@ describe('<Tagline />', () => {
     const elm = screen.getByText('tagline');
     const shadowRoot = elm?.shadowRoot;
 
-    await elm.updateComplete;
+    await new Promise((resolve) => requestAnimationFrame(resolve));
 
     expect(shadowRoot?.querySelector('.a-tagline')).toHaveClass(
       'a-tagline--large',
