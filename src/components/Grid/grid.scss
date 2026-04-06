@@ -1,4 +1,6 @@
 @use 'sass:math';
+@use '@cfpb/cfpb-design-system/src/elements/abstracts/sizing-vars' as *;
+@use '@cfpb/cfpb-design-system/src/elements/abstracts/grid-mixins' as *;
 
 // TODO: Do we need to support non-12-column grids?
 $one-column-width: math.div(100%, 12);
@@ -16,8 +18,8 @@ $one-column-width: math.div(100%, 12);
 }
 
 .grid {
-  max-width: 1230px;
-  margin: 0 auto;
+  // Match CFPB DS grid wrapper sizing
+  @include u-grid-wrapper;
 }
 
 .grid .grid {
@@ -29,7 +31,7 @@ $one-column-width: math.div(100%, 12);
     display: inline-block;
     box-sizing: border-box;
     border: solid transparent;
-    border-width: 0 15px;
+    border-width: 0 math.div($grid-gutter-width, 2);
     vertical-align: top;
     margin-bottom: 15px;
   }

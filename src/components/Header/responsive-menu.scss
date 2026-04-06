@@ -129,6 +129,7 @@ $max-width: $breakpoint - 0.0625em;
           @media (min-width: $breakpoint) {
             flex-direction: row;
             justify-content: flex-end;
+            align-items: baseline;
             width: auto;
             padding: 0;
           }
@@ -172,7 +173,7 @@ $max-width: $breakpoint - 0.0625em;
               }
             }
 
-            &.nav-item.active.a-link {
+            &.nav-item.active {
               color: var(--black);
 
               @media (max-width: $max-width) {
@@ -195,15 +196,14 @@ $max-width: $breakpoint - 0.0625em;
           }
 
           .a-btn {
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 500;
           }
 
           .a-btn--link {
             text-decoration: none;
             font-size: 14px;
             justify-content: left;
-            line-height: 1.57;
+            line-height: normal;
             width: auto;
           }
 
