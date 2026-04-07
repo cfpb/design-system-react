@@ -127,7 +127,7 @@ export const Table = forwardRef<
       return (
         <div
           data-testid='table-simple-scrollable'
-          className='o-table o-table-wrapper--scrolling'
+          className='o-table o-table--scrolling'
           ref={reference ?? divRef}
         >
           {tableContent}
