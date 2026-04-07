@@ -26,7 +26,7 @@ const columnsWithConfiguration = [
   { header: 'Col 1', width: 30 },
   'Col 2',
   'Col 3',
-  { header: 'Right Aligned', width: 40, alignRight: true },
+  { header: 'Right Aligned', width: 40, isAlignRight: true },
 ];
 
 describe('<Table />', () => {
