@@ -1,6 +1,6 @@
+import { CfpbTagline } from '@cfpb/cfpb-design-system';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { CfpbTagline } from '../../elements/cfpb-tagline';
 
 describe('<Tagline />', () => {
   beforeEach(() => {

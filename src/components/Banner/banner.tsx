@@ -1,6 +1,6 @@
+import { CfpbTagline } from '@cfpb/cfpb-design-system';
 import classnames from 'classnames';
 import { JSX } from 'react';
-import { CfpbTagline } from '../../elements/cfpb-tagline';
 import type { JSXElement } from '../../types/jsx-element';
 import './banner.scss';
 

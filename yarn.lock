@@ -1287,7 +1287,6 @@ __metadata:
     typescript-eslint: "npm:^8.58.0"
     vite: "npm:^8.0.6"
     vite-plugin-dts: "npm:^4.5.4"
-    vite-plugin-lit-css: "npm:^2.2.2"
     vite-plugin-pwa: "npm:^1.2.0"
     vite-plugin-svgr: "npm:^5.2.0"
     vite-plugin-turbosnap: "npm:^1.0.3"
@@ -12020,16 +12019,6 @@ __metadata:
     vite:
       optional: true
   checksum: 10/1504a8da02f8015c3138ef57a690179ad9b9d4369a054ae48b52a1c8cbc7ad05474551eab309cd90cf758800e17b67ccd13317aa5f8e28efde957547c7a339fb
-  languageName: node
-  linkType: hard
-
-"vite-plugin-lit-css@npm:^2.2.2":
-  version: 2.2.2
-  resolution: "vite-plugin-lit-css@npm:2.2.2"
-  peerDependencies:
-    lit: ^2.0.0 || ^3.0.0
-    vite: ^5.2.10 || ^6.0.0 || ^7.0.0
-  checksum: 10/6fae46ed4322ee564984356200e69590a3830c8115585cee7a4dfc8725095228ae4be5fd2c3f5afbd3bdcaf1cd972768ba0517f61d137437f5e27d47dd8da3d1
   languageName: node
   linkType: hard
 
