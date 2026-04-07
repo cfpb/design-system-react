@@ -6,6 +6,7 @@ import removeAttributes from 'rollup-plugin-jsx-remove-attributes';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import litcss from 'vite-plugin-lit-css';
 import svgr from 'vite-plugin-svgr';
 import { name } from './package.json';
 import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
@@ -21,6 +22,10 @@ export default defineConfig(async ({ mode }) => {
   const storybookPlugins = isStorybookTest ? await storybookTest() : [];
   const plugins: Plugin[] = [
     eslintPlugin(),
+    litcss({
+      include: [path.resolve('src/elements/**/*.scss')],
+      uglify: true,
+    }),
     svgRawLoaderPlugin(),
     svgr({
       include: '**/*.svg?react',
