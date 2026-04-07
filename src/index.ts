@@ -39,7 +39,6 @@ export type {
   SecondaryNavItem,
   SecondaryNavProperties,
 } from './components/SecondaryNav/secondary-nav';
-export { default as ResponsiveMenu } from './components/ResponsiveMenu/responsive-menu';
 export { Select } from './components/Select/select';
 export { SelectMulti } from './components/Select/select-multi';
 export { SelectSingle } from './components/Select/select-single';

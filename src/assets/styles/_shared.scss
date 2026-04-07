@@ -1,4 +1,5 @@
 @use './variables';
+@use 'sass:math';
 @use '@cfpb/cfpb-design-system/src/index' as *;
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
 @use '@cfpb/cfpb-design-system/src/elements/base' as base;
@@ -57,4 +58,11 @@ that have their own line-height settings.
 pre,
 #storybook-docs :where(p:not(.sb-story *)) {
   line-height: 22px !important;
+}
+
+// Override DS wrapper match-content width to 1170px content with 30px gutters.
+.wrapper--match-content {
+  @include respond-to-min($bp-sm-min) {
+    max-width: $grid-wrapper-width - ($grid-gutter-width * 2);
+  }
 }
