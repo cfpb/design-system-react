@@ -9,7 +9,7 @@ const meta: Meta<typeof Table> = {
   argTypes: {
     columns: {
       description:
-        'Accepts strings or column config objects: { header, alignRight, width, cellWordBreak, cellDisableWordWrap, headerWordWrap }.',
+        'Accepts strings or column config objects: { header, isAlignRight, width, isCellWordBreak, isCellDisableWordWrap, isHeaderWordWrap }.',
       table: {
         type: {
           summary: 'Array<string | TableColumnConfiguration>',
@@ -114,7 +114,7 @@ export const RightAligned: Story = {
     columns: [
       { header: 'Col 1' },
       'Col 2',
-      { header: 'Right-aligned column', alignRight: true },
+      { header: 'Right-aligned column', isAlignRight: true },
     ],
     rows: [
       ['Row A', 'Cell A2', '$1.00'],
@@ -170,10 +170,14 @@ export const LongCharacterSets: Story = {
   name: 'Long Character Sets ',
   args: {
     columns: [
-      { header: 'Column 1', cellDisableWordWrap: true, headerWordWrap: false },
-      { header: 'Column 2', cellWordBreak: true },
-      { header: 'Column 3', cellWordBreak: true },
-      { header: 'Column 4', cellWordBreak: true },
+      {
+        header: 'Column 1',
+        isCellDisableWordWrap: true,
+        isHeaderWordWrap: false,
+      },
+      { header: 'Column 2', isCellWordBreak: true },
+      { header: 'Column 3', isCellWordBreak: true },
+      { header: 'Column 4', isCellWordBreak: true },
     ],
     rows: maxUidTestRows,
     isScrollableHorizontal: false,
@@ -186,19 +190,19 @@ export const ColumnConfiguration: Story = {
     docs: {
       description: {
         story:
-          'Columns accept objects with: `header`, `alignRight`, `width` (percent as string), `cellWordBreak`, `cellDisableWordWrap`, `headerWordWrap`.\n\n`width` maps to CFPB width utility classes (u-w{n}pct). \n\nValid values: 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 75, 65, 25, 15, 66, 33.\n\nSee https://cfpb.github.io/design-system/development/helper-classes-and-mixins#width-utilities-helper-classes.',
+          'Columns accept objects with: `header`, `isAlignRight`, `width` (percent as string), `isCellWordBreak`, `isCellDisableWordWrap`, `isHeaderWordWrap`.\n\n`width` maps to CFPB width utility classes (u-w{n}pct). \n\nValid values: 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 75, 65, 25, 15, 66, 33.\n\nSee https://cfpb.github.io/design-system/development/helper-classes-and-mixins#width-utilities-helper-classes.',
       },
     },
   },
   args: {
     columns: [
       { header: 'Header (default)', width: '25' },
-      { header: 'Align right', alignRight: true, width: '25' },
-      { header: 'Word break', cellWordBreak: true, width: '25' },
+      { header: 'Align right', isAlignRight: true, width: '25' },
+      { header: 'Word break', isCellWordBreak: true, width: '25' },
       {
         header: 'No wrap header',
-        headerWordWrap: false,
-        cellDisableWordWrap: true,
+        isHeaderWordWrap: false,
+        isCellDisableWordWrap: true,
         width: '25',
       },
     ],

@@ -15,9 +15,9 @@ export const buildColumnHeaders = (
         if (typeof column === 'object') {
           content = column.header;
 
-          if (column.alignRight) cnames.push('o-table__cell--right-align');
+          if (column.isAlignRight) cnames.push('o-table__cell--right-align');
           if (column.width) cnames.push(`u-w${column.width}pct`);
-          if (!column.headerWordWrap) cnames.push('white-space-nowrap');
+          if (!column.isHeaderWordWrap) cnames.push('white-space-nowrap');
         } else {
           content = column;
         }
@@ -42,9 +42,9 @@ const getCellProperties = (column: TableColumn): object => {
   }
 
   const cellCnames = [''];
-  if (column.alignRight) cellCnames.push('o-table__cell--right-align');
-  if (column.cellDisableWordWrap) cellCnames.push('white-space-nowrap');
-  if (!column.cellDisableWordWrap && column.cellWordBreak)
+  if (column.isAlignRight) cellCnames.push('o-table__cell--right-align');
+  if (column.isCellDisableWordWrap) cellCnames.push('white-space-nowrap');
+  if (!column.isCellDisableWordWrap && column.isCellWordBreak)
     cellCnames.push('word-break-break-all');
 
   return {
