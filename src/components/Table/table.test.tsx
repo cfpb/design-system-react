@@ -88,7 +88,7 @@ describe('<Table />', () => {
     );
 
     const cell = screen.queryByText('Right Aligned');
-    expect(cell?.classList.contains('o-table_cell--right-align')).toBe(true);
+    expect(cell?.classList.contains('o-table__cell--right-align')).toBe(true);
     expect(cell?.classList.contains('u-w40pct')).toBe(true);
   });
 

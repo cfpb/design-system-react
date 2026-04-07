@@ -6,6 +6,17 @@ const meta: Meta<typeof Table> = {
   title: 'Components (Verified)/Tables',
   tags: ['autodocs'],
   component: Table,
+  argTypes: {
+    columns: {
+      description:
+        'Accepts strings or column config objects: { header, alignRight, width, cellWordBreak, cellDisableWordWrap, headerWordWrap }.',
+      table: {
+        type: {
+          summary: 'Array<string | TableColumnConfiguration>',
+        },
+      },
+    },
+  },
 };
 
 export default meta;
@@ -166,5 +177,44 @@ export const LongCharacterSets: Story = {
     ],
     rows: maxUidTestRows,
     isScrollableHorizontal: false,
+  },
+};
+
+export const ColumnConfiguration: Story = {
+  name: 'Column configuration options',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Columns accept objects with: `header`, `alignRight`, `width` (percent as string), `cellWordBreak`, `cellDisableWordWrap`, `headerWordWrap`.\n\n`width` maps to CFPB width utility classes (u-w{n}pct). \n\nValid values: 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 75, 65, 25, 15, 66, 33.\n\nSee https://cfpb.github.io/design-system/development/helper-classes-and-mixins#width-utilities-helper-classes.',
+      },
+    },
+  },
+  args: {
+    columns: [
+      { header: 'Header (default)', width: '25' },
+      { header: 'Align right', alignRight: true, width: '25' },
+      { header: 'Word break', cellWordBreak: true, width: '25' },
+      {
+        header: 'No wrap header',
+        headerWordWrap: false,
+        cellDisableWordWrap: true,
+        width: '25',
+      },
+    ],
+    rows: [
+      [
+        'Standard text',
+        '$12,345.67',
+        'SUPERLONGIDENTIFIERSTRINGWITHOUTSPACES',
+        'Long cell value should stay on one line',
+      ],
+      [
+        'Row 2',
+        '$0.99',
+        'ANOTHERLONGIDENTIFIERSTRINGWITHOUTSPACES',
+        'Another long cell value without wrapping',
+      ],
+    ],
   },
 };
