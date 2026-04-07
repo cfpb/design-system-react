@@ -75,23 +75,24 @@ export const Banner = ({
     >
       <div className={classnames(wrapperClasses)}>
         {taglineContent}
-
-        <div className='m-global-eyebrow__actions'>
-          {links.length > 0 && (
-            <ul className={classnames(linkListClasses)}>
-              {links.map((link) => (
-                <li className='m-list__item' key={link.key}>
-                  {link}
-                </li>
-              ))}
-            </ul>
-          )}
-          {phoneNumber ? (
-            <span className='m-global-eyebrow__phone'>
-              <TelephoneLink phoneNumber={phoneNumber} />
-            </span>
-          ) : null}
-        </div>
+        {(links.length > 0 || phoneNumber) && (
+          <div className='m-global-eyebrow__actions'>
+            {links.length > 0 && (
+              <ul className={classnames(linkListClasses)}>
+                {links.map((link) => (
+                  <li className='m-list__item' key={link.key}>
+                    {link}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {phoneNumber ? (
+              <span className='m-global-eyebrow__phone'>
+                <TelephoneLink phoneNumber={phoneNumber} />
+              </span>
+            ) : null}
+          </div>
+        )}
       </div>
     </div>
   );
