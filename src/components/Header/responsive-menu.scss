@@ -20,8 +20,9 @@ $max-width: $breakpoint - 0.0625em;
 
       @media (max-width: $max-width) {
         flex-direction: row;
-        align-items: center;
+        align-items: stretch;
         padding: 0;
+        min-height: 60px;
       }
 
       @media (min-width: $breakpoint) {
@@ -36,6 +37,9 @@ $max-width: $breakpoint - 0.0625em;
         @media (max-width: $max-width) {
           border-left: 1px solid var(--gray-40);
           padding-left: 15px;
+          .o-header__logo-img {
+            height: 40px;
+          }
         }
       }
 
@@ -53,16 +57,18 @@ $max-width: $breakpoint - 0.0625em;
       }
 
       .menu-toggle {
-        display: block;
         border: none;
         background-color: transparent;
         cursor: pointer;
-        height: 54px;
+        align-self: stretch;
         width: 54px;
         padding: 0 $space-sm;
         margin-bottom: 0;
         margin-right: 0;
         z-index: 1000; // Ensure it's above the overlay
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .cf-icon-svg {
           // make hamburger icon appear slightly bigger in mobile menu
