@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-IH6QJILI-ukmh29__.js";import{c as t}from"./theming-C9fM4FZi.js";t();export{e as color};
