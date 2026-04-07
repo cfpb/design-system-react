@@ -6240,7 +6240,7 @@ tableRef?: ForwardedRef&lt;HTMLTableElement&gt;</code></pre>
     columns={[
       { header: &#39;Col 1&#39; },
       &#39;Col 2&#39;,
-      { header: &#39;Right-aligned column&#39;, alignRight: true },
+      { header: &#39;Right-aligned column&#39;, isAlignRight: true },
     ]}
     rows={[
       [&#39;Row A&#39;, &#39;Cell A2&#39;, &#39;$1.00&#39;],
@@ -6283,10 +6283,14 @@ tableRef?: ForwardedRef&lt;HTMLTableElement&gt;</code></pre>
               
               <pre><code>const LongCharacterSets = () =&gt; &lt;Table
     columns={[
-      { header: &#39;Column 1&#39;, cellDisableWordWrap: true, headerWordWrap: false },
-      { header: &#39;Column 2&#39;, cellWordBreak: true },
-      { header: &#39;Column 3&#39;, cellWordBreak: true },
-      { header: &#39;Column 4&#39;, cellWordBreak: true },
+      {
+        header: &#39;Column 1&#39;,
+        isCellDisableWordWrap: true,
+        isHeaderWordWrap: false,
+      },
+      { header: &#39;Column 2&#39;, isCellWordBreak: true },
+      { header: &#39;Column 3&#39;, isCellWordBreak: true },
+      { header: &#39;Column 4&#39;, isCellWordBreak: true },
     ]}
     rows={maxUidTestRows}
     isScrollableHorizontal={false} /&gt;;</code></pre>
@@ -6301,12 +6305,12 @@ tableRef?: ForwardedRef&lt;HTMLTableElement&gt;</code></pre>
               <pre><code>const ColumnConfiguration = () =&gt; &lt;Table
     columns={[
       { header: &#39;Header (default)&#39;, width: &#39;25&#39; },
-      { header: &#39;Align right&#39;, alignRight: true, width: &#39;25&#39; },
-      { header: &#39;Word break&#39;, cellWordBreak: true, width: &#39;25&#39; },
+      { header: &#39;Align right&#39;, isAlignRight: true, width: &#39;25&#39; },
+      { header: &#39;Word break&#39;, isCellWordBreak: true, width: &#39;25&#39; },
       {
         header: &#39;No wrap header&#39;,
-        headerWordWrap: false,
-        cellDisableWordWrap: true,
+        isHeaderWordWrap: false,
+        isCellDisableWordWrap: true,
         width: &#39;25&#39;,
       },
     ]}
