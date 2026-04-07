@@ -35,6 +35,7 @@ $max-width: $breakpoint - 0.0625em;
 
         @media (max-width: $max-width) {
           border-left: 1px solid var(--gray-40);
+          padding-left: 15px;
         }
       }
 
@@ -92,6 +93,7 @@ $max-width: $breakpoint - 0.0625em;
           border-top: 1px solid var(--gray-40);
           overflow-y: auto;
           padding-top: $space-sm;
+          padding-left: $space-md;
           transition: left $animation-duration ease-in-out;
           z-index: 1000;
         }
