@@ -1,5 +1,5 @@
+import { CfpbTagline } from '@cfpb/cfpb-design-system';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { CfpbTagline } from '../../elements/cfpb-tagline';
 
 CfpbTagline.init();
 

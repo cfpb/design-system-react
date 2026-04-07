@@ -21,7 +21,7 @@ export default create({
 
   brandTitle: 'CFPB Design System React',
   brandImage: CfpbLogo,
-  brandUrl: 'https://cfpb.github.io/design-system/',
+  brandUrl: 'https://cfpb.github.io/design-system-react/',
   brandTarget: '_blank',
 
   fontBase: '"Source Sans 3 Variable", Arial ,sans-serif',
