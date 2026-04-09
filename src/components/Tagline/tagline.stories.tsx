@@ -5,7 +5,7 @@ CfpbTagline.init();
 
 const meta: Meta<typeof CfpbTagline> = {
   title: 'Components (Verified)/Taglines',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'web-component'],
   component: CfpbTagline,
   parameters: {
     docs: {
