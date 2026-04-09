@@ -1281,6 +1281,7 @@ __metadata:
     sass: "npm:^1.99.0"
     start-server-and-test: "npm:3.0.0"
     storybook: "npm:^10.3.4"
+    storybook-addon-tag-badges: "npm:^3.1.0"
     stylelint: "npm:^17.6.0"
     stylelint-config-standard-scss: "npm:^17.0.0"
     typescript: "npm:^6.0.2"
@@ -8697,6 +8698,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"map-or-similar@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "map-or-similar@npm:1.5.0"
+  checksum: 10/3cf43bcd0e7af41d7bade5f8b5be6bb9d021cc47e6008ad545d071cf3a709ba782884002f9eec6ccd51f572fc17841e07bf74628e0bc3694c33f4622b03e4b4c
+  languageName: node
+  linkType: hard
+
 "math-intrinsics@npm:^1.1.0":
   version: 1.1.0
   resolution: "math-intrinsics@npm:1.1.0"
@@ -8722,6 +8730,15 @@ __metadata:
   version: 6.0.0
   resolution: "memoize-one@npm:6.0.0"
   checksum: 10/28feaf7e9a870efef1187df110b876ce42deaf86c955f4111d72d23b96e44eed573469316e6ad0d2cc7fa3b1526978215617b126158015f957242c7493babca9
+  languageName: node
+  linkType: hard
+
+"memoizerific@npm:^1.11.3":
+  version: 1.11.3
+  resolution: "memoizerific@npm:1.11.3"
+  dependencies:
+    map-or-similar: "npm:^1.5.0"
+  checksum: 10/72b6b80699777d000f03db6e15fdabcd4afe77feb45be51fe195cb230c64a368fcfcfbb976375eac3283bd8193d6b1a67ac3081cae07f64fca73f1aa568d59e3
   languageName: node
   linkType: hard
 
@@ -10901,6 +10918,17 @@ __metadata:
     es-errors: "npm:^1.3.0"
     internal-slot: "npm:^1.1.0"
   checksum: 10/ff36c4db171ee76c936ccfe9541946b77017f12703d4c446652017356816862d3aa029a64e7d4c4ceb484e00ed4a81789333896390d808458638f3a216aa1f41
+  languageName: node
+  linkType: hard
+
+"storybook-addon-tag-badges@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "storybook-addon-tag-badges@npm:3.1.0"
+  dependencies:
+    memoizerific: "npm:^1.11.3"
+  peerDependencies:
+    storybook: ^10.0.0
+  checksum: 10/182a2fff6837a7ea1cec1317a4c3f14d6b6a7f663964b24092803049291e63e14f8af0f8e25e98026ceeaa21d30473424dd35d0db4503e16704d563078ec72ce
   languageName: node
   linkType: hard
 
