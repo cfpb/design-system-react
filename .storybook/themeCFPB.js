@@ -1,5 +1,5 @@
 import { create } from 'storybook/theming/create';
-import CfpbLogo from '../src/assets/images/cfpb-logo-vertical.png';
+import CfpbLogo from '../src/assets/images/cfpb-logo.png';
 
 const colors = {
   black: '#101820',

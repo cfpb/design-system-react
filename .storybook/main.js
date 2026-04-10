@@ -10,6 +10,7 @@ export default {
     '@chromatic-com/storybook',
     '@storybook/addon-docs',
     '@storybook/addon-vitest',
+    'storybook-addon-tag-badges',
   ],
 
   docs: {
