@@ -19,7 +19,8 @@ const meta = {
     },
     slotSpanText: {
       control: 'text',
-      description: 'No-wrap span content inside the default slot',
+      description:
+        'Adds <span className="u-nowrap">No-wrap span content inside the default slot</span>',
     },
   },
   parameters: {
