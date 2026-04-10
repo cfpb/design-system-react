@@ -16,5 +16,18 @@ addons.setConfig({
       return name;
     },
   },
+
   theme: themeCFPB,
+  tagBadges: [
+    {
+      tags: 'web-component',
+      badge: {
+        text: 'Web Component',
+        style: {
+          backgroundColor: '#20aa3f',
+          color: '#fff',
+        },
+      },
+    },
+  ],
 });
