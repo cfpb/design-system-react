@@ -20,7 +20,7 @@ const meta = {
     slotSpanText: {
       control: 'text',
       description:
-        'Adds <span className="u-nowrap">No-wrap span content inside the default slot</span>',
+        '`<span className="u-nowrap">` No-wrap span content inside the default slot',
     },
   },
   parameters: {
@@ -41,7 +41,8 @@ Source: https://cfpb.github.io/design-system/components/taglines
     ...properties
   }: TaglineStoryProperties) => (
     <cfpb-tagline {...properties}>
-      {slotText} <span className='u-nowrap'>{slotSpanText}</span>
+      {slotText}
+      <span className='u-nowrap'>{slotSpanText}</span>
     </cfpb-tagline>
   ),
 } satisfies Meta<TaglineStoryProperties>;
