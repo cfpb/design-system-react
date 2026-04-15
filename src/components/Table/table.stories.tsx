@@ -110,8 +110,8 @@ export const RightAligned: Story = {
   name: 'Right-aligned',
   args: {
     columns: [
-      { header: 'Col 1' },
-      'Col 2',
+      { header: 'Column 1' },
+      'Column 2',
       { header: 'Right-aligned column', isAlignRight: true },
     ],
     rows: [
