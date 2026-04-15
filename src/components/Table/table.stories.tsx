@@ -24,7 +24,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
-  name: 'Standard table',
   args: {
     caption: 'Table caption describing the data',
     columns: ['Column 1 header', 'Column 2 header', 'Column 3 header'],
@@ -37,7 +36,7 @@ export const Standard: Story = {
 };
 
 export const Responsive: Story = {
-  name: 'Responsive stacked table',
+  name: 'Responsive stacked',
   args: {
     columns: ['Column 1', 'Column 2', 'Column 3'],
     rows: [
@@ -51,7 +50,7 @@ export const Responsive: Story = {
 };
 
 export const HorizontalScroll: Story = {
-  name: 'Responsive table with horizontal scroll',
+  name: 'Responsive with horizontal scroll',
   args: {
     columns: [
       'Column 1',
@@ -100,7 +99,6 @@ export const HorizontalScroll: Story = {
 };
 
 export const Striped: Story = {
-  name: 'Striped table',
   args: {
     columns: Responsive.args?.columns,
     rows: Responsive.args?.rows,
@@ -109,11 +107,11 @@ export const Striped: Story = {
 };
 
 export const RightAligned: Story = {
-  name: 'Right-aligned table',
+  name: 'Right-aligned',
   args: {
     columns: [
-      { header: 'Col 1' },
-      'Col 2',
+      { header: 'Column 1' },
+      { header: 'Column 2' },
       { header: 'Right-aligned column', isAlignRight: true },
     ],
     rows: [
@@ -143,7 +141,7 @@ export const Pagination: Story = {
 };
 
 export const FixedWidth: Story = {
-  name: 'Fixed-width column tables ',
+  name: 'Fixed-width columns ',
   args: {
     columns: [
       { header: 'County', width: '20' },
@@ -167,7 +165,7 @@ const maxUidTestRows = [...Array.from({ length: 20 }).keys()].map(
 );
 
 export const LongCharacterSets: Story = {
-  name: 'Long Character Sets ',
+  name: 'Long character sets',
   args: {
     columns: [
       {
@@ -190,7 +188,9 @@ export const ColumnConfiguration: Story = {
     docs: {
       description: {
         story:
-          'Columns accept objects with: `header`, `isAlignRight`, `width` (percent as string), `isCellWordBreak`, `isCellDisableWordWrap`, `isHeaderWordWrap`.\n\n`width` maps to CFPB width utility classes (u-w{n}pct). \n\nValid values: 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 75, 65, 25, 15, 66, 33.\n\nSee https://cfpb.github.io/design-system/development/helper-classes-and-mixins#width-utilities-helper-classes.',
+          'Columns accept objects with `header`, `isAlignRight`, `width` (percent as string), `isCellWordBreak`, `isCellDisableWordWrap`, and `isHeaderWordWrap`.\n\n' +
+          'Column `width` maps to the CFPB Design System width utility classes (u-w{n}pct). Valid values for width are 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 75, 65, 25, 15, 66, and 33.\n\n' +
+          'Source: https://cfpb.github.io/design-system/development/helper-classes-and-mixins#width-utilities-helper-classes',
       },
     },
   },
