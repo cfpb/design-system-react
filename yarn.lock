@@ -1208,13 +1208,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-design-system@npm:5.2.0":
-  version: 5.2.0
-  resolution: "@cfpb/cfpb-design-system@npm:5.2.0"
+"@cfpb/cfpb-design-system@npm:5.3.1":
+  version: 5.3.1
+  resolution: "@cfpb/cfpb-design-system@npm:5.3.1"
   dependencies:
     "@fontsource-variable/source-sans-3": "npm:5.2.9"
     tippy.js: "npm:6.3.7"
-  checksum: 10/6dbaabc9556fa60e966c069961c61c47e9e0dd3d1fc2ecb8e0c3b6393cfa074bead2d2d31712711c9a68756c2cfa81f9027b848a7a7278b2c1749a0a74655b59
+  checksum: 10/ab51336308c74238f2989dccc9abfbfb20ad3c2ec3dff8183de8e40c2867819be1a13dc1a07d6a4b95f0f40975202be436471ee30d0588ff60ccff063d68c770
   languageName: node
   linkType: hard
 
@@ -1223,7 +1223,7 @@ __metadata:
   resolution: "@cfpb/design-system-react@workspace:."
   dependencies:
     "@cfpb/browserslist-config": "npm:^0.0.6"
-    "@cfpb/cfpb-design-system": "npm:5.2.0"
+    "@cfpb/cfpb-design-system": "npm:5.3.1"
     "@chromatic-com/storybook": "npm:^5.1.2"
     "@eslint/js": "npm:^10.0.1"
     "@nabla/vite-plugin-eslint": "npm:^3.0.1"
@@ -1259,7 +1259,7 @@ __metadata:
     eslint-plugin-import: "npm:2.32.0"
     eslint-plugin-jsx-a11y: "npm:^6.10.2"
     eslint-plugin-react: "npm:^7.37.5"
-    eslint-plugin-react-hooks: "npm:^7.0.1"
+    eslint-plugin-react-hooks: "npm:^7.1.1"
     eslint-plugin-storybook: "npm:^10.3.5"
     eslint-plugin-testing-library: "npm:7.16.2"
     eslint-plugin-unicorn: "npm:^64.0.0"
@@ -1284,7 +1284,7 @@ __metadata:
     storybook-addon-tag-badges: "npm:^3.1.0"
     stylelint: "npm:^17.8.0"
     stylelint-config-standard-scss: "npm:^17.0.0"
-    typescript: "npm:^6.0.2"
+    typescript: "npm:^6.0.3"
     typescript-eslint: "npm:^8.58.2"
     vite: "npm:^8.0.8"
     vite-plugin-dts: "npm:^4.5.4"
@@ -6372,9 +6372,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "eslint-plugin-react-hooks@npm:7.0.1"
+"eslint-plugin-react-hooks@npm:^7.1.1":
+  version: 7.1.1
+  resolution: "eslint-plugin-react-hooks@npm:7.1.1"
   dependencies:
     "@babel/core": "npm:^7.24.4"
     "@babel/parser": "npm:^7.24.4"
@@ -6382,8 +6382,8 @@ __metadata:
     zod: "npm:^3.25.0 || ^4.0.0"
     zod-validation-error: "npm:^3.5.0 || ^4.0.0"
   peerDependencies:
-    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
-  checksum: 10/12e96c68d58c6588305fd17d660524a1ef1e872650ec591d5b138f059431290831c373d4b1c9ae8991fb25f96c43935497d2149678c027e65d0417d3d99ecc85
+    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0 || ^10.0.0
+  checksum: 10/9dfe543af9813343f7cc7c5079b02da94a3b4c15df5cefdeef731f220120df26471d0db24c943222d2d9c6b43c3b78faea47ada9acc9dfd9c28492153cbc6902
   languageName: node
   linkType: hard
 
@@ -11857,13 +11857,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^6.0.2":
-  version: 6.0.2
-  resolution: "typescript@npm:6.0.2"
+"typescript@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "typescript@npm:6.0.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/b9fc2fcee7ee8e5ca6f5138181964550531e18e2d20ecb71b802d4d495881e3444e0ef94cbb6e84eb2ba41e913f6feae3ca33cc722b32e6e6dfadb32d23b80e6
+  checksum: 10/0ef2357a4cffd916b52b683a021cdab0f81eea4e9aa35f2d254581c9a5106da02224e3392e1b0ed42b7a48f80c966e5f52b8e1a27941fa0523c1705a9c2e0330
   languageName: node
   linkType: hard
 
@@ -11877,13 +11877,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^6.0.2#optional!builtin<compat/typescript>":
-  version: 6.0.2
-  resolution: "typescript@patch:typescript@npm%3A6.0.2#optional!builtin<compat/typescript>::version=6.0.2&hash=5786d5"
+"typescript@patch:typescript@npm%3A^6.0.3#optional!builtin<compat/typescript>":
+  version: 6.0.3
+  resolution: "typescript@patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>::version=6.0.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/e5501dfcf8c5b6b9a61f6fa53decc40187cebe3a2b7b2bd51c615007ad4cf6d58298461fef63294f6be9d5f2f33019b2a2e2bf02d9cb7d7f6ec94372bf24ffa2
+  checksum: 10/22b67a18dafedf9b1468b64ca20d9aa02ea61d449b65413d8aa6552aeb63f52ef369e86beb25b6b4c91a803d9726ee5c196f391a9b64201263263410a4223ee6
   languageName: node
   linkType: hard
 
