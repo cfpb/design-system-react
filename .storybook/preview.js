@@ -10,6 +10,7 @@ export const preview = {
         method: 'alphabetical',
         order: [
           'Guides',
+          ['Introduction', 'Component name'],
           'Components (Verified)',
           [
             'Banner (US gov)',
