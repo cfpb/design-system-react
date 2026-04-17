@@ -58,7 +58,9 @@
     
     <link href="./sb-addons/vitest-5/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/storybook-6/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/tag-badges-6/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/storybook-7/manager-bundle.js" rel="modulepreload" />
       <style type="text/css">
   .sidebar-container * {
     font-size: 15px !important;
@@ -80,6 +82,15 @@
   /* Sidebar icons */
   .sidebar-item svg {
     color: black;
+  }
+
+  /* Brand logo sizing */
+  .sidebar-header a img,
+  .sidebar-header img {
+    height: 40px !important;
+    width: auto !important;
+    max-height: 40px !important;
+    max-width: none !important;
   }
 </style>
  
@@ -111,7 +122,8 @@
   "backgrounds": true,
   "outline": true,
   "measure": true,
-  "sidebarOnboardingChecklist": true
+  "sidebarOnboardingChecklist": true,
+  "componentsManifest": false
 };
         
       
@@ -174,7 +186,9 @@
       
         import './sb-addons/vitest-5/manager-bundle.js';
       
-        import './sb-addons/storybook-6/manager-bundle.js';
+        import './sb-addons/tag-badges-6/manager-bundle.js';
+      
+        import './sb-addons/storybook-7/manager-bundle.js';
       
 
       import './sb-manager/runtime.js';
