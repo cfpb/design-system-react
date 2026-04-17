@@ -6,6 +6,17 @@ const meta: Meta<typeof Table> = {
   title: 'Components (Verified)/Tables',
   tags: ['autodocs'],
   component: Table,
+  argTypes: {
+    columns: {
+      description:
+        'Accepts strings or column config objects: { header, isAlignRight, width, isCellWordBreak, isCellDisableWordWrap, isHeaderWordWrap }.',
+      table: {
+        type: {
+          summary: 'Array<string | TableColumnConfiguration>',
+        },
+      },
+    },
+  },
 };
 
 export default meta;
@@ -13,7 +24,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
-  name: 'Standard table',
   args: {
     caption: 'Table caption describing the data',
     columns: ['Column 1 header', 'Column 2 header', 'Column 3 header'],
@@ -26,7 +36,7 @@ export const Standard: Story = {
 };
 
 export const Responsive: Story = {
-  name: 'Responsive stacked table',
+  name: 'Responsive stacked',
   args: {
     columns: ['Column 1', 'Column 2', 'Column 3'],
     rows: [
@@ -40,7 +50,7 @@ export const Responsive: Story = {
 };
 
 export const HorizontalScroll: Story = {
-  name: 'Responsive table with horizontal scroll',
+  name: 'Responsive with horizontal scroll',
   args: {
     columns: [
       'Column 1',
@@ -89,7 +99,6 @@ export const HorizontalScroll: Story = {
 };
 
 export const Striped: Story = {
-  name: 'Striped table',
   args: {
     columns: Responsive.args?.columns,
     rows: Responsive.args?.rows,
@@ -98,12 +107,12 @@ export const Striped: Story = {
 };
 
 export const RightAligned: Story = {
-  name: 'Right-aligned table',
+  name: 'Right-aligned',
   args: {
     columns: [
-      { header: 'Col 1' },
-      'Col 2',
-      { header: 'Right-aligned column', alignRight: true },
+      { header: 'Column 1' },
+      { header: 'Column 2' },
+      { header: 'Right-aligned column', isAlignRight: true },
     ],
     rows: [
       ['Row A', 'Cell A2', '$1.00'],
@@ -132,7 +141,7 @@ export const Pagination: Story = {
 };
 
 export const FixedWidth: Story = {
-  name: 'Fixed-width column tables ',
+  name: 'Fixed-width columns ',
   args: {
     columns: [
       { header: 'County', width: '20' },
@@ -156,15 +165,60 @@ const maxUidTestRows = [...Array.from({ length: 20 }).keys()].map(
 );
 
 export const LongCharacterSets: Story = {
-  name: 'Long Character Sets ',
+  name: 'Long character sets',
   args: {
     columns: [
-      { header: 'Column 1', cellDisableWordWrap: true, headerWordWrap: false },
-      { header: 'Column 2', cellWordBreak: true },
-      { header: 'Column 3', cellWordBreak: true },
-      { header: 'Column 4', cellWordBreak: true },
+      {
+        header: 'Column 1',
+        isCellDisableWordWrap: true,
+        isHeaderWordWrap: false,
+      },
+      { header: 'Column 2', isCellWordBreak: true },
+      { header: 'Column 3', isCellWordBreak: true },
+      { header: 'Column 4', isCellWordBreak: true },
     ],
     rows: maxUidTestRows,
     isScrollableHorizontal: false,
+  },
+};
+
+export const ColumnConfiguration: Story = {
+  name: 'Column configuration options',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Columns accept objects with `header`, `isAlignRight`, `width` (percent as string), `isCellWordBreak`, `isCellDisableWordWrap`, and `isHeaderWordWrap`.\n\n' +
+          'Column `width` maps to the CFPB Design System width utility classes (u-w{n}pct). Valid values for width are 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 75, 65, 25, 15, 66, and 33.\n\n' +
+          'Source: https://cfpb.github.io/design-system/development/helper-classes-and-mixins#width-utilities-helper-classes',
+      },
+    },
+  },
+  args: {
+    columns: [
+      { header: 'Header (default)', width: '25' },
+      { header: 'Align right', isAlignRight: true, width: '25' },
+      { header: 'Word break', isCellWordBreak: true, width: '25' },
+      {
+        header: 'No wrap header',
+        isHeaderWordWrap: false,
+        isCellDisableWordWrap: true,
+        width: '25',
+      },
+    ],
+    rows: [
+      [
+        'Standard text',
+        '$12,345.67',
+        'SUPERLONGIDENTIFIERSTRINGWITHOUTSPACES',
+        'Long cell value should stay on one line',
+      ],
+      [
+        'Row 2',
+        '$0.99',
+        'ANOTHERLONGIDENTIFIERSTRINGWITHOUTSPACES',
+        'Another long cell value without wrapping',
+      ],
+    ],
   },
 };

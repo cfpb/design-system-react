@@ -23,11 +23,11 @@ const Caption = ({
 
 export interface TableColumnConfiguration {
   header: string; // Column heading
-  alignRight?: boolean | undefined; // Align content to the right?
+  isAlignRight?: boolean | undefined; // Align content to the right?
   width?: WidthPercent; // Fixed percentage of table width for column to consume
-  cellWordBreak?: boolean; // Allows the td (cells) to break upon limit space
-  cellDisableWordWrap?: boolean; // Overrides 'cellWordBreak' and explicitly forces wrapping to be disabled in the td (cell)
-  headerWordWrap?: boolean; // Allows wrapping in the th (header), by default -- header fields are set to no-wrap
+  isCellWordBreak?: boolean; // Allows the td (cells) to break upon limit space
+  isCellDisableWordWrap?: boolean; // Overrides 'cellWordBreak' and explicitly forces wrapping to be disabled in the td (cell)
+  isHeaderWordWrap?: boolean; // Allows wrapping in the th (header), by default -- header fields are set to no-wrap
 }
 
 export type TableColumn = TableColumnConfiguration | string;
@@ -127,7 +127,7 @@ export const Table = forwardRef<
       return (
         <div
           data-testid='table-simple-scrollable'
-          className='o-table o-table-wrapper--scrolling'
+          className='o-table o-table--scrolling'
           ref={reference ?? divRef}
         >
           {tableContent}

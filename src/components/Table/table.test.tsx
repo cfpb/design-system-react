@@ -26,7 +26,7 @@ const columnsWithConfiguration = [
   { header: 'Col 1', width: 30 },
   'Col 2',
   'Col 3',
-  { header: 'Right Aligned', width: 40, alignRight: true },
+  { header: 'Right Aligned', width: 40, isAlignRight: true },
 ];
 
 describe('<Table />', () => {
@@ -88,7 +88,7 @@ describe('<Table />', () => {
     );
 
     const cell = screen.queryByText('Right Aligned');
-    expect(cell?.classList.contains('o-table_cell--right-align')).toBe(true);
+    expect(cell?.classList.contains('o-table__cell--right-align')).toBe(true);
     expect(cell?.classList.contains('u-w40pct')).toBe(true);
   });
 

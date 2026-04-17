@@ -1,9 +1,10 @@
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Footer from './footer';
 
 describe('Footer', () => {
   it('Skips empty lists', () => {
-    render(<Footer />);
+    const { container } = render(<Footer />);
 
     // List not rendered
     const list = screen.queryAllByRole('list');
@@ -13,9 +14,9 @@ describe('Footer', () => {
     const items = screen.queryAllByRole('listitem');
     expect(items.length).toEqual(0);
 
-    // Banner displayed (text is broken up, hence the multiple queries)
-    expect(screen.getByText('An official website of the'));
-    expect(screen.getByText('United States government'));
+    // Find tagline web component.
+    const tagline = container.querySelector('cfpb-tagline');
+    expect(tagline).toBeInTheDocument();
   });
 
   it('Renders NavLinks', () => {

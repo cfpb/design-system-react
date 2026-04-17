@@ -1,8 +1,10 @@
+import { CfpbTagline } from '@cfpb/cfpb-design-system';
 import classnames from 'classnames';
 import { JSX } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
-import { Tagline } from '../Tagline/tagline';
 import './banner.scss';
+
+CfpbTagline.init();
 
 interface BannerProperties extends React.HTMLProps<HTMLDivElement> {
   isHorizontal?: boolean;
@@ -58,7 +60,7 @@ export const Banner = ({
     eyebrowClasses.push('m-global-eyebrow--horizontal');
     wrapperClasses.push('wrapper--match-content');
     linkListClasses.push('m-list--horizontal m-global-eyebrow__languages');
-    taglineContent = <Tagline>{tagline}</Tagline>;
+    taglineContent = <cfpb-tagline>{tagline}</cfpb-tagline>;
   } else {
     eyebrowClasses.push('m-global-eyebrow--list');
   }
@@ -73,23 +75,24 @@ export const Banner = ({
     >
       <div className={classnames(wrapperClasses)}>
         {taglineContent}
-
-        <div className='m-global-eyebrow__actions'>
-          {links.length > 0 && (
-            <ul className={classnames(linkListClasses)}>
-              {links.map((link) => (
-                <li className='m-list__item' key={link.key}>
-                  {link}
-                </li>
-              ))}
-            </ul>
-          )}
-          {phoneNumber ? (
-            <span className='m-global-eyebrow__phone'>
-              <TelephoneLink phoneNumber={phoneNumber} />
-            </span>
-          ) : null}
-        </div>
+        {(links.length > 0 || phoneNumber) && (
+          <div className='m-global-eyebrow__actions'>
+            {links.length > 0 && (
+              <ul className={classnames(linkListClasses)}>
+                {links.map((link) => (
+                  <li className='m-list__item' key={link.key}>
+                    {link}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {phoneNumber ? (
+              <span className='m-global-eyebrow__phone'>
+                <TelephoneLink phoneNumber={phoneNumber} />
+              </span>
+            ) : null}
+          </div>
+        )}
       </div>
     </div>
   );

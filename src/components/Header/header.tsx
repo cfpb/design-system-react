@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
 import { Banner } from '../Banner/banner';
-import ResponsiveMenu from '../ResponsiveMenu/responsive-menu';
+import ResponsiveMenu from './responsive-menu';
 import './header.scss';
 
 export interface HeaderProperties {
