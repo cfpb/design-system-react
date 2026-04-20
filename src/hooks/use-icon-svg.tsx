@@ -19,6 +19,12 @@ export const useIconSvg = (
   >(null);
 
   useEffect(() => {
+    const isTest =
+      typeof process !== 'undefined' &&
+      process.env &&
+      process.env.NODE_ENV === 'test';
+    if (isTest) return;
+
     let isMounted = true;
 
     const importSvg = async (): Promise<void> => {
