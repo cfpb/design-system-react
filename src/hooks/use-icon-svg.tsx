@@ -1,5 +1,5 @@
 import type { FC, SVGProps } from 'react';
-import { act, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface SVGModule {
   default: FC<SVGProps<SVGSVGElement>>;
@@ -32,6 +32,9 @@ export const useIconSvg = (
 
         if (isMounted) {
           if (isTest) {
+            // React warns that this is deprecated, but importing from 'react' breaks builds
+            // because act is not a runtime export. Keep test-only usage here.
+            const { act } = await import('react-dom/test-utils');
             act(() => {
               setIconComponent(() => importedIcon.default);
             });
@@ -45,6 +48,9 @@ export const useIconSvg = (
         )) as SVGModule;
         if (isMounted) {
           if (isTest) {
+            // React warns that this is deprecated, but importing from 'react' breaks builds
+            // because act is not a runtime export. Keep test-only usage here.
+            const { act } = await import('react-dom/test-utils');
             act(() => {
               setIconComponent(() => errorIcon.default);
             });
