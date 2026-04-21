@@ -1,5 +1,5 @@
 import type { FC, SVGProps } from 'react';
-import { act, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface SVGModule {
   default: FC<SVGProps<SVGSVGElement>>;
@@ -19,9 +19,6 @@ export const useIconSvg = (
   >(null);
 
   useEffect(() => {
-    const isTest =
-      typeof process !== 'undefined' && process.env?.NODE_ENV === 'test';
-
     let isMounted = true;
 
     const importSvg = async (): Promise<void> => {
@@ -31,26 +28,14 @@ export const useIconSvg = (
         )) as SVGModule;
 
         if (isMounted) {
-          if (isTest) {
-            act(() => {
-              setIconComponent(() => importedIcon.default);
-            });
-          } else {
-            setIconComponent(() => importedIcon.default);
-          }
+          setIconComponent(() => importedIcon.default);
         }
       } catch {
         const errorIcon = (await import(
           `@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/error.svg?react`
         )) as SVGModule;
         if (isMounted) {
-          if (isTest) {
-            act(() => {
-              setIconComponent(() => errorIcon.default);
-            });
-          } else {
-            setIconComponent(() => errorIcon.default);
-          }
+          setIconComponent(() => errorIcon.default);
         }
       }
     };
