@@ -11,12 +11,12 @@ export const generateTestRows = (rowCount: number): string[][] =>
 // Stringify an object while preserving Functions
 export const stringify = (object: object): string => {
   const placeholder = '____PLACEHOLDER____';
-  const fns = [];
+  const fns: (() => unknown)[] = [];
   let json = JSON.stringify(
     object,
     (_key, value) => {
       if (typeof value === 'function') {
-        fns.push(value);
+        fns.push(value as () => unknown);
         return placeholder;
       }
       return value;
@@ -24,7 +24,7 @@ export const stringify = (object: object): string => {
     INDENTATION,
   );
   json = json.replaceAll(new RegExp(`"${placeholder}"`, 'g'), () =>
-    fns.shift(),
+    String(fns.shift() ?? ''),
   );
   return json;
 };

@@ -3,10 +3,8 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
 describe('<Tagline />', () => {
-  const TaglineModule = CfpbTagline as unknown as { init: () => void };
-
   beforeEach(() => {
-    TaglineModule.init();
+    CfpbTagline.init();
   });
 
   it('renders tagline text correctly', () => {

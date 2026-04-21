@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentProps } from 'react';
 import { JSX } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { Expandable } from '~/src/index';
@@ -27,6 +28,7 @@ Source: https://cfpb.github.io/design-system/components/expandables
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+type ExpandableGroupArgs = ComponentProps<typeof ExpandableGroup>;
 
 const Content = (
   <p>
@@ -86,7 +88,7 @@ export const OpenOnLoad: Story = {
 
 export const DefaultExpandableGroup: Story = {
   name: 'Group',
-  render: (arguments_) => (
+  render: (arguments_: ExpandableGroupArgs) => (
     <ExpandableGroup {...arguments_}>
       {['label', 'label', 'label'].map((value, index) => (
         <Expandable

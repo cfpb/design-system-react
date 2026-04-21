@@ -1,19 +1,20 @@
 declare module '@cfpb/cfpb-design-system/src/components/cfpb-expandables' {
+  type InitScope = Element | Document | NodeList | null | undefined;
+
   export const Expandable: {
-    init(element?: Element | NodeList | null): void;
+    init(scope?: InitScope): void;
   };
-}
-
-declare module '@cfpb/cfpb-design-system/src/components/cfpb-expandables' {
   export const ExpandableGroup: {
-    init(element?: Element | NodeList | null): void;
+    init(scope?: InitScope): void;
   };
+  export const Summary: {
+    init(scope?: InitScope): void;
+  };
+  export const SummaryMinimal: {
+    init(scope?: InitScope): void;
+  };
+
+  export const ExpandableStyles: Record<string, string>;
+  export const ExpandableGroupStyles: Record<string, string>;
+  export const SummaryStyles: Record<string, string>;
 }
-
-export const Summary: {
-  init(element?: Element | NodeList | null): void;
-};
-
-export const SummaryMinimal: {
-  init(element?: Element | NodeList | null): void;
-};
