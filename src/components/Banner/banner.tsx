@@ -4,7 +4,8 @@ import { JSX } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 import './banner.scss';
 
-CfpbTagline.init();
+const TaglineModule = CfpbTagline as unknown as { init: () => void };
+TaglineModule.init();
 
 interface BannerProperties extends React.HTMLProps<HTMLDivElement> {
   isHorizontal?: boolean;

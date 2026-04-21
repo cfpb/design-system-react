@@ -3,8 +3,10 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
 describe('<Tagline />', () => {
+  const TaglineModule = CfpbTagline as unknown as { init: () => void };
+
   beforeEach(() => {
-    CfpbTagline.init();
+    TaglineModule.init();
   });
 
   it('renders tagline text correctly', () => {
@@ -19,6 +21,7 @@ describe('<Tagline />', () => {
 
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(shadowRoot?.querySelector('cfpb-flag-usa')).toBeInTheDocument();
   });
 
@@ -29,6 +32,7 @@ describe('<Tagline />', () => {
 
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(shadowRoot?.querySelector('.a-tagline')).toHaveClass(
       'a-tagline--large',
     );

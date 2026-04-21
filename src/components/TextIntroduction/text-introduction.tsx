@@ -103,4 +103,9 @@ TextIntroduction.Subheading = ({
 
 export const TextIntroductionSubheading = TextIntroduction.Subheading;
 
+TextIntroduction.Container.displayName = 'TextIntroduction.Container';
+TextIntroduction.Heading.displayName = 'TextIntroduction.Heading';
+TextIntroduction.Description.displayName = 'TextIntroduction.Description';
+TextIntroduction.Subheading.displayName = 'TextIntroduction.Subheading';
+
 export default TextIntroduction;

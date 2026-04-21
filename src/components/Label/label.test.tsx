@@ -41,7 +41,7 @@ describe('<Label />', () => {
   });
 
   it('does not render if no label text is provided', () => {
-    const { container } = render(<Label htmlFor={htmlFor} />);
-    expect(container.childElementCount).toBe(0);
+    render(<Label htmlFor={htmlFor} />);
+    expect(screen.queryByText(text)).not.toBeInTheDocument();
   });
 });

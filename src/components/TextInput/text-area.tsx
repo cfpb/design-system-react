@@ -68,3 +68,5 @@ export const TextArea = forwardRef(
     );
   },
 );
+
+TextArea.displayName = 'TextArea';

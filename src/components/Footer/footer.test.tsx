@@ -4,7 +4,7 @@ import Footer from './footer';
 
 describe('Footer', () => {
   it('Skips empty lists', () => {
-    const { container } = render(<Footer />);
+    render(<Footer />);
 
     // List not rendered
     const list = screen.queryAllByRole('list');
@@ -15,7 +15,7 @@ describe('Footer', () => {
     expect(items.length).toEqual(0);
 
     // Find tagline web component.
-    const tagline = container.querySelector('cfpb-tagline');
+    const tagline = screen.getByTestId('footer-tagline');
     expect(tagline).toBeInTheDocument();
   });
 

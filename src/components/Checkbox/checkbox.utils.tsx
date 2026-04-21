@@ -30,8 +30,10 @@ export const CheckboxTestWrapper = ({
   );
 };
 
-export function CheckboxWrapper({ ...arguments_ }): JSX.Element {
-  const [, updateArguments] = useArgs();
+export function CheckboxWrapper({
+  ...arguments_
+}: CheckboxProperties): JSX.Element {
+  const [, updateArguments] = useArgs<CheckboxProperties>();
 
   return (
     <Checkbox

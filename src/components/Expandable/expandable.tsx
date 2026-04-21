@@ -24,11 +24,13 @@ export const Expandable: React.FC<ExpandableProperties> = ({
   className = '',
   ...properties
 }) => {
+  const ExpandableModule = CFPB_Expandable as unknown as { init: () => void };
+
   useEffect(() => {
     // If we're in an accordion, the parent ExpandableGroup will handle initialization
     if (inAccordion) return;
 
-    CFPB_Expandable.init();
+    ExpandableModule.init();
   }, [inAccordion]);
 
   const expandableClasses = ['o-expandable', className];
