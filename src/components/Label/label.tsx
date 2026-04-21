@@ -1,8 +1,10 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
+import type { ReactNode } from 'react';
+import type { JSXElement } from '../../types/jsx-element';
 
 interface LabelProperties {
-  children: React.ReactNode;
+  children: ReactNode;
   /** When true, uses inline label style instead of heading style */
   isInline?: boolean;
   htmlFor: string;
@@ -18,7 +20,7 @@ export const Label = ({
   className,
   ...other
 }: JSX.IntrinsicElements['label'] &
-  LabelProperties): React.ReactElement | null => {
+  LabelProperties): JSXElement => {
   const styles = [...baseStyles, isInline ? '' : 'a-label--heading'];
   const classes = [...styles, className];
 

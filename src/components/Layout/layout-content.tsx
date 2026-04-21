@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
+import type { HTMLAttributes } from 'react';
 
 export interface LayoutContentProperties {
   children: JSX.Element | JSX.Element[] | string;
@@ -14,7 +15,7 @@ export const LayoutContent = ({
   flushAllOnSmall,
   ...properties
 }: LayoutContentProperties &
-  React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
+  HTMLAttributes<HTMLDivElement>): JSX.Element => {
   const cnames = ['content__main'];
   if (flushBottom) cnames.push('content--flush-bottom');
   if (flushTopOnSmall) cnames.push('content--flush-top-on-small');

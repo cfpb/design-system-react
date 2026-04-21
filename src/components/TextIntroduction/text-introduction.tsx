@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { cloneElement, JSX, type ReactNode } from 'react';
+import { cloneElement, JSX, type HTMLProps, type ReactNode } from 'react';
 import { Heading } from '../Headings/heading';
 import List from '../List/list';
 import ListItem from '../List/list-item';
@@ -12,7 +12,7 @@ const renderDescription = (description: ReactNode | string): ReactNode => {
   return description;
 };
 
-interface TextIntroductionProperties extends React.HTMLProps<HTMLDivElement> {
+interface TextIntroductionProperties extends HTMLProps<HTMLDivElement> {
   // Page title
   heading: string;
   // Lead paragraph
@@ -62,7 +62,7 @@ TextIntroduction.Container = ({
   className,
   children,
   ...properties
-}: React.HTMLProps<HTMLDivElement>): JSX.Element => {
+}: HTMLProps<HTMLDivElement>): JSX.Element => {
   const cnames = ['o-text-introduction', className];
 
   return (

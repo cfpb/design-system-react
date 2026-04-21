@@ -1,7 +1,8 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
+import type { HTMLProps } from 'react';
 
-interface ParagraphProperties extends React.HTMLProps<HTMLParagraphElement> {
+interface ParagraphProperties extends HTMLProps<HTMLParagraphElement> {
   isLead?: boolean;
 }
 

@@ -1,5 +1,7 @@
 import classNames from 'classnames';
+import type { HTMLAttributes, ReactNode } from 'react';
 import type { HeadingLevel } from '../../types/heading-level';
+import type { JSXElement } from '../../types/jsx-element';
 import { Icon } from '../Icon/icon';
 import List from '../List/list';
 import type { AlertFieldLevelType } from './alert-field-level';
@@ -20,9 +22,9 @@ export type AlertType = 'error' | 'info' | 'loading' | 'success' | 'warning';
 
 interface AlertProperties {
   status?: AlertFieldLevelType | AlertType;
-  message?: React.ReactNode;
+  message?: ReactNode;
   headingLevel?: HeadingLevel;
-  children?: React.ReactNode;
+  children?: ReactNode;
   links?: AlertLinkProperties[];
   isVisible?: boolean;
   isFieldLevel?: boolean;
@@ -46,7 +48,7 @@ export const Alert = ({
   showIcon = true,
   ...properties
 }: AlertProperties &
-  React.HTMLAttributes<HTMLDivElement>): React.ReactElement | null => {
+  HTMLAttributes<HTMLDivElement>): JSXElement => {
   if (!isVisible) return null;
 
   if (isFieldLevel) {

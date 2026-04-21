@@ -1,5 +1,5 @@
 import '@cfpb/cfpb-design-system/src/components/cfpb-pagination/pagination.scss';
-import type { ReactElement } from 'react';
+import type { ChangeEvent, FormEvent, ReactElement } from 'react';
 import { JSX, useEffect, useId, useState } from 'react';
 import { Button } from '../Buttons/button';
 import { noOp } from '../../utils/no-op';
@@ -46,8 +46,8 @@ const PaginationInput = ({
   page,
   pageCount,
   onChange,
-}: PaginationInputProperties): React.ReactElement => {
-  const onPageChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+}: PaginationInputProperties): ReactElement => {
+  const onPageChange = (event: ChangeEvent<HTMLInputElement>): void => {
     onChange(Number.parseInt(event.currentTarget.value, 10));
   };
 
@@ -92,7 +92,7 @@ export const Pagination = ({
   const [pageNumber, setPageNumber] = useState(page);
   useEffect(() => setPageNumber(page), [page]);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const onSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const formData = Object.fromEntries(new FormData(event.currentTarget));
     const targetPage = Number.parseInt(formData.page, 10);

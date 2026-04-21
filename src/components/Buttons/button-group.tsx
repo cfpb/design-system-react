@@ -1,3 +1,4 @@
+import type { HTMLProps } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 
 /**
@@ -7,7 +8,7 @@ export const ButtonGroup = ({
   className,
   children,
   ...other
-}: React.HTMLProps<HTMLDivElement>): JSXElement => {
+}: HTMLProps<HTMLDivElement>): JSXElement => {
   if (!children) return null;
   return (
     <div className={`m-btn-group ${className ?? ''}`} {...other}>

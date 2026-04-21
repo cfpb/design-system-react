@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import matchMediaMock from 'jest-matchmedia-mock';
+import type { ReactElement } from 'react';
 import ResponsiveMenu, { ExampleLinks } from './responsive-menu';
 
 let matchMedia: matchMediaMock;
@@ -15,7 +16,7 @@ const resizeScreenSize = (width: number) => {
 };
 
 describe('ResponsiveMenu', () => {
-  const renderWithScope = (ui: React.ReactElement) =>
+  const renderWithScope = (ui: ReactElement) =>
     render(<div className='o-header-scope'>{ui}</div>);
 
   beforeAll(() => {

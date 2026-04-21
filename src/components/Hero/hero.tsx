@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import type { HeadingLevel } from '../../types/heading-level';
 import type { HeadingType } from '../Headings/heading';
 import { Heading } from '../Headings/heading';
@@ -7,9 +8,9 @@ import { HeroImage } from './hero-image';
 import './hero.scss';
 import { useBackgroundImage } from './use-background-image';
 
-interface HeroProperties extends React.HTMLAttributes<HTMLDivElement> {
+interface HeroProperties extends HTMLAttributes<HTMLDivElement> {
   backgroundColor?: string;
-  heading?: React.ReactNode;
+  heading?: ReactNode;
   headingLevel?: HeadingLevel;
   image?: string;
   imageAltText?: string;
@@ -17,7 +18,7 @@ interface HeroProperties extends React.HTMLAttributes<HTMLDivElement> {
   is5050?: boolean;
   isJumbo?: boolean;
   isKnockout?: boolean;
-  subheading?: React.ReactNode;
+  subheading?: ReactNode;
   subheadingLevel?: HeadingLevel | 'p';
   textColor?: string;
 }

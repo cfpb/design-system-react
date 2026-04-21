@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
+import type { HTMLProps } from 'react';
 
 export type HeadingType =
   | '1'
@@ -11,7 +12,7 @@ export type HeadingType =
   | 'eyebrow'
   | 'slug';
 
-interface HeadingProperties extends React.HTMLProps<HTMLHeadingElement> {
+interface HeadingProperties extends HTMLProps<HTMLHeadingElement> {
   /** Heading type (1-5, display, eyebrow, slug) */
   type?: HeadingType;
 }

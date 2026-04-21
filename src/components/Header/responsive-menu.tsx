@@ -1,8 +1,10 @@
 import React, { JSX, useCallback, useState } from 'react';
+import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
 import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/button';
 import { Icon } from '../Icon/icon';
 import Link from '../Link/link';
+import type { JSXElement } from '../../types/jsx-element';
 import './responsive-menu.scss';
 
 interface CfpbLogoProperties {
@@ -29,23 +31,23 @@ const Links = ({
   elements,
   onLinkClick,
 }: {
-  elements: React.ReactNode[] | undefined;
+  elements: ReactNode[] | undefined;
   onLinkClick: () => void;
-}): JSX.Element | null => {
+}): JSXElement => {
   if (!elements?.length) return null;
 
   return (
     <div className='links'>
       {elements.map((element, index) => {
         if (
-          React.isValidElement<{ onClick?: (event: React.MouseEvent) => void }>(
+          React.isValidElement<{ onClick?: (event: MouseEvent) => void }>(
             element,
           )
         ) {
           return React.cloneElement(element, {
             ...element.props,
             key: element.key ?? index,
-            onClick: (event: React.MouseEvent) => {
+            onClick: (event: MouseEvent) => {
               if (element.props.onClick) {
                 element.props.onClick(event);
               }
@@ -60,7 +62,7 @@ const Links = ({
 };
 
 interface ResponsiveMenuProperties {
-  links?: React.ReactNode[];
+  links?: ReactNode[];
   href?: string;
 }
 
@@ -79,7 +81,7 @@ export default function ResponsiveMenu({
   };
 
   const onHandleKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
+    (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === 'Escape') {
         setIsMenuOpen(false);
       }
@@ -138,7 +140,7 @@ export default function ResponsiveMenu({
   );
 }
 
-export const ExampleLinks: React.ReactNode[] = [
+export const ExampleLinks: ReactNode[] = [
   <Link key='home' href='/' label='Home' />,
   <Link
     key='filing'

@@ -1,11 +1,10 @@
 import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import classnames from 'classnames';
-import type React from 'react';
-import type { ReactNode } from 'react';
+import type { FC, HTMLAttributes, ReactNode } from 'react';
 import { useEffect } from 'react';
 import { Icon } from '../Icon/icon';
 
-export interface ExpandableProperties extends React.HTMLAttributes<HTMLDivElement> {
+export interface ExpandableProperties extends HTMLAttributes<HTMLDivElement> {
   header: string;
   children: ReactNode;
   icon?: string;
@@ -14,7 +13,7 @@ export interface ExpandableProperties extends React.HTMLAttributes<HTMLDivElemen
   openOnLoad?: boolean;
 }
 
-export const Expandable: React.FC<ExpandableProperties> = ({
+export const Expandable: FC<ExpandableProperties> = ({
   header,
   children,
   icon = '',
@@ -24,13 +23,11 @@ export const Expandable: React.FC<ExpandableProperties> = ({
   className = '',
   ...properties
 }) => {
-  const ExpandableModule = CFPB_Expandable as unknown as { init: () => void };
-
   useEffect(() => {
     // If we're in an accordion, the parent ExpandableGroup will handle initialization
     if (inAccordion) return;
 
-    ExpandableModule.init();
+    CFPB_Expandable.init();
   }, [inAccordion]);
 
   const expandableClasses = ['o-expandable', className];

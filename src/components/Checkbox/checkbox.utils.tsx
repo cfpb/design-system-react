@@ -1,4 +1,4 @@
-import { JSX, useState } from 'react';
+import { JSX, ChangeEvent, useState } from 'react';
 import { useArgs } from 'storybook/preview-api';
 import type { CheckboxProperties } from './checkbox';
 import { Checkbox } from './checkbox';
@@ -14,9 +14,7 @@ export const CheckboxTestWrapper = ({
 }: CheckboxProperties): JSX.Element => {
   const [inputChecked, setChecked] = useState(false);
 
-  const onWrapperChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ): void => {
+  const onWrapperChange = (event: ChangeEvent<HTMLInputElement>): void => {
     onChange?.(event);
     setChecked(event.target.checked);
   };

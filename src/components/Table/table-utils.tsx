@@ -1,10 +1,11 @@
 import classNames from 'classnames';
 import { JSX } from 'react';
 import type { TableColumn, TableProperties } from './table';
+import { JSXElement } from '../../types/jsx-element';
 
 export const buildColumnHeaders = (
   columns: TableProperties['columns'],
-): JSX.Element | null => (
+): JSXElement => (
   <thead>
     <tr>
       {columns.map((column, index) => {
@@ -56,7 +57,7 @@ const getCellProperties = (column: TableColumn): object => {
 export const buildRows = (
   rows: TableProperties['rows'],
   columns: TableProperties['columns'],
-): JSX.Element | null => (
+): JSXElement => (
   <tbody>
     {rows.map((row, rowIndex) => {
       const rowKey = `row-${rowIndex}`;

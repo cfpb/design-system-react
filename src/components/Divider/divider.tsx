@@ -1,10 +1,9 @@
-import type React from 'react';
-import type { ReactElement } from 'react';
+import type { HTMLProps, ReactElement } from 'react';
 
 export const Divider = ({
   className = '',
   ...properties
-}: React.HTMLProps<HTMLDivElement>): ReactElement => (
+}: HTMLProps<HTMLDivElement>): ReactElement => (
   <div className={`content__line ${className}`} {...properties} />
 );
 

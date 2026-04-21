@@ -8,7 +8,7 @@ const header = 'Tuesday Rememberance';
 const children = 'It was a warm Spring morning in the midwest...';
 
 describe('<Expandable />', () => {
-  const ExpandableModule = CFPB_Expandable as unknown as { init: () => void };
+  const ExpandableModule = CFPB_Expandable;
   it('Default', () => {
     render(<Expandable header={header}>{children}</Expandable>);
 

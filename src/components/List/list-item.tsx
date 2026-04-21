@@ -1,11 +1,12 @@
 import classNames from 'classnames';
 import React, { JSX } from 'react';
+import type { HTMLProps, ReactElement } from 'react';
 
 export default function ListItem({
   children,
   className,
   ...properties
-}: React.HTMLProps<HTMLLIElement>): JSX.Element {
+}: HTMLProps<HTMLLIElement>): JSX.Element {
   return (
     <li className={classNames('m-list__item', className)} {...properties}>
       {children}
@@ -14,7 +15,7 @@ export default function ListItem({
 }
 
 interface ListItemBuilderProperties {
-  children: React.ReactElement<{ className?: string }>[];
+  children: ReactElement<{ className?: string }>[];
   className?: string;
   itemClassname?: string;
 }

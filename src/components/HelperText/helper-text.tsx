@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import type React from 'react';
 import { JSX } from 'react';
+import type { HTMLProps } from 'react';
+import type { JSXElement } from '../../types/jsx-element';
 
-type HelperTextProperties = React.HTMLProps<HTMLDivElement>;
+type HelperTextProperties = HTMLProps<HTMLDivElement>;
 
 /**
  * A utility component to consistently display helper text for input elements
@@ -11,7 +12,7 @@ export const HelperText = ({
   children,
   className,
   ...properties
-}: HelperTextProperties): JSX.Element | null => {
+}: HelperTextProperties): JSXElement => {
   if (!children) return null;
   const cnames = ['a-label__helper', className];
 
