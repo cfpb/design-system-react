@@ -1,6 +1,13 @@
 import classnames from 'classnames';
-import { cloneElement, JSX, type HTMLProps, type ReactNode } from 'react';
+import {
+  cloneElement,
+  isValidElement,
+  JSX,
+  type HTMLProps,
+  type ReactNode,
+} from 'react';
 import { Heading } from '../Headings/heading';
+import { ListLink } from '../Link/link';
 import List from '../List/list';
 import ListItem from '../List/list-item';
 import { Paragraph } from '../Paragraph/paragraph';
@@ -40,7 +47,12 @@ export const TextIntroduction = ({
 
   const call2action = callToAction && (
     <List isLinks>
-      <ListItem>{cloneElement(callToAction, { type: 'list' })}</ListItem>
+      {isValidElement(callToAction) &&
+      (callToAction.type === ListItem || callToAction.type === ListLink) ? (
+        callToAction
+      ) : (
+        <ListItem>{cloneElement(callToAction, { type: 'list' })}</ListItem>
+      )}
     </List>
   );
 

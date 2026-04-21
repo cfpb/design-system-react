@@ -1,5 +1,6 @@
-import { JSX } from 'react';
+import { isValidElement, JSX } from 'react';
 import type { HeadingLevel } from '../../types/heading-level';
+import { ListLink } from '../Link/link';
 import List from '../List/list';
 import ListItem from '../List/list-item';
 
@@ -42,7 +43,14 @@ function WellContent({
   const callsToAction = [];
   if (links)
     for (const link of links) {
-      callsToAction.push(<ListItem key={link.key}>{link}</ListItem>);
+      if (
+        isValidElement(link) &&
+        (link.type === ListItem || link.type === ListLink)
+      ) {
+        callsToAction.push(link);
+      } else {
+        callsToAction.push(<ListItem key={link.key}>{link}</ListItem>);
+      }
     }
 
   return (
