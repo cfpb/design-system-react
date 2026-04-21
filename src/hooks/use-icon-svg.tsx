@@ -19,6 +19,9 @@ export const useIconSvg = (
   >(null);
 
   useEffect(() => {
+    const isTest =
+      typeof process !== 'undefined' && process.env?.NODE_ENV === 'test';
+
     let isMounted = true;
 
     const importSvg = async (): Promise<void> => {
@@ -28,14 +31,28 @@ export const useIconSvg = (
         )) as SVGModule;
 
         if (isMounted) {
-          setIconComponent(() => importedIcon.default);
+          if (isTest) {
+            const { act } = await import('react-dom/test-utils');
+            act(() => {
+              setIconComponent(() => importedIcon.default);
+            });
+          } else {
+            setIconComponent(() => importedIcon.default);
+          }
         }
       } catch {
         const errorIcon = (await import(
           `@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/error.svg?react`
         )) as SVGModule;
         if (isMounted) {
-          setIconComponent(() => errorIcon.default);
+          if (isTest) {
+            const { act } = await import('react-dom/test-utils');
+            act(() => {
+              setIconComponent(() => errorIcon.default);
+            });
+          } else {
+            setIconComponent(() => errorIcon.default);
+          }
         }
       }
     };
