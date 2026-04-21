@@ -1,4 +1,3 @@
-import { JSX } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 
 interface HeroImageProperties {

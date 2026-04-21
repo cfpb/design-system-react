@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { JSX } from 'react';
 import type { HTMLProps } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 

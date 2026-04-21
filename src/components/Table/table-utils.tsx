@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { JSX } from 'react';
 import type { TableColumn, TableProperties } from './table';
 import { JSXElement } from '../../types/jsx-element';
 

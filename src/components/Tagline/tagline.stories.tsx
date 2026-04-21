@@ -32,13 +32,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const StandardTagline: Story = {
+export const Standard: Story = {
   render: (properties) => <cfpb-tagline {...properties}></cfpb-tagline>,
 };
-StandardTagline.name = 'Standard tagline';
 
-export const LargeTagline: Story = {
-  ...StandardTagline,
+export const Large: Story = {
+  ...Standard,
   args: { isLarge: true },
 };
-LargeTagline.name = 'Large tagline';
