@@ -1,12 +1,13 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
+import type { HTMLProps } from 'react';
 import { BackToTop } from './back-to-top';
 import { FooterBanner } from './footer-banner';
 import { FooterLinksColumn, NavLinks, SocialLinks } from './footer-links';
 import './footer.scss';
 import './social-media.scss';
 
-interface FooterProperties extends React.HTMLProps<HTMLElement> {
+interface FooterProperties extends HTMLProps<HTMLElement> {
   navLinks?: JSX.Element[];
   socialLinks?: JSX.Element[];
   linksCol1?: JSX.Element[];

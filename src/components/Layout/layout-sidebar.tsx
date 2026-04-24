@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
+import type { HTMLAttributes } from 'react';
 
 export interface LayoutSidebarProperties {
   children: JSX.Element | JSX.Element[] | string;
@@ -14,7 +15,7 @@ export const LayoutSidebar = ({
   flushAllOnSmall,
   ...properties
 }: LayoutSidebarProperties &
-  React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
+  HTMLAttributes<HTMLDivElement>): JSX.Element => {
   const cnames = ['sidebar', 'content__sidebar', 'o-sidebar-content'];
   if (flushBottom) cnames.push('content--flush-bottom');
   if (flushTopOnSmall) cnames.push('content--flush-top-on-small');

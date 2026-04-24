@@ -19,6 +19,7 @@ describe('<Tagline />', () => {
 
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(shadowRoot?.querySelector('cfpb-flag-usa')).toBeInTheDocument();
   });
 
@@ -29,6 +30,7 @@ describe('<Tagline />', () => {
 
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(shadowRoot?.querySelector('.a-tagline')).toHaveClass(
       'a-tagline--large',
     );

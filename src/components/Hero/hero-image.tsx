@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import type { JSXElement } from '../../types/jsx-element';
 
 interface HeroImageProperties {
   image?: string;
@@ -8,7 +8,7 @@ interface HeroImageProperties {
 export const HeroImage = ({
   image,
   altText,
-}: HeroImageProperties): JSX.Element | null => {
+}: HeroImageProperties): JSXElement => {
   if (!image) return null;
 
   return (

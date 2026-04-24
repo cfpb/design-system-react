@@ -1,7 +1,8 @@
 import classnames from 'classnames';
 import type { HTMLAttributes } from 'react';
-import { Fragment, JSX } from 'react';
+import { Fragment } from 'react';
 import './breadcrumb.scss';
+import { JSXElement } from '../../types/jsx-element';
 
 export interface BreadcrumbCrumb {
   href: string;
@@ -23,7 +24,7 @@ export const Breadcrumb = ({
   ariaLabel = 'Breadcrumbs',
   className,
   ...properties
-}: BreadcrumbProperties): JSX.Element | null => {
+}: BreadcrumbProperties): JSXElement => {
   if (crumbs.length === 0) return null;
 
   return (

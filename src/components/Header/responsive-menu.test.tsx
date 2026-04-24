@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import matchMediaMock from 'jest-matchmedia-mock';
+import type { ReactElement } from 'react';
 import ResponsiveMenu, { ExampleLinks } from './responsive-menu';
 
 let matchMedia: matchMediaMock;
@@ -15,7 +16,7 @@ const resizeScreenSize = (width: number) => {
 };
 
 describe('ResponsiveMenu', () => {
-  const renderWithScope = (ui: React.ReactElement) =>
+  const renderWithScope = (ui: ReactElement) =>
     render(<div className='o-header-scope'>{ui}</div>);
 
   beforeAll(() => {
@@ -66,15 +67,13 @@ describe('ResponsiveMenu', () => {
 
     expect(navItems).toHaveClass('open');
     expect(menuToggle).toHaveAttribute('aria-expanded', 'true');
-    expect(menuToggle.querySelector('.sr-only')).toHaveTextContent(
-      'Close menu',
-    );
+    expect(within(menuToggle).getByText('Close menu')).toBeInTheDocument();
 
     fireEvent.click(menuToggle);
 
     expect(navItems).not.toHaveClass('open');
     expect(menuToggle).toHaveAttribute('aria-expanded', 'false');
-    expect(menuToggle.querySelector('.sr-only')).toHaveTextContent('Open menu');
+    expect(within(menuToggle).getByText('Open menu')).toBeInTheDocument();
   });
 
   it('closes menu when clicking overlay', () => {

@@ -1,12 +1,19 @@
 import { CfpbTagline } from '@cfpb/cfpb-design-system';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { HTMLAttributes, ReactElement } from 'react';
 
 CfpbTagline.init();
 
-const meta: Meta<typeof CfpbTagline> = {
+type TaglineProps = HTMLAttributes<HTMLElement> & { isLarge?: boolean };
+
+const TaglineComponent = (props: TaglineProps): ReactElement => (
+  <cfpb-tagline {...props}></cfpb-tagline>
+);
+
+const meta = {
   title: 'Components (Verified)/Taglines',
   tags: ['autodocs', 'web-component'],
-  component: CfpbTagline,
+  component: TaglineComponent,
   parameters: {
     docs: {
       description: {
@@ -19,19 +26,17 @@ Source: https://cfpb.github.io/design-system/components/taglines
       },
     },
   },
-};
+} satisfies Meta<typeof TaglineComponent>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const StandardTagline: Story = {
+export const Standard: Story = {
   render: (properties) => <cfpb-tagline {...properties}></cfpb-tagline>,
 };
-StandardTagline.storyName = 'Standard tagline';
 
-export const LargeTagline: Story = {
-  ...StandardTagline,
+export const Large: Story = {
+  ...Standard,
   args: { isLarge: true },
 };
-LargeTagline.storyName = 'Large tagline';

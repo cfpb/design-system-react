@@ -1,16 +1,17 @@
 import { ExpandableGroup as CFPB_ExpandableGroup } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import classnames from 'classnames';
-import type { ReactElement } from 'react';
 import React, { useEffect } from 'react';
+import type { FC, HTMLAttributes, ReactElement } from 'react';
 import type { ExpandableProperties } from './expandable';
 
-export interface ExpandableGroupProperties extends React.HTMLAttributes<HTMLDivElement> {
+export interface ExpandableGroupProperties
+  extends HTMLAttributes<HTMLDivElement> {
   groupId: string;
   accordion?: boolean;
   children?: ReactElement<ExpandableProperties>[];
 }
 
-export const ExpandableGroup: React.FC<ExpandableGroupProperties> = ({
+export const ExpandableGroup: FC<ExpandableGroupProperties> = ({
   groupId,
   accordion = false,
   children,

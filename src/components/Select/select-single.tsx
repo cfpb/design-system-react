@@ -9,7 +9,6 @@ export const SelectSingle = ({
   options,
   label,
   onChange = noOp,
-  maxSelections,
   value = '',
   defaultOptionLabel = '-- select an option --',
   ...properties

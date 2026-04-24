@@ -47,7 +47,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
     {
       className,
       id,
-      inputRef,
+      inputRef: _inputRef,
       isDisabled = false,
       name,
       status = 'info',
@@ -95,3 +95,5 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
     );
   },
 );
+
+TextInput.displayName = 'TextInput';

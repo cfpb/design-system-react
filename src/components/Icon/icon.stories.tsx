@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX } from 'react';
+import type { ReactElement } from 'react';
 import { Heading, Icon } from '~/src/index';
 import type { HeadingType } from '../Headings/heading';
 import {
@@ -65,50 +66,50 @@ const IconTable = ({ children }: { children: JSX.Element[] }): JSX.Element => (
   </table>
 );
 
-export const IconPlain = (): React.ReactElement => (
+export const IconPlain = (): ReactElement => (
   <span style={biggerIcon}>
     <Icon name='approved' />
   </span>
 );
 
-export const IconWithBackground = (): React.ReactElement => (
+export const IconWithBackground = (): ReactElement => (
   <span style={biggerIcon}>
     <Icon name='approved' withBg />
   </span>
 );
 
-export const NavigationIcons = (): React.ReactElement => (
+export const NavigationIcons = (): ReactElement => (
   <IconTable>{makeRows(navigationIcons)}</IconTable>
 );
 
-export const StatusIcons = (): React.ReactElement => (
+export const StatusIcons = (): ReactElement => (
   <IconTable>{makeRows(statusIcons)}</IconTable>
 );
 
-export const SocialSharingIcons = (): React.ReactElement => (
+export const SocialSharingIcons = (): ReactElement => (
   <IconTable>{makeRows(socialIcons)}</IconTable>
 );
 
-export const CommunicationIcons = (): React.ReactElement => (
+export const CommunicationIcons = (): ReactElement => (
   <IconTable>{makeRows(communicationIcons)}</IconTable>
 );
 
-export const NumberIcons = (): React.ReactElement => (
+export const NumberIcons = (): ReactElement => (
   <IconTable>{makeRows(numberIcons)}</IconTable>
 );
 
-export const DocumentIcons = (): React.ReactElement => (
+export const DocumentIcons = (): ReactElement => (
   <IconTable>{makeRows(documentIcons)}</IconTable>
 );
 
 export const FinancialProductsServicesAndConceptIcons =
-  (): React.ReactElement => <IconTable>{makeRows(financialIcons)}</IconTable>;
+  (): ReactElement => <IconTable>{makeRows(financialIcons)}</IconTable>;
 
-export const ExpenseIcons = (): React.ReactElement => (
+export const ExpenseIcons = (): ReactElement => (
   <IconTable>{makeRows(expenseIcons)}</IconTable>
 );
 
-export const WebApplicationIcons = (): React.ReactElement => (
+export const WebApplicationIcons = (): ReactElement => (
   <IconTable>{makeRows(webIcons)}</IconTable>
 );
 

@@ -33,7 +33,7 @@ describe('<RadioButton />', () => {
     render(<RadioButton {...properties} helperText={helperText} isLarge />);
 
     expect(screen.getByText(helperTextOutput)).toBeInTheDocument();
-    expect(screen.getByTestId('radio-container').getAttribute('class')).toMatch(
+    expect(screen.getByTestId('radio-container')).toHaveClass(
       'm-form-field--lg-target',
     );
   });
@@ -59,14 +59,15 @@ describe('<RadioButton />', () => {
     expect(element).toBeChecked();
   });
 
-  it('Select via click', () => {
+  it('Select via click', async () => {
+    const user = userEvent.setup();
     const properties = buildProperties('click');
     render(<RadioButton {...properties} />);
 
     const element = screen.getByRole(role);
     expect(element).not.toBeChecked();
 
-    screen.getByText(properties.label).click();
+    await user.click(screen.getByText(properties.label));
 
     expect(element).toBeChecked();
   });

@@ -31,10 +31,12 @@ describe('<WellContent />', () => {
   it('Displays elements', () => {
     render(<WellContent {...Content.args} />);
 
-    const heading = screen.getByText(Content.args?.heading);
+    const headingText = Content.args?.heading as string;
+    const heading = screen.getByText(headingText);
     expect(heading).toHaveClass('h3');
 
-    const text = screen.getByText(Content.args?.text);
+    const textValue = Content.args?.text as string;
+    const text = screen.getByText(textValue);
     expect(text).toHaveClass('text');
 
     const callToAction = screen.getByRole('link', {

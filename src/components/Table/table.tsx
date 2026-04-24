@@ -4,6 +4,7 @@ import {
   useId,
   type ForwardedRef,
   type HTMLProps,
+  type ReactElement,
   type ReactNode,
 } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
@@ -67,7 +68,7 @@ export interface TableProperties {
  */
 export const Table = forwardRef<
   HTMLDivElement,
-  React.HTMLProps<HTMLTableElement> & TableProperties
+  HTMLProps<HTMLTableElement> & TableProperties
 >(
   (
     {
@@ -87,7 +88,7 @@ export const Table = forwardRef<
       ...others
     },
     reference,
-  ): React.ReactElement => {
+  ): ReactElement => {
     const [visibleRows, paginationProperties] = usePagination({
       rows,
       isPaginated,

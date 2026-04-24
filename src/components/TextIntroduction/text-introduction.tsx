@@ -1,6 +1,13 @@
 import classnames from 'classnames';
-import { cloneElement, JSX, type ReactNode } from 'react';
+import {
+  cloneElement,
+  isValidElement,
+  JSX,
+  type HTMLProps,
+  type ReactNode,
+} from 'react';
 import { Heading } from '../Headings/heading';
+import { ListLink } from '../Link/link';
 import List from '../List/list';
 import ListItem from '../List/list-item';
 import { Paragraph } from '../Paragraph/paragraph';
@@ -12,7 +19,7 @@ const renderDescription = (description: ReactNode | string): ReactNode => {
   return description;
 };
 
-interface TextIntroductionProperties extends React.HTMLProps<HTMLDivElement> {
+interface TextIntroductionProperties extends HTMLProps<HTMLDivElement> {
   // Page title
   heading: string;
   // Lead paragraph
@@ -40,7 +47,12 @@ export const TextIntroduction = ({
 
   const call2action = callToAction && (
     <List isLinks>
-      <ListItem>{cloneElement(callToAction, { type: 'list' })}</ListItem>
+      {isValidElement(callToAction) &&
+      (callToAction.type === ListItem || callToAction.type === ListLink) ? (
+        callToAction
+      ) : (
+        <ListItem>{cloneElement(callToAction, { type: 'list' })}</ListItem>
+      )}
     </List>
   );
 
@@ -62,7 +74,7 @@ TextIntroduction.Container = ({
   className,
   children,
   ...properties
-}: React.HTMLProps<HTMLDivElement>): JSX.Element => {
+}: HTMLProps<HTMLDivElement>): JSX.Element => {
   const cnames = ['o-text-introduction', className];
 
   return (
@@ -102,5 +114,10 @@ TextIntroduction.Subheading = ({
 );
 
 export const TextIntroductionSubheading = TextIntroduction.Subheading;
+
+TextIntroduction.Container.displayName = 'TextIntroduction.Container';
+TextIntroduction.Heading.displayName = 'TextIntroduction.Heading';
+TextIntroduction.Description.displayName = 'TextIntroduction.Description';
+TextIntroduction.Subheading.displayName = 'TextIntroduction.Subheading';
 
 export default TextIntroduction;

@@ -1,5 +1,6 @@
 import type { JSXElement } from '../../types/jsx-element';
 import { Icon } from '../Icon/icon';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 export type AlertFieldLevelType = 'error' | 'info' | 'success' | 'warning';
 
@@ -17,9 +18,10 @@ export const MapTypeToIconName = {
   warning: 'warning',
 };
 
-export interface AlertFieldLevelProperties extends React.HTMLAttributes<HTMLDivElement> {
+export interface AlertFieldLevelProperties
+  extends HTMLAttributes<HTMLDivElement> {
   status?: AlertFieldLevelType;
-  message: React.ReactNode;
+  message: ReactNode;
   isVisible?: boolean;
 }
 

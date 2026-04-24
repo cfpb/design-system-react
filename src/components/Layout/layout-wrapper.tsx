@@ -1,4 +1,5 @@
 import { JSX } from 'react';
+import type { HTMLAttributes } from 'react';
 
 /**
  * ~ Usage ~
@@ -23,7 +24,7 @@ export const LayoutWrapper = ({
   children,
   ...properties
 }: LayoutWrapperProperties &
-  React.HTMLAttributes<HTMLDivElement>): JSX.Element => (
+  HTMLAttributes<HTMLDivElement>): JSX.Element => (
   <div className='wrapper' {...properties}>
     {children}
   </div>

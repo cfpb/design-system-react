@@ -3,12 +3,11 @@ import {
   SummaryMinimal as CFPB_SummaryMinimal,
 } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import classnames from 'classnames';
-import type React from 'react';
-import type { ReactNode } from 'react';
+import type { FC, HTMLAttributes, ReactNode } from 'react';
 import { useEffect } from 'react';
 import { Icon } from '../Icon/icon';
 
-export interface SummaryProperties extends React.HTMLAttributes<HTMLDivElement> {
+export interface SummaryProperties extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   /** Label for the toggle button */
   label?: string;
@@ -23,7 +22,7 @@ export interface SummaryProperties extends React.HTMLAttributes<HTMLDivElement> 
  *
  * Source: <a href='https://cfpb.github.io/design-system/components/summaries' target='_blank'>https://cfpb.github.io/design-system/components/summaries</a>
  */
-export const Summary: React.FC<SummaryProperties> = ({
+export const Summary: FC<SummaryProperties> = ({
   children,
   label = 'Show full text',
   isMobileOnly = false,

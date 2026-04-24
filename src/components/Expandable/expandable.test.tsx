@@ -8,12 +8,7 @@ const header = 'Tuesday Rememberance';
 const children = 'It was a warm Spring morning in the midwest...';
 
 describe('<Expandable />', () => {
-  let initSpy: ReturnType<typeof vi.spyOn>;
-
-  beforeEach(() => {
-    initSpy = vi.spyOn(CFPB_Expandable, 'init');
-  });
-
+  const ExpandableModule = CFPB_Expandable;
   it('Default', () => {
     render(<Expandable header={header}>{children}</Expandable>);
 
@@ -28,17 +23,19 @@ describe('<Expandable />', () => {
   });
 
   it('Initializes when not in an accordion', () => {
+    vi.spyOn(ExpandableModule, 'init');
     render(<Expandable header={header}>{children}</Expandable>);
-    expect(initSpy).toHaveBeenCalledTimes(1);
+    expect(ExpandableModule.init).toHaveBeenCalledTimes(1);
   });
 
   it('Does not initialize when in an accordion', () => {
+    vi.spyOn(ExpandableModule, 'init');
     render(
       <Expandable header={header} inAccordion>
         {children}
       </Expandable>,
     );
-    expect(initSpy).not.toHaveBeenCalled();
+    expect(ExpandableModule.init).not.toHaveBeenCalled();
   });
 
   it('Adds default standalone styles when not in an accordion', () => {

@@ -1,5 +1,4 @@
-import type React from 'react';
-import type { ReactNode } from 'react';
+import type { ReactElement, ReactNode, RefObject } from 'react';
 import { JSX } from 'react';
 import { HelperText } from '../HelperText/helper-text';
 import { Label } from '../Label/label';
@@ -10,7 +9,7 @@ interface RadioProperties {
   className?: string;
   helperText?: string;
   inputRef?:
-    | React.RefObject<HTMLInputElement>
+    | RefObject<HTMLInputElement>
     | string
     | ((instance: HTMLInputElement | null) => void)
     | null
@@ -37,7 +36,7 @@ export const RadioButton = ({
   label,
   inputRef,
   ...properties
-}: JSX.IntrinsicElements['input'] & RadioProperties): React.ReactElement => {
+}: JSX.IntrinsicElements['input'] & RadioProperties): ReactElement => {
   const classes = [...baseStyles, className].join(' ');
   const containerClasses = [
     ...containerBaseStyles,

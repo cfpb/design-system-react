@@ -1,12 +1,13 @@
 import { CfpbTagline } from '@cfpb/cfpb-design-system';
 import classnames from 'classnames';
 import { JSX } from 'react';
+import type { HTMLProps } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 import './banner.scss';
 
 CfpbTagline.init();
 
-interface BannerProperties extends React.HTMLProps<HTMLDivElement> {
+interface BannerProperties extends HTMLProps<HTMLDivElement> {
   isHorizontal?: boolean;
   links?: JSX.Element[];
   phoneNumber?: string;

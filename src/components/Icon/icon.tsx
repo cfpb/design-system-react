@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { SVGProps } from 'react';
-import { JSX } from 'react';
 import { useIconSvg } from '../../hooks/use-icon-svg';
+import type { JSXElement } from '../../types/jsx-element';
 import { numberIcons } from './icon-lists';
 
 // Design System font sizes for HTML elements
@@ -15,7 +15,7 @@ const sizeMap: Record<string, string> = {
   sub: '12px',
 };
 
-// Icons who's background is square as opposed to round
+// Icons whose background is square as opposed to round
 const isSquare = new Set([
   'email',
   'facebook',
@@ -27,7 +27,7 @@ const isSquare = new Set([
   'youtube',
 ]);
 
-// Is this an number icon, based on the icon name?
+// Is this a number icon, based on the icon name?
 const isNumber = new Set(numberIcons);
 
 /**
@@ -75,7 +75,7 @@ interface IconProperties extends Omit<SVGProps<SVGSVGElement>, 'name'> {
  * @param isPresentational Is SVG purely presentational and should be ignored by screen readers?
  * @param withBg With background?
  * @param size Match the icon size to a specified HTML element or provide a custom size. By default the icon size is determined by it's parent element's font-size.
- * @returns ReactElement | null
+ * @returns JSXElement
  */
 export const Icon = ({
   name,
@@ -87,7 +87,7 @@ export const Icon = ({
   withBg = false,
   size = 'inherit',
   ...others
-}: IconProperties): JSX.Element | null => {
+}: IconProperties): JSXElement => {
   const shapeModifier = getShapeModifier(name, withBg);
   const fileName = `${name}${shapeModifier}`;
   const IconComponent = useIconSvg(fileName);
