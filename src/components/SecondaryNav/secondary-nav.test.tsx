@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { SecondaryNav } from './secondary-nav';
 import type { SecondaryNavItem } from './secondary-nav';
 
@@ -22,6 +22,21 @@ describe('<SecondaryNav />', () => {
     expect(
       screen.getByRole('navigation', { name: 'On this page' }),
     ).toBeInTheDocument();
+  });
+
+  it('renders a mobile toggle button with aria-expanded', () => {
+    render(<SecondaryNav items={defaultItems} />);
+    const toggleButton = screen.getByTestId('secondary-nav-toggle');
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('toggles aria-expanded when the button is clicked', () => {
+    render(<SecondaryNav items={defaultItems} />);
+    const toggleButton = screen.getByTestId('secondary-nav-toggle');
+    fireEvent.click(toggleButton);
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'true');
+    fireEvent.click(toggleButton);
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
   });
 
   it('renders all items as links; active link has aria-current', () => {

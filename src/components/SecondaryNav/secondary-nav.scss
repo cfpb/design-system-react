@@ -3,8 +3,37 @@
 // Active = black 5px left border; hover = green 5px left border
 // @see https://www.consumerfinance.gov/compliance/supervisory-highlights/
 // @see https://www.consumerfinance.gov/static/css/main.a624b7218b13.css
+@use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
 
 .o-secondary-nav {
+  &__toggle {
+    display: none;
+    width: 100%;
+    padding: 0.75rem 0.9375rem;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--pacific);
+    text-align: left;
+    background: var(--gray-5);
+    border: 0;
+    border-bottom: 1px solid var(--gray-40);
+    cursor: pointer;
+
+    &:focus {
+      outline: 1px dotted var(--pacific);
+      outline-offset: -1px;
+    }
+  }
+
+  &__toggle-label {
+    flex: 1 1 auto;
+  }
+
+  &__toggle-icon {
+    flex: 0 0 auto;
+    margin-left: 0.5rem;
+  }
+
   &__list {
     list-style: none;
     margin: 0;
@@ -68,5 +97,29 @@
       font-size: 18px;
       font-weight: 500;
     }
+  }
+
+  @include respond-to-max($bp-sm-max) {
+    margin-left: -0.9375rem;
+    margin-right: -0.9375rem;
+
+    &__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__list--parents {
+      display: none;
+      margin-top: 0.5rem;
+
+      &[data-expanded='true'] {
+        display: block;
+      }
+    }
+  }
+
+  @include respond-to-range($bp-sm-min, $bp-sm-max) {
+    margin-right: -1.875rem;
   }
 }

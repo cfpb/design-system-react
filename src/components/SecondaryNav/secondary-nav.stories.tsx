@@ -18,12 +18,14 @@ Matches the "Navigate this section" pattern used on [consumerfinance.gov](https:
 - Pass \`items\` with \`href\`, \`label\`, and optional \`isActive\` for the current page.
 - Items can have optional \`children\` for sub-menu items. Parent items with children can omit \`href\` when active (section header).
 - Use \`ariaLabel\` to describe the nav for screen readers.
+- Use \`mobileToggleLabel\` to set the toggle label shown on mobile when the list collapses.
         `,
       },
     },
   },
   argTypes: {
     ariaLabel: { control: 'text' },
+    mobileToggleLabel: { control: 'text' },
   },
 };
 
