@@ -53,8 +53,17 @@ export const Sidebar: Story = {
     flushAllOnSmall: false,
   },
   render: (properties) => (
-    <Layout.Main>
+    <Layout.Main layout='2-1'>
       <Layout.Wrapper>
+        <Layout.Content>
+          <h1>Layout.Content</h1>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat
+            alias eum ut officiis optio similique explicabo cupiditate
+            architecto voluptatem nostrum recusandae, eaque consectetur iure,
+            veritatis eos, mollitia possimus error earum?
+          </p>
+        </Layout.Content>
         <Layout.Sidebar {...properties}>
           <div>
             <h2>Layout.Sidebar</h2>
@@ -65,15 +74,6 @@ export const Sidebar: Story = {
             </ul>
           </div>
         </Layout.Sidebar>
-        <Layout.Content>
-          <h1>Layout.Content</h1>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat
-            alias eum ut officiis optio similique explicabo cupiditate
-            architecto voluptatem nostrum recusandae, eaque consectetur iure,
-            veritatis eos, mollitia possimus error earum?
-          </p>
-        </Layout.Content>
       </Layout.Wrapper>
     </Layout.Main>
   ),
