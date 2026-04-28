@@ -1,1 +1,0 @@
-import{n as e}from"./chunk-DnJy8xQt.js";var t,n,r,i,a=e((()=>{t=4,n=1,r=[...Array.from({length:t}).keys()].map(e=>({value:`option${e+n}`,label:`Option ${e+n}`})),i=[...r,{value:`long-option`,label:`Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious`}]}));export{r as n,a as r,i as t};
