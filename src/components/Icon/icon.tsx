@@ -1,8 +1,10 @@
+import { CfpbIcon } from '@cfpb/cfpb-design-system';
 import classNames from 'classnames';
-import type { SVGProps } from 'react';
-import { useIconSvg } from '../../hooks/use-icon-svg';
+import type { CSSProperties, HTMLAttributes } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 import { numberIcons } from './icon-lists';
+
+CfpbIcon.init();
 
 // Design System font sizes for HTML elements
 const sizeMap: Record<string, string> = {
@@ -51,7 +53,8 @@ const getShapeModifier = (name: string, withBg: boolean): string => {
   return '-round';
 };
 
-interface IconProperties extends Omit<SVGProps<SVGSVGElement>, 'name'> {
+interface IconProperties
+  extends Omit<HTMLAttributes<HTMLElement>, 'color' | 'size'> {
   name: string;
   alt?: string;
   ariaLabel?: string;
@@ -60,6 +63,8 @@ interface IconProperties extends Omit<SVGProps<SVGSVGElement>, 'name'> {
   isPresentational?: boolean;
   withBg?: boolean;
   size?: string;
+  color?: string;
+  spin?: boolean;
 }
 
 /**
@@ -86,21 +91,26 @@ export const Icon = ({
   isPresentational = false,
   withBg = false,
   size = 'inherit',
+  className,
+  style,
   ...others
 }: IconProperties): JSXElement => {
   const shapeModifier = getShapeModifier(name, withBg);
   const fileName = `${name}${shapeModifier}`;
-  const IconComponent = useIconSvg(fileName);
 
-  if (!IconComponent) return null;
-
-  const classes = classNames('cf-icon-svg', `cf-icon-svg--${fileName}`);
+  const classes = classNames(
+    'cf-icon-svg',
+    `cf-icon-svg--${fileName}`,
+    className,
+  );
   const fontSize = sizeMap[size] || size;
+  const iconStyle: CSSProperties = { ...style, fontSize };
 
   return (
-    <IconComponent
+    <cfpb-icon
+      name={fileName}
       className={classes}
-      style={{ fontSize }}
+      style={iconStyle}
       role={isPresentational ? undefined : 'img'}
       aria-label={ariaLabel || (isPresentational ? undefined : (alt ?? name))}
       aria-labelledby={ariaLabelledby || undefined}

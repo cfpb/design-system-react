@@ -131,9 +131,11 @@ export const IconWithText: Story = {
     return (
       <table>
         <thead>
-          <th>Text element</th>
-          <th>Icon with background</th>
-          <th>Icon without background</th>
+          <tr>
+            <th>Text element</th>
+            <th>Icon with background</th>
+            <th>Icon without background</th>
+          </tr>
         </thead>
         <tbody>
           {acceptableLevels.map(({ type, text }) => (
