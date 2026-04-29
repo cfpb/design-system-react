@@ -1,22 +1,46 @@
+// Matches u-layout-grid__breadcrumbs + m-breadcrumbs on consumerfinance.gov
+// Live main.css (verified): .m-breadcrumbs uses font-size: .875rem (→ 14px at 16px root),
+// min-height: 33px (px), gap/padding in rem. No separate .m-breadcrumbs__crumb block—crumbs inherit.
+// @see https://www.consumerfinance.gov/static/css/main.css
+@use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
+
 .u-layout-grid__breadcrumbs {
-  padding: 1.875rem;
+  grid-area: c-breadcrumbs;
 
   .m-breadcrumbs {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    font-size: .875rem;
-    gap: .625rem;
+    font-size: 0.875rem;
+    gap: 0.625rem;
     min-height: 33px;
+    padding-bottom: 0.9375rem;
+    padding-top: 0.9375rem;
     position: relative;
+  }
+
+  @include respond-to-min($bp-med-min) {
+    .m-breadcrumbs {
+      padding-bottom: 0;
+      padding-top: 1.875rem;
+    }
   }
 }
 
-@media only screen and (width <= 56.25em) {
+@include respond-to-max($bp-sm-max) {
   .u-layout-grid__breadcrumbs {
     background: var(--gray-5);
     border-bottom: 1px solid var(--gray-40);
-    margin-bottom: 1.875rem;
-    padding: .9375rem;
+    margin-left: -1.875rem;
+    margin-right: -1.875rem;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+  }
+}
+
+@include respond-to-range($bp-sm-min, $bp-sm-max) {
+  .u-layout-grid__breadcrumbs {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
   }
 }

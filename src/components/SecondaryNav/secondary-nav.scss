@@ -1,152 +1,285 @@
-// Secondary navigation (left panel / "Navigate this section" pattern)
-// Matches consumerfinance.gov compliance section sidebar
-// Active = black 5px left border; hover = green 5px left border
-// @see https://www.consumerfinance.gov/compliance/supervisory-highlights/
-// @see https://www.consumerfinance.gov/static/css/main.a624b7218b13.css
+// 1:1 with consumerfinance.gov cfgov/unprocessed/css/organisms/secondary-nav.scss
+// Units: px values in cfgov source are converted via math.div(..., $base-font-size-px)
+// to em (padding, parent link size) or rem (header label). Compiled cf.gov CSS shows e.g.
+// .875rem crumbs elsewhere; secondary-nav uses 1rem label, 1.125em parent links, 0.625em/0.9375em header padding.
+// @see https://github.com/cfpb/consumerfinance.gov/blob/main/cfgov/unprocessed/css/organisms/secondary-nav.scss
+@use 'sass:math';
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/utilities' as *;
 
 .o-secondary-nav {
-  &__toggle {
-    display: none;
-    width: 100%;
-    padding: 0.75rem 0.9375rem;
-
-    // Base for child ems from heading-4; avoids UA/button font-size shrinking the label.
-    font-size: $base-font-size-px;
-    color: var(--pacific);
-    text-align: left;
-    background: var(--gray-5);
+  //
+  // Header
+  //
+  &__header {
+    display: flex;
+    justify-content: space-between;
     border: 0;
-    border-bottom: 1px solid var(--gray-40);
     cursor: pointer;
+    padding: (math.div(10px, $base-font-size-px) + em)
+      (math.div(15px, $base-font-size-px) + em);
 
     &:focus {
-      outline: 1px dotted var(--pacific);
-      outline-offset: -1px;
+      outline: 1px dotted var(--black);
+      outline-offset: 1px;
     }
-  }
 
-  &__toggle-label {
-    flex: 1 1 auto;
+    .o-secondary-nav__cue-close,
+    .o-secondary-nav__cue-open {
+      display: none;
+    }
 
-    // Same as DS .h4 / heading-4, but not responsive: global .h4 uses 1em on small
-    // viewports (inherits ~16px); the toggle should stay 18px with font-size-adjust.
-    @include heading-4(
-      $has-margin-bottom: false,
-      $has-margin-top: false,
-      $is-responsive: false
-    );
-  }
+    &[aria-expanded='false'] .o-secondary-nav__cue-open {
+      display: block;
+    }
 
-  &__toggle-icon {
-    flex: 0 0 auto;
-    margin-left: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 0;
-
-    .cf-icon-svg {
+    &[aria-expanded='true'] .o-secondary-nav__cue-close {
       display: block;
     }
   }
 
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  // Using the button element with .o-secondary-nav__header requires setting
+  // an explicit width.
+  button.o-secondary-nav__header {
+    background-color: transparent;
+    width: 100%;
+    text-align: left;
+  }
 
-    &--children {
-      padding-left: 0.9375rem;
+  &__cues {
+    min-width: 60px;
+    text-align: right;
+    color: var(--pacific);
+    font-size: math.div($btn-font-size, $base-font-size-px) + em;
+    line-height: math.div($base-line-height-px, $btn-font-size);
+  }
+
+  &__label {
+    // Grow to available width.
+    flex-grow: 1;
+
+    font-size: math.div(16px, $base-font-size-px) + rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--pacific);
+
+    line-height: math.div(22px, $size-v);
+    margin-bottom: 0;
+  }
+
+  &__content {
+    padding: math.div(15px, $base-font-size-px) + em;
+    padding-top: 0;
+
+    // The divider between __header and __content.
+    &::before {
+      content: '';
+      display: block;
+      border-top: 1px solid var(--gray-40);
+      padding-top: math.div(15px, $base-font-size-px) + em;
+    }
+
+    &::after {
+      padding-bottom: math.div(15px, $base-font-size-px) + em;
+      width: 100%;
     }
   }
 
-  &__item {
-    margin: 0;
-    padding: 0;
+  &__list {
+    padding-left: 0;
+    list-style: none;
+
+    > li {
+      margin-left: 0;
+    }
+  }
+
+  &__list--children {
+    margin-left: math.div(math.div($grid-gutter-width, 2), $base-font-size-px) +
+      em;
+
+    // Desktop and above.
+    @include respond-to-min($bp-med-min) {
+      // Add 5px for the border to half the gutter
+      margin-left: math.div(
+          math.div($grid-gutter-width, 2) + 5px,
+          $base-font-size-px
+        ) +
+        em;
+    }
   }
 
   &__link {
-    display: block;
-    padding: 0.5rem 0 0.5rem 0.9375rem;
-    color: var(--pacific);
-    text-decoration: none;
-    border: solid transparent;
-    border-width: 0 0 0 5px;
+    display: inline-block;
+
+    // Break the menu word when it is too wide to fit in the sidebar area.
+    // These two values usurp the deprecated `word-break: break-word;`.
     overflow-wrap: anywhere;
     word-break: normal;
 
-    &:hover,
-    &:focus {
-      border-left-color: var(--green);
-      color: var(--black);
-      text-decoration-color: var(--green);
+    border-style: solid;
+    border-left-width: 5px;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    border-color: transparent;
+
+    &:hover {
+      border-color: var(--green);
     }
 
     &:focus {
-      outline: 1px dotted var(--pacific);
+      display: block;
       outline-offset: -1px;
     }
 
-    &:visited {
-      color: var(--pacific);
-      text-decoration-color: transparent;
+    @include u-link-colors(
+      var(--pacific),
+      var(--pacific),
+      var(--black),
+      var(--black),
+      var(--black),
+      transparent,
+      transparent,
+      var(--green),
+      var(--green),
+      var(--green)
+    );
+
+    // Tablet and below.
+    @include respond-to-max($bp-sm-max) {
+      display: block;
+
+      padding: math.div(math.div($grid-gutter-width, 2), $base-font-size-px) +
+        em;
+    }
+
+    // Desktop and above.
+    @include respond-to-min($bp-med-min) {
+      padding-top: math.div(10px, $base-font-size-px) + em;
+      padding-bottom: math.div(10px, $base-font-size-px) + em;
+      padding-left: math.div(
+          math.div($grid-gutter-width, 2),
+          $base-font-size-px
+        ) +
+        em;
     }
 
     &--current {
-      border-left-color: var(--black);
-      color: var(--black);
-      cursor: text;
-      text-decoration: none;
-      text-decoration-color: var(--black);
+      border-color: var(--black);
 
-      &:hover,
-      &:focus,
-      &:visited {
-        border-left-color: var(--black);
-        color: var(--black);
-        text-decoration: none;
-        text-decoration-color: var(--black);
-      }
+      @include u-link-colors(
+        var(--black),
+        var(--black),
+        var(--black),
+        var(--black),
+        var(--black),
+        var(--black),
+        var(--black),
+        var(--black),
+        var(--black),
+        var(--black)
+      );
     }
 
     &--parent {
-      font-size: 18px;
-      font-weight: 500;
+      margin-bottom: inherit;
+
+      @include heading-4($has-margin-bottom: false, $is-responsive: false);
     }
   }
 
+  // Tablet and below.
   @include respond-to-max($bp-sm-max) {
-    margin-left: -0.9375rem;
-    margin-right: -0.9375rem;
     background: var(--gray-5);
+    border-bottom: 1px solid var(--gray-40);
 
-    &__toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    // Add drop-shadow.
+    box-shadow: 0 5px 5px rgb(0, 0, 0, 20%);
+
+    &--no-children {
+      display: none;
     }
 
     &__list--parents {
-      display: none;
-      margin-top: 0;
-      padding: 1.875rem 0.9375rem;
-      background: var(--gray-5);
-      box-shadow: 0 0.375rem 0.625rem -0.375rem rgb(0, 0, 0, 35%);
+      li[data-nav-is-active='False'] {
+        display: none;
+      }
+    }
 
-      &[data-expanded='true'] {
-        display: block;
+    // cfgov initializes FlyoutMenu + MaxHeightTransition in SecondaryNav.js.
+    // Collapse content from header state when that JS is not running.
+    &__header[aria-expanded='false'] ~ &__content {
+      display: none;
+    }
+  }
+
+  // Desktop and above.
+  @include respond-to-min($bp-med-min) {
+    .o-secondary-nav {
+      background: none;
+
+      &__header {
+        display: none;
+      }
+
+      &__content {
+        // These two !important values override basic expandable styling,
+        // because these do not function like expandables on med+ screens.
+        display: block !important;
+        max-height: 100% !important;
+        padding: 0;
+
+        &::before {
+          display: none;
+        }
       }
     }
   }
 
-  @include respond-to-range($bp-sm-min, $bp-sm-max) {
-    margin-left: -1.875rem;
-    margin-right: -1.875rem;
+  // Don't print the secondary navigation.
+  @media print {
+    display: none;
+  }
+}
+
+// Right-to-left (RTL) layout.
+html[lang='ar'] {
+  .o-secondary-nav {
+    button.o-secondary-nav__header {
+      text-align: right;
+    }
+
+    &__cues {
+      text-align: left;
+    }
 
     &__list--parents {
-      padding-left: 1.875rem;
-      padding-right: 1.875rem;
+      padding-right: 0;
+    }
+
+    &__link {
+      border-left-width: 0;
+      border-right-width: 5px;
+    }
+
+    // Desktop and above.
+    @include respond-to-min($bp-med-min) {
+      &__link {
+        padding-right: math.div(
+            math.div($grid-gutter-width, 2),
+            $base-font-size-px
+          ) +
+          em;
+      }
+
+      &__list--parents {
+        padding-right: math.div(
+            math.div($grid-gutter-width, 2),
+            $base-font-size-px
+          ) +
+          em;
+      }
     }
   }
 }
