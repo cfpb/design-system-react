@@ -7,6 +7,20 @@ const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',
   tags: ['autodocs'],
   component: Link,
+  argTypes: {
+    href: { control: 'text' },
+    label: { control: 'text' },
+    isButton: { control: 'boolean' },
+    isJump: { control: 'boolean' },
+    isRouterLink: { control: 'boolean' },
+    appearance: {
+      control: 'select',
+      options: ['primary', 'secondary', 'warning', 'destructive'],
+    },
+    iconLeft: { control: 'text' },
+    iconRight: { control: 'text' },
+    children: { control: 'text' },
+  },
 };
 
 export default meta;
@@ -15,8 +29,34 @@ type Story = StoryObj<typeof meta>;
 
 const DefaultArguments = {
   args: {
-    href: '#',
-    children: 'Link Text',
+    href: '/#',
+    label: 'Link Text',
+    isButton: false,
+    isJump: false,
+    isRouterLink: false,
+    appearance: 'primary',
+    iconLeft: undefined,
+    iconRight: undefined,
+    children: undefined,
+  },
+};
+
+export const Configurable: Story = {
+  args: {
+    ...DefaultArguments.args,
+  },
+  render: (arguments_) =>
+    arguments_.isRouterLink ? (
+      <BrowserRouter>
+        <Link {...arguments_} />
+      </BrowserRouter>
+    ) : (
+      <Link {...arguments_} />
+    ),
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByRole('link');
+    await expect(link).toHaveAttribute('href', args.href);
   },
 };
 
@@ -117,7 +157,9 @@ export const Destructive: Story = {
   args: {
     ...DefaultArguments.args,
   },
-  render: () => <Link href='/#' type='destructive' label='Destructive link' />,
+  render: () => (
+    <Link href='/#' appearance='warning' label='Destructive link' />
+  ),
 };
 
 export const LinkWithReactRouterLink: Story = {
