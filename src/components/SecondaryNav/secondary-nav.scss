@@ -102,6 +102,7 @@
   @include respond-to-max($bp-sm-max) {
     margin-left: -0.9375rem;
     margin-right: -0.9375rem;
+    background: var(--gray-5);
 
     &__toggle {
       display: flex;
@@ -111,7 +112,10 @@
 
     &__list--parents {
       display: none;
-      margin-top: 0.5rem;
+      margin-top: 0;
+      padding: 1.875rem 0.9375rem;
+      background: var(--gray-5);
+      box-shadow: 0 0.375rem 0.625rem -0.375rem rgb(0, 0, 0, 35%);
 
       &[data-expanded='true'] {
         display: block;
@@ -120,6 +124,12 @@
   }
 
   @include respond-to-range($bp-sm-min, $bp-sm-max) {
+    margin-left: -1.875rem;
     margin-right: -1.875rem;
+
+    &__list--parents {
+      padding-left: 1.875rem;
+      padding-right: 1.875rem;
+    }
   }
 }
