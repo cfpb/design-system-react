@@ -10,8 +10,9 @@
     display: none;
     width: 100%;
     padding: 0.75rem 0.9375rem;
-    font-size: 18px;
-    font-weight: 500;
+
+    // Base for child ems from heading-4; avoids UA/button font-size shrinking the label.
+    font-size: $base-font-size-px;
     color: var(--pacific);
     text-align: left;
     background: var(--gray-5);
@@ -27,11 +28,27 @@
 
   &__toggle-label {
     flex: 1 1 auto;
+
+    // Same as DS .h4 / heading-4, but not responsive: global .h4 uses 1em on small
+    // viewports (inherits ~16px); the toggle should stay 18px with font-size-adjust.
+    @include heading-4(
+      $has-margin-bottom: false,
+      $has-margin-top: false,
+      $is-responsive: false
+    );
   }
 
   &__toggle-icon {
     flex: 0 0 auto;
     margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+
+    .cf-icon-svg {
+      display: block;
+    }
   }
 
   &__list {
