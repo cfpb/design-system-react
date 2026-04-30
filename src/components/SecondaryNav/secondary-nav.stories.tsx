@@ -73,23 +73,6 @@ export const Default: Story = {
   },
 };
 
-export const WithShortList: Story = {
-  args: {
-    items: [
-      sectionNavItems[0],
-      { href: '#more', label: 'More' },
-    ],
-    ariaLabel: 'On this page',
-  },
-};
-
-export const WithSubMenu: Story = {
-  args: {
-    items: sectionNavItems,
-    ariaLabel: 'Section',
-  },
-};
-
 export const NoActiveItem: Story = {
   args: {
     items: stripActive(sectionNavItems),
