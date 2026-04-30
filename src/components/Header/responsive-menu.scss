@@ -97,7 +97,7 @@ $max-width: $breakpoint - 0.0625em;
       .nav-items {
         @media (max-width: $max-width) {
           position: absolute;
-          top: 54px;
+          top: 60px;
           left: -$menu-width - 15;
           width: $menu-width;
           background-color: var(--white);
