@@ -56,8 +56,7 @@ export const SecondaryNav = ({
   ...properties
 }: SecondaryNavProperties): JSX.Element => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const hasAnyChildren = items.some((item) => Boolean(item.children?.length));
-
+  
   // Align with cfgov small-screen layout: when the viewport crosses into the
   // mobile breakpoint, hide the flyout so the collapsed header + chevron show.
   // (matches max-width in secondary-nav.scss / $bp-sm-max → 56.25em.)
@@ -94,7 +93,6 @@ export const SecondaryNav = ({
     <nav
       className={classnames(
         'o-secondary-nav',
-        !hasAnyChildren && 'o-secondary-nav--no-children',
         className,
       )}
       aria-label={ariaLabel}

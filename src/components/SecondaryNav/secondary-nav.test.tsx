@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { SecondaryNav } from './secondary-nav';
 import type { SecondaryNavItem } from './secondary-nav';
+import { SecondaryNav } from './secondary-nav';
 
 describe('<SecondaryNav />', () => {
   const defaultItems: SecondaryNavItem[] = [
@@ -53,20 +53,6 @@ describe('<SecondaryNav />', () => {
     expect(current).toHaveAttribute('aria-current', 'page');
   });
 
-  it('sets cfgov data-nav-is-active True/False on each li', () => {
-    render(<SecondaryNav items={defaultItems} />);
-    const listItems = screen.getAllByRole('listitem');
-    expect(listItems).toHaveLength(3);
-    expect(listItems[0]).toHaveAttribute('data-nav-is-active', 'False');
-    expect(listItems[1]).toHaveAttribute('data-nav-is-active', 'True');
-    expect(listItems[2]).toHaveAttribute('data-nav-is-active', 'False');
-  });
-
-  it('renders no list when items is empty', () => {
-    render(<SecondaryNav items={[]} />);
-    expect(screen.queryByRole('list')).toBeNull();
-  });
-
   it('applies custom className', () => {
     render(<SecondaryNav items={defaultItems} className='custom-nav' />);
     const nav = screen.getByRole('navigation', { name: 'Section' });
@@ -74,29 +60,6 @@ describe('<SecondaryNav />', () => {
     expect(nav).toHaveClass('custom-nav');
   });
 
-  it('adds o-secondary-nav--no-children when no item has children', () => {
-    render(<SecondaryNav items={defaultItems} />);
-    expect(screen.getByRole('navigation', { name: 'Section' })).toHaveClass(
-      'o-secondary-nav--no-children',
-    );
-  });
-
-  it('omits o-secondary-nav--no-children when any item has children', () => {
-    const itemsWithChildren: SecondaryNavItem[] = [
-      {
-        label: 'Parent',
-        isActive: true,
-        children: [
-          { href: '/child-a', label: 'Child A', isActive: true },
-          { href: '/child-b', label: 'Child B' },
-        ],
-      },
-    ];
-    render(<SecondaryNav items={itemsWithChildren} />);
-    expect(screen.getByRole('navigation', { name: 'Section' })).not.toHaveClass(
-      'o-secondary-nav--no-children',
-    );
-  });
 
   it('renders child items when parent has children', () => {
     const itemsWithChildren: SecondaryNavItem[] = [

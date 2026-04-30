@@ -11,16 +11,13 @@ const meta: Meta<typeof SecondaryNav> = {
       description: {
         component: `
 Secondary navigation for in-page or section navigation, typically shown in a left sidebar.
-Markup and classes match [cfgov secondary-nav.html](https://github.com/cfpb/consumerfinance.gov/blob/main/cfgov/v1/jinja2/v1/includes/organisms/secondary-nav.html) (e.g. [Auto loans](https://www.consumerfinance.gov/data-research/consumer-credit-trends/auto-loans/)).
+Markup and classes match [cfgov secondary-nav.html](https://github.com/cfpb/consumerfinance.gov/blob/main/cfgov/v1/jinja2/v1/includes/organisms/secondary-nav.html).
 
 ### Usage
 
-- Pass \`items\` with \`href\`, \`label\`, and optional \`isActive\` for the current page.
-- Items can have optional \`children\` for sub-menu items.
-- **Cfgov:** if *no* item has \`children\`, the nav gets \`o-secondary-nav--no-children\` and is **hidden on small viewports**. Examples below all include a parent-with-children branch so the mobile header works.
-- Put the **current section** (with \`children\`) **first**, like production: on small screens only \`li[data-nav-is-active="True"]\` stays visible.
-- Default \`ariaLabel\` is \`Section\` (cfgov gettext). Override if needed.
-- \`mobileToggleLabel\` sets the collapsible header text (default **Navigate this section**).
+- **Flat list (no \`children\`):** use \`isActive\` on the current top-level item.
+- **With \`children\`:** only children should use \`isActive\` for a subpage, unless the “current” page is the parent index—in that case set \`isActive\` on the parent and leave children inactive.
+- Default \`ariaLabel\` is \`Section\`. \`mobileToggleLabel\` defaults to **Navigate this section**.
         `,
       },
     },
@@ -35,41 +32,101 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/**
- * Canonical cfgov-shaped data (matches the working consumerfinance pattern):
- * first item = index with subpages; one child \`isActive\`; following items are peers.
- */
-const sectionNavItems: SecondaryNavItem[] = [
+/** 1. Flat links only; none marked current. */
+const basicNoChildren: SecondaryNavItem[] = [
+  { href: '#topic-a', label: 'Section A' },
+  { href: '#topic-b', label: 'Section B' },
+  { href: '#topic-c', label: 'Section C' },
+];
+
+/** 2. Flat list; one top-level item is the current page. */
+const basicNoChildrenWithCurrent: SecondaryNavItem[] = [
+  { href: '#topic-a', label: 'Section A' },
+  { href: '#topic-b', label: 'Section B', isActive: true },
+  { href: '#topic-c', label: 'Section C' },
+];
+
+/** 3. Nested items; no \`isActive\` on parents or children. */
+const withChildrenNoActive: SecondaryNavItem[] = [
   {
     label: 'Section 1',
     href: '#section-1',
     children: [
-      { href: '#section-1/item-a', label: 'Item A', isActive: true },
-      { href: '#section-1/item-b', label: 'Item B' },
-      { href: '#section-1/item-c', label: 'Item C' },
+      { href: '#section-1-a', label: 'Item A' },
+      { href: '#section-1-b', label: 'Item B' },
     ],
   },
   { href: '#section-2', label: 'Section 2' },
   { href: '#section-3', label: 'Section 3' },
-  { href: '#section-4', label: 'Section 4' },
-  { href: '#section-5', label: 'Section 5' },
-  { href: '#section-6', label: 'Section 6' },
-  { href: '#section-7', label: 'Section 7' },
 ];
 
-const stripActive = (items: SecondaryNavItem[]): SecondaryNavItem[] =>
-  items.map((item) => ({
-    ...item,
-    isActive: undefined,
-    children: item.children?.map((child) => ({
-      ...child,
-      isActive: undefined,
-    })),
-  }));
+/** 4. Current page is the parent “index”; children are links but none are active. */
+const withChildrenActiveParent: SecondaryNavItem[] = [
+  {
+    label: 'Section 1',
+    href: '#section-1',
+    isActive: true,
+    children: [
+      { href: '#section-1-a', label: 'Item A' },
+      { href: '#section-1-b', label: 'Item B' },
+    ],
+  },
+  { href: '#section-2', label: 'Section 2' },
+];
 
-export const Default: Story = {
+/** 5. Typical subpage: one child is the current page. */
+const withChildrenActiveChild: SecondaryNavItem[] = [
+  {
+    label: 'Section 1',
+    href: '#section-1',
+    children: [
+      { href: '#section-1-a', label: 'Item A', isActive: true },
+      { href: '#section-1-b', label: 'Item B' },
+      { href: '#section-1-c', label: 'Item C' },
+    ],
+  },
+  { href: '#section-2', label: 'Section 2' },
+  { href: '#section-3', label: 'Section 3' },
+];
+
+export const BasicMenuNoChildren: Story = {
+  name: 'Basic secondary nav',
   args: {
-    items: sectionNavItems,
+    items: basicNoChildren,
   },
 };
 
+export const BasicMenuNoChildrenOneActive: Story = {
+  name: 'Basic secondary nav, one active',
+  args: {
+    items: basicNoChildrenWithCurrent,
+  },
+};
+
+export const MenuWithChildrenNoActive: Story = {
+  name: 'Secondary nav with children, no active items',
+  args: {
+    items: withChildrenNoActive,
+  },
+};
+
+export const MenuWithChildrenActiveParent: Story = {
+  name: 'Secondary nav with children, active parent',
+  args: {
+    items: withChildrenActiveParent,
+  },
+};
+
+export const MenuWithChildrenActiveChild: Story = {
+  name: 'Secondary nav with children, active child',
+  args: {
+    items: withChildrenActiveChild,
+  },
+};
+
+/** Same data as story 5; kept as a short default entry in the sidebar. */
+export const Default: Story = {
+  args: {
+    items: withChildrenActiveChild,
+  },
+};
