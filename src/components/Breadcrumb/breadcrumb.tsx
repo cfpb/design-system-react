@@ -3,9 +3,10 @@ import type { HTMLAttributes } from 'react';
 import { Fragment } from 'react';
 import './breadcrumb.scss';
 import { JSXElement } from '../../types/jsx-element';
+import Link from '~/src/components/Link/link';
 
 export interface BreadcrumbCrumb {
-  href: string;
+  to: string;
   label: string;
   isCurrent?: boolean;
 }
@@ -34,16 +35,16 @@ export const Breadcrumb = ({
     >
       <nav className='m-breadcrumbs' aria-label={ariaLabel}>
         {crumbs.map((crumb) => (
-          <Fragment key={`${crumb.href}-${crumb.label}`}>
+          <Fragment key={`${crumb.to}-${crumb.label}`}>
             {` / `}
             {crumb.isCurrent ? (
               <span className='m-breadcrumbs__crumb' aria-current='page'>
                 {` ${crumb.label} `}
               </span>
             ) : (
-              <a className='m-breadcrumbs__crumb' href={crumb.href}>
+              <Link className='m-breadcrumbs__crumb' to={crumb.to}>
                 {` ${crumb.label} `}
-              </a>
+              </Link>
             )}
           </Fragment>
         ))}

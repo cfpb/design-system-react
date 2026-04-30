@@ -17,7 +17,7 @@ export function CfpbLogo({
   return (
     <Link
       data-testid='CfpbLogoLink'
-      href={href}
+      to={href}
       title='Home'
       aria-label='Home'
       className='o-header__logo'
@@ -140,18 +140,18 @@ export default function ResponsiveMenu({
   );
 }
 
-export const ExampleLinks: ReactNode[] = [
-  <Link key='home' href='/' label='Home' />,
+export const ExampleLinks: React.ReactNode[] = [
+  <Link key='home' to='/' label='Home' />,
   <Link
     key='filing'
     className='nav-item active'
-    href='/filing'
+    to='/filing'
     label='Filing'
   />,
   <Link
     key='profile'
     className='nav-item profile'
-    href='/profile'
+    to='/profile'
     label='John Sample'
   />,
   <Button

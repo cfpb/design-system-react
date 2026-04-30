@@ -5,13 +5,13 @@ import Link from '../Link/link';
 import './secondary-nav.scss';
 
 export interface SecondaryNavChildItem {
-  href: string;
+  to: string;
   label: string;
   isActive?: boolean;
 }
 
 export interface SecondaryNavItem {
-  href?: string;
+  to?: string;
   label: string;
   /**
    * Whether this item is the current page. Ignored when the item has children;
@@ -61,13 +61,13 @@ export const SecondaryNav = ({
 
             return (
               <li
-                key={item.href ?? item.label}
+                key={item.to ?? item.label}
                 className='o-secondary-nav__item'
                 data-nav-is-active={sectionHasActive ? 'true' : undefined}
               >
-                {item.href ? (
+                {item.to ? (
                   <Link
-                    href={item.href}
+                    to={item.to}
                     className={classnames(
                       'o-secondary-nav__link o-secondary-nav__link--parent',
                       parentIsActive && 'o-secondary-nav__link--current',
@@ -88,9 +88,9 @@ export const SecondaryNav = ({
                 {item.children && item.children.length > 0 ? (
                   <ul className='o-secondary-nav__list o-secondary-nav__list--children'>
                     {item.children.map((child) => (
-                      <li key={child.href} className='o-secondary-nav__item'>
+                      <li key={child.to} className='o-secondary-nav__item'>
                         <Link
-                          href={child.href}
+                          to={child.to}
                           className={classnames(
                             'o-secondary-nav__link',
                             child.isActive && 'o-secondary-nav__link--current',

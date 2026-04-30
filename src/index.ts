@@ -6,6 +6,7 @@ export { AlertFieldLevel } from './components/Alert/alert-field-level';
 export { Banner } from './components/Banner/banner';
 export { LanguageLink } from './components/Banner/banner-language-link';
 export { Breadcrumb } from './components/Breadcrumb/breadcrumb';
+export type { BreadcrumbCrumb } from './components/Breadcrumb/breadcrumb';
 export { Button } from './components/Buttons/button';
 export { ButtonGroup } from './components/Buttons/button-group';
 export { Checkbox } from './components/Checkbox/checkbox';
@@ -22,6 +23,8 @@ export { default as Hero } from './components/Hero/hero';
 export { Icon } from './components/Icon/icon';
 export { Label } from './components/Label/label';
 export { default as Layout } from './components/Layout/layout';
+export { BaseLink } from './components/Link/base-link';
+export type { BaseLinkProperties } from './components/Link/base-link';
 export { default as Link, LinkText, ListLink } from './components/Link/link';
 export type { LinkProperties } from './components/Link/link';
 export { default as List } from './components/List/list';
@@ -55,3 +58,12 @@ export {
   TextIntroductionSubheading,
 } from './components/TextIntroduction/text-introduction';
 export { WellContainer, WellContent } from './components/Well/well';
+export { 
+  useDSRContext,
+  DSRProvider,
+  DSRContext, 
+} from './context/dsr-context';
+export type { 
+  DSRContextType, 
+  DSRProviderProperties} 
+from './context/dsr-context';

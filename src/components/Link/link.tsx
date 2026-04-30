@@ -1,9 +1,8 @@
 import { JSX } from 'react';
-import { Link as RouterLink } from 'react-router';
 import type { JSXElement } from '../../types/jsx-element';
-
 import classnames from 'classnames';
 import type { HTMLProps, ReactNode, Ref } from 'react';
+import { useDSRContext } from '~/src/context/dsr-context';
 import { Icon } from '../Icon/icon';
 import ListItem from '../List/list-item';
 import './link.scss';
@@ -20,23 +19,19 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
   /**
    * The link's destination URL.
    */
-  href: string;
+  to: string | undefined;
   /**
-   * Name of icon to display left of link text
+   * Name of icon to display adjacent to link text
    */
-  iconLeft?: string;
+  iconName?: string;
   /**
-   * Name of icon to display right of link text
+   * Whether to display the icon to the left or right of text
    */
-  iconRight?: string;
+  iconPosition?: 'left' | 'right'; 
   /**
    * Whether the link is a standalone link
    */
   isJump?: boolean;
-  /**
-   * Whether the link is a react router link
-   */
-  isRouterLink?: boolean;
   /**
    * The link's text content, not required if children are provided
    */
@@ -57,19 +52,16 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
 export default function Link({
   isButton = false,
   children,
-  href,
-  iconLeft,
-  iconRight,
+  to,
+  iconName,
+  iconPosition = 'left',
   isJump = false,
-  isRouterLink = false,
   label,
   type = 'default',
   ...others
 }: LinkProperties): JSXElement {
-  const hasLeftIcon = Boolean(iconLeft);
-  const hasRightIcon = Boolean(iconRight);
-  const hasIcons = hasLeftIcon || hasRightIcon;
-  const shouldUseLinkStyles = !isButton && (hasIcons || isJump);
+  const hasIcon = Boolean(iconName);
+  const shouldUseLinkStyles = !isButton && (hasIcon || isJump);
   const shouldWrapLabel = isButton || shouldUseLinkStyles;
   const labelNode = shouldWrapLabel ? <LinkText>{label}</LinkText> : label;
   const cname = classnames(others.className, {
@@ -80,47 +72,19 @@ export default function Link({
     'a-link': shouldUseLinkStyles,
   });
 
-  if (hasLeftIcon && hasRightIcon) {
-    throw new Error(
-      'Link component: only one of iconLeft or iconRight can be provided',
-    );
-  }
-
-  if (isRouterLink) {
-    if (!href) {
-      throw new Error(
-        'Link component: href is a required attribute when isRouterLink is true',
-      );
-    }
-    return (
-      <RouterLink to={href} {...others} className={cname}>
-        {children}
-        {!!iconLeft && (
-          <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
-        )}
-        {labelNode}
-        {!!iconRight && (
-          <Icon
-            name={iconRight}
-            isPresentational
-            data-testid='link-icon-right'
-          />
-        )}
-      </RouterLink>
-    );
-  }
+  const { LinkComponent } = useDSRContext();
 
   return (
-    <a {...others} className={cname} href={href}>
+    <LinkComponent {...others} className={cname} to={to}>
       {children}
-      {!!iconLeft && (
-        <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
+      {iconName && iconPosition !== 'right' && (
+        <Icon name={iconName} isPresentational data-testid='link-icon-left' />
       )}
       {labelNode}
-      {!!iconRight && (
-        <Icon name={iconRight} isPresentational data-testid='link-icon-right' />
+      {iconName && iconPosition == 'right' && (
+        <Icon name={iconName} isPresentational data-testid='link-icon-right' />
       )}
-    </a>
+    </LinkComponent>
   );
 }
 
