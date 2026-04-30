@@ -193,6 +193,8 @@
   @include respond-to-max($bp-sm-max) {
     background: var(--gray-5);
     border-bottom: 1px solid var(--gray-40);
+    margin-left: -0.9375rem;
+    margin-right: -0.9375rem;
 
     // Add drop-shadow.
     box-shadow: 0 5px 5px rgb(0, 0, 0, 20%);
@@ -212,6 +214,11 @@
     &__header[aria-expanded='false'] ~ &__content {
       display: none;
     }
+  }
+
+  @include respond-to-range($bp-sm-min, $bp-sm-max) {
+    margin-left: -1.875rem;
+    margin-right: -1.875rem;
   }
 
   // Desktop and above.
