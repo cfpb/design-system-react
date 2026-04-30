@@ -203,11 +203,6 @@
       display: none;
     }
 
-    &__list--parents {
-      li[data-nav-is-active='False'] {
-        display: none;
-      }
-    }
 
     // cfgov initializes FlyoutMenu + MaxHeightTransition in SecondaryNav.js.
     // Collapse content from header state when that JS is not running.

@@ -126,12 +126,10 @@ export const SecondaryNav = ({
                 const hasActiveChild =
                   hasChildren && item.children!.some((c) => c.isActive);
                 const parentIsActive = Boolean(item.isActive && !hasActiveChild);
-                const sectionHasActive = hasActiveChild || parentIsActive;
-
+                
                 return (
                   <li
                     key={item.href ?? item.label}
-                    data-nav-is-active={sectionHasActive ? 'True' : 'False'}
                   >
                     {item.href && !parentIsActive ? (
                       <a

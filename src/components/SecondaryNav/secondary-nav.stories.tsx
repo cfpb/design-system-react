@@ -73,30 +73,3 @@ export const Default: Story = {
   },
 };
 
-export const NoActiveItem: Story = {
-  args: {
-    items: stripActive(sectionNavItems),
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'No `isActive` anywhere: every `li` is `data-nav-is-active="False"`, so cfgov hides all section rows on small viewports—you still get the header, but the expanded panel has no visible links.',
-      },
-    },
-  },
-};
-
-export const EmptyList: Story = {
-  args: {
-    items: [],
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'With no items, or with `o-secondary-nav--no-children` (no nested sections), cfgov hides the whole nav on small viewports.',
-      },
-    },
-  },
-};
