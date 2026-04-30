@@ -52,18 +52,8 @@ export const Content: Story = {
     flushAllOnSmall: false,
   },
   render: (properties) => (
-    <Layout.Main>
+    <Layout.Main layout='2-1'>
       <Layout.Wrapper>
-        <Layout.Sidebar>
-          <div>
-            <h2>Layout.Sidebar</h2>
-            <ul>
-              <li>Item 1</li>
-              <li>Item 2</li>
-              <li>Item 3</li>
-            </ul>
-          </div>
-        </Layout.Sidebar>
         <Layout.Content {...properties}>
           <h1>Layout.Content</h1>
           <p>
@@ -73,6 +63,63 @@ export const Content: Story = {
             veritatis eos, mollitia possimus error earum?
           </p>
         </Layout.Content>
+        <Layout.Sidebar>
+          <div>
+            <h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+            <h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+            <h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul><h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+            <h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+            <h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+            <h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+            <h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+            <h2>Layout.Sidebar</h2>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+          </div>
+        </Layout.Sidebar>
       </Layout.Wrapper>
     </Layout.Main>
   ),

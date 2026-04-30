@@ -23,6 +23,11 @@ $max-width: $breakpoint - 0.0625em;
         align-items: stretch;
         padding: 0;
         min-height: 60px;
+
+        &.wrapper.wrapper--match-content {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
       }
 
       @media (min-width: $breakpoint) {
