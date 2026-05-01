@@ -11,7 +11,6 @@ const meta: Meta<typeof SecondaryNav> = {
       description: {
         component: `
 Secondary navigation for in-page or section navigation, typically shown in a left sidebar.
-Markup and classes match [cfgov secondary-nav.html](https://github.com/cfpb/consumerfinance.gov/blob/main/cfgov/v1/jinja2/v1/includes/organisms/secondary-nav.html).
 
 ### Usage
 
@@ -90,42 +89,35 @@ const withChildrenActiveChild: SecondaryNavItem[] = [
 ];
 
 export const BasicMenuNoChildren: Story = {
-  name: 'Basic secondary nav',
+  name: 'Basic',
   args: {
     items: basicNoChildren,
   },
 };
 
 export const BasicMenuNoChildrenOneActive: Story = {
-  name: 'Basic secondary nav, one active',
+  name: 'One active item',
   args: {
     items: basicNoChildrenWithCurrent,
   },
 };
 
 export const MenuWithChildrenNoActive: Story = {
-  name: 'Secondary nav with children, no active items',
+  name: 'With children',
   args: {
     items: withChildrenNoActive,
   },
 };
 
 export const MenuWithChildrenActiveParent: Story = {
-  name: 'Secondary nav with children, active parent',
+  name: 'With children, active parent',
   args: {
     items: withChildrenActiveParent,
   },
 };
 
 export const MenuWithChildrenActiveChild: Story = {
-  name: 'Secondary nav with children, active child',
-  args: {
-    items: withChildrenActiveChild,
-  },
-};
-
-/** Same data as story 5; kept as a short default entry in the sidebar. */
-export const Default: Story = {
+  name: 'With children, active child',
   args: {
     items: withChildrenActiveChild,
   },
