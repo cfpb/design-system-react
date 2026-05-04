@@ -65,6 +65,16 @@ describe('<Link />', () => {
     expect(await screen.findByTestId('link-icon-right')).toBeInTheDocument();
   });
 
+  it('Throws an error when both left and right icons are provided', () => {
+    expect(() =>
+      render(
+        <Link {...linkBaseProperties} iconLeft='left' iconRight='right' />,
+      ),
+    ).toThrow(
+      'Link component: only one of iconLeft or iconRight can be provided',
+    );
+  });
+
   it('Option: isButton - it does not add a-link and wraps the label', () => {
     render(<Link {...linkBaseProperties} isButton />);
     const link = screen.getByTestId(testId);
