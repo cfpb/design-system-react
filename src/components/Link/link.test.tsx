@@ -13,6 +13,23 @@ describe('<Link />', () => {
   };
   const testId = linkBaseProperties['data-testid'];
 
+  interface CustomLinkProperties {
+      to: string | undefined;
+      children: ReactNode;
+  }
+
+  const CustomLinkComponent = ({
+    to,
+    children,
+    ...others
+  }: CustomLinkProperties): JSXElement | null => {
+    return (
+      <a href={to} {...others} data-testid='link-component-from-context'>
+        {children}
+      </a>
+    );
+  };
+
   it('Type: "default"', () => {
     render(<Link {...linkBaseProperties} />);
     const link = screen.getByTestId(testId);
@@ -33,7 +50,7 @@ describe('<Link />', () => {
   });
 
   it('Option: leftIcon - it adds left icon', async () => {
-    render(<Link {...linkBaseProperties} iconName='left' />);
+    render(<Link {...linkBaseProperties} iconLeft='left' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-link');
     expect(screen.getByText('some link')).toHaveClass('a-link__text');
@@ -41,7 +58,7 @@ describe('<Link />', () => {
   });
 
   it('Option: rightIcon - it adds right icon', async () => {
-    render(<Link {...linkBaseProperties} iconName='right' iconPosition='right' />);
+    render(<Link {...linkBaseProperties} iconRight='right' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-link');
     expect(screen.getByText('some link')).toHaveClass('a-link__text');
@@ -57,7 +74,7 @@ describe('<Link />', () => {
   });
 
   it('Option: isButton with icon - it keeps a-btn, skips a-link, and shows icon', async () => {
-    render(<Link {...linkBaseProperties} isButton iconPosition='right' iconName='right' />);
+    render(<Link {...linkBaseProperties} isButton iconRight='right' />);
     const link = screen.getByTestId(testId);
     expect(link).toHaveClass('a-btn');
     expect(link).not.toHaveClass('a-link');
@@ -71,26 +88,9 @@ describe('<Link />', () => {
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-
-
   it('Context: uses link component configured in context', () => {
-    interface TestLinkProperties {
-      to: string | undefined;
-      children: ReactNode;
-    }
-    const TestLink = ({
-      to,
-      children,
-      ...others
-    }: TestLinkProperties): JSXElement | null => {
-      return (
-        <a href={to} {...others} data-testid='link-component-from-context'>
-          {children}
-        </a>
-      );
-    };
     render(
-      <DSRContext value={{LinkComponent:TestLink}}>
+      <DSRContext value={{LinkComponent:CustomLinkComponent}}>
         <Link {...linkBaseProperties}>
           <span data-testid='link-child'>Child</span>
         </Link>
@@ -98,6 +98,17 @@ describe('<Link />', () => {
     );
 
     expect(screen.getByTestId('link-component-from-context')).toBeInTheDocument();
+
+  });
+
+  it('Context: uses base link component by default', () => {
+    render(
+        <Link {...linkBaseProperties}>
+          <span data-testid='link-child'>Child</span>
+        </Link>,
+    );
+
+    expect(screen.queryByTestId('link-component-from-context')).not.toBeInTheDocument();
 
   });
 });

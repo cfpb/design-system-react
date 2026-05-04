@@ -13,7 +13,7 @@ describe('<Breadcrumb />', () => {
       <Breadcrumb
         crumbs={[
           {
-            href: '/home',
+            to: '/home',
             label: 'Home',
           },
         ]}
@@ -32,8 +32,8 @@ describe('<Breadcrumb />', () => {
     render(
       <Breadcrumb
         crumbs={[
-          { href: '/home', label: 'Home' },
-          { href: '/section', label: 'Section' },
+          { to: '/home', label: 'Home' },
+          { to: '/section', label: 'Section' },
         ]}
       />,
     );
@@ -49,8 +49,8 @@ describe('<Breadcrumb />', () => {
     render(
       <Breadcrumb
         crumbs={[
-          { href: '/home', label: 'Home' },
-          { href: '/current', label: 'Current', isCurrent: true },
+          { to: '/home', label: 'Home' },
+          { to: '/current', label: 'Current', isCurrent: true },
         ]}
       />,
     );

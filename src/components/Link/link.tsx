@@ -21,13 +21,13 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
    */
   to: string | undefined;
   /**
-   * Name of icon to display adjacent to link text
+   * Name of icon to display left of link text
    */
-  iconName?: string;
+  iconLeft?: string;
   /**
-   * Whether to display the icon to the left or right of text
+   * Name of icon to display right of link text
    */
-  iconPosition?: 'left' | 'right'; 
+  iconRight?: string;
   /**
    * Whether the link is a standalone link
    */
@@ -53,15 +53,17 @@ export default function Link({
   isButton = false,
   children,
   to,
-  iconName,
-  iconPosition = 'left',
+  iconLeft,
+  iconRight,
   isJump = false,
   label,
   type = 'default',
   ...others
 }: LinkProperties): JSXElement {
-  const hasIcon = Boolean(iconName);
-  const shouldUseLinkStyles = !isButton && (hasIcon || isJump);
+  const hasLeftIcon = Boolean(iconLeft);
+  const hasRightIcon = Boolean(iconRight);
+  const hasIcons = hasLeftIcon || hasRightIcon;
+  const shouldUseLinkStyles = !isButton && (hasIcons || isJump);
   const shouldWrapLabel = isButton || shouldUseLinkStyles;
   const labelNode = shouldWrapLabel ? <LinkText>{label}</LinkText> : label;
   const cname = classnames(others.className, {
@@ -74,15 +76,22 @@ export default function Link({
 
   const { LinkComponent } = useDSRContext();
 
+  if (hasLeftIcon && hasRightIcon) {
+    throw new Error(
+      'Link component: only one of iconLeft or iconRight can be provided',
+    );
+  }
+
   return (
     <LinkComponent {...others} className={cname} to={to}>
       {children}
-      {iconName && iconPosition !== 'right' && (
-        <Icon name={iconName} isPresentational data-testid='link-icon-left' />
+ 
+      {!!iconLeft && (
+        <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
       )}
       {labelNode}
-      {iconName && iconPosition == 'right' && (
-        <Icon name={iconName} isPresentational data-testid='link-icon-right' />
+      {!!iconRight && (
+        <Icon name={iconRight} isPresentational data-testid='link-icon-right' />
       )}
     </LinkComponent>
   );

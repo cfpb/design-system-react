@@ -5,9 +5,9 @@ import type { SecondaryNavItem } from './secondary-nav';
 
 describe('<SecondaryNav />', () => {
   const defaultItems: SecondaryNavItem[] = [
-    { href: '/a', label: 'Link A' },
-    { href: '/b', label: 'Link B', isActive: true },
-    { href: '/c', label: 'Link C' },
+    { to: '/a', label: 'Link A' },
+    { to: '/b', label: 'Link B', isActive: true },
+    { to: '/c', label: 'Link C' },
   ];
 
   it('renders a nav with the default aria-label', () => {
@@ -62,8 +62,8 @@ describe('<SecondaryNav />', () => {
         label: 'Parent',
         isActive: true,
         children: [
-          { href: '/child-a', label: 'Child A', isActive: true },
-          { href: '/child-b', label: 'Child B' },
+          { to: '/child-a', label: 'Child A', isActive: true },
+          { to: '/child-b', label: 'Child B' },
         ],
       },
     ];
