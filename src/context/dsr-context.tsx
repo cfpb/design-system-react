@@ -1,7 +1,7 @@
 import { createContext, use } from 'react'
 import type { ReactNode } from 'react';
-import { BaseLink } from '~/src/components/Link/base-link';
-import type { BaseLinkProperties } from '~/src/components/Link/base-link';
+import { BaseLink } from '../components/Link/base-link';
+import type { BaseLinkProperties } from '../components/Link/base-link';
 
 
 export interface DSRContextType {

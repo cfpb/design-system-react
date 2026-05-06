@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Link, { LinkText, ListLink } from './link';
-import { DSRContext } from '~/src/context/dsr-context';
+import { DSRContext } from '../../context/dsr-context';
 import { ReactNode } from 'react';
-import type { JSXElement } from "~/src/types/jsx-element";
+import type { JSXElement } from "../../types/jsx-element";
 
 describe('<Link />', () => {
   const linkBaseProperties = {

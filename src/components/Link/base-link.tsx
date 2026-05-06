@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import type { JSXElement } from "~/src/types/jsx-element";
+import type { JSXElement } from "../../types/jsx-element";
 
 export interface BaseLinkProperties {
   to: string | undefined;

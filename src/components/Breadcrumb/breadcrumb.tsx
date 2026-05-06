@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'react';
 import { Fragment } from 'react';
 import './breadcrumb.scss';
 import { JSXElement } from '../../types/jsx-element';
-import Link from '~/src/components/Link/link';
+import Link from '../Link/link';
 
 export interface BreadcrumbCrumb {
   to: string;

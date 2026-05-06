@@ -2,7 +2,7 @@ import { JSX } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 import classnames from 'classnames';
 import type { HTMLProps, ReactNode, Ref } from 'react';
-import { useDSRContext } from '~/src/context/dsr-context';
+import { useDSRContext } from '../../context/dsr-context';
 import { Icon } from '../Icon/icon';
 import ListItem from '../List/list-item';
 import './link.scss';
