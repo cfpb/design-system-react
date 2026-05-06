@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import { Icon } from '../Icon/icon';
-import Footer from './footer';
+import {WebsiteFooter} from './footer';
 
 interface FootCfGovProperties {
   cfLink?: string;
@@ -163,7 +163,7 @@ export const FooterCfGov = ({
   ];
 
   return (
-    <Footer
+    <WebsiteFooter
       {...properties}
       className={className}
       navLinks={navLinks}

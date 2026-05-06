@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX } from 'react';
-import { Footer, FooterCfGov, Icon } from '~/src/index';
+import { Footer, AppFooter, WebsiteFooter, FooterCfGov, Icon, Link } from '~/src/index';
 
 const meta: Meta<typeof Footer> = {
   title: 'Components (Draft)/Footers',
@@ -31,6 +31,39 @@ const makeSocialLink = (label: string): JSX.Element => (
 );
 
 export const Example: Story = {
+  name: 'Footer',
+  render: (properties) => 
+    <Footer {...properties} >
+      Footer content goes here
+    </Footer>
+
+};
+
+
+export const App: Story = {
+  name: 'Application footer',
+  render: (properties) => <AppFooter {...properties} />,
+  args: {
+    navLinks: [makeLink('relevant link one'), makeLink('link two')],
+    footerContent: 
+      <>
+        <h3>Data usage</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <Link href='#'>Link</Link>
+      </>
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'A minimal two-column footer for use in applications. The left column can contain information about the app, and the right column is for relevant links.',
+      },
+    },
+  }
+};
+
+export const Website: Story = {
+  name: 'Website footer',
+  render: (properties) => <WebsiteFooter {...properties} />,
   args: {
     navLinks: [makeLink('Nav 1'), makeLink('Nav 2'), makeLink('Nav 3')],
     socialLinks: [makeSocialLink('facebook'), makeSocialLink('youtube')],
@@ -55,3 +88,5 @@ export const Example: Story = {
 export const CFGov: Story = {
   render: () => <FooterCfGov />,
 };
+
+
