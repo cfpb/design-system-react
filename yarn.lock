@@ -1305,7 +1305,6 @@ __metadata:
     "@cfpb/cfpb-design-system": 5.3.2
     react: ^19.2.4
     react-dom: ^19.2.4
-    react-router: ^7.14.0
   languageName: unknown
   linkType: soft
 

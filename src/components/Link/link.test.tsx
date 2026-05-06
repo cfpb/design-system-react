@@ -22,9 +22,9 @@ describe('<Link />', () => {
     to,
     children,
     ...others
-  }: CustomLinkProperties): JSXElement | null => {
+  }: CustomLinkProperties): JSXElement => {
     return (
-      <a href={to} {...others} data-testid='link-component-from-context'>
+      <a href={to} {...others} className='link-component-from-context'>
         {children}
       </a>
     );
@@ -106,9 +106,8 @@ describe('<Link />', () => {
         </Link>
       </DSRContext>,
     );
-
-    expect(screen.getByTestId('link-component-from-context')).toBeInTheDocument();
-
+    expect(screen.getByTestId('link-test-id')).toBeInTheDocument();
+    expect(screen.getByTestId('link-test-id')).toHaveClass('link-component-from-context');
   });
 
   it('Context: uses base link component by default', () => {
@@ -117,10 +116,10 @@ describe('<Link />', () => {
           <span data-testid='link-child'>Child</span>
         </Link>,
     );
-
-    expect(screen.queryByTestId('link-component-from-context')).not.toBeInTheDocument();
-
+    expect(screen.getByTestId('link-test-id')).toBeInTheDocument();
+    expect(screen.getByTestId('link-test-id')).not.toHaveClass('link-component-from-context');
   });
+
 });
 
 describe('<LinkText>', () => {
