@@ -38,7 +38,12 @@ $max-width: $bp-sm-max;
       }
 
       .o-header__logo {
+        display: inline-block;
         min-width: 237px;
+
+        .o-header__logo-img {
+          display: block;
+        }
 
         @media (max-width: $max-width) {
           border-left: 1px solid var(--gray-40);
