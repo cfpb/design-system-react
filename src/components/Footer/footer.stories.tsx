@@ -30,36 +30,6 @@ const makeSocialLink = (label: string): JSX.Element => (
   </a>
 );
 
-export const Example: Story = {
-  name: 'Footer',
-  render: (properties) => 
-    <Footer {...properties} >
-      Footer content goes here
-    </Footer>
-
-};
-
-
-export const App: Story = {
-  name: 'Application footer',
-  render: (properties) => <ApplicationFooter {...properties} />,
-  args: {
-    navLinks: [makeLink('relevant link one'), makeLink('link two')],
-    footerContent: 
-      <>
-        <h3>Heading</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <Link href='#'>Link</Link>
-      </>
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'A minimal two-column footer for use in applications. The left column can contain information about the app, and the right column is for relevant links.',
-      },
-    },
-  }
-};
 
 export const Website: Story = {
   name: 'Website footer',
@@ -85,8 +55,24 @@ export const Website: Story = {
   },
 };
 
-export const CFGov: Story = {
-  render: () => <FooterCfGov />,
+
+export const App: Story = {
+  name: 'Application footer',
+  render: (properties) => <ApplicationFooter {...properties} />,
+  args: {
+    navLinks: [makeLink('relevant link one'), makeLink('link two')],
+    footerContent: 
+      <>
+        <h3>Heading</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <Link href='#'>Link</Link>
+      </>
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'A minimal two-column footer for use in applications. The left column can contain information about the app, and the right column is for relevant links.',
+      },
+    },
+  }
 };
-
-
