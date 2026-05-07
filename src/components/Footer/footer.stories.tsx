@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX } from 'react';
-import { Footer, ApplicationFooter, WebsiteFooter, FooterCfGov, Icon, Link } from '~/src/index';
+import { Footer, ApplicationFooter, FooterCfGov, Icon, Link } from '~/src/index';
 
 const meta: Meta<typeof Footer> = {
   title: 'Components (Draft)/Footers',
@@ -24,40 +24,13 @@ const makeLink = (label: string, isExternal?: boolean): JSX.Element => (
   </a>
 );
 
-const makeSocialLink = (label: string): JSX.Element => (
-  <a key={label} href={globalThis.location.href}>
-    <Icon name={label} withBg />
-  </a>
-);
-
-
-export const Website: Story = {
-  name: 'Website footer',
-  render: (properties) => <WebsiteFooter {...properties} />,
-  args: {
-    navLinks: [makeLink('Nav 1'), makeLink('Nav 2'), makeLink('Nav 3')],
-    socialLinks: [makeSocialLink('facebook'), makeSocialLink('youtube')],
-    linksCol1: [
-      makeLink('Col1 Link 1'),
-      makeLink('Col1 Link 2'),
-      makeLink('Col1 Link 3'),
-    ],
-    linksCol2: [
-      makeLink('Col2 Link 1'),
-      makeLink('Col2 Link 2'),
-      makeLink('Col2 Link 3'),
-    ],
-    linksCol3: [
-      makeLink('Col3 Link 1', true),
-      makeLink('Col3 Link 2', true),
-      makeLink('Col3 Link 3', true),
-    ],
-  },
+export const CFGov: Story = {
+  name: 'Website (cf.gov)',
+  render: () => <FooterCfGov />,
 };
 
-
 export const App: Story = {
-  name: 'Application footer',
+  name: 'Application',
   render: (properties) => <ApplicationFooter {...properties} />,
   args: {
     navLinks: [makeLink('relevant link one'), makeLink('link two')],
@@ -76,3 +49,5 @@ export const App: Story = {
     },
   }
 };
+
+

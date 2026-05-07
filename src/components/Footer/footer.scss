@@ -133,7 +133,7 @@
 
   &__pre {
     position: relative;
-    margin-bottom: math.div(45px, $base-font-size-px) + em;
+    margin-bottom: math.div($grid-gutter-width, $base-font-size-px) + em;
 
     .o-footer__nav-list {
       margin-bottom: 0;
@@ -142,7 +142,6 @@
     // Tablet and above.
     @include respond-to-min($bp-sm-min) {
       padding-bottom: math.div($grid-gutter-width, $base-font-size-px) + em;
-      margin-bottom: math.div($grid-gutter-width, $base-font-size-px) + em;
       border-bottom: 1px solid var(--gray-40);
 
       .o-footer__nav-list {
@@ -247,11 +246,11 @@
   }
 
   &__post {
-    font-weight: 400;
-    margin-top: math.div($grid-gutter-width, $base-font-size-px) + em;
+    margin-top: math.div($grid-gutter-width * 1.5, $base-font-size-px) + em;
 
     // Tablet and above.
     @include respond-to-min($bp-sm-min) {
+      margin-top: math.div($grid-gutter-width, $base-font-size-px) + em;
       padding-top: math.div($grid-gutter-width, $base-font-size-px) + em;
       border-top: 1px solid var(--gray-40);
     }
