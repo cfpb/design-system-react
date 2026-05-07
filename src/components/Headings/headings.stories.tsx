@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Heading } from '~/src/index';
+import { Heading, Icon } from '~/src/index';
 
 /**
  * A successful type hierarchy establishes the order of importance of elements on a page. Consistent scaling, weights, and capitalization are used to create distinction between headings and provide users with familiar focus points when scanning text.
@@ -83,4 +83,15 @@ export const Slug: Story = {
     type: 'slug',
     children: 'Slug',
   },
+};
+
+export const WithIcon: Story = {
+  args: {
+    type: '2',
+  },
+  render: (arguments_) => (
+    <Heading {...arguments_}>
+      <Icon name='help' /> Information
+    </Heading>
+  ),
 };

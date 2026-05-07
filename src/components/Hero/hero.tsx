@@ -26,7 +26,7 @@ interface HeroProperties extends HTMLAttributes<HTMLDivElement> {
 /**
  * https://cfpb.github.io/design-system/patterns/heroes
  */
-export default function Hero({
+export const Hero = ({
   backgroundColor,
   heading,
   headingLevel = 'h1',
@@ -41,7 +41,7 @@ export default function Hero({
   textColor,
   className,
   ...properties
-}: HeroProperties): JSX.Element {
+}: HeroProperties): JSX.Element => {
   const addWrapperImage = imageIsPhoto ?? isJumbo ?? is5050;
   const wrapperReference = useBackgroundImage(image, addWrapperImage);
 
@@ -99,4 +99,6 @@ export default function Hero({
       </div>
     </div>
   );
-}
+};
+
+export default Hero;
