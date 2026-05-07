@@ -3,6 +3,7 @@ node_modules
 *.iml
 dist
 dist-storybook
+*.iml
 *.local
 *.log
 .eslintcache
