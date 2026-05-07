@@ -32,22 +32,20 @@
 }
 
 .o-footer {
-  font-weight: 500;
-
   // Adding an extra 5px to the top to account for the absolute positioned
   // social media icons.
-  padding-top: math.div(50px, $base-font-size-px) + rem;
+  padding-top: math.div($grid-gutter-width * 1.5, $base-font-size-px) + rem;
 
   // There is a 10px margin-bottom on the  last .o-footer__list li's, plus the
   // 50px bottom padding = 60px of total padding at the bottom of the footer.
-  padding-bottom: math.div(50px, $base-font-size-px) + rem;
+  padding-bottom: math.div($grid-gutter-width * 2, $base-font-size-px) + rem;
   border-top: 5px solid var(--green);
   background: var(--gray-5);
 
   // Mobile only.
   @include respond-to-max($bp-xs-max) {
     // Tighten top spacing on mobile.
-    padding-top: math.div(30px, $base-font-size-px) + rem;
+    padding-top: math.div($grid-gutter-width, $base-font-size-px) + rem;
 
     .m-list__link {
       display: block;

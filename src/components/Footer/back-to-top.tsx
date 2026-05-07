@@ -7,6 +7,7 @@ export const BackToTop = (): JSX.Element => (
         className='a-btn--secondary a-btn--full-on-xs o-footer__top-button u-show-on-mobile u-mb30'
         data-gtm_ignore='true'
         data-js-hook='behavior_return-to-top'
+        data-testid='back-to-top'
         href='#'
         iconRight='arrow-up'/>
 );
