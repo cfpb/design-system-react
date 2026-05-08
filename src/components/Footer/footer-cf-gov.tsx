@@ -1,5 +1,6 @@
 import { JSX } from 'react';
 import { Icon } from '../Icon/icon';
+import Link from '../Link/link';
 import {WebsiteFooter} from './footer';
 
 interface FootCfGovProperties {
@@ -140,26 +141,21 @@ export const FooterCfGov = ({
   ];
 
   const linksCol3 = [
-    <a key='usa-gov' className='a-link a-link--icon' href='https://usa.gov/'>
-      <span className='a-link__text'>USA.gov</span>&nbsp;
-      <Icon
-        ariaLabel='External link'
-        name='external-link'
-        alt='External link'
-      />
-    </a>,
-    <a
+    <Link
+      key='usa-gov'
+      href='https://usa.gov/'
+      label='USA.gov'
+      iconRight='external-link'/>,
+    <Link
       key='inspector'
-      className='a-link a-link--icon'
       href='https://oig.federalreserve.gov/'
-    >
-      <span className='a-link__text'>Office of Inspector General</span>&nbsp;
-      <Icon
-        ariaLabel='External link'
-        name='external-link'
-        alt='External link'
-      />
-    </a>,
+      label='Office of Inspector General'
+      iconRight='external-link'/>,
+    <Link
+      key='archive'
+      href='https://archive-it.org/organizations/2800'
+      label='Public Archive'
+      iconRight='external-link'/>
   ];
 
   return (
