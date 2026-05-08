@@ -12,6 +12,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+export const CFGov: Story = {
+  name: 'Website (cf.gov)',
+  render: () => <FooterCfGov />,
+};
+
 export const App: Story = {
   name: 'Application',
   render: () => (
@@ -35,9 +40,4 @@ export const App: Story = {
       },
     },
   }
-};
-
-export const CFGov: Story = {
-  name: 'Website (cf.gov)',
-  render: () => <FooterCfGov />,
 };
