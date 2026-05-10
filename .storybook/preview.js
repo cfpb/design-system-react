@@ -55,6 +55,89 @@ const getPreviewSource = (storyId) => {
   return url.toString();
 };
 
+const getFrameHeight = (frame) => {
+  const frameDocument = frame.contentDocument;
+
+  if (!frameDocument) return 0;
+
+  const { body, documentElement } = frameDocument;
+  const storyRoot = frameDocument.getElementById('storybook-root');
+
+  if (storyRoot) {
+    const bodyStyles = frame.contentWindow?.getComputedStyle(body);
+    const verticalPadding =
+      parseFloat(bodyStyles?.paddingTop ?? '0') +
+      parseFloat(bodyStyles?.paddingBottom ?? '0');
+    const rootTop = storyRoot.getBoundingClientRect().top;
+    const contentBottom = Array.from(storyRoot.querySelectorAll('*')).reduce(
+      (bottom, element) =>
+        Math.max(bottom, element.getBoundingClientRect().bottom),
+      storyRoot.getBoundingClientRect().bottom,
+    );
+
+    return Math.ceil(
+      Math.max(
+        storyRoot.getBoundingClientRect().height,
+        storyRoot.scrollHeight,
+        storyRoot.offsetHeight,
+        contentBottom - rootTop,
+      ) + verticalPadding,
+    );
+  }
+
+  return Math.max(
+    body?.scrollHeight ?? 0,
+    body?.offsetHeight ?? 0,
+    documentElement?.scrollHeight ?? 0,
+    documentElement?.offsetHeight ?? 0,
+  );
+};
+
+const ResponsivePreviewFrame = ({ storyId, viewport }) => {
+  const [height, setHeight] = React.useState(240);
+
+  const updateHeight = React.useCallback((frame) => {
+    const measuredHeight = getFrameHeight(frame);
+
+    setHeight(Math.max(measuredHeight + 16, 160));
+  }, []);
+
+  return React.createElement('iframe', {
+    onLoad: (event) => {
+      const frame = event.currentTarget;
+      const frameWindow = frame.contentWindow;
+      const frameDocument = frame.contentDocument;
+
+      updateHeight(frame);
+      frameWindow?.requestAnimationFrame(() => updateHeight(frame));
+      frameWindow?.setTimeout(() => updateHeight(frame), 250);
+
+      frameWindow?.addEventListener('resize', () => updateHeight(frame));
+
+      if (frameWindow?.ResizeObserver && frameDocument) {
+        const observer = new frameWindow.ResizeObserver(() =>
+          updateHeight(frame),
+        );
+        const storyRoot = frameDocument.getElementById('storybook-root');
+
+        observer.observe(frameDocument.documentElement);
+        observer.observe(frameDocument.body);
+
+        if (storyRoot) observer.observe(storyRoot);
+      }
+    },
+    src: getPreviewSource(storyId),
+    title: `${viewport.name} preview`,
+    style: {
+      background: 'white',
+      border: '1px solid #d0d0ce',
+      boxSizing: 'border-box',
+      height,
+      width: viewport.styles.width,
+    },
+  });
+};
+
 const renderResponsivePreviews = (Story, context) => {
   if (shouldRenderSinglePreview(context)) {
     return React.createElement(Story);
@@ -95,16 +178,9 @@ const renderResponsivePreviews = (Story, context) => {
           },
           `${viewport.name} (${viewport.styles.width})`,
         ),
-        React.createElement('iframe', {
-          src: getPreviewSource(context.id),
-          title: `${viewport.name} preview`,
-          style: {
-            background: 'white',
-            border: '1px solid #d0d0ce',
-            boxSizing: 'border-box',
-            height: viewport.styles.height,
-            width: viewport.styles.width,
-          },
+        React.createElement(ResponsivePreviewFrame, {
+          storyId: context.id,
+          viewport,
         }),
       ),
     ),
