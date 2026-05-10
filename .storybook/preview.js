@@ -2,8 +2,45 @@ import '@fontsource-variable/source-sans-3';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
 
+const viewportOptions = {
+  phone: {
+    name: 'Phone',
+    styles: {
+      width: '390px',
+      height: '844px',
+    },
+    type: 'mobile',
+  },
+  tablet: {
+    name: 'Tablet',
+    styles: {
+      width: '768px',
+      height: '1024px',
+    },
+    type: 'tablet',
+  },
+  desktop: {
+    name: 'Desktop',
+    styles: {
+      width: '1280px',
+      height: '900px',
+    },
+    type: 'desktop',
+  },
+};
+
 export const preview = {
+  initialGlobals: {
+    viewport: {
+      value: 'responsive',
+    },
+  },
+
   parameters: {
+    viewport: {
+      options: viewportOptions,
+    },
+
     options: {
       // Determines the display order of Stories in the sidebar
       storySort: {
