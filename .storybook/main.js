@@ -22,7 +22,9 @@ export default {
     options: {},
   },
 
-  features: {},
+  features: {
+    viewport: true,
+  },
 
   async viteFinal(config, { configType }) {
     config.base = process.env.BASE_PATH || config.base;
