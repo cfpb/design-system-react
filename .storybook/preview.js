@@ -1,15 +1,19 @@
-import React from 'react';
 import '@fontsource-variable/source-sans-3';
+import React from 'react';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
 
 const responsivePreviewQueryParameter = 'responsivePreview';
 
+// Match CFPB design-system breakpoints (16px root): large layout from 63.8125em (~1021px).
+// Hero `.m-hero__wrapper` uses min-height + em padding there; 1230px aligns with typical
+// max-width + gutters. Storybook also accepts ad-hoc sizes via globals.viewport.value like
+// `1230-900` (width-height, px by default) without adding an entry here.
 const viewportOptions = {
   desktop: {
     name: 'Desktop (901px and above)',
     styles: {
-      width: '1280px',
+      width: '1230px',
       height: '900px',
     },
     type: 'desktop',
@@ -203,8 +207,10 @@ export const globalTypes = {
 
 export const initialGlobals = {
   responsivePreview: 'single',
+  // Use a named preset so the canvas iframe width matches our breakpoints. The string
+  // `responsive` is not a defined key below; Storybook would fall back to the first option.
   viewport: {
-    value: 'responsive',
+    value: 'desktop',
   },
 };
 
@@ -216,6 +222,11 @@ export const preview = {
   initialGlobals,
 
   parameters: {
+    // Drop default `sb-main-padded` body padding so viewport width ≈ iframe content width
+    // and Storybook chrome does not squeeze responsive layouts.
+    // https://storybook.js.org/docs/configure/story-layout
+    layout: 'fullscreen',
+
     viewport: {
       options: viewportOptions,
     },

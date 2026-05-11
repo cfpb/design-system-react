@@ -19,7 +19,9 @@ describe('Hero', () => {
 
     expect(screen.getByText(heading).className).toMatch(/m-hero__heading/g);
     expect(screen.getByText(subheading).className).toMatch(/m-hero__subhead/g);
-    expect(screen.getByAltText(imageText).className).toMatch(/m-hero__image/g);
+    expect(screen.getByRole('img', { name: imageText }).className).toMatch(
+      /m-hero__image/g,
+    );
   });
 
   it('Derives CSS classes for component variations', () => {
