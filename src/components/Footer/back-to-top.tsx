@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import Link from '~/src/components/Link/link';
+import Link from '../Link/link';
 export const BackToTop = (): JSX.Element => (
   <Link label="Back to top" 
         isButton

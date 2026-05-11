@@ -97,7 +97,6 @@
       // Desktop and above.
       @include respond-to-min($bp-med-min) {
         margin-right: math.div($grid-gutter-width, 22px) + em;
-        font-size: math.div(20px, $base-font-size-px) + em;
       }
     }
 
@@ -250,7 +249,6 @@
 
     // Tablet and above.
     @include respond-to-min($bp-sm-min) {
-      margin-top: math.div($grid-gutter-width, $base-font-size-px) + em;
       padding-top: math.div($grid-gutter-width, $base-font-size-px) + em;
       border-top: 1px solid var(--gray-40);
     }

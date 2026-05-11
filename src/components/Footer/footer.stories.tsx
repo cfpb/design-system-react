@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Footer, ApplicationFooter, FooterCfGov, Link } from '~/src/index';
+import { ApplicationFooter, Footer, FooterCfGov, Heading, Link, Paragraph } from '../../index';
 
 const meta: Meta<typeof Footer> = {
   title: 'Components (Draft)/Footers',
@@ -27,8 +27,8 @@ export const App: Story = {
       ]}
       footerContent={
         <>
-          <h3>Heading</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <Heading type='3'>Heading</Heading>
+          <Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Paragraph>
           <Link href='#'>Link</Link>
         </>
     }/>
