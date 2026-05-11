@@ -13,8 +13,8 @@ const viewportOptions = {
   desktop: {
     name: 'Desktop (901px and above)',
     styles: {
-      //  need to make this wider we can see the full width along with any extra gutters
-      width: '1280px',
+      // Match design width; iframe uses content-box so border does not shrink the inner viewport.
+      width: '1230px',
       height: '900px',
     },
     type: 'desktop',
@@ -136,7 +136,10 @@ const ResponsivePreviewFrame = ({ storyId, viewport }) => {
     style: {
       background: 'white',
       border: '1px solid #d0d0ce',
-      boxSizing: 'border-box',
+      // border-box would make width include the border, so a 900px frame only has ~898px for
+      // the document — content-box keeps viewport.styles.width as the iframe layout width.
+      boxSizing: 'content-box',
+      display: 'block',
       height,
       width: viewport.styles.width,
     },
