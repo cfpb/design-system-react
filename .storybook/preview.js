@@ -6,29 +6,29 @@ import themeCFPB from './themeCFPB';
 const responsivePreviewQueryParameter = 'responsivePreview';
 
 const viewportOptions = {
-  phone: {
-    name: 'Phone',
-    styles: {
-      width: '390px',
-      height: '844px',
-    },
-    type: 'mobile',
-  },
-  tablet: {
-    name: 'Tablet',
-    styles: {
-      width: '768px',
-      height: '1024px',
-    },
-    type: 'tablet',
-  },
   desktop: {
-    name: 'Desktop',
+    name: 'Desktop (901px and above)',
     styles: {
       width: '1280px',
       height: '900px',
     },
     type: 'desktop',
+  },
+  tablet: {
+    name: 'Tablet (601-900px)',
+    styles: {
+      width: '900px',
+      height: '1024px',
+    },
+    type: 'tablet',
+  },
+  phone: {
+    name: 'Phone (600px and below)',
+    styles: {
+      width: '600px',
+      height: '844px',
+    },
+    type: 'mobile',
   },
 };
 
@@ -176,7 +176,7 @@ const renderResponsivePreviews = (Story, context) => {
               lineHeight: 1.25,
             },
           },
-          `${viewport.name} (${viewport.styles.width})`,
+          `${viewport.name}`,
         ),
         React.createElement(ResponsivePreviewFrame, {
           storyId: context.id,
