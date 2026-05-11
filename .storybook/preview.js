@@ -13,7 +13,8 @@ const viewportOptions = {
   desktop: {
     name: 'Desktop (901px and above)',
     styles: {
-      width: '1230px',
+      //  need to make this wider we can see the full width along with any extra gutters
+      width: '1280px',
       height: '900px',
     },
     type: 'desktop',
