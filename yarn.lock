@@ -1247,6 +1247,7 @@ __metadata:
     "@cfpb/cfpb-design-system": "npm:5.3.3"
     "@chromatic-com/storybook": "npm:^5.1.2"
     "@eslint/js": "npm:^10.0.1"
+    "@fontsource-variable/source-sans-3": "npm:5.2.9"
     "@nabla/vite-plugin-eslint": "npm:^3.0.1"
     "@storybook/addon-a11y": "npm:^10.3.6"
     "@storybook/addon-docs": "npm:^10.3.6"

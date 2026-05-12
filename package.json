@@ -58,6 +58,7 @@
     "@cfpb/cfpb-design-system": "5.3.3",
     "@chromatic-com/storybook": "^5.1.2",
     "@eslint/js": "^10.0.1",
+    "@fontsource-variable/source-sans-3": "5.2.9",
     "@nabla/vite-plugin-eslint": "^3.0.1",
     "@storybook/addon-a11y": "^10.3.6",
     "@storybook/addon-docs": "^10.3.6",

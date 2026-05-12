@@ -1,4 +1,4 @@
-import '@fontsource-variable/source-sans-3';
+import '@fontsource-variable/source-sans-3/index.css';
 import React from 'react';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
@@ -178,7 +178,7 @@ const renderResponsivePreviews = (Story, context) => {
           {
             style: {
               color: '#5a5d61',
-              fontFamily: 'Source Sans 3 Variable, sans-serif',
+              fontFamily: '"Source Sans 3 Variable", Arial, sans-serif',
               fontSize: '14px',
               fontWeight: 600,
               lineHeight: 1.25,
