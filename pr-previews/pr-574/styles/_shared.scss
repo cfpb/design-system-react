@@ -1,5 +1,6 @@
 @use './variables';
 @use 'sass:math';
+@use 'sass:string';
 @use '@cfpb/cfpb-design-system/src/index' as *;
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
 @use '@cfpb/cfpb-design-system/src/elements/base' as base;
@@ -21,18 +22,21 @@
  * `html` / `body` / Storybook roots also get an explicit stack so we are not only relying on
  * custom properties for the main canvas.
  */
-$_ds-font-stack: 'Source Sans 3 Variable', 'Source Sans Pro', 'Arial', sans-serif;
+// Literal stack (quoted multi-word family) — matches app / design-system expectations.
+$_ds-font-stack: string.unquote('"Source Sans 3 Variable", Arial, sans-serif');
 
 :root {
   --font-stack-branded: #{$_ds-font-stack} !important;
   --font-stack: #{$_ds-font-stack} !important;
 }
 
+// `!important` beats DS normalize `html { font-family: sans-serif }` if chunk
+// order ever places that rule after this file (e.g. code-splitting in dev).
 html,
 body,
 #storybook-root,
 #storybook-docs {
-  font-family: #{$_ds-font-stack};
+  font-family: #{$_ds-font-stack} !important;
 }
 
 /**
@@ -84,6 +88,6 @@ body,
 // Override DS wrapper match-content width to 1170px content with 30px gutters.
 .wrapper--match-content {
   @include respond-to-min($bp-sm-min) {
-    max-width: $grid-wrapper-width - ($grid-gutter-width * 2);
+    max-width: $grid-wrapper-width - ($grid-gutter-width * 2) !important;
   }
 }
