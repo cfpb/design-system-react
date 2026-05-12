@@ -182,6 +182,54 @@ const renderResponsivePreviews = (Story, context) => {
   );
 };
 
+/** Storybook body classes applied by `parameters.layout` (see prepareForStory / WebView). */
+const STORYBOOK_LAYOUT_BODY_CLASSES = [
+  'sb-main-padded',
+  'sb-main-centered',
+  'sb-main-fullscreen',
+];
+
+/**
+ * Fullscreen on the main Canvas only. Global `parameters.layout: 'fullscreen'` also merges into
+ * docs/overview stories and breaks `<Canvas>` (addon-docs prefers `story.parameters.layout` over
+ * `parameters.docs.canvas.layout`). Embedded docs previews use `viewMode === 'docs'`, so we skip
+ * them here.
+ *
+ * @type {(Story: any, context: any) => import('react').ReactElement}
+ */
+const withFullscreenStoryCanvas = (Story, context) => {
+  React.useLayoutEffect(() => {
+    if (context.viewMode !== 'story') {
+      return undefined;
+    }
+
+    const layout = context.parameters?.layout;
+    const { body } = document;
+
+    if (layout === 'centered') {
+      return undefined;
+    }
+
+    if (layout === 'none') {
+      for (const className of STORYBOOK_LAYOUT_BODY_CLASSES) {
+        body.classList.remove(className);
+      }
+
+      return undefined;
+    }
+
+    // Default (undefined / `padded`) or `fullscreen`: edge-to-edge on the main Canvas.
+    for (const className of STORYBOOK_LAYOUT_BODY_CLASSES) {
+      body.classList.remove(className);
+    }
+
+    body.classList.add('sb-main-fullscreen');
+    return undefined;
+  }, [context.viewMode, context.id, context.parameters?.layout]);
+
+  return React.createElement(Story);
+};
+
 export const globalTypes = {
   responsivePreview: {
     name: 'Responsive preview',
@@ -202,7 +250,7 @@ export const initialGlobals = {
   // Setting `value: 'desktop'` (or any named key) forces that preset for every story.
 };
 
-export const decorators = [renderResponsivePreviews];
+export const decorators = [renderResponsivePreviews, withFullscreenStoryCanvas];
 
 export const preview = {
   globalTypes,
@@ -210,11 +258,10 @@ export const preview = {
   initialGlobals,
 
   parameters: {
-    // Drop default `sb-main-padded` body padding so viewport width ≈ iframe content width
-    // and Storybook chrome does not squeeze responsive layouts.
+    // Fullscreen on the main story Canvas is applied by `withFullscreenStoryCanvas` (see
+    // decorators). Do not set `layout: 'fullscreen'` here — it merges into docs/overview and
+    // breaks embedded Canvas previews.
     // https://storybook.js.org/docs/configure/story-layout
-    // restores the padding around OG iframe in overview
-    // layout: 'fullscreen',
 
     viewport: {
       options: viewportOptions,
