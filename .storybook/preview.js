@@ -148,9 +148,9 @@ const renderResponsivePreviews = (Story, context) => {
       style: {
         boxSizing: 'border-box',
         display: 'grid',
-        gap: '24px',
+        gap: '45px',
         overflowX: 'auto',
-        padding: '24px',
+        padding: '30px',
       },
     },
     responsivePreviewOptions.map(([key, viewport]) =>
@@ -160,19 +160,17 @@ const renderResponsivePreviews = (Story, context) => {
           key,
           style: {
             display: 'grid',
-            gap: '8px',
+            gap: '45px',
             justifyItems: 'start',
+            padding: '30px',
           },
         },
         React.createElement(
-          'div',
+          'p',
           {
             style: {
-              color: '#5a5d61',
-              fontFamily: '"Source Sans 3 Variable", Arial, sans-serif',
-              fontSize: '14px',
-              fontWeight: 600,
-              lineHeight: 1.25,
+              color: '#43484e',
+              fontWeight: 500,
             },
           },
           `${viewport.name}`,
