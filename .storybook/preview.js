@@ -213,7 +213,8 @@ export const preview = {
     // Drop default `sb-main-padded` body padding so viewport width ≈ iframe content width
     // and Storybook chrome does not squeeze responsive layouts.
     // https://storybook.js.org/docs/configure/story-layout
-    layout: 'fullscreen',
+    // restores the padding around OG iframe in overview
+    // layout: 'fullscreen',
 
     viewport: {
       options: viewportOptions,
