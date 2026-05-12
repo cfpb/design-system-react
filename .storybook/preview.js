@@ -1,4 +1,3 @@
-import '@fontsource-variable/source-sans-3/index.css';
 import React from 'react';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
