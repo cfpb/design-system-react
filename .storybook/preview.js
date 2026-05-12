@@ -73,7 +73,11 @@ const getFrameHeight = (frame) => {
     // it can track the iframe viewport (min-height / 100% chains) and leave a white band under
     // short stories. Skip descendant getBoundingClientRect walks; they often add slack.
     return Math.ceil(
-      Math.max(body.scrollHeight, storyRoot.scrollHeight, storyRoot.offsetHeight),
+      Math.max(
+        body.scrollHeight,
+        storyRoot.scrollHeight,
+        storyRoot.offsetHeight,
+      ),
     );
   }
 
@@ -90,9 +94,7 @@ const ResponsivePreviewFrame = ({ storyId, viewport }) => {
 
   const updateHeight = React.useCallback((frame) => {
     const measuredHeight = getFrameHeight(frame);
-
-    // +1 avoids a 1px subpixel clip; avoid a large buffer or the iframe shows empty band under story.
-    setHeight(Math.max(measuredHeight + 1, 160));
+    setHeight(Math.max(measuredHeight, 160));
   }, []);
 
   return React.createElement('iframe', {
@@ -123,7 +125,8 @@ const ResponsivePreviewFrame = ({ storyId, viewport }) => {
     title: `${viewport.name} preview`,
     style: {
       background: 'white',
-      border: '1px solid #d0d0ce',
+      // set border around the iframe
+      border: 'none',
       // border-box would make width include the border, so a 900px frame only has ~898px for
       // the document — content-box keeps viewport.styles.width as the iframe layout width.
       boxSizing: 'content-box',
