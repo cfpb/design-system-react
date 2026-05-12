@@ -68,16 +68,24 @@ const getFrameHeight = (frame) => {
   const storyRoot = frameDocument.getElementById('storybook-root');
 
   if (storyRoot && body) {
-    // Prefer #storybook-root + body scroll heights. Avoid `documentElement.scrollHeight` alone —
-    // it can track the iframe viewport (min-height / 100% chains) and leave a white band under
-    // short stories. Skip descendant getBoundingClientRect walks; they often add slack.
-    return Math.ceil(
-      Math.max(
-        body.scrollHeight,
-        storyRoot.scrollHeight,
-        storyRoot.offsetHeight,
-      ),
+    const win = frame.contentWindow;
+    const rootStyle = win?.getComputedStyle(storyRoot);
+    const rootVerticalPadding =
+      parseFloat(rootStyle?.paddingTop ?? '0') +
+      parseFloat(rootStyle?.paddingBottom ?? '0');
+
+    // Prefer #storybook-root only. `body.scrollHeight` often matches the iframe’s current height
+    // (min-height / 100% chains), which leaves a tall band under small components. Hero-sized
+    // stories still size correctly from the root box.
+    const fromRoot = Math.max(
+      storyRoot.scrollHeight,
+      storyRoot.offsetHeight,
+      storyRoot.getBoundingClientRect().height,
     );
+
+    if (fromRoot > 0) {
+      return Math.ceil(fromRoot + rootVerticalPadding);
+    }
   }
 
   return Math.max(
@@ -89,11 +97,12 @@ const getFrameHeight = (frame) => {
 };
 
 const ResponsivePreviewFrame = ({ storyId, viewport }) => {
-  const [height, setHeight] = React.useState(240);
+  const [height, setHeight] = React.useState(64);
 
   const updateHeight = React.useCallback((frame) => {
     const measuredHeight = getFrameHeight(frame);
-    setHeight(Math.max(measuredHeight, 160));
+    // No large minimum — small atoms (radio, label) should hug content. Floor avoids 0 during load.
+    setHeight(Math.max(Math.ceil(measuredHeight), 1));
   }, []);
 
   return React.createElement('iframe', {
