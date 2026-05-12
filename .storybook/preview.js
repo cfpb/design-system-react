@@ -70,13 +70,17 @@ const getFrameHeight = (frame) => {
   if (storyRoot && body) {
     const win = frame.contentWindow;
     const rootStyle = win?.getComputedStyle(storyRoot);
+    const bodyStyle = win?.getComputedStyle(body);
     const rootVerticalPadding =
       parseFloat(rootStyle?.paddingTop ?? '0') +
       parseFloat(rootStyle?.paddingBottom ?? '0');
+    const bodyVerticalPadding =
+      parseFloat(bodyStyle?.paddingTop ?? '0') +
+      parseFloat(bodyStyle?.paddingBottom ?? '0');
 
-    // Prefer #storybook-root only. `body.scrollHeight` often matches the iframe’s current height
-    // (min-height / 100% chains), which leaves a tall band under small components. Hero-sized
-    // stories still size correctly from the root box.
+    // Prefer #storybook-root box for content height. `body.scrollHeight` alone often tracks the
+    // iframe’s current height (min-height / 100% chains). Always add body vertical padding when
+    // `.sb-main-padded` is active — omitting it sizes the iframe too short and clips (e.g. links).
     const fromRoot = Math.max(
       storyRoot.scrollHeight,
       storyRoot.offsetHeight,
@@ -84,7 +88,9 @@ const getFrameHeight = (frame) => {
     );
 
     if (fromRoot > 0) {
-      return Math.ceil(fromRoot + rootVerticalPadding);
+      return Math.ceil(
+        fromRoot + rootVerticalPadding + bodyVerticalPadding,
+      );
     }
   }
 
@@ -199,35 +205,26 @@ const STORYBOOK_LAYOUT_BODY_CLASSES = [
 ];
 
 /**
- * Fullscreen on the main Canvas only. Global `parameters.layout: 'fullscreen'` also merges into
- * docs/overview stories and breaks `<Canvas>` (addon-docs prefers `story.parameters.layout` over
- * `parameters.docs.canvas.layout`). Embedded docs previews use `viewMode === 'docs'`, so we skip
- * them here.
+ * Only force `sb-main-fullscreen` when a story opts in with `parameters.layout: 'fullscreen'`.
+ * Global `layout: 'fullscreen'` in preview was removed because it merges into docs `<Canvas>`.
+ *
+ * For the default (undefined / `padded`), Storybook already applies `sb-main-padded` — the same
+ * ~1rem inset as Overview / autodocs previews. Do not override that here.
  *
  * @type {(Story: any, context: any) => import('react').ReactElement}
  */
-const withFullscreenStoryCanvas = (Story, context) => {
+const withExplicitFullscreenStoryCanvas = (Story, context) => {
   React.useLayoutEffect(() => {
     if (context.viewMode !== 'story') {
       return undefined;
     }
 
-    const layout = context.parameters?.layout;
+    if (context.parameters?.layout !== 'fullscreen') {
+      return undefined;
+    }
+
     const { body } = document;
 
-    if (layout === 'centered') {
-      return undefined;
-    }
-
-    if (layout === 'none') {
-      for (const className of STORYBOOK_LAYOUT_BODY_CLASSES) {
-        body.classList.remove(className);
-      }
-
-      return undefined;
-    }
-
-    // Default (undefined / `padded`) or `fullscreen`: edge-to-edge on the main Canvas.
     for (const className of STORYBOOK_LAYOUT_BODY_CLASSES) {
       body.classList.remove(className);
     }
@@ -259,7 +256,7 @@ export const initialGlobals = {
   // Setting `value: 'desktop'` (or any named key) forces that preset for every story.
 };
 
-export const decorators = [renderResponsivePreviews, withFullscreenStoryCanvas];
+export const decorators = [renderResponsivePreviews, withExplicitFullscreenStoryCanvas];
 
 export const preview = {
   globalTypes,
@@ -267,9 +264,9 @@ export const preview = {
   initialGlobals,
 
   parameters: {
-    // Fullscreen on the main story Canvas is applied by `withFullscreenStoryCanvas` (see
-    // decorators). Do not set `layout: 'fullscreen'` here — it merges into docs/overview and
-    // breaks embedded Canvas previews.
+    // Default canvas padding matches Overview `<Canvas>` (`sb-main-padded`, 1rem). Stories that
+    // need edge-to-edge can set `parameters.layout: 'fullscreen'` (see
+    // `withExplicitFullscreenStoryCanvas`).
     // https://storybook.js.org/docs/configure/story-layout
 
     viewport: {
