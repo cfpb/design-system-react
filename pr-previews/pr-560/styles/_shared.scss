@@ -63,6 +63,6 @@ pre,
 // Override DS wrapper match-content width to 1170px content with 30px gutters.
 .wrapper--match-content {
   @include respond-to-min($bp-sm-min) {
-    max-width: $grid-wrapper-width - ($grid-gutter-width * 2);
+    max-width: $grid-wrapper-width - ($grid-gutter-width * 2) !important;
   }
 }
