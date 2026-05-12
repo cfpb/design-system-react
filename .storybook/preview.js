@@ -68,25 +68,12 @@ const getFrameHeight = (frame) => {
   const { body, documentElement } = frameDocument;
   const storyRoot = frameDocument.getElementById('storybook-root');
 
-  if (storyRoot) {
-    const bodyStyles = frame.contentWindow?.getComputedStyle(body);
-    const verticalPadding =
-      parseFloat(bodyStyles?.paddingTop ?? '0') +
-      parseFloat(bodyStyles?.paddingBottom ?? '0');
-    const rootTop = storyRoot.getBoundingClientRect().top;
-    const contentBottom = Array.from(storyRoot.querySelectorAll('*')).reduce(
-      (bottom, element) =>
-        Math.max(bottom, element.getBoundingClientRect().bottom),
-      storyRoot.getBoundingClientRect().bottom,
-    );
-
+  if (storyRoot && body) {
+    // Prefer #storybook-root + body scroll heights. Avoid `documentElement.scrollHeight` alone —
+    // it can track the iframe viewport (min-height / 100% chains) and leave a white band under
+    // short stories. Skip descendant getBoundingClientRect walks; they often add slack.
     return Math.ceil(
-      Math.max(
-        storyRoot.getBoundingClientRect().height,
-        storyRoot.scrollHeight,
-        storyRoot.offsetHeight,
-        contentBottom - rootTop,
-      ) + verticalPadding,
+      Math.max(body.scrollHeight, storyRoot.scrollHeight, storyRoot.offsetHeight),
     );
   }
 
@@ -104,7 +91,8 @@ const ResponsivePreviewFrame = ({ storyId, viewport }) => {
   const updateHeight = React.useCallback((frame) => {
     const measuredHeight = getFrameHeight(frame);
 
-    setHeight(Math.max(measuredHeight + 16, 160));
+    // +1 avoids a 1px subpixel clip; avoid a large buffer or the iframe shows empty band under story.
+    setHeight(Math.max(measuredHeight + 1, 160));
   }, []);
 
   return React.createElement('iframe', {
@@ -211,11 +199,8 @@ export const globalTypes = {
 
 export const initialGlobals = {
   responsivePreview: 'single',
-  // Use a named preset so the canvas iframe width matches our breakpoints. The string
-  // `responsive` is not a defined key below; Storybook would fall back to the first option.
-  viewport: {
-    value: 'desktop',
-  },
+  // Omit `globals.viewport` so the toolbar defaults to "Reset viewport" (full canvas).
+  // Setting `value: 'desktop'` (or any named key) forces that preset for every story.
 };
 
 export const decorators = [renderResponsivePreviews];
