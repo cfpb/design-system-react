@@ -159,9 +159,8 @@ const renderResponsivePreviews = (Story, context) => {
           key,
           style: {
             display: 'grid',
-            gap: '45px',
+            // gap: '15px',
             justifyItems: 'start',
-            padding: '30px',
           },
         },
         React.createElement(
