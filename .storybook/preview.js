@@ -164,7 +164,7 @@ const renderResponsivePreviews = (Story, context) => {
         display: 'grid',
         gap: '45px',
         overflowX: 'auto',
-        padding: '0',
+        padding: '30px',
       },
     },
     responsivePreviewOptions.map(([key, viewport]) =>
@@ -256,7 +256,10 @@ export const initialGlobals = {
   // Setting `value: 'desktop'` (or any named key) forces that preset for every story.
 };
 
-export const decorators = [renderResponsivePreviews, withExplicitFullscreenStoryCanvas];
+export const decorators = [
+  renderResponsivePreviews,
+  withExplicitFullscreenStoryCanvas,
+];
 
 export const preview = {
   globalTypes,
