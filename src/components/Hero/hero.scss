@@ -4,22 +4,6 @@
   background-color: var(--gray-30);
 }
 
-// Illustration slot: match common DS hero artwork (940×390).
-//
-// Production DS/Jinja pages often set this on an empty `.m-hero__image` with `background-image`,
-// e.g. `padding-bottom: 41.48936170212766%` — that is 390 ÷ 940 × 100 (percentage padding-bottom is
-// relative to the element’s width, so the box reserves the same aspect ratio as the art).
-// We use `aspect-ratio: 940 / 390` instead; same geometry, clearer intent, with `background-size: contain`.
-.m-hero:not(.m-hero--overlay) .m-hero__image {
-  aspect-ratio: 940 / 390;
-}
-
-// Photo / overlay: mobile shows this node while the wrapper carries `background-size: cover`.
-.m-hero--overlay .m-hero__image {
-  aspect-ratio: 16 / 9;
-  background-size: cover;
-}
-
 /*
   👇 Workarounds for responsiveness 👇 
 
