@@ -1,5 +1,4 @@
 import { JSX } from 'react';
-
 import Link from '../Link/link';
 export const BackToTop = (): JSX.Element => (
   <Link

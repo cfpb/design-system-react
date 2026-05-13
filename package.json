@@ -29,6 +29,7 @@
   "scripts": {
     "build": "vite build",
     "prepack": "vite build",
+    "prepare": "husky",
     "commit": "cz",
     "dev": "vite --open",
     "preview": "vite preview",
