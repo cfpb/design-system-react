@@ -4,15 +4,15 @@
 
 <!-- Storybook default: `padding: 1rem` on `.sb-show-main.sb-main-padded` (base-preview-head.html).
      - Main canvas: CFPB 15px ($space-sm).
-     - Nested "All viewports" (`?responsivePreview=off`): body padding 0 (align with labels) and
-       inset on `#storybook-root` so :focus-visible outlines are not clipped left/right/top/bottom. -->
+     - Nested "All viewports" (`?responsivePreview=off`): body padding 0; `#storybook-root` uses
+       vertical inset for focus plus small horizontal inset so outlines are not clipped at edges. -->
 <script>
   (function applyCfpbStorybookCanvasPadding() {
     var style = document.createElement('style');
     if (new URLSearchParams(window.location.search).get('responsivePreview') === 'off') {
       style.textContent =
         '.sb-show-main.sb-main-padded { padding: 0 !important; }' +
-        'body.sb-show-main.sb-main-padded #storybook-root, body.sb-show-main.sb-main-centered #storybook-root { padding: 10px 14px !important; box-sizing: border-box !important; }';
+        'body.sb-show-main.sb-main-padded #storybook-root, body.sb-show-main.sb-main-centered #storybook-root { padding: 10px 8px !important; box-sizing: border-box !important; }';
     } else {
       style.textContent =
         '.sb-show-main.sb-main-padded { padding: 15px; }' +

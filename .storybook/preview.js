@@ -164,7 +164,7 @@ const renderResponsivePreviews = (Story, context) => {
         display: 'grid',
         gap: '45px',
         overflowX: 'auto',
-        padding: '30px',
+        padding: '0',
       },
     },
     responsivePreviewOptions.map(([key, viewport]) =>
