@@ -1,0 +1,74 @@
+@use './variables';
+@use 'sass:math';
+@use '@cfpb/cfpb-design-system/src/index' as *;
+@use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/elements/base' as base;
+
+// @include licensed-font('/static/fonts');
+
+/*
+ Shared styles, variables, and css overrides
+*/
+
+/**
+ * DS font stack everywhere (canvas + docs).
+ */
+:root {
+  --font-stack: 'Source Sans 3 Variable', 'Source Sans Pro', 'Arial', sans-serif;
+  font-family: var(--font-stack);
+}
+
+/**
+ * Long-form / layout simulation for the Docs tab only.
+ *
+ * Do not target `#storybook-root` here: the story canvas should match production
+ * (DS + component CSS only). Rules like paragraph max-width were affecting heroes
+ * and other components inside the iframe.
+ *
+ * DS max-width context:
+ * https://github.com/cfpb/design-system/blob/main/packages/cfpb-layout/src/cfpb-layout.scss#L210-L223
+ * https://github.com/cfpb/design-system/pull/1220
+ */
+#storybook-docs {
+  font-family: var(--font-stack);
+
+  dd,
+  dt,
+  label,
+  li,
+  p {
+    max-width: 41.875rem;
+  }
+
+  /** Applying DS font sizing **/
+  .sbdocs > p, // Custom overview page headings
+  .sbdocs .sbdocs-title + div p, // Auto-generated page headings
+  pre.prismjs // Code blocks
+  {
+    font-size: 16px;
+  }
+
+  /*
+  Make code block plain-text readable (workaround since we can't change code highlighting theme)
+  https://github.com/storybookjs/storybook/issues/9641
+  */
+  pre {
+    background-color: #2b2b2b;
+    color: white;
+    line-height: 22px !important;
+  }
+
+  /*
+  Readable docs prose line-height (avoid touching `.sb-story` embeds).
+  */
+  :where(p:not(.sb-story *)) {
+    line-height: 22px !important;
+  }
+}
+
+// Override DS wrapper match-content width to 1170px content with 30px gutters.
+.wrapper--match-content {
+  @include respond-to-min($bp-sm-min) {
+    max-width: $grid-wrapper-width - ($grid-gutter-width * 2) !important;
+  }
+}
