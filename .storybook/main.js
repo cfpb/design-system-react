@@ -11,6 +11,7 @@ export default {
     '@storybook/addon-docs',
     '@storybook/addon-vitest',
     'storybook-addon-tag-badges',
+    'storybook-font-inspector',
   ],
 
   docs: {

@@ -1,15 +1,19 @@
 import React from 'react';
-import '@fontsource-variable/source-sans-3';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
 
 const responsivePreviewQueryParameter = 'responsivePreview';
 
+// Match CFPB design-system breakpoints (16px root): large layout from 63.8125em (~1021px).
+// Hero `.m-hero__wrapper` uses min-height + em padding there; 1230px aligns with typical
+// max-width + gutters. Storybook also accepts ad-hoc sizes via globals.viewport.value like
+// `1230-900` (width-height, px by default) without adding an entry here.
 const viewportOptions = {
   desktop: {
     name: 'Desktop (901px and above)',
     styles: {
-      width: '1280px',
+      // Match design width; iframe uses content-box so border does not shrink the inner viewport.
+      width: '1230px',
       height: '900px',
     },
     type: 'desktop',
@@ -33,6 +37,10 @@ const viewportOptions = {
 };
 
 const responsivePreviewOptions = Object.entries(viewportOptions);
+
+/** Extra height on nested All-viewports iframes so :focus-visible rings are not clipped (outline
+ *  does not affect layout / scrollHeight). Covers checkbox, large target, fieldset, select, etc. */
+const RESPONSIVE_PREVIEW_FOCUS_VERTICAL_BUFFER_PX = 40;
 
 const shouldRenderSinglePreview = (context) => {
   const searchParameters = new URLSearchParams(globalThis.location.search);
@@ -63,26 +71,26 @@ const getFrameHeight = (frame) => {
   const { body, documentElement } = frameDocument;
   const storyRoot = frameDocument.getElementById('storybook-root');
 
-  if (storyRoot) {
-    const bodyStyles = frame.contentWindow?.getComputedStyle(body);
-    const verticalPadding =
-      parseFloat(bodyStyles?.paddingTop ?? '0') +
-      parseFloat(bodyStyles?.paddingBottom ?? '0');
-    const rootTop = storyRoot.getBoundingClientRect().top;
-    const contentBottom = Array.from(storyRoot.querySelectorAll('*')).reduce(
-      (bottom, element) =>
-        Math.max(bottom, element.getBoundingClientRect().bottom),
-      storyRoot.getBoundingClientRect().bottom,
+  if (storyRoot && body) {
+    const win = frame.contentWindow;
+    const bodyStyle = win?.getComputedStyle(body);
+    const bodyVerticalPadding =
+      parseFloat(bodyStyle?.paddingTop ?? '0') +
+      parseFloat(bodyStyle?.paddingBottom ?? '0');
+
+    // Prefer #storybook-root box for content height. `body.scrollHeight` alone often tracks the
+    // iframe’s current height (min-height / 100% chains). Add body vertical padding when the body
+    // has inset (single canvas). Do not add #storybook-root padding again — offsetHeight /
+    // scrollHeight already include it when `box-sizing: border-box` (nested All viewports).
+    const fromRoot = Math.max(
+      storyRoot.scrollHeight,
+      storyRoot.offsetHeight,
+      storyRoot.getBoundingClientRect().height,
     );
 
-    return Math.ceil(
-      Math.max(
-        storyRoot.getBoundingClientRect().height,
-        storyRoot.scrollHeight,
-        storyRoot.offsetHeight,
-        contentBottom - rootTop,
-      ) + verticalPadding,
-    );
+    if (fromRoot > 0) {
+      return Math.ceil(fromRoot + bodyVerticalPadding);
+    }
   }
 
   return Math.max(
@@ -94,12 +102,13 @@ const getFrameHeight = (frame) => {
 };
 
 const ResponsivePreviewFrame = ({ storyId, viewport }) => {
-  const [height, setHeight] = React.useState(240);
+  const [height, setHeight] = React.useState(64);
 
   const updateHeight = React.useCallback((frame) => {
     const measuredHeight = getFrameHeight(frame);
-
-    setHeight(Math.max(measuredHeight + 16, 160));
+    const padded = measuredHeight + RESPONSIVE_PREVIEW_FOCUS_VERTICAL_BUFFER_PX;
+    // Floor avoids 0 during load; buffer leaves room for focus outlines outside the layout box.
+    setHeight(Math.max(Math.ceil(padded), 1));
   }, []);
 
   return React.createElement('iframe', {
@@ -130,8 +139,12 @@ const ResponsivePreviewFrame = ({ storyId, viewport }) => {
     title: `${viewport.name} preview`,
     style: {
       background: 'white',
-      border: '1px solid #d0d0ce',
-      boxSizing: 'border-box',
+      // set border around the iframe
+      border: 'none',
+      // border-box would make width include the border, so a 900px frame only has ~898px for
+      // the document — content-box keeps viewport.styles.width as the iframe layout width.
+      boxSizing: 'content-box',
+      display: 'block',
       height,
       width: viewport.styles.width,
     },
@@ -149,9 +162,9 @@ const renderResponsivePreviews = (Story, context) => {
       style: {
         boxSizing: 'border-box',
         display: 'grid',
-        gap: '24px',
+        gap: '45px',
         overflowX: 'auto',
-        padding: '24px',
+        padding: '0px',
       },
     },
     responsivePreviewOptions.map(([key, viewport]) =>
@@ -161,19 +174,16 @@ const renderResponsivePreviews = (Story, context) => {
           key,
           style: {
             display: 'grid',
-            gap: '8px',
+            // gap: '15px',
             justifyItems: 'start',
           },
         },
         React.createElement(
-          'div',
+          'p',
           {
             style: {
-              color: '#5a5d61',
-              fontFamily: 'Source Sans 3 Variable, sans-serif',
-              fontSize: '14px',
-              fontWeight: 600,
-              lineHeight: 1.25,
+              color: '#43484e',
+              fontWeight: 500,
             },
           },
           `${viewport.name}`,
@@ -185,6 +195,45 @@ const renderResponsivePreviews = (Story, context) => {
       ),
     ),
   );
+};
+
+/** Storybook body classes applied by `parameters.layout` (see prepareForStory / WebView). */
+const STORYBOOK_LAYOUT_BODY_CLASSES = [
+  'sb-main-padded',
+  'sb-main-centered',
+  'sb-main-fullscreen',
+];
+
+/**
+ * Only force `sb-main-fullscreen` when a story opts in with `parameters.layout: 'fullscreen'`.
+ * Global `layout: 'fullscreen'` in preview was removed because it merges into docs `<Canvas>`.
+ *
+ * For the default (undefined / `padded`), Storybook already applies `sb-main-padded` — the same
+ * ~1rem inset as Overview / autodocs previews. Do not override that here.
+ *
+ * @type {(Story: any, context: any) => import('react').ReactElement}
+ */
+const withExplicitFullscreenStoryCanvas = (Story, context) => {
+  React.useLayoutEffect(() => {
+    if (context.viewMode !== 'story') {
+      return undefined;
+    }
+
+    if (context.parameters?.layout !== 'fullscreen') {
+      return undefined;
+    }
+
+    const { body } = document;
+
+    for (const className of STORYBOOK_LAYOUT_BODY_CLASSES) {
+      body.classList.remove(className);
+    }
+
+    body.classList.add('sb-main-fullscreen');
+    return undefined;
+  }, [context.viewMode, context.id, context.parameters?.layout]);
+
+  return React.createElement(Story);
 };
 
 export const globalTypes = {
@@ -203,12 +252,14 @@ export const globalTypes = {
 
 export const initialGlobals = {
   responsivePreview: 'single',
-  viewport: {
-    value: 'responsive',
-  },
+  // Omit `globals.viewport` so the toolbar defaults to "Reset viewport" (full canvas).
+  // Setting `value: 'desktop'` (or any named key) forces that preset for every story.
 };
 
-export const decorators = [renderResponsivePreviews];
+export const decorators = [
+  renderResponsivePreviews,
+  withExplicitFullscreenStoryCanvas,
+];
 
 export const preview = {
   globalTypes,
@@ -216,6 +267,11 @@ export const preview = {
   initialGlobals,
 
   parameters: {
+    // Default canvas padding matches Overview `<Canvas>` (`sb-main-padded`, 1rem). Stories that
+    // need edge-to-edge can set `parameters.layout: 'fullscreen'` (see
+    // `withExplicitFullscreenStoryCanvas`).
+    // https://storybook.js.org/docs/configure/story-layout
+
     viewport: {
       options: viewportOptions,
     },
