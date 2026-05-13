@@ -554,13 +554,33 @@
 <script>
   window.global = window;
 </script>
-    <script type="module" crossorigin src="./assets/iframe-Ca_s_Lb7.js"></script>
+
+<!-- Storybook default: `padding: 1rem` on `.sb-show-main.sb-main-padded` (base-preview-head.html).
+     - Main canvas: CFPB 15px ($space-sm).
+     - Nested "All viewports" (`?responsivePreview=off`): body padding 0; `#storybook-root` uses
+       vertical inset for focus plus small horizontal inset so outlines are not clipped at edges. -->
+<script>
+  (function applyCfpbStorybookCanvasPadding() {
+    var style = document.createElement('style');
+    if (new URLSearchParams(window.location.search).get('responsivePreview') === 'off') {
+      style.textContent =
+        '.sb-show-main.sb-main-padded { padding: 0 !important; }' +
+        'body.sb-show-main.sb-main-padded #storybook-root, body.sb-show-main.sb-main-centered #storybook-root { padding: 10px 3px !important; box-sizing: border-box !important; }';
+    } else {
+      style.textContent =
+        '.sb-show-main.sb-main-padded { padding: 30px; }' +
+        '.sb-show-main.sb-main-centered #storybook-root { padding: 15px; }';
+    }
+    document.head.appendChild(style);
+  })();
+</script>
+    <script type="module" crossorigin src="./assets/iframe-JqE-fWtL.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/chunk-DnJy8xQt.js">
     <link rel="modulepreload" crossorigin href="./assets/preload-helper-DVWkohm0.js">
     <link rel="modulepreload" crossorigin href="./assets/chunk-3LY4VQVK-BK_y2V4h.js">
     <link rel="modulepreload" crossorigin href="./assets/chunk-IH6QJILI-B_YiHGGa.js">
     <link rel="modulepreload" crossorigin href="./assets/create-D22VBZLI.js">
-    <link rel="stylesheet" crossorigin href="./assets/iframe-5VhMXM1V.css">
+    <link rel="stylesheet" crossorigin href="./assets/iframe-d7ujo8dh.css">
   </head>
 
   <body>
