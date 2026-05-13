@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { Heading, Icon } from '~/src/index';
-
 /**
  * A successful type hierarchy establishes the order of importance of elements on a page. Consistent scaling, weights, and capitalization are used to create distinction between headings and provide users with familiar focus points when scanning text.
  *
@@ -76,6 +76,20 @@ export const Eyebrow: Story = {
       <div className='h1'>Heading 1</div>
     </>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textElement = canvas.getByText(/Heading 1/i);
+
+    // Wait for all fonts in the document to finish loading
+    await document.fonts.ready;
+    // Check if your specific font is loaded and active
+    const isFontLoaded = document.fonts.check('16px "Source Sans 3 Variable"');
+    // Assert that the font is correctly loaded
+    await expect(isFontLoaded).toBe(true);
+    // Alternative: Assert the computed style of the element
+    const computedStyle = globalThis.getComputedStyle(textElement);
+    await expect(computedStyle.fontFamily).toContain('Source Sans 3 Variable');
+  },
 };
 
 export const Slug: Story = {

@@ -10,6 +10,7 @@ dist-storybook
 coverage
 .nyc_output
 .stylelintcache
+.cache/
 .env
 .pnp.*
 .yarn/*
