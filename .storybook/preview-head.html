@@ -1,3 +1,23 @@
 <script>
   window.global = window;
 </script>
+
+<!-- Storybook default: `padding: 1rem` on `.sb-show-main.sb-main-padded` (base-preview-head.html).
+     - Main canvas: CFPB 15px ($space-sm).
+     - Nested "All viewports" (`?responsivePreview=off`): body padding 0; `#storybook-root` uses
+       vertical inset for focus plus small horizontal inset so outlines are not clipped at edges. -->
+<script>
+  (function applyCfpbStorybookCanvasPadding() {
+    var style = document.createElement('style');
+    if (new URLSearchParams(window.location.search).get('responsivePreview') === 'off') {
+      style.textContent =
+        '.sb-show-main.sb-main-padded { padding: 0 !important; }' +
+        'body.sb-show-main.sb-main-padded #storybook-root, body.sb-show-main.sb-main-centered #storybook-root { padding: 10px 3px !important; box-sizing: border-box !important; }';
+    } else {
+      style.textContent =
+        '.sb-show-main.sb-main-padded { padding: 30px; }' +
+        '.sb-show-main.sb-main-centered #storybook-root { padding: 15px; }';
+    }
+    document.head.appendChild(style);
+  })();
+</script>
