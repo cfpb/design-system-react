@@ -42,7 +42,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Wrapper: Story = {
   args: {
+    // Order matches default Layout.Main layout "2-1" (main first, then sidebar).
     children: [
+      <Layout.Content key='content'>
+        <h1>Layout.Content</h1>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat
+          alias eum ut officiis optio similique explicabo cupiditate architecto
+          voluptatem nostrum recusandae, eaque consectetur iure, veritatis eos,
+          mollitia possimus error earum?
+        </p>
+      </Layout.Content>,
       <Layout.Sidebar key='sidebar'>
         <div>
           <h2>Layout.Sidebar</h2>
@@ -53,15 +63,6 @@ export const Wrapper: Story = {
           </ul>
         </div>
       </Layout.Sidebar>,
-      <Layout.Content key='content'>
-        <h1>Layout.Content</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat
-          alias eum ut officiis optio similique explicabo cupiditate architecto
-          voluptatem nostrum recusandae, eaque consectetur iure, veritatis eos,
-          mollitia possimus error earum?
-        </p>
-      </Layout.Content>,
     ],
   },
   render: ({ children }) => (

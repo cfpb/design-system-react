@@ -5,3 +5,60 @@
     margin-right: 0 !important;
   }
 }
+
+// At the two-column breakpoint, use flex so main and sidebar share the row height of the
+// taller column. The vertical divider is drawn from `.content__main::after` with `bottom: 0`,
+// so it only reaches the bottom of `.content__main`; stretching that box matches the divider
+// to the full sidebar/main height (CFPB DS uses inline-block, which does not equalize height).
+@media only screen and (width >= 56.3125em) {
+  .content--1-3 .wrapper,
+  .content--2-1 .wrapper {
+    align-items: stretch;
+    display: flex;
+  }
+
+  .content--1-3 .wrapper > .content__main,
+  .content--1-3 .wrapper > .content__sidebar,
+  .content--2-1 .wrapper > .content__main,
+  .content--2-1 .wrapper > .content__sidebar {
+    display: block;
+    margin-right: 0 !important;
+  }
+
+  .content--1-3 .wrapper > .content__sidebar {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .content--1-3 .wrapper > .content__main {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+
+  .content--2-1 .wrapper > .content__main {
+    flex: 0 0 66.6667%;
+    max-width: 66.6667%;
+  }
+
+  .content--2-1 .wrapper > .content__sidebar {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+
+  // CFPB DS 5.3.2 defines the column divider via `.content__main::after` for `content--1-3`
+  // but only emits `right: -1.875em` for `content--2-1` (no `content`, border, or positioning).
+  // Mirror the 1-3 rule so the vertical rule appears between main and a right-hand sidebar.
+  .content--2-1 .content__main {
+    position: relative;
+  }
+
+  .content--2-1 .content__main::after {
+    border-right: 1px solid var(--content-main-border);
+    bottom: 0;
+    content: '';
+    position: absolute;
+    right: -1.875em;
+    top: 2.8125em;
+    width: 0;
+  }
+}
