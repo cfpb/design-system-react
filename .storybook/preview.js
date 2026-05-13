@@ -38,6 +38,10 @@ const viewportOptions = {
 
 const responsivePreviewOptions = Object.entries(viewportOptions);
 
+/** Extra height on nested All-viewports iframes so :focus-visible rings are not clipped (outline
+ *  does not affect layout / scrollHeight). Covers checkbox, large target, fieldset, select, etc. */
+const RESPONSIVE_PREVIEW_FOCUS_VERTICAL_BUFFER_PX = 40;
+
 const shouldRenderSinglePreview = (context) => {
   const searchParameters = new URLSearchParams(globalThis.location.search);
 
@@ -69,18 +73,15 @@ const getFrameHeight = (frame) => {
 
   if (storyRoot && body) {
     const win = frame.contentWindow;
-    const rootStyle = win?.getComputedStyle(storyRoot);
     const bodyStyle = win?.getComputedStyle(body);
-    const rootVerticalPadding =
-      parseFloat(rootStyle?.paddingTop ?? '0') +
-      parseFloat(rootStyle?.paddingBottom ?? '0');
     const bodyVerticalPadding =
       parseFloat(bodyStyle?.paddingTop ?? '0') +
       parseFloat(bodyStyle?.paddingBottom ?? '0');
 
     // Prefer #storybook-root box for content height. `body.scrollHeight` alone often tracks the
-    // iframe’s current height (min-height / 100% chains). Always add body vertical padding when
-    // `.sb-main-padded` is active — omitting it sizes the iframe too short and clips (e.g. links).
+    // iframe’s current height (min-height / 100% chains). Add body vertical padding when the body
+    // has inset (single canvas). Do not add #storybook-root padding again — offsetHeight /
+    // scrollHeight already include it when `box-sizing: border-box` (nested All viewports).
     const fromRoot = Math.max(
       storyRoot.scrollHeight,
       storyRoot.offsetHeight,
@@ -88,9 +89,7 @@ const getFrameHeight = (frame) => {
     );
 
     if (fromRoot > 0) {
-      return Math.ceil(
-        fromRoot + rootVerticalPadding + bodyVerticalPadding,
-      );
+      return Math.ceil(fromRoot + bodyVerticalPadding);
     }
   }
 
@@ -107,8 +106,9 @@ const ResponsivePreviewFrame = ({ storyId, viewport }) => {
 
   const updateHeight = React.useCallback((frame) => {
     const measuredHeight = getFrameHeight(frame);
-    // No large minimum — small atoms (radio, label) should hug content. Floor avoids 0 during load.
-    setHeight(Math.max(Math.ceil(measuredHeight), 1));
+    const padded = measuredHeight + RESPONSIVE_PREVIEW_FOCUS_VERTICAL_BUFFER_PX;
+    // Floor avoids 0 during load; buffer leaves room for focus outlines outside the layout box.
+    setHeight(Math.max(Math.ceil(padded), 1));
   }, []);
 
   return React.createElement('iframe', {
