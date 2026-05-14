@@ -4,6 +4,19 @@ import themeCFPB from './themeCFPB';
 
 const responsivePreviewQueryParameter = 'responsivePreview';
 
+/** Query key read by `.storybook/preview-head.html` inside nested “All viewports” iframes. */
+const nestedCanvasPaddingQueryParameter = 'sbNestedCanvasPadding';
+
+/**
+ * Nested All-viewports iframes use `responsivePreview=off`. Padding on `#storybook-root` keeps
+ * `:focus-visible` rings visible. Full-bleed stories set `parameters.sbNestedCanvasPadding: 'flush'`.
+ *
+ * @param {Record<string, unknown> | undefined} parameters
+ * @returns {'focus' | 'flush'}
+ */
+const getNestedCanvasPaddingMode = (parameters) =>
+  parameters?.sbNestedCanvasPadding === 'flush' ? 'flush' : 'focus';
+
 // Match CFPB design-system breakpoints (16px root): large layout from 63.8125em (~1021px).
 // Hero `.m-hero__wrapper` uses min-height + em padding there; 1230px aligns with typical
 // max-width + gutters. Storybook also accepts ad-hoc sizes via globals.viewport.value like
@@ -52,13 +65,17 @@ const shouldRenderSinglePreview = (context) => {
   );
 };
 
-const getPreviewSource = (storyId) => {
+const getPreviewSource = (storyId, nestedCanvasPaddingMode) => {
   const url = new URL(globalThis.location.href);
 
   url.search = '';
   url.searchParams.set('id', storyId);
   url.searchParams.set('viewMode', 'story');
   url.searchParams.set(responsivePreviewQueryParameter, 'off');
+
+  if (nestedCanvasPaddingMode === 'flush') {
+    url.searchParams.set(nestedCanvasPaddingQueryParameter, 'flush');
+  }
 
   return url.toString();
 };
@@ -101,7 +118,7 @@ const getFrameHeight = (frame) => {
   );
 };
 
-const ResponsivePreviewFrame = ({ storyId, viewport }) => {
+const ResponsivePreviewFrame = ({ storyId, viewport, nestedCanvasPaddingMode }) => {
   const [height, setHeight] = React.useState(64);
 
   const updateHeight = React.useCallback((frame) => {
@@ -135,7 +152,7 @@ const ResponsivePreviewFrame = ({ storyId, viewport }) => {
         if (storyRoot) observer.observe(storyRoot);
       }
     },
-    src: getPreviewSource(storyId),
+    src: getPreviewSource(storyId, nestedCanvasPaddingMode),
     title: `${viewport.name} preview`,
     style: {
       background: 'white',
@@ -155,6 +172,8 @@ const renderResponsivePreviews = (Story, context) => {
   if (shouldRenderSinglePreview(context)) {
     return React.createElement(Story);
   }
+
+  const nestedCanvasPaddingMode = getNestedCanvasPaddingMode(context.parameters);
 
   return React.createElement(
     'div',
@@ -191,6 +210,7 @@ const renderResponsivePreviews = (Story, context) => {
         React.createElement(ResponsivePreviewFrame, {
           storyId: context.id,
           viewport,
+          nestedCanvasPaddingMode,
         }),
       ),
     ),
