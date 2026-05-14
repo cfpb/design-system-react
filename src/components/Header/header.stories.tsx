@@ -7,6 +7,9 @@ const meta: Meta<typeof Header> = {
   tags: ['autodocs'],
   component: Header,
   argTypes: {},
+  parameters: {
+    sbNestedCanvasPadding: 'flush',
+  },
 };
 
 export default meta;

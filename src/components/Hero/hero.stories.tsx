@@ -6,6 +6,7 @@ const meta: Meta<typeof Hero> = {
   component: Hero,
   tags: ['autodocs'],
   parameters: {
+    sbNestedCanvasPadding: 'flush',
     docs: {
       description: {
         component: `

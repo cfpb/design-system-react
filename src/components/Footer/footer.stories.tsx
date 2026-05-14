@@ -6,6 +6,9 @@ const meta: Meta<typeof Footer> = {
   tags: ['autodocs'],
   component: Footer,
   argTypes: {},
+  parameters: {
+    sbNestedCanvasPadding: 'flush',
+  },
 };
 
 export default meta;
