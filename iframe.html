@@ -558,14 +558,23 @@
 <!-- Storybook default: `padding: 1rem` on `.sb-show-main.sb-main-padded` (base-preview-head.html).
      - Main canvas: CFPB 15px ($space-sm).
      - Nested "All viewports" (`?responsivePreview=off`): body padding 0; `#storybook-root` uses
-       vertical inset for focus plus small horizontal inset so outlines are not clipped at edges. -->
+       vertical inset for focus plus small horizontal inset so outlines are not clipped at edges.
+       Full-bleed stories pass `sbNestedCanvasPadding=flush` (via `parameters.sbNestedCanvasPadding`
+       in preview.js) to use zero inset instead. -->
 <script>
   (function applyCfpbStorybookCanvasPadding() {
     var style = document.createElement('style');
-    if (new URLSearchParams(window.location.search).get('responsivePreview') === 'off') {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('responsivePreview') === 'off') {
+      var rootInset =
+        params.get('sbNestedCanvasPadding') === 'flush'
+          ? 'padding: 0 !important;'
+          : 'padding: 10px 3px !important;';
       style.textContent =
         '.sb-show-main.sb-main-padded { padding: 0 !important; }' +
-        'body.sb-show-main.sb-main-padded #storybook-root, body.sb-show-main.sb-main-centered #storybook-root { padding: 10px 3px !important; box-sizing: border-box !important; }';
+        'body.sb-show-main.sb-main-padded #storybook-root, body.sb-show-main.sb-main-centered #storybook-root { ' +
+        rootInset +
+        ' box-sizing: border-box !important; }';
     } else {
       style.textContent =
         '.sb-show-main.sb-main-padded { padding: 30px; }' +
@@ -574,7 +583,7 @@
     document.head.appendChild(style);
   })();
 </script>
-    <script type="module" crossorigin src="/design-system-react/assets/iframe-k9R4faHq.js"></script>
+    <script type="module" crossorigin src="/design-system-react/assets/iframe-CZ5BgtXu.js"></script>
     <link rel="modulepreload" crossorigin href="/design-system-react/assets/chunk-DnJy8xQt.js">
     <link rel="modulepreload" crossorigin href="/design-system-react/assets/preload-helper-BW8F3-VV.js">
     <link rel="modulepreload" crossorigin href="/design-system-react/assets/chunk-3LY4VQVK-BK_y2V4h.js">
