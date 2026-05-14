@@ -11,6 +11,8 @@ const meta: Meta<typeof Hero> = {
         component: `
 Heroes are a primary focal point on landing and sublanding pages. They introduce a collection of pages by combining a brief description of the goals of that section along with a visually impactful graphic. To introduce lower-level pages, use the [text introduction](https://cfpb.github.io/design-system/patterns/text-introductions) instead.
 
+This component supports illustration, photograph (overlay), and knockout variants only — not the DS jumbo or 50/50 patterns.
+
 Source: https://cfpb.github.io/design-system/patterns/heroes
 `,
       },
@@ -39,33 +41,6 @@ export const WithPhotograph: Story = {
     imageIsPhoto: true,
     image: 'https://files.consumerfinance.gov/f/images/PC_hero.original.jpg',
     backgroundColor: '#f7f8f9',
-  },
-};
-
-export const Jumbo: Story = {
-  args: {
-    ...WithIllustration.args,
-    heading: '50 chars max for a two-line heading',
-    subheading:
-      'This text has a recommended count of 140-175 characters (four lines at 1230px) following a two- or three-line heading.',
-    isJumbo: true,
-    image:
-      'https://cfpb.github.io/design-system/images/uploads/jumbo_hero_image_wide.jpeg',
-    backgroundColor: 'rgb(168,213,200	)',
-  },
-};
-
-export const FiftyFifty: Story = {
-  name: '50/50',
-  args: {
-    ...WithIllustration.args,
-    heading: '50 chars max for a two-line heading',
-    subheading:
-      'This text has a recommended count of 140-175 characters (four lines at 1230px) following a two- or three-line heading.',
-    is5050: true,
-    image:
-      'https://cfpb.github.io/design-system/images/uploads/jumbo-hero-image.png',
-    backgroundColor: 'white',
   },
 };
 
