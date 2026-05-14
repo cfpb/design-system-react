@@ -2,11 +2,12 @@ import {
   forwardRef,
   JSX,
   type ButtonHTMLAttributes,
+  type MouseEvent,
   type ReactNode,
 } from 'react';
 import { Icon } from '../Icon/icon';
 
-interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Button contents
    */
@@ -26,7 +27,7 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Optional click handler
    */
-  onClick?: () => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   /**
    * Button should be styled as a link?
    */
