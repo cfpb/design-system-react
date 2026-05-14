@@ -15,8 +15,6 @@ interface HeroProperties extends HTMLAttributes<HTMLDivElement> {
   image?: string;
   imageAltText?: string;
   imageIsPhoto?: boolean;
-  is5050?: boolean;
-  isJumbo?: boolean;
   isKnockout?: boolean;
   subheading?: ReactNode;
   subheadingLevel?: HeadingLevel | 'p';
@@ -33,8 +31,6 @@ export default function Hero({
   image,
   imageAltText = 'hero image',
   imageIsPhoto,
-  is5050,
-  isJumbo,
   isKnockout,
   subheading,
   subheadingLevel = 'p',
@@ -42,15 +38,12 @@ export default function Hero({
   className,
   ...properties
 }: HeroProperties): JSX.Element {
-  const addWrapperImage = imageIsPhoto ?? isJumbo ?? is5050;
-  const wrapperReference = useBackgroundImage(image, addWrapperImage);
+  const wrapperReference = useBackgroundImage(image, Boolean(imageIsPhoto));
 
   const heroStyles = { backgroundColor };
   const textStyles = { color: textColor };
   const heroCnames = ['m-hero', className];
 
-  if (isJumbo) heroCnames.push('m-hero--jumbo');
-  if (is5050) heroCnames.push('m-hero--50-50');
   if (isKnockout) heroCnames.push('m-hero--knockout');
   if (imageIsPhoto) heroCnames.push('m-hero--overlay');
 

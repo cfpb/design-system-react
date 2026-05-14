@@ -19,20 +19,14 @@ describe('Hero', () => {
 
     expect(screen.getByText(heading).className).toMatch(/m-hero__heading/g);
     expect(screen.getByText(subheading).className).toMatch(/m-hero__subhead/g);
-    expect(screen.getByAltText(imageText).className).toMatch(/m-hero__image/g);
+    expect(screen.getByRole('img', { name: imageText }).className).toMatch(
+      /m-hero__image/g,
+    );
   });
 
   it('Derives CSS classes for component variations', () => {
-    const isJumbo = 'm-hero--jumbo';
-    const is5050 = 'm-hero--50-50';
     const isKnockout = 'm-hero--knockout';
     const imageIsPhoto = 'm-hero--overlay';
-
-    render(<Hero isJumbo data-testid={isJumbo} />);
-    expect(screen.getByTestId(isJumbo).className).toMatch(isJumbo);
-
-    render(<Hero is5050 data-testid={is5050} />);
-    expect(screen.getByTestId(is5050).className).toMatch(is5050);
 
     render(<Hero isKnockout data-testid={isKnockout} />);
     expect(screen.getByTestId(isKnockout).className).toMatch(isKnockout);
