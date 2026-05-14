@@ -207,11 +207,6 @@
     }
   }
 
-  @include respond-to-range($bp-sm-min, $bp-sm-max) {
-    margin-left: -1.875rem;
-    margin-right: -1.875rem;
-  }
-
   // Desktop and above.
   @include respond-to-min($bp-med-min) {
     .o-secondary-nav {
