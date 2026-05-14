@@ -1247,6 +1247,7 @@ __metadata:
     "@cfpb/cfpb-design-system": "npm:5.3.3"
     "@chromatic-com/storybook": "npm:^5.1.2"
     "@eslint/js": "npm:^10.0.1"
+    "@fontsource-variable/source-sans-3": "npm:5.2.9"
     "@nabla/vite-plugin-eslint": "npm:^3.0.1"
     "@storybook/addon-a11y": "npm:^10.3.6"
     "@storybook/addon-docs": "npm:^10.3.6"
@@ -1303,6 +1304,7 @@ __metadata:
     start-server-and-test: "npm:3.0.2"
     storybook: "npm:^10.3.6"
     storybook-addon-tag-badges: "npm:^3.1.0"
+    storybook-font-inspector: "npm:^1.1.7"
     stylelint: "npm:^17.11.0"
     stylelint-config-standard-scss: "npm:^17.0.0"
     typescript: "npm:^6.0.3"
@@ -3028,6 +3030,16 @@ __metadata:
   version: 5.0.0
   resolution: "@storybook/global@npm:5.0.0"
   checksum: 10/0e7b495f4fe7f36447e793926f1c0460ec07fd66f0da68e3150da5878f6043c9eeb9b41614a45c5ec0d48d5d383c59ca8f88b6dc7882a2a784ac9b20375d8edb
+  languageName: node
+  linkType: hard
+
+"@storybook/icons@npm:^1.4.0":
+  version: 1.6.0
+  resolution: "@storybook/icons@npm:1.6.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+  checksum: 10/f9036ca3b0d2904778eb4e202305f2780b549434380f9760f0bc704fe3ee19d7332f9560a66435ebb2156346cee9a863e40fa5e4b27790bf993b0c1180a3146d
   languageName: node
   linkType: hard
 
@@ -10373,6 +10385,17 @@ __metadata:
   peerDependencies:
     storybook: ^10.0.0
   checksum: 10/182a2fff6837a7ea1cec1317a4c3f14d6b6a7f663964b24092803049291e63e14f8af0f8e25e98026ceeaa21d30473424dd35d0db4503e16704d563078ec72ce
+  languageName: node
+  linkType: hard
+
+"storybook-font-inspector@npm:^1.1.7":
+  version: 1.1.7
+  resolution: "storybook-font-inspector@npm:1.1.7"
+  dependencies:
+    "@storybook/icons": "npm:^1.4.0"
+  peerDependencies:
+    storybook: ^9.0.0
+  checksum: 10/8864b2725a17432926d36384357cc7050db6e9efb2085528167b0f7c1534e96931215896a302852b0de814cd924e556436f0580c4116fa0e56d64c7403d12364
   languageName: node
   linkType: hard
 

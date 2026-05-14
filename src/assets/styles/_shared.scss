@@ -1,5 +1,6 @@
 @use './variables';
 @use 'sass:math';
+@use 'sass:string';
 @use '@cfpb/cfpb-design-system/src/index' as *;
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
 @use '@cfpb/cfpb-design-system/src/elements/base' as base;
@@ -11,11 +12,31 @@
 */
 
 /**
- * DS font stack everywhere (canvas + docs).
+ * Source Sans 3 is loaded via @fontsource in app / Storybook preview entrypoints.
+ *
+ * DS `custom-props` sets `--font-stack-branded: initial`, so `var(--font-stack)` falls back to
+ * `system-ui`. Other DS chunks can repeat that `:root` block when code-split; in dev the last
+ * chunk can win and wipe a non-`!important` override. Pin both tokens with `!important` so inputs,
+ * buttons, and body always match.
+ *
+ * `html` / `body` / Storybook roots also get an explicit stack so we are not only relying on
+ * custom properties for the main canvas.
  */
+// Literal stack (quoted multi-word family) — matches app / design-system expectations.
+$_ds-font-stack: string.unquote('"Source Sans 3 Variable", Arial, sans-serif');
+
 :root {
-  --font-stack: 'Source Sans 3 Variable', 'Source Sans Pro', 'Arial', sans-serif;
-  font-family: var(--font-stack);
+  --font-stack-branded: #{$_ds-font-stack} !important;
+  --font-stack: #{$_ds-font-stack} !important;
+}
+
+// `!important` beats DS normalize `html { font-family: sans-serif }` if chunk
+// order ever places that rule after this file (e.g. code-splitting in dev).
+html,
+body,
+#storybook-root,
+#storybook-docs {
+  font-family: #{$_ds-font-stack} !important;
 }
 
 /**
@@ -30,8 +51,6 @@
  * https://github.com/cfpb/design-system/pull/1220
  */
 #storybook-docs {
-  font-family: var(--font-stack);
-
   dd,
   dt,
   label,
