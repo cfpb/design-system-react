@@ -5,7 +5,7 @@ import { Button } from '../Buttons/button';
 import type { ButtonProperties } from '../Buttons/button';
 import './tab.scss';
 
-export interface TabProperties extends Omit<ButtonProperties, 'appearance' | 'size' |'isLink'> {
+export interface TabProperties extends Omit<ButtonProperties, 'appearance' | 'size' | 'isLink'> {
   /**
    * Id for the tab. Allows it to be associated with its content panel.
    */
