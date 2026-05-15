@@ -24,11 +24,6 @@ $max-width: $bp-sm-max;
         align-items: stretch;
         padding: 0;
         min-height: 60px;
-
-        &.wrapper.wrapper--match-content {
-          padding-left: 0 !important;
-          padding-right: 0 !important;
-        }
       }
 
       @media (min-width: $breakpoint) {
