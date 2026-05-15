@@ -1,4 +1,8 @@
 import React from 'react';
+// Same as `src/index.ts`: ensure @font-face is in the preview entry so nested “All viewports”
+// iframes (cold `iframe.html` loads) always register Source Sans 3 Variable, not only when a
+// story imports the barrel.
+import '@fontsource-variable/source-sans-3';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
 
