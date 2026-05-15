@@ -1,11 +1,26 @@
 import React, { JSX, useCallback, useState } from 'react';
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
-import CFPBLogo from '../../assets/images/cfpb-logo.png';
+import logo161w from '../../assets/images/cfpb-header/logo-161w.png?url';
+import logo237w from '../../assets/images/cfpb-header/logo-237w.png?url';
+import logo322w from '../../assets/images/cfpb-header/logo-322w.png?url';
+import logo474w from '../../assets/images/cfpb-header/logo-474w.png?url';
+import logo483w from '../../assets/images/cfpb-header/logo-483w.png?url';
+import logo644w from '../../assets/images/cfpb-header/logo-644w.png?url';
 import { Button } from '../Buttons/button';
 import { Icon } from '../Icon/icon';
 import Link from '../Link/link';
 import type { JSXElement } from '../../types/jsx-element';
 import './responsive-menu.scss';
+
+/** Matches consumerfinance.gov header logo `srcset` (see static/img on the live site). */
+const CFPB_HEADER_LOGO_SRCSET = [
+  `${logo161w} 161w`,
+  `${logo322w} 322w`,
+  `${logo483w} 483w`,
+  `${logo644w} 644w`,
+  `${logo237w} 237w`,
+  `${logo474w} 474w`,
+].join(', ');
 
 interface CfpbLogoProperties {
   href?: string;
@@ -22,7 +37,15 @@ export function CfpbLogo({
       aria-label='Home'
       className='o-header__logo'
     >
-      <img className='o-header__logo-img' src={CFPBLogo} alt='CFPB Logo' />
+      <img
+        alt='Consumer Financial Protection Bureau'
+        className='o-header__logo-img'
+        height={50}
+        sizes='(max-width: 900px) 161px, 237px'
+        src={logo237w}
+        srcSet={CFPB_HEADER_LOGO_SRCSET}
+        width={237}
+      />
     </Link>
   );
 }

@@ -35,7 +35,9 @@ describe('ResponsiveMenu', () => {
     expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
 
     expect(screen.getByTestId('CfpbLogoLink')).toBeInTheDocument();
-    expect(screen.getByAltText('CFPB Logo')).toBeInTheDocument();
+    expect(
+      screen.getByAltText('Consumer Financial Protection Bureau'),
+    ).toBeInTheDocument();
   });
 
   it('renders with custom links', () => {

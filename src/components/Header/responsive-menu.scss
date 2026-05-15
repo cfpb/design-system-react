@@ -31,29 +31,27 @@ $max-width: $breakpoint - 0.0625em;
         align-items: center;
       }
 
+      // Slot widths match logo `sizes` on consumerfinance.gov: 161px ≤900px, 237px above.
       .o-header__logo {
-        min-width: 237px;
+        min-width: 161px;
+
+        @media (min-width: $breakpoint) {
+          min-width: 237px;
+        }
 
         @media (max-width: $max-width) {
           border-left: 1px solid var(--gray-40);
           padding-left: 15px;
-          .o-header__logo-img {
-            height: 40px;
-          }
         }
       }
 
       .o-header__logo-img {
-        height: 34px;
+        display: block;
+        height: auto;
+        width: auto;
+        max-width: 100%;
         margin-top: 10px;
         margin-bottom: 10px;
-        vertical-align: middle;
-      }
-
-      @media (min-width: $breakpoint) {
-        .o-header__logo-img {
-          height: 50px;
-        }
       }
 
       .menu-toggle {
