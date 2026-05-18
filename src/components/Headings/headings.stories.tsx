@@ -105,7 +105,7 @@ export const WithIcon: Story = {
   },
   render: (arguments_) => (
     <Heading {...arguments_}>
-      <Icon name='help' /> Information
+      <Icon name='taxes' /> Information
     </Heading>
   ),
 };
