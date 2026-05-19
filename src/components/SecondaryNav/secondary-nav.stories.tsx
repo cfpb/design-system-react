@@ -33,59 +33,59 @@ type Story = StoryObj<typeof meta>;
 
 /** 1. Flat links only; none marked current. */
 const basicNoChildren: SecondaryNavItem[] = [
-  { href: '#topic-a', label: 'Section A' },
-  { href: '#topic-b', label: 'Section B' },
-  { href: '#topic-c', label: 'Section C' },
+  { href: '#', label: 'Section A' },
+  { href: '#', label: 'Section B' },
+  { href: '#', label: 'Section C' },
 ];
 
 /** 2. Flat list; one top-level item is the current page. */
 const basicNoChildrenWithCurrent: SecondaryNavItem[] = [
-  { href: '#topic-a', label: 'Section A' },
-  { href: '#topic-b', label: 'Section B', isActive: true },
-  { href: '#topic-c', label: 'Section C' },
+  { href: '#', label: 'Section A' },
+  { href: '#', label: 'Section B', isActive: true },
+  { href: '#', label: 'Section C' },
 ];
 
 /** 3. Nested items; no \`isActive\` on parents or children. */
 const withChildrenNoActive: SecondaryNavItem[] = [
   {
     label: 'Section 1',
-    href: '#section-1',
+    href: '#',
     children: [
-      { href: '#section-1-a', label: 'Item A' },
-      { href: '#section-1-b', label: 'Item B' },
+      { href: '#', label: 'Item A' },
+      { href: '#', label: 'Item B' },
     ],
   },
-  { href: '#section-2', label: 'Section 2' },
-  { href: '#section-3', label: 'Section 3' },
+  { href: '#', label: 'Section 2' },
+  { href: '#', label: 'Section 3' },
 ];
 
 /** 4. Current page is the parent “index”; children are links but none are active. */
 const withChildrenActiveParent: SecondaryNavItem[] = [
   {
     label: 'Section 1',
-    href: '#section-1',
+    href: '#',
     isActive: true,
     children: [
-      { href: '#section-1-a', label: 'Item A' },
-      { href: '#section-1-b', label: 'Item B' },
+      { href: '#', label: 'Item A' },
+      { href: '#', label: 'Item B' },
     ],
   },
-  { href: '#section-2', label: 'Section 2' },
+  { href: '#', label: 'Section 2' },
 ];
 
 /** 5. Typical subpage: one child is the current page. */
 const withChildrenActiveChild: SecondaryNavItem[] = [
   {
     label: 'Section 1',
-    href: '#section-1',
+    href: '#',
     children: [
-      { href: '#section-1-a', label: 'Item A', isActive: true },
-      { href: '#section-1-b', label: 'Item B' },
-      { href: '#section-1-c', label: 'Item C' },
+      { href: '#', label: 'Item A', isActive: true },
+      { href: '#', label: 'Item B' },
+      { href: '#', label: 'Item C' },
     ],
   },
-  { href: '#section-2', label: 'Section 2' },
-  { href: '#section-3', label: 'Section 3' },
+  { href: '#', label: 'Section 2' },
+  { href: '#', label: 'Section 3' },
 ];
 
 export const BasicMenuNoChildren: Story = {
