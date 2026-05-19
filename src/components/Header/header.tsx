@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
 import { Banner } from '../Banner/banner';
+import type { LogoLanguage } from './logo';
 import ResponsiveMenu from './responsive-menu';
 import './header.scss';
 
@@ -8,6 +9,7 @@ export interface HeaderProperties {
   links?: JSX.Element[];
   href?: string;
   withBottomBorder?: boolean;
+  lang?: LogoLanguage;
 }
 
 /**
@@ -18,6 +20,7 @@ export const Header = ({
   links,
   href,
   withBottomBorder = true,
+  lang = 'en',
 }: HeaderProperties): JSX.Element => {
   const headerClasses = ['o-header'];
   if (withBottomBorder) headerClasses.push('bottom-border');
@@ -26,7 +29,7 @@ export const Header = ({
     <div className='o-header-scope'>
       <header className={classnames(headerClasses)}>
         <Banner tagline='An official website of the United States government' />
-        <ResponsiveMenu links={links} href={href} />
+        <ResponsiveMenu links={links} href={href} lang={lang} />
       </header>
     </div>
   );

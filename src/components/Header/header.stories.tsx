@@ -6,7 +6,13 @@ const meta: Meta<typeof Header> = {
   title: 'Components (Draft)/Header',
   tags: ['autodocs'],
   component: Header,
-  argTypes: {},
+  argTypes: {
+    lang: {
+      control: 'select',
+      options: ['en', 'es'],
+      description: 'Logo language (English or Spanish)',
+    },
+  },
   parameters: {
     sbNestedCanvasPadding: 'flush',
   },
@@ -21,5 +27,6 @@ export const Default: Story = {
   render: (properties) => <Header {...properties} />,
   args: {
     links: ExampleLinks,
+    lang: 'en',
   },
 };

@@ -112,4 +112,14 @@ describe('ResponsiveMenu', () => {
     const logoLink = screen.getByTestId('CfpbLogoLink');
     expect(logoLink).toHaveAttribute('href', customHref);
   });
+
+  it('renders the Spanish logo when lang is es', () => {
+    renderWithScope(<ResponsiveMenu lang='es' />);
+
+    expect(
+      screen.getByAltText(
+        'Oficina para la Protección Financiera del Consumidor',
+      ),
+    ).toBeInTheDocument();
+  });
 });
