@@ -1,0 +1,8 @@
+import{i as e}from"./preload-helper-Cs4UwXAW.js";import{t}from"./jsx-runtime-6SDZnDXc.js";import{_ as n,g as r,h as i,t as a}from"./src-BcyKYYT0.js";var o,s,c,l;e((()=>{a(),n(),o=t(),s={title:`Components (Draft)/Header`,tags:[`autodocs`],component:i,argTypes:{lang:{control:`select`,options:[`en`,`es`],description:`Logo language (English or Spanish)`}},parameters:{sbNestedCanvasPadding:`flush`}},c={name:`Header`,render:e=>(0,o.jsx)(i,{...e}),args:{links:r,lang:`en`}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
+  name: 'Header',
+  render: properties => <Header {...properties} />,
+  args: {
+    links: ExampleLinks,
+    lang: 'en'
+  }
+}`,...c.parameters?.docs?.source}}},l=[`Default`]}))();export{c as Default,l as __namedExportsOrder,s as default};
