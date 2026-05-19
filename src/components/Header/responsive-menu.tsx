@@ -1,6 +1,6 @@
 import React, { JSX, useCallback, useState } from 'react';
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
-import CFPBLogo from '../../assets/images/cfpb_logo_test_238_cropped_fourth_try.svg?url';
+import CFPBLogo from '../../assets/images/cfpb_logo.svg?url';
 import { Button } from '../Buttons/button';
 import { Icon } from '../Icon/icon';
 import Link from '../Link/link';
