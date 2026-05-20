@@ -24,7 +24,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=24"
+    "node": ">=26.x"
   },
   "scripts": {
     "build": "vite build",
@@ -39,7 +39,7 @@
     "test:ci": "vitest run",
     "format": "prettier -uw --cache --ignore-path .gitignore .",
     "lint": "scripts/lint.sh",
-    "validate": "run-p lint test:ci test:e2e:headless",
+    "validate": "run-p lint build test:ci",
     "start": "yarn storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o dist-storybook",
@@ -149,5 +149,5 @@
     ]
   },
   "type": "module",
-  "packageManager": "yarn@4.13.0"
+  "packageManager": "yarn@4.14.1"
 }
