@@ -558,9 +558,10 @@
 <!-- Storybook default: `padding: 1rem` on `.sb-show-main.sb-main-padded` (base-preview-head.html).
      - Main canvas: CFPB 15px ($space-sm).
      - Nested "All viewports" (`?responsivePreview=off`): body padding 0; `#storybook-root` uses
-       vertical inset for focus plus small horizontal inset so outlines are not clipped at edges.
-       Full-bleed stories pass `sbNestedCanvasPadding=flush` (via `parameters.sbNestedCanvasPadding`
-       in preview.js) to use zero inset instead. -->
+       vertical inset for focus plus 3px horizontal inset each side (6px narrower than the iframe
+       width when you measure `#storybook-root` children). Full-bleed stories pass
+       `sbNestedCanvasPadding=flush` (via `parameters.sbNestedCanvasPadding` in preview.js) for
+       zero inset instead. -->
 <script>
   (function applyCfpbStorybookCanvasPadding() {
     var style = document.createElement('style');
@@ -583,7 +584,7 @@
     document.head.appendChild(style);
   })();
 </script>
-    <script type="module" crossorigin src="/design-system-react/assets/iframe-ByQ_kEn3.js"></script>
+    <script type="module" crossorigin src="/design-system-react/assets/iframe-DA5nto0M.js"></script>
     <link rel="modulepreload" crossorigin href="/design-system-react/assets/preload-helper-CytgIKOt.js">
     <link rel="stylesheet" crossorigin href="/design-system-react/assets/iframe-CynK9IU5.css">
   </head>
