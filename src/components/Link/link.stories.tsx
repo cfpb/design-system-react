@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { BrowserRouter } from 'react-router';
 import { expect, within } from 'storybook/test';
-import { Heading, Link, List, ListLink } from '~/src/index';
+import type { JSXElement } from "../../types/jsx-element";
+import { DSRContext, Heading, Link, List, ListLink, type BaseLinkProperties } from '~/src/index';
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',
   tags: ['autodocs'],
   component: Link,
+  excludeStories: ['CustomLinkComponent']
 };
 
 export default meta;
@@ -15,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 const DefaultArguments = {
   args: {
-    href: '#',
+    to: '#',
     children: 'Link Text',
   },
 };
@@ -23,19 +24,19 @@ const DefaultArguments = {
 export const Inline: Story = {
   render: () => (
     <p>
-      Here&apos;s the default <Link href='/#' label='inline link' /> style.
+      Here&apos;s the default <Link to='/#' label='inline link' /> style.
     </p>
   ),
 };
 
 export const Standalone: Story = {
   render: (arguments_) => (
-    <Link {...arguments_} href='/#' isJump label='Standalone link' />
+    <Link {...arguments_} to='/#' isJump label='Standalone link' />
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByRole('link', { name: /standalone link/i });
-    await expect(link).toHaveAttribute('href', '/#');
+    await expect(link).toHaveAttribute('to', '/#');
   },
 };
 
@@ -50,13 +51,13 @@ export const WithIcon: Story = {
       <p>
         The document icon should emphasize a link that contains a{' '}
         <Link
-          href={DefaultArguments.args.href}
+          to={DefaultArguments.args.to}
           label='file or document'
           iconRight='download'
         />
         . The external link icon is used to emphasize a link to a{' '}
         <Link
-          href={DefaultArguments.args.href}
+          to={DefaultArguments.args.to}
           label='non-CFPB webpage'
           iconRight='external-link'
         />
@@ -66,7 +67,7 @@ export const WithIcon: Story = {
       <p>
         <Link
           isJump
-          href='https://www.example.com'
+          to='https://www.example.com'
           iconLeft='left'
           label='Go back'
         />
@@ -74,7 +75,7 @@ export const WithIcon: Story = {
       <p>
         <Link
           isJump
-          href='https://www.example.com'
+          to='https://www.example.com'
           label='Continue'
           iconRight='right'
         />
@@ -82,7 +83,7 @@ export const WithIcon: Story = {
       <p>
         <Link
           isJump
-          href='https://www.example.com'
+          to='https://www.example.com'
           label='External link'
           iconRight='external-link'
         />
@@ -90,7 +91,7 @@ export const WithIcon: Story = {
       <p>
         <Link
           isJump
-          href='https://www.example.com'
+          to='https://www.example.com'
           label='Document or file'
           iconRight='document'
         />
@@ -106,9 +107,9 @@ export const Listlink: Story = {
   },
   render: () => (
     <List isLinks>
-      <ListLink href='/#' label='List item 1' />
-      <ListLink href='/#' label='List item 2' />
-      <ListLink href='/#' label='List item 3' />
+      <ListLink to='/#' label='List item 1' />
+      <ListLink to='/#' label='List item 2' />
+      <ListLink to='/#' label='List item 3' />
     </List>
   ),
 };
@@ -117,22 +118,45 @@ export const Destructive: Story = {
   args: {
     ...DefaultArguments.args,
   },
-  render: () => <Link href='/#' type='destructive' label='Destructive link' />,
+  render: () => <Link to='/#' type='destructive' label='Destructive link' />,
 };
 
-export const LinkWithReactRouterLink: Story = {
-  name: 'Link using React Router Link',
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'See [React Router Link docs](https://reactrouter.com/api/components/Link) for usage information',
-      },
-    },
-  },
+const CustomLinkComponent = ({
+  to,
+  children,
+  ...others
+}: BaseLinkProperties): JSXElement | null => {
+  return (
+    <a href={to} {...others} data-link-component='custom'>
+      {children}
+    </a>
+  );
+};
+
+/**
+ * You can configure the DSR to use a router library's link component by wrapping your app
+ * in the DSRContext provider and setting a `LinkComponent` value. 
+ * Your custom link component will be substituted for the default anchor element 
+ * everywhere the DSR's Link component is used.
+ *  
+ * Example usage:
+ * 
+ *  \<DSRContext value={{LinkComponent: YourRouterLinkComponent}} >
+ *    App content
+ *  \</DSRContext>
+ */
+export const LinkWithCustomLinkComponent: Story = {
+  name: 'Link using custom component',
+  decorators: [
+    (Story) => (
+      <DSRContext value={{ LinkComponent: CustomLinkComponent }}>
+        <Story />
+      </DSRContext>
+    ),
+  ],
   render: () => (
-    <BrowserRouter>
-      <Link href='/#' label='Link using React Router Link' isRouterLink />
-    </BrowserRouter>
+      <Link to='/#' label='Link using custom link component' />
   ),
 };
+
+
