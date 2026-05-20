@@ -27,9 +27,17 @@ describe('Header', () => {
     );
   });
 
-  it('Can be rendered without bottom border', () => {
-    const { container } = render(<Header withBottomBorder={false} />);
-    expect(container.firstChild.className).toBe('o-header-scope');
-    expect(container.firstChild.firstChild?.className).toBe('o-header');
+  it('renders the English logo by default', () => {
+    render(<Header />);
+    expect(screen.getByAltText('CFPB Logo')).toBeInTheDocument();
+  });
+
+  it('renders the Spanish logo when lang is es', () => {
+    render(<Header lang='es' />);
+    expect(
+      screen.getByAltText(
+        'Oficina para la Protección Financiera del Consumidor',
+      ),
+    ).toBeInTheDocument();
   });
 });
