@@ -3,7 +3,7 @@ import { Header } from '~/src/index';
 import { ExampleLinks } from './responsive-menu';
 
 const meta: Meta<typeof Header> = {
-  title: 'Components (Draft)/Header',
+  title: 'Components (Draft)/Headers',
   tags: ['autodocs'],
   component: Header,
   argTypes: {

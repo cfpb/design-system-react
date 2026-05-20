@@ -12,7 +12,9 @@ export interface HeaderProperties {
 }
 
 /**
- * A header helps users identify where they are and provides a quick, organized way to reach the main sections of a website.
+ * The header component is a primary user interface element at the top of a
+ * webpage that helps visitors identify their location and provides organized,
+ * high-level navigation across the site.
  *
  */
 export const Header = ({
