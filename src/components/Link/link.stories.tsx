@@ -136,7 +136,7 @@ const CustomLinkComponent = ({
 /**
  * You can configure the DSR to use a router library's link component by wrapping your app
  * in the DSRContext provider and setting a `LinkComponent` value. 
- * Your custom link component will be substituted for the default anchor element 
+ * Your custom link component will be output instead of the default anchor element 
  * everywhere the DSR's Link component is used.
  *  
  * Example usage:
