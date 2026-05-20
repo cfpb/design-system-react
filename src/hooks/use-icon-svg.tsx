@@ -43,9 +43,9 @@ export const useIconSvg = (
           }
         }
       } catch {
-        const errorIcon = (await import(
+        const errorIcon = await import(
           `@cfpb/cfpb-design-system/src/components/cfpb-icons/icons/error.svg?react`
-        )) as SVGModule;
+        );
         if (isMounted) {
           if (isTest) {
             // React warns that this is deprecated, but importing from 'react' breaks builds

@@ -49,7 +49,7 @@
     "react-select": "^5.10.2"
   },
   "peerDependencies": {
-    "@cfpb/cfpb-design-system": "5.3.3",
+    "@cfpb/cfpb-design-system": "5.4.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "react-router": "^7.15.0"

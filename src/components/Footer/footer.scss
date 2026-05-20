@@ -187,7 +187,6 @@
 
     // Tablet and above.
     @include respond-to-min($bp-sm-min) {
-      
       @include u-grid-column(8);
       border-right: 1px solid var(--gray-40);
       border-left: 0;

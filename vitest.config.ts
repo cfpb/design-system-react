@@ -6,7 +6,7 @@ import viteConfig from './vite.config';
 const __dirname = import.meta.dirname;
 const { resolve } = path;
 
-export default defineConfig(async (configEnv) => {
+export default defineConfig((configEnv) => {
   const storybookConfigDir = process.env.STORYBOOK_CONFIG_DIR;
   const isStorybookTest = Boolean(storybookConfigDir);
   if (isStorybookTest) {
@@ -17,7 +17,7 @@ export default defineConfig(async (configEnv) => {
     );
   }
   const resolvedViteConfig =
-    typeof viteConfig === 'function' ? await viteConfig(configEnv) : viteConfig;
+    typeof viteConfig === 'function' ? viteConfig(configEnv) : viteConfig;
 
   return mergeConfig(
     resolvedViteConfig,

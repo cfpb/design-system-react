@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import { Icon } from '../Icon/icon';
 import Link from '../Link/link';
-import {WebsiteFooter} from './footer';
+import { WebsiteFooter } from './footer';
 
 interface FootCfGovProperties {
   cfLink?: string;
@@ -145,17 +145,20 @@ export const FooterCfGov = ({
       key='usa-gov'
       href='https://usa.gov/'
       label='USA.gov'
-      iconRight='external-link'/>,
+      iconRight='external-link'
+    />,
     <Link
       key='inspector'
       href='https://oig.federalreserve.gov/'
       label='Office of Inspector General'
-      iconRight='external-link'/>,
+      iconRight='external-link'
+    />,
     <Link
       key='archive'
       href='https://archive-it.org/organizations/2800'
       label='Public Archive'
-      iconRight='external-link'/>
+      iconRight='external-link'
+    />,
   ];
 
   return (

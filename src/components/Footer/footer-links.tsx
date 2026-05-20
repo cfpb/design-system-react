@@ -17,7 +17,9 @@ export const NavLinks = ({ children }: WrapperProperties): JSXElement => {
 
   return (
     <List className='o-footer__nav-list m-list'>
-      <ListItemBuilder itemClassname='m-list__link a-link--jump'>{children}</ListItemBuilder>
+      <ListItemBuilder itemClassname='m-list__link a-link--jump'>
+        {children}
+      </ListItemBuilder>
     </List>
   );
 };
@@ -59,4 +61,3 @@ export const FooterLinksColumn = ({
     </div>
   );
 };
-
