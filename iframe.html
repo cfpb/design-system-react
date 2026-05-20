@@ -558,24 +558,48 @@
 <!-- Storybook default: `padding: 1rem` on `.sb-show-main.sb-main-padded` (base-preview-head.html).
      - Main canvas: CFPB 15px ($space-sm).
      - Nested "All viewports" (`?responsivePreview=off`): body padding 0; `#storybook-root` uses
-       vertical inset for focus plus 3px horizontal inset each side (6px narrower than the iframe
-       width when you measure `#storybook-root` children). Full-bleed stories pass
-       `sbNestedCanvasPadding=flush` (via `parameters.sbNestedCanvasPadding` in preview.js) for
-       zero inset instead. -->
+       vertical inset for focus plus small horizontal inset so outlines are not clipped at edges.
+       Full-bleed stories pass `sbNestedCanvasPadding=flush` (via `parameters.sbNestedCanvasPadding`
+       in preview.js) to use zero inset instead.
+       SecondaryNav: cfgov negative h-margins are overridden in nested mode. Default root uses
+       horizontal padding so :focus-visible rings are not clipped; the nav bleeds by the same
+       amount so the bar still spans the full iframe. The mobile header uses a negative
+       outline-offset so the dotted focus ring sits slightly inside the tap target. -->
 <script>
   (function applyCfpbStorybookCanvasPadding() {
     var style = document.createElement('style');
     var params = new URLSearchParams(window.location.search);
     if (params.get('responsivePreview') === 'off') {
-      var rootInset =
-        params.get('sbNestedCanvasPadding') === 'flush'
-          ? 'padding: 0 !important;'
-          : 'padding: 10px 3px !important;';
+      var flush = params.get('sbNestedCanvasPadding') === 'flush';
+      var hPadPx = 6;
+      var rootInset = flush
+        ? 'padding: 0 !important;'
+        : 'padding: 10px ' + hPadPx + 'px !important;';
+      var bleedPx = hPadPx * 2;
+      var secondaryNavBox = flush
+        ? 'margin-left: 0 !important; margin-right: 0 !important; width: auto; max-width: none; box-sizing: border-box;'
+        : 'margin-left: -' +
+          hPadPx +
+          'px !important; margin-right: -' +
+          hPadPx +
+          'px !important; width: calc(100% + ' +
+          bleedPx +
+          'px) !important; max-width: none !important; box-sizing: border-box !important;';
       style.textContent =
         '.sb-show-main.sb-main-padded { padding: 0 !important; }' +
         'body.sb-show-main.sb-main-padded #storybook-root, body.sb-show-main.sb-main-centered #storybook-root { ' +
         rootInset +
-        ' box-sizing: border-box !important; }';
+        ' box-sizing: border-box !important; overflow-x: visible !important; }' +
+        'body.sb-show-main.sb-main-padded #storybook-root .o-secondary-nav,' +
+        'body.sb-show-main.sb-main-centered #storybook-root .o-secondary-nav { ' +
+        secondaryNavBox +
+        ' }' +
+        'body.sb-show-main.sb-main-padded #storybook-root .o-secondary-nav__header,' +
+        'body.sb-show-main.sb-main-centered #storybook-root .o-secondary-nav__header { min-width: 0; }' +
+        'body.sb-show-main.sb-main-padded #storybook-root .o-secondary-nav__label,' +
+        'body.sb-show-main.sb-main-centered #storybook-root .o-secondary-nav__label { min-width: 0; }' +
+        'body.sb-show-main.sb-main-padded #storybook-root .o-secondary-nav__header:focus-visible,' +
+        'body.sb-show-main.sb-main-centered #storybook-root .o-secondary-nav__header:focus-visible { position: relative; z-index: 1; outline-offset: -3px; }';
     } else {
       style.textContent =
         '.sb-show-main.sb-main-padded { padding: 30px; }' +
@@ -584,8 +608,7 @@
     document.head.appendChild(style);
   })();
 </script>
-
-    <script type="module" crossorigin src="/design-system-react/assets/iframe-CuuoSYMB.js"></script>
+    <script type="module" crossorigin src="/design-system-react/assets/iframe-otv0F80g.js"></script>
     <link rel="modulepreload" crossorigin href="/design-system-react/assets/preload-helper-CytgIKOt.js">
     <link rel="stylesheet" crossorigin href="/design-system-react/assets/iframe-CynK9IU5.css">
   </head>
