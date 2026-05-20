@@ -30,3 +30,10 @@ export const Default: Story = {
     lang: 'en',
   },
 };
+
+export const Basic: Story = {
+  render: (properties) => <Header {...properties} />,
+  args: {
+    links: [],
+  },
+};

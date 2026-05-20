@@ -8,7 +8,6 @@ import './header.scss';
 export interface HeaderProperties {
   links?: JSX.Element[];
   href?: string;
-  withBottomBorder?: boolean;
   lang?: LogoLanguage;
 }
 
@@ -19,15 +18,15 @@ export interface HeaderProperties {
 export const Header = ({
   links,
   href,
-  withBottomBorder = true,
   lang = 'en',
 }: HeaderProperties): JSX.Element => {
-  const headerClasses = ['o-header'];
-  if (withBottomBorder) headerClasses.push('bottom-border');
+  const headerClasses = ['o-header', 'bottom-border'];
+
   const taglineText =
     lang === 'es'
       ? 'Un sitio web oficial del gobierno federal de los Estados Unidos'
       : 'An official website of the United States government';
+
   return (
     <div className='o-header-scope'>
       <header className={classnames(headerClasses)}>
