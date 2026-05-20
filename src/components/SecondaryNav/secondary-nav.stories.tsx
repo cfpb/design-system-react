@@ -10,13 +10,9 @@ const meta: Meta<typeof SecondaryNav> = {
     docs: {
       description: {
         component: `
-Secondary navigation for in-page or section navigation, typically shown in a left sidebar.
+The secondary navigation component provides a left-hand navigation menu that can be used for in-page or section navigation.
 
-### Usage
-
-- **Flat list (no \`children\`):** use \`isActive\` on the current top-level item.
-- **With \`children\`:** only children should use \`isActive\` for a subpage, unless the “current” page is the parent index—in that case set \`isActive\` on the parent and leave children inactive.
-- Default \`ariaLabel\` is \`Section\`. \`mobileToggleLabel\` defaults to **Navigate this section**.
+Source: https://cfpb.github.io/design-system/development/main-content-and-sidebars#left-hand-sidebar-layout
         `,
       },
     },
