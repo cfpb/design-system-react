@@ -1,6 +1,6 @@
 @use '/src/assets/styles/variables';
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
-@use '@cfpb/cfpb-design-system/src/utilities' as *;
+@use '@cfpb/cfpb-design-system/src/utilities/index.scss' as *;
 @use 'sass:math';
 
 // https://github.com/cfpb/consumerfinance.gov/blob/main/cfgov/unprocessed/css/molecules/social-media.scss
