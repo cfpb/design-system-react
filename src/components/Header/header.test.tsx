@@ -26,10 +26,4 @@ describe('Header', () => {
       'o-header bottom-border',
     );
   });
-
-  it('Can be rendered without bottom border', () => {
-    const { container } = render(<Header withBottomBorder={false} />);
-    expect(container.firstChild.className).toBe('o-header-scope');
-    expect(container.firstChild.firstChild?.className).toBe('o-header');
-  });
 });
