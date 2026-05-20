@@ -200,7 +200,12 @@ const ResponsivePreviewFrame = ({ previewSrc, viewport }) => {
  *
  * @param {{ context: import('storybook/internal/types').StoryContext, nestedCanvasPaddingMode: 'focus' | 'flush', args: Record<string, unknown>, globals: Record<string, unknown> }} props
  */
-const AllViewportsPreviews = ({ context, nestedCanvasPaddingMode, args, globals }) => {
+const AllViewportsPreviews = ({
+  context,
+  nestedCanvasPaddingMode,
+  args,
+  globals,
+}) => {
   const argsParam = buildNestedQueryParam(context.initialArgs, args);
   const globalsParam = buildNestedQueryParam(context.initialGlobals, globals);
   const previewSrc = getPreviewSource(context.id, nestedCanvasPaddingMode, {
@@ -258,7 +263,9 @@ const renderResponsivePreviews = (Story, context) => {
     return React.createElement(Story);
   }
 
-  const nestedCanvasPaddingMode = getNestedCanvasPaddingMode(context.parameters);
+  const nestedCanvasPaddingMode = getNestedCanvasPaddingMode(
+    context.parameters,
+  );
 
   return React.createElement(AllViewportsPreviews, {
     context,

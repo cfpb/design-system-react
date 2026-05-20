@@ -23,6 +23,13 @@ interface HeroProperties extends HTMLAttributes<HTMLDivElement> {
 
 /**
  * https://cfpb.github.io/design-system/patterns/heroes
+ *
+ * The Jumbo and 50/50 hero variants, included in the CFPB Design System,
+ * and used on the CF.gov homepage are not included by this component.
+ *
+ * The implementation of the hero on https://www.consumerfinance.gov/es/
+ * uses a combination of Jumbo and 50/50 hero variants including some tweaks in
+ * wagtail.
  */
 export default function Hero({
   backgroundColor,

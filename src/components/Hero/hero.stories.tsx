@@ -10,9 +10,11 @@ const meta: Meta<typeof Hero> = {
     docs: {
       description: {
         component: `
-Heroes are a primary focal point on landing and sublanding pages. They introduce a collection of pages by combining a brief description of the goals of that section along with a visually impactful graphic. To introduce lower-level pages, use the [text introduction](https://cfpb.github.io/design-system/patterns/text-introductions) instead.
-
-This component supports illustration, photograph (overlay), and knockout variants only — not the DS jumbo or 50/50 patterns.
+Heroes are a primary focal point on landing and sublanding pages. They 
+introduce a collection of pages by combining a brief description of the goals 
+of that section along with a visually impactful graphic. To introduce 
+lower-level pages, use the 
+[text introduction](https://cfpb.github.io/design-system/patterns/text-introductions) instead.
 
 Source: https://cfpb.github.io/design-system/patterns/heroes
 `,
@@ -26,8 +28,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const WithIllustration: Story = {
+  name: 'With illustration',
   args: {
-    heading: '41 chars max for a one-line heading',
+    heading: '41 characters max for a one-line heading',
     image:
       'https://cfpb.github.io/design-system/images/uploads/hero_illustration_example_keys.png',
     subheading:
@@ -37,6 +40,7 @@ export const WithIllustration: Story = {
 };
 
 export const WithPhotograph: Story = {
+  name: 'With photograph',
   args: {
     ...WithIllustration.args,
     imageIsPhoto: true,
@@ -49,7 +53,7 @@ export const WithKnockoutText: Story = {
   name: 'With knockout text',
   args: {
     ...WithIllustration.args,
-    heading: 'Max of 41 chars for a one-line heading',
+    heading: '41 characters max for a one-line heading',
     subheading:
       'This text has a recommended count of 165-186 characters (three lines at 1230px) following a one-line heading and 108-124 characters (two lines at 1230px) following a two-line heading.',
     backgroundColor: '#207676',
