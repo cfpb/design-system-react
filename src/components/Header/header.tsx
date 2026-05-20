@@ -7,20 +7,14 @@ import './header.scss';
 export interface HeaderProperties {
   links?: JSX.Element[];
   href?: string;
-  withBottomBorder?: boolean;
 }
 
 /**
  * A header helps users identify where they are and provides a quick, organized way to reach the main sections of a website.
  *
  */
-export const Header = ({
-  links,
-  href,
-  withBottomBorder = true,
-}: HeaderProperties): JSX.Element => {
-  const headerClasses = ['o-header'];
-  if (withBottomBorder) headerClasses.push('bottom-border');
+export const Header = ({ links, href }: HeaderProperties): JSX.Element => {
+  const headerClasses = ['o-header', 'bottom-border'];
 
   return (
     <div className='o-header-scope'>

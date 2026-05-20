@@ -23,3 +23,10 @@ export const Default: Story = {
     links: ExampleLinks,
   },
 };
+
+export const Basic: Story = {
+  render: (properties) => <Header {...properties} />,
+  args: {
+    links: [],
+  },
+};
