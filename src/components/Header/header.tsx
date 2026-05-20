@@ -24,11 +24,14 @@ export const Header = ({
 }: HeaderProperties): JSX.Element => {
   const headerClasses = ['o-header'];
   if (withBottomBorder) headerClasses.push('bottom-border');
-
+  const taglineText =
+    lang === 'es'
+      ? 'Un sitio web oficial del gobierno federal de los Estados Unidos'
+      : 'An official website of the United States government';
   return (
     <div className='o-header-scope'>
       <header className={classnames(headerClasses)}>
-        <Banner tagline='An official website of the United States government' />
+        <Banner tagline={taglineText} />
         <ResponsiveMenu links={links} href={href} lang={lang} />
       </header>
     </div>
