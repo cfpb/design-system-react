@@ -12,7 +12,7 @@ const meta: Meta<typeof SecondaryNav> = {
         component: `
 The secondary navigation component provides a left-hand navigation menu that can be used for in-page or section navigation.
 
-Source: https://cfpb.github.io/design-system/development/main-content-and-sidebars#left-hand-sidebar-layout
+Source: https://cfpb.github.io/design-system/development/main-content-and-sidebars
         `,
       },
     },
