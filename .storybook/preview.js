@@ -1,7 +1,6 @@
 import React from 'react';
-import { STORY_ARGS_UPDATED, GLOBALS_UPDATED } from 'storybook/internal/core-events';
 import { buildArgsParam } from 'storybook/internal/router';
-import { addons } from 'storybook/preview-api';
+import { useArgs, useGlobals } from 'storybook/preview-api';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
 
@@ -196,52 +195,19 @@ const ResponsivePreviewFrame = ({ previewSrc, viewport }) => {
 };
 
 /**
- * All-viewports grid: nested iframes do not inherit the parent React tree, so subscribe to
- * Storybook args/globals updates and remount iframes when Controls or toolbar values change.
+ * All-viewports grid: nested iframes are separate documents; args/globals come from the decorator
+ * (`useArgs` / `useGlobals` must run there, not in this child component).
  *
- * @param {{ context: import('storybook/internal/types').StoryContext, nestedCanvasPaddingMode: 'focus' | 'flush' }} props
+ * @param {{ context: import('storybook/internal/types').StoryContext, nestedCanvasPaddingMode: 'focus' | 'flush', args: Record<string, unknown>, globals: Record<string, unknown> }} props
  */
-const AllViewportsPreviews = ({ context, nestedCanvasPaddingMode }) => {
-  const [args, setArgs] = React.useState(context.args);
-  const [globals, setGlobals] = React.useState(context.globals);
-  const [previewRevision, setPreviewRevision] = React.useState(0);
-
-  React.useEffect(() => {
-    setArgs(context.args);
-    setGlobals(context.globals);
-  }, [context.args, context.globals]);
-
-  React.useEffect(() => {
-    const channel = addons.getChannel();
-
-    const onStoryArgsUpdated = ({ storyId, args: nextArgs }) => {
-      if (storyId === context.id) {
-        setArgs(nextArgs);
-        setPreviewRevision((revision) => revision + 1);
-      }
-    };
-
-    const onGlobalsUpdated = ({ globals: nextGlobals }) => {
-      setGlobals(nextGlobals);
-      setPreviewRevision((revision) => revision + 1);
-    };
-
-    channel.on(STORY_ARGS_UPDATED, onStoryArgsUpdated);
-    channel.on(GLOBALS_UPDATED, onGlobalsUpdated);
-
-    return () => {
-      channel.off(STORY_ARGS_UPDATED, onStoryArgsUpdated);
-      channel.off(GLOBALS_UPDATED, onGlobalsUpdated);
-    };
-  }, [context.id]);
-
+const AllViewportsPreviews = ({ context, nestedCanvasPaddingMode, args, globals }) => {
   const argsParam = buildNestedQueryParam(context.initialArgs, args);
   const globalsParam = buildNestedQueryParam(context.initialGlobals, globals);
   const previewSrc = getPreviewSource(context.id, nestedCanvasPaddingMode, {
     argsParam,
     globalsParam,
   });
-  const iframeKey = `${previewRevision}|${argsParam}|${globalsParam}`;
+  const iframeCacheKey = `${argsParam}|${globalsParam}`;
 
   return React.createElement(
     'div',
@@ -275,7 +241,7 @@ const AllViewportsPreviews = ({ context, nestedCanvasPaddingMode }) => {
           `${viewport.name}`,
         ),
         React.createElement(ResponsivePreviewFrame, {
-          key: `${key}-${iframeKey}`,
+          key: `${key}-${iframeCacheKey}`,
           previewSrc,
           viewport,
         }),
@@ -285,6 +251,9 @@ const AllViewportsPreviews = ({ context, nestedCanvasPaddingMode }) => {
 };
 
 const renderResponsivePreviews = (Story, context) => {
+  const [args] = useArgs();
+  const [globals] = useGlobals();
+
   if (shouldRenderSinglePreview(context)) {
     return React.createElement(Story);
   }
@@ -294,6 +263,8 @@ const renderResponsivePreviews = (Story, context) => {
   return React.createElement(AllViewportsPreviews, {
     context,
     nestedCanvasPaddingMode,
+    args,
+    globals,
   });
 };
 
