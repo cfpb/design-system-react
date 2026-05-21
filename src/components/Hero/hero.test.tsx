@@ -1,8 +1,9 @@
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Hero from './hero';
 
 describe('Hero', () => {
-  it('Renders all elements: heading, subheading, image', () => {
+  it('renders heading, subheading, and image with DS classes', () => {
     const heading = 'heading';
     const subheading = 'subheading';
     const image = '../../assets/images/credit-card-hero.png';
@@ -17,69 +18,60 @@ describe('Hero', () => {
       />,
     );
 
-    expect(screen.getByText(heading).className).toMatch(/m-hero__heading/g);
-    expect(screen.getByText(subheading).className).toMatch(/m-hero__subhead/g);
-    expect(screen.getByRole('img', { name: imageText }).className).toMatch(
-      /m-hero__image/g,
+    const headingElement = screen.getByRole('heading', { level: 1 });
+    expect(headingElement).toHaveClass('m-hero__heading');
+    expect(headingElement).toHaveTextContent(heading);
+
+    const subheadingElement = screen.getByText(subheading);
+    expect(subheadingElement.tagName).toBe('P');
+    expect(subheadingElement).toHaveClass('m-hero__subhead');
+
+    expect(screen.getByRole('img', { name: imageText })).toHaveClass(
+      'm-hero__image',
     );
   });
 
-  it('Derives CSS classes for component variations', () => {
+  it('derives CSS classes for component variations', () => {
     const isKnockout = 'm-hero--knockout';
     const imageIsPhoto = 'm-hero--overlay';
 
     render(<Hero isKnockout data-testid={isKnockout} />);
-    expect(screen.getByTestId(isKnockout).className).toMatch(isKnockout);
+    expect(screen.getByTestId(isKnockout)).toHaveClass(isKnockout);
 
     render(<Hero imageIsPhoto data-testid={imageIsPhoto} />);
-    expect(screen.getByTestId(imageIsPhoto).className).toMatch(imageIsPhoto);
+    expect(screen.getByTestId(imageIsPhoto)).toHaveClass(imageIsPhoto);
   });
 
-  it('Applies direct color settings', () => {
-    const textColor = 'orange';
-    const backgroundColor = 'purple';
-    const wrapperSelector = 'wrapper';
-    const textId = 'hero-text';
+  it('applies background color on the wrapper for standard heroes', () => {
+    render(
+      <Hero backgroundColor='#800080' heading='test' data-testid='hero' />,
+    );
 
+    expect(screen.getByTestId('hero-wrapper').style.backgroundColor).toBe(
+      'rgb(128, 0, 128)',
+    );
+  });
+
+  it('applies background color on the section for knockout heroes', () => {
     render(
       <Hero
-        data-testid='wrapper'
-        textColor={textColor}
-        backgroundColor={backgroundColor}
+        isKnockout
+        backgroundColor='#207676'
         heading='test'
+        data-testid='hero'
       />,
     );
 
-    // Background color
-    const wrapper = screen.getByTestId(wrapperSelector);
-    expect(wrapper.style.backgroundColor).toMatch(backgroundColor);
-
-    // Text color
-    const text = screen.getByTestId(textId);
-    expect(text.style.color).toMatch(textColor);
+    expect(screen.getByTestId('hero')).toHaveStyle({
+      backgroundColor: '#207676',
+    });
   });
 
-  it('Applies heading levels', () => {
-    const headingLevel = 2;
-    const headingText = 'Heading text';
-    const subheadingLevel = 3;
-    const subheadingText = 'Subheading text';
-
+  it('does not set inline text color (knockout uses DS styles)', () => {
     render(
-      <Hero
-        heading='Heading text'
-        headingLevel={`h${headingLevel}`}
-        subheading='Subheading text'
-        subheadingLevel={`h${subheadingLevel}`}
-      />,
+      <Hero isKnockout heading='test' subheading='sub' data-testid='hero' />,
     );
 
-    // Heading
-    const header = screen.getByRole('heading', { level: headingLevel });
-    expect(header).toHaveProperty('textContent', headingText);
-
-    // Subheading
-    const subheading = screen.getByRole('heading', { level: subheadingLevel });
-    expect(subheading).toHaveProperty('textContent', subheadingText);
+    expect(screen.getByTestId('hero-text')).not.toHaveAttribute('style');
   });
 });
