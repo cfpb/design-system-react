@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@cfpb/browserslist-config": "^0.0.6",
-    "@cfpb/cfpb-design-system": "5.5.0",
+    "@cfpb/cfpb-design-system": "5.5.1",
     "@chromatic-com/storybook": "^5.2.1",
     "@eslint/js": "^10.0.1",
     "@fontsource-variable/source-sans-3": "5.2.9",
@@ -120,7 +120,7 @@
     "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.4",
-    "vite": "^8.0.13",
+    "vite": "^8.0.14",
     "vite-plugin-dts": "^5.0.1",
     "vite-plugin-pwa": "^1.3.0",
     "vite-plugin-svgr": "^5.2.0",
