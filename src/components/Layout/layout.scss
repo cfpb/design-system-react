@@ -1,3 +1,6 @@
+// Layout overrides for React Layout stories (`layout.stories.tsx`) and consumers.
+// At wide viewports, flex + the 2-1 divider below match the CFPB DS main/sidebar examples.
+
 // Override Design System styles that cause content to overflow sidebar boundaries
 @media only all and (width >= 37.5625em) {
   .content--2-1 .content__main,
