@@ -8,7 +8,7 @@ import { useBackgroundImage } from './use-background-image';
 
 export interface HeroProperties
   extends Omit<HTMLAttributes<HTMLElement>, 'children' | 'color'> {
-  /** CSS background color (wrapper for standard heroes; section for knockout). */
+  /** CSS background color on `.m-hero` (full bleed). Photo heroes also pass this to the wrapper for overlay image rules. */
   backgroundColor?: string;
   /** Hero heading copy (DS: 41 chars max for one line at largest breakpoint). */
   heading?: string;
@@ -44,12 +44,10 @@ export default function Hero({
   className,
   ...properties
 }: HeroProperties): JSX.Element {
-  const wrapperBackgroundColor = isKnockout ? undefined : backgroundColor;
-
   const wrapperReference = useBackgroundImage(
     image,
     Boolean(imageIsPhoto),
-    wrapperBackgroundColor,
+    imageIsPhoto ? backgroundColor : undefined,
   );
 
   const heroCnames = ['m-hero', className];
@@ -57,14 +55,9 @@ export default function Hero({
   if (isKnockout) heroCnames.push('m-hero--knockout');
   if (imageIsPhoto) heroCnames.push('m-hero--overlay');
 
-  const heroStyle =
-    isKnockout && backgroundColor ? { backgroundColor } : undefined;
-
-  const usesWrapperBackgroundColor =
-    Boolean(wrapperBackgroundColor) && !imageIsPhoto;
-  const wrapperStyle = usesWrapperBackgroundColor
-    ? { backgroundColor: wrapperBackgroundColor }
-    : undefined;
+  // Custom colors belong on `.m-hero` (full width). The wrapper is max-width centered in DS
+  // CSS, so a wrapper-only background leaves the section default visible at the sides.
+  const heroStyle = backgroundColor ? { backgroundColor } : undefined;
 
   return (
     <section
@@ -76,7 +69,6 @@ export default function Hero({
         className='m-hero__wrapper'
         data-testid='hero-wrapper'
         ref={wrapperReference}
-        style={wrapperStyle}
       >
         <div className='m-hero__text' data-testid='hero-text'>
           {heading ? (

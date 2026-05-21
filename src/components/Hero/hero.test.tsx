@@ -42,14 +42,15 @@ describe('Hero', () => {
     expect(screen.getByTestId(imageIsPhoto)).toHaveClass(imageIsPhoto);
   });
 
-  it('applies background color on the wrapper for standard heroes', () => {
+  it('applies background color on the section for standard heroes', () => {
     render(
       <Hero backgroundColor='#800080' heading='test' data-testid='hero' />,
     );
 
-    expect(screen.getByTestId('hero-wrapper').style.backgroundColor).toBe(
-      'rgb(128, 0, 128)',
-    );
+    expect(screen.getByTestId('hero')).toHaveStyle({
+      backgroundColor: 'rgb(128, 0, 128)',
+    });
+    expect(screen.getByTestId('hero-wrapper')).not.toHaveAttribute('style');
   });
 
   it('applies background color on the section for knockout heroes', () => {
