@@ -6,7 +6,7 @@ import viteConfig from './vite.config';
 const __dirname = import.meta.dirname;
 const { resolve } = path;
 
-export default defineConfig(async (configEnv) => {
+export default defineConfig((configEnv) => {
   const storybookConfigDir = process.env.STORYBOOK_CONFIG_DIR;
   const isStorybookTest = Boolean(storybookConfigDir);
   if (isStorybookTest) {
@@ -17,11 +17,21 @@ export default defineConfig(async (configEnv) => {
     );
   }
   const resolvedViteConfig =
-    typeof viteConfig === 'function' ? await viteConfig(configEnv) : viteConfig;
+    typeof viteConfig === 'function' ? viteConfig(configEnv) : viteConfig;
+
+  const svgReactMock = resolve(__dirname, 'test-utils/svg-react-component.tsx');
 
   return mergeConfig(
     resolvedViteConfig,
     defineConfig({
+      resolve: {
+        alias: [
+          {
+            find: /@cfpb\/cfpb-design-system\/.*\.svg\?react$/,
+            replacement: svgReactMock,
+          },
+        ],
+      },
       test: {
         globals: true,
         ...(isStorybookTest
@@ -29,7 +39,10 @@ export default defineConfig(async (configEnv) => {
               name: `storybook:${storybookConfigDir}`,
               setupFiles: resolve(__dirname, '.storybook/vitest.setup.ts'),
             }
-          : { environment: 'jsdom' }),
+          : {
+              environment: 'jsdom',
+              setupFiles: [resolve(__dirname, 'vitest.setup.ts')],
+            }),
         exclude: [
           '**/node_modules/**',
           '**/dist/**',
@@ -59,6 +72,8 @@ export default defineConfig(async (configEnv) => {
           optimizer: {
             web: {
               include: ['vite-plugin-svgr'],
+              // Keep ?react SVG imports on the Vite plugin pipeline (not prebundled as data URLs).
+              exclude: ['@cfpb/cfpb-design-system'],
             },
           },
         },

@@ -13,10 +13,12 @@ jobs:
       - name: Install compatible node version
         uses: actions/setup-node@v6
         with:
-          node-version: 25
+          node-version: 26
 
       - name: Install dependencies
-        run: yarn
+        run: |
+          corepack enable
+          yarn install --immutable --immutable-cache
 
       - name: Publish to Chromatic
         uses: chromaui/action@v1

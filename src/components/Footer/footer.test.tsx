@@ -1,10 +1,14 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import {Footer, ApplicationFooter, WebsiteFooter} from './footer';
+import { Footer, ApplicationFooter, WebsiteFooter } from './footer';
 
 describe('Footer', () => {
   it('Renders with content', () => {
-    render(<Footer data-testid='basic-footer'><p>Footer content</p></Footer>);
+    render(
+      <Footer data-testid='basic-footer'>
+        <p>Footer content</p>
+      </Footer>,
+    );
     const basicFooter = screen.getByTestId('basic-footer');
     expect(basicFooter).toHaveClass('o-footer');
     expect(basicFooter).toHaveTextContent('Footer content');
@@ -120,8 +124,8 @@ describe('ApplicationFooter', () => {
         Link 3
       </a>,
     ];
-    const content = (<h3>About this app</h3>)
-    render(<ApplicationFooter navLinks={navLinks} footerContent={content}/>);
+    const content = <h3>About this app</h3>;
+    render(<ApplicationFooter navLinks={navLinks} footerContent={content} />);
 
     // Nav links rendered
     const list = screen.getAllByRole('list');
