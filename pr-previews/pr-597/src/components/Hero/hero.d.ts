@@ -2,7 +2,7 @@ import { JSX, HTMLAttributes } from '../../../node_modules/react';
 export interface HeroProperties extends Omit<HTMLAttributes<HTMLElement>, 'children' | 'color'> {
     /** CSS background color on `.m-hero` (full bleed). Photo heroes also pass this to the wrapper for overlay image rules. */
     backgroundColor?: string;
-    /** Hero heading copy (DS: 41 chars max for one line at largest breakpoint). */
+    /** Content guidelines for heading: One-line (at largest breakpoint): 41 characters maximum; Two-lines (at largest breakpoint): 82 characters maximum */
     heading?: string;
     /** Illustration or photo URL for `.m-hero__image` / overlay wrapper background. */
     image?: string;
@@ -10,9 +10,9 @@ export interface HeroProperties extends Omit<HTMLAttributes<HTMLElement>, 'child
     imageAltText?: string;
     /** Photo hero (`m-hero--overlay`): image on the wrapper at tablet+, in the image slot on mobile. */
     imageIsPhoto?: boolean;
-    /** Dark background with light text (`m-hero--knockout`). Text color comes from DS styles. */
+    /** When using a dark background, add the m-hero--knockout to switch the text to white. */
     isKnockout?: boolean;
-    /** Lead copy under the heading (DS character counts vary by heading line count). */
+    /** Content guidelines for subheading: After one-line heading, subheading text can be between 165 and 186 characters (three lines at largest breakpoint); After two-line heading, subheading text can be between 108 and 124 characters (two lines at largest breakpoint) */
     subheading?: string;
 }
 /**
