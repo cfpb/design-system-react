@@ -44,7 +44,7 @@ export const WithPhotograph: Story = {
   args: {
     ...WithIllustration.args,
     imageIsPhoto: true,
-    image: 'https://files.consumerfinance.gov/f/images/PC_hero.original.jpg',
+    image: 'http://files.consumerfinance.gov/f/images/PC_hero.original.jpg',
     backgroundColor: '#f7f8f9',
   },
 };
@@ -59,6 +59,6 @@ export const WithKnockoutText: Story = {
     backgroundColor: '#207676',
     isKnockout: true,
     image:
-      'https://cfpb.github.io/design-system/images/uploads/design_system_hero_example.png',
+      'http://files.consumerfinance.gov/f/images/ConsumerMarketTrends-hero.original.png',
   },
 };
