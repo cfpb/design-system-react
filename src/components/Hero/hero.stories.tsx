@@ -59,6 +59,6 @@ export const WithKnockoutText: Story = {
     backgroundColor: '#207676',
     isKnockout: true,
     image:
-      'https://files.consumerfinance.gov/f/images/ConsumerMarketTrends-hero.original.png',
+      'https://cfpb.github.io/design-system/images/uploads/design_system_hero_example.png',
   },
 };
