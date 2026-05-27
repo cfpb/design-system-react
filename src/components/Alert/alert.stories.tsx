@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
-import { Alert, AlertFieldLevel, Link, TextInput } from '~/src/index';
+import { Alert, AlertFieldLevel, TextInput } from '~/src/index';
 import type { TextInputStatusType } from '../TextInput/text-input-status';
 
 type AlertStatusType = TextInputStatusType & ['loading'];
@@ -19,19 +19,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const FieldLevelAlertMessage = ({ status = 'a warning' }): ReactNode => (
-  <>
-    This is a field-level alert with {status} status.{' '}
-    <Link
-      iconRight={'external-link'}
-      href={globalThis.location.host}
-      label='Link to more info'
-    />
-    .
-  </>
+  <>This is a field-level alert with {status} status.</>
 );
 
 const alertExplanation = (type: string): string =>
-  `This is an optional explanation of the ${type} message.`;
+  `This is an optional explanation of the ${type}.`;
 
 const externalLinkProperties = {
   href: '/',
@@ -41,7 +33,7 @@ const externalLinkProperties = {
 
 export const Information: Story = {
   render: (arguments_) => <Alert {...arguments_} />,
-  args: { status: 'info', message: 'A Notification' },
+  args: { status: 'info', message: 'Information alert' },
 };
 
 export const InformationWithMessageAndExplanation: Story = {
@@ -49,9 +41,7 @@ export const InformationWithMessageAndExplanation: Story = {
   name: 'Information with a message and an explanation',
   args: {
     ...Information.args,
-    message: 'Here is the message of the notification.',
-    children:
-      'This is a longer explanation to demonstrate how text wrapping is applied to more extensive alert content.',
+    children: 'You can also add an explanation to the alert.',
   },
 };
 
@@ -65,10 +55,9 @@ export const InformationWithOnlyExplanation: Story = {
 
 export const InformationWithLinks: Story = {
   ...Information,
-  name: 'Information with explanation and links',
   args: {
     ...Information.args,
-    children: 'This is the explanation of the notification.',
+    children: 'This is the explanation of the alert.',
     links: [
       {
         href: '/',
@@ -86,7 +75,7 @@ export const Success: Story = {
     status: 'success',
     message: '11 results',
     links: [externalLinkProperties],
-    children: <>{alertExplanation('success')}</>,
+    children: <>{alertExplanation('success message')}</>,
   },
 };
 
@@ -95,7 +84,7 @@ export const Warning: Story = {
   args: {
     ...Information.args,
     status: 'warning',
-    message: 'No results found.',
+    message: 'No results found',
     links: [externalLinkProperties],
     children: <>{alertExplanation('warning')}</>,
   },
@@ -106,7 +95,7 @@ export const Error: Story = {
   args: {
     ...Information.args,
     status: 'error',
-    message: 'Page not found.',
+    message: 'Page not found',
     links: [externalLinkProperties],
     children: <>{alertExplanation('error')}</>,
   },
@@ -129,7 +118,7 @@ export const SuccessFieldLevel: Story = {
         id={_arguments.status as string}
         name={_arguments.status as string}
         status={_arguments.status as AlertStatusType}
-        value='Input Text'
+        value='Input text'
         type='text'
       />
       <AlertFieldLevel {..._arguments} />
@@ -149,7 +138,7 @@ export const WarningFieldLevel: Story = {
         id={_arguments.status as string}
         name={_arguments.status as string}
         status={_arguments.status as AlertStatusType}
-        value='Input Text'
+        value='Input text'
         type='text'
       />
       <AlertFieldLevel {..._arguments} />
@@ -169,7 +158,7 @@ export const ErrorFieldLevel: Story = {
         id={_arguments.status as string}
         name={_arguments.status as string}
         status={_arguments.status as AlertStatusType}
-        value='Input Text'
+        value='Input text'
         type='text'
       />
       <AlertFieldLevel {..._arguments} />
