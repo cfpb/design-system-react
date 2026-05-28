@@ -10,6 +10,8 @@ export interface HeroProperties extends Omit<HTMLAttributes<HTMLElement>, 'child
     imageAltText?: string;
     /** Photo hero (`m-hero--overlay`): image on the wrapper at tablet+, in the image slot on mobile. */
     imageIsPhoto?: boolean;
+    /** Optional mobile photo URL for `.m-hero__image` when `imageIsPhoto` is true. */
+    mobileImage?: string;
     /** When using a dark background, add the m-hero--knockout to switch the text to white. */
     isKnockout?: boolean;
     /** Content guidelines for subheading: After one-line heading, subheading text can be between 165 and 186 characters (three lines at largest breakpoint); After two-line heading, subheading text can be between 108 and 124 characters (two lines at largest breakpoint) */
@@ -24,4 +26,4 @@ export interface HeroProperties extends Omit<HTMLAttributes<HTMLElement>, 'child
  * Heading uses DS `Heading` type 1 with `m-hero__heading`; subheading is `p.m-hero__subhead`.
  * Responsive type sizes are handled by DS CSS, not by configurable heading levels.
  */
-export default function Hero({ backgroundColor, heading, image, imageAltText, imageIsPhoto, isKnockout, subheading, className, ...properties }: HeroProperties): JSX.Element;
+export default function Hero({ backgroundColor, heading, image, imageAltText, imageIsPhoto, mobileImage, isKnockout, subheading, className, ...properties }: HeroProperties): JSX.Element;
