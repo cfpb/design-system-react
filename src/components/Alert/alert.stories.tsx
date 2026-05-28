@@ -55,6 +55,7 @@ export const InformationWithOnlyExplanation: Story = {
 
 export const InformationWithLinks: Story = {
   ...Information,
+  name: 'Information with links',
   args: {
     ...Information.args,
     children: 'This is the explanation of the alert.',
@@ -118,7 +119,7 @@ export const SuccessFieldLevel: Story = {
         id={_arguments.status as string}
         name={_arguments.status as string}
         status={_arguments.status as AlertStatusType}
-        value='Input text'
+        placeholder='Input text'
         type='text'
       />
       <AlertFieldLevel {..._arguments} />
@@ -138,7 +139,7 @@ export const WarningFieldLevel: Story = {
         id={_arguments.status as string}
         name={_arguments.status as string}
         status={_arguments.status as AlertStatusType}
-        value='Input text'
+        placeholder='Input text'
         type='text'
       />
       <AlertFieldLevel {..._arguments} />
@@ -158,7 +159,7 @@ export const ErrorFieldLevel: Story = {
         id={_arguments.status as string}
         name={_arguments.status as string}
         status={_arguments.status as AlertStatusType}
-        value='Input text'
+        placeholder='Input text'
         type='text'
       />
       <AlertFieldLevel {..._arguments} />
