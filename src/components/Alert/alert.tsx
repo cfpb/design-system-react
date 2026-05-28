@@ -47,8 +47,7 @@ export const Alert = ({
   isFieldLevel = false,
   showIcon = true,
   ...properties
-}: AlertProperties &
-  HTMLAttributes<HTMLDivElement>): JSXElement => {
+}: AlertProperties & HTMLAttributes<HTMLDivElement>): JSXElement => {
   if (!isVisible) return null;
 
   if (isFieldLevel) {

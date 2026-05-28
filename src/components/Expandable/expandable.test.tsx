@@ -23,19 +23,19 @@ describe('<Expandable />', () => {
   });
 
   it('Initializes when not in an accordion', () => {
-    vi.spyOn(ExpandableModule, 'init');
+    const initSpy = vi.spyOn(ExpandableModule, 'init');
     render(<Expandable header={header}>{children}</Expandable>);
-    expect(ExpandableModule.init).toHaveBeenCalledTimes(1);
+    expect(initSpy).toHaveBeenCalledTimes(1);
   });
 
   it('Does not initialize when in an accordion', () => {
-    vi.spyOn(ExpandableModule, 'init');
+    const initSpy = vi.spyOn(ExpandableModule, 'init');
     render(
       <Expandable header={header} inAccordion>
         {children}
       </Expandable>,
     );
-    expect(ExpandableModule.init).not.toHaveBeenCalled();
+    expect(initSpy).not.toHaveBeenCalled();
   });
 
   it('Adds default standalone styles when not in an accordion', () => {

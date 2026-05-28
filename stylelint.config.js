@@ -22,7 +22,7 @@ scss/comment-no-empty -
 */
 export default {
   extends: ['stylelint-config-standard-scss'],
-  ignoreFiles: ['packages/**/node_modules/**/*.scss'],
+  ignoreFiles: ['packages/**/node_modules/**/*.scss', 'dist-storybook/**'],
   rules: {
     'color-function-notation': ['legacy'],
     'declaration-block-no-redundant-longhand-properties': null,

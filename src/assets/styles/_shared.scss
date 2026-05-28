@@ -1,7 +1,6 @@
 @use './variables';
 @use 'sass:math';
 @use 'sass:string';
-@use '@cfpb/cfpb-design-system/src/index' as *;
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
 @use '@cfpb/cfpb-design-system/src/elements/base' as base;
 
@@ -25,11 +24,11 @@
  * custom properties for the main canvas.
  */
 // Literal stack (quoted multi-word family) — matches app / design-system expectations.
-$_ds-font-stack: string.unquote('"Source Sans 3 Variable", Arial, sans-serif');
+$ds-font-stack: string.unquote('"Source Sans 3 Variable", Arial, sans-serif');
 
 :root {
-  --font-stack-branded: #{$_ds-font-stack} !important;
-  --font-stack: #{$_ds-font-stack} !important;
+  --font-stack-branded: #{$ds-font-stack} !important;
+  --font-stack: #{$ds-font-stack} !important;
 }
 
 // `!important` beats DS normalize `html { font-family: sans-serif }` if chunk
@@ -38,7 +37,7 @@ html,
 body,
 #storybook-root,
 #storybook-docs {
-  font-family: #{$_ds-font-stack} !important;
+  font-family: #{$ds-font-stack} !important;
 }
 
 /**

@@ -60,7 +60,6 @@ describe('<SecondaryNav />', () => {
     expect(nav).toHaveClass('custom-nav');
   });
 
-
   it('renders child items when parent has children', () => {
     const itemsWithChildren: SecondaryNavItem[] = [
       {

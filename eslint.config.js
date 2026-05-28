@@ -82,10 +82,10 @@ export default tseslint.config(
       'unicorn/null-data-property': 'off',
       'unicorn/no-null': 'off',
       'react/prop-types': 'off', // Using TypeScript, so don't use PropTypes.
-      // Resolver cannot resolve @cfpb/cfpb-design-system src subpaths (Vite alias + node_modules do at build/runtime).
+      // Resolver cannot resolve Vite/tsconfig path aliases or @cfpb/cfpb-design-system src subpaths.
       'import/no-unresolved': [
         'error',
-        { ignore: ['^@cfpb/cfpb-design-system/'] },
+        { ignore: ['^@cfpb/cfpb-design-system/', '^~/'] },
       ],
     },
   },

@@ -23,8 +23,7 @@ export interface LayoutWrapperProperties {
 export const LayoutWrapper = ({
   children,
   ...properties
-}: LayoutWrapperProperties &
-  HTMLAttributes<HTMLDivElement>): JSX.Element => (
+}: LayoutWrapperProperties & HTMLAttributes<HTMLDivElement>): JSX.Element => (
   <div className='wrapper' {...properties}>
     {children}
   </div>
