@@ -32,7 +32,7 @@ export const WithIllustration: Story = {
   args: {
     heading: '41 characters max for a one-line heading',
     image:
-      'https://cfpb.github.io/design-system/images/uploads/hero_illustration_example_keys.png',
+      'https://cfpb.github.io/design-system/images/uploads/design_system_illustration_hero_example.png',
     subheading:
       'This text has a recommended count of 165-186 characters (three lines at 1230px) following a one-line heading and 108-124 characters (two lines at 1230px) following a two-line heading.',
     backgroundColor: '#d4e7e6',
@@ -44,7 +44,8 @@ export const WithPhotograph: Story = {
   args: {
     ...WithIllustration.args,
     imageIsPhoto: true,
-    image: 'http://files.consumerfinance.gov/f/images/PC_hero.original.jpg',
+    image:
+      'https://cfpb.github.io/design-system/images/uploads/design_system_photo_hero_example.png',
     backgroundColor: '#f7f8f9',
   },
 };
@@ -59,6 +60,6 @@ export const WithKnockoutText: Story = {
     backgroundColor: '#207676',
     isKnockout: true,
     image:
-      'http://files.consumerfinance.gov/f/images/ConsumerMarketTrends-hero.original.png',
+      'https://cfpb.github.io/design-system/images/uploads/design_system_knockout_hero_example.png',
   },
 };
