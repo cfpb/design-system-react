@@ -8,7 +8,13 @@ export const LAYOUT_DOCS_SOURCE =
 export const LAYOUT_DOCS = {
   component: `Use \`Layout.Main\`, \`Layout.Wrapper\`, \`Layout.Content\`, and \`Layout.Sidebar\` together to structure page content and optional sidebars.
 
-Main is the container for all content within a layout and configures column structure (\`layout\`) and whether the sidebar bleeds to the window edge. Content is the main body of the page. Wrapper positions content and sidebar columns. Sidebar is a vertical region beside the main content.
+Main is the container for all content within a layout and configures column structure and whether the sidebar bleeds to the window edge. 
+
+Content is the main body of the page, situated between the header and the footer.
+
+The wrapper serves as a container for other components or elements. It wraps around child components and provides additional functionality, such as styling, context, or logic.
+
+A sidebar is a vertical user interface element positioned on the left or right side of the main content area.
 
 Source: ${LAYOUT_DOCS_SOURCE}`,
 } as const;
