@@ -75,4 +75,33 @@ describe('Hero', () => {
 
     expect(screen.getByTestId('hero-text')).not.toHaveAttribute('style');
   });
+
+  it('uses the mobile image in the image slot for photo heroes', () => {
+    render(
+      <Hero
+        imageIsPhoto
+        image='/desktop-photo.png'
+        mobileImage='/mobile-photo.jpg'
+        imageAltText='photo hero'
+      />,
+    );
+
+    expect(screen.getByRole('img', { name: 'photo hero' })).toHaveStyle({
+      backgroundImage: 'url("/mobile-photo.jpg")',
+    });
+  });
+
+  it('ignores the mobile image in the image slot for non-photo heroes', () => {
+    render(
+      <Hero
+        image='/illustration.png'
+        mobileImage='/mobile-photo.jpg'
+        imageAltText='illustration hero'
+      />,
+    );
+
+    expect(screen.getByRole('img', { name: 'illustration hero' })).toHaveStyle({
+      backgroundImage: 'url("/illustration.png")',
+    });
+  });
 });

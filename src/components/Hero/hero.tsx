@@ -20,6 +20,8 @@ export interface HeroProperties extends Omit<
   imageAltText?: string;
   /** Photo hero (`m-hero--overlay`): image on the wrapper at tablet+, in the image slot on mobile. */
   imageIsPhoto?: boolean;
+  /** Optional mobile photo URL for `.m-hero__image` when `imageIsPhoto` is true. */
+  mobileImage?: string;
   /** When using a dark background, add the m-hero--knockout to switch the text to white. */
   isKnockout?: boolean;
   /** Content guidelines for subheading: After one-line heading, subheading text can be between 165 and 186 characters (three lines at largest breakpoint); After two-line heading, subheading text can be between 108 and 124 characters (two lines at largest breakpoint) */
@@ -41,6 +43,7 @@ export default function Hero({
   image,
   imageAltText = 'hero image',
   imageIsPhoto,
+  mobileImage,
   isKnockout,
   subheading,
   className,
@@ -60,6 +63,7 @@ export default function Hero({
   // Custom colors belong on `.m-hero` (full width). The wrapper is max-width centered in DS
   // CSS, so a wrapper-only background leaves the section default visible at the sides.
   const heroStyle = backgroundColor ? { backgroundColor } : undefined;
+  const imageSlotSource = imageIsPhoto ? (mobileImage ?? image) : image;
 
   return (
     <section
@@ -88,7 +92,7 @@ export default function Hero({
             </p>
           ) : null}
         </div>
-        <HeroImage image={image} altText={imageAltText} />
+        <HeroImage image={imageSlotSource} altText={imageAltText} />
       </div>
     </section>
   );

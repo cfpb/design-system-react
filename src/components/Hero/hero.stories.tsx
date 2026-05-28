@@ -46,6 +46,8 @@ export const WithPhotograph: Story = {
     imageIsPhoto: true,
     image:
       'https://cfpb.github.io/design-system/images/uploads/design_system_photo_hero_example.png',
+    mobileImage:
+      'https://cfpb.github.io/design-system/images/uploads/design_system_photo_hero_sm_example.jpg',
     backgroundColor: '#f7f8f9',
   },
 };
