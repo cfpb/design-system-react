@@ -2,37 +2,40 @@ import type { Ref } from 'react';
 import { useEffect, useRef } from 'react';
 
 /**
- * Add inline styles which apply a background-image to the referenced <div>
+ * Applies photograph hero background-image rules to `.m-hero__wrapper` per the DS.
+ * Only runs for `m-hero--overlay`; does not clear other inline styles (e.g. backgroundColor).
  *
  * @param image Image URL
- * @param shoudAddStyles Flag to indicate that inline styles should be included
- * @returns Ref that should be attached to the wrapper <div>
+ * @param shouldAddPhotoBackground When true, set wrapper background-image (tablet+)
+ * @param backgroundColor Optional wrapper background color to preserve with photo styles
+ * @returns Ref that should be attached to the wrapper `<div>`
  */
 export const useBackgroundImage = (
   image?: string,
-  shoudAddStyles?: boolean,
+  shouldAddPhotoBackground?: boolean,
+  backgroundColor?: string,
 ): Ref<HTMLDivElement> => {
   const imageWrapperReference = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!shoudAddStyles || !image || !imageWrapperReference.current) {
-      imageWrapperReference.current?.setAttribute('style', '');
+    const element = imageWrapperReference.current;
+    if (!element) return;
+
+    if (!shouldAddPhotoBackground || !image) {
+      element.style.removeProperty('background-image');
+      element.style.removeProperty('--m-hero-wrapper-image');
       return;
     }
 
-    imageWrapperReference.current.setAttribute(
-      'style',
-      `background-image: url(${image});
-       background-image: -webkit-image-set(
-        url(${image}) 1x,
-        url(${image}) 2x
-      );
-      background-image: image-set(
-        url(${image}) 1x,
-        url(${image}) 2x
-      );`,
-    );
-  }, [imageWrapperReference, image, shoudAddStyles]);
+    const url = `url(${JSON.stringify(image)})`;
+    element.style.setProperty('--m-hero-wrapper-image', url);
+
+    if (backgroundColor) {
+      element.style.backgroundColor = backgroundColor;
+    } else {
+      element.style.removeProperty('background-color');
+    }
+  }, [image, shouldAddPhotoBackground, backgroundColor]);
 
   return imageWrapperReference;
 };

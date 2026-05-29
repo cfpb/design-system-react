@@ -1,8 +1,9 @@
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Hero from './hero';
 
 describe('Hero', () => {
-  it('Renders all elements: heading, subheading, image', () => {
+  it('renders heading, subheading, and image with DS classes', () => {
     const heading = 'heading';
     const subheading = 'subheading';
     const image = '../../assets/images/credit-card-hero.png';
@@ -17,69 +18,117 @@ describe('Hero', () => {
       />,
     );
 
-    expect(screen.getByText(heading).className).toMatch(/m-hero__heading/g);
-    expect(screen.getByText(subheading).className).toMatch(/m-hero__subhead/g);
-    expect(screen.getByRole('img', { name: imageText }).className).toMatch(
-      /m-hero__image/g,
+    const headingElement = screen.getByRole('heading', { level: 1 });
+    expect(headingElement).toHaveClass('m-hero__heading');
+    expect(headingElement).toHaveTextContent(heading);
+
+    const subheadingElement = screen.getByText(subheading);
+    expect(subheadingElement.tagName).toBe('P');
+    expect(subheadingElement).toHaveClass('m-hero__subhead');
+
+    expect(screen.getByRole('img', { name: imageText })).toHaveClass(
+      'm-hero__image',
     );
   });
 
-  it('Derives CSS classes for component variations', () => {
+  it('derives CSS classes for component variations', () => {
     const isKnockout = 'm-hero--knockout';
     const imageIsPhoto = 'm-hero--overlay';
 
     render(<Hero isKnockout data-testid={isKnockout} />);
-    expect(screen.getByTestId(isKnockout).className).toMatch(isKnockout);
-
-    render(<Hero imageIsPhoto data-testid={imageIsPhoto} />);
-    expect(screen.getByTestId(imageIsPhoto).className).toMatch(imageIsPhoto);
-  });
-
-  it('Applies direct color settings', () => {
-    const textColor = 'orange';
-    const backgroundColor = 'purple';
-    const wrapperSelector = 'wrapper';
-    const textId = 'hero-text';
+    expect(screen.getByTestId(isKnockout)).toHaveClass(isKnockout);
 
     render(
       <Hero
-        data-testid='wrapper'
-        textColor={textColor}
-        backgroundColor={backgroundColor}
+        imageIsPhoto
+        mobileImage='/mobile-photo.jpg'
+        data-testid={imageIsPhoto}
+      />,
+    );
+    expect(screen.getByTestId(imageIsPhoto)).toHaveClass(imageIsPhoto);
+  });
+
+  it('applies background color on the section for standard heroes', () => {
+    render(
+      <Hero backgroundColor='#800080' heading='test' data-testid='hero' />,
+    );
+
+    expect(screen.getByTestId('hero')).toHaveStyle({
+      backgroundColor: 'rgb(128, 0, 128)',
+    });
+    expect(screen.getByTestId('hero-wrapper')).not.toHaveAttribute('style');
+  });
+
+  it('applies background color on the section for knockout heroes', () => {
+    render(
+      <Hero
+        isKnockout
+        backgroundColor='#207676'
         heading='test'
+        data-testid='hero'
       />,
     );
 
-    // Background color
-    const wrapper = screen.getByTestId(wrapperSelector);
-    expect(wrapper.style.backgroundColor).toMatch(backgroundColor);
-
-    // Text color
-    const text = screen.getByTestId(textId);
-    expect(text.style.color).toMatch(textColor);
+    expect(screen.getByTestId('hero')).toHaveStyle({
+      backgroundColor: '#207676',
+    });
   });
 
-  it('Applies heading levels', () => {
-    const headingLevel = 2;
-    const headingText = 'Heading text';
-    const subheadingLevel = 3;
-    const subheadingText = 'Subheading text';
+  it('does not set inline text color (knockout uses DS styles)', () => {
+    render(
+      <Hero isKnockout heading='test' subheading='sub' data-testid='hero' />,
+    );
 
+    expect(screen.getByTestId('hero-text')).not.toHaveAttribute('style');
+  });
+
+  it('uses the mobile image in the image slot for photo heroes', () => {
     render(
       <Hero
-        heading='Heading text'
-        headingLevel={`h${headingLevel}`}
-        subheading='Subheading text'
-        subheadingLevel={`h${subheadingLevel}`}
+        imageIsPhoto
+        image='/desktop-photo.png'
+        mobileImage='/mobile-photo.jpg'
+        imageAltText='photo hero'
       />,
     );
 
-    // Heading
-    const header = screen.getByRole('heading', { level: headingLevel });
-    expect(header).toHaveProperty('textContent', headingText);
+    const heroImage = screen.getByRole('img', { name: 'photo hero' });
+    expect(heroImage.style.getPropertyValue('--m-hero-image')).toBe(
+      'url("/desktop-photo.png")',
+    );
+    expect(heroImage.style.getPropertyValue('--m-hero-mobile-image')).toBe(
+      'url("/mobile-photo.jpg")',
+    );
+  });
 
-    // Subheading
-    const subheading = screen.getByRole('heading', { level: subheadingLevel });
-    expect(subheading).toHaveProperty('textContent', subheadingText);
+  it('supports a mobile image in the image slot for non-photo heroes', () => {
+    render(
+      <Hero
+        image='/illustration.png'
+        mobileImage='/mobile-photo.jpg'
+        imageAltText='illustration hero'
+      />,
+    );
+
+    const heroImage = screen.getByRole('img', { name: 'illustration hero' });
+    expect(heroImage.style.getPropertyValue('--m-hero-image')).toBe(
+      'url("/illustration.png")',
+    );
+    expect(heroImage.style.getPropertyValue('--m-hero-mobile-image')).toBe(
+      'url("/mobile-photo.jpg")',
+    );
+  });
+
+  it('requires a mobile image for photo heroes', () => {
+    expect(() =>
+      render(
+        // @ts-expect-error mobileImage is required when imageIsPhoto is true.
+        <Hero
+          imageIsPhoto
+          image='/desktop-photo.png'
+          imageAltText='photo hero'
+        />,
+      ),
+    ).toThrow('Hero requires mobileImage when imageIsPhoto is true.');
   });
 });

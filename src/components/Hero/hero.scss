@@ -4,6 +4,24 @@
   background-color: var(--gray-30);
 }
 
+.m-hero__image {
+  background-image: var(--m-hero-mobile-image, var(--m-hero-image));
+}
+
+.m-hero--overlay .m-hero__wrapper {
+  background-image: none;
+}
+
+@media screen and (min-width: 37.5625em) {
+  .m-hero__image {
+    background-image: var(--m-hero-image, var(--m-hero-mobile-image));
+  }
+
+  .m-hero--overlay .m-hero__wrapper {
+    background-image: var(--m-hero-wrapper-image);
+  }
+}
+
 // Illustration slot: match common DS hero artwork (940×390).
 //
 // Production DS/Jinja pages often set this on an empty `.m-hero__image` with `background-image`,
