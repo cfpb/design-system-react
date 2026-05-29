@@ -12,6 +12,7 @@ export const LAYOUT_DOCS = {
 | **Wrapper** | \`.wrapper\` around columns (hero or \`Divider\` may sit above it inside Main). |
 | **Content** | Primary page body (\`.content__main\`). |
 | **Sidebar** | Optional aside (\`.content__sidebar\`). Order in the wrapper must match the layout (sidebar then main for \`1-3\`; main then sidebar for \`2-1\`). |
+| **Content / Sidebar modifiers** | \`flushBottom\`, \`flushTopOnSmall\`, and \`flushAllOnSmall\` map to \`.content--flush-bottom\`, \`.content--flush-top-on-small\`, and \`.content--flush-all-on-small\`. |
 
 The stories below follow the live examples on the design system documentation page.`,
 } as const;

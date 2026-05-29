@@ -100,3 +100,87 @@ export const RightHandSidebarLayout: Story = {
     },
   },
 };
+
+export const FlushBottomModifier: Story = {
+  name: 'Flush bottom modifier',
+  render: () => (
+    <>
+      <Layout.Main layout='1-3'>
+        <Divider />
+        <Layout.Wrapper>
+          <Layout.Sidebar flushBottom>
+            Side with no bottom padding...
+          </Layout.Sidebar>
+          <Layout.Content flushBottom>
+            Main content with no bottom padding...
+            <div className='block block--flush-bottom block--flush-sides block--bg'>
+              .content--flush-bottom is very useful when you have a content block
+              inside of .content__main with a background and flush sides.
+            </div>
+          </Layout.Content>
+        </Layout.Wrapper>
+      </Layout.Main>
+      <LayoutStoryFooter />
+    </>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Set `flushBottom` on `Layout.Content` or `Layout.Sidebar` to apply `.content--flush-bottom` and remove bottom padding.',
+      },
+    },
+  },
+};
+
+export const FlushTopOnSmallModifier: Story = {
+  name: 'Flush top modifier (only on small screens)',
+  render: () => (
+    <>
+      <Layout.Main layout='1-3'>
+        <Divider />
+        <Layout.Wrapper>
+          <Layout.Sidebar flushTopOnSmall>
+            Side with no top padding on small screens...
+          </Layout.Sidebar>
+          <Layout.Content>Main content</Layout.Content>
+        </Layout.Wrapper>
+      </Layout.Main>
+      <LayoutStoryFooter />
+    </>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Set `flushTopOnSmall` on `Layout.Content` or `Layout.Sidebar` to apply `.content--flush-top-on-small`. Top padding is removed only on small screens, where main and sidebar stack in a single column.',
+      },
+    },
+  },
+};
+
+export const FlushAllOnSmallModifier: Story = {
+  name: 'Flush all modifier (only on small screens)',
+  render: () => (
+    <>
+      <Layout.Main layout='1-3'>
+        <Divider />
+        <Layout.Wrapper>
+          <Layout.Sidebar flushAllOnSmall>
+            Side with no padding or border-based gutters on small screens...
+          </Layout.Sidebar>
+          <Layout.Content>Main content</Layout.Content>
+        </Layout.Wrapper>
+      </Layout.Main>
+      <LayoutStoryFooter />
+    </>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Set `flushAllOnSmall` on `Layout.Content` or `Layout.Sidebar` to apply `.content--flush-all-on-small`. All padding and border-based gutters are removed on small screens only.',
+      },
+    },
+  },
+};
