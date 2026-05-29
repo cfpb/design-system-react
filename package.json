@@ -50,6 +50,7 @@
   },
   "peerDependencies": {
     "@cfpb/cfpb-design-system": "5.5.1",
+    "lit": "^3.3.3",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "react-router": "^7.15.1"

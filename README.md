@@ -12,11 +12,13 @@ Current components: https://cfpb.github.io/design-system-react
 
 The `@cfpb/design-system-react` library is released as an [NPM package](https://www.npmjs.com/package/@cfpb/design-system-react).
 
-To install the package:
+To install the package and its peer dependencies:
 
 ```
-yarn add @cfpb/design-system-react
+yarn add @cfpb/design-system-react @cfpb/cfpb-design-system lit react react-dom react-router
 ```
+
+`lit` is required because `@cfpb/cfpb-design-system` web components (for example `<cfpb-tagline>` in `Banner`) are built with [Lit](https://lit.dev/).
 
 ## Usage
 

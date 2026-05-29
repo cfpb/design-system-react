@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
 import { Alert, AlertFieldLevel, TextInput } from '~/src/index';
-import type { TextInputStatusType } from '../TextInput/text-input-status';
-
-type AlertStatusType = TextInputStatusType & ['loading'];
 
 const meta: Meta<typeof Alert> = {
   title: 'Components (Draft)/Alerts',
@@ -17,6 +14,7 @@ const meta: Meta<typeof Alert> = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+type FieldLevelStory = StoryObj<typeof AlertFieldLevel>;
 
 const FieldLevelAlertMessage = ({ status = 'a warning' }): ReactNode => (
   <>This is a field-level alert with {status} status.</>
@@ -112,13 +110,13 @@ export const InProgress: Story = {
   },
 };
 
-export const SuccessFieldLevel: Story = {
+export const SuccessFieldLevel: FieldLevelStory = {
   render: (_arguments) => (
     <div className='m-form-field'>
       <TextInput
         id={_arguments.status as string}
         name={_arguments.status as string}
-        status={_arguments.status as AlertStatusType}
+        status={_arguments.status}
         placeholder='Input text'
         type='text'
       />
@@ -132,13 +130,13 @@ export const SuccessFieldLevel: Story = {
   },
 };
 
-export const WarningFieldLevel: Story = {
+export const WarningFieldLevel: FieldLevelStory = {
   render: (_arguments) => (
     <div className='m-form-field'>
       <TextInput
         id={_arguments.status as string}
         name={_arguments.status as string}
-        status={_arguments.status as AlertStatusType}
+        status={_arguments.status}
         placeholder='Input text'
         type='text'
       />
@@ -152,13 +150,13 @@ export const WarningFieldLevel: Story = {
   },
 };
 
-export const ErrorFieldLevel: Story = {
+export const ErrorFieldLevel: FieldLevelStory = {
   render: (_arguments) => (
     <div className='m-form-field'>
       <TextInput
         id={_arguments.status as string}
         name={_arguments.status as string}
-        status={_arguments.status as AlertStatusType}
+        status={_arguments.status}
         placeholder='Input text'
         type='text'
       />
