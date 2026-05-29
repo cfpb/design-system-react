@@ -3,6 +3,8 @@ import { Layout } from '../../index';
 declare const meta: Meta<typeof Layout.Main>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export declare const BasicMain: Story;
-export declare const Layout_2_1: Story;
-export declare const Layout_1_3: Story;
+/** Composed page shell — use Controls to switch column layout or preview main-only. */
+export declare const PageLayout: Story;
+export declare const BuildingBlockMain: Story;
+export declare const BuildingBlockContent: Story;
+export declare const BuildingBlockSidebar: Story;
