@@ -27,15 +27,14 @@ interface HeroSharedProperties extends Omit<
 export type HeroProperties = HeroSharedProperties &
   (
     | {
-        /** Photo hero (`m-hero--overlay`): `image` is used on the wrapper at tablet+, `mobileImage` is used in the image slot on mobile. */
+        /** Photo hero (`m-hero--overlay`): Two images must be created, one for large and one for small screens.*/
         imageIsPhoto: true;
         /** Required mobile photo URL for `.m-hero__image` when `imageIsPhoto` is true. */
         mobileImage: string;
       }
     | {
-        /** Standard hero or knockout hero. */
+        // Standard hero or knockout, mobile image optional.
         imageIsPhoto?: false;
-        /** Small-screen image URL for `.m-hero__image`; switches to `image` at tablet+. */
         mobileImage?: string;
       }
   );
