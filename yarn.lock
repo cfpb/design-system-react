@@ -1316,7 +1316,7 @@ __metadata:
     vite-plugin-turbosnap: "npm:^1.0.3"
     vitest: "npm:^4.1.7"
   peerDependencies:
-    "@cfpb/cfpb-design-system": 5.5.0
+    "@cfpb/cfpb-design-system": 5.5.1
     react: 19.2.6
     react-dom: 19.2.6
     react-router: ^7.15.1
@@ -6073,14 +6073,14 @@ __metadata:
   linkType: hard
 
 "eslint-module-utils@npm:^2.12.1":
-  version: 2.12.1
-  resolution: "eslint-module-utils@npm:2.12.1"
+  version: 2.13.0
+  resolution: "eslint-module-utils@npm:2.13.0"
   dependencies:
     debug: "npm:^3.2.7"
   peerDependenciesMeta:
     eslint:
       optional: true
-  checksum: 10/bd25d6610ec3abaa50e8f1beb0119541562bbb8dd02c035c7e887976fe1e0c5dd8175f4607ca8d86d1146df24d52a071bd3d1dd329f6902bd58df805a8ca16d3
+  checksum: 10/cecb2c341bddc85314b3cf3cf9354e894b9af3047c28db248ad498166847029c710caf605dc43f903086edb0ce9bd83a61b21ed217eb2237807c742d33ccf7fb
   languageName: node
   linkType: hard
 
