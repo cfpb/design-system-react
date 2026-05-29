@@ -6,3 +6,6 @@ type Story = StoryObj<typeof meta>;
 export declare const MainContentAndSidebar: Story;
 export declare const LeftHandSidebarLayout: Story;
 export declare const RightHandSidebarLayout: Story;
+export declare const FlushBottomModifier: Story;
+export declare const FlushTopOnSmallModifier: Story;
+export declare const FlushAllOnSmallModifier: Story;
