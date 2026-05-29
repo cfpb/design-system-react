@@ -5,16 +5,26 @@ import type { LayoutMainProperties } from './layout-main';
 export const LAYOUT_DOCS_SOURCE =
   'https://cfpb.github.io/design-system/development/main-content-and-sidebars';
 
+/** Empty string in Storybook controls = single-column main (no `content--*` modifier). */
+export type LayoutStoryLayoutValue = LayoutMainProperties['layout'] | '';
+
+export const LAYOUT_STORY_LAYOUT_OPTIONS: LayoutStoryLayoutValue[] = [
+  '',
+  '2-1',
+  '1-3',
+];
+
 export const LAYOUT_DOCS = {
-  component: `Use \`Layout.Main\`, \`Layout.Wrapper\`, \`Layout.Content\`, and \`Layout.Sidebar\` together to structure page content and optional sidebars.
+  component: `Layout is a **composition API**: assemble \`Layout.Main\`, \`Layout.Wrapper\`, \`Layout.Content\`, and optionally \`Layout.Sidebar\` rather than picking a single “variant” on one component.
 
-Main is the container for all content within a layout and configures column structure and whether the sidebar bleeds to the window edge. 
+| Piece | Role |
+| ----- | ---- |
+| **Main** | Page \`<main>\` landmark. Set \`layout="2-1"\` or \`layout="1-3"\` only when using a two-column page; omit \`layout\` for a single full-width content column. |
+| **Wrapper** | \`.wrapper\` around columns (and optional hero above it inside Main). |
+| **Content** | Primary page body (\`.content__main\`). |
+| **Sidebar** | Optional aside (\`.content__sidebar\`). Order in the wrapper must match the layout (main then sidebar for \`2-1\`; sidebar then main for \`1-3\`). |
 
-Content is the main body of the page, situated between the header and the footer.
-
-The wrapper serves as a container for other components or elements. It wraps around child components and provides additional functionality, such as styling, context, or logic.
-
-A sidebar is a vertical user interface element positioned on the left or right side of the main content area.
+Use the **Page layout** story control to preview column ratios. Individual pieces share the same DOM/classes as in production; see the building-block stories for each part in isolation.
 
 Source: ${LAYOUT_DOCS_SOURCE}`,
 } as const;
@@ -42,18 +52,30 @@ export const LayoutExampleSidebar = (): ReactElement => (
   </Layout.Sidebar>
 );
 
-export const renderLayoutTwoColumnExample = ({
-  layout = '2-1',
+export const renderLayoutPageExample = ({
+  layout = '',
 }: {
-  layout?: LayoutMainProperties['layout'];
+  layout?: LayoutStoryLayoutValue;
 }): ReactElement => {
   const contentNode = LayoutExampleContent();
+  const columnLayout = layout || undefined;
+
+  if (!columnLayout) {
+    return (
+      <Layout.Main>
+        <Layout.Wrapper>{contentNode}</Layout.Wrapper>
+      </Layout.Main>
+    );
+  }
+
   const sidebarNode = LayoutExampleSidebar();
   const columnChildren =
-    layout === '1-3' ? [sidebarNode, contentNode] : [contentNode, sidebarNode];
+    columnLayout === '1-3'
+      ? [sidebarNode, contentNode]
+      : [contentNode, sidebarNode];
 
   return (
-    <Layout.Main layout={layout}>
+    <Layout.Main layout={columnLayout}>
       <Layout.Wrapper>{columnChildren}</Layout.Wrapper>
     </Layout.Main>
   );

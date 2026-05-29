@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Layout from './layout';
 
 describe('Layout.Main', () => {
-  it('renders main landmark with default 2-1 layout classes', () => {
+  it('renders main landmark without a column layout class by default', () => {
     render(
       <Layout.Main>
         <span>child</span>
@@ -11,9 +11,20 @@ describe('Layout.Main', () => {
     );
 
     const main = screen.getByRole('main');
-    expect(main).toHaveClass('content', 'content--2-1');
+    expect(main).toHaveClass('content');
+    expect(main).not.toHaveClass('content--2-1', 'content--1-3');
     expect(main).toHaveAttribute('id', 'main');
     expect(screen.getByText('child')).toBeInTheDocument();
+  });
+
+  it('applies 2-1 layout class when layout is 2-1', () => {
+    render(
+      <Layout.Main layout='2-1'>
+        <span>child</span>
+      </Layout.Main>,
+    );
+
+    expect(screen.getByRole('main')).toHaveClass('content--2-1');
   });
 
   it('applies 1-3 layout class when layout is 1-3', () => {
