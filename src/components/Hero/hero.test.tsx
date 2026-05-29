@@ -38,7 +38,13 @@ describe('Hero', () => {
     render(<Hero isKnockout data-testid={isKnockout} />);
     expect(screen.getByTestId(isKnockout)).toHaveClass(isKnockout);
 
-    render(<Hero imageIsPhoto data-testid={imageIsPhoto} />);
+    render(
+      <Hero
+        imageIsPhoto
+        mobileImage='/mobile-photo.jpg'
+        data-testid={imageIsPhoto}
+      />,
+    );
     expect(screen.getByTestId(imageIsPhoto)).toHaveClass(imageIsPhoto);
   });
 
@@ -86,12 +92,16 @@ describe('Hero', () => {
       />,
     );
 
-    expect(screen.getByRole('img', { name: 'photo hero' })).toHaveStyle({
-      backgroundImage: 'url("/mobile-photo.jpg")',
-    });
+    const heroImage = screen.getByRole('img', { name: 'photo hero' });
+    expect(heroImage.style.getPropertyValue('--m-hero-image')).toBe(
+      'url("/desktop-photo.png")',
+    );
+    expect(heroImage.style.getPropertyValue('--m-hero-mobile-image')).toBe(
+      'url("/mobile-photo.jpg")',
+    );
   });
 
-  it('ignores the mobile image in the image slot for non-photo heroes', () => {
+  it('supports a mobile image in the image slot for non-photo heroes', () => {
     render(
       <Hero
         image='/illustration.png'
@@ -100,8 +110,25 @@ describe('Hero', () => {
       />,
     );
 
-    expect(screen.getByRole('img', { name: 'illustration hero' })).toHaveStyle({
-      backgroundImage: 'url("/illustration.png")',
-    });
+    const heroImage = screen.getByRole('img', { name: 'illustration hero' });
+    expect(heroImage.style.getPropertyValue('--m-hero-image')).toBe(
+      'url("/illustration.png")',
+    );
+    expect(heroImage.style.getPropertyValue('--m-hero-mobile-image')).toBe(
+      'url("/mobile-photo.jpg")',
+    );
+  });
+
+  it('requires a mobile image for photo heroes', () => {
+    expect(() =>
+      render(
+        // @ts-expect-error mobileImage is required when imageIsPhoto is true.
+        <Hero
+          imageIsPhoto
+          image='/desktop-photo.png'
+          imageAltText='photo hero'
+        />,
+      ),
+    ).toThrow('Hero requires mobileImage when imageIsPhoto is true.');
   });
 });

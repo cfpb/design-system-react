@@ -23,23 +23,18 @@ export const useBackgroundImage = (
 
     if (!shouldAddPhotoBackground || !image) {
       element.style.removeProperty('background-image');
+      element.style.removeProperty('--m-hero-wrapper-image');
       return;
     }
 
-    const url = JSON.stringify(image);
-    const colorRule = backgroundColor
-      ? `background-color: ${backgroundColor};`
-      : '';
-    element.style.cssText = `${colorRule}
-      background-image: url(${url});
-      background-image: -webkit-image-set(
-        url(${url}) 1x,
-        url(${url}) 2x
-      );
-      background-image: image-set(
-        url(${url}) 1x,
-        url(${url}) 2x
-      );`;
+    const url = `url(${JSON.stringify(image)})`;
+    element.style.setProperty('--m-hero-wrapper-image', url);
+
+    if (backgroundColor) {
+      element.style.backgroundColor = backgroundColor;
+    } else {
+      element.style.removeProperty('background-color');
+    }
   }, [image, shouldAddPhotoBackground, backgroundColor]);
 
   return imageWrapperReference;

@@ -6,7 +6,7 @@ import { HeroImage } from './hero-image';
 import './hero.scss';
 import { useBackgroundImage } from './use-background-image';
 
-export interface HeroProperties extends Omit<
+interface HeroSharedProperties extends Omit<
   HTMLAttributes<HTMLElement>,
   'children' | 'color'
 > {
@@ -18,15 +18,27 @@ export interface HeroProperties extends Omit<
   image?: string;
   /** Accessible name for the decorative hero image. */
   imageAltText?: string;
-  /** Photo hero (`m-hero--overlay`): image on the wrapper at tablet+, in the image slot on mobile. */
-  imageIsPhoto?: boolean;
-  /** Optional mobile photo URL for `.m-hero__image` when `imageIsPhoto` is true. */
-  mobileImage?: string;
   /** When using a dark background, add the m-hero--knockout to switch the text to white. */
   isKnockout?: boolean;
   /** Content guidelines for subheading: After one-line heading, subheading text can be between 165 and 186 characters (three lines at largest breakpoint); After two-line heading, subheading text can be between 108 and 124 characters (two lines at largest breakpoint) */
   subheading?: string;
 }
+
+export type HeroProperties = HeroSharedProperties &
+  (
+    | {
+        /** Photo hero (`m-hero--overlay`): `image` is used on the wrapper at tablet+, `mobileImage` is used in the image slot on mobile. */
+        imageIsPhoto: true;
+        /** Required mobile photo URL for `.m-hero__image` when `imageIsPhoto` is true. */
+        mobileImage: string;
+      }
+    | {
+        /** Standard hero or knockout hero. */
+        imageIsPhoto?: false;
+        /** Small-screen image URL for `.m-hero__image`; switches to `image` at tablet+. */
+        mobileImage?: string;
+      }
+  );
 
 /**
  * CFPB hero pattern (illustration, photograph, knockout).
@@ -55,6 +67,10 @@ export default function Hero({
     imageIsPhoto ? backgroundColor : undefined,
   );
 
+  if (imageIsPhoto && !mobileImage) {
+    throw new Error('Hero requires mobileImage when imageIsPhoto is true.');
+  }
+
   const heroCnames = ['m-hero', className];
 
   if (isKnockout) heroCnames.push('m-hero--knockout');
@@ -63,7 +79,6 @@ export default function Hero({
   // Custom colors belong on `.m-hero` (full width). The wrapper is max-width centered in DS
   // CSS, so a wrapper-only background leaves the section default visible at the sides.
   const heroStyle = backgroundColor ? { backgroundColor } : undefined;
-  const imageSlotSource = imageIsPhoto ? (mobileImage ?? image) : image;
 
   return (
     <section
@@ -92,7 +107,11 @@ export default function Hero({
             </p>
           ) : null}
         </div>
-        <HeroImage image={imageSlotSource} altText={imageAltText} />
+        <HeroImage
+          image={image}
+          mobileImage={mobileImage}
+          altText={imageAltText}
+        />
       </div>
     </section>
   );
