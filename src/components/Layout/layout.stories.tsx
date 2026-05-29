@@ -1,19 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Layout } from '~/src/index';
+import { Divider, Layout } from '~/src/index';
 import {
   LAYOUT_DOCS,
-  LAYOUT_STORY_LAYOUT_OPTIONS,
-  LayoutExampleContent,
-  LayoutExampleSidebar,
-  type LayoutStoryLayoutValue,
-  renderLayoutPageExample,
+  LAYOUT_EXAMPLE_LOREM,
+  LayoutStoryFooter,
 } from './layout-stories-shared';
-
-const layoutLabels: Record<LayoutStoryLayoutValue, string> = {
-  '': 'None (single column)',
-  '2-1': '2-1 (main + right sidebar)',
-  '1-3': '1-3 (left sidebar + main)',
-};
 
 const meta: Meta<typeof Layout.Main> = {
   title: 'Components (Draft)/Layouts',
@@ -27,82 +18,85 @@ const meta: Meta<typeof Layout.Main> = {
       },
     },
   },
-  argTypes: {
-    layout: {
-      name: 'Column layout',
-      control: { type: 'select' },
-      options: LAYOUT_STORY_LAYOUT_OPTIONS,
-      labels: layoutLabels,
-      description:
-        'Two-column ratios on `Layout.Main`. None = no `layout` prop (main content only, no sidebar column).',
-    },
-    id: { table: { disable: true } },
-    classes: { table: { disable: true } },
-    children: { table: { disable: true } },
-  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/** Composed page shell — use Controls to switch column layout or preview main-only. */
-export const PageLayout: Story = {
-  name: 'Page layout',
-  args: {
-    layout: '' satisfies LayoutStoryLayoutValue,
-  },
-  render: ({ layout = '' }) => renderLayoutPageExample({ layout }),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Typical assembly: `Layout.Main` → `Layout.Wrapper` → `Layout.Content` (and `Layout.Sidebar` when using `2-1` or `1-3`). This is the story to use when reviewing layout behavior; the stories below show each building block alone.',
-      },
-    },
-  },
-};
-
-export const BuildingBlockMain: Story = {
-  name: 'Building block — Main',
-  parameters: {
-    controls: { disable: true },
-    docs: {
-      description: {
-        story:
-          '`Layout.Main` only, with no `layout` prop — single-column shell (`content`, no `content--*`).',
-      },
-    },
-  },
+export const MainContentAndSidebar: Story = {
+  name: 'Main content and sidebar',
   render: () => (
     <Layout.Main>
-      <Layout.Wrapper>{LayoutExampleContent()}</Layout.Wrapper>
+      <section className='content_hero' style={{ background: '#E3E4E5' }}>
+        Content hero
+      </section>
+      <Layout.Wrapper>
+        <Layout.Content>Main content area</Layout.Content>
+        <Layout.Sidebar style={{ background: '#F1F2F2' }}>Sidebar</Layout.Sidebar>
+      </Layout.Wrapper>
     </Layout.Main>
   ),
-};
-
-export const BuildingBlockContent: Story = {
-  name: 'Building block — Content',
   parameters: {
-    controls: { disable: true },
     docs: {
       description: {
-        story: '`Layout.Content` markup and classes without Main/Wrapper.',
+        story:
+          'Standard layout for the main content area and sidebar. By default `.content__main` and `.content__sidebar` stack vertically. Column modifiers (`2-1`, `1-3`) convert to side-by-side columns at 801px. Inline styling is for demonstration only.',
       },
     },
   },
-  render: () => LayoutExampleContent(),
 };
 
-export const BuildingBlockSidebar: Story = {
-  name: 'Building block — Sidebar',
+export const LeftHandSidebarLayout: Story = {
+  name: 'Left-hand sidebar layout',
+  render: () => (
+    <>
+      <Layout.Main layout='1-3'>
+        <Divider />
+        <Layout.Wrapper>
+          <Layout.Sidebar>Section navigation</Layout.Sidebar>
+          <Layout.Content>
+            <h2>Main content area</h2>
+            <p>{LAYOUT_EXAMPLE_LOREM}</p>
+          </Layout.Content>
+        </Layout.Wrapper>
+      </Layout.Main>
+      <LayoutStoryFooter />
+    </>
+  ),
   parameters: {
-    controls: { disable: true },
     docs: {
       description: {
-        story: '`Layout.Sidebar` markup and classes without Main/Wrapper.',
+        story:
+          'Add `layout="1-3"` to `Layout.Main` for a 1:3 ratio with the sidebar on the left and main content on the right. Place `Layout.Sidebar` before `Layout.Content` in the wrapper.',
       },
     },
   },
-  render: () => LayoutExampleSidebar(),
+};
+
+export const RightHandSidebarLayout: Story = {
+  name: 'Right-hand sidebar layout',
+  render: () => (
+    <>
+      <Layout.Main layout='2-1'>
+        <Divider />
+        <Layout.Wrapper>
+          <Layout.Content>
+            <h2>Main content area</h2>
+            <p>{LAYOUT_EXAMPLE_LOREM}</p>
+          </Layout.Content>
+          <Layout.Sidebar style={{ background: '#F1F2F2' }}>Sidebar</Layout.Sidebar>
+        </Layout.Wrapper>
+      </Layout.Main>
+      <LayoutStoryFooter />
+    </>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Add `layout="2-1"` to `Layout.Main` for a 2:1 ratio with main content on the left and the sidebar on the right. Place `Layout.Content` before `Layout.Sidebar` in the wrapper.',
+      },
+    },
+  },
 };
