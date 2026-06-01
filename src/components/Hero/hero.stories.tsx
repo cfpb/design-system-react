@@ -25,7 +25,9 @@ Source: https://cfpb.github.io/design-system/patterns/heroes
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+// StoryObj<typeof meta> resolves args to `never` because HeroProperties is a
+// discriminated union (mobileImage required when imageIsPhoto is true).
+type Story = StoryObj<typeof Hero>;
 
 export const WithIllustration: Story = {
   name: 'With illustration',

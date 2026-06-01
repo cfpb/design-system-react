@@ -18,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Standard = {
+export const Standard: Story = {
   name: 'Standard text introduction',
   args: {
     ...placeholders,
