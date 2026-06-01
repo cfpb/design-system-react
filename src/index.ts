@@ -48,6 +48,7 @@ export { SelectMulti } from './components/Select/select-multi';
 export { SelectSingle } from './components/Select/select-single';
 export { default as SkipNav } from './components/SkipNav/skip-nav';
 export { Summary } from './components/Summaries/summary';
+export { Tab, TabList, TabPanel } from './components/Tabs/tab';
 export { Table } from './components/Table/table';
 export { TextArea } from './components/TextInput/text-area';
 export { TextInput } from './components/TextInput/text-input';
