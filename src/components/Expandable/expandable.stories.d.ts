@@ -1,10 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Expandable } from '../../index';
+import { ExpandableGroup } from './expandable-group';
 declare const meta: Meta<typeof Expandable>;
 export default meta;
 type Story = StoryObj<typeof meta>;
+type GroupStory = StoryObj<typeof ExpandableGroup>;
 export declare const Default: Story;
 export declare const PaddedExpandable: Story;
 export declare const OpenOnLoad: Story;
-export declare const DefaultExpandableGroup: Story;
-export declare const Accordion: Story;
+export declare const DefaultExpandableGroup: GroupStory;
+export declare const Accordion: GroupStory;
