@@ -57,6 +57,8 @@ export const Alert = ({
     );
   }
 
+  // Information and in-progress alerts use the base `m-notification` class only
+  // (no status modifier). See https://cfpb.github.io/design-system/components/alerts
   const classes = classNames(
     'm-notification',
     'm-notification--visible',
@@ -64,7 +66,6 @@ export const Alert = ({
       'm-notification--success': status === 'success',
       'm-notification--warning': status === 'warning',
       'm-notification--error': status === 'error',
-      'm-notification--info': status === 'info',
     },
     className,
   );
