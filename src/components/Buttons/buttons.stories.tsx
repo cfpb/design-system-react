@@ -150,7 +150,7 @@ export const FullWidthOnSmallScreens: Story = {
   name: 'Full-width (on x-small screens)',
   args: {
     ...Primary.args,
-    label: 'Resize to mobile to see effect',
+    label: 'Full-width',
     appearance: 'primary',
     size: 'full',
   },

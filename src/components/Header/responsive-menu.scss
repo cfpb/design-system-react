@@ -24,11 +24,6 @@ $max-width: $bp-sm-max;
         align-items: stretch;
         padding: 0;
         min-height: 60px;
-
-        &.wrapper.wrapper--match-content {
-          padding-left: 0 !important;
-          padding-right: 0 !important;
-        }
       }
 
       @media (min-width: $breakpoint) {
@@ -46,15 +41,19 @@ $max-width: $bp-sm-max;
         }
 
         @media (max-width: $max-width) {
-          border-left: 1px solid var(--gray-40);
           padding-left: 15px;
-
           .o-header__logo-img {
             height: 40px;
             margin-top: 10px;
             margin-bottom: 10px;
             vertical-align: middle;
           }
+        }
+      }
+
+      @media (max-width: $max-width) {
+        button.menu-toggle + .o-header__logo {
+          border-left: 1px solid var(--gray-40);
         }
       }
 

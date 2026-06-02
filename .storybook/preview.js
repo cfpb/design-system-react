@@ -1,8 +1,24 @@
 import React from 'react';
+import { buildArgsParam } from 'storybook/internal/router';
+import { useArgs, useGlobals } from 'storybook/preview-api';
+import '@fontsource-variable/source-sans-3';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
 
 const responsivePreviewQueryParameter = 'responsivePreview';
+
+/** Query key read by `.storybook/preview-head.html` inside nested “All viewports” iframes. */
+const nestedCanvasPaddingQueryParameter = 'sbNestedCanvasPadding';
+
+/**
+ * Nested All-viewports iframes use `responsivePreview=off`. Padding on `#storybook-root` keeps
+ * `:focus-visible` rings visible. Full-bleed stories set `parameters.sbNestedCanvasPadding: 'flush'`.
+ *
+ * @param {Record<string, unknown> | undefined} parameters
+ * @returns {'focus' | 'flush'}
+ */
+const getNestedCanvasPaddingMode = (parameters) =>
+  parameters?.sbNestedCanvasPadding === 'flush' ? 'flush' : 'focus';
 
 // Match CFPB design-system breakpoints (16px root): large layout from 63.8125em (~1021px).
 // Hero `.m-hero__wrapper` uses min-height + em padding there; 1230px aligns with typical
@@ -52,13 +68,41 @@ const shouldRenderSinglePreview = (context) => {
   );
 };
 
-const getPreviewSource = (storyId) => {
+/**
+ * Build `args` / `globals` query strings for nested iframes (same encoding as Storybook manager).
+ *
+ * @param {Record<string, unknown>} initialValues
+ * @param {Record<string, unknown>} currentValues
+ * @returns {string}
+ */
+const buildNestedQueryParam = (initialValues, currentValues) =>
+  buildArgsParam(initialValues ?? {}, currentValues ?? {});
+
+/**
+ * @param {string} storyId
+ * @param {'focus' | 'flush'} nestedCanvasPaddingMode
+ * @param {{ argsParam: string, globalsParam: string }} queryParams
+ * @returns {string}
+ */
+const getPreviewSource = (storyId, nestedCanvasPaddingMode, queryParams) => {
   const url = new URL(globalThis.location.href);
 
   url.search = '';
   url.searchParams.set('id', storyId);
   url.searchParams.set('viewMode', 'story');
   url.searchParams.set(responsivePreviewQueryParameter, 'off');
+
+  if (nestedCanvasPaddingMode === 'flush') {
+    url.searchParams.set(nestedCanvasPaddingQueryParameter, 'flush');
+  }
+
+  if (queryParams.argsParam) {
+    url.searchParams.set('args', queryParams.argsParam);
+  }
+
+  if (queryParams.globalsParam) {
+    url.searchParams.set('globals', queryParams.globalsParam);
+  }
 
   return url.toString();
 };
@@ -101,7 +145,7 @@ const getFrameHeight = (frame) => {
   );
 };
 
-const ResponsivePreviewFrame = ({ storyId, viewport }) => {
+const ResponsivePreviewFrame = ({ previewSrc, viewport }) => {
   const [height, setHeight] = React.useState(64);
 
   const updateHeight = React.useCallback((frame) => {
@@ -135,7 +179,7 @@ const ResponsivePreviewFrame = ({ storyId, viewport }) => {
         if (storyRoot) observer.observe(storyRoot);
       }
     },
-    src: getPreviewSource(storyId),
+    src: previewSrc,
     title: `${viewport.name} preview`,
     style: {
       background: 'white',
@@ -151,10 +195,25 @@ const ResponsivePreviewFrame = ({ storyId, viewport }) => {
   });
 };
 
-const renderResponsivePreviews = (Story, context) => {
-  if (shouldRenderSinglePreview(context)) {
-    return React.createElement(Story);
-  }
+/**
+ * All-viewports grid: nested iframes are separate documents; args/globals come from the decorator
+ * (`useArgs` / `useGlobals` must run there, not in this child component).
+ *
+ * @param {{ context: import('storybook/internal/types').StoryContext, nestedCanvasPaddingMode: 'focus' | 'flush', args: Record<string, unknown>, globals: Record<string, unknown> }} props
+ */
+const AllViewportsPreviews = ({
+  context,
+  nestedCanvasPaddingMode,
+  args,
+  globals,
+}) => {
+  const argsParam = buildNestedQueryParam(context.initialArgs, args);
+  const globalsParam = buildNestedQueryParam(context.initialGlobals, globals);
+  const previewSrc = getPreviewSource(context.id, nestedCanvasPaddingMode, {
+    argsParam,
+    globalsParam,
+  });
+  const iframeCacheKey = `${argsParam}|${globalsParam}`;
 
   return React.createElement(
     'div',
@@ -174,7 +233,6 @@ const renderResponsivePreviews = (Story, context) => {
           key,
           style: {
             display: 'grid',
-            // gap: '15px',
             justifyItems: 'start',
           },
         },
@@ -189,12 +247,33 @@ const renderResponsivePreviews = (Story, context) => {
           `${viewport.name}`,
         ),
         React.createElement(ResponsivePreviewFrame, {
-          storyId: context.id,
+          key: `${key}-${iframeCacheKey}`,
+          previewSrc,
           viewport,
         }),
       ),
     ),
   );
+};
+
+const renderResponsivePreviews = (Story, context) => {
+  const [args] = useArgs();
+  const [globals] = useGlobals();
+
+  if (shouldRenderSinglePreview(context)) {
+    return React.createElement(Story);
+  }
+
+  const nestedCanvasPaddingMode = getNestedCanvasPaddingMode(
+    context.parameters,
+  );
+
+  return React.createElement(AllViewportsPreviews, {
+    context,
+    nestedCanvasPaddingMode,
+    args,
+    globals,
+  });
 };
 
 /** Storybook body classes applied by `parameters.layout` (see prepareForStory / WebView). */

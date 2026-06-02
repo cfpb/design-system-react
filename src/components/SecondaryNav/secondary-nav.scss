@@ -5,7 +5,7 @@
 // @see https://github.com/cfpb/consumerfinance.gov/blob/main/cfgov/unprocessed/css/organisms/secondary-nav.scss
 @use 'sass:math';
 @use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
-@use '@cfpb/cfpb-design-system/src/utilities' as *;
+@use '@cfpb/cfpb-design-system/src/utilities/index.scss' as *;
 
 .o-secondary-nav {
   //
@@ -205,11 +205,6 @@
     &__header[aria-expanded='false'] ~ &__content {
       display: none;
     }
-  }
-
-  @include respond-to-range($bp-sm-min, $bp-sm-max) {
-    margin-left: -1.875rem;
-    margin-right: -1.875rem;
   }
 
   // Desktop and above.

@@ -14,8 +14,7 @@ export const LayoutContent = ({
   flushTopOnSmall,
   flushAllOnSmall,
   ...properties
-}: LayoutContentProperties &
-  HTMLAttributes<HTMLDivElement>): JSX.Element => {
+}: LayoutContentProperties & HTMLAttributes<HTMLDivElement>): JSX.Element => {
   const cnames = ['content__main'];
   if (flushBottom) cnames.push('content--flush-bottom');
   if (flushTopOnSmall) cnames.push('content--flush-top-on-small');
