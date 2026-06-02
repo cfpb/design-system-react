@@ -29,7 +29,7 @@ export const TextArea = forwardRef(
     {
       id,
       className = '',
-      status = 'info',
+      status,
       placeholder = 'Placeholder text',
       isFullWidth = false,
       isDisabled = false,

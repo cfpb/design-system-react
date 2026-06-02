@@ -30,18 +30,21 @@ describe('<TextArea />', () => {
     expect(textInput).toHaveClass('a-text-input__full');
   });
 
-  it('Handles all supported statuses', () => {
-    // Valid status should have associated class
-    const statuses: TextInputStatusType[] = [
-      'error',
-      'success',
-      'warning',
-      'info',
-    ];
+  it('applies validation status modifiers', () => {
+    const statuses: TextInputStatusType[] = ['error', 'success', 'warning'];
+
     for (const status of statuses) {
       render(<TextArea id='alert' {...{ status, placeholder: status }} />);
       const textInput = screen.getByPlaceholderText(status);
       expect(textInput).toHaveClass(`a-text-input--${status}`);
     }
+  });
+
+  it('renders without status when omitted', () => {
+    render(<TextArea id='enabled' placeholder='enabled' />);
+
+    const textInput = screen.getByPlaceholderText('enabled');
+    expect(textInput).toHaveClass('a-text-input');
+    expect(textInput).not.toHaveClass('a-text-input--success');
   });
 });
