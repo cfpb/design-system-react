@@ -1,8 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { cloneElement } from 'react';
 import List from '../List/list';
-import ListItem from '../List/list-item';
 import {
   callToAction,
   callToActionText,
@@ -32,9 +30,7 @@ describe('<TextIntroduction.Container />', () => {
         <TextIntroduction.Description>
           {description}
         </TextIntroduction.Description>
-        <List isLinks>
-          <ListItem>{cloneElement(callToAction, { type: 'list' })}</ListItem>
-        </List>
+        <List isLinks>{callToAction}</List>
       </TextIntroduction.Container>,
     );
     expect(screen.getByText(heading)).toBeInTheDocument();

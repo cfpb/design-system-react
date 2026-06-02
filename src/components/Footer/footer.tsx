@@ -8,7 +8,7 @@ import './footer.scss';
 import './social-media.scss';
 
 interface FooterProperties extends HTMLProps<HTMLElement> {
-  children?: ReactNode
+  children?: ReactNode;
 }
 
 export function Footer({
@@ -22,10 +22,9 @@ export function Footer({
     <footer
       className={classnames(classes)}
       data-js-hook='state_atomic_init'
-      {...properties}>
-      <div className='wrapper wrapper--match-content'>
-        {children}
-      </div>
+      {...properties}
+    >
+      <div className='wrapper wrapper--match-content'>{children}</div>
     </footer>
   );
 }
@@ -50,26 +49,23 @@ export function WebsiteFooter({
   className,
   ...properties
 }: WebsiteFooterProperties): JSX.Element {
-
   return (
-    <Footer
-      className={className}
-      {...properties}>
-        <div className='o-footer__pre'>
-          <BackToTop />
-          <NavLinks>{navLinks}</NavLinks>
-          <SocialLinks>{socialLinks}</SocialLinks>
-        </div>
+    <Footer className={className} {...properties}>
+      <div className='o-footer__pre'>
+        <BackToTop />
+        <NavLinks>{navLinks}</NavLinks>
+        <SocialLinks>{socialLinks}</SocialLinks>
+      </div>
 
-        <div className='o-footer__middle-left'>
-          <FooterLinksColumn>{linksCol1}</FooterLinksColumn>
-          <FooterLinksColumn>{linksCol2}</FooterLinksColumn>
-        </div>
+      <div className='o-footer__middle-left'>
+        <FooterLinksColumn>{linksCol1}</FooterLinksColumn>
+        <FooterLinksColumn>{linksCol2}</FooterLinksColumn>
+      </div>
 
-        <div className='o-footer__middle-right'>
-          <FooterLinksColumn>{linksCol3}</FooterLinksColumn>
-        </div>
-        <FooterBanner />
+      <div className='o-footer__middle-right'>
+        <FooterLinksColumn>{linksCol3}</FooterLinksColumn>
+      </div>
+      <FooterBanner />
     </Footer>
   );
 }
@@ -80,8 +76,8 @@ interface ApplicationFooterProperties extends HTMLProps<HTMLElement> {
 }
 
 /**
- * A minimal two-column footer for use in applications. 
- * The left column can contain information about the app, 
+ * A minimal two-column footer for use in applications.
+ * The left column can contain information about the app,
  * and the right column is for relevant links.
  */
 export function ApplicationFooter({
@@ -91,19 +87,17 @@ export function ApplicationFooter({
   ...properties
 }: ApplicationFooterProperties): JSX.Element {
   return (
-    <Footer
-      className={className}
-      {...properties}>
-        <BackToTop />
-        <div className='o-footer__content'>
-          <div className='o-footer__left-column'>
-            <div data-testid='footer-content'>{footerContent}</div>
-          </div>
-          <div className='o-footer__right-column'>
-            <FooterLinksColumn>{navLinks}</FooterLinksColumn>
-          </div>
+    <Footer className={className} {...properties}>
+      <BackToTop />
+      <div className='o-footer__content'>
+        <div className='o-footer__left-column'>
+          <div data-testid='footer-content'>{footerContent}</div>
         </div>
-        <FooterBanner />
+        <div className='o-footer__right-column'>
+          <FooterLinksColumn>{navLinks}</FooterLinksColumn>
+        </div>
+      </div>
+      <FooterBanner />
     </Footer>
   );
 }
