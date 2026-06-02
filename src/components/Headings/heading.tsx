@@ -31,7 +31,7 @@ export const Heading = ({
 
     return (
       <header className={classnames(classes)} {...properties}>
-        <h2 className='m-slug-header_heading'>{children}</h2>
+        <h2 className='m-slug-header__heading'>{children}</h2>
       </header>
     );
   }

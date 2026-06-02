@@ -1,102 +1,117 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
-import type { HTMLAttributes, ReactNode } from 'react';
-import type { HeadingLevel } from '../../types/heading-level';
-import type { HeadingType } from '../Headings/heading';
+import type { HTMLAttributes } from 'react';
 import { Heading } from '../Headings/heading';
 import { HeroImage } from './hero-image';
 import './hero.scss';
 import { useBackgroundImage } from './use-background-image';
 
-interface HeroProperties extends HTMLAttributes<HTMLDivElement> {
+interface HeroSharedProperties extends Omit<
+  HTMLAttributes<HTMLElement>,
+  'children' | 'color'
+> {
+  /** CSS background color on `.m-hero` (full bleed). Photo heroes also pass this to the wrapper for overlay image rules. */
   backgroundColor?: string;
-  heading?: ReactNode;
-  headingLevel?: HeadingLevel;
+  /** Content guidelines for heading: One-line (at largest breakpoint): 41 characters maximum; Two-lines (at largest breakpoint): 82 characters maximum */
+  heading?: string;
+  /** Illustration or photo URL for `.m-hero__image` / overlay wrapper background. */
   image?: string;
+  /** Accessible name for the decorative hero image. */
   imageAltText?: string;
-  imageIsPhoto?: boolean;
+  /** When using a dark background, add the m-hero--knockout to switch the text to white. */
   isKnockout?: boolean;
-  subheading?: ReactNode;
-  subheadingLevel?: HeadingLevel | 'p';
-  textColor?: string;
+  /** Content guidelines for subheading: After one-line heading, subheading text can be between 165 and 186 characters (three lines at largest breakpoint); After two-line heading, subheading text can be between 108 and 124 characters (two lines at largest breakpoint) */
+  subheading?: string;
 }
 
+export type HeroProperties = HeroSharedProperties &
+  (
+    | {
+        /** Photo hero (`m-hero--overlay`): Two images must be created, one for large and one for small screens.*/
+        imageIsPhoto: true;
+        /** Required mobile photo URL for `.m-hero__image` when `imageIsPhoto` is true. */
+        mobileImage: string;
+      }
+    | {
+        // Standard hero or knockout, mobile image optional.
+        imageIsPhoto?: false;
+        mobileImage?: string;
+      }
+  );
+
 /**
+ * CFPB hero pattern (illustration, photograph, knockout).
+ *
+ * Jumbo and 50/50 variants are not included — see
  * https://cfpb.github.io/design-system/patterns/heroes
  *
- * The Jumbo and 50/50 hero variants, included in the CFPB Design System,
- * and used on the CF.gov homepage are not included by this component.
- *
- * The implementation of the hero on https://www.consumerfinance.gov/es/
- * uses a combination of Jumbo and 50/50 hero variants including some tweaks in
- * wagtail.
+ * Heading uses DS `Heading` type 1 with `m-hero__heading`; subheading is `p.m-hero__subhead`.
+ * Responsive type sizes are handled by DS CSS, not by configurable heading levels.
  */
 export default function Hero({
   backgroundColor,
   heading,
-  headingLevel = 'h1',
   image,
   imageAltText = 'hero image',
   imageIsPhoto,
+  mobileImage,
   isKnockout,
   subheading,
-  subheadingLevel = 'p',
-  textColor,
   className,
   ...properties
 }: HeroProperties): JSX.Element {
-  const wrapperReference = useBackgroundImage(image, Boolean(imageIsPhoto));
+  const wrapperReference = useBackgroundImage(
+    image,
+    Boolean(imageIsPhoto),
+    imageIsPhoto ? backgroundColor : undefined,
+  );
 
-  const heroStyles = { backgroundColor };
-  const textStyles = { color: textColor };
+  if (imageIsPhoto && !mobileImage) {
+    throw new Error('Hero requires mobileImage when imageIsPhoto is true.');
+  }
+
   const heroCnames = ['m-hero', className];
 
   if (isKnockout) heroCnames.push('m-hero--knockout');
   if (imageIsPhoto) heroCnames.push('m-hero--overlay');
 
-  // NOTE: This is a mapping of the Hero component's HeadingLevel to the Heading component's
-  // HeadingType but we could also use the HeadingType directly in the Hero component with some
-  // refactoring of the Heading component or run a regex replace on the HeadingLevel in the Hero
-  const HeadingLevelToHeadingType: Record<string, HeadingType> = {
-    h1: '1',
-    h2: '2',
-    h3: '3',
-    h4: '4',
-    h5: '5',
-    display: 'display',
-    eyebrow: 'eyebrow',
-    slug: 'slug',
-  };
+  // Custom colors belong on `.m-hero` (full width). The wrapper is max-width centered in DS
+  // CSS, so a wrapper-only background leaves the section default visible at the sides.
+  const heroStyle = backgroundColor ? { backgroundColor } : undefined;
 
   return (
-    <div className={classnames(heroCnames)} style={heroStyles} {...properties}>
-      <div className='m-hero__wrapper' ref={wrapperReference}>
-        <div
-          className='m-hero__text'
-          style={textStyles}
-          data-testid='hero-text'
-        >
-          <Heading
-            className='m-hero__heading'
-            data-testid='hero-heading'
-            type={HeadingLevelToHeadingType[headingLevel]}
-          >
-            {heading}
-          </Heading>
-          {subheadingLevel === 'p' ? (
-            <p className='m-hero__subhead'>{subheading}</p>
-          ) : (
+    <section
+      className={classnames(heroCnames)}
+      style={heroStyle}
+      {...properties}
+    >
+      <div
+        className='m-hero__wrapper'
+        data-testid='hero-wrapper'
+        ref={wrapperReference}
+      >
+        <div className='m-hero__text' data-testid='hero-text'>
+          {heading ? (
             <Heading
-              className='m-hero__subhead'
-              data-testid='hero-subheading'
-              type={HeadingLevelToHeadingType[subheadingLevel]}
+              className='m-hero__heading'
+              data-testid='hero-heading'
+              type='1'
             >
-              {subheading}
+              {heading}
             </Heading>
-          )}
+          ) : null}
+          {subheading ? (
+            <p className='m-hero__subhead' data-testid='hero-subheading'>
+              {subheading}
+            </p>
+          ) : null}
         </div>
-        <HeroImage image={image} altText={imageAltText} />
+        <HeroImage
+          image={image}
+          mobileImage={mobileImage}
+          altText={imageAltText}
+        />
       </div>
-    </div>
+    </section>
   );
 }
