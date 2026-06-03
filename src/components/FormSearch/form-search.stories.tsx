@@ -1,6 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-import { FormSearch } from './form-search';
+import { FormSearch, type FormSearchProperties } from './form-search';
+
+const logSubmit = (value: string): void => {
+  // eslint-disable-next-line no-console -- Storybook demo feedback
+  console.log('FormSearch submit:', value);
+};
+
+const FormSearchWithSubmitLog = (args: FormSearchProperties) => (
+  <FormSearch
+    {...args}
+    onSubmit={(value) => {
+      logSubmit(value);
+      args.onSubmit?.(value);
+    }}
+  />
+);
 
 const SAMPLE_SUGGESTIONS = [
   { label: 'How do I add money to my prepaid card?' },
@@ -18,8 +34,14 @@ const meta: Meta<typeof FormSearch> = {
     docs: {
       description: {
         component: `
-Wraps the DS \`<cfpb-form-search>\` web component: search field, clear control,
-optional typeahead suggestions, and submit button.
+Minimal wrapper around the DS \`<cfpb-form-search>\` web component: search field,
+clear control, optional typeahead (hidden \`<ul>\` slot), and submit button.
+Use \`onChange\` / \`onSubmit\` for app logic; wrap in a parent \`<form>\` only when
+you need native form submission.
+
+**App setup:** call \`setSharedConfig({ iconPath: '/your/icons/' })\` from
+\`@cfpb/cfpb-design-system\` before rendering (icons load from that URL). Storybook
+configures this in \`.storybook/preview.js\`.
 
 Source: [Reference for custom elements — Search widget](https://cfpb.github.io/design-system/components/reference-for-custom-elements)
         `,
@@ -29,7 +51,13 @@ Source: [Reference for custom elements — Search widget](https://cfpb.github.io
   argTypes: {
     showSubmitButton: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    // `value` forces controlled mode and blocks typing unless the parent updates it.
+    value: { control: false, table: { disable: true } },
+    defaultValue: { control: 'text' },
+    onChange: { action: 'changed' },
+    onSubmit: { action: 'submitted' },
   },
+  render: (args) => <FormSearchWithSubmitLog {...args} />,
 };
 
 export default meta;
@@ -41,6 +69,31 @@ export const Default: Story = {
     name: 'q',
     placeholder: 'Enter your search term(s)',
     submitLabel: 'Search',
+  },
+};
+
+export const Controlled: Story = {
+  render: (args) => {
+    const [value, setValue] = useState(args.defaultValue ?? '');
+
+    return (
+      <FormSearch
+        {...args}
+        onChange={(next) => {
+          setValue(next);
+          args.onChange?.(next);
+        }}
+        onSubmit={(next) => {
+          logSubmit(next);
+          args.onSubmit?.(next);
+        }}
+        value={value}
+      />
+    );
+  },
+  args: {
+    ...Default.args,
+    defaultValue: 'mortgage',
   },
 };
 
@@ -89,7 +142,6 @@ export const ValidationError: Story = {
   name: 'Validation error',
   args: {
     ...Default.args,
-    validation: 'error',
-    value: 'a'.repeat(80),
+    defaultValue: 'a'.repeat(80),
   },
 };

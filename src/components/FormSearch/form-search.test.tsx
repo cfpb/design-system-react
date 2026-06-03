@@ -1,15 +1,31 @@
 import { CfpbFormSearch } from '@cfpb/cfpb-design-system';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { useState } from 'react';
 import { fn } from 'storybook/test';
 import { FormSearch } from './form-search';
-import { getFormSearchSubmitButton } from './form-search-utils';
+import {
+  getFormSearchNativeInput,
+  getFormSearchSubmitButton,
+} from './form-search-utils';
 
-const waitForFormSearchUpgrade = async (
+const waitForFormSearchReady = async (
   id?: string,
 ): Promise<HTMLElement | null> => {
   await customElements.whenDefined('cfpb-form-search');
-  await new Promise((resolve) => requestAnimationFrame(resolve));
+  await customElements.whenDefined('cfpb-form-search-input');
+
+  await waitFor(() => {
+    const element = id
+      ? document.querySelector<HTMLElement>(`#${id}`)
+      : document.querySelector<HTMLElement>('cfpb-form-search');
+
+    expect(getFormSearchNativeInput(element)).not.toBeNull();
+  });
+
+  await new Promise((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(resolve));
+  });
 
   return id
     ? document.querySelector<HTMLElement>(`#${id}`)
@@ -24,7 +40,7 @@ describe('<FormSearch />', () => {
   it('renders the cfpb-form-search web component', async () => {
     render(<FormSearch id='search-test' />);
 
-    const element = await waitForFormSearchUpgrade('search-test');
+    const element = await waitForFormSearchReady('search-test');
     expect(element).toBeInTheDocument();
   });
 
@@ -47,6 +63,55 @@ describe('<FormSearch />', () => {
     );
   });
 
+  it('allows typing when uncontrolled', async () => {
+    const onChange = fn();
+
+    render(<FormSearch id='search-type' onChange={onChange} />);
+
+    const element = await waitForFormSearchReady('search-type');
+    const input = getFormSearchNativeInput(element)!;
+
+    fireEvent.input(input, { target: { value: 'hello' } });
+
+    await waitFor(() => {
+      expect(onChange).toHaveBeenLastCalledWith('hello');
+    });
+    expect((element as HTMLElement & { value: string }).value).toBe('hello');
+  });
+
+  it('allows typing when controlled with onChange', async () => {
+    const onChange = fn();
+
+    const Controlled = () => {
+      const [currentValue, setCurrentValue] = useState('');
+
+      return (
+        <FormSearch
+          id='search-controlled'
+          onChange={(next) => {
+            setCurrentValue(next);
+            onChange(next);
+          }}
+          value={currentValue}
+        />
+      );
+    };
+
+    render(<Controlled />);
+
+    const element = await waitForFormSearchReady('search-controlled');
+    const input = getFormSearchNativeInput(element)!;
+
+    fireEvent.input(input, { target: { value: 'hi' } });
+
+    await waitFor(() => {
+      expect(onChange).toHaveBeenLastCalledWith('hi');
+    });
+    await waitFor(() => {
+      expect(element?.value).toBe('hi');
+    });
+  });
+
   it('calls onSubmit with the current value', async () => {
     const onSubmit = fn();
 
@@ -59,18 +124,27 @@ describe('<FormSearch />', () => {
       />,
     );
 
-    const element = await waitForFormSearchUpgrade('search-submit');
-    expect(element).not.toBeNull();
+    const element = await waitForFormSearchReady('search-submit');
 
-    fireEvent.submit(document.getElementById('search-submit-form')!);
+    const searchInputHost = element?.shadowRoot?.querySelector(
+      'cfpb-form-search-input',
+    );
+    expect(searchInputHost).not.toBeNull();
 
-    expect(onSubmit).toHaveBeenCalledWith('mortgage');
+    fireEvent(
+      searchInputHost!,
+      new CustomEvent('enter-down', { bubbles: true, composed: true }),
+    );
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith('mortgage');
+    });
   });
 
   it('can hide the submit button', async () => {
     render(<FormSearch id='search-no-btn' showSubmitButton={false} />);
 
-    const element = await waitForFormSearchUpgrade('search-no-btn');
+    const element = await waitForFormSearchReady('search-no-btn');
 
     await waitFor(() => {
       expect(getFormSearchSubmitButton(element)?.hidden).toBe(true);

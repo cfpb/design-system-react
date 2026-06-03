@@ -4,18 +4,31 @@ import {
   useEffect,
   useId,
   useImperativeHandle,
+  useLayoutEffect,
   useRef,
-  type FormEvent,
   type ReactElement,
   type Ref,
 } from 'react';
 import { noOp } from '../../utils/no-op';
 import {
+  applyFormSearchElementProps,
   getFormSearchNativeInput,
-  getFormSearchSubmitButton,
+  getFormSearchValue,
+  syncFormSearchSubmitButton,
+  whenFormSearchReady,
+  type FormSearchElement,
 } from './form-search-utils';
 
-CfpbFormSearch.init();
+let formSearchInitialized = false;
+
+const ensureFormSearchInitialized = (): void => {
+  if (formSearchInitialized) {
+    return;
+  }
+
+  CfpbFormSearch.init();
+  formSearchInitialized = true;
+};
 
 export type FormSearchValidation = 'error' | 'success' | 'warning';
 
@@ -46,14 +59,12 @@ export interface FormSearchProperties {
   submitLabel?: string;
   /** Submit button `aria-label` (DS default: “Search for term(s)”). */
   submitAriaLabel?: string;
-  /** When false, hides the DS submit button (e.g. submit via parent form only). */
+  /** When false, hides the DS submit button. */
   showSubmitButton?: boolean;
-  /** Typeahead suggestions; rendered as a hidden list for the web component slot. */
+  /** Typeahead suggestions; rendered as a hidden list in the web component slot. */
   suggestions?: FormSearchSuggestion[];
   className?: string;
   id?: string;
-  action?: string;
-  method?: 'get' | 'post';
   onChange?: (value: string) => void;
   onSubmit?: (value: string) => void;
   onClear?: () => void;
@@ -65,13 +76,10 @@ export interface FormSearchHandle {
   focus: () => void;
 }
 
-const toDomBoolean = (flag?: boolean): boolean | undefined =>
-  flag ? true : undefined;
-
 /**
- * Search widget wrapping the DS `<cfpb-form-search>` web component (input, optional
- * typeahead, and submit). Place inside or alongside a `<form>`; the component renders
- * its own form wrapper so Enter and the submit button trigger `onSubmit`.
+ * Thin React wrapper around the DS `<cfpb-form-search>` web component.
+ * Place inside a parent `<form>` when you need native form submission; otherwise
+ * use `onSubmit` for app logic (e.g. Redux).
  *
  * @see https://cfpb.github.io/design-system/components/reference-for-custom-elements
  */
@@ -93,102 +101,170 @@ export const FormSearch = forwardRef(function FormSearch(
     suggestions,
     className,
     id,
-    action,
-    method = 'get',
     onChange = noOp,
     onSubmit = noOp,
     onClear = noOp,
   }: FormSearchProperties,
   reference: Ref<FormSearchHandle>,
 ): ReactElement {
+  ensureFormSearchInitialized();
+
   const generatedId = useId();
   const elementId = id ?? generatedId.replace(/:/g, '');
-  const elementReference = useRef<HTMLElement | null>(null);
+  const elementReference = useRef<FormSearchElement | null>(null);
+  const hasAppliedDefaultValue = useRef(false);
+  const hasConnectedReference = useRef(false);
   const isControlled = value !== undefined;
+
+  const handlersReference = useRef({ onChange, onSubmit, onClear });
+  handlersReference.current = { onChange, onSubmit, onClear };
+
+  const isControlledReference = useRef(isControlled);
+  isControlledReference.current = isControlled;
+
+  const valueReference = useRef(value);
+  valueReference.current = value;
+
+  const defaultValueReference = useRef(defaultValue);
+  defaultValueReference.current = defaultValue;
 
   useImperativeHandle(reference, () => ({
     element: elementReference.current,
     focus: () => {
-      const input = getFormSearchNativeInput(elementReference.current);
-      input?.focus();
+      getFormSearchNativeInput(elementReference.current)?.focus();
     },
   }));
 
   useEffect(() => {
     const element = elementReference.current;
-    if (!element) return;
-
-    if (isControlled) {
-      (element as HTMLElement & { value: string }).value = value;
-    } else if (defaultValue !== undefined) {
-      (element as HTMLElement & { value: string }).value = defaultValue;
+    if (!element) {
+      return;
     }
-  }, [defaultValue, isControlled, value]);
+
+    applyFormSearchElementProps(element, {
+      ariaLabelButton,
+      ariaLabelInput,
+      disabled,
+      label,
+      maxlength,
+      name,
+      placeholder,
+      validation,
+    });
+  }, [
+    ariaLabelButton,
+    ariaLabelInput,
+    disabled,
+    label,
+    maxlength,
+    name,
+    placeholder,
+    validation,
+  ]);
+
+  useEffect(() => {
+    if (!isControlled) {
+      return;
+    }
+
+    const element = elementReference.current;
+    if (!element) {
+      return;
+    }
+
+    const nextValue = value ?? '';
+    if (element.value !== nextValue) {
+      element.value = nextValue;
+    }
+  }, [isControlled, value]);
+
+  useLayoutEffect(() => {
+    const element = elementReference.current;
+    if (!element || hasConnectedReference.current) {
+      return undefined;
+    }
+
+    return whenFormSearchReady(element, () => {
+      const input = getFormSearchNativeInput(element);
+      if (!input) {
+        return undefined;
+      }
+
+      hasConnectedReference.current = true;
+
+      if (isControlledReference.current) {
+        element.value = valueReference.current ?? '';
+      } else if (
+        defaultValueReference.current !== undefined &&
+        !hasAppliedDefaultValue.current
+      ) {
+        element.value = defaultValueReference.current;
+        hasAppliedDefaultValue.current = true;
+      }
+
+      const submitButton = element.shadowRoot?.querySelector<HTMLButtonElement>(
+        'button[type="submit"]',
+      );
+      const searchInputHost = element.shadowRoot?.querySelector(
+        'cfpb-form-search-input',
+      );
+
+      const handleInput = (): void => {
+        handlersReference.current.onChange(getFormSearchValue(element));
+      };
+
+      const handleSubmit = (event: Event): void => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        handlersReference.current.onSubmit(getFormSearchValue(element));
+      };
+
+      const handleClear = (): void => {
+        handlersReference.current.onClear();
+        if (!isControlledReference.current) {
+          element.value = '';
+        }
+        handlersReference.current.onChange('');
+      };
+
+      input.addEventListener('input', handleInput);
+      submitButton?.addEventListener('click', handleSubmit, true);
+      searchInputHost?.addEventListener('enter-down', handleSubmit);
+      searchInputHost?.addEventListener('clear', handleClear);
+
+      return () => {
+        hasConnectedReference.current = false;
+        input.removeEventListener('input', handleInput);
+        submitButton?.removeEventListener('click', handleSubmit, true);
+        searchInputHost?.removeEventListener('enter-down', handleSubmit);
+        searchInputHost?.removeEventListener('clear', handleClear);
+      };
+    });
+  }, []);
 
   useEffect(() => {
     const element = elementReference.current;
-    if (!element) return;
+    if (!element) {
+      return;
+    }
 
-    const input = getFormSearchNativeInput(element);
-    if (!input) return;
-
-    const handleInput = (): void => {
-      const currentValue =
-        (element as HTMLElement & { value: string }).value ?? input.value;
-      onChange(currentValue);
+    const syncSubmit = (): void => {
+      syncFormSearchSubmitButton(element, {
+        showSubmitButton,
+        submitAriaLabel,
+        submitLabel,
+      });
     };
 
-    input.addEventListener('input', handleInput);
-    return () => input.removeEventListener('input', handleInput);
-  }, [onChange]);
-
-  useEffect(() => {
-    const element = elementReference.current;
-    if (!element) return;
-
-    const handleClear = (): void => {
-      onClear();
-      onChange('');
-    };
-
-    const searchInput = element.shadowRoot?.querySelector(
-      'cfpb-form-search-input',
-    );
-    searchInput?.addEventListener('clear', handleClear);
-    return () => searchInput?.removeEventListener('clear', handleClear);
-  }, [onChange, onClear]);
-
-  useEffect(() => {
-    const element = elementReference.current;
-    if (!element) return;
-
-    let cancelled = false;
-
-    const syncSubmitButton = (): void => {
-      const button = getFormSearchSubmitButton(element);
-      if (!button) return;
-
-      button.textContent = submitLabel;
-      button.setAttribute('aria-label', submitAriaLabel);
-      button.hidden = !showSubmitButton;
-    };
+    if (hasConnectedReference.current) {
+      syncSubmit();
+      return;
+    }
 
     void customElements.whenDefined('cfpb-form-search').then(() => {
-      if (cancelled) return;
-      requestAnimationFrame(syncSubmitButton);
+      requestAnimationFrame(syncSubmit);
     });
-
-    return () => {
-      cancelled = true;
-    };
   }, [showSubmitButton, submitAriaLabel, submitLabel]);
-
-  const handleFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    const element = elementReference.current as HTMLElement & { value: string };
-    const currentValue = element?.value ?? '';
-    onSubmit(currentValue);
-  };
 
   const suggestionList =
     suggestions && suggestions.length > 0 ? (
@@ -206,28 +282,13 @@ export const FormSearch = forwardRef(function FormSearch(
     ) : null;
 
   return (
-    <form
-      action={action}
+    <cfpb-form-search
+      ref={elementReference}
       className={className}
-      id={`${elementId}-form`}
-      method={method}
-      onSubmit={handleFormSubmit}
+      id={elementId}
     >
-      <cfpb-form-search
-        ref={elementReference}
-        aria-label-button={ariaLabelButton}
-        aria-label-input={ariaLabelInput}
-        disabled={toDomBoolean(disabled)}
-        id={elementId}
-        label={label}
-        maxlength={maxlength}
-        name={name}
-        placeholder={placeholder}
-        validation={validation}
-      >
-        {suggestionList}
-      </cfpb-form-search>
-    </form>
+      {suggestionList}
+    </cfpb-form-search>
   );
 });
 

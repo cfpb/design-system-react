@@ -1,6 +1,8 @@
 import type { HTMLAttributes } from 'react';
 
 declare module '@cfpb/cfpb-design-system' {
+  export function setSharedConfig(config: { iconPath: string }): void;
+
   export class CfpbTagline extends HTMLElement {
     static init(): void;
     isLarge: boolean;
