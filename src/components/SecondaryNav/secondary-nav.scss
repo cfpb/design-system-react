@@ -4,7 +4,7 @@
 // .875rem crumbs elsewhere; secondary-nav uses 1rem label, 1.125em parent links, 0.625em/0.9375em header padding.
 // @see https://github.com/cfpb/consumerfinance.gov/blob/main/cfgov/unprocessed/css/organisms/secondary-nav.scss
 @use 'sass:math';
-@use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
 @use '@cfpb/cfpb-design-system/src/utilities/index.scss' as *;
 
 .o-secondary-nav {
