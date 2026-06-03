@@ -183,7 +183,8 @@ export const attachFormSearchShadowEvents = (
   observer.observe(shadowRoot, { childList: true, subtree: true });
 
   shadowRoot.addEventListener('click', handleSubmitClick, true);
-  shadowRoot.addEventListener('enter-down', handleEnterDown);
+  // Capture so we run before Lit's @enter-down → #onClickSearch (setFormValue breaks in jsdom).
+  shadowRoot.addEventListener('enter-down', handleEnterDown, true);
   shadowRoot.addEventListener('clear', handleClear);
 
   return () => {
@@ -193,7 +194,7 @@ export const attachFormSearchShadowEvents = (
       boundInput.removeEventListener('input', handleNativeInput);
     }
     shadowRoot.removeEventListener('click', handleSubmitClick, true);
-    shadowRoot.removeEventListener('enter-down', handleEnterDown);
+    shadowRoot.removeEventListener('enter-down', handleEnterDown, true);
     shadowRoot.removeEventListener('clear', handleClear);
   };
 };
