@@ -1,9 +1,18 @@
+import { setSharedConfig } from '@cfpb/cfpb-design-system';
 import React from 'react';
 import { buildArgsParam } from 'storybook/internal/router';
 import { useArgs, useGlobals } from 'storybook/preview-api';
 import '@fontsource-variable/source-sans-3';
 import '../src/assets/styles/_shared.scss';
 import themeCFPB from './themeCFPB';
+
+const storybookBase = import.meta.env?.BASE_URL ?? '/';
+const iconBase = storybookBase.endsWith('/') ? storybookBase : `${storybookBase}/`;
+
+// Required for <cfpb-icon> inside form-search and other DS web components (see DS docs site main.js).
+setSharedConfig({
+  iconPath: `${iconBase}icons/`,
+});
 
 const responsivePreviewQueryParameter = 'responsivePreview';
 

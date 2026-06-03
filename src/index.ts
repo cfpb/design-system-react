@@ -14,6 +14,13 @@ export { Expandable } from './components/Expandable/expandable';
 export { ExpandableGroup } from './components/Expandable/expandable-group';
 export { Fieldset } from './components/Fieldset/fieldset';
 export {
+  FormSearch,
+  type FormSearchHandle,
+  type FormSearchProperties,
+  type FormSearchSuggestion,
+  type FormSearchValidation,
+} from './components/FormSearch/form-search';
+export {
   Footer,
   WebsiteFooter,
   ApplicationFooter,
