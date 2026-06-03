@@ -1,8 +1,8 @@
 @use './variables';
 @use 'sass:math';
 @use 'sass:string';
-@use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
-@use '@cfpb/cfpb-design-system/src/elements/base' as base;
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/base' as base;
 
 // @include licensed-font('/static/fonts');
 
