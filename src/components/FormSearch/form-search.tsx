@@ -154,6 +154,7 @@ export const FormSearch = forwardRef(function FormSearch(
   const elementReference = useRef<FormSearchElement | null>(null);
   const hasAppliedDefaultValue = useRef(false);
   const disconnectEventsReference = useRef<(() => void) | null>(null);
+  const isInternalValueChangeReference = useRef(false);
   const isControlled = value !== undefined;
 
   const handlersReference = useRef({ onChange, onSubmit, onClear });
@@ -190,6 +191,7 @@ export const FormSearch = forwardRef(function FormSearch(
 
       const removeListeners = attachFormSearchShadowEvents(element, {
         onInput: () => {
+          isInternalValueChangeReference.current = true;
           handlersReference.current.onChange(getFormSearchValue(element));
         },
         onSubmit: (event) => {
@@ -258,8 +260,7 @@ export const FormSearch = forwardRef(function FormSearch(
         element.value = currentValue;
       }
 
-      connectEvents(element);
-      syncFormSearchSubmitButton(element, {
+      syncSubmitButtonState(element, {
         showSubmitButton,
         submitAriaLabel,
         submitLabel,
@@ -276,7 +277,6 @@ export const FormSearch = forwardRef(function FormSearch(
   }, [
     ariaLabelButton,
     ariaLabelInput,
-    connectEvents,
     disabled,
     label,
     maxlength,
@@ -298,7 +298,22 @@ export const FormSearch = forwardRef(function FormSearch(
       return;
     }
 
+    if (isInternalValueChangeReference.current) {
+      isInternalValueChangeReference.current = false;
+      return;
+    }
+
     const nextValue = value ?? '';
+    const nativeValue = getFormSearchNativeInput(element)?.value ?? '';
+
+    if (nativeValue === nextValue) {
+      if (element.value !== nextValue) {
+        element.value = nextValue;
+      }
+
+      return;
+    }
+
     if (element.value !== nextValue) {
       element.value = nextValue;
     }

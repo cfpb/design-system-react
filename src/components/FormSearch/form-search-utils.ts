@@ -44,12 +44,14 @@ export const getFormSearchValue = (element: HTMLElement | null): string => {
   }
 
   const host = element as FormSearchElement;
+  const nativeValue = getFormSearchNativeInput(element)?.value;
 
-  if (host.value) {
-    return host.value;
+  // Prefer the live native field while typing; the host property can lag Lit by a frame.
+  if (nativeValue !== undefined) {
+    return nativeValue;
   }
 
-  return getFormSearchNativeInput(element)?.value ?? '';
+  return host.value ?? '';
 };
 
 /** Apply React props to the custom element as properties (avoids attribute churn on re-render). */
@@ -145,16 +147,12 @@ export const attachFormSearchShadowEvents = (
   };
 
   const bindNativeInput = (): void => {
-    if (boundInput) {
-      boundInput.removeEventListener('input', handleNativeInput);
-      boundInput = null;
-    }
-
     const input = getFormSearchNativeInput(element);
-    if (!input) {
+    if (!input || input === boundInput) {
       return;
     }
 
+    boundInput?.removeEventListener('input', handleNativeInput);
     boundInput = input;
     boundInput.addEventListener('input', handleNativeInput);
   };

@@ -75,15 +75,13 @@ export const Default: Story = {
 
 export const Controlled: Story = {
   render: (args) => {
-    const [value, setValue] = useState(args.defaultValue ?? '');
+    const { defaultValue = '', ...rest } = args;
+    const [value, setValue] = useState(defaultValue);
 
     return (
       <FormSearch
-        {...args}
-        onChange={(next) => {
-          setValue(next);
-          args.onChange?.(next);
-        }}
+        {...rest}
+        onChange={setValue}
         onSubmit={(next) => {
           logSubmit(next);
           args.onSubmit?.(next);
