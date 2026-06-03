@@ -10,5 +10,4 @@ export type TextInputStatusType = keyof typeof validationStatusClassMap;
 /** Returns the DS validation class, or an empty string when status is omitted or unknown. */
 export const getTextInputStatusClass = (
   status?: TextInputStatusType,
-): string =>
-  status ? (validationStatusClassMap[status] ?? '') : '';
+): string => (status ? (validationStatusClassMap[status] ?? '') : '');

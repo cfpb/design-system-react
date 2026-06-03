@@ -119,10 +119,9 @@ export const SearchInput: Story = {
     type: 'search',
   },
   render: (args) => {
-    const { value: initialValue, isFullWidth: _isFullWidth, ...restArgs } =
-      args as TextInputProperties & {
-        value: string;
-      };
+    const { value: initialValue, ...restArgs } = args as TextInputProperties & {
+      value: string;
+    };
     const [value, setValue] = useState(initialValue ?? '');
     return (
       <form
