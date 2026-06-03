@@ -1,6 +1,7 @@
 import { CfpbFormSearch } from '@cfpb/cfpb-design-system';
 import {
   forwardRef,
+  useCallback,
   useEffect,
   useId,
   useImperativeHandle,
@@ -12,8 +13,10 @@ import {
 import { noOp } from '../../utils/no-op';
 import {
   applyFormSearchElementProps,
+  attachFormSearchShadowEvents,
   getFormSearchNativeInput,
   getFormSearchValue,
+  syncFormSearchNativeMaxlength,
   syncFormSearchSubmitButton,
   whenFormSearchReady,
   type FormSearchElement,
@@ -113,7 +116,7 @@ export const FormSearch = forwardRef(function FormSearch(
   const elementId = id ?? generatedId.replace(/:/g, '');
   const elementReference = useRef<FormSearchElement | null>(null);
   const hasAppliedDefaultValue = useRef(false);
-  const hasConnectedReference = useRef(false);
+  const disconnectEventsReference = useRef<(() => void) | null>(null);
   const isControlled = value !== undefined;
 
   const handlersReference = useRef({ onChange, onSubmit, onClear });
@@ -127,6 +130,54 @@ export const FormSearch = forwardRef(function FormSearch(
 
   const defaultValueReference = useRef(defaultValue);
   defaultValueReference.current = defaultValue;
+
+  const applyInitialElementValue = useCallback((element: FormSearchElement) => {
+    if (isControlledReference.current) {
+      element.value = valueReference.current ?? '';
+      return;
+    }
+
+    if (
+      defaultValueReference.current !== undefined &&
+      !hasAppliedDefaultValue.current
+    ) {
+      element.value = defaultValueReference.current;
+      hasAppliedDefaultValue.current = true;
+    }
+  }, []);
+
+  const connectEvents = useCallback(
+    (element: FormSearchElement): boolean => {
+      disconnectEventsReference.current?.();
+      disconnectEventsReference.current = null;
+
+      const removeListeners = attachFormSearchShadowEvents(element, {
+        onInput: () => {
+          handlersReference.current.onChange(getFormSearchValue(element));
+        },
+        onSubmit: (event) => {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          handlersReference.current.onSubmit(getFormSearchValue(element));
+        },
+        onClear: () => {
+          handlersReference.current.onClear();
+          if (!isControlledReference.current) {
+            element.value = '';
+          }
+          handlersReference.current.onChange('');
+        },
+      });
+
+      if (!removeListeners) {
+        return false;
+      }
+
+      disconnectEventsReference.current = removeListeners;
+      return true;
+    },
+    [],
+  );
 
   useImperativeHandle(reference, () => ({
     element: elementReference.current,
@@ -151,14 +202,52 @@ export const FormSearch = forwardRef(function FormSearch(
       placeholder,
       validation,
     });
+
+    if (!disconnectEventsReference.current) {
+      return;
+    }
+
+    let cancelled = false;
+
+    const syncAfterLitUpdate = (): void => {
+      if (cancelled) {
+        return;
+      }
+
+      const currentValue = getFormSearchValue(element);
+      syncFormSearchNativeMaxlength(element, maxlength);
+
+      if (currentValue && element.value !== currentValue) {
+        element.value = currentValue;
+      }
+
+      connectEvents(element);
+      syncFormSearchSubmitButton(element, {
+        showSubmitButton,
+        submitAriaLabel,
+        submitLabel,
+      });
+    };
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(syncAfterLitUpdate);
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [
     ariaLabelButton,
     ariaLabelInput,
+    connectEvents,
     disabled,
     label,
     maxlength,
     name,
     placeholder,
+    showSubmitButton,
+    submitAriaLabel,
+    submitLabel,
     validation,
   ]);
 
@@ -180,67 +269,38 @@ export const FormSearch = forwardRef(function FormSearch(
 
   useLayoutEffect(() => {
     const element = elementReference.current;
-    if (!element || hasConnectedReference.current) {
+    if (!element) {
       return undefined;
     }
 
+    const setup = (): void => {
+      applyInitialElementValue(element);
+      syncFormSearchNativeMaxlength(element, maxlength);
+      connectEvents(element);
+      syncFormSearchSubmitButton(element, {
+        showSubmitButton,
+        submitAriaLabel,
+        submitLabel,
+      });
+    };
+
+    if (element.shadowRoot && getFormSearchNativeInput(element)) {
+      setup();
+      return () => disconnectEventsReference.current?.();
+    }
+
     return whenFormSearchReady(element, () => {
-      const input = getFormSearchNativeInput(element);
-      if (!input) {
-        return undefined;
-      }
-
-      hasConnectedReference.current = true;
-
-      if (isControlledReference.current) {
-        element.value = valueReference.current ?? '';
-      } else if (
-        defaultValueReference.current !== undefined &&
-        !hasAppliedDefaultValue.current
-      ) {
-        element.value = defaultValueReference.current;
-        hasAppliedDefaultValue.current = true;
-      }
-
-      const submitButton = element.shadowRoot?.querySelector<HTMLButtonElement>(
-        'button[type="submit"]',
-      );
-      const searchInputHost = element.shadowRoot?.querySelector(
-        'cfpb-form-search-input',
-      );
-
-      const handleInput = (): void => {
-        handlersReference.current.onChange(getFormSearchValue(element));
-      };
-
-      const handleSubmit = (event: Event): void => {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        handlersReference.current.onSubmit(getFormSearchValue(element));
-      };
-
-      const handleClear = (): void => {
-        handlersReference.current.onClear();
-        if (!isControlledReference.current) {
-          element.value = '';
-        }
-        handlersReference.current.onChange('');
-      };
-
-      input.addEventListener('input', handleInput);
-      submitButton?.addEventListener('click', handleSubmit, true);
-      searchInputHost?.addEventListener('enter-down', handleSubmit);
-      searchInputHost?.addEventListener('clear', handleClear);
-
-      return () => {
-        hasConnectedReference.current = false;
-        input.removeEventListener('input', handleInput);
-        submitButton?.removeEventListener('click', handleSubmit, true);
-        searchInputHost?.removeEventListener('enter-down', handleSubmit);
-        searchInputHost?.removeEventListener('clear', handleClear);
-      };
+      setup();
+      return () => disconnectEventsReference.current?.();
     });
-  }, []);
+  }, [
+    applyInitialElementValue,
+    connectEvents,
+    maxlength,
+    showSubmitButton,
+    submitAriaLabel,
+    submitLabel,
+  ]);
 
   useEffect(() => {
     const element = elementReference.current;
@@ -256,7 +316,7 @@ export const FormSearch = forwardRef(function FormSearch(
       });
     };
 
-    if (hasConnectedReference.current) {
+    if (disconnectEventsReference.current) {
       syncSubmit();
       return;
     }

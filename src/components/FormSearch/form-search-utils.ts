@@ -50,38 +50,165 @@ export const applyFormSearchElementProps = (
     ariaLabelButton,
   }: FormSearchElementProps,
 ): void => {
-  if (name !== undefined) {
+  if (name !== undefined && element.name !== name) {
     element.name = name;
   }
 
-  if (label !== undefined) {
+  if (label !== undefined && element.label !== label) {
     element.label = label;
   }
 
-  if (placeholder !== undefined) {
+  if (placeholder !== undefined && element.placeholder !== placeholder) {
     element.placeholder = placeholder;
   }
 
   if (maxlength !== undefined) {
-    element.maxlength = maxlength;
+    const parsedMaxlength = Number(maxlength);
+    if (
+      !Number.isNaN(parsedMaxlength) &&
+      element.maxlength !== parsedMaxlength
+    ) {
+      element.maxlength = parsedMaxlength;
+    }
   }
 
-  element.disabled = Boolean(disabled);
+  const isDisabled = Boolean(disabled);
+  if (element.disabled !== isDisabled) {
+    element.disabled = isDisabled;
+  }
 
-  if (ariaLabelInput !== undefined) {
+  if (
+    ariaLabelInput !== undefined &&
+    element.ariaLabelInput !== ariaLabelInput
+  ) {
     element.ariaLabelInput = ariaLabelInput;
   }
 
-  if (ariaLabelButton !== undefined) {
+  if (
+    ariaLabelButton !== undefined &&
+    element.ariaLabelButton !== ariaLabelButton
+  ) {
     element.ariaLabelButton = ariaLabelButton;
   }
 
-  if (validation) {
-    element.validation = validation;
-  } else {
-    element.removeAttribute('validation');
+  // Only sync when the React prop is set; otherwise leave WC-driven validation
+  // (e.g. maxlength exceeded) intact.
+  if (validation !== undefined && (element.validation ?? '') !== validation) {
+    if (validation) {
+      element.validation = validation;
+    } else {
+      element.removeAttribute('validation');
+    }
   }
 };
+
+export interface FormSearchEventHandlers {
+  onInput: () => void;
+  onSubmit: (event: Event) => void;
+  onClear: () => void;
+}
+
+/**
+ * Wire search events so they survive Lit re-renders (e.g. when `maxlength` changes).
+ * Uses shadow-root delegation for composed events and re-binds the native `<input>`
+ * when the inner shadow tree is replaced.
+ */
+export const attachFormSearchShadowEvents = (
+  element: FormSearchElement,
+  handlers: FormSearchEventHandlers,
+): (() => void) | undefined => {
+  const shadowRoot = element.shadowRoot;
+  if (!shadowRoot) {
+    return undefined;
+  }
+
+  let boundInput: HTMLInputElement | null = null;
+
+  const handleNativeInput = (): void => {
+    handlers.onInput();
+  };
+
+  const bindNativeInput = (): void => {
+    if (boundInput) {
+      boundInput.removeEventListener('input', handleNativeInput);
+      boundInput = null;
+    }
+
+    const input = getFormSearchNativeInput(element);
+    if (!input) {
+      return;
+    }
+
+    boundInput = input;
+    boundInput.addEventListener('input', handleNativeInput);
+  };
+
+  const handleSubmitClick = (event: Event): void => {
+    const target = event.target;
+    if (!(target instanceof HTMLButtonElement) || target.type !== 'submit') {
+      return;
+    }
+
+    handlers.onSubmit(event);
+  };
+
+  const handleEnterDown = (event: Event): void => {
+    handlers.onSubmit(event);
+  };
+
+  const handleClear = (): void => {
+    handlers.onClear();
+  };
+
+  bindNativeInput();
+  element.dataset.dsrFormSearchConnected = 'true';
+
+  const observer = new MutationObserver(() => {
+    bindNativeInput();
+  });
+  observer.observe(shadowRoot, { childList: true, subtree: true });
+
+  shadowRoot.addEventListener('click', handleSubmitClick, true);
+  shadowRoot.addEventListener('enter-down', handleEnterDown);
+  shadowRoot.addEventListener('clear', handleClear);
+
+  return () => {
+    delete element.dataset.dsrFormSearchConnected;
+    observer.disconnect();
+    if (boundInput) {
+      boundInput.removeEventListener('input', handleNativeInput);
+    }
+    shadowRoot.removeEventListener('click', handleSubmitClick, true);
+    shadowRoot.removeEventListener('enter-down', handleEnterDown);
+    shadowRoot.removeEventListener('clear', handleClear);
+  };
+};
+
+/** Keep the native field's `maxLength` in sync after WC property updates. */
+export const syncFormSearchNativeMaxlength = (
+  element: FormSearchElement,
+  maxlength?: number,
+): void => {
+  if (maxlength === undefined) {
+    return;
+  }
+
+  const parsedMaxlength = Number(maxlength);
+  if (Number.isNaN(parsedMaxlength)) {
+    return;
+  }
+
+  const input = getFormSearchNativeInput(element);
+  if (input) {
+    input.maxLength = parsedMaxlength;
+  }
+};
+
+/** Stable inner widget; survives Lit re-renders when props like `maxlength` change. */
+export const getFormSearchInputHost = (
+  element: HTMLElement | null,
+): HTMLElement | null =>
+  element?.shadowRoot?.querySelector('cfpb-form-search-input') ?? null;
 
 /** Sync submit button label, aria-label, and visibility inside the shadow tree. */
 export const syncFormSearchSubmitButton = (

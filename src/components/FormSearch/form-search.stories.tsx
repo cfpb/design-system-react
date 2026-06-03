@@ -51,6 +51,7 @@ Source: [Reference for custom elements — Search widget](https://cfpb.github.io
   argTypes: {
     showSubmitButton: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    maxlength: { control: { type: 'number', min: 1, max: 500 } },
     // `value` forces controlled mode and blocks typing unless the parent updates it.
     value: { control: false, table: { disable: true } },
     defaultValue: { control: 'text' },

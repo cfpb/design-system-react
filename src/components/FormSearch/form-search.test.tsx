@@ -7,6 +7,7 @@ import { FormSearch } from './form-search';
 import {
   getFormSearchNativeInput,
   getFormSearchSubmitButton,
+  type FormSearchElement,
 } from './form-search-utils';
 
 const waitForFormSearchReady = async (
@@ -21,6 +22,7 @@ const waitForFormSearchReady = async (
       : document.querySelector<HTMLElement>('cfpb-form-search');
 
     expect(getFormSearchNativeInput(element)).not.toBeNull();
+    expect(element?.dataset.dsrFormSearchConnected).toBe('true');
   });
 
   await new Promise((resolve) => {
@@ -77,6 +79,28 @@ describe('<FormSearch />', () => {
       expect(onChange).toHaveBeenLastCalledWith('hello');
     });
     expect((element as HTMLElement & { value: string }).value).toBe('hello');
+  });
+
+  it('allows typing after maxlength changes', async () => {
+    const onChange = fn();
+
+    const { rerender } = render(
+      <FormSearch id='search-max' maxlength={75} onChange={onChange} />,
+    );
+
+    const element = await waitForFormSearchReady('search-max');
+    rerender(<FormSearch id='search-max' maxlength={50} onChange={onChange} />);
+
+    await waitFor(() => {
+      expect((element as FormSearchElement).maxlength).toBe(50);
+    });
+
+    const input = getFormSearchNativeInput(element)!;
+    fireEvent.input(input, { target: { value: 'typed' } });
+
+    await waitFor(() => {
+      expect(onChange).toHaveBeenLastCalledWith('typed');
+    });
   });
 
   it('allows typing when controlled with onChange', async () => {
