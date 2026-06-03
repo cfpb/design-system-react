@@ -1,0 +1,12 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { FormSearch } from './form-search';
+declare const meta: Meta<typeof FormSearch>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const Controlled: Story;
+export declare const WithTypeahead: Story;
+export declare const CustomSubmitButton: Story;
+export declare const WithoutSubmitButton: Story;
+export declare const Disabled: Story;
+export declare const ValidationError: Story;
