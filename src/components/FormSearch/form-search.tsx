@@ -1,4 +1,3 @@
-import { CfpbFormSearch } from '@cfpb/cfpb-design-system';
 import {
   forwardRef,
   useCallback,
@@ -9,11 +8,13 @@ import {
   useRef,
   type ReactElement,
   type Ref,
+  type RefObject,
 } from 'react';
 import { noOp } from '../../utils/no-op';
 import {
   applyFormSearchElementProps,
   attachFormSearchShadowEvents,
+  ensureFormSearchInitialized,
   getFormSearchNativeInput,
   getFormSearchValue,
   syncFormSearchNativeMaxlength,
@@ -22,15 +23,51 @@ import {
   type FormSearchElement,
 } from './form-search-utils';
 
-let formSearchInitialized = false;
+const syncSubmitButtonState = (
+  element: FormSearchElement | null,
+  {
+    showSubmitButton,
+    submitAriaLabel,
+    submitLabel,
+  }: {
+    showSubmitButton: boolean;
+    submitAriaLabel: string;
+    submitLabel: string;
+  },
+): void => {
+  syncFormSearchSubmitButton(element, {
+    showSubmitButton,
+    submitAriaLabel,
+    submitLabel,
+  });
+};
 
-const ensureFormSearchInitialized = (): void => {
-  if (formSearchInitialized) {
-    return;
-  }
+const disconnectFormSearchEvents = (
+  disconnectReference: RefObject<(() => void) | null>,
+): void => {
+  disconnectReference.current?.();
+};
 
-  CfpbFormSearch.init();
-  formSearchInitialized = true;
+const completeFormSearchConnection = (
+  element: FormSearchElement,
+  disconnectReference: RefObject<(() => void) | null>,
+  applyInitialElementValue: (target: FormSearchElement) => void,
+  maxlength: number,
+  connectEvents: (target: FormSearchElement) => boolean,
+  submitButton: {
+    showSubmitButton: boolean;
+    submitAriaLabel: string;
+    submitLabel: string;
+  },
+): (() => void) => {
+  applyInitialElementValue(element);
+  syncFormSearchNativeMaxlength(element, maxlength);
+  connectEvents(element);
+  syncSubmitButtonState(element, submitButton);
+
+  return () => {
+    disconnectFormSearchEvents(disconnectReference);
+  };
 };
 
 export type FormSearchValidation = 'error' | 'success' | 'warning';
@@ -113,7 +150,7 @@ export const FormSearch = forwardRef(function FormSearch(
   ensureFormSearchInitialized();
 
   const generatedId = useId();
-  const elementId = id ?? generatedId.replace(/:/g, '');
+  const elementId = id ?? generatedId.replaceAll(':', '');
   const elementReference = useRef<FormSearchElement | null>(null);
   const hasAppliedDefaultValue = useRef(false);
   const disconnectEventsReference = useRef<(() => void) | null>(null);
@@ -270,29 +307,30 @@ export const FormSearch = forwardRef(function FormSearch(
   useLayoutEffect(() => {
     const element = elementReference.current;
     if (!element) {
-      return undefined;
+      return;
     }
 
-    const setup = (): void => {
-      applyInitialElementValue(element);
-      syncFormSearchNativeMaxlength(element, maxlength);
-      connectEvents(element);
-      syncFormSearchSubmitButton(element, {
-        showSubmitButton,
-        submitAriaLabel,
-        submitLabel,
-      });
+    const submitButton = {
+      showSubmitButton,
+      submitAriaLabel,
+      submitLabel,
     };
 
+    const finishConnection = (): (() => void) =>
+      completeFormSearchConnection(
+        element,
+        disconnectEventsReference,
+        applyInitialElementValue,
+        maxlength,
+        connectEvents,
+        submitButton,
+      );
+
     if (element.shadowRoot && getFormSearchNativeInput(element)) {
-      setup();
-      return () => disconnectEventsReference.current?.();
+      return finishConnection();
     }
 
-    return whenFormSearchReady(element, () => {
-      setup();
-      return () => disconnectEventsReference.current?.();
-    });
+    return whenFormSearchReady(element, () => finishConnection());
   }, [
     applyInitialElementValue,
     connectEvents,
@@ -308,21 +346,21 @@ export const FormSearch = forwardRef(function FormSearch(
       return;
     }
 
-    const syncSubmit = (): void => {
-      syncFormSearchSubmitButton(element, {
-        showSubmitButton,
-        submitAriaLabel,
-        submitLabel,
-      });
+    const submitOptions = {
+      showSubmitButton,
+      submitAriaLabel,
+      submitLabel,
     };
 
     if (disconnectEventsReference.current) {
-      syncSubmit();
+      syncSubmitButtonState(element, submitOptions);
       return;
     }
 
     void customElements.whenDefined('cfpb-form-search').then(() => {
-      requestAnimationFrame(syncSubmit);
+      requestAnimationFrame(() => {
+        syncSubmitButtonState(element, submitOptions);
+      });
     });
   }, [showSubmitButton, submitAriaLabel, submitLabel]);
 

@@ -1,3 +1,19 @@
+import { CfpbFormSearch } from '@cfpb/cfpb-design-system';
+
+let formSearchInitialized = false;
+
+/** Register DS custom elements once per app (icons must be configured separately). */
+export const ensureFormSearchInitialized = (): void => {
+  if (formSearchInitialized) {
+    return;
+  }
+
+  // Ambient types exist; ESLint's import resolver does not resolve this package.
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access -- WC registration
+  CfpbFormSearch.init();
+  formSearchInitialized = true;
+};
+
 export type FormSearchElement = HTMLElement & {
   value: string;
   name?: string;
@@ -239,7 +255,9 @@ export const whenFormSearchReady = (
   callback: (element: HTMLElement) => void | (() => void),
 ): (() => void) => {
   if (!element) {
-    return () => undefined;
+    return (): void => {
+      /* no-op: element not mounted */
+    };
   }
 
   let dispose: void | (() => void);
@@ -289,7 +307,7 @@ export const whenFormSearchReady = (
 export const getFormSearchNativeInput = (
   element: HTMLElement | null,
 ): HTMLInputElement | null => {
-  if (!element || element.tagName !== 'CFPB-FORM-SEARCH') {
+  if (element?.tagName !== 'CFPB-FORM-SEARCH') {
     return null;
   }
 

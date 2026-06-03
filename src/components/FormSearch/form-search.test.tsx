@@ -1,14 +1,20 @@
-import { CfpbFormSearch } from '@cfpb/cfpb-design-system';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
 import { FormSearch } from './form-search';
 import {
+  getFormSearchInputHost,
   getFormSearchNativeInput,
   getFormSearchSubmitButton,
   type FormSearchElement,
 } from './form-search-utils';
+
+/* eslint-disable testing-library/no-node-access -- <cfpb-form-search> is not exposed via Testing Library roles */
+const getFormSearchHost = (id?: string): HTMLElement | null =>
+  id
+    ? document.querySelector<HTMLElement>(`#${id}`)
+    : document.querySelector<HTMLElement>('cfpb-form-search');
 
 const waitForFormSearchReady = async (
   id?: string,
@@ -17,9 +23,7 @@ const waitForFormSearchReady = async (
   await customElements.whenDefined('cfpb-form-search-input');
 
   await waitFor(() => {
-    const element = id
-      ? document.querySelector<HTMLElement>(`#${id}`)
-      : document.querySelector<HTMLElement>('cfpb-form-search');
+    const element = getFormSearchHost(id);
 
     expect(getFormSearchNativeInput(element)).not.toBeNull();
     expect(element?.dataset.dsrFormSearchConnected).toBe('true');
@@ -29,15 +33,11 @@ const waitForFormSearchReady = async (
     requestAnimationFrame(() => requestAnimationFrame(resolve));
   });
 
-  return id
-    ? document.querySelector<HTMLElement>(`#${id}`)
-    : document.querySelector<HTMLElement>('cfpb-form-search');
+  return getFormSearchHost(id);
 };
+/* eslint-enable testing-library/no-node-access */
 
 describe('<FormSearch />', () => {
-  beforeEach(() => {
-    CfpbFormSearch.init();
-  });
 
   it('renders the cfpb-form-search web component', async () => {
     render(<FormSearch id='search-test' />);
@@ -150,13 +150,11 @@ describe('<FormSearch />', () => {
 
     const element = await waitForFormSearchReady('search-submit');
 
-    const searchInputHost = element?.shadowRoot?.querySelector(
-      'cfpb-form-search-input',
-    );
+    const searchInputHost = getFormSearchInputHost(element);
     expect(searchInputHost).not.toBeNull();
 
     fireEvent(
-      searchInputHost!,
+      searchInputHost,
       new CustomEvent('enter-down', { bubbles: true, composed: true }),
     );
 
