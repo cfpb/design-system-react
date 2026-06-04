@@ -2,7 +2,13 @@ import turbosnap from 'vite-plugin-turbosnap';
 
 export default {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  staticDirs: ['../src/assets/'],
+  staticDirs: [
+    '../src/assets/',
+    {
+      from: '../node_modules/@cfpb/cfpb-design-system/src/components/cfpb-icons/icons',
+      to: '/icons',
+    },
+  ],
 
   addons: [
     '@storybook/addon-links',
