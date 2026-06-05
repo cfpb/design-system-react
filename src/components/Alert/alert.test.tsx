@@ -4,26 +4,33 @@ import Paragraph from '../Paragraph/paragraph';
 import { Alert, AlertType } from './alert';
 import { AlertFieldLevel } from './alert-field-level';
 
-const testType = (status: AlertType) => async (): Promise<void> => {
-  render(<Alert status={status} />);
-  const element = screen.getByTestId('notification');
-  expect(element).toHaveClass(`m-notification--${status}`);
+const statusesWithModifier: AlertType[] = ['success', 'warning', 'error'];
 
-  // Renders Icon
-  const icon = await within(element).findByRole('img', { hidden: true });
-  expect(icon).toBeInTheDocument();
-};
-
-const notificationStatuses: AlertType[] = [
-  'success',
-  'warning',
-  'error',
-  'info',
-];
+const statusesWithoutModifier: AlertType[] = ['info', 'loading'];
 
 describe('<Alert />', () => {
-  for (const status of notificationStatuses) {
-    it(`renders alert of type "${status}"`, testType(status));
+  for (const status of statusesWithModifier) {
+    it(`renders alert of type "${status}" with status modifier`, async () => {
+      render(<Alert status={status} />);
+      const element = screen.getByTestId('notification');
+      expect(element).toHaveClass('m-notification', 'm-notification--visible');
+      expect(element).toHaveClass(`m-notification--${status}`);
+
+      const icon = await within(element).findByRole('img', { hidden: true });
+      expect(icon).toBeInTheDocument();
+    });
+  }
+
+  for (const status of statusesWithoutModifier) {
+    it(`renders alert of type "${status}" without status modifier`, async () => {
+      render(<Alert status={status} />);
+      const element = screen.getByTestId('notification');
+      expect(element).toHaveClass('m-notification', 'm-notification--visible');
+      expect(element).not.toHaveClass(`m-notification--${status}`);
+
+      const icon = await within(element).findByRole('img', { hidden: true });
+      expect(icon).toBeInTheDocument();
+    });
   }
 
   it('displays message when provided', () => {
@@ -152,6 +159,9 @@ describe('<Alert />', () => {
     );
     const element = screen.getByTestId(testId);
 
+    expect(element).toHaveClass('a-form-alert', 'a-form-alert--warning');
+    expect(element).not.toHaveClass('a-form-alert--info');
+
     // Renders Icon
     const icon = await within(element).findByRole('img', { hidden: true });
     expect(icon).toBeInTheDocument();
@@ -159,6 +169,13 @@ describe('<Alert />', () => {
     // Render message
     const message = screen.queryByTestId('message');
     expect(message).toBeInTheDocument();
+  });
+
+  it('renders field-level info alert without status modifier', () => {
+    render(<AlertFieldLevel status='info' message='Details before submit' />);
+    const element = screen.getByTestId('message').parentElement;
+    expect(element).toHaveClass('a-form-alert');
+    expect(element).not.toHaveClass('a-form-alert--info');
   });
 
   it('provides feedback for unsupported field-level alert type', async () => {
