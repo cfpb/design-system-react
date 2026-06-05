@@ -1,12 +1,6 @@
-import { JSXElement } from '../../types/jsx-element';
 import { HTMLAttributes, ReactNode } from '../../../node_modules/react';
+import { JSXElement } from '../../types/jsx-element';
 export type AlertFieldLevelType = 'error' | 'info' | 'success' | 'warning';
-export declare enum AlertFieldLevelClass {
-    'info' = "--info",
-    'error' = "--error",
-    'success' = "--success",
-    'warning' = "--warning"
-}
 export declare const MapTypeToIconName: {
     info: string;
     error: string;
