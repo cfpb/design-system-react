@@ -1,13 +1,11 @@
 import classNames from 'classnames';
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, JSX, ReactNode } from 'react';
 import type { HeadingLevel } from '../../types/heading-level';
 import type { JSXElement } from '../../types/jsx-element';
 import { Icon } from '../Icon/icon';
 import List from '../List/list';
 import type { AlertFieldLevelType } from './alert-field-level';
 import { AlertFieldLevel } from './alert-field-level';
-import type { AlertLinkProperties } from './alert-link';
-import { AlertLink } from './alert-link';
 import './alert.scss';
 
 export const iconByType: Record<string, { name: string; withBg: boolean }> = {
@@ -25,7 +23,7 @@ interface AlertProperties {
   message?: ReactNode;
   headingLevel?: HeadingLevel;
   children?: ReactNode;
-  links?: AlertLinkProperties[];
+  links?: JSX.Element[];
   isVisible?: boolean;
   isFieldLevel?: boolean;
   showIcon?: boolean;
@@ -89,13 +87,7 @@ export const Alert = ({
             {children}
           </div>
         ) : null}
-        {links && links.length > 0 ? (
-          <List isLinks>
-            {links.map((link) => (
-              <AlertLink {...link} key={link.href} />
-            ))}
-          </List>
-        ) : null}
+        {links && links.length > 0 ? <List isLinks>{links}</List> : null}
       </div>
     </div>
   );

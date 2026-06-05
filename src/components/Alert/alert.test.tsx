@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
+import { ListLink } from '../Link/link';
 import Paragraph from '../Paragraph/paragraph';
 import { Alert, AlertType } from './alert';
 import { AlertFieldLevel } from './alert-field-level';
@@ -70,8 +71,8 @@ describe('<Alert />', () => {
     expect(noLinks.length).toBe(0);
 
     const linkItems = [
-      { href: '/1', label: 'one' },
-      { href: '/2', label: 'two', isExternal: true },
+      <ListLink href='/1' key='one' label='one' />,
+      <ListLink href='/2' key='two' label='two' iconRight='external-link' />,
     ];
 
     render(<Alert status='info' links={linkItems} />);
@@ -79,10 +80,10 @@ describe('<Alert />', () => {
     expect(links.length).toBe(2);
 
     // Link attributes are correctly propagated
-    const linkOne = screen.getByRole('link', { name: linkItems[0].label });
+    const linkOne = screen.getByRole('link', { name: 'one' });
     expect(linkOne).toHaveAttribute('href', '/1');
 
-    const linkTwo = screen.getByRole('link', { name: linkItems[1].label });
+    const linkTwo = screen.getByRole('link', { name: 'two' });
     expect(linkTwo).toHaveAttribute('href', '/2');
 
     // Icon is displayed: External link
