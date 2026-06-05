@@ -107,6 +107,9 @@ export const FullWidth: Story = {
 
 export const SearchInput: Story = {
   name: 'Search input',
+  argTypes: {
+    isFullWidth: { control: false },
+  },
   args: {
     ...Enabled.args,
     value: '',
@@ -114,8 +117,6 @@ export const SearchInput: Story = {
     name: 'SearchInput',
     id: 'SearchInput',
     type: 'search',
-    isFullWidth: false,
-    className: 'a-text-input__full',
   },
   render: (args) => {
     const { value: initialValue, ...restArgs } = args as TextInputProperties & {

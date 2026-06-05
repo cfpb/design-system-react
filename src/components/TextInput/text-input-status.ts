@@ -1,11 +1,13 @@
-export type TextInputStatusType = 'error' | 'info' | 'success' | 'warning';
-
-export const TextInputStatusClassMap: Record<TextInputStatusType, string> = {
+/** Validation modifiers documented at https://cfpb.github.io/design-system/components/text-inputs */
+const validationStatusClassMap = {
   success: 'a-text-input--success',
   error: 'a-text-input--error',
   warning: 'a-text-input--warning',
-  info: 'a-text-input--info',
-};
+} as const;
 
-export const getTextInputStatusClass = (status: TextInputStatusType): string =>
-  TextInputStatusClassMap[status];
+export type TextInputStatusType = keyof typeof validationStatusClassMap;
+
+/** Returns the DS validation class, or an empty string when status is omitted or unknown. */
+export const getTextInputStatusClass = (
+  status?: TextInputStatusType,
+): string => (status ? (validationStatusClassMap[status] ?? '') : '');

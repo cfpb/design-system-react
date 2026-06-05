@@ -29,7 +29,7 @@ export const TextArea = forwardRef(
     {
       id,
       className = '',
-      status = 'info',
+      status,
       placeholder = 'Placeholder text',
       isFullWidth = false,
       isDisabled = false,
@@ -48,7 +48,7 @@ export const TextArea = forwardRef(
     const classes = [
       'a-text-input',
       getTextInputStatusClass(status),
-      isFullWidth ? 'a-text-input__full' : '',
+      isFullWidth ? 'a-text-input--full' : '',
       className || '',
     ].filter((x) => x.length);
 
