@@ -1,0 +1,30 @@
+const ONE = 1;
+const INDENTATION = 2;
+
+// Produce tabular test data
+export const generateTestRows = (rowCount: number): string[][] =>
+  [...Array.from({ length: rowCount }).keys()].map((key) => [
+    `A${key + ONE}`,
+    `B${key + ONE}`,
+  ]);
+
+// Stringify an object while preserving Functions
+export const stringify = (object: object): string => {
+  const placeholder = '____PLACEHOLDER____';
+  const fns: (() => unknown)[] = [];
+  let json = JSON.stringify(
+    object,
+    (_key, value: unknown) => {
+      if (typeof value === 'function') {
+        fns.push(value as () => unknown);
+        return placeholder;
+      }
+      return value;
+    },
+    INDENTATION,
+  );
+  json = json.replaceAll(new RegExp(`"${placeholder}"`, 'g'), () =>
+    String(fns.shift() ?? ''),
+  );
+  return json;
+};

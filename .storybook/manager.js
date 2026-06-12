@@ -14,7 +14,20 @@ addons.setConfig({
         return newName;
       }
       return name;
-    }
+    },
   },
-  theme: themeCFPB
+
+  theme: themeCFPB,
+  tagBadges: [
+    {
+      tags: 'web-component',
+      badge: {
+        text: 'Web Component',
+        style: {
+          backgroundColor: '#20aa3f',
+          color: '#fff',
+        },
+      },
+    },
+  ],
 });

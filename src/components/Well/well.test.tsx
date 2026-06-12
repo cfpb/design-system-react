@@ -1,0 +1,47 @@
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import { WellContainer, WellContent } from './well';
+import { Container, Content } from './well.stories';
+
+describe('<WellContainer />', () => {
+  it('Display text content', () => {
+    const text = 'bazinga';
+    render(<WellContainer {...Container.args}>{text}</WellContainer>);
+
+    const content = screen.getByText(text);
+    expect(content).toBeInTheDocument();
+  });
+
+  it('Displays element content', () => {
+    const text = 'bazinga';
+    const textClass = `${text}-test`;
+    render(
+      <WellContainer {...Container.args}>
+        <div className={textClass}>{text}</div>
+      </WellContainer>,
+    );
+
+    const content = screen.getByText(text);
+    expect(content).toBeInTheDocument();
+    expect(content).toHaveClass(textClass);
+  });
+});
+
+describe('<WellContent />', () => {
+  it('Displays elements', () => {
+    render(<WellContent {...Content.args} />);
+
+    const headingText = Content.args!.heading;
+    const heading = screen.getByText(headingText);
+    expect(heading).toHaveClass('h3');
+
+    const textValue = Content.args?.text as string;
+    const text = screen.getByText(textValue);
+    expect(text).toHaveClass('text');
+
+    const callToAction = screen.getByRole('link', {
+      name: 'Call-to-action link',
+    });
+    expect(callToAction).toHaveClass('a-link--jump');
+  });
+});

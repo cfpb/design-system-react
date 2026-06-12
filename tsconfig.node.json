@@ -8,7 +8,8 @@
     "moduleResolution": "Node",
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "types": ["node"]
   },
   "include": ["vite.config.ts", "package.json"]
 }

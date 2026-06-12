@@ -1,7 +1,7 @@
-import './Grid.scss';
-import { GridColWidth, GridColumn } from './GridColumn';
-import { GridRow } from './GridRow';
-import { GridWrapper } from './GridWrapper';
+import { GridColWidth, GridColumn } from './grid-column';
+import { GridRow } from './grid-row';
+import { GridWrapper } from './grid-wrapper';
+import './grid.scss';
 
 /**
  * CFPB Grid
@@ -12,5 +12,5 @@ export default {
   Column: GridColumn,
   Row: GridRow,
   Width: GridColWidth,
-  Wrapper: GridWrapper
+  Wrapper: GridWrapper,
 };

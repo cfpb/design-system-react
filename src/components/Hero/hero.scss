@@ -1,35 +1,39 @@
 .m-hero {
   --m-hero-background-color: var(--gray-30);
+
   background-color: var(--gray-30);
 }
 
-/*
-  👇 Workarounds for responsiveness 👇 
+.m-hero__image {
+  background-image: var(--m-hero-mobile-image, var(--m-hero-image));
+}
 
-  It's really hard to tell from the DS site how these images *should be* behaving because that page uses some ID based adjustments to show/hide alternate images in certain cases. I've assumed that the image should always be visible and adjusted the styles below accordingly.
+.m-hero--overlay .m-hero__wrapper {
+  background-image: none;
+}
 
-  https://cfpb.github.io/design-system/patterns/heroes
-*/
-.m-hero--jumbo,
-.m-hero--50-50 {
-  .m-hero__wrapper {
-    background-size: 0px 0px;
+@media screen and (width >= 37.5625em) {
+  .m-hero__image {
+    background-image: var(--m-hero-image, var(--m-hero-mobile-image));
+  }
+
+  .m-hero--overlay .m-hero__wrapper {
+    background-image: var(--m-hero-wrapper-image);
   }
 }
 
-@media screen and (min-width: 37.5625em) {
-  .m-hero--jumbo {
-    .m-hero__image {
-      display: none;
-    }
-    .m-hero__wrapper {
-      background-size: cover;
-    }
-  }
+// Illustration slot: match common DS hero artwork (940×390).
+//
+// Production DS/Jinja pages often set this on an empty `.m-hero__image` with `background-image`,
+// e.g. `padding-bottom: 41.48936170212766%` — that is 390 ÷ 940 × 100 (percentage padding-bottom is
+// relative to the element’s width, so the box reserves the same aspect ratio as the art).
+// We use `aspect-ratio: 940 / 390` instead; same geometry, clearer intent, with `background-size: contain`.
+.m-hero:not(.m-hero--overlay) .m-hero__image {
+  aspect-ratio: 940 / 390;
+}
 
-  .m-hero--50-50 {
-    .m-hero__image {
-      display: block;
-    }
-  }
+// Photo / overlay: mobile shows this node while the wrapper carries `background-size: cover`.
+.m-hero--overlay .m-hero__image {
+  aspect-ratio: 16 / 9;
+  background-size: cover;
 }
