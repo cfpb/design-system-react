@@ -5,7 +5,10 @@ const meta: Meta<typeof SkipNav> = {
   title: 'Components (Draft)/Skip Navigation',
   tags: ['autodocs'],
   component: SkipNav,
-  argTypes: {},
+  argTypes: {
+    label: { control: 'text' },
+    href: { control: 'text' },
+  },
 };
 
 export default meta;
@@ -16,5 +19,15 @@ export const Default: Story = {
   render: (properties) => <SkipNav {...properties} />,
   args: {
     href: '#main',
+    label: 'Skip to main content',
+  },
+};
+
+export const CustomLabel: Story = {
+  name: 'Custom label',
+  render: (properties) => <SkipNav {...properties} />,
+  args: {
+    href: '#main',
+    label: 'Skip to page content',
   },
 };

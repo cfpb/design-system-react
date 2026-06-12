@@ -6,6 +6,7 @@ CfpbButton.init();
 
 export interface SkipNavProperties {
   href?: string;
+  label?: string;
 }
 
 /**

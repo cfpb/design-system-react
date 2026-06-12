@@ -13,6 +13,11 @@ describe('<SkipNav />', () => {
     expect(screen.getByText('Skip to main content')).toBeInTheDocument();
   });
 
+  it('renders a custom label when provided', () => {
+    render(<SkipNav label='Skip to page content' />);
+    expect(screen.getByText('Skip to page content')).toBeInTheDocument();
+  });
+
   it('renders a skip link inside the cfpb-button shadow DOM', async () => {
     render(<SkipNav />);
     const elm = screen.getByText('Skip to main content');
