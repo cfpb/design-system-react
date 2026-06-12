@@ -1,6 +1,7 @@
 import { JSXElement } from '../../types/jsx-element';
 export interface SkipNavProperties {
     href?: string;
+    label?: string;
 }
 /**
  * A SkipNav (skip navigation) link is an accessibility feature, usually hidden
