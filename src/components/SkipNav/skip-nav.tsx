@@ -1,6 +1,6 @@
+import { CfpbButton } from '@cfpb/cfpb-design-system';
 import type { JSXElement } from '../../types/jsx-element';
 import './skip-nav.scss';
-import { CfpbButton } from '@cfpb/cfpb-design-system';
 
 CfpbButton.init();
 

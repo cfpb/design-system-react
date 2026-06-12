@@ -35,8 +35,10 @@ describe('<SkipNav />', () => {
 
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
-    // eslint-disable-next-line testing-library/no-node-access
-    expect(elm.shadowRoot?.querySelector('a[href="#content"]')).toBeInTheDocument();
+     
+    expect(
+      elm.shadowRoot?.querySelector('a[href="#content"]'),
+    ).toBeInTheDocument();
   });
 
   it('wraps the web component in a skip-nav container', () => {
