@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Header } from '~/src/index';
+import { Button, Header } from '~/src/index';
 import { ExampleLinks } from './responsive-menu';
+import Link from '../Link/link';
+import React from 'react';
 
 const meta: Meta<typeof Header> = {
   title: 'Components (Draft)/Headers',
@@ -37,3 +39,34 @@ export const Basic: Story = {
     links: [],
   },
 };
+
+export const LinksWithIcon: Story = {
+  render: (properties) => <Header {...properties} />,
+  args: {
+    links: [
+      <Link key='home' href='/' label='Home' />,
+      <Link
+        key='filing'
+        className='nav-item'
+        href='/filing'
+        label='Filing'
+      />,
+      <Link
+        key='profile'
+        className='nav-item'
+        href='/profile'
+        label='User guide'
+        iconRight='document'
+      />,
+      <Button
+        appearance={'secondary'}
+        label='Log out'
+        onClick={(): void => {
+          /* Empty*/
+        }}
+        key='logout'
+      />,
+    ],
+  },
+};
+
