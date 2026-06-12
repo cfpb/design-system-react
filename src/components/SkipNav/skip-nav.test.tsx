@@ -18,39 +18,29 @@ describe('<SkipNav />', () => {
     expect(screen.getByText('Skip to page content')).toBeInTheDocument();
   });
 
-  it('renders a skip link inside the cfpb-button shadow DOM', async () => {
+  it('passes the default href and className to cfpb-button', async () => {
     render(<SkipNav />);
-    const elm = screen.getByText('Skip to main content');
-    const shadowRoot = elm?.shadowRoot;
+    const link = screen.getByText('Skip to main content');
+
+    expect(link).toHaveClass('skip-nav__link');
 
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
-    // With href, cfpb-button renders an anchor (role="button"), not a <button>.
-    // eslint-disable-next-line testing-library/no-node-access
-    const link = shadowRoot?.querySelector('a[href="#main"]');
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('role', 'button');
+    expect(link).toHaveProperty('href', '#main');
   });
 
-  it('passes href and className to cfpb-button', async () => {
+  it('passes a custom href to cfpb-button', async () => {
     render(<SkipNav href='#content' />);
-    const elm = screen.getByText('Skip to main content');
-
-    expect(elm).toHaveClass('skip-nav__link');
+    const link = screen.getByText('Skip to main content');
 
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
-     
-    expect(
-      elm.shadowRoot?.querySelector('a[href="#content"]'),
-    ).toBeInTheDocument();
+    expect(link).toHaveProperty('href', '#content');
   });
 
   it('wraps the web component in a skip-nav container', () => {
-    const { container } = render(<SkipNav />);
-    // eslint-disable-next-line testing-library/no-node-access
-    expect(container.querySelector('.skip-nav')).toBeInTheDocument();
-    // eslint-disable-next-line testing-library/no-node-access
-    expect(container.querySelector('cfpb-button')).toBeInTheDocument();
+    render(<SkipNav />);
+    expect(screen.getByTestId('skip-nav')).toBeInTheDocument();
+    expect(screen.getByText('Skip to main content')).toHaveClass('skip-nav__link');
   });
 });

@@ -21,7 +21,7 @@ export default function SkipNav({
   label = 'Skip to main content',
 }: SkipNavProperties): JSXElement {
   return (
-    <div className='skip-nav'>
+    <div className='skip-nav' data-testid='skip-nav'>
       <cfpb-button href={href} className='skip-nav__link'>
         {label}
       </cfpb-button>
