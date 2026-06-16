@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
-import { Alert, AlertFieldLevel, TextInput } from '~/src/index';
+import { Alert, AlertFieldLevel, ListLink, TextInput } from '~/src/index';
 
 const meta: Meta<typeof Alert> = {
   title: 'Components (Draft)/Alerts',
@@ -23,11 +23,14 @@ const FieldLevelAlertMessage = ({ status = 'a warning' }): ReactNode => (
 const alertExplanation = (type: string): string =>
   `This is an optional explanation of the ${type}.`;
 
-const externalLinkProperties = {
-  href: '/',
-  label: 'This is an external link',
-  isExternal: true,
-};
+const externalLink = (
+  <ListLink
+    href='/'
+    key='external'
+    label='This is an external link'
+    iconRight='external-link'
+  />
+);
 
 export const Information: Story = {
   render: (arguments_) => <Alert {...arguments_} />,
@@ -58,11 +61,12 @@ export const InformationWithLinks: Story = {
     ...Information.args,
     children: 'This is the explanation of the alert.',
     links: [
-      {
-        href: '/',
-        label: 'This is a link below the explanation',
-      },
-      externalLinkProperties,
+      <ListLink
+        href='/'
+        key='internal'
+        label='This is a link below the explanation'
+      />,
+      externalLink,
     ],
   },
 };
@@ -73,7 +77,7 @@ export const Success: Story = {
     ...Information.args,
     status: 'success',
     message: '11 results',
-    links: [externalLinkProperties],
+    links: [externalLink],
     children: <>{alertExplanation('success message')}</>,
   },
 };
@@ -84,7 +88,7 @@ export const Warning: Story = {
     ...Information.args,
     status: 'warning',
     message: 'No results found',
-    links: [externalLinkProperties],
+    links: [externalLink],
     children: <>{alertExplanation('warning')}</>,
   },
 };
@@ -95,7 +99,7 @@ export const Error: Story = {
     ...Information.args,
     status: 'error',
     message: 'Page not found',
-    links: [externalLinkProperties],
+    links: [externalLink],
     children: <>{alertExplanation('error')}</>,
   },
 };
