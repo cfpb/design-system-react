@@ -145,19 +145,9 @@ export default function ResponsiveMenu({
 }
 
 export const ExampleLinks: ReactNode[] = [
-  <Link key='home' href='/' label='Home' />,
-  <Link
-    key='filing'
-    className='nav-item active'
-    href='/filing'
-    label='Filing'
-  />,
-  <Link
-    key='profile'
-    className='nav-item profile'
-    href='/profile'
-    label='John Sample'
-  />,
+  <Link key='1' href='/' label='Link' />,
+  <Link key='2' className='nav-item active' href='/2' label='Link' />,
+  <Link key='3' className='nav-item' href='/3' label='Link' />,
   <Button
     appearance={'secondary'}
     label='Log out'
