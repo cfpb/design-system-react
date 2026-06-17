@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX } from 'react';
 import { expect, fn, userEvent, within } from 'storybook/test';
-import { Pagination, usePagination } from '~/src/index';
+import { Pagination } from './pagination';
+import { usePagination } from './use-pagination';
 import { generateTestRows, stringify } from './pagination.story-utils';
 
 const meta: Meta<typeof Pagination> = {

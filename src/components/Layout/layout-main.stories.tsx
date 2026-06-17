@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Layout } from '~/src/index';
+import Layout from './layout';
 
 const meta: Meta<typeof Layout.Main> = {
   title: 'Components (Draft)/Layout/Main',

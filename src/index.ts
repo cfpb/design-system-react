@@ -1,5 +1,4 @@
-import '@fontsource-variable/source-sans-3';
-import './assets/styles/_shared.scss';
+import './assets/styles/entry-styles';
 
 export { Alert } from './components/Alert/alert';
 export { AlertFieldLevel } from './components/Alert/alert-field-level';

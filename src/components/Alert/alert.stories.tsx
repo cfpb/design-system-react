@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
-import { Alert, AlertFieldLevel, TextInput } from '~/src/index';
+import { Alert } from './alert';
+import { AlertFieldLevel } from './alert-field-level';
+import { TextInput } from '../TextInput/text-input';
 
 const meta: Meta<typeof Alert> = {
   title: 'Components (Draft)/Alerts',

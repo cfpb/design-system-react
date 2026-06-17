@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BrowserRouter } from 'react-router';
 import { expect, within } from 'storybook/test';
-import { Heading, Link, List, ListLink } from '~/src/index';
+import { Heading } from '../Headings/heading';
+import Link, { ListLink } from './link';
+import List from '../List/list';
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',

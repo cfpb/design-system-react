@@ -10,6 +10,29 @@ import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
+/** Stories must not import the library barrel — see README “Storybook styles”. */
+const noLibraryBarrelInStories = {
+  'no-restricted-imports': [
+    'error',
+    {
+      paths: [
+        {
+          name: '~/src/index',
+          message:
+            'Import the component from its source file (e.g. ./button). Global styles load via .storybook/preview.js → entry-styles.ts.',
+        },
+      ],
+      patterns: [
+        {
+          group: ['~/src/index', '~/src/index.ts'],
+          message:
+            'Import the component from its source file (e.g. ./button). Global styles load via .storybook/preview.js → entry-styles.ts.',
+        },
+      ],
+    },
+  ],
+};
+
 export default tseslint.config(
   {
     ignores: [
@@ -96,5 +119,10 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
     },
+  },
+  // Stories: import components from source, not the library barrel (MDX: same convention; see README).
+  {
+    files: ['**/*.stories.ts?(x)'],
+    rules: noLibraryBarrelInStories,
   },
 );

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ComponentProps } from 'react';
 import { JSX } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import { Expandable } from '~/src/index';
+import { Expandable } from './expandable';
 import { sleep } from '../../utils/sleep';
 
 // This is the expandable group

@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-import { Button, Icon, TextInput } from '~/src/index';
+import { Button } from '../Buttons/button';
+import { Icon } from '../Icon/icon';
+import { TextInput } from './text-input';
 import type { TextInputProperties } from './text-input';
 
 const meta: Meta<typeof TextInput> = {

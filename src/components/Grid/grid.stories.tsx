@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Grid } from '~/src/index';
+import Grid from './index';
 
 const meta: Meta<typeof Grid.Wrapper> = {
   title: 'Components (Draft)/Grids',
