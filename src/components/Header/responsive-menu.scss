@@ -66,6 +66,7 @@ $max-width: $bp-sm-max;
       .menu-toggle {
         border: none;
         background-color: transparent;
+        color: var(--text);
         cursor: pointer;
         align-self: stretch;
         width: 54px;
@@ -153,10 +154,14 @@ $max-width: $bp-sm-max;
             margin-right: 0;
             padding: 10px 0;
             text-align: left;
+            // no underline when in menu
+            .a-link__text {
+              text-decoration: none;
+            }
 
             @media (min-width: $breakpoint) {
               border-bottom: 1px dotted transparent;
-              margin-right: $space-xl;
+              margin-right: $space-lg;
               padding: 0;
             }
 
