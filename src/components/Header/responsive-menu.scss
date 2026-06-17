@@ -66,6 +66,7 @@ $max-width: $bp-sm-max;
       .menu-toggle {
         border: none;
         background-color: transparent;
+        color: var(--text);
         cursor: pointer;
         align-self: stretch;
         width: 54px;
