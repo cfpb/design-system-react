@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { HTMLAttributes, ReactNode } from 'react';
+import { Children, type HTMLAttributes, type ReactNode } from 'react';
 import type { HeadingLevel } from '../../types/heading-level';
 import type { JSXElement } from '../../types/jsx-element';
 import { Icon } from '../Icon/icon';
@@ -19,6 +19,11 @@ export const iconByType: Record<string, { name: string; withBg: boolean }> = {
 };
 
 export type AlertType = 'error' | 'info' | 'loading' | 'success' | 'warning';
+
+const hasOnlyTextChildren = (children: ReactNode): boolean =>
+  Children.toArray(children).every(
+    (child) => typeof child === 'string' || typeof child === 'number',
+  );
 
 interface AlertProperties {
   status?: AlertFieldLevelType | AlertType;
@@ -70,6 +75,13 @@ export const Alert = ({
     className,
   );
 
+  const explanationClassName = message
+    ? 'm-notification__explanation'
+    : undefined;
+  const explanationTag: 'div' | 'p' =
+    children && hasOnlyTextChildren(children) ? 'p' : 'div';
+  const ExplanationTag = explanationTag;
+
   return (
     <div className={classes} data-testid='notification' {...properties}>
       {showIcon ? (
@@ -82,12 +94,12 @@ export const Alert = ({
           </div>
         ) : null}
         {children ? (
-          <div
-            className={`${message ? 'm-notification__explanation' : ''}`}
+          <ExplanationTag
+            className={explanationClassName}
             data-testid='explanation'
           >
             {children}
-          </div>
+          </ExplanationTag>
         ) : null}
         {links && links.length > 0 ? (
           <List isLinks>
