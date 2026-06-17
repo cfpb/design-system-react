@@ -1,3 +1,4 @@
+import '@cfpb/cfpb-design-system/src/components/cfpb-typography/slug-header.scss';
 import classnames from 'classnames';
 import { JSX } from 'react';
 import type { HTMLProps } from 'react';

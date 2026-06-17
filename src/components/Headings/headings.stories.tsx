@@ -97,4 +97,18 @@ export const Slug: Story = {
     type: 'slug',
     children: 'Slug',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const slugHeading = canvas.getByRole('heading', {
+      level: 2,
+      name: /slug/i,
+    });
+
+    await expect(slugHeading.classList.contains('m-slug-header__heading')).toBe(
+      true,
+    );
+    await expect(
+      slugHeading.closest('header')?.classList.contains('m-slug-header'),
+    ).toBe(true);
+  },
 };
