@@ -38,6 +38,8 @@ export const TextArea = forwardRef(
     }: JSX.IntrinsicElements['textarea'] & TextAreaType,
     reference: Ref<HTMLTextAreaElement>,
   ): ReactElement => {
+    const { style, ...restProperties } = properties;
+
     const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (
       event,
     ) => {
@@ -62,7 +64,8 @@ export const TextArea = forwardRef(
           disabled={isDisabled}
           data-testid='textAreaInput'
           ref={reference}
-          {...properties}
+          style={{ ...style, resize: 'vertical' }}
+          {...restProperties}
         />
       </div>
     );
