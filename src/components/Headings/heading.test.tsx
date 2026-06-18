@@ -37,6 +37,22 @@ describe('<Heading />', () => {
     }
   });
 
+  it('Renders React elements with text', () => {
+    render(
+      <Heading type='2' data-testid='heading-with-element'>
+        <span data-testid='heading-icon' aria-hidden='true' />
+        Information
+      </Heading>,
+    );
+
+    const current = screen.getByTestId('heading-with-element');
+
+    expect(current).toBeInTheDocument();
+    expect(current.tagName.toLowerCase()).toBe('h2');
+    expect(screen.getByTestId('heading-icon')).toBeInTheDocument();
+    expect(current).toHaveTextContent('Information');
+  });
+
   it('Renders Display heading', () => {
     const headingType = `display`;
     const testid = `h${headingType}`;
