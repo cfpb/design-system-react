@@ -47,4 +47,11 @@ describe('<TextArea />', () => {
     expect(textInput).toHaveClass('a-text-input');
     expect(textInput).not.toHaveClass('a-text-input--success');
   });
+
+  it('restricts resizing to the vertical axis', () => {
+    render(<TextArea id='enabled' />);
+
+    const textArea = screen.getByTestId('textAreaInput');
+    expect(textArea).toHaveStyle({ resize: 'vertical' });
+  });
 });
