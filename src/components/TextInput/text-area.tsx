@@ -73,7 +73,9 @@ export const TextArea = forwardRef(
     );
 
     return isFullWidth ? (
-      <div className='m-form-field'>{textarea}</div>
+      <div className='m-form-field' data-testid='text-area-field'>
+        {textarea}
+      </div>
     ) : (
       textarea
     );
