@@ -28,6 +28,14 @@ describe('<TextArea />', () => {
 
     const textInput = screen.getByTestId('textAreaInput');
     expect(textInput).toHaveClass('a-text-input--full');
+    expect(textInput.parentElement).toHaveClass('m-form-field');
+  });
+
+  it('does not wrap in m-form-field by default', () => {
+    render(<TextArea id='enabled' />);
+
+    const textArea = screen.getByTestId('textAreaInput');
+    expect(textArea.parentElement).not.toHaveClass('m-form-field');
   });
 
   it('applies validation status modifiers', () => {
