@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BrowserRouter } from 'react-router';
-import { expect, within } from 'storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 import { Heading, Link, List, ListLink } from '~/src/index';
 
 const meta: Meta<typeof Link> = {
@@ -36,6 +36,10 @@ export const Standalone: Story = {
     const canvas = within(canvasElement);
     const link = canvas.getByRole('link', { name: /standalone link/i });
     await expect(link).toHaveAttribute('href', '/#');
+
+    const initialHref = globalThis.location.href;
+    await userEvent.click(link);
+    await expect(globalThis.location.href).toBe(initialHref);
   },
 };
 
