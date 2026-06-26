@@ -5,7 +5,8 @@
  * SCSS import here (once per file — duplicates are unnecessary). Component
  * `.tsx` files should not import DS styles directly.
  *
- * @see https://github.com/cfpb/design-system-react#styles
+ * Styles listed here are bundled into `dist/index.css` and loaded in Storybook via
+ * `.storybook/preview.js` (alongside `_shared.scss` and Fontsource).
  */
 
 // Buttons — Button
