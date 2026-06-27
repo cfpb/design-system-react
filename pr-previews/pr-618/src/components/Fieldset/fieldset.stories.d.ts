@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { Fieldset } from '../../index';
+import { Fieldset } from './fieldset';
 /**
  *
  * Source: https://cfpb.github.io/design-system/components/fieldsets

@@ -5,9 +5,12 @@
  * SCSS import here (once per file — duplicates are unnecessary). Component
  * `.tsx` files should not import DS styles directly.
  *
- * Styles listed here are bundled into `dist/index.css` and loaded in Storybook via
- * `.storybook/preview.js` (alongside `_shared.scss` and Fontsource).
+ * Styles listed here are bundled into `dist/index.css` via `entry-styles.ts` and
+ * loaded in Storybook the same way.
  */
+
+// Icons — Icon (and any component with .cf-icon-svg)
+import '@cfpb/cfpb-design-system/src/components/cfpb-icons/icon.scss';
 
 // Buttons — Button
 import '@cfpb/cfpb-design-system/src/components/cfpb-buttons/button.scss';
@@ -23,8 +26,9 @@ import '@cfpb/cfpb-design-system/src/components/cfpb-forms/text-input.scss';
 import '@cfpb/cfpb-design-system/src/components/cfpb-forms/select.scss';
 import '@cfpb/cfpb-design-system/src/components/cfpb-forms/multiselect.scss';
 
-// Typography — Heading (type="slug")
+// Typography — Heading (type="slug"), Link
 import '@cfpb/cfpb-design-system/src/components/cfpb-typography/slug-header.scss';
+import '@cfpb/cfpb-design-system/src/components/cfpb-typography/link.scss';
 
 // Layout — Divider (.content__line), Well
 import '@cfpb/cfpb-design-system/src/components/cfpb-layout/layout.scss';

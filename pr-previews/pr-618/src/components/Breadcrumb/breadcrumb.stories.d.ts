@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { Breadcrumb } from '../../index';
+import { Breadcrumb } from './breadcrumb';
 declare const meta: Meta<typeof Breadcrumb>;
 export default meta;
 type Story = StoryObj<typeof meta>;

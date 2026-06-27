@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { Expandable } from '../../index';
+import { Expandable } from './expandable';
 import { ExpandableGroup } from './expandable-group';
 declare const meta: Meta<typeof Expandable>;
 export default meta;

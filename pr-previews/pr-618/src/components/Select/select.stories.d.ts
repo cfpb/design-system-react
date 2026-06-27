@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { SelectSingle } from '../../index';
+import { SelectSingle } from './select-single';
 declare const meta: Meta<typeof SelectSingle>;
 export default meta;
 type Story = StoryObj<typeof meta>;

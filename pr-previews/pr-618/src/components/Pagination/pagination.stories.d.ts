@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX } from '../../../node_modules/react';
-import { Pagination } from '../../index';
+import { Pagination } from './pagination';
 declare const meta: Meta<typeof Pagination>;
 export default meta;
 type Story = StoryObj<typeof meta>;

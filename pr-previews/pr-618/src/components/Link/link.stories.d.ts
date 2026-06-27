@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { Link } from '../../index';
+import { default as Link } from './link';
 declare const meta: Meta<typeof Link>;
 export default meta;
 type Story = StoryObj<typeof meta>;
