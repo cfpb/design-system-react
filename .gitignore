@@ -2,13 +2,13 @@ node_modules
 .DS_Store
 dist
 dist-storybook
+*.iml
 *.local
 *.log
 .eslintcache
 coverage
 .nyc_output
 .stylelintcache
-cypress/videos
 .env
 .pnp.*
 .yarn/*

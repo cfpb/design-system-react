@@ -13,14 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
-          node-version: 20
+          node-version: 26
 
       - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
-          yarn
+          corepack enable
+          yarn install --immutable --immutable-cache
           yarn build-storybook
 
       - name: Disable Jekyll # Tell GitHub Pages to not use Jekyll
@@ -28,6 +29,9 @@ jobs:
           touch dist-storybook/.nojekyll
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4
         with:
           folder: dist-storybook # The folder the action should deploy.
+          # Exclude the pr-previews folder from being deleted on deploy
+          clean-exclude: |
+            pr-previews

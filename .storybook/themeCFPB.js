@@ -1,5 +1,5 @@
-import { create } from '@storybook/theming/create';
-import CfpbLogo from '../src/assets/images/cfpb-logo-vertical.png';
+import { create } from 'storybook/theming/create';
+import CfpbLogo from '../src/assets/images/cfpb_logo.svg?url';
 
 const colors = {
   black: '#101820',
@@ -8,7 +8,7 @@ const colors = {
   gray40: '#b4b5b6',
   green10: '#f0f8eb',
   teal: '#257675',
-  teal80: '#579695'
+  teal80: '#579695',
 };
 
 /**
@@ -21,10 +21,10 @@ export default create({
 
   brandTitle: 'CFPB Design System React',
   brandImage: CfpbLogo,
-  brandUrl: 'https://cfpb.github.io/design-system/',
+  brandUrl: 'https://cfpb.github.io/design-system-react/',
   brandTarget: '_blank',
 
-  fontBase: '"Source Sans 3 Variable", Arial ,sans-serif',
+  fontBase: '"Source Sans 3 Variable", Arial, sans-serif',
 
   // App
   appBorderColor: colors.gray,
@@ -49,5 +49,5 @@ export default create({
   booleanSelectedBg: colors.teal80,
   inputBg: 'white',
   inputBorder: colors.gray,
-  inputTextColor: colors.black
+  inputTextColor: colors.black,
 });

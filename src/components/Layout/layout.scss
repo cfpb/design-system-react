@@ -1,5 +1,5 @@
 // Override Design System styles that cause content to overflow sidebar boundaries
-@media only all and (min-width: 37.5625em) {
+@media only all and (width >= 37.5625em) {
   .content--2-1 .content__main,
   .content--1-3 .content__sidebar {
     margin-right: 0 !important;

@@ -1,43 +1,45 @@
 import turbosnap from 'vite-plugin-turbosnap';
 
-module.exports = {
+export default {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../src/assets/'],
 
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
     '@storybook/addon-a11y',
     '@chromatic-com/storybook',
-    '@storybook/addon-mdx-gfm'
+    '@storybook/addon-docs',
+    '@storybook/addon-vitest',
+    'storybook-addon-tag-badges',
+    'storybook-font-inspector',
   ],
 
   docs: {
     defaultName: 'Overview',
-    autodocs: true
   },
 
   framework: {
     name: '@storybook/react-vite',
-    options: {}
+    options: {},
   },
 
-  features: {},
+  features: {
+    viewport: true,
+  },
 
   async viteFinal(config, { configType }) {
     config.base = process.env.BASE_PATH || config.base;
 
     // Skip type declaration generation for non-dist builds
     config.plugins = config.plugins.filter(
-      plugin => plugin.name !== 'vite:dts'
+      (plugin) => plugin.name !== 'vite:dts',
     );
 
     // load Chromatic's recommended vite plugin for dist builds to create preview-stats.json
     config.plugins = config.plugins.concat(
       turbosnap({
-        rootDir: config.root ?? process.cwd()
-      })
+        rootDir: config.root ?? process.cwd(),
+      }),
     );
 
     // return the customized config
@@ -45,6 +47,6 @@ module.exports = {
   },
 
   typescript: {
-    reactDocgen: 'react-docgen-typescript'
-  }
+    reactDocgen: 'react-docgen-typescript',
+  },
 };

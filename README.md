@@ -4,24 +4,26 @@ A React/Storybook implementation of [CFPB's Design System](https://github.com/cf
 
 ## Status
 
-✨ Pre-release. Interfaces will change. Things will break.
+✨ Work in progress. Interfaces will change. Things will break.
 
 Current components: https://cfpb.github.io/design-system-react
 
 ## Installation
 
-Until we start publishing to npm, install this github repo:
+The `@cfpb/design-system-react` library is released as an [NPM package](https://www.npmjs.com/package/@cfpb/design-system-react).
+
+To install the package and its peer dependencies:
 
 ```
-yarn add cfpb/design-system-react
+yarn add @cfpb/design-system-react @cfpb/cfpb-design-system lit react react-dom react-router
 ```
 
-If you're using yarn v2 or greater, [`yarn pack`](https://yarnpkg.com/advanced/lifecycle-scripts) will automatically build the package for you after it's installed.
+`lit` is required because `@cfpb/cfpb-design-system` web components (for example `<cfpb-tagline>` in `Banner`) are built with [Lit](https://lit.dev/).
 
 ## Usage
 
 ```ts
-import { Button, Alert } from 'design-system-react';
+import { Alert, Button } from '@cfpb/design-system-react';
 import type { ReactElement } from 'react';
 
 export default function SomePage(): ReactElement {
@@ -43,14 +45,14 @@ export default function SomePage(): ReactElement {
 
 ## Development
 
-To edit components or add new ones, make sure you have Yarn v3 set up locally and then run `yarn dev`:
+To edit components or add new ones, install dependencies and run Storybook:
 
-1. Install Node v20+.
+1. Install Node v26+ (see `.nvmrc`).
 1. Enable [corepack](https://yarnpkg.com/getting-started/install): `corepack enable`.
-1. `yarn`
+1. `yarn install`
 1. `yarn start`
 
-Note: This project uses yarn v3.5 in "plug n play" mode. There is no `node_modules/` directory. Packages are stored in `.yarn/cache/`.
+This project uses Yarn 4 with the `node-modules` linker (see `.yarnrc.yml`).
 
 Edit the files in `src/components/` and your browser should hot reload your changes.
 
@@ -58,7 +60,7 @@ Add tests to files called `<component-name>.test.tsx`. See [`Buttons.test.tsx`](
 
 Run `yarn test` to watch for changes and run tests automatically.
 
-[Netlify](https://www.netlify.com/) will build and deploy a preview of any pull requests you open.
+[Github actions](https://github.com/rossjrw/pr-preview-action) will build and deploy a preview of any pull requests you open.
 
 ## Integrating changes to the CFPB Design System
 
@@ -71,8 +73,6 @@ git checkout main
 git pull --rebase
 git checkout -b update-cfpb-ds
 yarn up @cfpb/cfpb-design-system
-yarn up @cfpb/cfpb-expandables
-yarn up @cfpb/cfpb-forms
 git add --all
 git commit -m 'chore: Update CFPB DS to <new.version.number>'
 git push

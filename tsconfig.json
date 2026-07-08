@@ -10,17 +10,19 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "types": ["vite/client", "vitest/globals", "vite-plugin-pwa/client"],
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "@cfpb/cfpb-design-system/src/components/cfpb-expandables": [
+        "./src/types/CfpbExpandables.d.ts"
+      ]
     }
   },
-  "include": ["src"],
-  "exclude": ["postcss"],
+  "include": ["src", "postcss", "vite"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
