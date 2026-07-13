@@ -39,19 +39,17 @@ type Story = StoryObj<typeof meta>;
 const biggerIcon = { fontSize: '2em' };
 
 const makeRows = (names: string[]): JSX.Element[] =>
-  names.map(
-    (name): JSX.Element => (
-      <tr key={`${name}`}>
-        <td style={biggerIcon}>
-          <Icon name={name} />
-        </td>
-        <td style={biggerIcon}>
-          <Icon name={name} withBg />
-        </td>
-        <td>{name}</td>
-      </tr>
-    ),
-  );
+  names.map((name): JSX.Element => (
+    <tr key={`${name}`}>
+      <td style={biggerIcon}>
+        <Icon name={name} />
+      </td>
+      <td style={biggerIcon}>
+        <Icon name={name} withBg />
+      </td>
+      <td>{name}</td>
+    </tr>
+  ));
 
 const IconTable = ({ children }: { children: JSX.Element[] }): JSX.Element => (
   <table>

@@ -12,13 +12,7 @@ import { getTextInputStatusClass } from './text-input-status';
 type TextInputReference = ReactNode;
 
 export type InputType =
-  | 'email'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'text'
-  | 'url';
+  'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
 
 interface RequiredTextInputProperties {
   id: string;
