@@ -1,8 +1,8 @@
 @use './variables';
 @use 'sass:math';
-@use '@cfpb/cfpb-design-system/src/index' as *;
-@use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
-@use '@cfpb/cfpb-design-system/src/elements/base' as base;
+@use 'sass:string';
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/base' as base;
 
 // @include licensed-font('/static/fonts');
 
@@ -11,20 +11,47 @@
 */
 
 /**
-/* Storybook components are not rendered within a CFPB layout so
-/* the DS' max-width restriction for text content is not applied. 
-/*
-/* https://github.com/cfpb/design-system/blob/main/packages/cfpb-layout/src/cfpb-layout.scss#L210-L223
-/*
-/* A similar adjustment was made for the DS docs pages
-/* https://github.com/cfpb/design-system/pull/1220
-**/
-:root,
+ * Source Sans 3 is loaded via `@fontsource-variable/source-sans-3` in **`src/index.ts`** (apps)
+ * and **`.storybook/preview.js`** (Storybook, including nested “All viewports” iframes) before
+ * `_shared.scss` so `@font-face` is always registered.
+ *
+ * DS `custom-props` sets `--font-stack-branded: initial`, so `var(--font-stack)` falls back to
+ * `system-ui`. Other DS chunks can repeat that `:root` block when code-split; in dev the last
+ * chunk can win and wipe a non-`!important` override. Pin both tokens with `!important` so inputs,
+ * buttons, and body always match.
+ *
+ * `html` / `body` / Storybook roots also get an explicit stack so we are not only relying on
+ * custom properties for the main canvas.
+ */
+// Literal stack (quoted multi-word family) — matches app / design-system expectations.
+$ds-font-stack: string.unquote('"Source Sans 3 Variable", Arial, sans-serif');
+
+:root {
+  --font-stack-branded: #{$ds-font-stack} !important;
+  --font-stack: #{$ds-font-stack} !important;
+}
+
+// `!important` beats DS normalize `html { font-family: sans-serif }` if chunk
+// order ever places that rule after this file (e.g. code-splitting in dev).
+html,
+body,
 #storybook-root,
 #storybook-docs {
-  --font-stack: 'Source Sans 3 Variable', 'Source Sans Pro', 'Arial', sans-serif;
-  font-family: var(--font-stack);
+  font-family: #{$ds-font-stack} !important;
+}
 
+/**
+ * Long-form / layout simulation for the Docs tab only.
+ *
+ * Do not target `#storybook-root` here: the story canvas should match production
+ * (DS + component CSS only). Rules like paragraph max-width were affecting heroes
+ * and other components inside the iframe.
+ *
+ * DS max-width context:
+ * https://github.com/cfpb/design-system/blob/main/packages/cfpb-layout/src/cfpb-layout.scss#L210-L223
+ * https://github.com/cfpb/design-system/pull/1220
+ */
+#storybook-docs {
   dd,
   dt,
   label,
@@ -41,28 +68,27 @@
     font-size: 16px;
   }
 
-  /* 
-  Make code block plain-text readable (workaround since we can't change code highlighting theme) 
+  /*
+  Make code block plain-text readable (workaround since we can't change code highlighting theme)
   https://github.com/storybookjs/storybook/issues/9641
   */
   pre {
     background-color: #2b2b2b;
     color: white;
+    line-height: 22px !important;
   }
-}
 
-/* 
-Apply a global line-height that doesn't interfere with component Stories 
-that have their own line-height settings. 
-*/
-pre,
-#storybook-docs :where(p:not(.sb-story *)) {
-  line-height: 22px !important;
+  /*
+  Readable docs prose line-height (avoid touching `.sb-story` embeds).
+  */
+  :where(p:not(.sb-story *)) {
+    line-height: 22px !important;
+  }
 }
 
 // Override DS wrapper match-content width to 1170px content with 30px gutters.
 .wrapper--match-content {
   @include respond-to-min($bp-sm-min) {
-    max-width: $grid-wrapper-width - ($grid-gutter-width * 2);
+    max-width: $grid-wrapper-width - ($grid-gutter-width * 2) !important;
   }
 }
