@@ -121,12 +121,12 @@ export const SecondaryNav = ({
                 const hasActiveChild =
                   hasChildren && item.children!.some((c) => c.isActive);
                 const isParentIsActive = Boolean(
-                  item.isActive && !hasActiveChild,
+                  !hasActiveChild && item.isActive,
                 );
 
                 return (
                   <li key={item.href ?? item.label}>
-                    {item.href && !isParentIsActive ? (
+                    {!isParentIsActive && item.href ? (
                       <a
                         className={classnames(
                           'o-secondary-nav__link',
