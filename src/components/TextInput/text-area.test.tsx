@@ -28,6 +28,14 @@ describe('<TextArea />', () => {
 
     const textInput = screen.getByTestId('textAreaInput');
     expect(textInput).toHaveClass('a-text-input--full');
+    expect(screen.getByTestId('text-area-field')).toContainElement(textInput);
+  });
+
+  it('does not wrap in m-form-field by default', () => {
+    render(<TextArea id='enabled' />);
+
+    expect(screen.queryByTestId('text-area-field')).not.toBeInTheDocument();
+    expect(screen.getByTestId('textAreaInput')).toBeInTheDocument();
   });
 
   it('applies validation status modifiers', () => {
@@ -46,5 +54,12 @@ describe('<TextArea />', () => {
     const textInput = screen.getByPlaceholderText('enabled');
     expect(textInput).toHaveClass('a-text-input');
     expect(textInput).not.toHaveClass('a-text-input--success');
+  });
+
+  it('restricts resizing to the vertical axis', () => {
+    render(<TextArea id='enabled' />);
+
+    const textArea = screen.getByTestId('textAreaInput');
+    expect(textArea).toHaveStyle({ resize: 'vertical' });
   });
 });
