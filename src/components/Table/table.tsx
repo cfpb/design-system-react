@@ -9,10 +9,10 @@ import {
 } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 import { type WidthPercent } from '../../types/width-percent';
-import { Pagination } from '../Pagination/pagination';
-import { DEFAULT_PER_PAGE, MIN_PAGE } from '../Pagination/pagination-constants';
-import { usePagination } from '../Pagination/use-pagination';
-import { buildColumnHeaders, buildRows } from './table-utils';
+import { Pagination } from '../pagination/pagination';
+import { DEFAULT_PER_PAGE, MIN_PAGE } from '../pagination/pagination-constants';
+import { usePagination } from '../pagination/use-pagination';
+import { buildColumnHeaders, buildRows } from './table-utilities';
 import './table.scss';
 
 const Caption = ({
@@ -22,7 +22,7 @@ const Caption = ({
   return <caption>{children}</caption>;
 };
 
-export interface TableColumnConfiguration {
+export interface TableColumnConfig {
   header: string; // Column heading
   isAlignRight?: boolean | undefined; // Align content to the right?
   width?: WidthPercent; // Fixed percentage of table width for column to consume
@@ -31,7 +31,7 @@ export interface TableColumnConfiguration {
   isHeaderWordWrap?: boolean; // Allows wrapping in the th (header), by default -- header fields are set to no-wrap
 }
 
-export type TableColumn = TableColumnConfiguration | string;
+export type TableColumn = TableColumnConfig | string;
 
 export interface TableProperties {
   // Unique identifier

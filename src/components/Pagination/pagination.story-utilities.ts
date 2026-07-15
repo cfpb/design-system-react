@@ -3,7 +3,7 @@ const INDENTATION = 2;
 
 // Produce tabular test data
 export const generateTestRows = (rowCount: number): string[][] =>
-  [...Array.from({ length: rowCount }).keys()].map((key) => [
+  Array.from({ length: rowCount }, (_item, key) => [
     `A${key + ONE}`,
     `B${key + ONE}`,
   ]);

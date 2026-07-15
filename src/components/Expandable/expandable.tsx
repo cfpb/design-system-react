@@ -2,7 +2,7 @@ import { Expandable as CFPB_Expandable } from '@cfpb/cfpb-design-system/src/comp
 import classnames from 'classnames';
 import type { FC, HTMLAttributes, ReactNode } from 'react';
 import { useEffect } from 'react';
-import { Icon } from '../Icon/icon';
+import { Icon } from '../icon/icon';
 
 export interface ExpandableProperties extends HTMLAttributes<HTMLDivElement> {
   header: string;

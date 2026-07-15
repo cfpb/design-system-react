@@ -4,7 +4,10 @@ import matchMediaMock from 'jest-matchmedia-mock';
 import type { ReactElement } from 'react';
 import ResponsiveMenu, { ExampleLinks } from './responsive-menu';
 
-let matchMedia: matchMediaMock;
+const testState: { matchMedia?: matchMediaMock } = {};
+
+const renderWithScope = (ui: ReactElement) =>
+  render(<div className='o-header-scope'>{ui}</div>);
 
 const resizeScreenSize = (width: number) => {
   Object.defineProperty(globalThis, 'innerWidth', {
@@ -12,19 +15,16 @@ const resizeScreenSize = (width: number) => {
     configurable: true,
     value: width,
   });
-  globalThis.dispatchEvent(new Event('resize'));
+  dispatchEvent(new Event('resize'));
 };
 
 describe('ResponsiveMenu', () => {
-  const renderWithScope = (ui: ReactElement) =>
-    render(<div className='o-header-scope'>{ui}</div>);
-
   beforeAll(() => {
-    matchMedia = new matchMediaMock();
+    testState.matchMedia = new matchMediaMock();
   });
 
   afterEach(() => {
-    matchMedia.clear();
+    testState.matchMedia?.clear();
   });
 
   it('does not render the menu without links', () => {

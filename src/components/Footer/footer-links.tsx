@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
-import List from '../List/list';
-import { ListItemBuilder } from '../List/list-item';
+import List from '../list/list';
+import { ListItemBuilder } from '../list/list-item';
 
 interface WrapperProperties {
   children: JSX.Element[];

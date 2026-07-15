@@ -87,7 +87,7 @@ export const Eyebrow: Story = {
     // Assert that the font is correctly loaded
     await expect(isFontLoaded).toBe(true);
     // Alternative: Assert the computed style of the element
-    const computedStyle = globalThis.getComputedStyle(textElement);
+    const computedStyle = getComputedStyle(textElement);
     await expect(computedStyle.fontFamily).toContain('Source Sans 3 Variable');
   },
 };

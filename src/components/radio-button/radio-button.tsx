@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode, RefObject } from 'react';
 import { JSX } from 'react';
-import { HelperText } from '../HelperText/helper-text';
-import { Label } from '../Label/label';
+import { HelperText } from '../helper-text/helper-text';
+import { Label } from '../label/label';
 
 interface RadioProperties {
   id: string;

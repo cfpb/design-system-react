@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
-  ApplicationFooter,
+  AppFooter,
   Footer,
   FooterCfGov,
   Heading,
@@ -30,7 +30,7 @@ export const CFGov: Story = {
 export const App: Story = {
   name: 'Application',
   render: () => (
-    <ApplicationFooter
+    <AppFooter
       navLinks={[
         <Link label='Link 1' key='link_1' href='#' />,
         <Link label='Longer link 2' key='link_2' href='#' />,

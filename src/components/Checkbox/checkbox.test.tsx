@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, render, screen } from '@testing-library/react';
 import { Checkbox } from './checkbox';
-import { CheckboxTestWrapper } from './checkbox.utils';
+import { CheckboxTestWrapper } from './checkbox.utilities';
 
 const id = 'default';
 const label = 'this is a label';

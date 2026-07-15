@@ -22,7 +22,7 @@ const defaultRows = [
   ['Row 3, Column 1', 'Row 3, Column 2', 'Row 3, Column 3', 'Row 3, Column 4'],
 ];
 
-const columnsWithConfiguration = [
+const columnsWithConfig = [
   { header: 'Col 1', width: 30 },
   'Col 2',
   'Col 3',
@@ -82,7 +82,7 @@ describe('<Table />', () => {
     render(
       <Table
         caption={defaultCaption}
-        columns={columnsWithConfiguration}
+        columns={columnsWithConfig}
         rows={defaultRows}
       />,
     );
@@ -95,7 +95,7 @@ describe('<Table />', () => {
   it('Pagination controls displayed when isPaginated', () => {
     render(
       <Table
-        columns={columnsWithConfiguration}
+        columns={columnsWithConfig}
         rows={defaultRows}
         isPaginated
         id='table-pagination'

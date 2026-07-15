@@ -1,4 +1,4 @@
-import { ListLink } from '../Link/link';
+import { ListLink } from '../link/link';
 
 export const heading = 'Heading 1';
 

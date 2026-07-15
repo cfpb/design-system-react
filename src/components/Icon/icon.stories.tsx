@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX } from 'react';
 import type { ReactElement } from 'react';
 import { Heading, Icon } from '~/src/index';
-import type { HeadingType } from '../Headings/heading';
+import type { HeadingType } from '../headings/heading';
 import {
   communicationIcons,
   documentIcons,
@@ -40,12 +40,12 @@ const biggerIcon = { fontSize: '2em' };
 
 const makeRows = (names: string[]): JSX.Element[] =>
   names.map((name): JSX.Element => (
-    <tr key={`${name}`}>
+    <tr key={name}>
       <td style={biggerIcon}>
         <Icon name={name} />
       </td>
       <td style={biggerIcon}>
-        <Icon name={name} withBg />
+        <Icon name={name} hasBg />
       </td>
       <td>{name}</td>
     </tr>
@@ -56,7 +56,7 @@ const IconTable = ({ children }: { children: JSX.Element[] }): JSX.Element => (
     <thead>
       <tr>
         <th>icon</th>
-        <th>withBg</th>
+        <th>hasBg</th>
         <th>canonical name</th>
       </tr>
     </thead>
@@ -72,7 +72,7 @@ export const IconPlain = (): ReactElement => (
 
 export const IconWithBackground = (): ReactElement => (
   <span style={biggerIcon}>
-    <Icon name='approved' withBg />
+    <Icon name='approved' hasBg />
   </span>
 );
 
@@ -108,7 +108,7 @@ export const ExpenseIcons = (): ReactElement => (
   <IconTable>{makeRows(expenseIcons)}</IconTable>
 );
 
-export const WebApplicationIcons = (): ReactElement => (
+export const WebAppIcons = (): ReactElement => (
   <IconTable>{makeRows(webIcons)}</IconTable>
 );
 
@@ -142,7 +142,7 @@ export const IconWithText: Story = {
               <td>h{type}</td>
               <td>
                 <Heading type={type}>
-                  <Icon name='credit-card' withBg /> {text}
+                  <Icon name='credit-card' hasBg /> {text}
                 </Heading>
               </td>
               <td>
@@ -156,7 +156,7 @@ export const IconWithText: Story = {
             <td>p</td>
             <td>
               <p>
-                <Icon name='college' withBg /> Student loans
+                <Icon name='college' hasBg /> Student loans
               </p>
             </td>
             <td>

@@ -1,9 +1,9 @@
 import classnames from 'classnames';
 import type { ChangeEvent, ReactElement, ReactNode, RefObject } from 'react';
 import { JSX, useCallback } from 'react';
-import { HelperText } from '../HelperText/helper-text';
+import { HelperText } from '../helper-text/helper-text';
 
-import { Label } from '../Label/label';
+import { Label } from '../label/label';
 
 export interface CheckboxProperties {
   /** Unique identifier for this checkbox */
@@ -84,7 +84,7 @@ export const Checkbox = ({
     className,
   ];
 
-  const inputProps = {
+  const inputProperties = {
     ...properties,
     id,
     type: 'checkbox' as const,
@@ -98,9 +98,9 @@ export const Checkbox = ({
   };
 
   if (isControlled) {
-    Object.assign(inputProps, { checked, 'aria-checked': checked });
+    Object.assign(inputProperties, { checked, 'aria-checked': checked });
   } else {
-    Object.assign(inputProps, {
+    Object.assign(inputProperties, {
       defaultChecked: defaultChecked ?? false,
     });
   }
@@ -110,7 +110,7 @@ export const Checkbox = ({
       className={classnames(containerClasses)}
       data-testid={`${id}-container`}
     >
-      <input {...inputProps} />
+      <input {...inputProperties} />
       <Label
         id={`${id}-label`}
         className={labelClassName}

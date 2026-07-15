@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
-import Paragraph from '../Paragraph/paragraph';
+import Paragraph from '../paragraph/paragraph';
 import { Alert, AlertType } from './alert';
 import { AlertFieldLevel } from './alert-field-level';
 
@@ -172,8 +172,14 @@ describe('<Alert />', () => {
   });
 
   it('renders field-level info alert without status modifier', () => {
-    render(<AlertFieldLevel status='info' message='Details before submit' />);
-    const element = screen.getByTestId('message').parentElement;
+    render(
+      <AlertFieldLevel
+        data-testid='field-level-info'
+        status='info'
+        message='Details before submit'
+      />,
+    );
+    const element = screen.getByTestId('field-level-info');
     expect(element).toHaveClass('a-form-alert');
     expect(element).not.toHaveClass('a-form-alert--info');
   });

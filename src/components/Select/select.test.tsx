@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { JSX, useState } from 'react';
 import { fn } from 'storybook/test';
 import { Select, SelectOption } from './select';
-import { MultipleSelectOptions, SingleSelectOptions } from './test-utils';
+import { MultipleSelectOptions, SingleSelectOptions } from './test-utilities';
 
 const SingleSelectWrapper = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<string>(

@@ -29,7 +29,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 type GroupStory = StoryObj<typeof ExpandableGroup>;
-type ExpandableGroupArgs = ComponentProps<typeof ExpandableGroup>;
+type ExpandableGroupArguments = ComponentProps<typeof ExpandableGroup>;
 
 const Content = (
   <p>
@@ -89,7 +89,7 @@ export const OpenOnLoad: Story = {
 
 export const DefaultExpandableGroup: GroupStory = {
   name: 'Group',
-  render: (arguments_: ExpandableGroupArgs) => (
+  render: (arguments_: ExpandableGroupArguments) => (
     <ExpandableGroup {...arguments_}>
       {['label', 'label', 'label'].map((value, index) => (
         <Expandable
@@ -113,8 +113,8 @@ export const DefaultExpandableGroup: GroupStory = {
     const element = allElements[0];
 
     // Helpers
-    const expectAriaExpanded = (isExpanded: string) => {
-      void expect(element.ariaExpanded).toBe(isExpanded);
+    const expectAriaExpanded = (expandedState: string) => {
+      void expect(element.ariaExpanded).toBe(expandedState);
     };
 
     // Test

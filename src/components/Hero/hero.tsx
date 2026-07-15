@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
 import type { HTMLAttributes } from 'react';
-import { Heading } from '../Headings/heading';
+import { Heading } from '../headings/heading';
 import { HeroImage } from './hero-image';
 import './hero.scss';
 import { useBackgroundImage } from './use-background-image';

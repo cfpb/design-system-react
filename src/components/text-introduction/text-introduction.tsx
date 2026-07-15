@@ -6,11 +6,11 @@ import {
   type HTMLProps,
   type ReactNode,
 } from 'react';
-import { Heading } from '../Headings/heading';
-import { ListLink } from '../Link/link';
-import List from '../List/list';
-import ListItem from '../List/list-item';
-import { Paragraph } from '../Paragraph/paragraph';
+import { Heading } from '../headings/heading';
+import { ListLink } from '../link/link';
+import List from '../list/list';
+import ListItem from '../list/list-item';
+import { Paragraph } from '../paragraph/paragraph';
 
 const renderDescription = (description: ReactNode | string): ReactNode => {
   if (!description) return null;

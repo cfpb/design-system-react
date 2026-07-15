@@ -2,13 +2,21 @@ import { CfpbTagline } from '@cfpb/cfpb-design-system';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { HTMLAttributes, ReactElement } from 'react';
 
-CfpbTagline.init();
+const initializedTagline = new Set<typeof CfpbTagline>();
 
-type TaglineProps = HTMLAttributes<HTMLElement> & { isLarge?: boolean };
+const initializeTagline = (): void => {
+  if (initializedTagline.has(CfpbTagline)) return;
+  CfpbTagline.init();
+  initializedTagline.add(CfpbTagline);
+};
 
-const TaglineComponent = (props: TaglineProps): ReactElement => (
-  <cfpb-tagline {...props}></cfpb-tagline>
-);
+type TaglineProperties = HTMLAttributes<HTMLElement> & { isLarge?: boolean };
+
+const TaglineComponent = (properties: TaglineProperties): ReactElement => {
+  initializeTagline();
+
+  return <cfpb-tagline {...properties}></cfpb-tagline>;
+};
 
 const meta = {
   title: 'Components (Verified)/Taglines',

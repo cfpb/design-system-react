@@ -4,8 +4,8 @@ import type { JSXElement } from '../../types/jsx-element';
 
 import classnames from 'classnames';
 import type { HTMLProps, ReactNode, Ref } from 'react';
-import { Icon } from '../Icon/icon';
-import ListItem from '../List/list-item';
+import { Icon } from '../icon/icon';
+import ListItem from '../list/list-item';
 import './link.scss';
 
 export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
@@ -68,6 +68,13 @@ export default function Link({
 }: LinkProperties): JSXElement {
   const hasLeftIcon = Boolean(iconLeft);
   const hasRightIcon = Boolean(iconRight);
+
+  if (hasLeftIcon && hasRightIcon) {
+    throw new Error(
+      'Link component: only one of iconLeft or iconRight can be provided',
+    );
+  }
+
   const hasIcons = hasLeftIcon || hasRightIcon;
   const shouldUseLinkStyles = !isButton && (hasIcons || isJump);
   const shouldWrapLabel = isButton || shouldUseLinkStyles;
@@ -79,12 +86,6 @@ export default function Link({
     'a-link--jump': isJump,
     'a-link': shouldUseLinkStyles,
   });
-
-  if (hasLeftIcon && hasRightIcon) {
-    throw new Error(
-      'Link component: only one of iconLeft or iconRight can be provided',
-    );
-  }
 
   if (isRouterLink) {
     if (!href) {

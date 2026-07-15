@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { ListLink } from '../Link/link';
+import { ListLink } from '../link/link';
 
 export interface AlertLinkProperties {
   href: string;

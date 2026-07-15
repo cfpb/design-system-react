@@ -2,20 +2,20 @@ import classNames from 'classnames';
 import type { HTMLAttributes, ReactNode } from 'react';
 import type { HeadingLevel } from '../../types/heading-level';
 import type { JSXElement } from '../../types/jsx-element';
-import { Icon } from '../Icon/icon';
-import List from '../List/list';
+import { Icon } from '../icon/icon';
+import List from '../list/list';
 import type { AlertFieldLevelType } from './alert-field-level';
 import { AlertFieldLevel } from './alert-field-level';
 import type { AlertLinkProperties } from './alert-link';
 import { AlertLink } from './alert-link';
 import './alert.scss';
 
-export const iconByType: Record<string, { name: string; withBg: boolean }> = {
-  error: { name: 'error', withBg: true },
-  info: { name: 'information', withBg: true },
-  loading: { name: 'updating', withBg: false },
-  success: { name: 'approved', withBg: true },
-  warning: { name: 'warning', withBg: true },
+export const iconByType: Record<string, { name: string; hasBg: boolean }> = {
+  error: { name: 'error', hasBg: true },
+  info: { name: 'information', hasBg: true },
+  loading: { name: 'updating', hasBg: false },
+  success: { name: 'approved', hasBg: true },
+  warning: { name: 'warning', hasBg: true },
 };
 
 export type AlertType = 'error' | 'info' | 'loading' | 'success' | 'warning';
@@ -83,7 +83,7 @@ export const Alert = ({
         ) : null}
         {children ? (
           <div
-            className={`${message ? 'm-notification__explanation' : ''}`}
+            className={message ? 'm-notification__explanation' : ''}
             data-testid='explanation'
           >
             {children}

@@ -70,7 +70,7 @@ export function WebsiteFooter({
   );
 }
 
-interface ApplicationFooterProperties extends HTMLProps<HTMLElement> {
+interface AppFooterProperties extends HTMLProps<HTMLElement> {
   footerContent?: JSX.Element | string;
   navLinks?: JSX.Element[];
 }
@@ -80,12 +80,12 @@ interface ApplicationFooterProperties extends HTMLProps<HTMLElement> {
  * The left column can contain information about the app,
  * and the right column is for relevant links.
  */
-export function ApplicationFooter({
+export function AppFooter({
   footerContent,
   navLinks = [],
   className,
   ...properties
-}: ApplicationFooterProperties): JSX.Element {
+}: AppFooterProperties): JSX.Element {
   return (
     <Footer className={className} {...properties}>
       <BackToTop />

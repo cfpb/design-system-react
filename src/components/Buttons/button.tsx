@@ -4,7 +4,7 @@ import {
   type ButtonHTMLAttributes,
   type ReactNode,
 } from 'react';
-import { Icon } from '../Icon/icon';
+import { Icon } from '../icon/icon';
 
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -83,14 +83,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProperties>(
 
     const hasLeftIcon = Boolean(iconLeft);
     const hasRightIcon = Boolean(iconRight);
-    const hasIcons = hasLeftIcon || hasRightIcon;
-    const labelNode = label ? hasIcons ? <span>{label}</span> : label : null;
 
     if (hasLeftIcon && hasRightIcon) {
       throw new Error(
         'Button component: only one of iconLeft or iconRight can be provided',
       );
     }
+
+    const hasIcons = hasLeftIcon || hasRightIcon;
+    const labelNode = label ? hasIcons ? <span>{label}</span> : label : null;
 
     return (
       <button

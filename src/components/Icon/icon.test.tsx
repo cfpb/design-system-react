@@ -6,7 +6,7 @@ describe('Icon', () => {
   it('Renders a plain icon', async () => {
     const name = 'error';
 
-    render(<Icon name={name} withBg />);
+    render(<Icon name={name} hasBg />);
 
     // Need to wait for icon to load - include hidden elements
     const icon = await screen.findByRole('img', { hidden: true });
@@ -16,7 +16,7 @@ describe('Icon', () => {
   it('Renders a round icon', async () => {
     const name = 'error';
 
-    render(<Icon name={name} withBg />);
+    render(<Icon name={name} hasBg />);
 
     // Need to wait for icon to load - include hidden elements
     const icon = await screen.findByRole('img', { hidden: true });
@@ -26,7 +26,7 @@ describe('Icon', () => {
   it('Renders a square icon', async () => {
     const name = 'youtube';
 
-    render(<Icon name={name} withBg />);
+    render(<Icon name={name} hasBg />);
 
     // Need to wait for icon to load - include hidden elements
     const icon = await screen.findByRole('img', { hidden: true });
@@ -46,7 +46,7 @@ describe('Icon', () => {
   it('Renders a closed number icon', async () => {
     const name = 'four';
 
-    render(<Icon name={name} withBg />);
+    render(<Icon name={name} hasBg />);
 
     // Need to wait for icon to load - include hidden elements
     const icon = await screen.findByRole('img', { hidden: true });

@@ -8,7 +8,7 @@ const PER_PAGE = 10;
 const NUMBER_ROWS = 30;
 
 const generateTestRows = (quantity: number): ReactNode[][] =>
-  [...Array.from({ length: quantity }).keys()].map((key) => [
+  Array.from({ length: quantity }, (_item, key) => [
     `A${key + ONE}`,
     `B${key + ONE}`,
   ]);

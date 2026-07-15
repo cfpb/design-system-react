@@ -1,8 +1,8 @@
 import React, { JSX, useCallback, useState } from 'react';
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
-import { Button } from '../Buttons/button';
-import { Icon } from '../Icon/icon';
-import Link from '../Link/link';
+import { Button } from '../buttons/button';
+import { Icon } from '../icon/icon';
+import Link from '../link/link';
 import type { JSXElement } from '../../types/jsx-element';
 import { Logo, type LogoLanguage } from './logo';
 import './responsive-menu.scss';

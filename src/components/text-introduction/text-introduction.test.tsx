@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import List from '../List/list';
+import List from '../list/list';
 import {
   callToAction,
   callToActionText,

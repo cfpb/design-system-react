@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import Link from '../Link/link';
+import Link from '../link/link';
 export const BackToTop = (): JSX.Element => (
   <Link
     label='Back to top'

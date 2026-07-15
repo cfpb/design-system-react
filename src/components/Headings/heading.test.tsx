@@ -20,7 +20,7 @@ describe('<Heading />', () => {
     const headers: HeadingType[] = ['1', '2', '3', '4', '5'];
 
     for (const level of headers) {
-      const headingType: HeadingType = `${level}`;
+      const headingType: HeadingType = level;
       const testid = `h${headingType}`;
       const text = `Heading level ${headingType}`;
 

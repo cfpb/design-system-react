@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Table } from '~/src/index';
-import { ONE } from '../Pagination/use-pagination';
+import { ONE } from '../pagination/use-pagination';
 
 const meta: Meta<typeof Table> = {
   title: 'Components (Verified)/Tables',
@@ -12,7 +12,7 @@ const meta: Meta<typeof Table> = {
         'Accepts strings or column config objects: { header, isAlignRight, width, isCellWordBreak, isCellDisableWordWrap, isHeaderWordWrap }.',
       table: {
         type: {
-          summary: 'Array<string | TableColumnConfiguration>',
+          summary: 'Array<string | TableColumnConfig>',
         },
       },
     },
@@ -127,7 +127,7 @@ const PAGINATION_PER_PAGE = 5;
 export const Pagination: Story = {
   args: {
     columns: ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'],
-    rows: [...Array.from({ length: numberRows }).keys()].map((key) => [
+    rows: Array.from({ length: numberRows }, (_item, key) => [
       `Row ${key + ONE}, Column 1`,
       `Row ${key + ONE}, Column 2`,
       `Row ${key + ONE}, Column 3`,
@@ -155,14 +155,12 @@ export const FixedWidth: Story = {
   },
 };
 
-const maxUidTestRows = [...Array.from({ length: 20 }).keys()].map(
-  (item, index) => [
-    `Row ${index + 1_000_000_000}`,
-    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
-    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
-    '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
-  ],
-);
+const maxUidTestRows = Array.from({ length: 20 }, (_item, index) => [
+  `Row ${index + 1_000_000_000}`,
+  '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
+  '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
+  '4234000O91BZ2SUPERCALIFRAGILISTICEXPIALI45CHARS',
+]);
 
 export const LongCharacterSets: Story = {
   name: 'Long character sets',
@@ -182,7 +180,7 @@ export const LongCharacterSets: Story = {
   },
 };
 
-export const ColumnConfiguration: Story = {
+export const ColumnConfig: Story = {
   name: 'Column configuration options',
   parameters: {
     docs: {

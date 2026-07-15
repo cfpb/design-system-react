@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Icon } from '../Icon/icon';
+import { Icon } from '../icon/icon';
 import { FooterLinksColumn, NavLinks, SocialLinks } from './footer-links';
 
 describe('NavLinks', () => {
@@ -61,7 +61,7 @@ describe('SocialLinks', () => {
       <SocialLinks>
         {[
           <a href='/' key='first' className='facebook'>
-            <Icon name='facebook' withBg />
+            <Icon name='facebook' hasBg />
           </a>,
         ]}
       </SocialLinks>,

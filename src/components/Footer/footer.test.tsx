@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { Footer, ApplicationFooter, WebsiteFooter } from './footer';
+import { Footer, AppFooter, WebsiteFooter } from './footer';
 
 describe('Footer', () => {
   it('Renders with content', () => {
@@ -108,7 +108,7 @@ describe('WebsiteFooter', () => {
   });
 });
 
-describe('ApplicationFooter', () => {
+describe('AppFooter', () => {
   it('Renders content and navLinks', () => {
     const expectedClassName = /o-footer__list/g;
     const expectedItemCount = 3;
@@ -125,7 +125,7 @@ describe('ApplicationFooter', () => {
       </a>,
     ];
     const content = <h3>About this app</h3>;
-    render(<ApplicationFooter navLinks={navLinks} footerContent={content} />);
+    render(<AppFooter navLinks={navLinks} footerContent={content} />);
 
     // Nav links rendered
     const list = screen.getAllByRole('list');

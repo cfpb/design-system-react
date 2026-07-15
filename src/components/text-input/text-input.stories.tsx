@@ -118,15 +118,16 @@ export const SearchInput: Story = {
     id: 'SearchInput',
     type: 'search',
   },
-  render: (args) => {
-    const { value: initialValue, ...restArgs } = args as TextInputProperties & {
-      value: string;
-    };
+  render: (arguments_) => {
+    const { value: initialValue, ...restArguments } =
+      arguments_ as TextInputProperties & {
+        value: string;
+      };
     const [value, setValue] = useState(initialValue ?? '');
     return (
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
+        onSubmit={(event_) => {
+          event_.preventDefault();
         }}
         onReset={() => setValue('')}
       >
@@ -140,9 +141,9 @@ export const SearchInput: Story = {
               <Icon name='search' />
             </label>
             <TextInput
-              {...restArgs}
+              {...restArguments}
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(event_) => setValue(event_.target.value)}
             />
             <button type='reset' aria-label='Clear search' title='Clear search'>
               <Icon name='error' />

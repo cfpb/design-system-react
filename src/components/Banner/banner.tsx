@@ -5,7 +5,13 @@ import type { HTMLProps } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 import './banner.scss';
 
-CfpbTagline.init();
+const initializedTagline = new Set<typeof CfpbTagline>();
+
+const initializeTagline = (): void => {
+  if (initializedTagline.has(CfpbTagline)) return;
+  CfpbTagline.init();
+  initializedTagline.add(CfpbTagline);
+};
 
 interface BannerProperties extends HTMLProps<HTMLDivElement> {
   isHorizontal?: boolean;
@@ -52,6 +58,8 @@ export const Banner = ({
   className,
   ...properties
 }: BannerProperties): JSX.Element => {
+  initializeTagline();
+
   const eyebrowClasses = ['m-global-eyebrow'];
   const wrapperClasses = ['wrapper'];
   const linkListClasses = ['m-list'];

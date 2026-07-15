@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX } from 'react';
 import { expect, fn, userEvent, within } from 'storybook/test';
 import { Pagination, usePagination } from '~/src/index';
-import { generateTestRows, stringify } from './pagination.story-utils';
+import { generateTestRows, stringify } from './pagination.story-utilities';
 
 const meta: Meta<typeof Pagination> = {
   title: 'Components (Verified)/Pagination',
@@ -30,12 +30,12 @@ export const Base: Story = {
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
     const nextButton = canvas.getByRole('button', { name: /next/i });
-    const prevButton = canvas.getByRole('button', { name: /previous/i });
+    const previousButton = canvas.getByRole('button', { name: /previous/i });
 
     await userEvent.click(nextButton);
     await expect(args.onClickNext).toHaveBeenCalledTimes(1);
 
-    await userEvent.click(prevButton);
+    await userEvent.click(previousButton);
     await expect(args.onClickPrevious).toHaveBeenCalledTimes(1);
   },
 };

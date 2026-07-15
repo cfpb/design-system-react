@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Select } from '~/src/index';
-import { MultipleSelectOptions } from './test-utils';
+import { MultipleSelectOptions } from './test-utilities';
 
 const meta: Meta<typeof Select> = {
   title: 'Components (Draft)/Selects/Multiselect',

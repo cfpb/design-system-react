@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Checkbox from './checkbox';
-import { CheckboxWrapper } from './checkbox.utils';
+import { CheckboxWrapper } from './checkbox.utilities';
 
 /**
 Source: https://cfpb.github.io/design-system/components/checkboxes

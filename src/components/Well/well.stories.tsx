@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ListLink } from '../Link/link';
+import { ListLink } from '../link/link';
 import { WellContainer, WellContent } from './well';
 
 const meta: Meta<typeof WellContainer> = {

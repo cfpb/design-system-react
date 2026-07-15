@@ -16,7 +16,7 @@ const sizeMap: Record<string, string> = {
 };
 
 // Icons whose background is square as opposed to round
-const isSquare = new Set([
+const squareIcons = new Set([
   'email',
   'facebook',
   'flickr',
@@ -28,7 +28,7 @@ const isSquare = new Set([
 ]);
 
 // Is this a number icon, based on the icon name?
-const isNumber = new Set(numberIcons);
+const numberIconNames = new Set(numberIcons);
 
 /**
  * Get the name of the icon with the correct shape modifier
@@ -38,16 +38,16 @@ const isNumber = new Set(numberIcons);
  * Number icons are either -open or -closed.
  *
  * @param name Canonical icon name
- * @param withBg With background?
+ * @param hasBg With background?
  * @returns string
  */
-const getShapeModifier = (name: string, withBg: boolean): string => {
-  if (isNumber.has(name)) {
-    if (withBg) return '-closed';
+const getShapeModifier = (name: string, hasBg: boolean): string => {
+  if (numberIconNames.has(name)) {
+    if (hasBg) return '-closed';
     return '-open';
   }
-  if (!withBg) return '';
-  if (isSquare.has(name)) return '-square';
+  if (!hasBg) return '';
+  if (squareIcons.has(name)) return '-square';
   return '-round';
 };
 
@@ -58,7 +58,7 @@ interface IconProperties extends Omit<SVGProps<SVGSVGElement>, 'name'> {
   ariaLabelledby?: string;
   ariaDescribedby?: string;
   isPresentational?: boolean;
-  withBg?: boolean;
+  hasBg?: boolean;
   size?: string;
 }
 
@@ -73,7 +73,7 @@ interface IconProperties extends Omit<SVGProps<SVGSVGElement>, 'name'> {
  * @param ariaLabelledby ID of element that labels the SVG for accessibility
  * @param ariaDescribedby ID of element that describes the SVG for accessibility
  * @param isPresentational Is SVG purely presentational and should be ignored by screen readers?
- * @param withBg With background?
+ * @param hasBg With background?
  * @param size Match the icon size to a specified HTML element or provide a custom size. By default the icon size is determined by it's parent element's font-size.
  * @returns JSXElement
  */
@@ -84,11 +84,11 @@ export const Icon = ({
   ariaLabelledby = '',
   ariaDescribedby = '',
   isPresentational = false,
-  withBg = false,
+  hasBg = false,
   size = 'inherit',
   ...others
 }: IconProperties): JSXElement => {
-  const shapeModifier = getShapeModifier(name, withBg);
+  const shapeModifier = getShapeModifier(name, hasBg);
   const fileName = `${name}${shapeModifier}`;
   const IconComponent = useIconSvg(fileName);
 

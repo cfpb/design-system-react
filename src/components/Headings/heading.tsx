@@ -16,18 +16,19 @@ export const Heading = ({
   className,
   ...properties
 }: HeadingProperties): JSX.Element => {
-  let DynamicHeading: keyof JSX.IntrinsicElements;
-  const classes = [className];
-
   if (type === 'slug') {
-    classes.push('m-slug-header');
-
     return (
-      <header className={classnames(classes)} {...properties}>
+      <header
+        className={classnames('m-slug-header', className)}
+        {...properties}
+      >
         <h2 className='m-slug-header__heading'>{children}</h2>
       </header>
     );
   }
+
+  let DynamicHeading: keyof JSX.IntrinsicElements;
+  const classes = [className];
 
   if (type === 'display') {
     DynamicHeading = 'h1';

@@ -1,5 +1,5 @@
 import type { JSX, KeyboardEvent, MouseEvent } from 'react';
-import { Icon } from '../Icon/icon';
+import { Icon } from '../icon/icon';
 
 interface TagProperties {
   value: string;

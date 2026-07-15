@@ -42,7 +42,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
     {
       className,
       id,
-      inputRef: _inputRef,
+      inputRef: _inputReference,
       isDisabled = false,
       name,
       status,

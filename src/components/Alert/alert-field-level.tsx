@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { HTMLAttributes, ReactNode } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
-import { Icon } from '../Icon/icon';
+import { Icon } from '../icon/icon';
 
 export type AlertFieldLevelType = 'error' | 'info' | 'success' | 'warning';
 
@@ -45,7 +45,7 @@ export const AlertFieldLevel = ({
       <Icon
         ariaLabel={`${status} icon`}
         name={MapTypeToIconName[status]}
-        withBg
+        hasBg
       />
       <span className='a-form-alert__text' data-testid='message'>
         {message}

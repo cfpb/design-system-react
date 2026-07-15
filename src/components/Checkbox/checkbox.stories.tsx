@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import Checkbox from './checkbox';
-import { CheckboxTestWrapper, CheckboxWrapper } from './checkbox.utils';
+import { CheckboxTestWrapper, CheckboxWrapper } from './checkbox.utilities';
 
 /**
 Source: https://cfpb.github.io/design-system/components/checkboxes

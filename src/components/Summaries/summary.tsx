@@ -5,7 +5,7 @@ import {
 import classnames from 'classnames';
 import type { FC, HTMLAttributes, ReactNode } from 'react';
 import { useEffect } from 'react';
-import { Icon } from '../Icon/icon';
+import { Icon } from '../icon/icon';
 
 export interface SummaryProperties extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -38,7 +38,7 @@ export const Summary: FC<SummaryProperties> = ({
     }
 
     if (document.readyState === 'complete') {
-      globalThis.dispatchEvent(new Event('load'));
+      dispatchEvent(new Event('load'));
     }
   }, [isMinimal]);
 
@@ -67,17 +67,17 @@ export const Summary: FC<SummaryProperties> = ({
           <>
             <span className='o-summary-minimal__cue-open'>
               Show&nbsp;
-              <Icon name='plus' isPresentational withBg />
+              <Icon name='plus' isPresentational hasBg />
             </span>
             <span className='o-summary-minimal__cue-close'>
               Hide&nbsp;
-              <Icon name='minus' isPresentational withBg />
+              <Icon name='minus' isPresentational hasBg />
             </span>
           </>
         ) : (
           <>
             {label}
-            <Icon name='plus' isPresentational withBg />
+            <Icon name='plus' isPresentational hasBg />
           </>
         )}
       </button>

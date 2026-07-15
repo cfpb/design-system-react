@@ -1,6 +1,6 @@
 import { JSX } from 'react';
-import { Icon } from '../Icon/icon';
-import Link from '../Link/link';
+import { Icon } from '../icon/icon';
+import Link from '../link/link';
 import { WebsiteFooter } from './footer';
 
 interface FootCfGovProperties {
@@ -50,7 +50,7 @@ export const FooterCfGov = ({
       data-pretty-href={facebookLink}
       href={facebookLink}
     >
-      <Icon name='facebook' isPresentational withBg />
+      <Icon name='facebook' isPresentational hasBg />
     </a>,
     <a
       key='twitter'
@@ -58,7 +58,7 @@ export const FooterCfGov = ({
       data-pretty-href={twitterLink}
       href={twitterLink}
     >
-      <Icon name='x' isPresentational withBg />
+      <Icon name='x' isPresentational hasBg />
     </a>,
     <a
       key='linkedin'
@@ -66,7 +66,7 @@ export const FooterCfGov = ({
       data-pretty-href={linkedinLink}
       href={linkedinLink}
     >
-      <Icon name='linkedin' isPresentational withBg />
+      <Icon name='linkedin' isPresentational hasBg />
     </a>,
     <a
       key='youtube'
@@ -74,7 +74,7 @@ export const FooterCfGov = ({
       data-pretty-href={youtubeLink}
       href={youtubeLink}
     >
-      <Icon name='youtube' alt='Visit us on YouTube' isPresentational withBg />
+      <Icon name='youtube' alt='Visit us on YouTube' isPresentational hasBg />
     </a>,
     <a
       key='flickr'
@@ -82,7 +82,7 @@ export const FooterCfGov = ({
       data-pretty-href={flickrLink}
       href={flickrLink}
     >
-      <Icon name='flickr' alt='Visit us on Flickr' isPresentational withBg />
+      <Icon name='flickr' alt='Visit us on Flickr' isPresentational hasBg />
     </a>,
   ];
 

@@ -1,9 +1,10 @@
 const OPTION_COUNT = 4;
 const ONE = 1;
 
-const SingleSelectOptions = [
-  ...Array.from({ length: OPTION_COUNT }).keys(),
-].map((number_) => ({
+const SingleSelectOptions = Array.from(
+  { length: OPTION_COUNT },
+  (_item, number_) => number_,
+).map((number_) => ({
   value: `option${number_ + ONE}`,
   label: `Option ${number_ + ONE}`,
 }));

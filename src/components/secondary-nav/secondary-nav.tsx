@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import type { HTMLAttributes } from 'react';
 import { JSX, useEffect, useState } from 'react';
-import { Icon } from '../Icon/icon';
+import { Icon } from '../icon/icon';
 import './secondary-nav.scss';
 
 export interface SecondaryNavChildItem {
@@ -65,7 +65,7 @@ export const SecondaryNav = ({
       return;
     }
 
-    const mediaQuery = globalThis.window.matchMedia('(max-width: 56.25em)');
+    const mediaQuery = matchMedia('(max-width: 56.25em)');
 
     const collapseForMobileLayout = (): void => {
       if (mediaQuery.matches) {
@@ -120,13 +120,13 @@ export const SecondaryNav = ({
                 const hasChildren = Boolean(item.children?.length);
                 const hasActiveChild =
                   hasChildren && item.children!.some((c) => c.isActive);
-                const parentIsActive = Boolean(
+                const isParentIsActive = Boolean(
                   item.isActive && !hasActiveChild,
                 );
 
                 return (
                   <li key={item.href ?? item.label}>
-                    {item.href && !parentIsActive ? (
+                    {item.href && !isParentIsActive ? (
                       <a
                         className={classnames(
                           'o-secondary-nav__link',
@@ -143,9 +143,9 @@ export const SecondaryNav = ({
                         className={classnames(
                           'o-secondary-nav__link',
                           'o-secondary-nav__link--parent',
-                          parentIsActive && 'o-secondary-nav__link--current',
+                          isParentIsActive && 'o-secondary-nav__link--current',
                         )}
-                        aria-current={parentIsActive ? 'page' : undefined}
+                        aria-current={isParentIsActive ? 'page' : undefined}
                       >
                         {item.label}
                       </a>

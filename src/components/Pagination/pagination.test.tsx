@@ -6,6 +6,21 @@ import { Pagination } from './pagination';
 
 const user = userEvent.setup();
 
+const ControlledPagination = (): ReactElement => {
+  const [page, setPage] = useState(2);
+  const onSubmit = (value: number): void => {
+    setPage(value);
+  };
+  return (
+    <Pagination
+      page={page}
+      pageCount={3}
+      tableId='pagination'
+      onClickGo={onSubmit}
+    />
+  );
+};
+
 describe('<Pagination />', () => {
   it('displays pagination controls when provided', () => {
     render(<Pagination page={2} pageCount={3} tableId='pagination' />);
@@ -29,21 +44,6 @@ describe('<Pagination />', () => {
   });
 
   it('goes to page on submit', async () => {
-    const ControlledPagination = (): ReactElement => {
-      const [page, setPage] = useState(2);
-      const onSubmit = (value: number): void => {
-        setPage(value);
-      };
-      return (
-        <Pagination
-          page={page}
-          pageCount={3}
-          tableId='pagination'
-          onClickGo={onSubmit}
-        />
-      );
-    };
-
     render(<ControlledPagination />);
     const next = screen.getByRole('button', { name: 'Next' });
     const input = screen.getByLabelText(/number/);

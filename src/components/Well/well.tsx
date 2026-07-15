@@ -1,8 +1,8 @@
 import { isValidElement, JSX } from 'react';
 import type { HeadingLevel } from '../../types/heading-level';
-import { ListLink } from '../Link/link';
-import List from '../List/list';
-import ListItem from '../List/list-item';
+import { ListLink } from '../link/link';
+import List from '../list/list';
+import ListItem from '../list/list-item';
 
 interface WellContainerProperties {
   children?: (JSX.Element | string | null)[] | JSX.Element | string;

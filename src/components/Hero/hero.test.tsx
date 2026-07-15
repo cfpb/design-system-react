@@ -32,11 +32,11 @@ describe('Hero', () => {
   });
 
   it('derives CSS classes for component variations', () => {
-    const isKnockout = 'm-hero--knockout';
+    const knockoutClass = 'm-hero--knockout';
     const imageIsPhoto = 'm-hero--overlay';
 
-    render(<Hero isKnockout data-testid={isKnockout} />);
-    expect(screen.getByTestId(isKnockout)).toHaveClass(isKnockout);
+    render(<Hero isKnockout data-testid={knockoutClass} />);
+    expect(screen.getByTestId(knockoutClass)).toHaveClass(knockoutClass);
 
     render(
       <Hero

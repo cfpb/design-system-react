@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { JSX } from 'react';
-import { Banner } from '../Banner/banner';
+import { Banner } from '../banner/banner';
 import type { LogoLanguage } from './logo';
 import ResponsiveMenu from './responsive-menu';
 import './header.scss';

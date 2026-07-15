@@ -20,10 +20,10 @@ export const Label = ({
   className,
   ...other
 }: JSX.IntrinsicElements['label'] & LabelProperties): JSXElement => {
+  if (!children) return null;
+
   const styles = [...baseStyles, isInline ? '' : 'a-label--heading'];
   const classes = [...styles, className];
-
-  if (!children) return null;
 
   return (
     <label {...other} className={classnames(classes)} htmlFor={htmlFor}>
