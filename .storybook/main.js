@@ -11,6 +11,7 @@ export default {
     '@storybook/addon-docs',
     '@storybook/addon-vitest',
     'storybook-addon-tag-badges',
+    'storybook-font-inspector',
   ],
 
   docs: {
@@ -22,7 +23,9 @@ export default {
     options: {},
   },
 
-  features: {},
+  features: {
+    viewport: true,
+  },
 
   async viteFinal(config, { configType }) {
     config.base = process.env.BASE_PATH || config.base;

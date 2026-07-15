@@ -14,7 +14,7 @@ export const stringify = (object: object): string => {
   const fns: (() => unknown)[] = [];
   let json = JSON.stringify(
     object,
-    (_key, value) => {
+    (_key, value: unknown) => {
       if (typeof value === 'function') {
         fns.push(value as () => unknown);
         return placeholder;

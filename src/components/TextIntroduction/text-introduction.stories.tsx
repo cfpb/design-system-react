@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { cloneElement } from 'react';
-import { List, ListItem, TextIntroduction } from '~/src/index';
+import { List, TextIntroduction } from '~/src/index';
 import {
   callToAction,
   description,
@@ -19,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Standard = {
+export const Standard: Story = {
   name: 'Standard text introduction',
   args: {
     ...placeholders,
@@ -32,9 +31,7 @@ export const Flexible: Story = {
       <TextIntroduction.Heading>{heading}</TextIntroduction.Heading>
       <TextIntroduction.Subheading>{subheading}</TextIntroduction.Subheading>
       <TextIntroduction.Description>{description}</TextIntroduction.Description>
-      <List isLinks>
-        <ListItem>{cloneElement(callToAction, { type: 'list' })}</ListItem>
-      </List>
+      <List isLinks>{callToAction}</List>
     </TextIntroduction.Container>
   ),
   name: 'Flexible text introduction',

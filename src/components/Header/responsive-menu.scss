@@ -1,9 +1,10 @@
 @use '/src/assets/styles/variables.scss' as *;
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
 
-$breakpoint: 56.3125em;
+$breakpoint: $bp-med-min;
 $menu-width: 100%;
 $animation-duration: 0.3s;
-$max-width: $breakpoint - 0.0625em;
+$max-width: $bp-sm-max;
 
 .o-header-scope {
   .o-header__content {
@@ -32,22 +33,28 @@ $max-width: $breakpoint - 0.0625em;
       }
 
       .o-header__logo {
+        display: inline-block;
         min-width: 237px;
 
+        .o-header__logo-img {
+          display: block;
+        }
+
         @media (max-width: $max-width) {
-          border-left: 1px solid var(--gray-40);
           padding-left: 15px;
           .o-header__logo-img {
             height: 40px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            vertical-align: middle;
           }
         }
       }
 
-      .o-header__logo-img {
-        height: 34px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        vertical-align: middle;
+      @media (max-width: $max-width) {
+        button.menu-toggle + .o-header__logo {
+          border-left: 1px solid var(--gray-40);
+        }
       }
 
       @media (min-width: $breakpoint) {
@@ -59,6 +66,7 @@ $max-width: $breakpoint - 0.0625em;
       .menu-toggle {
         border: none;
         background-color: transparent;
+        color: var(--text);
         cursor: pointer;
         align-self: stretch;
         width: 54px;
@@ -92,7 +100,7 @@ $max-width: $breakpoint - 0.0625em;
       .nav-items {
         @media (max-width: $max-width) {
           position: absolute;
-          top: 54px;
+          top: 60px;
           left: -$menu-width - 15;
           width: $menu-width;
           background-color: var(--white);
@@ -109,13 +117,11 @@ $max-width: $breakpoint - 0.0625em;
         width: 100%;
 
         &.open {
-          display: flex;
           left: 0;
         }
 
         @media (min-width: $breakpoint) {
           position: static;
-          display: flex;
           flex-direction: row;
           justify-content: flex-end;
           width: auto;
@@ -149,25 +155,34 @@ $max-width: $breakpoint - 0.0625em;
             padding: 10px 0;
             text-align: left;
 
+            // no underline when in menu
+            .a-link__text {
+              text-decoration: none;
+            }
+
             @media (min-width: $breakpoint) {
               border-bottom: 1px dotted transparent;
-              margin-right: $space-xl;
+              margin-right: $space-lg;
               padding: 0;
             }
 
-            &:hover {
-              position: relative;
+            @media (max-width: $max-width) {
+              &:hover::before,
+              &.nav-item.active::before {
+                position: absolute;
+                top: 0;
+                left: -15px;
+                height: 100%;
+                width: 5px;
+                content: '';
+                display: block;
+              }
+            }
 
+            &:hover {
               @media (max-width: $max-width) {
                 &::before {
-                  position: absolute;
-                  top: 0;
-                  left: -15px;
-                  height: 100%;
-                  width: 5px;
                   background-color: var(--green);
-                  content: '';
-                  display: block;
                 }
                 color: var(--black);
               }
@@ -182,14 +197,7 @@ $max-width: $breakpoint - 0.0625em;
 
               @media (max-width: $max-width) {
                 &::before {
-                  position: absolute;
-                  top: 0;
-                  left: -15px;
-                  height: 100%;
-                  width: 5px;
                   background-color: var(--black);
-                  content: ' ';
-                  display: block;
                 }
               }
 

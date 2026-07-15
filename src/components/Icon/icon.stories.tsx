@@ -39,19 +39,17 @@ type Story = StoryObj<typeof meta>;
 const biggerIcon = { fontSize: '2em' };
 
 const makeRows = (names: string[]): JSX.Element[] =>
-  names.map(
-    (name): JSX.Element => (
-      <tr key={`${name}`}>
-        <td style={biggerIcon}>
-          <Icon name={name} />
-        </td>
-        <td style={biggerIcon}>
-          <Icon name={name} withBg />
-        </td>
-        <td>{name}</td>
-      </tr>
-    ),
-  );
+  names.map((name): JSX.Element => (
+    <tr key={`${name}`}>
+      <td style={biggerIcon}>
+        <Icon name={name} />
+      </td>
+      <td style={biggerIcon}>
+        <Icon name={name} withBg />
+      </td>
+      <td>{name}</td>
+    </tr>
+  ));
 
 const IconTable = ({ children }: { children: JSX.Element[] }): JSX.Element => (
   <table>
@@ -102,8 +100,9 @@ export const DocumentIcons = (): ReactElement => (
   <IconTable>{makeRows(documentIcons)}</IconTable>
 );
 
-export const FinancialProductsServicesAndConceptIcons =
-  (): ReactElement => <IconTable>{makeRows(financialIcons)}</IconTable>;
+export const FinancialProductsServicesAndConceptIcons = (): ReactElement => (
+  <IconTable>{makeRows(financialIcons)}</IconTable>
+);
 
 export const ExpenseIcons = (): ReactElement => (
   <IconTable>{makeRows(expenseIcons)}</IconTable>
@@ -131,9 +130,11 @@ export const IconWithText: Story = {
     return (
       <table>
         <thead>
-          <th>Text element</th>
-          <th>Icon with background</th>
-          <th>Icon without background</th>
+          <tr>
+            <th>Text element</th>
+            <th>Icon with background</th>
+            <th>Icon without background</th>
+          </tr>
         </thead>
         <tbody>
           {acceptableLevels.map(({ type, text }) => (

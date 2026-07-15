@@ -28,6 +28,7 @@ Source: https://cfpb.github.io/design-system/components/expandables
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+type GroupStory = StoryObj<typeof ExpandableGroup>;
 type ExpandableGroupArgs = ComponentProps<typeof ExpandableGroup>;
 
 const Content = (
@@ -86,7 +87,7 @@ export const OpenOnLoad: Story = {
   },
 };
 
-export const DefaultExpandableGroup: Story = {
+export const DefaultExpandableGroup: GroupStory = {
   name: 'Group',
   render: (arguments_: ExpandableGroupArgs) => (
     <ExpandableGroup {...arguments_}>
@@ -112,8 +113,9 @@ export const DefaultExpandableGroup: Story = {
     const element = allElements[0];
 
     // Helpers
-    const expectAriaExpanded = (isExpanded: string): void =>
-      expect(element.ariaExpanded).toBe(isExpanded);
+    const expectAriaExpanded = (isExpanded: string) => {
+      void expect(element.ariaExpanded).toBe(isExpanded);
+    };
 
     // Test
     await step('Starts out collapsed', async () => {
@@ -136,7 +138,7 @@ export const DefaultExpandableGroup: Story = {
   },
 };
 
-export const Accordion: Story = {
+export const Accordion: GroupStory = {
   ...DefaultExpandableGroup,
   args: {
     accordion: true,

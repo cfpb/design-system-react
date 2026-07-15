@@ -1,10 +1,23 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Footer from './footer';
+import { Footer, ApplicationFooter, WebsiteFooter } from './footer';
 
 describe('Footer', () => {
+  it('Renders with content', () => {
+    render(
+      <Footer data-testid='basic-footer'>
+        <p>Footer content</p>
+      </Footer>,
+    );
+    const basicFooter = screen.getByTestId('basic-footer');
+    expect(basicFooter).toHaveClass('o-footer');
+    expect(basicFooter).toHaveTextContent('Footer content');
+  });
+});
+
+describe('WebsiteFooter', () => {
   it('Skips empty lists', () => {
-    render(<Footer />);
+    render(<WebsiteFooter />);
 
     // List not rendered
     const list = screen.queryAllByRole('list');
@@ -34,7 +47,7 @@ describe('Footer', () => {
         Link 3
       </a>,
     ];
-    render(<Footer navLinks={navLink} />);
+    render(<WebsiteFooter navLinks={navLink} />);
 
     // // List rendered
     const list = screen.getAllByRole('list');
@@ -55,7 +68,7 @@ describe('Footer', () => {
         Link 1
       </a>,
     ];
-    render(<Footer socialLinks={socialLink} />);
+    render(<WebsiteFooter socialLinks={socialLink} />);
 
     // // List rendered
     const list = screen.getAllByRole('list');
@@ -77,7 +90,7 @@ describe('Footer', () => {
       </a>,
     ];
     render(
-      <Footer
+      <WebsiteFooter
         linksCol1={socialLink}
         linksCol2={socialLink}
         linksCol3={socialLink}
@@ -92,5 +105,45 @@ describe('Footer', () => {
     // All items rendered
     const items = screen.getAllByRole('listitem');
     expect(items.length).toEqual(expectedItemCount);
+  });
+});
+
+describe('ApplicationFooter', () => {
+  it('Renders content and navLinks', () => {
+    const expectedClassName = /o-footer__list/g;
+    const expectedItemCount = 3;
+
+    const navLinks = [
+      <a href='/' className='link1' key='link1'>
+        Link 1
+      </a>,
+      <a href='/' className='link2' key='link2'>
+        Link 2
+      </a>,
+      <a href='/' className='link3' key='link3'>
+        Link 3
+      </a>,
+    ];
+    const content = <h3>About this app</h3>;
+    render(<ApplicationFooter navLinks={navLinks} footerContent={content} />);
+
+    // Nav links rendered
+    const list = screen.getAllByRole('list');
+    expect(list.length).toEqual(1);
+    expect(list[0].className).toMatch(expectedClassName);
+    const items = screen.getAllByRole('listitem');
+    expect(items.length).toEqual(expectedItemCount);
+
+    // Footer content rendered
+    const contentSection = screen.getByTestId('footer-content');
+    expect(contentSection).toHaveTextContent('About this app');
+
+    // Tagline rendered
+    const tagline = screen.getByTestId('footer-tagline');
+    expect(tagline).toBeInTheDocument();
+
+    // Back to top button rendered
+    const backToTop = screen.getByTestId('back-to-top');
+    expect(backToTop).toBeInTheDocument();
   });
 });

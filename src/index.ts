@@ -14,7 +14,11 @@ export { Divider } from './components/Divider/divider';
 export { Expandable } from './components/Expandable/expandable';
 export { ExpandableGroup } from './components/Expandable/expandable-group';
 export { Fieldset } from './components/Fieldset/fieldset';
-export { default as Footer } from './components/Footer/footer';
+export {
+  Footer,
+  WebsiteFooter,
+  ApplicationFooter,
+} from './components/Footer/footer';
 export { FooterCfGov } from './components/Footer/footer-cf-gov';
 export { default as Grid } from './components/Grid';
 export { Header } from './components/Header/header';

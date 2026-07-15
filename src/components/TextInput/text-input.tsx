@@ -11,13 +11,7 @@ import { getTextInputStatusClass } from './text-input-status';
 type TextInputReference = ReactNode;
 
 export type InputType =
-  | 'email'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'text'
-  | 'url';
+  'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
 
 interface RequiredTextInputProperties {
   id: string;
@@ -50,7 +44,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
       inputRef: _inputRef,
       isDisabled = false,
       name,
-      status = 'info',
+      status,
       type = 'text',
       isFullWidth = false,
       ...otherInputProperties
@@ -64,7 +58,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
     ];
 
     if (isFullWidth) {
-      classes.push('a-text-input__full');
+      classes.push('a-text-input--full');
       return (
         <div className='m-form-field'>
           <input

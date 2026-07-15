@@ -16,8 +16,10 @@ export const NavLinks = ({ children }: WrapperProperties): JSXElement => {
   if (isEmptyArray(children)) return null;
 
   return (
-    <List className='o-footer__nav-list m-list--links m-list--horizontal'>
-      <ListItemBuilder itemClassname='m-list__link'>{children}</ListItemBuilder>
+    <List className='o-footer__nav-list m-list'>
+      <ListItemBuilder itemClassname='m-list__link a-link--jump'>
+        {children}
+      </ListItemBuilder>
     </List>
   );
 };
@@ -51,8 +53,8 @@ export const FooterLinksColumn = ({
 
   return (
     <div className='o-footer__col'>
-      <List className='o-footer__list'>
-        <ListItemBuilder itemClassname='m-list__link'>
+      <List className='o-footer__list m-list'>
+        <ListItemBuilder itemClassname='m-list__link a-link--jump'>
           {children}
         </ListItemBuilder>
       </List>

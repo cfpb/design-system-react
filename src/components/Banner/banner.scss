@@ -1,6 +1,6 @@
 @use '/src/assets/styles/variables' as *;
-@use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
-@use '@cfpb/cfpb-design-system/src/utilities' as *;
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/utilities/index.scss' as *;
 @use 'sass:math';
 
 .m-global-eyebrow {
@@ -54,11 +54,16 @@
       float: left;
     }
 
+    // The inner node uses both `wrapper` and `wrapper--match-content`. DS layout applies
+    // overlapping padding from `.wrapper` (≥ med) and `.wrapper--match-content` (≥ sm);
+    // scope here so the gov banner gutters stay consistent inside Header and standalone.
     .wrapper--match-content {
       padding-left: $space-sm;
+      padding-right: $space-sm;
 
-      @media (width >= 600px) {
+      @include respond-to-min($bp-med-min) {
         padding-left: $space-md;
+        padding-right: $space-md;
       }
     }
 

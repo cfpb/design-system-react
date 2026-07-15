@@ -10,20 +10,16 @@ const meta: Meta<typeof SecondaryNav> = {
     docs: {
       description: {
         component: `
-Secondary navigation for in-page or section navigation, typically shown in a left sidebar.
-Matches the "Navigate this section" pattern used on [consumerfinance.gov](https://www.consumerfinance.gov/compliance/supervisory-highlights/).
+The secondary navigation component provides a left-hand navigation menu that can be used for in-page or section navigation.
 
-### Usage
-
-- Pass \`items\` with \`href\`, \`label\`, and optional \`isActive\` for the current page.
-- Items can have optional \`children\` for sub-menu items. Parent items with children can omit \`href\` when active (section header).
-- Use \`ariaLabel\` to describe the nav for screen readers.
+Source: https://cfpb.github.io/design-system/development/main-content-and-sidebars
         `,
       },
     },
   },
   argTypes: {
     ariaLabel: { control: 'text' },
+    mobileToggleLabel: { control: 'text' },
   },
 };
 
@@ -31,74 +27,94 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const defaultItems: SecondaryNavItem[] = [
-  { href: '#section-1', label: 'Section 1' },
-  { href: '#section-2', label: 'Section 2', isActive: true },
-  { href: '#section-3', label: 'Section 3' },
-  { href: '#section-4', label: 'Section 4' },
-  { href: '#section-5', label: 'Section 5' },
-  { href: '#section-6', label: 'Section 6' },
-  { href: '#section-7', label: 'Section 7' },
+/** 1. Flat links only; none marked current. */
+const basicNoChildren: SecondaryNavItem[] = [
+  { to: '#', label: 'Section A' },
+  { to: '#', label: 'Section B' },
+  { to: '#', label: 'Section C' },
 ];
 
-const itemsWithSubMenu: SecondaryNavItem[] = [
+/** 2. Flat list; one top-level item is the current page. */
+const basicNoChildrenWithCurrent: SecondaryNavItem[] = [
+  { to: '#', label: 'Section A' },
+  { to: '#', label: 'Section B', isActive: true },
+  { to: '#', label: 'Section C' },
+];
+
+/** 3. Nested items; no \`isActive\` on parents or children. */
+const withChildrenNoActive: SecondaryNavItem[] = [
   {
     label: 'Section 1',
-    href: '/section-1',
+    to: '#',
     children: [
-      { href: '/section-1/item-a', label: 'Item A', isActive: true },
-      { href: '/section-1/item-b', label: 'Item B' },
-      { href: '/section-1/item-c', label: 'Item C' },
+      { to: '#', label: 'Item A' },
+      { to: '#', label: 'Item B' },
     ],
   },
-  { href: '/section-2', label: 'Section 2' },
-  { href: '/section-3', label: 'Section 3' },
-  { href: '/section-4', label: 'Section 4' },
-  { href: '/section-5', label: 'Section 5' },
-  { href: '/section-6', label: 'Section 6' },
-  { href: '/section-7', label: 'Section 7' },
+  { to: '#', label: 'Section 2' },
+  { to: '#', label: 'Section 3' },
 ];
 
-export const Default: Story = {
-  args: {
-    items: defaultItems,
-    ariaLabel: 'Page navigation',
-  },
-  render: (args) => <SecondaryNav {...args} />,
-};
-
-export const WithShortList: Story = {
-  args: {
-    items: [
-      { href: '#overview', label: 'Overview' },
-      { href: '#rules', label: 'Rules', isActive: true },
-      { href: '#resources', label: 'Resources' },
+/** 4. Current page is the parent “index”; children are links but none are active. */
+const withChildrenActiveParent: SecondaryNavItem[] = [
+  {
+    label: 'Section 1',
+    to: '#',
+    isActive: true,
+    children: [
+      { to: '#', label: 'Item A' },
+      { to: '#', label: 'Item B' },
     ],
-    ariaLabel: 'On this page',
   },
-  render: (args) => <SecondaryNav {...args} />,
+  { to: '#', label: 'Section 2' },
+];
+
+/** 5. Typical subpage: one child is the current page. */
+const withChildrenActiveChild: SecondaryNavItem[] = [
+  {
+    label: 'Section 1',
+    to: '#',
+    children: [
+      { to: '#', label: 'Item A', isActive: true },
+      { to: '#', label: 'Item B' },
+      { to: '#', label: 'Item C' },
+    ],
+  },
+  { to: '#', label: 'Section 2' },
+  { to: '#', label: 'Section 3' },
+];
+
+export const BasicMenuNoChildren: Story = {
+  name: 'Basic',
+  args: {
+    items: basicNoChildren,
+  },
 };
 
-export const WithSubMenu: Story = {
+export const BasicMenuNoChildrenOneActive: Story = {
+  name: 'One active item',
   args: {
-    items: itemsWithSubMenu,
-    ariaLabel: 'Section',
+    items: basicNoChildrenWithCurrent,
   },
-  render: (args) => <SecondaryNav {...args} />,
 };
 
-export const NoActiveItem: Story = {
+export const MenuWithChildrenNoActive: Story = {
+  name: 'With children',
   args: {
-    items: defaultItems.map(({ isActive: _isActive, ...item }) => item),
-    ariaLabel: 'Page navigation',
+    items: withChildrenNoActive,
   },
-  render: (args) => <SecondaryNav {...args} />,
 };
 
-export const EmptyList: Story = {
+export const MenuWithChildrenActiveParent: Story = {
+  name: 'With children, active parent',
   args: {
-    items: [],
-    ariaLabel: 'Page navigation',
+    items: withChildrenActiveParent,
   },
-  render: (args) => <SecondaryNav {...args} />,
+};
+
+export const MenuWithChildrenActiveChild: Story = {
+  name: 'With children, active child',
+  args: {
+    items: withChildrenActiveChild,
+  },
 };
