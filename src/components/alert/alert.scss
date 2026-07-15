@@ -19,7 +19,13 @@
   position: absolute;
 }
 
-.m-notification:not(.m-notification--error, .m-notification--success, .m-notification--warning) > .cf-icon-svg-wrapper .cf-icon-svg {
+.m-notification:not(
+    .m-notification--error,
+    .m-notification--success,
+    .m-notification--warning
+  )
+  > .cf-icon-svg-wrapper
+  .cf-icon-svg {
   fill: var(--gray);
 }
 

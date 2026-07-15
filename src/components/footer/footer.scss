@@ -264,7 +264,7 @@
     gap: math.div($grid-gutter-width, $base-font-size-px) + em;
 
     @include respond-to-min($bp-sm-min) {
-      gap: math.div($grid-gutter-width * 2, $base-font-size-px) + em;;
+      gap: math.div($grid-gutter-width * 2, $base-font-size-px) + em;
       grid-template-columns: 2fr 1fr;
 
       .o-footer__right-column {
