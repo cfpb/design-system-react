@@ -3,15 +3,16 @@ import type { HTMLAttributes } from 'react';
 import { JSX, useEffect, useState } from 'react';
 import { Icon } from '../icon/icon';
 import './secondary-nav.scss';
+import Link from '../link/link';
 
 export interface SecondaryNavChildItem {
-  href: string;
+  to: string;
   label: string;
   isActive?: boolean;
 }
 
 export interface SecondaryNavItem {
-  href?: string;
+  to?: string;
   label: string;
   /**
    * Whether this item is the current page. Ignored when the item has children;
@@ -67,7 +68,6 @@ export const SecondaryNav = ({
 
     // eslint-disable-next-line unicorn/no-unnecessary-global-this
     const mediaQuery = globalThis.window.matchMedia('(max-width: 56.25em)');
-
     const collapseForMobileLayout = (): void => {
       if (mediaQuery.matches) {
         setIsExpanded(false);
@@ -126,21 +126,21 @@ export const SecondaryNav = ({
                 );
 
                 return (
-                  <li key={item.href ?? item.label}>
-                    {!isParentActive && item.href ? (
-                      <a
+                  <li key={item.to ?? item.label}>
+                    {!isParentActive && item.to ? (
+                      <Link
                         className={classnames(
                           'o-secondary-nav__link',
                           'o-secondary-nav__link--parent',
                         )}
-                        href={item.href}
+                        to={item.to}
                         onClick={onLinkClick}
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     ) : (
-                      // eslint-disable-next-line jsx-a11y/anchor-is-valid -- cfgov omits href for current page
-                      <a
+                      <Link
+                        to={item.to}
                         className={classnames(
                           'o-secondary-nav__link',
                           'o-secondary-nav__link--parent',
@@ -149,30 +149,34 @@ export const SecondaryNav = ({
                         aria-current={isParentActive ? 'page' : undefined}
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     )}
                     {item.children && item.children.length > 0 ? (
                       <ul className='o-secondary-nav__list o-secondary-nav__list--children'>
                         {item.children.map((child) =>
                           child.isActive ? (
-                            <li key={child.href}>
-                              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid -- cfgov omits href for current page */}
-                              <a
-                                className='o-secondary-nav__link o-secondary-nav__link--current'
+                            <li key={child.to}>
+                              <Link
+                                to={child.to}
+                                className={classnames(
+                                  'o-secondary-nav__link',
+                                  'o-secondary-nav__link--current',
+                                )}
                                 aria-current='page'
                               >
                                 {child.label}
-                              </a>
+                              </Link>
                             </li>
                           ) : (
-                            <li key={child.href}>
-                              <a
-                                className='o-secondary-nav__link'
-                                href={child.href}
+                            <li key={child.to}>
+                              <Link
+                                to={child.to}
+                                className={classnames('o-secondary-nav__link')}
+                                href={child.to}
                                 onClick={onLinkClick}
                               >
                                 {child.label}
-                              </a>
+                              </Link>
                             </li>
                           ),
                         )}

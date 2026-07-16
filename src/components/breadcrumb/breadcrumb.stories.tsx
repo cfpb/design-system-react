@@ -18,11 +18,11 @@ export const Default: Story = {
   args: {
     crumbs: [
       {
-        href: '/example',
+        to: '/',
         label: 'Page link',
       },
       {
-        href: '/example2',
+        to: '/',
         label: 'Page link',
       },
     ],
@@ -34,7 +34,7 @@ export const Crumb: Story = {
   args: {
     crumbs: [
       {
-        href: '/example',
+        to: '/',
         label: 'Page link',
       },
     ],

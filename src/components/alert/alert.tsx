@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classnames from 'classnames';
 import type { HTMLAttributes, ReactNode } from 'react';
 import type { HeadingLevel } from '../../types/heading-level';
 import type { JSXElement } from '../../types/jsx-element';
@@ -59,7 +59,7 @@ export const Alert = ({
 
   // Information and in-progress alerts use the base `m-notification` class only
   // (no status modifier). See https://cfpb.github.io/design-system/components/alerts
-  const classes = classNames(
+  const classes = classnames(
     'm-notification',
     'm-notification--visible',
     {
@@ -92,7 +92,7 @@ export const Alert = ({
         {links && links.length > 0 ? (
           <List isLinks>
             {links.map((link) => (
-              <AlertLink {...link} key={link.href} />
+              <AlertLink {...link} key={link.to} />
             ))}
           </List>
         ) : null}

@@ -1,15 +1,34 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
 import Link, { LinkText, ListLink } from './link';
+import { DSRContext } from '../../context/dsr-context';
+import { ReactNode } from 'react';
+import type { JSXElement } from "../../types/jsx-element";
 
 describe('<Link />', () => {
   const linkBaseProperties = {
-    href: '/foo/bar',
+    to: '/foo/bar',
     'data-testid': 'link-test-id',
     label: 'some link',
   };
   const testId = linkBaseProperties['data-testid'];
+
+  interface CustomLinkProperties {
+      to: string | undefined;
+      children: ReactNode;
+  }
+
+  const CustomLinkComponent = ({
+    to,
+    children,
+    ...others
+  }: CustomLinkProperties): JSXElement => {
+    return (
+      <a href={to} {...others} className='link-component-from-context'>
+        {children}
+      </a>
+    );
+  };
 
   it('Type: "default"', () => {
     render(<Link {...linkBaseProperties} />);
@@ -79,43 +98,28 @@ describe('<Link />', () => {
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-  it('Option: isRouterLink - it renders a router link', () => {
+  it('Context: uses link component configured in context', () => {
     render(
-      <MemoryRouter initialEntries={['/foo/bar']}>
-        <Link {...linkBaseProperties} isRouterLink />
-      </MemoryRouter>,
-    );
-
-    const link = screen.getByRole('link', { name: /some link/i });
-    expect(link).toHaveAttribute('href', '/foo/bar');
-  });
-
-  it('Option: isRouterLink - it renders children and icons', async () => {
-    render(
-      <MemoryRouter initialEntries={['/foo/bar']}>
-        <Link {...linkBaseProperties} isRouterLink iconLeft='left'>
+      <DSRContext value={{LinkComponent:CustomLinkComponent}}>
+        <Link {...linkBaseProperties}>
           <span data-testid='link-child'>Child</span>
         </Link>
-      </MemoryRouter>,
+      </DSRContext>,
     );
-
-    const link = screen.getByRole('link', { name: /some link/i });
-    expect(link).toHaveClass('a-link');
-    expect(screen.getByTestId('link-child')).toBeInTheDocument();
-    expect(screen.getByText('some link')).toHaveClass('a-link__text');
-    expect(await screen.findByTestId('link-icon-left')).toBeInTheDocument();
+    expect(screen.getByTestId('link-test-id')).toBeInTheDocument();
+    expect(screen.getByTestId('link-test-id')).toHaveClass('link-component-from-context');
   });
 
-  it('Option: isRouterLink - it requires href', () => {
-    const brokenProperties = {
-      ...linkBaseProperties,
-      href: undefined as unknown as string,
-    };
-
-    expect(() => render(<Link {...brokenProperties} isRouterLink />)).toThrow(
-      'Link component: href is a required attribute when isRouterLink is true',
+  it('Context: uses base link component by default', () => {
+    render(
+        <Link {...linkBaseProperties}>
+          <span data-testid='link-child'>Child</span>
+        </Link>,
     );
+    expect(screen.getByTestId('link-test-id')).toBeInTheDocument();
+    expect(screen.getByTestId('link-test-id')).not.toHaveClass('link-component-from-context');
   });
+
 });
 
 describe('<LinkText>', () => {
@@ -131,7 +135,7 @@ describe('<ListLink>', () => {
   const testId = 'list-link';
 
   it('includes all expected elements', () => {
-    render(<ListLink data-testid={testId} href='/foo/bar' label='Test text' />);
+    render(<ListLink data-testid={testId} to='/foo/bar' label='Test text' />);
     // ListItem
     const listItem = screen.getByRole('listitem');
     expect(listItem).toBeInTheDocument();

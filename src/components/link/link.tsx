@@ -1,9 +1,8 @@
 import { JSX } from 'react';
-import { Link as RouterLink } from 'react-router';
 import type { JSXElement } from '../../types/jsx-element';
-
 import classnames from 'classnames';
 import type { HTMLProps, ReactNode, Ref } from 'react';
+import { useDSRContext } from '../../context/dsr-context';
 import { Icon } from '../icon/icon';
 import ListItem from '../list/list-item';
 import './link.scss';
@@ -20,7 +19,7 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
   /**
    * The link's destination URL.
    */
-  href: string;
+  to: string | undefined;
   /**
    * Name of icon to display left of link text
    */
@@ -33,10 +32,6 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
    * Whether the link is a standalone link
    */
   isJump?: boolean;
-  /**
-   * Whether the link is a react router link
-   */
-  isRouterLink?: boolean;
   /**
    * The link's text content, not required if children are provided
    */
@@ -57,11 +52,10 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
 export default function Link({
   isButton = false,
   children,
-  href,
+  to,
   iconLeft,
   iconRight,
   isJump = false,
-  isRouterLink = false,
   label,
   type = 'default',
   ...others
@@ -87,33 +81,11 @@ export default function Link({
     'a-link': shouldUseLinkStyles,
   });
 
-  if (isRouterLink) {
-    if (!href) {
-      throw new Error(
-        'Link component: href is a required attribute when isRouterLink is true',
-      );
-    }
-    return (
-      <RouterLink to={href} {...others} className={cname}>
-        {children}
-        {!!iconLeft && (
-          <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
-        )}
-        {labelNode}
-        {!!iconRight && (
-          <Icon
-            name={iconRight}
-            isPresentational
-            data-testid='link-icon-right'
-          />
-        )}
-      </RouterLink>
-    );
-  }
-
+  const { LinkComponent } = useDSRContext();
   return (
-    <a {...others} className={cname} href={href}>
+    <LinkComponent {...others} className={cname} to={to}>
       {children}
+
       {!!iconLeft && (
         <Icon name={iconLeft} isPresentational data-testid='link-icon-left' />
       )}
@@ -121,7 +93,7 @@ export default function Link({
       {!!iconRight && (
         <Icon name={iconRight} isPresentational data-testid='link-icon-right' />
       )}
-    </a>
+    </LinkComponent>
   );
 }
 

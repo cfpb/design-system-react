@@ -1298,7 +1298,6 @@ __metadata:
     prettier: "npm:3.9.5"
     react: "npm:19.2.7"
     react-dom: "npm:19.2.7"
-    react-router: "npm:^8.2.0"
     react-select: "npm:^5.10.2"
     rollup-plugin-jsx-remove-attributes: "npm:^3.1.2"
     sass: "npm:^1.101.0"
@@ -1320,8 +1319,7 @@ __metadata:
     "@cfpb/cfpb-design-system": 5.8.0
     lit: ^3.3.3
     react: 19.2.7
-    react-dom: ^19.2.3
-    react-router: ^8.1.0
+    react-dom: ^19.2.4
   languageName: unknown
   linkType: soft
 
@@ -5290,13 +5288,6 @@ __metadata:
   version: 2.0.0
   resolution: "convert-source-map@npm:2.0.0"
   checksum: 10/c987be3ec061348cdb3c2bfb924bec86dea1eacad10550a85ca23edb0fe3556c3a61c7399114f3331ccb3499d7fd0285ab24566e5745929412983494c3926e15
-  languageName: node
-  linkType: hard
-
-"cookie-es@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "cookie-es@npm:3.1.1"
-  checksum: 10/e40083c42d0e3a4b3caa271775858f8e6cdd31f24b9c445ff08d7a8f4dc01069fc82012bdf1602d5a03fa1d75aba51a3dd33cd8a5db639db2ed17bcfd650f4bc
   languageName: node
   linkType: hard
 
@@ -9661,21 +9652,6 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 10/73b36281e58eeb27c9cc6031301b6ae19ecdc9f18ae2d518bdb39b0ac564e65c5779405d623f1df9abf378a13858b79442480244bd579968afc1faf9a2ce5e05
-  languageName: node
-  linkType: hard
-
-"react-router@npm:^8.2.0":
-  version: 8.2.0
-  resolution: "react-router@npm:8.2.0"
-  dependencies:
-    cookie-es: "npm:^3.1.1"
-  peerDependencies:
-    react: ">=19.2.7"
-    react-dom: ">=19.2.7"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-  checksum: 10/cd94c90f83e37a8537d4270bb368e343509be972cc079cd76b4c6e499c890674d70eb97171480e3f34a05ca08f1b460805f5b2249f879d4d7c9145aec7ec28a8
   languageName: node
   linkType: hard
 

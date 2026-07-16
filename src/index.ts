@@ -56,3 +56,9 @@ export {
   TextIntroductionSubheading,
 } from './components/text-introduction/text-introduction';
 export { WellContainer, WellContent } from './components/well/well';
+
+export { useDSRContext, DSRProvider, DSRContext } from './context/dsr-context';
+export type {
+  DSRContextType,
+  DSRProviderProperties,
+} from './context/dsr-context';

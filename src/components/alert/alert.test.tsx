@@ -70,8 +70,8 @@ describe('<Alert />', () => {
     expect(noLinks.length).toBe(0);
 
     const linkItems = [
-      { href: '/1', label: 'one' },
-      { href: '/2', label: 'two', isExternal: true },
+      { to: '/1', label: 'one' },
+      { to: '/2', label: 'two', isExternal: true },
     ];
 
     render(<Alert status='info' links={linkItems} />);
