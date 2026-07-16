@@ -18,17 +18,10 @@ Install the library and its peer dependencies:
 yarn add @cfpb/design-system-react @cfpb/cfpb-design-system lit react react-dom
 ```
 
-Add `react-router` if you use `Link` with `isRouterLink`:
-
-```
-yarn add react-router
-```
-
 | Peer                       | When you need it                                                                                                |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `@cfpb/cfpb-design-system` | Always install it. Required for DS web components and for importing DS styles directly (see [Styles](#styles)). |
 | `lit`                      | Components that render DS web components (for example `Banner` / `<cfpb-tagline>`).                             |
-| `react-router`             | `Link` with `isRouterLink` only.                                                                                |
 
 ## Usage
 
