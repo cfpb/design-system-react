@@ -1,11 +1,11 @@
 import { HTMLAttributes, JSX } from '../../../node_modules/react';
 export interface SecondaryNavChildItem {
-    href: string;
+    to: string;
     label: string;
     isActive?: boolean;
 }
 export interface SecondaryNavItem {
-    href?: string;
+    to?: string;
     label: string;
     /**
      * Whether this item is the current page. Ignored when the item has children;

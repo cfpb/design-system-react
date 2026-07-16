@@ -1,7 +1,7 @@
 import { JSX } from '../../../node_modules/react';
 export interface AlertLinkProperties {
-    href: string;
+    to: string;
     label: string;
     isExternal?: boolean;
 }
-export declare const AlertLink: ({ href, label, isExternal, }: AlertLinkProperties) => JSX.Element;
+export declare const AlertLink: ({ to, label, isExternal, }: AlertLinkProperties) => JSX.Element;

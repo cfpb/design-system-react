@@ -1,4 +1,4 @@
-import { JSX, ReactNode } from '../../../node_modules/react';
+import { default as React, JSX, ReactNode } from '../../../node_modules/react';
 import { LogoLanguage } from './logo';
 interface CfpbLogoProperties {
     href?: string;
@@ -11,5 +11,5 @@ interface ResponsiveMenuProperties {
     lang?: LogoLanguage;
 }
 export default function ResponsiveMenu({ links, href, lang, }: ResponsiveMenuProperties): JSX.Element;
-export declare const ExampleLinks: ReactNode[];
+export declare const ExampleLinks: React.ReactNode[];
 export {};

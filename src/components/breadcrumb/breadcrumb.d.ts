@@ -1,7 +1,7 @@
 import { HTMLAttributes } from '../../../node_modules/react';
 import { JSXElement } from '../../types/jsx-element';
 export interface BreadcrumbCrumb {
-    href: string;
+    to: string;
     label: string;
     isCurrent?: boolean;
 }

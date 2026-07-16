@@ -12,7 +12,7 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
     /**
      * The link's destination URL.
      */
-    href: string;
+    to: string | undefined;
     /**
      * Name of icon to display left of link text
      */
@@ -25,10 +25,6 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
      * Whether the link is a standalone link
      */
     isJump?: boolean;
-    /**
-     * Whether the link is a react router link
-     */
-    isRouterLink?: boolean;
     /**
      * The link's text content, not required if children are provided
      */
@@ -45,6 +41,6 @@ export interface LinkProperties extends HTMLProps<HTMLAnchorElement> {
  *
  * Source: https://cfpb.github.io/design-system/components/links
  */
-export default function Link({ isButton, children, href, iconLeft, iconRight, isJump, isRouterLink, label, type, ...others }: LinkProperties): JSXElement;
+export default function Link({ isButton, children, to, iconLeft, iconRight, isJump, label, type, ...others }: LinkProperties): JSXElement;
 export declare const LinkText: ({ children, ...others }: HTMLProps<HTMLSpanElement>) => JSX.Element;
 export declare const ListLink: (properties: LinkProperties) => JSXElement;

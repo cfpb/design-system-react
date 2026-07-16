@@ -40,3 +40,5 @@ export { TextArea } from './components/text-input/text-area';
 export { TextInput } from './components/text-input/text-input';
 export { TextIntroduction, TextIntroductionContainer, TextIntroductionDescription, TextIntroductionHeading, TextIntroductionSubheading, } from './components/text-introduction/text-introduction';
 export { WellContainer, WellContent } from './components/well/well';
+export { useDSRContext, DSRProvider, DSRContext } from './context/dsr-context';
+export type { DSRContextType, DSRProviderProperties, } from './context/dsr-context';
