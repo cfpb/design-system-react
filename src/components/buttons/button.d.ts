@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes, ReactNode } from '../../../node_modules/react';
-interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
+import { ButtonHTMLAttributes, MouseEvent, ReactNode } from '../../../node_modules/react';
+export interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
     /**
      * Button contents
      */
@@ -19,7 +19,7 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
     /**
      * Optional click handler
      */
-    onClick?: () => void;
+    onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
     /**
      * Button should be styled as a link?
      */
@@ -37,4 +37,3 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
  * Primary UI component for user interaction
  */
 export declare const Button: import('../../../node_modules/react').ForwardRefExoticComponent<ButtonProperties & import('../../../node_modules/react').RefAttributes<HTMLButtonElement>>;
-export {};
