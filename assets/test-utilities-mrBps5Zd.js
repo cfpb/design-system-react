@@ -1,0 +1,1 @@
+import{i as e}from"./preload-helper-7yf7uBoM.js";var t,n,r,i,a=e((()=>{t=4,n=1,r=Array.from({length:t},(e,t)=>t).map(e=>({value:`option${e+n}`,label:`Option ${e+n}`})),i=[...r,{value:`long-option`,label:`Multiselect options can also contain long words that will be wrapped like supercalifragilisticexpialidocious`}]}));export{r as n,a as r,i as t};
