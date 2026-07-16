@@ -1,9 +1,0 @@
-import{i as e}from"./preload-helper-xPQekRTU.js";import{t}from"./jsx-runtime-CaZkqeYb.js";import{a as n,o as r,v as i}from"./blocks-BQoLN4hX.js";import{n as a,t as o}from"./list-BM4vTaBY.js";import{n as s,r as c,t as l}from"./link-DxOcvXZ5.js";import{t as u}from"./mdx-react-shim-DYfEVCLG.js";import{n as d,t as f}from"./heading-DlqVg8CH.js";import{n as p,t as m}from"./paragraph-BOvP6WlU.js";function h(e){let t={a:`a`,...i(),...e.components};return(0,_.jsxs)(_.Fragment,{children:[`
-`,`
-`,(0,_.jsx)(n,{title:`Components (Verified)/Checkboxes/Overview`}),`
-`,`
-`,(0,_.jsx)(f,{type:`1`,children:`Checkboxes`}),`
-`,(0,_.jsxs)(m,{children:[`Use checkboxes when the user can select more than one option from a list. Make clear with helper text that this is the case. Use `,(0,_.jsx)(t.a,{href:`https://cfpb.github.io/design-system/components/radio-buttons`,rel:`nofollow`,children:`radio buttons`}),` when the user can choose only one option from a list.`]}),`
-`,(0,_.jsxs)(m,{children:[`Source: `,(0,_.jsx)(l,{href:`https://cfpb.github.io/design-system/components/checkboxes`,children:`https://cfpb.github.io/design-system/components/checkboxes`})]}),`
-`,(0,_.jsx)(`br`,{}),`
-`,(0,_.jsxs)(`div`,{className:`sb-unstyled`,children:[(0,_.jsx)(f,{type:`4`,children:`Types`}),(0,_.jsxs)(o,{isLink:!0,children:[(0,_.jsx)(s,{target:`_top`,href:`./?path=/docs/components-verified-checkboxes-checkbox--overview`,label:`Checkbox`}),(0,_.jsx)(s,{target:`_top`,href:`./?path=/docs/components-verified-checkboxes-large-target-area--overview`,label:`Large target area`})]})]})]})}function g(e={}){let{wrapper:t}={...i(),...e.components};return t?(0,_.jsx)(t,{...e,children:(0,_.jsx)(h,{...e})}):h(e)}var _;e((()=>{_=t(),u(),r(),d(),c(),a(),p()}))();export{g as default};
