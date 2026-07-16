@@ -1,5 +1,5 @@
 import { ComponentType, ReactNode } from '../../node_modules/react';
-import { BaseLinkProperties } from '../components/Link/base-link';
+import { BaseLinkProperties } from '../components/link/base-link';
 /**
  *
  * DSR context allows you to integrate the DSR with a router library
@@ -34,7 +34,7 @@ export interface DSRProviderProperties {
     LinkComponent: ComponentType<BaseLinkProperties>;
     children?: ReactNode;
 }
-export declare const DSRProvider: ({ children, LinkComponent }: {
+export declare const DSRProvider: ({ children, LinkComponent, }: {
     children: ReactNode;
     LinkComponent: ComponentType<BaseLinkProperties>;
 }) => import("react").JSX.Element;
