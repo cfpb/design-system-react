@@ -234,7 +234,7 @@ This project uses Yarn 4 with the `node-modules` linker (see `.yarnrc.yml`).
 
 Edit the files in `src/components/` and your browser should hot reload your changes.
 
-Add tests to files called `<component-name>.test.tsx`. See [`Buttons.test.tsx`](/src/components/Buttons/Button.test.tsx) for an example.
+Add tests to files called `<component-name>.test.tsx`. See [`buttons.test.tsx`](/src/components/buttons/button.test.tsx) for an example.
 
 Run `yarn test` to watch for changes and run tests automatically.
 
