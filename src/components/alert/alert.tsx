@@ -92,7 +92,7 @@ export const Alert = ({
         {links && links.length > 0 ? (
           <List isLinks>
             {links.map((link) => (
-              <AlertLink {...link} key={link.href} />
+              <AlertLink {...link} key={link.to} />
             ))}
           </List>
         ) : null}

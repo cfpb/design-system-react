@@ -2,18 +2,18 @@ import { JSX } from 'react';
 import { ListLink } from '../link/link';
 
 export interface AlertLinkProperties {
-  href: string;
+  to: string;
   label: string;
   isExternal?: boolean;
 }
 
 export const AlertLink = ({
-  href,
+  to,
   label,
   isExternal,
 }: AlertLinkProperties): JSX.Element => (
   <ListLink
-    to={href}
+    to={to}
     label={label}
     iconRight={isExternal ? 'external-link' : undefined}
   />
