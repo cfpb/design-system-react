@@ -120,13 +120,13 @@ export const SecondaryNav = ({
                 const hasChildren = Boolean(item.children?.length);
                 const hasActiveChild =
                   hasChildren && item.children!.some((c) => c.isActive);
-                const isParentIsActive = Boolean(
+                const isParentActive = Boolean(
                   !hasActiveChild && item.isActive,
                 );
 
                 return (
                   <li key={item.href ?? item.label}>
-                    {!isParentIsActive && item.href ? (
+                    {!isParentActive && item.href ? (
                       <a
                         className={classnames(
                           'o-secondary-nav__link',
@@ -143,9 +143,9 @@ export const SecondaryNav = ({
                         className={classnames(
                           'o-secondary-nav__link',
                           'o-secondary-nav__link--parent',
-                          isParentIsActive && 'o-secondary-nav__link--current',
+                          isParentActive && 'o-secondary-nav__link--current',
                         )}
-                        aria-current={isParentIsActive ? 'page' : undefined}
+                        aria-current={isParentActive ? 'page' : undefined}
                       >
                         {item.label}
                       </a>
