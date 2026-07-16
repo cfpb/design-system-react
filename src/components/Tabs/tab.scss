@@ -5,14 +5,15 @@
 .tablist {
   display: flex;
   border-bottom: 1px solid var(--gray-40);
+
   // margin-bottom: -1px;
   // position: relative;
   // z-index: 10;
 
   button.tab {
     @include heading-4($has-margin-bottom: false);
-    padding: math.div(math.div($grid-gutter-width, 3), $base-font-size-px) + rem 
-             math.div($grid-gutter-width, $base-font-size-px) + rem;
+    padding: math.div(math.div($grid-gutter-width, 3), $base-font-size-px) + rem
+      math.div($grid-gutter-width, $base-font-size-px) + rem;
     margin-bottom: -1px;
     border: 1px solid transparent;
 
@@ -31,10 +32,10 @@
       pointer-events: none;
       border-color: var(--gray-40);
       border-bottom-color: transparent;
-    } 
+    }
   }
 }
-    
+
 .tab-panel {
   // border-top: 1px solid var(--gray-40);
 }
