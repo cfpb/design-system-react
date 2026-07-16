@@ -1,9 +1,8 @@
 @use './variables';
 @use 'sass:math';
 @use 'sass:string';
-@use '@cfpb/cfpb-design-system/src/index' as *;
-@use '@cfpb/cfpb-design-system/src/elements/abstracts' as *;
-@use '@cfpb/cfpb-design-system/src/elements/base' as base;
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/base' as base;
 
 // @include licensed-font('/static/fonts');
 
@@ -12,7 +11,9 @@
 */
 
 /**
- * Source Sans 3 is loaded via @fontsource in app / Storybook preview entrypoints.
+ * Source Sans 3 is loaded via `@fontsource-variable/source-sans-3` in **`src/index.ts`** (apps)
+ * and **`.storybook/preview.js`** (Storybook, including nested “All viewports” iframes) before
+ * `_shared.scss` so `@font-face` is always registered.
  *
  * DS `custom-props` sets `--font-stack-branded: initial`, so `var(--font-stack)` falls back to
  * `system-ui`. Other DS chunks can repeat that `:root` block when code-split; in dev the last
@@ -23,11 +24,11 @@
  * custom properties for the main canvas.
  */
 // Literal stack (quoted multi-word family) — matches app / design-system expectations.
-$_ds-font-stack: string.unquote('"Source Sans 3 Variable", Arial, sans-serif');
+$ds-font-stack: string.unquote('"Source Sans 3 Variable", Arial, sans-serif');
 
 :root {
-  --font-stack-branded: #{$_ds-font-stack} !important;
-  --font-stack: #{$_ds-font-stack} !important;
+  --font-stack-branded: #{$ds-font-stack} !important;
+  --font-stack: #{$ds-font-stack} !important;
 }
 
 // `!important` beats DS normalize `html { font-family: sans-serif }` if chunk
@@ -36,7 +37,7 @@ html,
 body,
 #storybook-root,
 #storybook-docs {
-  font-family: #{$_ds-font-stack} !important;
+  font-family: #{$ds-font-stack} !important;
 }
 
 /**
