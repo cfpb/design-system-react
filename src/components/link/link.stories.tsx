@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
-import type { JSXElement } from "../../types/jsx-element";
-import { DSRContext, Heading, Link, List, ListLink, type BaseLinkProperties } from '~/src/index';
+import type { JSXElement } from '../../types/jsx-element';
+import type { BaseLinkProperties } from './base-link';
+import { DSRContext, Heading, Link, List, ListLink } from '~/src/index';
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',
   tags: ['autodocs'],
   component: Link,
-  excludeStories: ['CustomLinkComponent']
+  excludeStories: ['CustomLinkComponent'],
 };
 
 export default meta;
@@ -135,12 +136,12 @@ const CustomLinkComponent = ({
 
 /**
  * You can configure the DSR to use a router library's link component by wrapping your app
- * in the DSRContext provider and setting a `LinkComponent` value. 
- * Your custom link component will be output instead of the default anchor element 
+ * in the DSRContext provider and setting a `LinkComponent` value.
+ * Your custom link component will be output instead of the default anchor element
  * everywhere the DSR's Link component is used.
- *  
+ *
  * Example usage:
- * 
+ *
  *  \<DSRContext value={{LinkComponent: YourRouterLinkComponent}} >
  *    App content
  *  \</DSRContext>
@@ -154,9 +155,5 @@ export const LinkWithCustomLinkComponent: Story = {
       </DSRContext>
     ),
   ],
-  render: () => (
-      <Link to='/#' label='Link using custom link component' />
-  ),
+  render: () => <Link to='/#' label='Link using custom link component' />,
 };
-
-
