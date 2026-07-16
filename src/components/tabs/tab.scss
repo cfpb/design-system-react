@@ -1,0 +1,41 @@
+@use 'sass:math';
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/utilities' as *;
+
+.tablist {
+  display: flex;
+  border-bottom: 1px solid var(--gray-40);
+
+  // margin-bottom: -1px;
+  // position: relative;
+  // z-index: 10;
+
+  button.tab {
+    @include heading-4($has-margin-bottom: false);
+    padding: math.div(math.div($grid-gutter-width, 3), $base-font-size-px) + rem
+      math.div($grid-gutter-width, $base-font-size-px) + rem;
+    margin-bottom: -1px;
+    border: 1px solid transparent;
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline-offset: -1px;
+    }
+
+    &--active {
+      color: var(--black);
+      background: var(--gray-5);
+      text-decoration: none;
+      pointer-events: none;
+      border-color: var(--gray-40);
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+.tab-panel {
+  // border-top: 1px solid var(--gray-40);
+}
