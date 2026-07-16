@@ -65,7 +65,8 @@ export const SecondaryNav = ({
       return;
     }
 
-    const mediaQuery = matchMedia('(max-width: 56.25em)');
+    // eslint-disable-next-line unicorn/no-unnecessary-global-this
+    const mediaQuery = globalThis.window.matchMedia('(max-width: 56.25em)');
 
     const collapseForMobileLayout = (): void => {
       if (mediaQuery.matches) {
