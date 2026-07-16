@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { Heading, Tab, TabList, TabPanel } from '~/src/index';
+import { Heading } from '../headings/heading';
+import { Tab, TabList, TabPanel } from './tab';
 
 const meta: Meta<typeof Tab> = {
   title: 'Components (Draft)/Tabs',

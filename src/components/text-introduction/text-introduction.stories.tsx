@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import List from '../List/list';
+import List from '../list/list';
 import TextIntroduction from './text-introduction';
 import {
   callToAction,

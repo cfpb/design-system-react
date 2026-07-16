@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Link from '../Link/link';
+import Link from '../link/link';
 import List from './list';
 import ListItem from './list-item';
 

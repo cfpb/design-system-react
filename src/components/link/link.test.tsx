@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Link, { LinkText, ListLink } from './link';
 import { DSRContext } from '../../context/dsr-context';
 import { ReactNode } from 'react';
-import type { JSXElement } from "../../types/jsx-element";
+import type { JSXElement } from '../../types/jsx-element';
 
 describe('<Link />', () => {
   const linkBaseProperties = {
@@ -14,8 +14,8 @@ describe('<Link />', () => {
   const testId = linkBaseProperties['data-testid'];
 
   interface CustomLinkProperties {
-      to: string | undefined;
-      children: ReactNode;
+    to: string | undefined;
+    children: ReactNode;
   }
 
   const CustomLinkComponent = ({
@@ -100,26 +100,29 @@ describe('<Link />', () => {
 
   it('Context: uses link component configured in context', () => {
     render(
-      <DSRContext value={{LinkComponent:CustomLinkComponent}}>
+      <DSRContext value={{ LinkComponent: CustomLinkComponent }}>
         <Link {...linkBaseProperties}>
           <span data-testid='link-child'>Child</span>
         </Link>
       </DSRContext>,
     );
     expect(screen.getByTestId('link-test-id')).toBeInTheDocument();
-    expect(screen.getByTestId('link-test-id')).toHaveClass('link-component-from-context');
+    expect(screen.getByTestId('link-test-id')).toHaveClass(
+      'link-component-from-context',
+    );
   });
 
   it('Context: uses base link component by default', () => {
     render(
-        <Link {...linkBaseProperties}>
-          <span data-testid='link-child'>Child</span>
-        </Link>,
+      <Link {...linkBaseProperties}>
+        <span data-testid='link-child'>Child</span>
+      </Link>,
     );
     expect(screen.getByTestId('link-test-id')).toBeInTheDocument();
-    expect(screen.getByTestId('link-test-id')).not.toHaveClass('link-component-from-context');
+    expect(screen.getByTestId('link-test-id')).not.toHaveClass(
+      'link-component-from-context',
+    );
   });
-
 });
 
 describe('<LinkText>', () => {

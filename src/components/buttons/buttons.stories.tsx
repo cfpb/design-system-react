@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, within } from 'storybook/test';
 import { Button } from './button';
-import Link from '../Link/link';
+import Link from '../link/link';
 import { ButtonGroup } from './button-group';
 
 /**

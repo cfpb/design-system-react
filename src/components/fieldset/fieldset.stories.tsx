@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import { Checkbox } from '../Checkbox/checkbox';
+import { Checkbox } from '../checkbox/checkbox';
 import { Fieldset } from './fieldset';
-import { RadioButton } from '../RadioButton/radio-button';
+import { RadioButton } from '../radio-button/radio-button';
 
 /**
  *
