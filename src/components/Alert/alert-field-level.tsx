@@ -1,15 +1,9 @@
+import classNames from 'classnames';
+import type { HTMLAttributes, ReactNode } from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 import { Icon } from '../Icon/icon';
-import type { HTMLAttributes, ReactNode } from 'react';
 
 export type AlertFieldLevelType = 'error' | 'info' | 'success' | 'warning';
-
-export enum AlertFieldLevelClass {
-  'info' = '--info',
-  'error' = '--error',
-  'success' = '--success',
-  'warning' = '--warning',
-}
 
 export const MapTypeToIconName = {
   info: 'information',
@@ -18,8 +12,7 @@ export const MapTypeToIconName = {
   warning: 'warning',
 };
 
-export interface AlertFieldLevelProperties
-  extends HTMLAttributes<HTMLDivElement> {
+export interface AlertFieldLevelProperties extends HTMLAttributes<HTMLDivElement> {
   status?: AlertFieldLevelType;
   message: ReactNode;
   isVisible?: boolean;
@@ -42,7 +35,11 @@ export const AlertFieldLevel = ({
 
   return (
     <div
-      className={`a-form-alert a-form-alert${AlertFieldLevelClass[status]}`}
+      className={classNames('a-form-alert', {
+        'a-form-alert--error': status === 'error',
+        'a-form-alert--success': status === 'success',
+        'a-form-alert--warning': status === 'warning',
+      })}
       {...properties}
     >
       <Icon

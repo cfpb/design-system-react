@@ -12,11 +12,13 @@ Current components: https://cfpb.github.io/design-system-react
 
 The `@cfpb/design-system-react` library is released as an [NPM package](https://www.npmjs.com/package/@cfpb/design-system-react).
 
-To install the package:
+To install the package and its peer dependencies:
 
 ```
-yarn add @cfpb/design-system-react
+yarn add @cfpb/design-system-react @cfpb/cfpb-design-system lit react react-dom react-router
 ```
+
+`lit` is required because `@cfpb/cfpb-design-system` web components (for example `<cfpb-tagline>` in `Banner`) are built with [Lit](https://lit.dev/).
 
 ## Usage
 
@@ -43,14 +45,14 @@ export default function SomePage(): ReactElement {
 
 ## Development
 
-To edit components or add new ones, make sure you have Yarn v3 set up locally and then run `yarn dev`:
+To edit components or add new ones, install dependencies and run Storybook:
 
-1. Install Node v24+.
+1. Install Node v26+ (see `.nvmrc`).
 1. Enable [corepack](https://yarnpkg.com/getting-started/install): `corepack enable`.
-1. `yarn`
+1. `yarn install`
 1. `yarn start`
 
-Note: This project uses yarn v3.5 in "plug n play" mode. There is no `node_modules/` directory. Packages are stored in `.yarn/cache/`.
+This project uses Yarn 4 with the `node-modules` linker (see `.yarnrc.yml`).
 
 Edit the files in `src/components/` and your browser should hot reload your changes.
 

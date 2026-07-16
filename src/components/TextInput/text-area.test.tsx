@@ -27,21 +27,39 @@ describe('<TextArea />', () => {
     render(<TextArea id='alert' isFullWidth />);
 
     const textInput = screen.getByTestId('textAreaInput');
-    expect(textInput).toHaveClass('a-text-input__full');
+    expect(textInput).toHaveClass('a-text-input--full');
+    expect(screen.getByTestId('text-area-field')).toContainElement(textInput);
   });
 
-  it('Handles all supported statuses', () => {
-    // Valid status should have associated class
-    const statuses: TextInputStatusType[] = [
-      'error',
-      'success',
-      'warning',
-      'info',
-    ];
+  it('does not wrap in m-form-field by default', () => {
+    render(<TextArea id='enabled' />);
+
+    expect(screen.queryByTestId('text-area-field')).not.toBeInTheDocument();
+    expect(screen.getByTestId('textAreaInput')).toBeInTheDocument();
+  });
+
+  it('applies validation status modifiers', () => {
+    const statuses: TextInputStatusType[] = ['error', 'success', 'warning'];
+
     for (const status of statuses) {
       render(<TextArea id='alert' {...{ status, placeholder: status }} />);
       const textInput = screen.getByPlaceholderText(status);
       expect(textInput).toHaveClass(`a-text-input--${status}`);
     }
+  });
+
+  it('renders without status when omitted', () => {
+    render(<TextArea id='enabled' placeholder='enabled' />);
+
+    const textInput = screen.getByPlaceholderText('enabled');
+    expect(textInput).toHaveClass('a-text-input');
+    expect(textInput).not.toHaveClass('a-text-input--success');
+  });
+
+  it('restricts resizing to the vertical axis', () => {
+    render(<TextArea id='enabled' />);
+
+    const textArea = screen.getByTestId('textAreaInput');
+    expect(textArea).toHaveStyle({ resize: 'vertical' });
   });
 });

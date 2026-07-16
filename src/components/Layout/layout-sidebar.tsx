@@ -14,8 +14,7 @@ export const LayoutSidebar = ({
   flushTopOnSmall,
   flushAllOnSmall,
   ...properties
-}: LayoutSidebarProperties &
-  HTMLAttributes<HTMLDivElement>): JSX.Element => {
+}: LayoutSidebarProperties & HTMLAttributes<HTMLDivElement>): JSX.Element => {
   const cnames = ['sidebar', 'content__sidebar', 'o-sidebar-content'];
   if (flushBottom) cnames.push('content--flush-bottom');
   if (flushTopOnSmall) cnames.push('content--flush-top-on-small');

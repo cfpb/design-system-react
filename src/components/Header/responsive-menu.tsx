@@ -1,18 +1,20 @@
 import React, { JSX, useCallback, useState } from 'react';
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
-import CFPBLogo from '../../assets/images/cfpb-logo.png';
 import { Button } from '../Buttons/button';
 import { Icon } from '../Icon/icon';
 import Link from '../Link/link';
 import type { JSXElement } from '../../types/jsx-element';
+import { Logo, type LogoLanguage } from './logo';
 import './responsive-menu.scss';
 
 interface CfpbLogoProperties {
   href?: string;
+  language?: LogoLanguage;
 }
 
 export function CfpbLogo({
   href = 'https://www.consumerfinance.gov',
+  language = 'en',
 }: CfpbLogoProperties): JSX.Element {
   return (
     <Link
@@ -22,7 +24,7 @@ export function CfpbLogo({
       aria-label='Home'
       className='o-header__logo'
     >
-      <img className='o-header__logo-img' src={CFPBLogo} alt='CFPB Logo' />
+      <Logo language={language} />
     </Link>
   );
 }
@@ -64,11 +66,13 @@ const Links = ({
 interface ResponsiveMenuProperties {
   links?: ReactNode[];
   href?: string;
+  lang?: LogoLanguage;
 }
 
 export default function ResponsiveMenu({
   links,
   href,
+  lang = 'en',
 }: ResponsiveMenuProperties): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -94,7 +98,7 @@ export default function ResponsiveMenu({
     return (
       <div className='o-header__content'>
         <div className='navbar wrapper wrapper--match-content'>
-          <CfpbLogo href={href} />
+          <CfpbLogo href={href} language={lang} />
         </div>
       </div>
     );
@@ -127,7 +131,7 @@ export default function ResponsiveMenu({
               {isMenuOpen ? 'Close menu' : 'Open menu'}
             </span>
           </button>
-          <CfpbLogo href={href} />
+          <CfpbLogo href={href} language={lang} />
           <nav
             className={`nav-items ${isMenuOpen ? 'open' : ''}`}
             id='nav-links'
@@ -141,19 +145,9 @@ export default function ResponsiveMenu({
 }
 
 export const ExampleLinks: ReactNode[] = [
-  <Link key='home' href='/' label='Home' />,
-  <Link
-    key='filing'
-    className='nav-item active'
-    href='/filing'
-    label='Filing'
-  />,
-  <Link
-    key='profile'
-    className='nav-item profile'
-    href='/profile'
-    label='John Sample'
-  />,
+  <Link key='1' href='/' label='Link' />,
+  <Link key='2' className='nav-item active' href='/2' label='Link' />,
+  <Link key='3' className='nav-item' href='/3' label='Link' />,
   <Button
     appearance={'secondary'}
     label='Log out'

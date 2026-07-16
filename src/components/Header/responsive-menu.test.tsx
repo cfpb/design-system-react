@@ -48,10 +48,8 @@ describe('ResponsiveMenu', () => {
     expect(screen.getByRole('navigation')).toBeInTheDocument();
 
     // Links are rendered
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('Filing')).toBeInTheDocument();
-    expect(screen.getByText('John Sample')).toBeInTheDocument();
-    expect(screen.getByText('Log out')).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: 'Link' })).toHaveLength(3);
+    expect(screen.getByRole('button', { name: 'Log out' })).toBeInTheDocument();
   });
 
   it('toggles menu visibility on button click', () => {
@@ -92,7 +90,7 @@ describe('ResponsiveMenu', () => {
     const menuToggle = screen.getAllByRole('button')[0];
     fireEvent.click(menuToggle);
 
-    const link = screen.getByText('Home');
+    const link = screen.getAllByRole('link', { name: 'Link' })[0];
     fireEvent.click(link);
 
     expect(screen.getByRole('navigation')).not.toHaveClass('open');
@@ -101,7 +99,7 @@ describe('ResponsiveMenu', () => {
   it('applies active class to the current page link', () => {
     renderWithScope(<ResponsiveMenu links={ExampleLinks} />);
 
-    const activeLink = screen.getByText('Filing');
+    const activeLink = screen.getAllByRole('link', { name: 'Link' })[1];
     expect(activeLink).toHaveClass('active');
   });
 
@@ -111,5 +109,15 @@ describe('ResponsiveMenu', () => {
 
     const logoLink = screen.getByTestId('CfpbLogoLink');
     expect(logoLink).toHaveAttribute('href', customHref);
+  });
+
+  it('renders the Spanish logo when lang is es', () => {
+    renderWithScope(<ResponsiveMenu lang='es' />);
+
+    expect(
+      screen.getByAltText(
+        'Oficina para la Protección Financiera del Consumidor',
+      ),
+    ).toBeInTheDocument();
   });
 });

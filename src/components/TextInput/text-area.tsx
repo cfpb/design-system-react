@@ -7,6 +7,7 @@ import {
   type Ref,
 } from 'react';
 import { noOp as onNoOp } from '../../utils/no-op';
+import './cfpb-text-input.scss';
 import {
   getTextInputStatusClass,
   type TextInputStatusType,
@@ -28,8 +29,8 @@ export const TextArea = forwardRef(
   (
     {
       id,
-      className = '',
-      status = 'info',
+      className,
+      status,
       placeholder = 'Placeholder text',
       isFullWidth = false,
       isDisabled = false,
@@ -38,6 +39,8 @@ export const TextArea = forwardRef(
     }: JSX.IntrinsicElements['textarea'] & TextAreaType,
     reference: Ref<HTMLTextAreaElement>,
   ): ReactElement => {
+    const { style, ...restProperties } = properties;
+
     const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (
       event,
     ) => {
@@ -47,24 +50,34 @@ export const TextArea = forwardRef(
 
     const classes = [
       'a-text-input',
+      className,
       getTextInputStatusClass(status),
-      isFullWidth ? 'a-text-input__full' : '',
-      className || '',
-    ].filter((x) => x.length);
+    ];
 
-    return (
-      <div className='m-form-field'>
-        <textarea
-          className={classNames(classes)}
-          id={id}
-          placeholder={placeholder}
-          onChange={onChangeHandler}
-          disabled={isDisabled}
-          data-testid='textAreaInput'
-          ref={reference}
-          {...properties}
-        />
+    if (isFullWidth) {
+      classes.push('a-text-input--full');
+    }
+
+    const textarea = (
+      <textarea
+        className={classNames(classes)}
+        id={id}
+        placeholder={placeholder}
+        onChange={onChangeHandler}
+        disabled={isDisabled}
+        data-testid='textAreaInput'
+        ref={reference}
+        style={{ ...style, resize: 'vertical' }}
+        {...restProperties}
+      />
+    );
+
+    return isFullWidth ? (
+      <div className='m-form-field' data-testid='text-area-field'>
+        {textarea}
       </div>
+    ) : (
+      textarea
     );
   },
 );

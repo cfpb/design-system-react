@@ -3,14 +3,7 @@ import { JSX } from 'react';
 import type { HTMLProps } from 'react';
 
 export type HeadingType =
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | 'display'
-  | 'eyebrow'
-  | 'slug';
+  '1' | '2' | '3' | '4' | '5' | 'display' | 'eyebrow' | 'slug';
 
 interface HeadingProperties extends HTMLProps<HTMLHeadingElement> {
   /** Heading type (1-5, display, eyebrow, slug) */
@@ -31,7 +24,7 @@ export const Heading = ({
 
     return (
       <header className={classnames(classes)} {...properties}>
-        <h2 className='m-slug-header_heading'>{children}</h2>
+        <h2 className='m-slug-header__heading'>{children}</h2>
       </header>
     );
   }

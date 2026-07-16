@@ -1,6 +1,5 @@
 @use 'sass:math';
-@use '@cfpb/cfpb-design-system/src/elements/abstracts/sizing-vars' as *;
-@use '@cfpb/cfpb-design-system/src/elements/abstracts/grid-mixins' as *;
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
 
 // TODO: Do we need to support non-12-column grids?
 $one-column-width: math.div(100%, 12);

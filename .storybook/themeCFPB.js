@@ -1,5 +1,5 @@
 import { create } from 'storybook/theming/create';
-import CfpbLogo from '../src/assets/images/cfpb-logo.png';
+import CfpbLogo from '../src/assets/images/cfpb_logo.svg?url';
 
 const colors = {
   black: '#101820',
@@ -24,7 +24,7 @@ export default create({
   brandUrl: 'https://cfpb.github.io/design-system-react/',
   brandTarget: '_blank',
 
-  fontBase: '"Source Sans 3 Variable", Arial ,sans-serif',
+  fontBase: '"Source Sans 3 Variable", Arial, sans-serif',
 
   // App
   appBorderColor: colors.gray,

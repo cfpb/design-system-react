@@ -19,8 +19,7 @@ export const Label = ({
   htmlFor,
   className,
   ...other
-}: JSX.IntrinsicElements['label'] &
-  LabelProperties): JSXElement => {
+}: JSX.IntrinsicElements['label'] & LabelProperties): JSXElement => {
   const styles = [...baseStyles, isInline ? '' : 'a-label--heading'];
   const classes = [...styles, className];
 

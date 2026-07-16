@@ -14,12 +14,13 @@ const meta: Meta<typeof WellContainer> = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+type ContentStory = StoryObj<typeof WellContent>;
 
 export const Container: Story = {
   name: 'Well (container)',
 };
 
-export const Content: Story = {
+export const Content: ContentStory = {
   name: 'Well (content)',
   args: {
     heading: 'Heading',
