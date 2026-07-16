@@ -1,0 +1,159 @@
+import React, { JSX, useCallback, useState } from 'react';
+import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
+import { Button } from '../buttons/button';
+import { Icon } from '../icon/icon';
+import Link from '../link/link';
+import type { JSXElement } from '../../types/jsx-element';
+import { Logo, type LogoLanguage } from './logo';
+import './responsive-menu.scss';
+
+interface CfpbLogoProperties {
+  href?: string;
+  language?: LogoLanguage;
+}
+
+export function CfpbLogo({
+  href = 'https://www.consumerfinance.gov',
+  language = 'en',
+}: CfpbLogoProperties): JSX.Element {
+  return (
+    <Link
+      data-testid='CfpbLogoLink'
+      href={href}
+      title='Home'
+      aria-label='Home'
+      className='o-header__logo'
+    >
+      <Logo language={language} />
+    </Link>
+  );
+}
+
+const Links = ({
+  elements,
+  onLinkClick,
+}: {
+  elements: ReactNode[] | undefined;
+  onLinkClick: () => void;
+}): JSXElement => {
+  if (!elements?.length) return null;
+
+  return (
+    <div className='links'>
+      {elements.map((element, index) => {
+        if (
+          React.isValidElement<{ onClick?: (event: MouseEvent) => void }>(
+            element,
+          )
+        ) {
+          return React.cloneElement(element, {
+            ...element.props,
+            key: element.key ?? index,
+            onClick: (event: MouseEvent) => {
+              if (element.props.onClick) {
+                element.props.onClick(event);
+              }
+              onLinkClick();
+            },
+          });
+        }
+        return element;
+      })}
+    </div>
+  );
+};
+
+interface ResponsiveMenuProperties {
+  links?: ReactNode[];
+  href?: string;
+  lang?: LogoLanguage;
+}
+
+export default function ResponsiveMenu({
+  links,
+  href,
+  lang = 'en',
+}: ResponsiveMenuProperties): JSX.Element {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const onToggleMenu = (): void => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const onLinkClick = (): void => {
+    setIsMenuOpen(false);
+  };
+
+  const onHandleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    },
+    [],
+  );
+
+  if (!links?.length) {
+    // no need for hamburger menu button or any links
+    return (
+      <div className='o-header__content'>
+        <div className='navbar wrapper wrapper--match-content'>
+          <CfpbLogo href={href} language={lang} />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {isMenuOpen ? (
+        <div
+          className='menu-overlay open'
+          onClick={onToggleMenu}
+          onKeyDown={onHandleKeyDown}
+          tabIndex={0}
+          role='button'
+          aria-label='Close menu'
+        />
+      ) : null}
+      <div className='o-header__content'>
+        <div className='navbar wrapper wrapper--match-content'>
+          <button
+            className='menu-toggle'
+            onClick={onToggleMenu}
+            aria-expanded={isMenuOpen}
+            aria-controls='nav-links'
+            type='button'
+            data-testid='menu-toggle'
+          >
+            <Icon name={isMenuOpen ? 'error' : 'menu'} />
+            <span className='sr-only'>
+              {isMenuOpen ? 'Close menu' : 'Open menu'}
+            </span>
+          </button>
+          <CfpbLogo href={href} language={lang} />
+          <nav
+            className={`nav-items ${isMenuOpen ? 'open' : ''}`}
+            id='nav-links'
+          >
+            <Links elements={links} onLinkClick={onLinkClick} />
+          </nav>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export const ExampleLinks: ReactNode[] = [
+  <Link key='1' href='/' label='Link' />,
+  <Link key='2' className='nav-item active' href='/2' label='Link' />,
+  <Link key='3' className='nav-item' href='/3' label='Link' />,
+  <Button
+    appearance={'secondary'}
+    label='Log out'
+    onClick={(): void => {
+      /* Empty*/
+    }}
+    key='logout'
+  />,
+];
