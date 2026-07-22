@@ -6,18 +6,20 @@ import viteConfig from './vite.config';
 const __dirname = import.meta.dirname;
 const { resolve } = path;
 
-export default defineConfig((configEnv) => {
-  const storybookConfigDir = process.env.STORYBOOK_CONFIG_DIR;
-  const isStorybookTest = Boolean(storybookConfigDir);
+export default defineConfig((configEnvironment) => {
+  const storybookConfigDirectory = process.env.STORYBOOK_CONFIG_DIR;
+  const isStorybookTest = Boolean(storybookConfigDirectory);
   if (isStorybookTest) {
     // eslint-disable-next-line no-console
     console.log(
       '[storybook][vitest-config] project name:',
-      `storybook:${storybookConfigDir}`,
+      `storybook:${storybookConfigDirectory}`,
     );
   }
   const resolvedViteConfig =
-    typeof viteConfig === 'function' ? viteConfig(configEnv) : viteConfig;
+    typeof viteConfig === 'function'
+      ? viteConfig(configEnvironment)
+      : viteConfig;
 
   const svgReactMock = resolve(__dirname, 'test-utils/svg-react-component.tsx');
 
@@ -36,7 +38,7 @@ export default defineConfig((configEnv) => {
         globals: true,
         ...(isStorybookTest
           ? {
-              name: `storybook:${storybookConfigDir}`,
+              name: `storybook:${storybookConfigDirectory}`,
               setupFiles: resolve(__dirname, '.storybook/vitest.setup.ts'),
             }
           : {
@@ -77,16 +79,14 @@ export default defineConfig((configEnv) => {
             },
           },
         },
-        ...(isStorybookTest
-          ? {
-              browser: {
-                enabled: true,
-                provider: playwright(),
-                instances: [{ browser: 'chromium' }],
-                headless: true,
-              },
-            }
-          : {}),
+        ...(isStorybookTest && {
+          browser: {
+            enabled: true,
+            provider: playwright(),
+            instances: [{ browser: 'chromium' }],
+            headless: true,
+          },
+        }),
       },
     }),
   );
