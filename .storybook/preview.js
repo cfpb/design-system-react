@@ -1,8 +1,7 @@
 import React from 'react';
 import { buildArgsParam } from 'storybook/internal/router';
 import { useArgs, useGlobals } from 'storybook/preview-api';
-import '@fontsource-variable/source-sans-3';
-import '../src/assets/styles/_shared.scss';
+import '../src/assets/styles/entry-styles';
 import themeCFPB from './themeCFPB';
 
 const responsivePreviewQueryParameter = 'responsivePreview';

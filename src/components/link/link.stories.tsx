@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
+import { Heading } from '../headings/heading';
+import Link, { ListLink } from './link';
+import List from '../list/list';
 import type { JSXElement } from '../../types/jsx-element';
 import type { BaseLinkProperties } from './base-link';
-import { DSRContext, Heading, Link, List, ListLink } from '~/src/index';
+import { DSRContext } from '../../context/dsr-context';
 
 const meta: Meta<typeof Link> = {
   title: 'Components (Verified)/Links',

@@ -1,4 +1,3 @@
-import '@cfpb/cfpb-design-system/src/components/cfpb-pagination/pagination.scss';
 import type { ChangeEvent, FormEvent, ReactElement } from 'react';
 import { JSX, useEffect, useId, useState } from 'react';
 import { Button } from '../buttons/button';

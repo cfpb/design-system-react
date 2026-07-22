@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Heading } from '~/src/index';
+import { Heading } from './heading';
 import { expect, within } from 'storybook/test';
 /**
  * A successful type hierarchy establishes the order of importance of elements on a page. Consistent scaling, weights, and capitalization are used to create distinction between headings and provide users with familiar focus points when scanning text.
@@ -96,5 +96,19 @@ export const Slug: Story = {
   args: {
     type: 'slug',
     children: 'Slug',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const slugHeading = canvas.getByRole('heading', {
+      level: 2,
+      name: /slug/i,
+    });
+
+    await expect(slugHeading.classList.contains('m-slug-header__heading')).toBe(
+      true,
+    );
+    await expect(
+      slugHeading.closest('header')?.classList.contains('m-slug-header'),
+    ).toBe(true);
   },
 };

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX, useState } from 'react';
-import { Select, SelectSingle } from '~/src/index';
+import Select from './select';
+import { SelectSingle } from './select-single';
 import type { SelectOption, SelectProperties } from './select';
 import { SingleSelectOptions } from './test-utilities';
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Table } from '~/src/index';
+import { Table } from './table';
 import { ONE } from '../pagination/use-pagination';
 
 const meta: Meta<typeof Table> = {

@@ -89,10 +89,10 @@ describe('<Heading />', () => {
 
     expect(wrapper).toBeInTheDocument();
     expect(wrapper.tagName.toLowerCase()).toBe('header');
-    expect(wrapper.classList.contains('m-slug-header'));
+    expect(wrapper.classList.contains('m-slug-header')).toBeTruthy();
 
     const content = screen.getByText(text);
     expect(content.tagName.toLowerCase()).toBe('h2');
-    expect(content.classList.contains('a-heading'));
+    expect(content.classList.contains('m-slug-header__heading')).toBeTruthy();
   });
 });

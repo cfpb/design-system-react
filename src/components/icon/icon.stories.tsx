@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { JSX } from 'react';
 import type { ReactElement } from 'react';
-import { Heading, Icon } from '~/src/index';
+import { Heading } from '../headings/heading';
+import { Icon } from './icon';
 import type { HeadingType } from '../headings/heading';
 import {
   communicationIcons,
