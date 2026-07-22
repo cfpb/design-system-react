@@ -14,7 +14,9 @@
     width: 1px;
     overflow: hidden;
     background: transparent;
-    transition: transform 1s ease, background 0.5s linear;
+    transition:
+      transform 1s ease,
+      background 0.5s linear;
     z-index: 11;
 
     &:focus {
@@ -26,7 +28,9 @@
       height: auto;
       width: auto;
       overflow: visible;
-      transition: transform 0.1s ease, background 0.2s linear;
+      transition:
+        transform 0.1s ease,
+        background 0.2s linear;
       outline: 1px dotted var(--pacific);
       outline-offset: 1px;
     }

@@ -199,7 +199,6 @@
     // Add drop-shadow.
     box-shadow: 0 5px 5px rgb(0, 0, 0, 20%);
 
-
     // cfgov initializes FlyoutMenu + MaxHeightTransition in SecondaryNav.js.
     // Collapse content from header state when that JS is not running.
     &__header[aria-expanded='false'] ~ &__content {
