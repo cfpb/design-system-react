@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-7yf7uBoM.js";import{t}from"./jsx-runtime-DvpvSDnr.js";import{n,t as r}from"./src-CcVVNTrn.js";var i,a,o,s,c,l,u,d;e((()=>{r(),i=t(),a=new Set,o=()=>{a.has(n)||(n.init(),a.add(n))},s=e=>(o(),(0,i.jsx)(`cfpb-tagline`,{...e})),c={title:`Components (Verified)/Taglines`,tags:[`autodocs`,`web-component`],component:s,parameters:{docs:{description:{component:`
+import{i as e}from"./preload-helper-7yf7uBoM.js";import{t}from"./jsx-runtime-DvpvSDnr.js";import{n,t as r}from"./src-BfesF1U0.js";var i,a,o,s,c,l,u,d;e((()=>{r(),i=t(),a=new Set,o=()=>{a.has(n)||(n.init(),a.add(n))},s=e=>(o(),(0,i.jsx)(`cfpb-tagline`,{...e})),c={title:`Components (Verified)/Taglines`,tags:[`autodocs`,`web-component`],component:s,parameters:{docs:{description:{component:`
 
 Taglines are short paragraphs of text with the USA flag to their left that are used in the header and footer across consumerfinance.gov.
 

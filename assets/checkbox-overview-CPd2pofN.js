@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-7yf7uBoM.js";import{E as t,a as n,o as r}from"./blocks-C4hXLO9M.js";import{t as i}from"./jsx-runtime-DvpvSDnr.js";import{n as a,t as o}from"./list-ZRiACndC.js";import{n as s,r as c,t as l}from"./link-DUNBvsp1.js";import{t as u}from"./mdx-react-shim-CqaWOMLt.js";import{n as d,t as f}from"./heading-DHKgEqV3.js";import{n as p,t as m}from"./paragraph-DmQSAO49.js";function h(e){let r={a:`a`,...t(),...e.components};return(0,_.jsxs)(_.Fragment,{children:[`
+import{i as e}from"./preload-helper-7yf7uBoM.js";import{E as t,a as n,o as r}from"./blocks-C4hXLO9M.js";import{t as i}from"./jsx-runtime-DvpvSDnr.js";import{n as a,t as o}from"./list-ZRiACndC.js";import{n as s,r as c,t as l}from"./link-DUNBvsp1.js";import{t as u}from"./mdx-react-shim-CqaWOMLt.js";import{n as d,t as f}from"./heading-BlHAIyea.js";import{n as p,t as m}from"./paragraph-DmQSAO49.js";function h(e){let r={a:`a`,...t(),...e.components};return(0,_.jsxs)(_.Fragment,{children:[`
 `,`
 `,(0,_.jsx)(n,{title:`Components (Verified)/Checkboxes/Overview`}),`
 `,`
