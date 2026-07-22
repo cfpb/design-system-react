@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { Divider } from '../../index';
+import { Divider } from './divider';
 declare const meta: Meta<typeof Divider>;
 export default meta;
 type Story = StoryObj<typeof meta>;

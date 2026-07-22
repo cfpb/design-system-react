@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { TextInput } from '../../index';
+import { TextInput } from './text-input';
 declare const meta: Meta<typeof TextInput>;
 export default meta;
 type Story = StoryObj<typeof meta>;

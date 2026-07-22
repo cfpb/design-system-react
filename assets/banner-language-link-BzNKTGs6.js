@@ -1,0 +1,14 @@
+import{i as e}from"./preload-helper-7yf7uBoM.js";import{t}from"./jsx-runtime-DvpvSDnr.js";var n,r,i,a,o=e((()=>{n=t(),r={en:{label:`English`,code:`en`,href:`/en/`},es:{label:`Español`,code:`es`,href:`/es/`},zh:{label:`中文`,code:`zh`},vi:{label:`Tiếng Việt`,code:`vi`},ko:{label:`한국어`,code:`ko`},tl:{label:`Tagalog`,code:`tl`},ru:{label:`Pусский`,code:`ru`},ar:{label:`العربية`,code:`ar`},ht:{label:`Kreyòl Ayisyen`,code:`ht`}},i=[`en`,`es`,`zh`,`vi`,`ko`,`tl`,`ru`,`ar`,`ht`],a=({code:e,href:t,label:i,languageMap:a=r,...o})=>{let s=a[e],c=e,l=e,u=i,d=t;return s&&(c=s.code,l=s.code,u=i??s.label,d=s.href||t),(0,n.jsx)(`a`,{href:d??`/language/${c}/`,hrefLang:c,lang:l,...o,children:u})};try{a.displayName=`LanguageLink`,a.__docgenInfo={description:`CFGov language link`,displayName:`LanguageLink`,filePath:`/home/runner/work/design-system-react/design-system-react/src/components/banner/banner-language-link.tsx`,methods:[],props:{code:{defaultValue:null,declarations:[{fileName:`design-system-react/src/components/banner/banner-language-link.tsx`,name:`LanguageLinkProperties`}],description:``,name:`code`,parent:{fileName:`design-system-react/src/components/banner/banner-language-link.tsx`,name:`LanguageLinkProperties`},required:!0,tags:{},type:{name:`string`}},href:{defaultValue:null,declarations:[{fileName:`design-system-react/src/components/banner/banner-language-link.tsx`,name:`LanguageLinkProperties`}],description:``,name:`href`,parent:{fileName:`design-system-react/src/components/banner/banner-language-link.tsx`,name:`LanguageLinkProperties`},required:!1,tags:{},type:{name:`string`}},label:{defaultValue:null,declarations:[{fileName:`design-system-react/src/components/banner/banner-language-link.tsx`,name:`LanguageLinkProperties`}],description:``,name:`label`,parent:{fileName:`design-system-react/src/components/banner/banner-language-link.tsx`,name:`LanguageLinkProperties`},required:!1,tags:{},type:{name:`string`}},languageMap:{defaultValue:{value:`{
+  en: { label: 'English', code: 'en', href: '/en/' },
+  es: { label: 'Español', code: 'es', href: '/es/' },
+  zh: { label: '中文', code: 'zh' },
+  vi: { label: 'Tiếng Việt', code: 'vi' },
+  ko: { label: '한국어', code: 'ko' },
+  tl: { label: 'Tagalog', code: 'tl' },
+  ru: { label: 'Pусский', code: 'ru' },
+  ar: { label: 'العربية', code: 'ar' },
+  ht: { label: 'Kreyòl Ayisyen', code: 'ht' },
+}`},declarations:[{fileName:`design-system-react/src/components/banner/banner-language-link.tsx`,name:`LanguageLinkProperties`}],description:``,name:`languageMap`,parent:{fileName:`design-system-react/src/components/banner/banner-language-link.tsx`,name:`LanguageLinkProperties`},required:!1,tags:{},type:{name:`LanguageDefinition`}}},tags:{param:`code Language code
+href URL
+label Display text
+languageMap A collection of language definitions`,returns:`JSX.Element`}}}catch{}}));export{a as n,o as r,i as t};

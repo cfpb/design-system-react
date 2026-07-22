@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { List } from '../../index';
+import { default as List } from './list';
 declare const meta: Meta<typeof List>;
 export default meta;
 type Story = StoryObj<typeof meta>;

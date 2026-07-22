@@ -11,10 +11,10 @@
 */
 
 /**
- * Source Sans 3 is loaded via `@fontsource-variable/source-sans-3` in **`src/index.ts`** (apps)
- * and **`.storybook/preview.js`** (Storybook, including nested “All viewports” iframes) before
- * `_shared.scss` so `@font-face` is always registered.
- *
+ * Source Sans 3 and this file are loaded via **`entry-styles.ts`**, imported from
+ * **`src/index.ts`** and **`.storybook/preview.js`**, so `@font-face` is always registered
+ * (including nested “All viewports” Storybook iframes).
+ * DS component rules load from **`ds-components.ts`** via the same entry.
  * DS `custom-props` sets `--font-stack-branded: initial`, so `var(--font-stack)` falls back to
  * `system-ui`. Other DS chunks can repeat that `:root` block when code-split; in dev the last
  * chunk can win and wipe a non-`!important` override. Pin both tokens with `!important` so inputs,

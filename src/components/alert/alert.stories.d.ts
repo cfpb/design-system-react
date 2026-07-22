@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { Alert, AlertFieldLevel } from '../../index';
+import { Alert } from './alert';
+import { AlertFieldLevel } from './alert-field-level';
 declare const meta: Meta<typeof Alert>;
 export default meta;
 type Story = StoryObj<typeof meta>;
