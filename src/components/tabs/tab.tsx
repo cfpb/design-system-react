@@ -1,18 +1,34 @@
 import classnames from 'classnames';
-import type { HTMLAttributes, ReactNode, MouseEvent } from 'react';
+import type {
+  ButtonHTMLAttributes,
+  HTMLAttributes,
+  MouseEvent,
+  ReactNode,
+} from 'react';
 import type { JSXElement } from '../../types/jsx-element';
-import { Button } from '../buttons/button';
-import type { ButtonProperties } from '../buttons/button';
+import { Icon } from '../icon/icon';
 import './tab.scss';
 
 export interface TabProperties extends Omit<
-  ButtonProperties,
-  'appearance' | 'size' | 'isLink'
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  'children'
 > {
   /**
    * Id for the tab. Allows it to be associated with its content panel.
    */
   id: string;
+  /**
+   * Visible tab label. Prefer this over children when using icons.
+   */
+  label?: string;
+  /**
+   * Name of icon to display left of tab text
+   */
+  iconLeft?: string;
+  /**
+   * Name of icon to display right of tab text
+   */
+  iconRight?: string;
   /**
    * Any additional classes for the tab
    */
@@ -37,15 +53,28 @@ export const Tab = ({
   isActive,
   onClick = () => null,
   children,
+  label,
+  iconLeft,
+  iconRight,
+  type = 'button',
   ...properties
 }: TabProperties): JSXElement => {
   const cname = classnames('tab', className, { 'tab--active': isActive });
 
+  if (iconLeft && iconRight) {
+    throw new Error(
+      'Tab component: only one of iconLeft or iconRight can be provided',
+    );
+  }
+
+  const hasIcons = Boolean(iconLeft || iconRight);
+  const labelNode = label ? (hasIcons ? <span>{label}</span> : label) : null;
+
   return (
-    <Button
+    <button
+      type={type}
       role='tab'
       onClick={onClick}
-      isLink
       className={cname}
       id={`tab-${id}`}
       aria-controls={`tabpanel-${id}`}
@@ -54,7 +83,14 @@ export const Tab = ({
       {...properties}
     >
       {children}
-    </Button>
+      {iconLeft ? (
+        <Icon name={iconLeft} isPresentational data-testid='tab-icon-left' />
+      ) : null}
+      {labelNode}
+      {iconRight ? (
+        <Icon name={iconRight} isPresentational data-testid='tab-icon-right' />
+      ) : null}
+    </button>
   );
 };
 

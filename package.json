@@ -18,7 +18,8 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./index.css": "./dist/index.css"
+    "./index.css": "./dist/index.css",
+    "./dsr.css": "./dist/dsr.css"
   },
   "files": [
     "dist"
@@ -27,8 +28,8 @@
     "node": ">=26.x"
   },
   "scripts": {
-    "build": "vite build",
-    "prepack": "vite build",
+    "build": "vite build && vite build -c vite.dsr-css.config.ts && node scripts/cleanup-dsr-css-entry.mjs",
+    "prepack": "yarn build",
     "prepare": "husky",
     "commit": "cz",
     "dev": "vite --open",

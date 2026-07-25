@@ -54,7 +54,7 @@ export default function SomePage(): ReactElement {
 
 DSR components render the same CSS class names as `@cfpb/cfpb-design-system` (for example `.a-btn`, `.m-form-field`). **Styles must be loaded separately** — importing React components alone does not apply CFPB styling.
 
-There are **two supported patterns**. Pick one global CSS source for your app — **do not load both**.
+There are **two supported patterns**. Pick one for Design System coverage — **do not load Pattern A’s `index.css` together with full DS CSS**.
 
 ### Pattern A: DSR CSS only (new React apps)
 
@@ -69,22 +69,23 @@ import '@cfpb/design-system-react/index.css';
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **You get**           | DS styles for components listed in [`src/assets/styles/ds-components.ts`](src/assets/styles/ds-components.ts), plus Source Sans 3 (embedded), plus DSR-specific overrides |
 | **You still install** | `@cfpb/cfpb-design-system` (peer dependency — web components, version alignment)                                                                                          |
-| **You do not import** | `@cfpb/cfpb-design-system/dist/index.css` or `@use '…/src/index'` in your app                                                                                             |
+| **You do not import** | `@cfpb/cfpb-design-system/dist/index.css`, `@use '…/src/index'`, or `@cfpb/design-system-react/dsr.css` (already included in `index.css`)                                  |
 | **Best for**          | Greenfield React apps that mostly use DSR components (`dsr-test`, new internal tools)                                                                                     |
 
 The [`ds-components.ts`](src/assets/styles/ds-components.ts) barrel is the **library-maintained list** of DS SCSS files that feed `dist/index.css`. DSR contributors add to it when new React components need DS styles. App developers using Pattern A do not touch that file.
 
-### Pattern B: Full DS CSS + DSR components (existing CFPB apps)
+### Pattern B: Full DS CSS + thin `dsr.css` (existing CFPB apps)
 
 For apps that already load the full Design System — Sass-based properties, hand-rolled DS markup, cf.gov-style setups (for example apps that use `.o-expandable`, `.m-list`, `.m-btn-group` outside DSR components).
 
-Import **DSR components only**. Do **not** import `@cfpb/design-system-react/index.css`.
+Import **DSR React components** plus the thin companion stylesheet for DSR-only styles (Tabs, React overrides). Do **not** import `@cfpb/design-system-react/index.css`.
 
 **JavaScript / prebuilt CSS:**
 
 ```ts
-// App entry — components from DSR, styles from DS
-import { Button, Heading } from '@cfpb/design-system-react';
+// App entry — components from DSR; DSR-only styles (Tabs, etc.)
+import { Button, Heading, Tab, TabList } from '@cfpb/design-system-react';
+import '@cfpb/design-system-react/dsr.css';
 // No: import '@cfpb/design-system-react/index.css';
 ```
 
@@ -103,11 +104,13 @@ import { Button, Heading } from '@cfpb/design-system-react';
 
 |                       |                                                                                                                                                     |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **You get**           | Full DS component CSS (expandables, lists, button groups, cards, …) and your existing Sass mixins/variables via `@use '…/abstracts'`                |
+| **You get**           | Full DS component CSS from Design System, plus DSR-authored styles from `dsr.css` (Tabs, alert/banner/header overrides, …)                          |
 | **You still install** | Both `@cfpb/design-system-react` and `@cfpb/cfpb-design-system`                                                                                     |
 | **You do not import** | `@cfpb/design-system-react/index.css` — it duplicates DS rules and embeds fonts a second time                                                       |
 | **Fonts**             | Load Source Sans yourself (for example `@fontsource-variable/source-sans-3` + DS `licensed-font` mixin). DS `dist/index.css` does not include fonts |
 | **Best for**          | Legacy apps mixing DSR React components with plain DS class names in JSX/SCSS                                                                       |
+
+`dsr.css` is built from [`src/assets/styles/dsr-styles.ts`](src/assets/styles/dsr-styles.ts). It intentionally **excludes** fonts and Design System molecule CSS.
 
 Per-component `@use '@cfpb/cfpb-design-system/src/abstracts'` in your app SCSS is fine — that is Sass API (breakpoints, mixins), not duplicate component CSS.
 
@@ -117,33 +120,45 @@ Per-component `@use '@cfpb/cfpb-design-system/src/abstracts'` in your app SCSS i
 | ------------------------------------- | ----------------------------------------- | ----------------------------------------------------- |
 | `@cfpb/design-system-react/index.css` | `@cfpb/cfpb-design-system/dist/index.css` | Duplicate button/form/alert rules; fonts loaded twice |
 | `@cfpb/design-system-react/index.css` | `@use '…/src/index'` in Sass              | Same duplication                                      |
+| `@cfpb/design-system-react/index.css` | `@cfpb/design-system-react/dsr.css`       | Duplicate DSR-authored rules (tabs, overrides)        |
 
-DSR React components work with either pattern — they emit standard DS classes. Pattern B apps rely on the app’s global DS stylesheet; Pattern A apps rely on the library’s `index.css`.
+DSR React components work with either pattern — they emit standard DS classes. Pattern B apps rely on the app’s global DS stylesheet **plus** `dsr.css` for Tabs and other React-only styles. Pattern A apps rely on the library’s `index.css` alone.
 
 ### Choosing a pattern
 
 | Your situation                                                            | Use                                                                                                                                                |
 | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| New React app, Vite/CRA, mostly DSR components                            | **Pattern A**                                                                                                                                      |
-| Existing app with `dist/index.css` or `@use '…/src/index'` in global SCSS | **Pattern B**                                                                                                                                      |
-| App uses hand-rolled `.o-expandable`, `.m-list`, `.m-btn-group`, etc.     | **Pattern B** (DSR barrel does not include every DS module)                                                                                        |
+| New React app, Vite/CRA, mostly DSR components                            | **Pattern A** (`index.css`)                                                                                                                        |
+| Existing app with `dist/index.css` or `@use '…/src/index'` in global SCSS | **Pattern B** (full DS CSS + `dsr.css`)                                                                                                            |
+| App uses hand-rolled `.o-expandable`, `.m-list`, `.m-btn-group`, etc.     | **Pattern B**                                                                                                                                      |
+| Need default DSR Tabs without duplicating full DS CSS                     | **Pattern B** + `import '@cfpb/design-system-react/dsr.css'`                                                                                       |
 | Something looks unstyled on Pattern A                                     | Add the DS file to [`ds-components.ts`](src/assets/styles/ds-components.ts) in DSR, or temporarily switch to Pattern B until the barrel is updated |
 
 ### What `ds-components.ts` covers today
 
 Styles bundled into `@cfpb/design-system-react/index.css` (Pattern A only):
 
-| React area                                   | DS stylesheet (under `@cfpb/cfpb-design-system/src/components/…`)                             |
-| -------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `Button`                                     | `cfpb-buttons/button`, `cfpb-buttons/button-link`                                             |
-| `Heading` (`type="slug"`)                    | `cfpb-typography/slug-header`                                                                 |
-| `Pagination`                                 | `cfpb-pagination/pagination`                                                                  |
-| Forms (`TextInput`, `Checkbox`, `Select`, …) | `cfpb-forms/form`, `form-field`, `label`, `text-input`, `select`, `multiselect`, `form-alert` |
-| `Alert`                                      | `cfpb-notifications/notification` (+ DSR overrides in `alert.scss`)                           |
-| `Table`                                      | `cfpb-tables/table`                                                                           |
-| `Well`, `Divider`                            | `cfpb-layout/well`, `cfpb-layout/layout`                                                      |
+| React area                                   | DS stylesheet (under `@cfpb/cfpb-design-system/src/components/…`)                                                             |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `Button`, `ButtonGroup`                      | `cfpb-buttons/button`, `button-link`, `button-group`                                                                          |
+| `Heading` (`type="slug"`), `Link`, `List`    | `cfpb-typography/slug-header`, `link`, `list`                                                                                 |
+| `Pagination`                                 | `cfpb-pagination/pagination`                                                                                                  |
+| Forms (`TextInput`, `Checkbox`, `Select`, …) | `cfpb-forms/form`, `form-field`, `label`, `text-input`, `select`, `multiselect`, `form-alert`, `search-input`                 |
+| `Expandable`, `ExpandableGroup`, `Summary`   | `cfpb-expandables/expandable`, `expandable-group`, `summary`, `summary-minimal`                                               |
+| `Alert`                                      | `cfpb-notifications/notification` (+ DSR overrides in `alert.scss`)                                                           |
+| `Table`                                      | `cfpb-tables/table`                                                                                                           |
+| `Well`, `Divider`, `Hero`, `TextIntroduction`| `cfpb-layout/well`, `layout`, `hero`, `text-introduction`                                                                     |
 
-Not in the barrel (Pattern B or future DSR work): expandables, lists, button groups, link typography, hero, cards, and other DS modules. Pattern B apps get these from full DS CSS automatically.
+Still not every DS module (for example cards). Pattern B apps get remaining DS coverage from full Design System CSS.
+
+### What `dsr.css` covers (Pattern B companion)
+
+Built from [`src/assets/styles/dsr-styles.ts`](src/assets/styles/dsr-styles.ts):
+
+| Area | Notes |
+| ---- | ----- |
+| `Tab` / `TabList` / `TabPanel` | DSR-only until Tabs land in `cfpb-design-system` |
+| Alert, banner, breadcrumb, fieldset, footer, grid, header, hero, layout, link, secondary-nav, skip-nav, table, text-input | React-authored overrides / chrome not shipped by DS `dist/index.css` |
 
 ### Other options (advanced)
 
@@ -156,7 +171,7 @@ Not in the barrel (Pattern B or future DSR work): expandables, lists, button gro
 @use '@cfpb/cfpb-design-system/src/components/cfpb-typography/link';
 ```
 
-Load fonts yourself. This is a slimmer alternative to Pattern B when you control exactly which DS patterns you use. See [`ds-components.ts`](src/assets/styles/ds-components.ts) for the library’s curated equivalent on Pattern A.
+Load fonts yourself. This is a slimmer alternative to Pattern B when you control exactly which DS patterns you use. See [`ds-components.ts`](src/assets/styles/ds-components.ts) for the library’s curated equivalent on Pattern A. If you also use Tabs, still import `@cfpb/design-system-react/dsr.css` (or only `@use` `tab.scss` from source).
 
 **Abstracts/base only** — `@use '…/src/abstracts'` and `@use '…/src/base'` give tokens and global typography, **not** component rules (no `.a-btn`). You still need Pattern A, Pattern B, or à la carte component imports.
 
@@ -203,7 +218,8 @@ Per-component `.scss` files (for example `banner.scss`, `link.scss`) still load 
 ```js
 // App.js — global SCSS already loads DS via base.scss
 import './css/App.scss';
-import { Button, Heading } from '@cfpb/design-system-react';
+import { Button, Heading, Tab, TabList } from '@cfpb/design-system-react';
+import '@cfpb/design-system-react/dsr.css';
 // Do not import '@cfpb/design-system-react/index.css'
 ```
 
