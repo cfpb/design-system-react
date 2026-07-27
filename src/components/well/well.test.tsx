@@ -31,7 +31,7 @@ describe('<WellContent />', () => {
   it('Displays elements', () => {
     render(<WellContent {...Content.args} />);
 
-    const headingText = Content.args!.heading;
+    const headingText = Content.args!.heading as string;
     const heading = screen.getByText(headingText);
     expect(heading).toHaveClass('h3');
 

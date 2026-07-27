@@ -11,7 +11,7 @@ export const description =
 export const callToActionText = 'Call-to-action link';
 
 export const callToAction = (
-  <ListLink href='/#' key='example1' label='Call-to-action link' />
+  <ListLink to='/#' key='example1' label='Call-to-action link' />
 );
 
 export const placeholders = {

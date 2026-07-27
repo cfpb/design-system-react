@@ -1,6 +1,12 @@
 declare module '@cfpb/cfpb-design-system/src/components/cfpb-forms' {
   export class Multiselect {
     constructor(element: HTMLElement | null);
-    init(options?: { maxSelections?: number; renderTags?: boolean }): void;
+    init(options?: {
+      maxSelections?: number;
+      renderTags?: boolean;
+    }): Multiselect;
+    getModel(): { getSelectedIndices(): number[] };
+    addEventListener(type: string, listener: () => void): void;
+    removeEventListener(type: string, listener: () => void): void;
   }
 }

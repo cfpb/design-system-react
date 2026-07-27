@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
 import { Alert } from './alert';
-import { AlertFieldLevel } from './alert-field-level';
+import {
+  AlertFieldLevel,
+  type AlertFieldLevelType,
+} from './alert-field-level';
 import { TextInput } from '../text-input/text-input';
+import type { TextInputStatusType } from '../text-input/text-input-status';
 
 const meta: Meta<typeof Alert> = {
   title: 'Components (Draft)/Alerts',
@@ -26,7 +30,7 @@ const alertExplanation = (type: string): string =>
   `This is an optional explanation of the ${type}.`;
 
 const externalLinkProperties = {
-  href: '/',
+  to: '/',
   label: 'This is an external link',
   isExternal: true,
 };
@@ -61,7 +65,7 @@ export const InformationWithLinks: Story = {
     children: 'This is the explanation of the alert.',
     links: [
       {
-        href: '/',
+        to: '/',
         label: 'This is a link below the explanation',
       },
       externalLinkProperties,
@@ -112,13 +116,20 @@ export const InProgress: Story = {
   },
 };
 
+const textInputStatus = (
+  status?: AlertFieldLevelType,
+): TextInputStatusType | undefined =>
+  status === 'error' || status === 'warning' || status === 'success'
+    ? status
+    : undefined;
+
 export const SuccessFieldLevel: FieldLevelStory = {
   render: (_arguments) => (
     <div className='m-form-field'>
       <TextInput
         id={_arguments.status as string}
         name={_arguments.status as string}
-        status={_arguments.status}
+        status={textInputStatus(_arguments.status)}
         placeholder='Input text'
         type='text'
       />
@@ -138,7 +149,7 @@ export const WarningFieldLevel: FieldLevelStory = {
       <TextInput
         id={_arguments.status as string}
         name={_arguments.status as string}
-        status={_arguments.status}
+        status={textInputStatus(_arguments.status)}
         placeholder='Input text'
         type='text'
       />
@@ -158,7 +169,7 @@ export const ErrorFieldLevel: FieldLevelStory = {
       <TextInput
         id={_arguments.status as string}
         name={_arguments.status as string}
-        status={_arguments.status}
+        status={textInputStatus(_arguments.status)}
         placeholder='Input text'
         type='text'
       />

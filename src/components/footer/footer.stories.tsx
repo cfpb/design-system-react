@@ -32,8 +32,8 @@ export const App: Story = {
   render: () => (
     <AppFooter
       navLinks={[
-        <Link label='Link 1' key='link_1' href='#' />,
-        <Link label='Longer link 2' key='link_2' href='#' />,
+        <Link label='Link 1' key='link_1' to='#' />,
+        <Link label='Longer link 2' key='link_2' to='#' />,
       ]}
       footerContent={
         <>
@@ -44,7 +44,7 @@ export const App: Story = {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </Paragraph>
-          <Link href='#'>Link</Link>
+          <Link to='#'>Link</Link>
         </>
       }
     />

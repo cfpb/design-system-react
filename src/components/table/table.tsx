@@ -68,7 +68,7 @@ export interface TableProperties {
  */
 export const Table = forwardRef<
   HTMLDivElement,
-  HTMLProps<HTMLTableElement> & TableProperties
+  Omit<HTMLProps<HTMLTableElement>, 'rows'> & TableProperties
 >(
   (
     {

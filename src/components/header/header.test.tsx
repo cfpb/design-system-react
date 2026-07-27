@@ -21,8 +21,10 @@ describe('Header', () => {
 
   it('Renders with bottom border by default', () => {
     const { container } = render(<Header />);
-    expect(container.firstChild.className).toBe('o-header-scope');
-    expect(container.firstChild.firstChild?.className).toBe(
+    expect((container.firstChild as HTMLElement).className).toBe(
+      'o-header-scope',
+    );
+    expect((container.firstChild?.firstChild as HTMLElement).className).toBe(
       'o-header bottom-border',
     );
   });

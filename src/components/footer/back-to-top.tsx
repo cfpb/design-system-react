@@ -8,7 +8,7 @@ export const BackToTop = (): JSX.Element => (
     data-gtm_ignore='true'
     data-js-hook='behavior_return-to-top'
     data-testid='back-to-top'
-    href='#'
+    to='#'
     iconRight='arrow-up'
   />
 );

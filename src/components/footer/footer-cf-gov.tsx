@@ -143,19 +143,19 @@ export const FooterCfGov = ({
   const linksCol3 = [
     <Link
       key='usa-gov'
-      href='https://usa.gov/'
+      to='https://usa.gov/'
       label='USA.gov'
       iconRight='external-link'
     />,
     <Link
       key='inspector'
-      href='https://oig.federalreserve.gov/'
+      to='https://oig.federalreserve.gov/'
       label='Office of Inspector General'
       iconRight='external-link'
     />,
     <Link
       key='archive'
-      href='https://archive-it.org/organizations/2800'
+      to='https://archive-it.org/organizations/2800'
       label='Public Archive'
       iconRight='external-link'
     />,
