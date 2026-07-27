@@ -2,10 +2,10 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ReactElement, useState } from 'react';
+import { noOp } from '../../utils/no-op';
 import { Pagination } from './pagination';
 
 const user = userEvent.setup();
-const noOp = (): void => {};
 
 const ControlledPagination = (): ReactElement => {
   const [page, setPage] = useState(2);

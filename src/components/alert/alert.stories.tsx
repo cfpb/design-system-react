@@ -119,7 +119,7 @@ export const InProgress: Story = {
 const textInputStatus = (
   status?: AlertFieldLevelType,
 ): TextInputStatusType | undefined =>
-  status === 'error' || status === 'warning' || status === 'success'
+  status !== undefined && ['error', 'warning', 'success'].includes(status)
     ? status
     : undefined;
 
