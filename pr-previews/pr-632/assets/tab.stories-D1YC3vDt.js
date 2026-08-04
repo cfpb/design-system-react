@@ -1,7 +1,0 @@
-import{i as e,s as t}from"./preload-helper-BdFrVu1K.js";import{t as n}from"./react-B82b4cNX.js";import{t as r}from"./jsx-runtime-f3rHp9ZU.js";import{n as i,t as a}from"./heading-Q3xdSld3.js";import{i as o,n as s,r as c,t as l}from"./tab-DWCEh5u2.js";var u,d,f,p,m,h,g;e((()=>{u=t(n(),1),i(),o(),d=r(),f={title:`Components (Draft)/Tabs`,tags:[`autodocs`],component:l,argTypes:{}},p=({isInverted:e=!1})=>{let[t,n]=(0,u.useState)(`one`),r=e=>{n(e.currentTarget.value)};return(0,d.jsxs)(d.Fragment,{children:[(0,d.jsxs)(s,{isInverted:e,children:[(0,d.jsx)(l,{id:`one`,value:`one`,isActive:t===`one`,iconLeft:`list`,label:`Tab one`,onClick:r}),(0,d.jsx)(l,{id:`two`,value:`two`,isActive:t===`two`,iconLeft:`chart`,label:`Tab two`,onClick:r}),(0,d.jsx)(l,{id:`three`,value:`three`,isActive:t===`three`,iconLeft:`map`,label:`Tab three`,onClick:r})]}),(0,d.jsx)(c,{id:t,style:{padding:`30px`},children:(0,d.jsxs)(a,{type:`4`,children:[`Panel `,t]})})]})},m={name:`Tabs`,render:()=>(0,d.jsx)(p,{})},h={name:`Tabs (inverted backgrounds)`,render:()=>(0,d.jsx)(p,{isInverted:!0})},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
-  name: 'Tabs',
-  render: () => <TabsDemo />
-}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
-  name: 'Tabs (inverted backgrounds)',
-  render: () => <TabsDemo isInverted />
-}`,...h.parameters?.docs?.source}}},g=[`Default`,`Inverted`]}))();export{m as Default,h as Inverted,g as __namedExportsOrder,f as default};
