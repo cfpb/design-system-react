@@ -27,8 +27,13 @@ export declare const Tab: ({ id, className, isActive, onClick, children, ...prop
 export interface TabListProperties extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     children?: ReactNode;
+    /**
+     * Render tabs without fills. Same chrome as default tabs (active border,
+     * inactive link styles), but transparent backgrounds on every tab.
+     */
+    isInverted?: boolean;
 }
-export declare const TabList: ({ className, children, ...properties }: TabListProperties) => JSXElement;
+export declare const TabList: ({ className, children, isInverted, ...properties }: TabListProperties) => JSXElement;
 export interface TabPanelProperties extends HTMLAttributes<HTMLDivElement> {
     id: string;
     className?: string;

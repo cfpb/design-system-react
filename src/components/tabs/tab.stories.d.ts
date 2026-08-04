@@ -4,3 +4,4 @@ declare const meta: Meta<typeof Tab>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
+export declare const Inverted: Story;
