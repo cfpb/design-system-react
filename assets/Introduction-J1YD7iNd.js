@@ -1,0 +1,12 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{E as t,T as n,a as r,o as i}from"./blocks-Dngy6R4F.js";import{t as a}from"./jsx-runtime-DeHZSEgm.js";import{n as o}from"./icon-BCAy4L2c.js";import{n as s,t as c}from"./heading-CvNMdgoP.js";function l(e){let n={a:`a`,code:`code`,p:`p`,pre:`pre`,...t(),...e.components};return(0,d.jsxs)(d.Fragment,{children:[(0,d.jsx)(r,{title:`Guides/Introduction`}),`
+`,(0,d.jsx)(c,{type:`1`,children:`CFPB Design System React`}),`
+`,(0,d.jsxs)(n.p,{children:[`This library contains React implementations of the `,(0,d.jsx)(n.a,{href:`https://cfpb.github.io/design-system/`,rel:`nofollow`,children:`CFPB Design System's`}),` components and patterns.`]}),`
+`,(0,d.jsx)(c,{type:`2`,children:`Installation`}),`
+`,(0,d.jsxs)(n.p,{children:[`The `,(0,d.jsx)(n.code,{children:`@cfpb/design-system-react`}),` library is released as an `,(0,d.jsx)(n.a,{href:`https://www.npmjs.com/package/@cfpb/design-system-react`,rel:`nofollow`,children:`NPM package`}),`.`]}),`
+`,(0,d.jsx)(n.p,{children:`To install the package:`}),`
+`,(0,d.jsx)(n.pre,{children:(0,d.jsx)(n.code,{children:`yarn add @cfpb/design-system-react
+`})}),`
+`,(0,d.jsx)(c,{type:`2`,children:`Components - Verified vs Draft`}),`
+`,(0,d.jsxs)(n.p,{children:[`This library is still in it's early stages of development, with lots of changes expected in the coming months.  You will notice two subsections in the navigation sidebar: `,(0,d.jsx)(n.code,{children:`Components (Verified)`}),` and `,(0,d.jsx)(n.code,{children:`Components (Draft)`}),`.`]}),`
+`,(0,d.jsxs)(n.p,{children:[(0,d.jsx)(n.code,{children:`Verified`}),` components have been thoroughly reviewed for consistency with their `,(0,d.jsx)(n.a,{href:`https://cfpb.github.io/design-system/`,rel:`nofollow`,children:`Design System`}),` counterparts and can be considered unlikely to change in the near future.`]}),`
+`,(0,d.jsxs)(n.p,{children:[(0,d.jsx)(n.code,{children:`Draft`}),` components should be viewed as works-in-progress and may still undergo breaking changes in the near future in order to align their implementations with the `,(0,d.jsx)(n.a,{href:`https://cfpb.github.io/design-system/`,rel:`nofollow`,children:`Design System`}),`.`]})]})}function u(e={}){let{wrapper:n}={...t(),...e.components};return n?(0,d.jsx)(n,{...e,children:(0,d.jsx)(l,{...e})}):l(e)}var d;function f(){return(f=e((()=>{d=a(),n(),i(),o(),s()})))()}f();export{u as default};
