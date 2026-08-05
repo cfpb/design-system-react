@@ -69,7 +69,7 @@ import '@cfpb/design-system-react/index.css';
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **You get**           | DS styles for components listed in [`src/assets/styles/ds-components.ts`](src/assets/styles/ds-components.ts), plus Source Sans 3 (embedded), plus DSR-specific overrides |
 | **You still install** | `@cfpb/cfpb-design-system` (peer dependency — web components, version alignment)                                                                                          |
-| **You do not import** | `@cfpb/cfpb-design-system/dist/index.css`, `@use '…/src/index'`, or `@cfpb/design-system-react/dsr.css` (already included in `index.css`)                                  |
+| **You do not import** | `@cfpb/cfpb-design-system/dist/index.css`, `@use '…/src/index'`, or `@cfpb/design-system-react/dsr.css` (already included in `index.css`)                                 |
 | **Best for**          | Greenfield React apps that mostly use DSR components (`dsr-test`, new internal tools)                                                                                     |
 
 The [`ds-components.ts`](src/assets/styles/ds-components.ts) barrel is the **library-maintained list** of DS SCSS files that feed `dist/index.css`. DSR contributors add to it when new React components need DS styles. App developers using Pattern A do not touch that file.
@@ -138,16 +138,16 @@ DSR React components work with either pattern — they emit standard DS classes.
 
 Styles bundled into `@cfpb/design-system-react/index.css` (Pattern A only):
 
-| React area                                   | DS stylesheet (under `@cfpb/cfpb-design-system/src/components/…`)                                                             |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `Button`, `ButtonGroup`                      | `cfpb-buttons/button`, `button-link`, `button-group`                                                                          |
-| `Heading` (`type="slug"`), `Link`, `List`    | `cfpb-typography/slug-header`, `link`, `list`                                                                                 |
-| `Pagination`                                 | `cfpb-pagination/pagination`                                                                                                  |
-| Forms (`TextInput`, `Checkbox`, `Select`, …) | `cfpb-forms/form`, `form-field`, `label`, `text-input`, `select`, `multiselect`, `form-alert`, `search-input`                 |
-| `Expandable`, `ExpandableGroup`, `Summary`   | `cfpb-expandables/expandable`, `expandable-group`, `summary`, `summary-minimal`                                               |
-| `Alert`                                      | `cfpb-notifications/notification` (+ DSR overrides in `alert.scss`)                                                           |
-| `Table`                                      | `cfpb-tables/table`                                                                                                           |
-| `Well`, `Divider`, `Hero`, `TextIntroduction`| `cfpb-layout/well`, `layout`, `hero`, `text-introduction`                                                                     |
+| React area                                    | DS stylesheet (under `@cfpb/cfpb-design-system/src/components/…`)                                             |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `Button`, `ButtonGroup`                       | `cfpb-buttons/button`, `button-link`, `button-group`                                                          |
+| `Heading` (`type="slug"`), `Link`, `List`     | `cfpb-typography/slug-header`, `link`, `list`                                                                 |
+| `Pagination`                                  | `cfpb-pagination/pagination`                                                                                  |
+| Forms (`TextInput`, `Checkbox`, `Select`, …)  | `cfpb-forms/form`, `form-field`, `label`, `text-input`, `select`, `multiselect`, `form-alert`, `search-input` |
+| `Expandable`, `ExpandableGroup`, `Summary`    | `cfpb-expandables/expandable`, `expandable-group`, `summary`, `summary-minimal`                               |
+| `Alert`                                       | `cfpb-notifications/notification` (+ DSR overrides in `alert.scss`)                                           |
+| `Table`                                       | `cfpb-tables/table`                                                                                           |
+| `Well`, `Divider`, `Hero`, `TextIntroduction` | `cfpb-layout/well`, `layout`, `hero`, `text-introduction`                                                     |
 
 Still not every DS module (for example cards). Pattern B apps get remaining DS coverage from full Design System CSS.
 
@@ -155,9 +155,9 @@ Still not every DS module (for example cards). Pattern B apps get remaining DS c
 
 Built from [`src/assets/styles/dsr-styles.ts`](src/assets/styles/dsr-styles.ts):
 
-| Area | Notes |
-| ---- | ----- |
-| `Tab` / `TabList` / `TabPanel` | DSR-only until Tabs land in `cfpb-design-system` |
+| Area                                                                                                                      | Notes                                                                |
+| ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `Tab` / `TabList` / `TabPanel`                                                                                            | DSR-only until Tabs land in `cfpb-design-system`                     |
 | Alert, banner, breadcrumb, fieldset, footer, grid, header, hero, layout, link, secondary-nav, skip-nav, table, text-input | React-authored overrides / chrome not shipped by DS `dist/index.css` |
 
 ### Other options (advanced)

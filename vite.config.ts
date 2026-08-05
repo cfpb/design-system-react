@@ -7,8 +7,8 @@ import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
-import { name } from './package.json';
-import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
+import { name } from './package.json' with { type: 'json' };
+import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader.ts';
 
 const __dirname = import.meta.dirname;
 const { resolve } = path;

@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
 import { Alert } from './alert';
-import {
-  AlertFieldLevel,
-  type AlertFieldLevelType,
-} from './alert-field-level';
+import { AlertFieldLevel, type AlertFieldLevelType } from './alert-field-level';
 import { TextInput } from '../text-input/text-input';
 import type { TextInputStatusType } from '../text-input/text-input-status';
 

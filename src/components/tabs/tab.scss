@@ -4,6 +4,7 @@
 
 .tablist {
   display: flex;
+
   // Inset shadow sits in the background layer so an opaque active tab can cover
   // it. A real `border-bottom` paints above overlapping children and leaves a
   // hairline under the active tab (especially with subpixel heights / retina).
@@ -16,6 +17,7 @@
     padding: math.div(math.div($grid-gutter-width, 3), $base-font-size-px) + rem
       math.div($grid-gutter-width, $base-font-size-px) + rem;
     border: 1px solid transparent;
+
     // `heading-4` still sets margin-bottom at the xs breakpoint even when
     // `$has-margin-bottom` is false. That gap leaves the tablist rule hanging
     // below the tab fills (especially obvious on phone widths).
@@ -37,6 +39,7 @@
 
     &--active {
       color: var(--black);
+
       // Beat `.a-btn--link { background-color: transparent !important }` so the
       // active fill can cover the tablist rule.
       background-color: var(--gray-5) !important;

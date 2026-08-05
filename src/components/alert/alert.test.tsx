@@ -2,10 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
 import Paragraph from '../paragraph/paragraph';
 import { Alert, AlertType } from './alert';
-import {
-  AlertFieldLevel,
-  type AlertFieldLevelType,
-} from './alert-field-level';
+import { AlertFieldLevel, type AlertFieldLevelType } from './alert-field-level';
 
 const statusesWithModifier: AlertType[] = ['success', 'warning', 'error'];
 
