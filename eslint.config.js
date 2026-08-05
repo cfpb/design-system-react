@@ -105,6 +105,8 @@ export default tseslint.config(
       'unicorn/prevent-abbreviations': 'off', // Airbnb was less strict than Unicorn
       'unicorn/null-data-property': 'off',
       'unicorn/no-null': 'off',
+      // Prefer concise prop JSDoc (`/** ... */`) over forced multiline blocks.
+      'unicorn/single-line-block-comment-style': 'off',
       'react/prop-types': 'off', // Using TypeScript, so don't use PropTypes.
       // Resolver cannot resolve Vite/tsconfig path aliases or @cfpb/cfpb-design-system src subpaths.
       'import/no-unresolved': [

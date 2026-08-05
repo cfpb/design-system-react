@@ -113,12 +113,15 @@ export const InProgress: Story = {
   },
 };
 
+const textInputStatuses = ['error', 'warning', 'success'] as const;
+
+const isTextInputStatus = (status: string): status is TextInputStatusType =>
+  (textInputStatuses as readonly string[]).includes(status);
+
 const textInputStatus = (
   status?: AlertFieldLevelType,
 ): TextInputStatusType | undefined =>
-  status !== undefined && ['error', 'warning', 'success'].includes(status)
-    ? status
-    : undefined;
+  status !== undefined && isTextInputStatus(status) ? status : undefined;
 
 export const SuccessFieldLevel: FieldLevelStory = {
   render: (_arguments) => (
