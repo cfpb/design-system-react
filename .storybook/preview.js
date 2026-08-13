@@ -343,6 +343,13 @@ const withStorybookLinkNavigationGuard = (Story, context) => {
       return undefined;
     }
 
+    // Only guard the rendered component. Listening on document would also stop
+    // Storybook's own chrome, so the docs page links would go dead too.
+    const root = context.canvasElement;
+    if (!(root instanceof Element)) {
+      return undefined;
+    }
+
     const handleAnchorClick = (event) => {
       if (
         event.defaultPrevented ||
@@ -372,9 +379,9 @@ const withStorybookLinkNavigationGuard = (Story, context) => {
       event.preventDefault();
     };
 
-    document.addEventListener('click', handleAnchorClick, true);
+    root.addEventListener('click', handleAnchorClick, true);
     return () => {
-      document.removeEventListener('click', handleAnchorClick, true);
+      root.removeEventListener('click', handleAnchorClick, true);
     };
   }, [context.id, context.viewMode]);
 
