@@ -95,12 +95,12 @@ describe('Checkbox', () => {
 
   it('does not set indeterminate property on checkbox by default', () => {
     render(<Checkbox {...defaultProps} />);
-    
+
     const checkbox = screen.getByTestId(inputTestId);
     expect(checkbox.matches(':indeterminate')).toBe(false);
   });
 
-  it('does sets checkbox to indeterminate based on isIndeterminate prop', () => {
+  it('sets indeterminate property on checkbox if isIndeterminate is true', () => {
     render(<Checkbox {...defaultProps} isIndeterminate={true} />);
 
     const checkbox = screen.getByTestId(inputTestId);
