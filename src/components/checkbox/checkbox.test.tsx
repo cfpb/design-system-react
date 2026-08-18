@@ -92,4 +92,18 @@ describe('Checkbox', () => {
     const input = screen.getByTestId(`${id}-input`);
     expect(input).toHaveClass(cname);
   });
+
+  it('does not set indeterminate property on checkbox by default', () => {
+    render(<Checkbox {...defaultProps} />);
+    
+    const checkbox = screen.getByTestId(inputTestId);
+    expect(checkbox.matches(':indeterminate')).toBe(false);
+  });
+
+  it('does sets checkbox to indeterminate based on isIndeterminate prop', () => {
+    render(<Checkbox {...defaultProps} isIndeterminate={true} />);
+
+    const checkbox = screen.getByTestId(inputTestId);
+    expect(checkbox.matches(':indeterminate')).toBe(true);
+  });
 });

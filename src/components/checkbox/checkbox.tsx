@@ -1,9 +1,11 @@
 import classnames from 'classnames';
 import type { ChangeEvent, ReactElement, ReactNode, RefObject } from 'react';
-import { JSX, useCallback } from 'react';
+import { JSX, useCallback, useEffect, useRef } from 'react';
 import { HelperText } from '../helper-text/helper-text';
 
 import { Label } from '../label/label';
+import './checkbox.scss'
+
 
 export interface CheckboxProperties {
   /** Unique identifier for this checkbox */
@@ -33,6 +35,8 @@ export interface CheckboxProperties {
   /** Removes/Adds 'label__heading' class to the Label. When true, uses inline label style. */
   isLabelInline?: boolean;
   /** A name for this checkbox's value that can be referenced in javascript */
+  /** Apply indeterminate attribute to checkbox? */
+  isIndeterminate?: boolean
   name?: string;
   /** Is this checkbox disabled? */
   disabled?: boolean;
@@ -63,12 +67,15 @@ export const Checkbox = ({
   disabled = false,
   isLarge = false,
   isLabelInline = true,
+  isIndeterminate = false,
   name,
   onChange,
   status,
   ...properties
 }: CheckboxProperties & JSX.IntrinsicElements['input']): ReactElement => {
   const isControlled = checked !== undefined;
+  const internalRef = useRef(null);
+  const ref = inputRef ?? internalRef;
 
   const onChangeHandler = useCallback(
     (event: ChangeEvent<HTMLInputElement>): void => {
@@ -90,7 +97,7 @@ export const Checkbox = ({
     type: 'checkbox' as const,
     'aria-labelledby': `${id}-label`,
     name: name ?? id,
-    ref: inputRef,
+    ref: ref,
     disabled,
     onChange: onChangeHandler,
     'data-testid': `${id}-input`,
@@ -104,6 +111,12 @@ export const Checkbox = ({
       defaultChecked: defaultChecked ?? false,
     });
   }
+
+  useEffect(() => {
+    if (typeof ref === 'object' && ref.current !== null) {
+      ref.current.indeterminate = isIndeterminate
+    }
+  }, [isIndeterminate])
 
   return (
     <div
