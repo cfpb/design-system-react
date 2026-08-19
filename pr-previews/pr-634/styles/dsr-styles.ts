@@ -17,6 +17,7 @@ import '../../components/tabs/tab.scss';
 import '../../components/alert/alert.scss';
 import '../../components/banner/banner.scss';
 import '../../components/breadcrumb/breadcrumb.scss';
+import '../../components/checkbox/checkbox.scss';
 import '../../components/fieldset/fieldset.scss';
 import '../../components/footer/footer.scss';
 import '../../components/footer/social-media.scss';
