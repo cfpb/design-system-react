@@ -260,14 +260,10 @@ git checkout main
 git pull --rebase
 git checkout -b update-cfpb-ds
 yarn up @cfpb/cfpb-design-system
-# or, to pick upgrades in an interactive terminal menu: yarn upgrade-interactive
-yarn constraints --fix
 git add --all
 git commit -m 'chore: Update CFPB DS to <new.version.number>'
 git push
 ```
-
-`yarn up` and `yarn upgrade-interactive` both update `dependencies` / `devDependencies` only — neither writes `peerDependencies`. After either command, `yarn constraints --fix` copies those versions into `peerDependencies` (keeping any `^`/`~` prefix the peer already used). CI runs `yarn constraints` without `--fix` so a missed peer update fails the build.
 
 2. Review & merge the PR
 3. Upon merge, updates will be auto-deployed to [cfpb.github.io/design-system-react/](https://cfpb.github.io/design-system-react/)
