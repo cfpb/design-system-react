@@ -106,4 +106,20 @@ describe('Checkbox', () => {
     const checkbox = screen.getByTestId(inputTestId);
     expect(checkbox.matches(':indeterminate')).toBe(true);
   });
+
+  it('sets aria-checked to mixed when isIndeterminate is true', () => {
+    render(<Checkbox {...defaultProps} isIndeterminate />);
+
+    const checkbox = screen.getByTestId(inputTestId);
+    expect(checkbox).toHaveAttribute(attributeAria, 'mixed');
+  });
+
+  it('sets aria-checked to mixed in controlled mode when isIndeterminate is true', () => {
+    render(
+      <Checkbox {...defaultProps} checked={false} isIndeterminate />,
+    );
+
+    const checkbox = screen.getByTestId(inputTestId);
+    expect(checkbox).toHaveAttribute(attributeAria, 'mixed');
+  });
 });
