@@ -34,9 +34,9 @@ export interface CheckboxProperties {
   isLarge?: boolean;
   /** Removes/Adds 'label__heading' class to the Label. When true, uses inline label style. */
   isLabelInline?: boolean;
-  /** A name for this checkbox's value that can be referenced in javascript */
   /** Apply indeterminate attribute to checkbox? */
   isIndeterminate?: boolean
+  /** A name for this checkbox's value that can be referenced in javascript */
   name?: string;
   /** Is this checkbox disabled? */
   disabled?: boolean;
