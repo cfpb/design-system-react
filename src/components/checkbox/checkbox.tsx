@@ -112,6 +112,10 @@ export const Checkbox = ({
     });
   }
 
+  if (isIndeterminate) {
+    Object.assign(inputProperties, { 'aria-checked': 'mixed' });
+  }
+
   useEffect(() => {
     if (typeof ref === 'object' && ref.current !== null) {
       ref.current.indeterminate = isIndeterminate
