@@ -31,6 +31,9 @@ jobs:
       - name: Lint
         run: yarn lint
 
+      - name: Check peer/dev dependency alignment
+        run: yarn constraints
+
       - name: Build library
         run: yarn build
 
