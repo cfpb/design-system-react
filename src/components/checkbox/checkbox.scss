@@ -3,8 +3,7 @@
 
 .a-checkbox:indeterminate + .a-label::before {
   background-image: $cfpb-background-icon-svg-minus;
-
-  background-size: auto 1.1875em;
+  background-size: auto em-from-px(19);
   background-repeat: no-repeat;
   background-position: center 0;
 }
