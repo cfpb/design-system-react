@@ -13,3 +13,4 @@ export declare const Selected: Story;
 export declare const Disabled: Story;
 export declare const DisabledSelected: Story;
 export declare const WithHelperText: Story;
+export declare const Indeterminate: Story;

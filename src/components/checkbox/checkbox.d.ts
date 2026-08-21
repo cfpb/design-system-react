@@ -22,6 +22,8 @@ export interface CheckboxProperties {
     isLarge?: boolean;
     /** Removes/Adds 'label__heading' class to the Label. When true, uses inline label style. */
     isLabelInline?: boolean;
+    /** Apply indeterminate attribute to checkbox? */
+    isIndeterminate?: boolean;
     /** A name for this checkbox's value that can be referenced in javascript */
     name?: string;
     /** Is this checkbox disabled? */
@@ -31,5 +33,5 @@ export interface CheckboxProperties {
     /** Border status */
     status?: 'error' | 'success' | 'warning';
 }
-export declare const Checkbox: ({ id, label, className, inputClassName, labelClassName, checked, defaultChecked, helperText, inputRef, disabled, isLarge, isLabelInline, name, onChange, status, ...properties }: CheckboxProperties & JSX.IntrinsicElements["input"]) => ReactElement;
+export declare const Checkbox: ({ id, label, className, inputClassName, labelClassName, checked, defaultChecked, helperText, inputRef, disabled, isLarge, isLabelInline, isIndeterminate, name, onChange, status, ...properties }: CheckboxProperties & JSX.IntrinsicElements["input"]) => ReactElement;
 export default Checkbox;

@@ -1,1 +1,0 @@
-import{t as e}from"./iframe-SKIcb5PB.js";e();

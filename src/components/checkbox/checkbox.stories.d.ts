@@ -16,3 +16,4 @@ export declare const Success: Story;
 export declare const Warning: Story;
 export declare const Error: Story;
 export declare const WithHelperText: Story;
+export declare const Indeterminate: Story;

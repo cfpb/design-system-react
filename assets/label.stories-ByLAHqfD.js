@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{t}from"./jsx-runtime-DeHZSEgm.js";import{n,t as r}from"./text-input-CkhpsUFH.js";import{n as i,t as a}from"./label-Bmke16i4.js";var o,s,c,l,u;function d(){return(d=e((()=>{i(),n(),o=t(),s={title:`Components (Verified)/Labels`,tags:[`autodocs`],component:a,argTypes:{isInline:{control:`boolean`}},parameters:{docs:{description:{component:`
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{t}from"./jsx-runtime-DeHZSEgm.js";import{n,t as r}from"./text-input-Cb2GZirj.js";import{n as i,t as a}from"./label-Bmke16i4.js";var o,s,c,l,u;function d(){return(d=e((()=>{i(),n(),o=t(),s={title:`Components (Verified)/Labels`,tags:[`autodocs`],component:a,argTypes:{isInline:{control:`boolean`}},parameters:{docs:{description:{component:`
 
 Labels are used to help users understand the meaning of a form input.
 
