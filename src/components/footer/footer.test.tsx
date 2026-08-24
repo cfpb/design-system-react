@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Footer, AppFooter, WebsiteFooter } from './footer';
 
 describe('Footer', () => {
@@ -109,6 +109,17 @@ describe('WebsiteFooter', () => {
 });
 
 describe('AppFooter', () => {
+  it('Back to top scrolls to the top of the page', () => {
+    const scrollTo = vi
+      .spyOn(globalThis, 'scrollTo')
+      .mockReturnValue(undefined);
+
+    render(<AppFooter />);
+    fireEvent.click(screen.getByTestId('back-to-top'));
+
+    expect(scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
+  });
+
   it('Renders content and navLinks', () => {
     const expectedClassName = /o-footer__list/g;
     const expectedItemCount = 3;
