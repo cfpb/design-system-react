@@ -163,7 +163,7 @@ export const ButtonLink: Story = {
     <ButtonGroup>
       <Link
         isButton
-        href='/'
+        to='/'
         label='Link styled as a button'
         iconRight='download'
       />

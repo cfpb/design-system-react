@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ReactElement, useState } from 'react';
+import { noOp } from '../../utils/no-op';
 import { Pagination } from './pagination';
 
 const user = userEvent.setup();
@@ -16,6 +17,8 @@ const ControlledPagination = (): ReactElement => {
       page={page}
       pageCount={3}
       tableId='pagination'
+      onClickPrevious={noOp}
+      onClickNext={noOp}
       onClickGo={onSubmit}
     />
   );
@@ -23,7 +26,16 @@ const ControlledPagination = (): ReactElement => {
 
 describe('<Pagination />', () => {
   it('displays pagination controls when provided', () => {
-    render(<Pagination page={2} pageCount={3} tableId='pagination' />);
+    render(
+      <Pagination
+        page={2}
+        pageCount={3}
+        tableId='pagination'
+        onClickPrevious={noOp}
+        onClickNext={noOp}
+        onClickGo={noOp}
+      />,
+    );
     const next = screen.getByText('Next');
     expect(next).toBeInTheDocument();
 
@@ -32,13 +44,31 @@ describe('<Pagination />', () => {
   });
 
   it('disables previous button on first page', () => {
-    render(<Pagination page={1} pageCount={3} tableId='pagination' />);
+    render(
+      <Pagination
+        page={1}
+        pageCount={3}
+        tableId='pagination'
+        onClickPrevious={noOp}
+        onClickNext={noOp}
+        onClickGo={noOp}
+      />,
+    );
     const previous = screen.getByRole('button', { name: 'Previous' });
     expect(previous.classList.contains('a-btn--disabled')).toBe(true);
   });
 
   it('disables next button on last page', () => {
-    render(<Pagination page={3} pageCount={3} tableId='pagination' />);
+    render(
+      <Pagination
+        page={3}
+        pageCount={3}
+        tableId='pagination'
+        onClickPrevious={noOp}
+        onClickNext={noOp}
+        onClickGo={noOp}
+      />,
+    );
     const next = screen.getByRole('button', { name: 'Next' });
     expect(next.classList.contains('a-btn--disabled')).toBe(true);
   });

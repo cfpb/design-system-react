@@ -61,14 +61,22 @@ export const Tab = ({
 export interface TabListProperties extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children?: ReactNode;
+  /**
+   * Render tabs without fills. Same chrome as default tabs (active border,
+   * inactive link styles), but transparent backgrounds on every tab.
+   */
+  isInverted?: boolean;
 }
 
 export const TabList = ({
   className,
   children,
+  isInverted = false,
   ...properties
 }: TabListProperties): JSXElement => {
-  const cname = classnames('tablist', className);
+  const cname = classnames('tablist', className, {
+    'tablist--inverted': isInverted,
+  });
 
   return (
     <div role='tablist' className={cname} {...properties}>

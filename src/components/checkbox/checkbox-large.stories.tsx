@@ -90,3 +90,14 @@ export const WithHelperText: Story = {
     helperText: 'This is optional helper text',
   },
 };
+
+export const Indeterminate: Story = {
+  render: (_arguments) => CheckboxWrapper(_arguments),
+  name: 'Indeterminate state',
+  args: {
+    id: 'indeterminate',
+    label: 'Indeterminate',
+    isIndeterminate: true,
+    isLarge: true
+  },
+};

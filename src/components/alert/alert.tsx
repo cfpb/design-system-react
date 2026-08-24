@@ -1,3 +1,4 @@
+import { Children } from 'react';
 import classnames from 'classnames';
 import type { HTMLAttributes, ReactNode } from 'react';
 import type { HeadingLevel } from '../../types/heading-level';
@@ -19,6 +20,11 @@ export const iconByType: Record<string, { name: string; hasBg: boolean }> = {
 };
 
 export type AlertType = 'error' | 'info' | 'loading' | 'success' | 'warning';
+
+const hasOnlyTextChildren = (children: ReactNode): boolean =>
+  Children.toArray(children).every(
+    (child) => typeof child === 'string' || typeof child === 'number',
+  );
 
 interface AlertProperties {
   status?: AlertFieldLevelType | AlertType;
@@ -70,6 +76,13 @@ export const Alert = ({
     className,
   );
 
+  const explanationClassName = message
+    ? 'm-notification__explanation'
+    : undefined;
+  const explanationTag: 'div' | 'p' =
+    children && hasOnlyTextChildren(children) ? 'p' : 'div';
+  const ExplanationTag = explanationTag;
+
   return (
     <div className={classes} data-testid='notification' {...properties}>
       {showIcon ? (
@@ -82,12 +95,12 @@ export const Alert = ({
           </div>
         ) : null}
         {children ? (
-          <div
-            className={message ? 'm-notification__explanation' : ''}
+          <ExplanationTag
+            className={explanationClassName}
             data-testid='explanation'
           >
             {children}
-          </div>
+          </ExplanationTag>
         ) : null}
         {links && links.length > 0 ? (
           <List isLinks>

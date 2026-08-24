@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
 import Paragraph from '../paragraph/paragraph';
 import { Alert, AlertType } from './alert';
-import { AlertFieldLevel } from './alert-field-level';
+import { AlertFieldLevel, type AlertFieldLevelType } from './alert-field-level';
 
 const statusesWithModifier: AlertType[] = ['success', 'warning', 'error'];
 
@@ -51,6 +51,30 @@ describe('<Alert />', () => {
     render(<Alert status='info'>Explanation</Alert>);
     const explanation = screen.queryByTestId('explanation');
     expect(explanation).toBeInTheDocument();
+  });
+
+  it('renders text explanations in a paragraph', () => {
+    render(
+      <Alert status='info' message='testing'>
+        Explanation
+      </Alert>,
+    );
+    const explanation = screen.getByTestId('explanation');
+    expect(explanation.tagName).toBe('P');
+    expect(explanation).toHaveClass('m-notification__explanation');
+  });
+
+  it('renders non-text explanations in a div to avoid invalid paragraph nesting', () => {
+    render(
+      <Alert status='warning' message='testing'>
+        <ul>
+          <li>Resolve this issue</li>
+        </ul>
+      </Alert>,
+    );
+    const explanation = screen.getByTestId('explanation');
+    expect(explanation.tagName).toBe('DIV');
+    expect(within(explanation).getByRole('list')).toBeInTheDocument();
   });
 
   it('does not include an explanation wrapper class when there is no message but children are provided', () => {
@@ -172,14 +196,15 @@ describe('<Alert />', () => {
   });
 
   it('renders field-level info alert without status modifier', () => {
+    const testId = 'field-level-info';
     render(
       <AlertFieldLevel
-        data-testid='field-level-info'
+        data-testid={testId}
         status='info'
         message='Details before submit'
       />,
     );
-    const element = screen.getByTestId('field-level-info');
+    const element = screen.getByTestId(testId);
     expect(element).toHaveClass('a-form-alert');
     expect(element).not.toHaveClass('a-form-alert--info');
   });
@@ -190,7 +215,8 @@ describe('<Alert />', () => {
     render(
       <AlertFieldLevel
         data-testid={testId}
-        status={unSupportedStatus}
+        // Intentional invalid status to exercise runtime error path
+        status={unSupportedStatus as AlertFieldLevelType}
         message='squish'
       />,
     );

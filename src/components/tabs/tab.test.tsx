@@ -14,4 +14,17 @@ describe('<Tabs />', () => {
     const tabs = screen.getByRole('tablist');
     expect(tabs).toBeInTheDocument();
   });
+
+  it('applies inverted background class on TabList', () => {
+    render(
+      <TabList isInverted>
+        <Tab id='one' isActive>
+          One tab
+        </Tab>
+        <Tab id='two'>Second tab</Tab>
+      </TabList>,
+    );
+
+    expect(screen.getByRole('tablist')).toHaveClass('tablist--inverted');
+  });
 });

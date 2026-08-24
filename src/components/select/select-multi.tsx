@@ -1,8 +1,3 @@
-// Lots of rules disabled because we're using DS code that is plain JS, not TS
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Multiselect } from '@cfpb/cfpb-design-system/src/components/cfpb-forms';
 import { JSX, useEffect, useRef, useState } from 'react';
 import { noOp } from '../../utils/no-op';

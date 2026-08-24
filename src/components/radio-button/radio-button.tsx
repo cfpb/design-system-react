@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode, RefObject } from 'react';
+import type { ReactElement, ReactNode, Ref } from 'react';
 import { JSX } from 'react';
 import { HelperText } from '../helper-text/helper-text';
 import { Label } from '../label/label';
@@ -8,12 +8,7 @@ interface RadioProperties {
   label: ReactNode;
   className?: string;
   helperText?: string;
-  inputRef?:
-    | RefObject<HTMLInputElement>
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | null
-    | undefined;
+  inputRef?: Ref<HTMLInputElement>;
   disabled?: boolean;
   isLarge?: boolean;
   name?: string;

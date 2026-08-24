@@ -20,11 +20,8 @@ describe('Header', () => {
   });
 
   it('Renders with bottom border by default', () => {
-    const { container } = render(<Header />);
-    expect(container.firstChild.className).toBe('o-header-scope');
-    expect(container.firstChild.firstChild?.className).toBe(
-      'o-header bottom-border',
-    );
+    render(<Header />);
+    expect(screen.getByRole('banner')).toHaveClass('o-header', 'bottom-border');
   });
 
   it('renders the English logo by default', () => {

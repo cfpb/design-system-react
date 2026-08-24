@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { Table } from './table';
+import { Table, type TableColumn } from './table';
 
 const defaultCaption = (
   <>
@@ -22,7 +22,7 @@ const defaultRows = [
   ['Row 3, Column 1', 'Row 3, Column 2', 'Row 3, Column 3', 'Row 3, Column 4'],
 ];
 
-const columnsWithConfig = [
+const columnsWithConfig: TableColumn[] = [
   { header: 'Col 1', width: 30 },
   'Col 2',
   'Col 3',

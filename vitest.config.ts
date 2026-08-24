@@ -1,7 +1,7 @@
 import { playwright } from '@vitest/browser-playwright';
 import path from 'node:path';
 import { defineConfig, mergeConfig } from 'vitest/config';
-import viteConfig from './vite.config';
+import viteConfig from './vite.config.ts';
 
 const __dirname = import.meta.dirname;
 const { resolve } = path;

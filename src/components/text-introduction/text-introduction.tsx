@@ -2,8 +2,9 @@ import classnames from 'classnames';
 import {
   cloneElement,
   isValidElement,
-  JSX,
+  type FC,
   type HTMLProps,
+  type JSX,
   type ReactNode,
 } from 'react';
 import { Heading } from '../headings/heading';
@@ -70,11 +71,15 @@ export const TextIntroduction = ({
   );
 };
 
-TextIntroduction.Container = ({
+interface TextIntroductionSubProperties {
+  children: ReactNode;
+}
+
+const TextIntroductionContainer: FC<HTMLProps<HTMLDivElement>> = ({
   className,
   children,
   ...properties
-}: HTMLProps<HTMLDivElement>): JSX.Element => {
+}) => {
   const cnames = ['o-text-introduction', className];
 
   return (
@@ -87,37 +92,33 @@ TextIntroduction.Container = ({
     </div>
   );
 };
+TextIntroductionContainer.displayName = 'TextIntroduction.Container';
+TextIntroduction.Container = TextIntroductionContainer;
 
-export const TextIntroductionContainer = TextIntroduction.Container;
-interface TextIntroductionSubProperties {
-  children: ReactNode;
-}
+export { TextIntroductionContainer };
 
-TextIntroduction.Heading = ({
+const TextIntroductionHeading: FC<TextIntroductionSubProperties> = ({
   children,
-}: TextIntroductionSubProperties): JSX.Element => (
-  <Heading type='1'>{children}</Heading>
-);
+}) => <Heading type='1'>{children}</Heading>;
+TextIntroductionHeading.displayName = 'TextIntroduction.Heading';
+TextIntroduction.Heading = TextIntroductionHeading;
 
-export const TextIntroductionHeading = TextIntroduction.Heading;
+export { TextIntroductionHeading };
 
-TextIntroduction.Description = ({
+const TextIntroductionDescription: FC<TextIntroductionSubProperties> = ({
   children,
-}: TextIntroductionSubProperties): ReactNode => renderDescription(children);
+}) => renderDescription(children);
+TextIntroductionDescription.displayName = 'TextIntroduction.Description';
+TextIntroduction.Description = TextIntroductionDescription;
 
-export const TextIntroductionDescription = TextIntroduction.Description;
+export { TextIntroductionDescription };
 
-TextIntroduction.Subheading = ({
+const TextIntroductionSubheading: FC<TextIntroductionSubProperties> = ({
   children,
-}: TextIntroductionSubProperties): JSX.Element => (
-  <Paragraph isLead>{children}</Paragraph>
-);
+}) => <Paragraph isLead>{children}</Paragraph>;
+TextIntroductionSubheading.displayName = 'TextIntroduction.Subheading';
+TextIntroduction.Subheading = TextIntroductionSubheading;
 
-export const TextIntroductionSubheading = TextIntroduction.Subheading;
-
-TextIntroduction.Container.displayName = 'TextIntroduction.Container';
-TextIntroduction.Heading.displayName = 'TextIntroduction.Heading';
-TextIntroduction.Description.displayName = 'TextIntroduction.Description';
-TextIntroduction.Subheading.displayName = 'TextIntroduction.Subheading';
+export { TextIntroductionSubheading };
 
 export default TextIntroduction;

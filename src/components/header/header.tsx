@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import type { ReactNode } from 'react';
 import { JSX } from 'react';
 import { Banner } from '../banner/banner';
 import type { LogoLanguage } from './logo';
@@ -6,7 +7,7 @@ import ResponsiveMenu from './responsive-menu';
 import './header.scss';
 
 export interface HeaderProperties {
-  links?: JSX.Element[];
+  links?: ReactNode[];
   href?: string;
   lang?: LogoLanguage;
 }

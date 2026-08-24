@@ -14,45 +14,52 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const TabsDemo = ({ isInverted = false }: { isInverted?: boolean }) => {
+  const [activeTab, setActiveTab] = useState('one');
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setActiveTab(event.currentTarget.value);
+  };
+  return (
+    <>
+      <TabList isInverted={isInverted}>
+        <Tab
+          id='one'
+          value='one'
+          isActive={activeTab === 'one'}
+          iconLeft='list'
+          label='Tab one'
+          onClick={onClick}
+        />
+        <Tab
+          id='two'
+          value='two'
+          isActive={activeTab === 'two'}
+          iconLeft='chart'
+          label='Tab two'
+          onClick={onClick}
+        />
+        <Tab
+          id='three'
+          value='three'
+          isActive={activeTab === 'three'}
+          iconLeft='map'
+          label='Tab three'
+          onClick={onClick}
+        />
+      </TabList>
+      <TabPanel id={activeTab} style={{ padding: '30px' }}>
+        <Heading type='4'>Panel {activeTab}</Heading>
+      </TabPanel>
+    </>
+  );
+};
+
 export const Default: Story = {
   name: 'Tabs',
-  render: () => {
-    const [activeTab, setActiveTab] = useState('one');
-    const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      setActiveTab(event.currentTarget.value);
-    };
-    return (
-      <>
-        <TabList>
-          <Tab
-            id='one'
-            value='one'
-            isActive={activeTab === 'one'}
-            iconLeft='list'
-            label='Tab one'
-            onClick={onClick}
-          />
-          <Tab
-            id='two'
-            value='two'
-            isActive={activeTab === 'two'}
-            iconLeft='chart'
-            label='Tab two'
-            onClick={onClick}
-          />
-          <Tab
-            id='three'
-            value='three'
-            isActive={activeTab === 'three'}
-            iconLeft='map'
-            label='Tab three'
-            onClick={onClick}
-          />
-        </TabList>
-        <TabPanel id={activeTab} style={{ padding: '30px' }}>
-          <Heading type='4'>Panel {activeTab}</Heading>
-        </TabPanel>
-      </>
-    );
-  },
+  render: () => <TabsDemo />,
+};
+
+export const Inverted: Story = {
+  name: 'Tabs (inverted backgrounds)',
+  render: () => <TabsDemo isInverted />,
 };

@@ -6,6 +6,7 @@
     "vite",
     "postcss.config.ts",
     "vite.config.ts",
+    "vite.dsr-css.config.ts",
     "vitest.config.ts",
     "vitest.setup.ts",
     "vitest.shims.d.ts",
