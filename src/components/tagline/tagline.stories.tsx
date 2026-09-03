@@ -2,21 +2,16 @@ import { CfpbTagline } from '@cfpb/cfpb-design-system';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { HTMLAttributes, ReactElement } from 'react';
 
-const initializedTagline = new Set<typeof CfpbTagline>();
-
-const initializeTagline = (): void => {
-  if (initializedTagline.has(CfpbTagline)) return;
-  CfpbTagline.init();
-  initializedTagline.add(CfpbTagline);
-};
+// Register the custom element when this story module loads. A story-level
+// `render` that returns raw `<cfpb-tagline>` would otherwise skip init and
+// leave the DS `:not(:defined)` skeleton on screen.
+CfpbTagline.init();
 
 type TaglineProperties = HTMLAttributes<HTMLElement> & { isLarge?: boolean };
 
-const TaglineComponent = (properties: TaglineProperties): ReactElement => {
-  initializeTagline();
-
-  return <cfpb-tagline {...properties}></cfpb-tagline>;
-};
+const TaglineComponent = (properties: TaglineProperties): ReactElement => (
+  <cfpb-tagline {...properties}></cfpb-tagline>
+);
 
 const meta = {
   title: 'Components (Verified)/Taglines',
@@ -40,11 +35,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Standard: Story = {
-  render: (properties) => <cfpb-tagline {...properties}></cfpb-tagline>,
-};
+export const Standard: Story = {};
 
 export const Large: Story = {
-  ...Standard,
   args: { isLarge: true },
 };
