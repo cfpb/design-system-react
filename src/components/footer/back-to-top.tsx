@@ -1,0 +1,22 @@
+import { JSX } from 'react';
+import type { MouseEvent } from 'react';
+import Link from '../link/link';
+
+const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+  event.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+export const BackToTop = (): JSX.Element => (
+  <Link
+    label='Back to top'
+    isButton
+    className='a-btn--secondary a-btn--full-on-xs o-footer__top-button u-show-on-mobile u-mb45'
+    data-gtm_ignore='true'
+    data-js-hook='behavior_return-to-top'
+    data-testid='back-to-top'
+    to='#'
+    iconRight='arrow-up'
+    onClick={handleClick}
+  />
+);

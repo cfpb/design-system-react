@@ -1,0 +1,9 @@
+@use '@cfpb/cfpb-design-system/src/utilities' as *;
+@use '@cfpb/cfpb-design-system/src/components/cfpb-icons/icons-lib' as *;
+
+.a-checkbox:indeterminate + .a-label::before {
+  background-image: $cfpb-background-icon-svg-minus;
+  background-size: auto em-from-px(19);
+  background-repeat: no-repeat;
+  background-position: center 0;
+}

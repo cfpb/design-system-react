@@ -1,0 +1,117 @@
+import { Children } from 'react';
+import classnames from 'classnames';
+import type { HTMLAttributes, ReactNode } from 'react';
+import type { HeadingLevel } from '../../types/heading-level';
+import type { JSXElement } from '../../types/jsx-element';
+import { Icon } from '../icon/icon';
+import List from '../list/list';
+import type { AlertFieldLevelType } from './alert-field-level';
+import { AlertFieldLevel } from './alert-field-level';
+import type { AlertLinkProperties } from './alert-link';
+import { AlertLink } from './alert-link';
+import './alert.scss';
+
+export const iconByType: Record<string, { name: string; hasBg: boolean }> = {
+  error: { name: 'error', hasBg: true },
+  info: { name: 'information', hasBg: true },
+  loading: { name: 'updating', hasBg: false },
+  success: { name: 'approved', hasBg: true },
+  warning: { name: 'warning', hasBg: true },
+};
+
+export type AlertType = 'error' | 'info' | 'loading' | 'success' | 'warning';
+
+const hasOnlyTextChildren = (children: ReactNode): boolean =>
+  Children.toArray(children).every(
+    (child) => typeof child === 'string' || typeof child === 'number',
+  );
+
+interface AlertProperties {
+  status?: AlertFieldLevelType | AlertType;
+  message?: ReactNode;
+  headingLevel?: HeadingLevel;
+  children?: ReactNode;
+  links?: AlertLinkProperties[];
+  isVisible?: boolean;
+  isFieldLevel?: boolean;
+  showIcon?: boolean;
+}
+
+/**
+ * Alerts draw a user’s attention to a change in the status of a form or page. Form-level alerts reflect a user or system action and appear below the form title. Field-level alerts appear inline with input fields and can highlight successful submissions, errors that need to be corrected, or details to know before submitting a form.
+ *
+ * Source: https://cfpb.github.io/design-system/components/alerts
+ *
+ */
+export const Alert = ({
+  children,
+  className,
+  links,
+  message,
+  status = 'info',
+  isVisible = true,
+  isFieldLevel = false,
+  showIcon = true,
+  ...properties
+}: AlertProperties & HTMLAttributes<HTMLDivElement>): JSXElement => {
+  if (!isVisible) return null;
+
+  if (isFieldLevel) {
+    return (
+      // @ts-expect-error NotificationFieldLevel provides feedback for incompatible `type` values
+      <AlertFieldLevel {...{ status, message, isVisible, ...properties }} />
+    );
+  }
+
+  // Information and in-progress alerts use the base `m-notification` class only
+  // (no status modifier). See https://cfpb.github.io/design-system/components/alerts
+  const classes = classnames(
+    'm-notification',
+    'm-notification--visible',
+    {
+      'm-notification--success': status === 'success',
+      'm-notification--warning': status === 'warning',
+      'm-notification--error': status === 'error',
+    },
+    className,
+  );
+
+  const explanationClassName = message
+    ? 'm-notification__explanation'
+    : undefined;
+  const explanationTag: 'div' | 'p' =
+    children && hasOnlyTextChildren(children) ? 'p' : 'div';
+  const ExplanationTag = explanationTag;
+
+  return (
+    <div className={classes} data-testid='notification' {...properties}>
+      {showIcon ? (
+        <Icon ariaLabel={`${status} icon`} {...iconByType[status]} />
+      ) : null}
+      <div className='m-notification__content'>
+        {message ? (
+          <div className='m-notification__message' data-testid='message'>
+            {message}
+          </div>
+        ) : null}
+        {children ? (
+          <ExplanationTag
+            className={explanationClassName}
+            data-testid='explanation'
+          >
+            {children}
+          </ExplanationTag>
+        ) : null}
+        {links && links.length > 0 ? (
+          <List isLinks>
+            {links.map((link) => (
+              <AlertLink {...link} key={link.to} />
+            ))}
+          </List>
+        ) : null}
+      </div>
+    </div>
+  );
+};
+
+export default Alert;

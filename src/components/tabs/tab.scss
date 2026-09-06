@@ -1,0 +1,74 @@
+@use 'sass:math';
+@use '@cfpb/cfpb-design-system/src/abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/utilities' as *;
+
+.tablist {
+  display: flex;
+
+  // Inset shadow sits in the background layer so an opaque active tab can cover
+  // it. A real `border-bottom` paints above overlapping children and leaves a
+  // hairline under the active tab (especially with subpixel heights / retina).
+  box-shadow: inset 0 -1px 0 0 var(--gray-40);
+
+  button.tab {
+    @include heading-4($has-margin-bottom: false);
+    position: relative;
+    z-index: 1;
+    padding: math.div(math.div($grid-gutter-width, 3), $base-font-size-px) + rem
+      math.div($grid-gutter-width, $base-font-size-px) + rem;
+    border: 1px solid transparent;
+
+    // `heading-4` still sets margin-bottom at the xs breakpoint even when
+    // `$has-margin-bottom` is false. That gap leaves the tablist rule hanging
+    // below the tab fills (especially obvious on phone widths).
+    margin-bottom: 0;
+
+    @include respond-to-max($bp-xs-max) {
+      margin-bottom: 0;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    // Keep the focus ring outside the tab border so overlapping neighbor
+    // borders (same issue as footer links at mobile width) don’t clip it.
+    &:focus-visible {
+      outline-offset: 2px;
+    }
+
+    &--active {
+      color: var(--black);
+
+      // Beat `.a-btn--link { background-color: transparent !important }` so the
+      // active fill can cover the tablist rule.
+      background-color: var(--gray-5) !important;
+      background-image: none !important;
+      text-decoration: none;
+      pointer-events: none;
+      border-color: var(--gray-40);
+      border-bottom-color: var(--gray-5);
+    }
+  }
+
+  // Like default tabs, but with no inactive fills. Active tab uses an opaque
+  // page-colored fill so the tablist rule cannot show through underneath.
+  // Use background-color + !important so DS `.a-btn` / default `.tab--active`
+  // fills cannot win on equal specificity in app bundles.
+  &--inverted {
+    button.tab {
+      background-color: transparent !important;
+      background-image: none !important;
+
+      &--active {
+        background-color: var(--white) !important;
+        background-image: none !important;
+        border-bottom-color: var(--white);
+      }
+    }
+  }
+}
+
+.tab-panel {
+  // border-top: 1px solid var(--gray-40);
+}

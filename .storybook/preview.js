@@ -1,8 +1,7 @@
 import React from 'react';
 import { buildArgsParam } from 'storybook/internal/router';
 import { useArgs, useGlobals } from 'storybook/preview-api';
-import '@fontsource-variable/source-sans-3';
-import '../src/assets/styles/_shared.scss';
+import '../src/assets/styles/entry-styles';
 import themeCFPB from './themeCFPB';
 
 const responsivePreviewQueryParameter = 'responsivePreview';
@@ -315,6 +314,80 @@ const withExplicitFullscreenStoryCanvas = (Story, context) => {
   return React.createElement(Story);
 };
 
+const shouldBlockStorybookLinkNavigation = (anchor) => {
+  const href = anchor.getAttribute('href');
+
+  if (!href) {
+    return false;
+  }
+
+  if (
+    href.startsWith('#') ||
+    href.startsWith('mailto:') ||
+    href.startsWith('tel:')
+  ) {
+    return false;
+  }
+
+  return true;
+};
+
+/**
+ * Prevent links rendered inside stories from navigating away from Storybook.
+ *
+ * @type {(Story: any, context: any) => import('react').ReactElement}
+ */
+const withStorybookLinkNavigationGuard = (Story, context) => {
+  React.useEffect(() => {
+    if (context.viewMode !== 'story' && context.viewMode !== 'docs') {
+      return undefined;
+    }
+
+    // Only guard the rendered component. Listening on document would also stop
+    // Storybook's own chrome, so the docs page links would go dead too.
+    const root = context.canvasElement;
+    if (!(root instanceof Element)) {
+      return undefined;
+    }
+
+    const handleAnchorClick = (event) => {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const anchor = target.closest('a[href]');
+      if (!(anchor instanceof HTMLAnchorElement)) {
+        return;
+      }
+
+      if (!shouldBlockStorybookLinkNavigation(anchor)) {
+        return;
+      }
+
+      event.preventDefault();
+    };
+
+    root.addEventListener('click', handleAnchorClick, true);
+    return () => {
+      root.removeEventListener('click', handleAnchorClick, true);
+    };
+  }, [context.id, context.viewMode]);
+
+  return React.createElement(Story);
+};
+
 export const globalTypes = {
   responsivePreview: {
     name: 'Responsive preview',
@@ -338,6 +411,7 @@ export const initialGlobals = {
 export const decorators = [
   renderResponsivePreviews,
   withExplicitFullscreenStoryCanvas,
+  withStorybookLinkNavigationGuard,
 ];
 
 export const preview = {

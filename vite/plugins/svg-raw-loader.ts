@@ -7,11 +7,13 @@ export function svgRawLoaderPlugin(): Plugin {
     enforce: 'pre', // Run before SVGR and other plugins
     async load(id) {
       // Only target .svg files that do NOT have a query (like ?react)
-      if (id.endsWith('.svg') && !id.includes('?')) {
-        const svgRaw = await fs.readFile(id, 'utf8');
-        // Return the raw SVG content wrapped in a JS export
-        return `export default ${JSON.stringify(svgRaw)}`;
+      if (!id.endsWith('.svg') || id.includes('?')) {
+        return;
       }
+
+      const svgRaw = await fs.readFile(id, 'utf8');
+      // Return the raw SVG content wrapped in a JS export
+      return `export default ${JSON.stringify(svgRaw)}`;
     },
   };
 }

@@ -1,0 +1,112 @@
+import classNames from 'classnames';
+import type { SVGProps } from 'react';
+import { useIconSvg } from '../../hooks/use-icon-svg';
+import type { JSXElement } from '../../types/jsx-element';
+import { numberIcons } from './icon-lists';
+
+// Design System font sizes for HTML elements
+const sizeMap: Record<string, string> = {
+  h1: '34px',
+  h2: '26px',
+  h3: '22px',
+  h4: '18px',
+  h5: '14px',
+  p: '16px',
+  sub: '12px',
+};
+
+// Icons whose background is square as opposed to round
+const squareIcons = new Set([
+  'email',
+  'facebook',
+  'flickr',
+  'github',
+  'linkedin',
+  'pinterest',
+  'x',
+  'youtube',
+]);
+
+// Is this a number icon, based on the icon name?
+const numberIconNames = new Set(numberIcons);
+
+/**
+ * Get the name of the icon with the correct shape modifier
+ *
+ * Most icons use a -round suffix.
+ * A few use a -square suffix.
+ * Number icons are either -open or -closed.
+ *
+ * @param name Canonical icon name
+ * @param hasBg With background?
+ * @returns string
+ */
+const getShapeModifier = (name: string, hasBg: boolean): string => {
+  if (numberIconNames.has(name)) {
+    if (hasBg) return '-closed';
+    return '-open';
+  }
+  if (!hasBg) return '';
+  if (squareIcons.has(name)) return '-square';
+  return '-round';
+};
+
+interface IconProperties extends Omit<SVGProps<SVGSVGElement>, 'name'> {
+  name: string;
+  alt?: string;
+  ariaLabel?: string;
+  ariaLabelledby?: string;
+  ariaDescribedby?: string;
+  isPresentational?: boolean;
+  hasBg?: boolean;
+  size?: string;
+}
+
+/**
+ * CFPB DS Icon
+ *
+ * https://cfpb.github.io/design-system/foundation/iconography
+ *
+ * @param name Canonical icon name
+ * @param alt Alt text for image
+ * @param ariaLabel Labels the SVG for accessibility
+ * @param ariaLabelledby ID of element that labels the SVG for accessibility
+ * @param ariaDescribedby ID of element that describes the SVG for accessibility
+ * @param isPresentational Is SVG purely presentational and should be ignored by screen readers?
+ * @param hasBg With background?
+ * @param size Match the icon size to a specified HTML element or provide a custom size. By default the icon size is determined by it's parent element's font-size.
+ * @returns JSXElement
+ */
+export const Icon = ({
+  name,
+  alt,
+  ariaLabel = '',
+  ariaLabelledby = '',
+  ariaDescribedby = '',
+  isPresentational = false,
+  hasBg = false,
+  size = 'inherit',
+  ...others
+}: IconProperties): JSXElement => {
+  const shapeModifier = getShapeModifier(name, hasBg);
+  const fileName = `${name}${shapeModifier}`;
+  const IconComponent = useIconSvg(fileName);
+
+  if (!IconComponent) return null;
+
+  const classes = classNames('cf-icon-svg', `cf-icon-svg--${fileName}`);
+  const fontSize = sizeMap[size] || size;
+
+  return (
+    <IconComponent
+      className={classes}
+      style={{ fontSize }}
+      role={isPresentational ? undefined : 'img'}
+      aria-label={ariaLabel || (isPresentational ? undefined : (alt ?? name))}
+      aria-labelledby={ariaLabelledby || undefined}
+      aria-describedby={ariaDescribedby || undefined}
+      aria-hidden={isPresentational ? 'true' : undefined}
+      {...others}
+    />
+  );
+};

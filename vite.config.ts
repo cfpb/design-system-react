@@ -7,14 +7,16 @@ import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
-import { name } from './package.json';
-import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader';
+import { name } from './package.json' with { type: 'json' };
+import { svgRawLoaderPlugin } from './vite/plugins/svg-raw-loader.ts';
 
 const __dirname = import.meta.dirname;
 const { resolve } = path;
 
 // Auto-detect Storybook from the CLI command.
-const isStorybook = process.argv.some((arg) => arg.includes('storybook'));
+const isStorybook = process.argv.some((argument) =>
+  argument.includes('storybook'),
+);
 
 export default defineConfig(async ({ mode }) => {
   const isStorybookTest = Boolean(process.env.STORYBOOK_CONFIG_DIR);
