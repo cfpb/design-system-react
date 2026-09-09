@@ -47,7 +47,7 @@ describe('usePagination', () => {
     expect(paginationProperties.pageCount).toBe(ONE);
   });
 
-  it('Returns returns first page of content by default when paginating', () => {
+  it('Returns first page of content by default when paginating', () => {
     const { result } = renderHook(usePagination, {
       initialProps: {
         rows: generateTestRows(NUMBER_ROWS),

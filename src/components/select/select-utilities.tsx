@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import type { SelectOption } from './select';
 
-/* Convert an SelectOption[] into HTMLOptionElement[] */
+/* Convert a SelectOption[] into HTMLOptionElement[] */
 export const buildOptions = (
   options: SelectOption[],
   defaultOptionLabel: string,
@@ -21,7 +21,7 @@ export const buildOptions = (
       ];
 };
 
-/* Map a value to it's corresponding Option */
+/* Map a value to its corresponding Option */
 export const findOptionByValue = (
   options: SelectOption[],
   value: string,

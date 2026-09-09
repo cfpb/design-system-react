@@ -23,7 +23,7 @@ export interface TextAreaType {
 }
 
 /**
- * Source: <a href='https://cfpb.github.io/design-system/components/text-inputs#text-area-input-1' target='_blank'> https://cfpb.github.io/design-system/components/text-inputs#text-area-input-1</a>
+ * Source: <a href='https://cfpb.github.io/design-system/components/text-inputs#text-area-input' target='_blank'> https://cfpb.github.io/design-system/components/text-inputs#text-area-input</a>
  */
 export const TextArea = forwardRef(
   (
