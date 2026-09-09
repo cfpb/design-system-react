@@ -1,0 +1,7 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{t}from"./react-BZJXY1be.js";import{t as n}from"./jsx-runtime-DeHZSEgm.js";import{n as r,t as i}from"./heading-CvNMdgoP.js";import{i as a,n as o,r as s,t as c}from"./tab-CnAEeLUI.js";var l,u,d,f,p,m,h;function g(){return(g=e((()=>{l=t(),r(),a(),u=n(),d={title:`Components (Draft)/Tabs`,tags:[`autodocs`],component:c,argTypes:{}},f=({isInverted:e=!1})=>{let[t,n]=(0,l.useState)(`one`),r=e=>{n(e.currentTarget.value)};return(0,u.jsxs)(u.Fragment,{children:[(0,u.jsxs)(o,{isInverted:e,children:[(0,u.jsx)(c,{id:`one`,value:`one`,isActive:t===`one`,iconLeft:`list`,label:`Tab one`,onClick:r}),(0,u.jsx)(c,{id:`two`,value:`two`,isActive:t===`two`,iconLeft:`chart`,label:`Tab two`,onClick:r}),(0,u.jsx)(c,{id:`three`,value:`three`,isActive:t===`three`,iconLeft:`map`,label:`Tab three`,onClick:r})]}),(0,u.jsx)(s,{id:t,style:{padding:`30px`},children:(0,u.jsxs)(i,{type:`4`,children:[`Panel `,t]})})]})},p={name:`Tabs`,render:()=>(0,u.jsx)(f,{})},m={name:`Tabs (inverted backgrounds)`,render:()=>(0,u.jsx)(f,{isInverted:!0})},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
+  name: 'Tabs',
+  render: () => <TabsDemo />
+}`,...p.parameters?.docs?.source}}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
+  name: 'Tabs (inverted backgrounds)',
+  render: () => <TabsDemo isInverted />
+}`,...m.parameters?.docs?.source}}},h=[`Default`,`Inverted`]})))()}g();export{p as Default,m as Inverted,h as __namedExportsOrder,d as default};

@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{E as t,T as n,a as r,o as i}from"./blocks-CmrcJEyg.js";import{t as a}from"./jsx-runtime-DeHZSEgm.js";import{n as o}from"./icon-BCAy4L2c.js";import{n as s,t as c}from"./heading-BN1i4Vb4.js";function l(e){let n={a:`a`,code:`code`,p:`p`,pre:`pre`,...t(),...e.components};return(0,d.jsxs)(d.Fragment,{children:[(0,d.jsx)(r,{title:`Guides/Introduction`}),`
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{E as t,T as n,a as r,o as i}from"./blocks-CmrcJEyg.js";import{t as a}from"./jsx-runtime-DeHZSEgm.js";import{n as o}from"./icon-BCAy4L2c.js";import{n as s,t as c}from"./heading-CvNMdgoP.js";function l(e){let n={a:`a`,code:`code`,p:`p`,pre:`pre`,...t(),...e.components};return(0,d.jsxs)(d.Fragment,{children:[(0,d.jsx)(r,{title:`Guides/Introduction`}),`
 `,(0,d.jsx)(c,{type:`1`,children:`CFPB Design System React`}),`
 `,(0,d.jsxs)(n.p,{children:[`This library contains React implementations of the `,(0,d.jsx)(n.a,{href:`https://cfpb.github.io/design-system/`,rel:`nofollow`,children:`CFPB Design System's`}),` components and patterns.`]}),`
 `,(0,d.jsx)(c,{type:`2`,children:`Installation`}),`

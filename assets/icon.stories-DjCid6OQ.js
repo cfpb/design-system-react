@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{t}from"./jsx-runtime-DeHZSEgm.js";import{a as n,c as r,d as i,f as a,i as o,l as s,n as c,o as l,r as u,s as d,t as f,u as p}from"./icon-BCAy4L2c.js";import{n as m,t as h}from"./heading-BN1i4Vb4.js";var g,_,v,y,b,x,S,C,w,T,E,D,O,k,A,j,M,N;function P(){return(P=e((()=>{m(),c(),d(),g=t(),_={title:`Components (Draft)/Icons`,tags:[`autodocs`],component:f,parameters:{docs:{description:{component:`
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{t}from"./jsx-runtime-DeHZSEgm.js";import{a as n,c as r,d as i,f as a,i as o,l as s,n as c,o as l,r as u,s as d,t as f,u as p}from"./icon-BCAy4L2c.js";import{n as m,t as h}from"./heading-CvNMdgoP.js";var g,_,v,y,b,x,S,C,w,T,E,D,O,k,A,j,M,N;function P(){return(P=e((()=>{m(),c(),d(),g=t(),_={title:`Components (Draft)/Icons`,tags:[`autodocs`],component:f,parameters:{docs:{description:{component:`
 ### CFPB DS Icon component
 
 Source: https://cfpb.github.io/design-system/foundation/iconography
