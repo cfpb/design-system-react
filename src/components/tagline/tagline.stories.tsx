@@ -2,18 +2,10 @@ import { CfpbTagline } from '@cfpb/cfpb-design-system';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { HTMLAttributes, ReactElement } from 'react';
 
-const initializedTagline = new Set<typeof CfpbTagline>();
-
-const initializeTagline = (): void => {
-  if (initializedTagline.has(CfpbTagline)) return;
-  CfpbTagline.init();
-  initializedTagline.add(CfpbTagline);
-};
-
 type TaglineProperties = HTMLAttributes<HTMLElement> & { isLarge?: boolean };
 
 const TaglineComponent = (properties: TaglineProperties): ReactElement => {
-  initializeTagline();
+  CfpbTagline.init();
 
   return <cfpb-tagline {...properties}></cfpb-tagline>;
 };
@@ -40,11 +32,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Standard: Story = {
-  render: (properties) => <cfpb-tagline {...properties}></cfpb-tagline>,
-};
+export const Standard: Story = {};
 
 export const Large: Story = {
-  ...Standard,
   args: { isLarge: true },
 };
