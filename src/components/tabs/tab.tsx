@@ -50,7 +50,7 @@ export const Tab = ({
       id={`tab-${id}`}
       aria-controls={`tabpanel-${id}`}
       aria-selected={isActive}
-      tabIndex={isActive ? -1 : 0}
+      tabIndex={isActive ? 0 : -1}
       {...properties}
     >
       {children}
