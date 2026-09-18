@@ -9,6 +9,13 @@ declare const meta: {
     component: (properties: TaglineProperties) => ReactElement;
     parameters: {
         docs: {
+            source: {
+                type: string;
+                language: string;
+                transform: (_code: string, { args }: {
+                    args: TaglineProperties;
+                }) => string;
+            };
             description: {
                 component: string;
             };
