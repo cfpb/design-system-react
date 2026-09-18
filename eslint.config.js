@@ -103,6 +103,7 @@ export default tseslint.config(
         { argsIgnorePattern: '^_' },
       ],
       'unicorn/prevent-abbreviations': 'off', // Airbnb was less strict than Unicorn
+      'unicorn/name-replacements': 'off', // `ref` is the React API; Unicorn 73 wants `reference`
       'unicorn/null-data-property': 'off',
       'unicorn/no-null': 'off',
       // Prefer concise prop JSDoc (`/** ... */`) over forced multiline blocks.
