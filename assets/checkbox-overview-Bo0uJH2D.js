@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{a as t,o as n}from"./blocks-DJDfl8mh.js";import{t as r}from"./jsx-runtime-DeHZSEgm.js";import{i,r as a}from"./react-BXJ34t_g.js";import{n as o,t as s}from"./list-CkV9etkY.js";import{n as c,r as l,t as u}from"./link-g5XjpDL5.js";import{n as d,t as f}from"./heading-CvNMdgoP.js";import{n as p,t as m}from"./paragraph-C9_y4fvN.js";function h(e){let n={a:`a`,...i(),...e.components};return(0,_.jsxs)(_.Fragment,{children:[`
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{a as t,o as n}from"./blocks-DJDfl8mh.js";import{t as r}from"./jsx-runtime-DeHZSEgm.js";import{i,r as a}from"./react-BXJ34t_g.js";import{n as o,t as s}from"./list-CkV9etkY.js";import{n as c,r as l,t as u}from"./link-g5XjpDL5.js";import{n as d,t as f}from"./heading-BN1i4Vb4.js";import{n as p,t as m}from"./paragraph-C9_y4fvN.js";function h(e){let n={a:`a`,...i(),...e.components};return(0,_.jsxs)(_.Fragment,{children:[`
 `,`
 `,(0,_.jsx)(t,{title:`Components (Verified)/Checkboxes/Overview`}),`
 `,`
