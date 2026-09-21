@@ -145,7 +145,7 @@ Styles bundled into `@cfpb/design-system-react/index.css` (Pattern A only):
 | `Pagination`                                  | `cfpb-pagination/pagination`                                                                                  |
 | Forms (`TextInput`, `Checkbox`, `Select`, …)  | `cfpb-forms/form`, `form-field`, `label`, `text-input`, `select`, `multiselect`, `form-alert`, `search-input` |
 | `Expandable`, `ExpandableGroup`, `Summary`    | `cfpb-expandables/expandable`, `expandable-group`, `summary`, `summary-minimal`                               |
-| `Alert`                                       | `cfpb-notifications/notification` (+ DSR overrides in `alert.scss`)                                           |
+| `Alert`                                       | `cfpb-notifications/notification`                                                                             |
 | `Table`                                       | `cfpb-tables/table`                                                                                           |
 | `Well`, `Divider`, `Hero`, `TextIntroduction` | `cfpb-layout/well`, `layout`, `hero`, `text-introduction`                                                     |
 
@@ -158,7 +158,7 @@ Built from [`src/assets/styles/dsr-styles.ts`](src/assets/styles/dsr-styles.ts):
 | Area                                                                                                                      | Notes                                                                |
 | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `Tab` / `TabList` / `TabPanel`                                                                                            | DSR-only until Tabs land in `cfpb-design-system`                     |
-| Alert, banner, breadcrumb, fieldset, footer, grid, header, hero, layout, link, secondary-nav, skip-nav, table, text-input | React-authored overrides / chrome not shipped by DS `dist/index.css` |
+| banner, breadcrumb, fieldset, footer, grid, header, hero, layout, link, secondary-nav, skip-nav, table, text-input        | React-authored overrides / chrome not shipped by DS `dist/index.css` |
 
 ### Other options (advanced)
 
