@@ -9,7 +9,6 @@ import type { AlertFieldLevelType } from './alert-field-level';
 import { AlertFieldLevel } from './alert-field-level';
 import type { AlertLinkProperties } from './alert-link';
 import { AlertLink } from './alert-link';
-import './alert.scss';
 
 export const iconByType: Record<string, { name: string; hasBg: boolean }> = {
   error: { name: 'error', hasBg: true },

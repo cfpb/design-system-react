@@ -95,12 +95,14 @@ export const Icon = ({
   if (!IconComponent) return null;
 
   const classes = classNames('cf-icon-svg', `cf-icon-svg--${fileName}`);
-  const fontSize = sizeMap[size] || size;
+  // Omit `font-size: inherit` so contextual DS rules (e.g. larger
+  // notification icons at tablet+) can apply. Inline inherit would win.
+  const fontSize = size === 'inherit' ? undefined : sizeMap[size] || size;
 
   return (
     <IconComponent
       className={classes}
-      style={{ fontSize }}
+      style={fontSize ? { fontSize } : undefined}
       role={isPresentational ? undefined : 'img'}
       aria-label={ariaLabel || (isPresentational ? undefined : (alt ?? name))}
       aria-labelledby={ariaLabelledby || undefined}

@@ -14,7 +14,6 @@
 import '../../components/tabs/tab.scss';
 
 // DSR overrides / React-only layout chrome
-import '../../components/alert/alert.scss';
 import '../../components/banner/banner.scss';
 import '../../components/breadcrumb/breadcrumb.scss';
 import '../../components/checkbox/checkbox.scss';

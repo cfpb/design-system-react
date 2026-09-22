@@ -97,9 +97,9 @@ export const TabList = ({
       return;
     }
 
-    const tabs = Array.from(
-      event.currentTarget.querySelectorAll<HTMLElement>('[role="tab"]'),
-    );
+    const tabs = [
+      ...event.currentTarget.querySelectorAll<HTMLElement>('[role="tab"]'),
+    ];
 
     if (tabs.length === 0) {
       return;
@@ -107,26 +107,27 @@ export const TabList = ({
 
     const currentIndex = tabs.indexOf(document.activeElement as HTMLElement);
 
-    let targetIndex = -1;
+    let targetIndex;
     switch (event.key) {
-      case 'ArrowRight':
+      case 'ArrowRight': {
         targetIndex = (currentIndex + 1 + tabs.length) % tabs.length;
         break;
-      case 'ArrowLeft':
+      }
+      case 'ArrowLeft': {
         targetIndex = (currentIndex - 1 + tabs.length) % tabs.length;
         break;
-      case 'Home':
+      }
+      case 'Home': {
         targetIndex = 0;
         break;
-      case 'End':
+      }
+      case 'End': {
         targetIndex = tabs.length - 1;
         break;
-      default:
+      }
+      default: {
         return;
-    }
-
-    if (targetIndex < 0) {
-      return;
+      }
     }
 
     event.preventDefault();
@@ -140,6 +141,7 @@ export const TabList = ({
       role='tablist'
       className={cname}
       onKeyDown={handleKeyDown}
+      tabIndex={-1}
       {...properties}
     >
       {children}
