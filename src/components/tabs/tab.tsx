@@ -1,5 +1,10 @@
 import classnames from 'classnames';
-import type { HTMLAttributes, ReactNode, MouseEvent } from 'react';
+import type {
+  HTMLAttributes,
+  KeyboardEvent as ReactKeyboardEvent,
+  ReactNode,
+  MouseEvent,
+} from 'react';
 import type { JSXElement } from '../../types/jsx-element';
 import { Button } from '../buttons/button';
 import type { ButtonProperties } from '../buttons/button';
@@ -50,7 +55,7 @@ export const Tab = ({
       id={`tab-${id}`}
       aria-controls={`tabpanel-${id}`}
       aria-selected={isActive}
-      tabIndex={isActive ? -1 : 0}
+      tabIndex={isActive ? 0 : -1}
       {...properties}
     >
       {children}
@@ -72,14 +77,73 @@ export const TabList = ({
   className,
   children,
   isInverted = false,
+  onKeyDown,
   ...properties
 }: TabListProperties): JSXElement => {
   const cname = classnames('tablist', className, {
     'tablist--inverted': isInverted,
   });
 
+  /**
+   * WAI-ARIA tabs keyboard pattern (automatic activation): arrows move
+   * selection with wrap, Home/End jump to the ends. Clicking the target
+   * tab reuses the consumer's own onClick, so isActive, aria-selected
+   * and tabindex stay in sync without TabList owning selection state.
+   */
+  const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    onKeyDown?.(event);
+
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    const tabs = [
+      ...event.currentTarget.querySelectorAll<HTMLElement>('[role="tab"]'),
+    ];
+
+    if (tabs.length === 0) {
+      return;
+    }
+
+    const currentIndex = tabs.indexOf(document.activeElement as HTMLElement);
+
+    let targetIndex;
+    switch (event.key) {
+      case 'ArrowRight': {
+        targetIndex = (currentIndex + 1 + tabs.length) % tabs.length;
+        break;
+      }
+      case 'ArrowLeft': {
+        targetIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        break;
+      }
+      case 'Home': {
+        targetIndex = 0;
+        break;
+      }
+      case 'End': {
+        targetIndex = tabs.length - 1;
+        break;
+      }
+      default: {
+        return;
+      }
+    }
+
+    event.preventDefault();
+    const target = tabs[targetIndex];
+    target.focus();
+    target.click();
+  };
+
   return (
-    <div role='tablist' className={cname} {...properties}>
+    <div
+      role='tablist'
+      className={cname}
+      onKeyDown={handleKeyDown}
+      tabIndex={-1}
+      {...properties}
+    >
       {children}
     </div>
   );
