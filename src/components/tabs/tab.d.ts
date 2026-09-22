@@ -33,7 +33,7 @@ export interface TabListProperties extends HTMLAttributes<HTMLDivElement> {
      */
     isInverted?: boolean;
 }
-export declare const TabList: ({ className, children, isInverted, ...properties }: TabListProperties) => JSXElement;
+export declare const TabList: ({ className, children, isInverted, onKeyDown, ...properties }: TabListProperties) => JSXElement;
 export interface TabPanelProperties extends HTMLAttributes<HTMLDivElement> {
     id: string;
     className?: string;
