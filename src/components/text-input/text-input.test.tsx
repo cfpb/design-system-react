@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import { createRef } from 'react';
 import { InputType, TextInput } from './text-input';
 
 const testInputType = (type: InputType) => (): void => {
@@ -75,5 +76,44 @@ describe('<TextInput />', () => {
 
     const textInput = screen.getByTestId('textInput');
     expect(textInput).toHaveClass('a-text-input--full');
+  });
+
+  it('attaches inputRef to the underlying input', () => {
+    const inputRef = createRef<HTMLInputElement>();
+    render(<TextInput id='ref-object' name='ref-object' inputRef={inputRef} />);
+
+    expect(inputRef.current).toBe(screen.getByTestId('textInput'));
+  });
+
+  it('supports callback inputRef', () => {
+    let node: HTMLInputElement | null = null;
+    render(
+      <TextInput
+        id='ref-callback'
+        name='ref-callback'
+        inputRef={(element) => {
+          node = element;
+        }}
+      />,
+    );
+
+    expect(node).toBe(screen.getByTestId('textInput'));
+  });
+
+  it('attaches both inputRef and forwarded ref', () => {
+    const inputRef = createRef<HTMLInputElement>();
+    const forwardedRef = createRef<HTMLInputElement>();
+    render(
+      <TextInput
+        id='both-refs'
+        name='both-refs'
+        inputRef={inputRef}
+        ref={forwardedRef}
+      />,
+    );
+
+    const textInput = screen.getByTestId('textInput');
+    expect(inputRef.current).toBe(textInput);
+    expect(forwardedRef.current).toBe(textInput);
   });
 });
