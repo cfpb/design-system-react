@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+// TODO: Replace with your component imports for examples/links.
+import { Heading, Link, List, ListLink, Paragraph } from '~/src/index';
+
+<Meta title='Templates/Component Template/Overview' />
+
+<Heading type='1'>Component name</Heading>
+
+<Paragraph>
+Use this MDX file for rare use cases where two or more component types live under a single parent and the component types have their own states.
+</Paragraph>
+
+<Paragraph>
+  Source:{' '}
+  <Link href='https://cfpb.github.io/design-system/components/your-component'>
+    https://cfpb.github.io/design-system/components/your-component
+  </Link>
+</Paragraph>
+
+<Heading type='4'>Types</Heading>
+<div className='sb-unstyled'>
+  <List isLink>
+    <ListLink
+      href='./?path=/docs/templates-component-template--overview'
+      label='Component type'
+    />
+    <ListLink
+      href='./?path=/docs/templates-component-template-variant--overview'
+      label='Component type'
+    />
+  </List>
+</div>
