@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import {
   forwardRef,
   JSX,
+  useCallback,
   type ComponentPropsWithoutRef,
   type Ref,
 } from 'react';
@@ -11,12 +12,26 @@ import { getTextInputStatusClass } from './text-input-status';
 
 type TextInputReference = Ref<HTMLInputElement>;
 
-const assignReference = (
+const releaseNothing = (): void => undefined;
+
+const bindReference = (
   target: Ref<HTMLInputElement> | undefined,
   element: HTMLInputElement | null,
-): void => {
-  if (typeof target === 'function') target(element);
-  else if (target) target.current = element;
+): (() => void) => {
+  if (typeof target === 'function') {
+    const cleanup = target(element);
+    return (): void => {
+      if (typeof cleanup === 'function') cleanup();
+      else target(null);
+    };
+  }
+  if (target) {
+    target.current = element;
+    return (): void => {
+      target.current = null;
+    };
+  }
+  return releaseNothing;
 };
 
 export type InputType =
@@ -70,10 +85,17 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
       classes.push('a-text-input--full');
     }
 
-    const setReferences = (element: HTMLInputElement | null): void => {
-      assignReference(inputRef, element);
-      assignReference(reference, element);
-    };
+    const setReferences = useCallback(
+      (element: HTMLInputElement | null): (() => void) => {
+        const releaseInputReference = bindReference(inputRef, element);
+        const releaseForwardedReference = bindReference(reference, element);
+        return (): void => {
+          releaseInputReference();
+          releaseForwardedReference();
+        };
+      },
+      [inputRef, reference],
+    );
 
     const input = (
       <input

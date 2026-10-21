@@ -116,4 +116,86 @@ describe('<TextInput />', () => {
     expect(inputRef.current).toBe(textInput);
     expect(forwardedRef.current).toBe(textInput);
   });
+
+  it('keeps a stable inputRef attached across rerenders', () => {
+    const calls: (HTMLInputElement | null)[] = [];
+    const inputRef = (element: HTMLInputElement | null): void => {
+      calls.push(element);
+    };
+    const { rerender } = render(
+      <TextInput id='stable-ref' name='stable-ref' inputRef={inputRef} />,
+    );
+
+    rerender(
+      <TextInput id='stable-ref' name='stable-ref' inputRef={inputRef} />,
+    );
+
+    expect(calls).toEqual([screen.getByTestId('textInput')]);
+  });
+
+  it('clears object refs on unmount', () => {
+    const inputRef = createRef<HTMLInputElement>();
+    const forwardedRef = createRef<HTMLInputElement>();
+    const { unmount } = render(
+      <TextInput
+        id='unmount-ref'
+        name='unmount-ref'
+        inputRef={inputRef}
+        ref={forwardedRef}
+      />,
+    );
+
+    unmount();
+
+    expect(inputRef.current).toBeNull();
+    expect(forwardedRef.current).toBeNull();
+  });
+
+  it('runs ref cleanups on unmount', () => {
+    const calls: string[] = [];
+    const { unmount } = render(
+      <TextInput
+        id='cleanup-ref'
+        name='cleanup-ref'
+        inputRef={(element) => {
+          if (!element) return;
+          calls.push('input-attach');
+          return () => {
+            calls.push('input-cleanup');
+          };
+        }}
+        ref={(element) => {
+          if (!element) return;
+          calls.push('forwarded-attach');
+          return () => {
+            calls.push('forwarded-cleanup');
+          };
+        }}
+      />,
+    );
+
+    expect(calls).toEqual(['input-attach', 'forwarded-attach']);
+    unmount();
+    expect(calls).toEqual([
+      'input-attach',
+      'forwarded-attach',
+      'input-cleanup',
+      'forwarded-cleanup',
+    ]);
+  });
+
+  it('calls a callback inputRef with null on unmount when it returns no cleanup', () => {
+    const calls: (HTMLInputElement | null)[] = [];
+    const inputRef = (element: HTMLInputElement | null): void => {
+      calls.push(element);
+    };
+    const { unmount } = render(
+      <TextInput id='null-ref' name='null-ref' inputRef={inputRef} />,
+    );
+
+    unmount();
+
+    expect(calls.at(-1)).toBeNull();
+    expect(calls[0]).toBeInstanceOf(HTMLInputElement);
+  });
 });
