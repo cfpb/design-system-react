@@ -1,0 +1,9 @@
+export declare const navigationIcons: string[];
+export declare const statusIcons: string[];
+export declare const socialIcons: string[];
+export declare const communicationIcons: string[];
+export declare const numberIcons: string[];
+export declare const documentIcons: string[];
+export declare const financialIcons: string[];
+export declare const expenseIcons: string[];
+export declare const webIcons: string[];
