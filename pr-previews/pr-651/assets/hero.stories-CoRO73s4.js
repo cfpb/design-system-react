@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-sJBDdmOt.js";import{n as t,t as n}from"./hero-DAAYsbi_.js";var r,i,a,o,s;function c(){return(c=e((()=>{t(),r={title:`Components (Draft)/Heroes`,component:n,tags:[`autodocs`],parameters:{sbNestedCanvasPadding:`flush`,docs:{description:{component:`
+import{n as e}from"./rolldown-runtime-sJBDdmOt.js";import{n as t,t as n}from"./hero-CK4NlPNj.js";var r,i,a,o,s;function c(){return(c=e((()=>{t(),r={title:`Components (Draft)/Heroes`,component:n,tags:[`autodocs`],parameters:{sbNestedCanvasPadding:`flush`,docs:{description:{component:`
 Heroes are a primary focal point on landing and sublanding pages. They 
 introduce a collection of pages by combining a brief description of the goals 
 of that section along with a visually impactful graphic. To introduce 
