@@ -37,4 +37,4 @@ export interface DSRProviderProperties {
 export declare const DSRProvider: ({ children, LinkComponent, }: {
     children: ReactNode;
     LinkComponent: ComponentType<BaseLinkProperties>;
-}) => import("react").JSX.Element;
+}) => import('../../node_modules/react').JSX.Element;
