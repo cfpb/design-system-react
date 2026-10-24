@@ -3,13 +3,21 @@ import {
   forwardRef,
   JSX,
   type ComponentPropsWithoutRef,
-  type ReactNode,
+  type Ref,
 } from 'react';
 import './cfpb-text-input.scss';
 import type { TextInputStatusType } from './text-input-status';
 import { getTextInputStatusClass } from './text-input-status';
 
-type TextInputReference = ReactNode;
+type TextInputReference = Ref<HTMLInputElement>;
+
+const assignReference = (
+  target: Ref<HTMLInputElement> | undefined,
+  element: HTMLInputElement | null,
+): void => {
+  if (typeof target === 'function') target(element);
+  else if (target) target.current = element;
+};
 
 export type InputType =
   'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
@@ -42,7 +50,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
     {
       className,
       id,
-      inputRef: _inputReference,
+      inputRef,
       isDisabled = false,
       name,
       status,
@@ -62,6 +70,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
       classes.push('a-text-input--full');
     }
 
+    const setReferences = (element: HTMLInputElement | null): void => {
+      assignReference(inputRef, element);
+      assignReference(reference, element);
+    };
+
     const input = (
       <input
         data-testid='textInput'
@@ -70,7 +83,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
         id={id}
         name={name}
         type={type}
-        ref={reference}
+        ref={setReferences}
         {...otherInputProperties}
       />
     );
