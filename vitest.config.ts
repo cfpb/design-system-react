@@ -72,7 +72,7 @@ export default defineConfig((configEnvironment) => {
         },
         deps: {
           optimizer: {
-            web: {
+            client: {
               include: ['vite-plugin-svgr'],
               // Keep ?react SVG imports on the Vite plugin pipeline (not prebundled as data URLs).
               exclude: ['@cfpb/cfpb-design-system'],

@@ -35,9 +35,11 @@ export const Select = ({
   onChange = (): null => null,
   ...properties
 }: SelectProperties): JSX.Element => {
-  if (isMulti) return <SelectMulti {...{ onChange, ...properties }} />;
-
-  return <SelectSingle {...{ onChange, ...properties }} />;
+  return isMulti ? (
+    <SelectMulti {...{ onChange, ...properties }} />
+  ) : (
+    <SelectSingle {...{ onChange, ...properties }} />
+  );
 };
 
 export default Select;

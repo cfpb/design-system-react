@@ -9,11 +9,11 @@ const testState: { matchMedia?: matchMediaMock } = {};
 const renderWithScope = (ui: ReactElement) =>
   render(<div className='o-header-scope'>{ui}</div>);
 
-const resizeScreenSize = (width: number) => {
+const resizeScreenSize = () => {
   Object.defineProperty(globalThis, 'innerWidth', {
     writable: true,
     configurable: true,
-    value: width,
+    value: 500,
   });
   dispatchEvent(new Event('resize'));
 };
@@ -28,7 +28,7 @@ describe('ResponsiveMenu', () => {
   });
 
   it('does not render the menu without links', () => {
-    resizeScreenSize(500);
+    resizeScreenSize();
     renderWithScope(<ResponsiveMenu />);
 
     expect(screen.queryByTestId('menu-toggle')).not.toBeInTheDocument();
@@ -39,7 +39,7 @@ describe('ResponsiveMenu', () => {
   });
 
   it('renders with custom links', () => {
-    resizeScreenSize(500);
+    resizeScreenSize();
     renderWithScope(<ResponsiveMenu links={ExampleLinks} />);
 
     // Menu is rendered
@@ -53,7 +53,7 @@ describe('ResponsiveMenu', () => {
   });
 
   it('toggles menu visibility on button click', () => {
-    resizeScreenSize(500);
+    resizeScreenSize();
 
     renderWithScope(<ResponsiveMenu links={ExampleLinks} />);
     const menuToggle = screen.getAllByRole('button')[0];

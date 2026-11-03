@@ -18,8 +18,7 @@ import './table.scss';
 const Caption = ({
   children,
 }: HTMLProps<HTMLTableCaptionElement>): JSXElement => {
-  if (!children) return null;
-  return <caption>{children}</caption>;
+  return children ? <caption>{children}</caption> : null;
 };
 
 export interface TableColumnConfig {
