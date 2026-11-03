@@ -133,7 +133,10 @@
     "ws": ">=8.18.1",
     "rollup": ">=2.79.2",
     "form-data": ">=4.0.4",
-    "glob": ">=11.1.0"
+    "follow-redirects": ">=1.16.1",
+    "glob": ">=14.0.2",
+    "joi": ">=18.3.1",
+    "vite": ">=8.3.3"
   },
   "prettier": {
     "singleQuote": true,

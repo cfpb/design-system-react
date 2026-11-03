@@ -6566,7 +6566,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.16.0":
+"follow-redirects@npm:>=1.16.1":
   version: 1.16.2
   resolution: "follow-redirects@npm:1.16.2"
   peerDependenciesMeta:
@@ -6785,7 +6785,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:>=11.1.0":
+"glob@npm:>=14.0.2":
   version: 14.0.3
   resolution: "glob@npm:14.0.3"
   dependencies:
@@ -7723,7 +7723,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joi@npm:^18.2.9":
+"joi@npm:>=18.3.1":
   version: 18.3.1
   resolution: "joi@npm:18.3.1"
   dependencies:
@@ -11542,7 +11542,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.0.0 || ^7.0.0 || ^8.0.0, vite@npm:^8.3.5":
+"vite@npm:>=8.3.3":
   version: 8.3.5
   resolution: "vite@npm:8.3.5"
   dependencies:
