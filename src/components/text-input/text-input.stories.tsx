@@ -121,11 +121,11 @@ export const SearchInput: Story = {
     type: 'search',
   },
   render: (arguments_) => {
-    const { value: initialValue, ...restArguments } =
+    const { value: initialValue = '', ...restArguments } =
       arguments_ as TextInputProperties & {
         value: string;
       };
-    const [value, setValue] = useState(initialValue ?? '');
+    const [value, setValue] = useState(initialValue);
     return (
       <form
         onSubmit={(event_) => {

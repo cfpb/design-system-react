@@ -21,7 +21,7 @@ const containerBaseStyles = ['m-form-field m-form-field--radio'];
 
 export const RadioButton = ({
   id,
-  name,
+  name = id,
   helperText,
   className,
   disabled = false,
@@ -43,7 +43,7 @@ export const RadioButton = ({
       <input
         id={id}
         type='radio'
-        name={name ?? id}
+        name={name}
         className={classes}
         ref={inputRef}
         disabled={disabled}

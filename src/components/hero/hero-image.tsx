@@ -7,11 +7,6 @@ interface HeroImageProperties {
   altText?: string;
 }
 
-type HeroImageStyle = CSSProperties & {
-  '--m-hero-image'?: string;
-  '--m-hero-mobile-image'?: string;
-};
-
 const createBackgroundImageValue = (image: string): string =>
   `url(${JSON.stringify(image)})`;
 
@@ -25,6 +20,10 @@ export const HeroImage = ({
   mobileImage,
   altText,
 }: HeroImageProperties): JSXElement => {
+  type HeroImageStyle = CSSProperties & {
+    '--m-hero-image'?: string;
+    '--m-hero-mobile-image'?: string;
+  };
   if (!image && !mobileImage) return null;
 
   const imageStyle: HeroImageStyle = {};
