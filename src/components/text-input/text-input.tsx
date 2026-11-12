@@ -2,14 +2,37 @@ import classnames from 'classnames';
 import {
   forwardRef,
   JSX,
+  useCallback,
   type ComponentPropsWithoutRef,
-  type ReactNode,
+  type Ref,
 } from 'react';
 import './cfpb-text-input.scss';
 import type { TextInputStatusType } from './text-input-status';
 import { getTextInputStatusClass } from './text-input-status';
 
-type TextInputReference = ReactNode;
+type TextInputReference = Ref<HTMLInputElement>;
+
+const releaseNothing = (): void => undefined;
+
+const bindReference = (
+  target: Ref<HTMLInputElement> | undefined,
+  element: HTMLInputElement | null,
+): (() => void) => {
+  if (typeof target === 'function') {
+    const cleanup = target(element);
+    return (): void => {
+      if (typeof cleanup === 'function') cleanup();
+      else target(null);
+    };
+  }
+  if (target) {
+    target.current = element;
+    return (): void => {
+      target.current = null;
+    };
+  }
+  return releaseNothing;
+};
 
 export type InputType =
   'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
@@ -42,7 +65,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
     {
       className,
       id,
-      inputRef: _inputReference,
+      inputRef,
       isDisabled = false,
       name,
       status,
@@ -62,6 +85,18 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
       classes.push('a-text-input--full');
     }
 
+    const setReferences = useCallback(
+      (element: HTMLInputElement | null): (() => void) => {
+        const releaseInputReference = bindReference(inputRef, element);
+        const releaseForwardedReference = bindReference(reference, element);
+        return (): void => {
+          releaseInputReference();
+          releaseForwardedReference();
+        };
+      },
+      [inputRef, reference],
+    );
+
     const input = (
       <input
         data-testid='textInput'
@@ -70,7 +105,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProperties>(
         id={id}
         name={name}
         type={type}
-        ref={reference}
+        ref={setReferences}
         {...otherInputProperties}
       />
     );
