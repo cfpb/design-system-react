@@ -1,6 +1,6 @@
-import { JSX, ComponentPropsWithoutRef, ReactNode } from '../../../node_modules/react';
+import { JSX, ComponentPropsWithoutRef, Ref } from '../../../node_modules/react';
 import { TextInputStatusType } from './text-input-status';
-type TextInputReference = ReactNode;
+type TextInputReference = Ref<HTMLInputElement>;
 export type InputType = 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
 interface RequiredTextInputProperties {
     id: string;
