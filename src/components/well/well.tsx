@@ -43,14 +43,14 @@ function WellContent({
   const callsToAction = [];
   if (links)
     for (const link of links) {
-      if (
+      callsToAction.push(
         isValidElement(link) &&
-        (link.type === ListItem || link.type === ListLink)
-      ) {
-        callsToAction.push(link);
-      } else {
-        callsToAction.push(<ListItem key={link.key}>{link}</ListItem>);
-      }
+          (link.type === ListItem || link.type === ListLink) ? (
+          link
+        ) : (
+          <ListItem key={link.key}>{link}</ListItem>
+        ),
+      );
     }
 
   return (

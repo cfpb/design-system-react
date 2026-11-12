@@ -108,6 +108,8 @@ export default tseslint.config(
       'unicorn/no-null': 'off',
       // Prefer concise prop JSDoc (`/** ... */`) over forced multiline blocks.
       'unicorn/single-line-block-comment-style': 'off',
+      // Standard JSDoc keeps the leading asterisk on each line.
+      'unicorn/no-asterisk-prefix-in-documentation-comments': 'off',
       'react/prop-types': 'off', // Using TypeScript, so don't use PropTypes.
       // Resolver cannot resolve Vite/tsconfig path aliases or @cfpb/cfpb-design-system src subpaths.
       'import/no-unresolved': [

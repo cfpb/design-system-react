@@ -43,8 +43,7 @@ const numberIconNames = new Set(numberIcons);
  */
 const getShapeModifier = (name: string, hasBg: boolean): string => {
   if (numberIconNames.has(name)) {
-    if (hasBg) return '-closed';
-    return '-open';
+    return hasBg ? '-closed' : '-open';
   }
   if (!hasBg) return '';
   if (squareIcons.has(name)) return '-square';
@@ -79,7 +78,7 @@ interface IconProperties extends Omit<SVGProps<SVGSVGElement>, 'name'> {
  */
 export const Icon = ({
   name,
-  alt,
+  alt = name,
   ariaLabel = '',
   ariaLabelledby = '',
   ariaDescribedby = '',
@@ -104,7 +103,7 @@ export const Icon = ({
       className={classes}
       style={fontSize ? { fontSize } : undefined}
       role={isPresentational ? undefined : 'img'}
-      aria-label={ariaLabel || (isPresentational ? undefined : (alt ?? name))}
+      aria-label={ariaLabel || (isPresentational ? undefined : alt)}
       aria-labelledby={ariaLabelledby || undefined}
       aria-describedby={ariaDescribedby || undefined}
       aria-hidden={isPresentational ? 'true' : undefined}

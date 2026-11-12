@@ -27,6 +27,9 @@ export default function List({
   if (isUnstyled) cnames.push('m-list--unstyled');
   if (className) cnames.push(className);
 
-  if (isOrdered) return <ol className={classnames(cnames)}>{children}</ol>;
-  return <ul className={classnames(cnames)}>{children}</ul>;
+  return isOrdered ? (
+    <ol className={classnames(cnames)}>{children}</ol>
+  ) : (
+    <ul className={classnames(cnames)}>{children}</ul>
+  );
 }
