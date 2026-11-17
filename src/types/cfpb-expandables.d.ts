@@ -1,8 +1,14 @@
 declare module '@cfpb/cfpb-design-system/src/components/cfpb-expandables' {
   type InitScope = Element | Document | NodeList | null | undefined;
 
+  export interface ExpandableInstance {
+    addEventListener(event: 'expandbegin', callback: () => void): void;
+    collapse(): void;
+  }
+
   export const Expandable: {
-    init(scope?: InitScope): void;
+    /** Returns the instances it initialized (already initialized ones are skipped). */
+    init(scope?: InitScope): ExpandableInstance[];
   };
   export const ExpandableGroup: {
     init(scope?: InitScope): void;

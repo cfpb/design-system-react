@@ -1,6 +1,9 @@
-import { ExpandableGroup as CFPB_ExpandableGroup } from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
+import {
+  Expandable as CFPB_Expandable,
+  type ExpandableInstance,
+} from '@cfpb/cfpb-design-system/src/components/cfpb-expandables';
 import classnames from 'classnames';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { FC, HTMLAttributes, ReactElement } from 'react';
 import type { ExpandableProperties } from './expandable';
 
@@ -20,9 +23,32 @@ export const ExpandableGroup: FC<ExpandableGroupProperties> = ({
   const cname = ['o-expandable-group', className];
   if (accordion) cname.push('o-expandable-group--accordion');
 
+  const groupReference = useRef<HTMLDivElement>(null);
+  const isAccordionReference = useRef(accordion);
+  const lastExpandedReference = useRef<ExpandableInstance | null>(null);
+
   useEffect(() => {
-    CFPB_ExpandableGroup.init();
+    isAccordionReference.current = accordion;
   }, [accordion]);
+
+  // Initialize every expandable in this group that is not initialized yet.
+  // This runs again when the children change, so items rendered after the
+  // group mounted (async data, filtered lists) work too.
+  useEffect(() => {
+    const newExpandables = CFPB_Expandable.init(groupReference.current);
+
+    for (const expandable of newExpandables) {
+      expandable.addEventListener('expandbegin', () => {
+        // Accordion: opening one item closes the one opened before it
+        const lastExpanded = lastExpandedReference.current;
+        lastExpandedReference.current = expandable;
+        if (lastExpanded === expandable || !isAccordionReference.current) {
+          return;
+        }
+        lastExpanded?.collapse();
+      });
+    }
+  }, [children]);
 
   const childrenWithProperties = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -36,7 +62,12 @@ export const ExpandableGroup: FC<ExpandableGroupProperties> = ({
     return child;
   });
   return (
-    <div id={groupId} className={classnames(cname)} {...properties}>
+    <div
+      ref={groupReference}
+      id={groupId}
+      className={classnames(cname)}
+      {...properties}
+    >
       {childrenWithProperties}
     </div>
   );
